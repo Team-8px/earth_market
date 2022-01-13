@@ -1,41 +1,38 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { listProducts } from "../../../actions/productActions";
 import { listPosts } from "../../../actions/postActions";
+import { getUserProfile } from "../../../actions/userActions";
 import { API_URL } from "../../../constants/defaultUrl";
 
 const MyProfile = () => {
   const dispatch = useDispatch();
 
-  const {
-    productList: { products },
-    postList: { posts },
-    userLogin: { userInfo: user },
-  } = useSelector((state) => state);
+  const { products } = useSelector((state) => state.productList, shallowEqual);
+  const { posts } = useSelector((state) => state.postList, shallowEqual);
+  const { image, username, accountname, intro, followerCount, followingCount } = useSelector(
+    (state) => state.userProfile,
+    shallowEqual
+  );
 
   useEffect(() => {
     dispatch(listProducts());
     dispatch(listPosts());
+    dispatch(getUserProfile());
   }, [dispatch]);
 
-  /* const { username, image, followingCount, followerCount, intro, accountname } =
-    posts && posts[0].author; posts[0]*/
-  //console.log(posts && posts[0].author);
   return (
     <div>
       {/* 유저 프로필 */}
       <h1>유저 프로필</h1>
-      {/* <img src={image} alt="프로필 사진" /> */}
-      {/* <ul>
-        <li>{user && String(user.email)}</li>
-        <li>{user && String(user.image)}</li>
-        <li>{posts && String(posts[0])}</li>
-        <li>{posts && String(posts[0].image)}</li>
-        <li>{posts && String(posts[0].heartCount)}</li>
-        <li>{posts && String(posts[0])}</li>
-        <li>{posts && String(posts[0])}</li>
-        <li>{posts && String(posts[0])}</li>
-      </ul> */}
+      <img src={image} alt="프로필 사진" />
+      <ul>
+        <li>{username}</li>
+        <li>{accountname}</li>
+        <li>{intro}</li>
+        <li>{followerCount}</li>
+        <li>{followingCount}</li>
+      </ul>
 
       {/* 상품목록 */}
       <h1>상품 목록</h1>
@@ -69,13 +66,7 @@ const MyProfile = () => {
             <div key={post.id}>
               <div style={{ display: "flex" }}>
                 {postImages.map((postImage, index) => {
-                  return (
-                    <img
-                      key={index}
-                      src={`${API_URL}/${postImage}`}
-                      alt="상품사진"
-                    />
-                  );
+                  return <img key={index} src={`${API_URL}/${postImage}`} alt="상품사진" />;
                 })}
               </div>
               <div>
