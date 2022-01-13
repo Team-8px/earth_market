@@ -1,22 +1,58 @@
-import React from "react";
-import {
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login, logout } from "../../../actions/userActions";
+/* import {
   Main,
   FormContainer,
   InPutContainer,
   Button,
   JoinEmailBtn,
-} from "./index.style";
+} from "./index.style"; */
 
 const LoginEmail = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+
+  const onNext = (event) => {
+    dispatch(login(email, password));
+  };
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
+
   return (
-    <Main>
-      <FormContainer>
-        <InPutContainer>이메일</InPutContainer>
-        <InPutContainer>비밀번호</InPutContainer>
-        <Button>로그인</Button>
-        <JoinEmailBtn>이메일로 회원가입</JoinEmailBtn>
-      </FormContainer>
-    </Main>
+    <>
+      <div>
+        <input
+          name="email"
+          type="email"
+          placeholder="이메일"
+          value={email}
+          onChange={(e) => setEmail(e.currentTarget.value)}
+        />
+      </div>
+      <div>
+        <input
+          name="password"
+          type="password"
+          placeholder="비밀번호"
+          value={password}
+          onChange={(e) => setPassword(e.currentTarget.value)}
+        />
+      </div>
+
+      <div>
+        <button type="button" onClick={onNext}>
+          다음
+        </button>
+        <button type="button" onClick={logoutHandler}>
+          로그아웃
+        </button>
+      </div>
+    </>
   );
 };
 

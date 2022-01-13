@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from "./components/Footer";
-import HomeScreen from "./screens/HomeScreen";
-import LoginEmailScreen from "./screens/LoginEmailScreen";
-import JoinMembershipScreen from "./screens/JoinMembershipScreen";
-import AddProductScreen from "./screens/AddProductScreen";
+import HomeMain from "./pages/home/HomeMain";
+import LoginEmail from "./pages/auth/LoginEmail";
+import JoinMemberShip from "./pages/auth/JoinMemberShip";
+import ProductUpload from "./pages/product/Upload";
 import ProfileModification from "./screens/ProfileModification";
-import AddPostScreen from "./screens/AddPostScreen";
+import PostUpload from "./pages/post/Upload";
 import CommentScreen from "./screens/CommentScreen";
 import MyProfileScreen from "./screens/MyProfileScreen";
 import NotFound from "./pages/screen/NotFound";
@@ -16,12 +16,12 @@ const App = () => {
     <Router>
       <main>
         <Switch>
-          <Route path="/" component={LoginEmailScreen} exact />
-          <Route path="/join/email" component={JoinMembershipScreen} exact />
-          <Route path="/home" component={HomeScreen} exact />
-          <Route path="/product" component={AddProductScreen} exact />
+          <Route path="/" component={LoginEmail} exact />
+          <Route path="/join/email" component={JoinMemberShip} exact />
+          <Route path="/home" component={HomeMain} exact />
+          <Route path="/product" component={ProductUpload} exact />
           <Route path="/user" component={ProfileModification} exact />
-          <Route path="/post" component={AddPostScreen} exact />
+          <Route path="/post" component={PostUpload} exact />
           <Route path="/post/comment" component={CommentScreen} exact />
           <Route path="/myprofile" component={MyProfileScreen} exact />
           <Route component={NotFound} />

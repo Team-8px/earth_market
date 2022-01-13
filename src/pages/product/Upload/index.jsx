@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import { createProduct } from "../actions/productActions";
-import { imageUploadsHandler } from "../util/imageUploads";
+import { createProduct } from "../../../actions/productActions";
+import { imageUploadsHandler } from "../../../util/imageUploads";
 
-const AddProductScreen = () => {
+const ProductUpload = () => {
   const [myImage, setMyImage] = useState([]);
 
   const { register, handleSubmit } = useForm();
@@ -92,4 +92,4 @@ const AddProductScreen = () => {
 const IMG_URL =
   "https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118928_960_720.png";
 
-export default AddProductScreen;
+export default ProductUpload;
