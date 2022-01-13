@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { commentAction } from "../actions/commentAction";
+import { commentAction } from "../../actions/commentAction";
 
-const CommentScreen = () => {
+const Comment = () => {
   const dispatch = useDispatch();
   const [comment, setComment] = useState("");
 
@@ -27,4 +27,4 @@ const CommentScreen = () => {
     </>
   );
 };
-export default CommentScreen;
+export default Comment;

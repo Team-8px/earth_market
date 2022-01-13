@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { login, logout } from "../../../actions/userActions";
+import { useForm } from "react-hook-form";
+import { login } from "../../../actions/userActions";
 /* import {
   Main,
   FormContainer,
@@ -10,28 +11,24 @@ import { login, logout } from "../../../actions/userActions";
 } from "./index.style"; */
 
 const LoginEmail = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { register, handleSubmit } = useForm();
 
   const dispatch = useDispatch();
 
-  const onNext = (event) => {
+  const onSubmit = (data) => {
+    const { email, password } = data;
+
     dispatch(login(email, password));
   };
 
-  const logoutHandler = () => {
-    dispatch(logout());
-  };
-
   return (
-    <>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <input
           name="email"
           type="email"
           placeholder="이메일"
-          value={email}
-          onChange={(e) => setEmail(e.currentTarget.value)}
+          {...register("email")}
         />
       </div>
       <div>
@@ -39,20 +36,14 @@ const LoginEmail = () => {
           name="password"
           type="password"
           placeholder="비밀번호"
-          value={password}
-          onChange={(e) => setPassword(e.currentTarget.value)}
+          {...register("password")}
         />
       </div>
 
       <div>
-        <button type="button" onClick={onNext}>
-          다음
-        </button>
-        <button type="button" onClick={logoutHandler}>
-          로그아웃
-        </button>
+        <input type="submit" />
       </div>
-    </>
+    </form>
   );
 };
 

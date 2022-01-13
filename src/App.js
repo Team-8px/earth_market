@@ -5,10 +5,9 @@ import HomeMain from "./pages/home/HomeMain";
 import LoginEmail from "./pages/auth/LoginEmail";
 import JoinMemberShip from "./pages/auth/JoinMemberShip";
 import ProductUpload from "./pages/product/Upload";
-import ProfileModification from "./screens/ProfileModification";
+import ProfileModification from "./pages/profile/ProfileModification";
 import PostUpload from "./pages/post/Upload";
-import CommentScreen from "./screens/CommentScreen";
-import MyProfileScreen from "./screens/MyProfileScreen";
+import MyProfile from "./pages/profile/MyProfile";
 import NotFound from "./pages/screen/NotFound";
 
 const App = () => {
@@ -20,10 +19,9 @@ const App = () => {
           <Route path="/join/email" component={JoinMemberShip} exact />
           <Route path="/home" component={HomeMain} exact />
           <Route path="/product" component={ProductUpload} exact />
-          <Route path="/user" component={ProfileModification} exact />
+          <Route path="/user/update" component={ProfileModification} exact />
           <Route path="/post" component={PostUpload} exact />
-          <Route path="/post/comment" component={CommentScreen} exact />
-          <Route path="/myprofile" component={MyProfileScreen} exact />
+          <Route path="/myprofile" component={MyProfile} exact />
           <Route component={NotFound} />
         </Switch>
       </main>
