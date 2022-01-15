@@ -1,13 +1,13 @@
 import axios from "axios";
 import { API_URL } from "../constants/defaultUrl";
 import {
-  USER_COMMENT_REQUEST,
-  USER_COMMENT_SUCCESS,
-  USER_COMMENT_FAIL,
+  COMMENT_CREATE_REQUEST,
+  COMMENT_CREATE_SUCCESS,
+  COMMENT_CREATE_FAIL
 } from "../constants/commentConstants";
 
-export const commentAction = (content) => async (dispatch, getState) => {
-  dispatch({ type: USER_COMMENT_REQUEST });
+export const commentCreateAction = (content) => async (dispatch, getState) => {
+  dispatch({ type: COMMENT_CREATE_REQUEST });
 
   // store에 저장된 userInfo 조회
   const {
@@ -35,11 +35,9 @@ export const commentAction = (content) => async (dispatch, getState) => {
     config
   );
 
-  console.log(data);
-
   // 요청 성공시 data 전송.
   dispatch({
-    type: USER_COMMENT_SUCCESS,
+    type: COMMENT_CREATE_SUCCESS,
     payload: data,
   });
 
@@ -49,6 +47,6 @@ export const commentAction = (content) => async (dispatch, getState) => {
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
-    dispatch({ type: USER_COMMENT_FAIL, payload: message });
+    dispatch({ type: COMMENT_CREATE_FAIL, payload: message });
   }
 };

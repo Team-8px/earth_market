@@ -6,9 +6,47 @@ import {
   POST_LIST_REQUEST,
   POST_LIST_SUCCESS,
   POST_LIST_FAIL,
+  POST_GET_REQUEST,
+  POST_GET_SUCCESS,
+  POST_GET_FAIL
 } from "../constants/postConstants";
 import { API_URL } from "../constants/defaultUrl";
 import { logout } from "./userActions";
+
+export const getPost = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: POST_GET_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.user.token}`,
+      },
+    };
+
+    const { data } = await axios.get(
+      `${API_URL}/post/${userInfo.user.accountname}/userpost`,
+      config
+    );
+
+    dispatch({
+      type: POST_GET_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: POST_GET_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
 
 export const listPosts = () => async (dispatch, getState) => {
   try {
