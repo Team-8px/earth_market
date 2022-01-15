@@ -7,6 +7,7 @@ import JoinMemberShip from "./pages/auth/JoinMemberShip";
 import ProductUpload from "./pages/product/Upload";
 import ProfileModification from "./pages/profile/ProfileModification";
 import PostUpload from "./pages/post/Upload";
+import PostView from "./pages/post/PostView";
 import MyProfile from "./pages/profile/MyProfile";
 import NotFound from "./pages/screen/NotFound";
 
@@ -16,12 +17,13 @@ const App = () => {
       <main>
         <Switch>
           <Route path="/" component={LoginEmail} exact />
-          <Route path="/join/email" component={JoinMemberShip} exact />
-          <Route path="/home" component={HomeMain} exact />
-          <Route path="/product" component={ProductUpload} exact />
-          <Route path="/user/update" component={ProfileModification} exact />
-          <Route path="/post" component={PostUpload} exact />
-          <Route path="/myprofile" component={MyProfile} exact />
+          <Route path="/join/email" component={JoinMemberShip} />
+          <Route path="/home" component={HomeMain} />
+          <Route path="/product" component={ProductUpload} />
+          <Route path="/user/update" component={ProfileModification} />
+          <Route path="/post/upload" component={PostUpload} />
+          <Route path="/post:postId" component={PostView} />
+          <Route path="/myprofile" component={MyProfile} />
           <Route component={NotFound} />
         </Switch>
       </main>

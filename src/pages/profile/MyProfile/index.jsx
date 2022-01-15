@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { Link } from "react-router-dom";
 import { listProducts } from "../../../actions/productActions";
 import { listPosts } from "../../../actions/postActions";
 import { getUserProfile } from "../../../actions/userActions";
@@ -37,9 +38,9 @@ const MyProfile = () => {
       {/* 상품목록 */}
       <h1>상품 목록</h1>
       {products &&
-        products.map((product) => {
+        products.map((product, index) => {
           return (
-            <div key={product.id} style={{ display: "flex" }}>
+            <div key={index} style={{ display: "flex" }}>
               <div>
                 <img src={`${API_URL}/${product.itemImage}`} alt="상품사진" />
               </div>
@@ -65,13 +66,19 @@ const MyProfile = () => {
           return (
             <div key={post.id}>
               <div style={{ display: "flex" }}>
-                {postImages.map((postImage, index) => {
-                  return <img key={index} src={`${API_URL}/${postImage}`} alt="상품사진" />;
+                 {postImages.map((postImage, index) => {
+                  return (
+                    <img key={index} src={`${API_URL}/${postImage}`} alt="상품사진" />
+                  )
                 })}
               </div>
               <div>
                 <ul>
-                  <li>게시글: {post.content}</li>
+                  <li>
+                    <Link to={`/post${post.id}`}>
+                      게시글 링크
+                    </Link>
+                 </li>
                 </ul>
               </div>
             </div>

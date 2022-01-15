@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { commentAction } from "../../actions/commentAction";
+import { commentCreateAction } from "../../actions/commentAction";
 
 const Comment = () => {
   const dispatch = useDispatch();
   const [comment, setComment] = useState("");
 
   const submitHandler = () => {
-    dispatch(commentAction(comment));
+    dispatch(commentCreateAction(comment));
   };
 
   return (

@@ -12,7 +12,7 @@ import {
   productListReducer,
 } from "./reducers/productReducers";
 import { postCreateReducer, postListReducer } from "./reducers/postReducers";
-import commentReducer from "./reducers/commentReducer";
+import {commentCreateReducer} from "./reducers/commentReducer";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -20,7 +20,7 @@ const reducer = combineReducers({
   productCreate: productCreateReducer,
   updateUserProfile: userUpdateReducer,
   postCreate: postCreateReducer,
-  comment: commentReducer,
+  comment: commentCreateReducer,
   productList: productListReducer,
   postList: postListReducer,
   userProfile: userProfileReducer,
