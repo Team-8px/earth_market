@@ -61,15 +61,10 @@ const StyledButton = styled.button`
   cursor: pointer;
 
   /* 사이즈 */
-  ${sizeStyles}
 
   /* 컬러 */
-  ${colorStyles}
 
   /* 구분짓기 위함 */
-  &+& {
-    margin-left: 30px;
-  }
 `;
 
 function Button({ children, size, width, color, ...rest }) {

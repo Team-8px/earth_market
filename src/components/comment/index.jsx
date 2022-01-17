@@ -18,7 +18,7 @@ const Comment = () => {
           name="comment"
           type="comment"
           placeholder="댓글 입력하기"
-          onChange={(e) => setComment(e.currentTarget.value)}
+          onChange={e => setComment(e.currentTarget.value)}
         />
       </div>
       <div>
