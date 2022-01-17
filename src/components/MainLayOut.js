@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 // 플렉스 속성과 관련해서는 @mixin을 잘 활용할 수 있는 방법을 찾아봐야한다.
+
 const AlignCenter = css`
   display: flex;
   flex-direction: column;
@@ -45,15 +46,23 @@ export const SetMemberShipMainLayOut = styled.main`
 
 // Chat 페이지 레이아웃
 
-// ChatRoom 부재
-
-export const ChatMainLayOut = styled.main`
+export const ChatListMainLayOut = styled.main`
   ${MainLayOut}
   justify-content: center;
   position: fixed;
   display: flex;
   padding: 24px 16px;
   overflow-y: scroll;
+`;
+
+export const ChatRoomMainLayOut = styled.main`
+  ${MainLayOut}
+  position: fixed;
+  display: flex;
+  padding: 24px 16px;
+  overflow-y: scroll;
+  // 상대 입력시 UI ??
+  // 본인 입력시 UI ??
 `;
 
 // ✅ home 페이지 레이아웃
