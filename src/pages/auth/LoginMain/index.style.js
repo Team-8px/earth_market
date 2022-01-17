@@ -15,7 +15,7 @@ export const MainLayout = styled.main`
 `;
 
 // 페이지 하단 컨테이너
-export const LoginMainContainer = styled.section`
+export const MainContainer = styled.section`
   position: absolute;
   bottom: 0;
   display: flex;
