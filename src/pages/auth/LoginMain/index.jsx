@@ -1,4 +1,6 @@
 import React from "react";
+
+//스타일 컴포넌트
 import { KakaoBtn, GoogleBtn, FaceBookBtn } from "../../../components/Button";
 import { StyledMainLayOut, MainContainer } from "./index.style";
 

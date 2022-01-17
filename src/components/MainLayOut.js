@@ -13,16 +13,25 @@ const MainLayOut = css`
   margin-top: 48px;
 `;
 
-// Auth 페이지 레이아웃
+// ✅ Auth 페이지 레이아웃
 
 export const AuthMainLayOut = styled.main`
   ${AlignCenter}
 `;
 
-export const Main = styled.div`
-  ${AlignCenter}
+// Chat 페이지 레이아웃
+// ChatRoom 부재
+
+export const ChatMainLayOut = styled.main`
+  ${MainLayOut}
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px;
+  overflow-y: scroll;
 `;
-// home 페이지 레이아웃
+
+// ✅ home 페이지 레이아웃
 
 export const HomeMainLayOut = styled.main`
   ${AlignCenter}
@@ -34,18 +43,14 @@ export const HomeMainLayOut = styled.main`
   overflow-y: scroll;
 `;
 
-// Chat 페이지 레이아웃
+// post 페이지 레이아웃
 
-export const ChatMainLayOut = styled.main`
+export const PostMainLayout = styled.main`
   ${MainLayOut}
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  padding: 24px 16px;
-  overflow-y: scroll;
 `;
 
 // profile 페이지 레이아웃
+
 export const FolloMainLayOut = styled.main`
   ${MainLayOut}
 `;

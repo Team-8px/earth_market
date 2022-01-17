@@ -1,19 +1,5 @@
 import styled from "styled-components";
-import { Main } from "../../../components/MainLayOut";
 import Icon from "../../../asset/icon/icon-upload.png";
-
-export const StyledMain = styled(Main)`
-  // 포지션
-  justify-content: center;
-  flex-direction: row;
-  align-items: stretch;
-  // 크기
-  min-width: 390px;
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  margin-top: 48px;
-`;
 
 export const MainFormContainer = styled.div`
   display: flex;

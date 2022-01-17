@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { joinMembership } from "../../../actions/userActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
-
+// 스타일 컴포넌트
 import { AuthMainLayOut } from "../../../components/MainLayOut";
 
 /* import {
