@@ -1,11 +1,11 @@
 import React from "react";
-import { Main } from "./index.style";
+import { LoginMainLayout, LoginMainContainer } from "./index.style";
 
 const LoginMain = () => {
   return (
-    <>
-      <Main>Main</Main>
-    </>
+    <LoginMainLayout>
+      <LoginMainContainer></LoginMainContainer>
+    </LoginMainLayout>
   );
 };
 
