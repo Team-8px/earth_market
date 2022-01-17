@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { login } from "../../../actions/userActions";
+
+import { MainLayOut } from "../../../components/MainLayOut";
 /* import {
   Main,
   FormContainer,
@@ -15,35 +17,37 @@ const LoginEmail = () => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     const { email, password } = data;
 
     dispatch(login(email, password));
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <input
-          name="email"
-          type="email"
-          placeholder="이메일"
-          {...register("email")}
-        />
-      </div>
-      <div>
-        <input
-          name="password"
-          type="password"
-          placeholder="비밀번호"
-          {...register("password")}
-        />
-      </div>
+    <MainLayOut>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <input
+            name="email"
+            type="email"
+            placeholder="이메일"
+            {...register("email")}
+          />
+        </div>
+        <div>
+          <input
+            name="password"
+            type="password"
+            placeholder="비밀번호"
+            {...register("password")}
+          />
+        </div>
 
-      <div>
-        <input type="submit" />
-      </div>
-    </form>
+        <div>
+          <input type="submit" />
+        </div>
+      </form>
+    </MainLayOut>
   );
 };
 

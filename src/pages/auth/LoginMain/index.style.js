@@ -2,12 +2,10 @@ import styled from "styled-components";
 import Kakao from "../../../asset/message-circle.png";
 import Google from "../../../asset/google.png";
 import FaceBook from "../../../asset/facebook.png";
+import { MainLayOut } from "../../../components/MainLayOut";
 
 // 페이지 전체 레이아웃
-export const MainLayOut = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+export const StyledMainLayOut = styled(MainLayOut)`
   width: 100%;
   height: 100%;
   padding-top: 180px;

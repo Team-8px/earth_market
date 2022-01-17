@@ -1,5 +1,6 @@
 import React from "react";
-import { MainLayOut, MainTitle, Button } from "./index.style";
+import { MainTitle, Button } from "./index.style";
+import { MainLayOut } from "../../../components/MainLayOut";
 
 const JoinMemberShip = () => {
   return (

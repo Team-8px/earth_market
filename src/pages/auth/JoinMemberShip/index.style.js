@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const MainLayOut = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 export const MainTitle = styled.h2`
   font-weight: 500;
   font-size: 24px;
