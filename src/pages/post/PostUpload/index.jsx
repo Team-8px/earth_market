@@ -14,7 +14,7 @@ const PostUpload = () => {
   // 이미지 업로드 갯수 제한
   const MAX_UPLOAD = 3;
 
-  const onChange = (e) => {
+  const onChange = e => {
     //console.log(myImage.length);
     if (myImage.length <= MAX_UPLOAD - 1) {
       const nowSelectImageList = e.target.files; //최종1건만, 한번에 받은 파일리스트 (obj임)
@@ -41,7 +41,7 @@ const PostUpload = () => {
     }
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     const { postText } = data;
     const fileDatas = myImage;
     //console.log(fileDatas);
