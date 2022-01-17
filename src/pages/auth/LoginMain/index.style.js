@@ -4,7 +4,7 @@ import Google from "../../../asset/google.png";
 import FaceBook from "../../../asset/facebook.png";
 
 // 페이지 전체 레이아웃
-export const LoginMainLayout = styled.main`
+export const MainLayout = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
