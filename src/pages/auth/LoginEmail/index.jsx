@@ -2,8 +2,12 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { login } from "../../../actions/userActions";
+
+// 스타일 컴포넌트
+
 import { MainLayOut } from "../../../components/MainLayOut";
 import { MainTitle } from "../../../components/MainTitle";
+import { Button } from "../../../components/Button";
 /* import {
   Main,
   FormContainer,
@@ -48,6 +52,7 @@ const LoginEmail = () => {
           <input type="submit" />
         </div>
       </form>
+      <Button>로그인</Button>
     </MainLayOut>
   );
 };

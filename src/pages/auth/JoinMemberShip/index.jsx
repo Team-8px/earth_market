@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "./index.style";
+import { Button } from "../../../components/Button";
 import { MainLayOut } from "../../../components/MainLayOut";
 import { MainTitle } from "../../../components/MainTitle";
 
