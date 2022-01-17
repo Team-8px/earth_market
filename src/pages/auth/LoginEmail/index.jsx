@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { login } from "../../../actions/userActions";
-
 import { MainLayOut } from "../../../components/MainLayOut";
+import { MainTitle } from "../../../components/MainTitle";
 /* import {
   Main,
   FormContainer,
@@ -25,6 +25,7 @@ const LoginEmail = () => {
 
   return (
     <MainLayOut>
+      <MainTitle>로그인</MainTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <input

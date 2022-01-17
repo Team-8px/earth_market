@@ -1,6 +1,7 @@
 import React from "react";
-import { MainTitle, Button } from "./index.style";
+import { Button } from "./index.style";
 import { MainLayOut } from "../../../components/MainLayOut";
+import { MainTitle } from "../../../components/MainTitle";
 
 const JoinMemberShip = () => {
   return (
