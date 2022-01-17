@@ -1,11 +1,12 @@
 import React from "react";
-import { FollowLayOut, UserListContainer } from "./index.style";
+import { MainLayOut } from "../../../components/MainLayOut";
+import { UserListContainer } from "./index.style";
 
 const Follower = () => {
   return (
-    <FollowLayOut>
+    <MainLayOut>
       <UserListContainer></UserListContainer>
-    </FollowLayOut>
+    </MainLayOut>
   );
 };
 
