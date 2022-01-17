@@ -1,14 +1,8 @@
 import React from "react";
-import { Main } from "./index.style";
-import { Header, HeaderContainer } from "../../base/Header/index.style";
-import { Footer, FooterContainer } from "../../base/NaviGation/index.style";
+import { StyledMain } from "./index.style";
 
 const HomeFeed = () => {
-  return (
-    <>
-      <div>HomeFeed</div>
-    </>
-  );
+  return <StyledMain></StyledMain>;
 };
 
 export default HomeFeed;
