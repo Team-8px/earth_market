@@ -10,5 +10,5 @@ export const StyledMain = styled(Main)`
   overflow-y: scroll;
 
   // 테스트용 백그라운드
-  background-color: #789;
+  /* background-color: #789; */
 `;

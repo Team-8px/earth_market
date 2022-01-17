@@ -1,9 +1,17 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Main = styled.div`
+const AlignCenter = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const AuthLayOut = styled.main`
+  ${AlignCenter}
+`;
+
+export const Main = styled.div`
+  ${AlignCenter}
 `;
 
 export const MainLayOut = styled.main`
@@ -12,6 +20,7 @@ export const MainLayOut = styled.main`
   height: 100%;
   // 테스트용 백그라운드
   // Defalut #fff
-  background-color: #789;
   margin-top: 48px;
 `;
+
+// 레이아웃 한곳으로 다 모아버리기
