@@ -2,13 +2,15 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { login } from "../../../actions/userActions";
-/* import {
+import {
   Main,
   FormContainer,
   InPutContainer,
   Button,
   JoinEmailBtn,
-} from "./index.style"; */
+  InputLabel,
+  InputValue,
+} from "./index.style";
 
 const LoginEmail = () => {
   const { register, handleSubmit } = useForm();
@@ -22,6 +24,8 @@ const LoginEmail = () => {
   };
 
   return (
+    <Main>
+      
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <input
@@ -41,9 +45,13 @@ const LoginEmail = () => {
       </div>
 
       <div>
-        <input type="submit" />
+        <input type="submit"/>
       </div>
     </form>
+    <Button>
+    <button type="button">로그인</button>
+    </Button>
+    </Main>
   );
 };
 

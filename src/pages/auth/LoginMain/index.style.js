@@ -14,6 +14,7 @@ export const Logo = styled.div`
   width: 144px;
   height: 144px;
 `;
+
 export const Container = styled.section`
   position: absolute;
   bottom: 0;
