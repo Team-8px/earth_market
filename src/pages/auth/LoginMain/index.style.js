@@ -2,10 +2,10 @@ import styled from "styled-components";
 import Kakao from "../../../asset/message-circle.png";
 import Google from "../../../asset/google.png";
 import FaceBook from "../../../asset/facebook.png";
-import { MainLayOut } from "../../../components/MainLayOut";
+import { Main } from "../../../components/MainLayOut";
 
 // 페이지 전체 레이아웃
-export const StyledMainLayOut = styled(MainLayOut)`
+export const StyledMain = styled(Main)`
   width: 100%;
   height: 100%;
   padding-top: 180px;
