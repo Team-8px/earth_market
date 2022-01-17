@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import Icon from "../../../asset/icon/icon-upload.png";
+import { ProductUploadMainLayOut } from "../../../components/MainLayOut";
+
+export const MainLayOut = styled(ProductUploadMainLayOut)``;
 
 export const MainFormContainer = styled.div`
   display: flex;

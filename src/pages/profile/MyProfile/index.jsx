@@ -5,16 +5,16 @@ import { listProducts } from "../../../actions/productActions";
 import { listPosts } from "../../../actions/postActions";
 import { getUserProfile } from "../../../actions/userActions";
 import { API_URL } from "../../../constants/defaultUrl";
+// 스타일 컴포넌트
+import { MainLayOut } from "./index.style";
 
 const MyProfile = () => {
   const dispatch = useDispatch();
 
-  const { products } = useSelector((state) => state.productList, shallowEqual);
-  const { posts } = useSelector((state) => state.postList, shallowEqual);
-  const { image, username, accountname, intro, followerCount, followingCount } = useSelector(
-    (state) => state.userProfile,
-    shallowEqual
-  );
+  const { products } = useSelector(state => state.productList, shallowEqual);
+  const { posts } = useSelector(state => state.postList, shallowEqual);
+  const { image, username, accountname, intro, followerCount, followingCount } =
+    useSelector(state => state.userProfile, shallowEqual);
 
   useEffect(() => {
     dispatch(listProducts());
@@ -23,7 +23,7 @@ const MyProfile = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <MainLayOut>
       {/* 유저 프로필 */}
       <h1>유저 프로필</h1>
       <img src={image} alt="프로필 사진" />
@@ -59,32 +59,34 @@ const MyProfile = () => {
       {/* 게시글 목록 */}
       <h1>게시글 목록</h1>
       {posts &&
-        posts.map((post) => {
+        posts.map(post => {
           /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
           const postImages = post.image.split(",");
 
           return (
             <div key={post.id}>
               <div style={{ display: "flex" }}>
-                 {postImages.map((postImage, index) => {
+                {postImages.map((postImage, index) => {
                   return (
-                    <img key={index} src={`${API_URL}/${postImage}`} alt="상품사진" />
-                  )
+                    <img
+                      key={index}
+                      src={`${API_URL}/${postImage}`}
+                      alt="상품사진"
+                    />
+                  );
                 })}
               </div>
               <div>
                 <ul>
                   <li>
-                    <Link to={`/post${post.id}`}>
-                      게시글 링크
-                    </Link>
-                 </li>
+                    <Link to={`/post${post.id}`}>게시글 링크</Link>
+                  </li>
                 </ul>
               </div>
             </div>
           );
         })}
-    </div>
+    </MainLayOut>
   );
 };
 

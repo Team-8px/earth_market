@@ -1,7 +1,8 @@
 import React from "react";
+import { PageLayOut } from "./index.style";
 
 const NotFound = () => {
-  return <div>NotFound</div>;
+  return <PageLayOut>NotFound</PageLayOut>;
 };
 
 export default NotFound;
