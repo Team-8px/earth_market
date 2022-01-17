@@ -3,13 +3,9 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { createProduct } from "../../../actions/productActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
-
-// 스타일
-import {
-  StyledMain,
-  MainFormContainer,
-  ProductImgWrapper,
-} from "./index.style";
+// 스타일 컴포넌트
+import { ProductMainLayOut } from "../../../components/MainLayOut";
+import { MainFormContainer, ProductImgWrapper } from "./index.style";
 
 const ProductUpload = () => {
   const [myImage, setMyImage] = useState([]);
@@ -35,7 +31,7 @@ const ProductUpload = () => {
   };
 
   return (
-    <StyledMain>
+    <ProductMainLayOut>
       <MainFormContainer>
         <form onSubmit={handleSubmit(onSubmit)}>
           <ProductImgWrapper>
@@ -94,7 +90,7 @@ const ProductUpload = () => {
           </div>
         </form>
       </MainFormContainer>
-    </StyledMain>
+    </ProductMainLayOut>
   );
 };
 

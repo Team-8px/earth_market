@@ -5,7 +5,7 @@ import { login } from "../../../actions/userActions";
 
 // 스타일 컴포넌트
 
-import { AuthLayOut } from "../../../components/MainLayOut";
+import { AuthMainLayOut } from "../../../components/MainLayOut";
 import { MainTitle } from "../../../components/MainTitle";
 import { Button } from "../../../components/Button";
 /* import {
@@ -28,7 +28,7 @@ const LoginEmail = () => {
   };
 
   return (
-    <AuthLayOut>
+    <AuthMainLayOut>
       <MainTitle>로그인</MainTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
@@ -53,7 +53,7 @@ const LoginEmail = () => {
         </div>
       </form>
       <Button>로그인</Button>
-    </AuthLayOut>
+    </AuthMainLayOut>
   );
 };
 

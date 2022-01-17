@@ -1,8 +1,8 @@
 import React from "react";
-import { StyledMain } from "./index.style";
+import { HomeMainLayOut } from "../../../components/MainLayOut";
 
 const HomeFeed = () => {
-  return <StyledMain></StyledMain>;
+  return <HomeMainLayOut>HomeMainLayOut</HomeMainLayOut>;
 };
 
 export default HomeFeed;
