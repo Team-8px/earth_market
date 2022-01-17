@@ -1,7 +1,12 @@
 import React from "react";
+import { FollowLayOut, UserListContainer } from "./index.style";
 
 const Follower = () => {
-  return <div>Follower</div>;
+  return (
+    <FollowLayOut>
+      <UserListContainer></UserListContainer>
+    </FollowLayOut>
+  );
 };
 
 export default Follower;
