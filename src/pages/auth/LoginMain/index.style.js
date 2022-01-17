@@ -1,14 +1,7 @@
 import styled from "styled-components";
-import { AuthMainLayOut } from "../../../components/MainLayOut";
+import { LoginMainMainLayOut } from "../../../components/MainLayOut";
 
-// 페이지 전체 레이아웃
-export const StyledMainLayOut = styled(AuthMainLayOut)`
-  width: 100%;
-  height: 100%;
-  padding-top: 180px;
-  background-color: #ea7f42;
-`;
-
+export const MainLayOut = styled(LoginMainMainLayOut)``;
 // 페이지 하단 컨테이너
 export const MainContainer = styled.section`
   position: absolute;

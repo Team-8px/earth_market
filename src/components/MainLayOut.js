@@ -26,11 +26,25 @@ const FullWidth = css`
 
 // ✅ Auth 페이지 레이아웃
 
-export const AuthMainLayOut = styled.main`
+export const JoinMemberShipMainLayOut = styled.main`
+  ${AlignCenter}
+`;
+export const LoginEmailMainLayOut = styled.main`
+  ${AlignCenter}
+`;
+export const LoginMainMainLayOut = styled.main`
+  ${AlignCenter}
+  width: 100%;
+  height: 100%;
+  padding-top: 180px;
+  background-color: #ea7f42;
+`;
+export const SetMemberShipMainLayOut = styled.main`
   ${AlignCenter}
 `;
 
 // Chat 페이지 레이아웃
+
 // ChatRoom 부재
 
 export const ChatMainLayOut = styled.main`

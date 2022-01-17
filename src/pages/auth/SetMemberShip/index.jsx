@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { joinMembership } from "../../../actions/userActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
+
 // 스타일 컴포넌트
-import { AuthMainLayOut } from "../../../components/MainLayOut";
+import { MainLayOut } from "./index.style";
 
 /* import {
   Main,
@@ -47,7 +48,7 @@ const SetMemberShip = () => {
   };
 
   return (
-    <AuthMainLayOut>
+    <MainLayOut>
       <form onSubmit={handleSubmit(onSubmit)}>
         <br />
         <br />
@@ -113,7 +114,7 @@ const SetMemberShip = () => {
           <button>회원가입</button>
         </div>
       </form>
-    </AuthMainLayOut>
+    </MainLayOut>
   );
 };
 

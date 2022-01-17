@@ -1,15 +1,15 @@
 import React from "react";
-import { Button } from "../../../components/Button";
-import { AuthMainLayOut } from "../../../components/MainLayOut";
-import { MainTitle } from "../../../components/MainTitle";
+
+import { MainLayOut, Title, Btn } from "./index.style";
+
 const JoinMemberShip = () => {
   return (
     <>
-      <AuthMainLayOut>
-        <MainTitle>이메일로 회원가입</MainTitle>
+      <MainLayOut>
+        <Title>이메일로 회원가입</Title>
         {/* 지수님 Form Component */}
-        <Button>다음</Button>
-      </AuthMainLayOut>
+        <Btn>다음</Btn>
+      </MainLayOut>
     </>
   );
 };
