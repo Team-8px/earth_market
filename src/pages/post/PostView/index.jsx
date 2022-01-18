@@ -5,10 +5,9 @@ import { getUserMyProfile } from "../../../actions/userActions";
 import { getPost } from "../../../actions/postActions";
 import { getCommentList } from "../../../actions/commentAction";
 import { API_URL } from "../../../constants/defaultUrl";
-// import Comment from "../../../components/comment";
-//왜 PostUpload에서 참조를 하고 있을까?
 import { MainLayOut } from "../PostUpload/index.style";
 import Post from "../../../components/Post";
+// 댓글 생성 부분 컴포넌트만 다시 불러와서 적용할 예정입니다.
 
 const PostView = () => {
   const [comment, setComment] = useState();
@@ -94,10 +93,6 @@ const PostView = () => {
           })}
       </div>
 
-      {/* 댓글생성 */}
-      <div>
-        <Comment getComment={getComment} postId={postId} />
-      </div>
       <h1>Post view</h1>
       <Post
         authorId="테스트입니다"

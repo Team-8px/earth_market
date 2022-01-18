@@ -111,6 +111,7 @@ export const ProductUpdateMainLayOut = styled.main`
 `;
 export const ProductUploadMainLayOut = styled.main`
   ${MainLayOut}
+  display:flex;
   justify-content: center;
   flex-direction: row;
   align-items: stretch;
@@ -122,17 +123,14 @@ export const FolloMainLayOut = styled.main`
   ${MainLayOut}
 `;
 
-export const MyProfileMainLayOut = styled.main`
-  ${MainLayOut}
-`;
-
 export const ProfileModifiCationMainLayOut = styled.main`
   ${MainLayOut}
   display: flex;
   justify-content: center;
 `;
+//MyProfile,YourProfile
 
-export const YourProfileMainLayOut = styled.main`
+export const ProfileMainLayOut = styled.main`
   ${MainLayOut}
 `;
 

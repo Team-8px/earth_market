@@ -1,12 +1,13 @@
+import React from "react";
 import styled from "styled-components";
-import More from "../asset/icon/icon-more-vertical.png";
-import Heart from "../asset/icon/icon-heart.png";
-import Message from "../asset/icon/icon-message-circle.png";
-import Test from "../asset/post-img-example.png";
-import Profile from "../asset/product-img-example.png";
 
-// 미해결과제
-// View 컴포넌트에서 사진 파일을 보낼 경우에 어떻게 처리해야 할 지 아직 잘 모르겠습니다.
+// import More from "../asset/icon/icon-more-vertical.png";
+// import Heart from "../asset/icon/icon-heart.png";
+// import Message from "../asset/icon/icon-message-circle.png";
+// import Test from "../asset/";
+// import Profile from "../asset/product-img-example.png";
+
+// 무슨 문제인지 저도 잘 모르겠네요
 
 const PostContainer = styled.article`
   position: relative;
@@ -130,7 +131,7 @@ const LikeButton = styled.button`
     content: "";
     width: 20px;
     height: 20px;
-    background: url(${Heart}) no-repeat center / 20px 20px;
+    background: url() no-repeat center / 20px 20px;
     margin-right: 6px;
   }
 `;
@@ -147,7 +148,7 @@ const CommentButton = styled.a`
     content: "";
     width: 20px;
     height: 20px;
-    background: url(${Message}) no-repeat center / 20px 20px;
+    background: url() no-repeat center / 20px 20px;
     margin-right: 6px;
   }
 `;
@@ -165,7 +166,7 @@ const MoreBtn = styled.button`
   right: 0;
   width: 18px;
   height: 18px;
-  background: url(${More}) no-repeat center / 18px 18px;
+  background: url() no-repeat center / 18px 18px;
   background-color: inherit;
 `;
 
@@ -181,7 +182,7 @@ function Post({
     <PostContainer>
       {/* 유저 info Container */}
       <PostAuthorContainer>
-        <ProfileImg src={Profile}></ProfileImg>
+        <ProfileImg></ProfileImg>
         <AuthorInfoWrapper>
           <AuthorName>{authorName}</AuthorName>
           <AuthorId>{authorId}</AuthorId>
@@ -193,7 +194,7 @@ function Post({
         <ContentImgContainer>
           <ImgList>
             <ImgItem>
-              <img src={Test} />
+              <img />
             </ImgItem>
             <ImgItem></ImgItem>
           </ImgList>

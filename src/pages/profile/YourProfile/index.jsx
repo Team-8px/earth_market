@@ -1,17 +1,29 @@
 import React from "react";
-import Post from "../../../components/Post";
-import { MainLayOut } from "./index.style";
+import {
+  MainLayOut,
+  UserInfoContainer,
+  UserInfoWrapper,
+  ProductContainer,
+  ProductWrapper,
+  UserPostContainer,
+  UserPostWrapper,
+} from "./index.style";
+import DisplayHandler from "../../../components/DisplayHandler";
+
 const YourProfile = () => {
   return (
     <MainLayOut>
-      <Post
-        authorId="테스트입니다"
-        authorName="this is test"
-        content="Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content"
-        date="2022년 1월 18일"
-        likeCount="999"
-        commentCount="999"
-      />
+      <UserInfoContainer>
+        <UserInfoWrapper></UserInfoWrapper>
+      </UserInfoContainer>
+      <ProductContainer>
+        <ProductWrapper></ProductWrapper>
+      </ProductContainer>
+      <UserPostContainer>
+        <UserPostWrapper>
+          <DisplayHandler />
+        </UserPostWrapper>
+      </UserPostContainer>
     </MainLayOut>
   );
 };

@@ -5,10 +5,10 @@ import { login } from "../../../actions/userActions";
 
 // 스타일 컴포넌트
 
-//import { Main, MainLayOut } from "../../../components/MainLayOut";
-//import { MainTitle } from "../../../components/MainTitle";
+import { MainTitle } from "../../../components/MainTitle";
 import { Button } from "../../../components/Button";
 import { FormContainer } from "../../../components/Form";
+import { MainLayOut } from "./index.style";
 
 const LoginEmail = () => {
   const { register, handleSubmit } = useForm();
@@ -22,9 +22,8 @@ const LoginEmail = () => {
   };
 
   return (
-    <>
-      {/* 로그인부분 MainLayOut로 교체 예상, MainLayOut에서 export가 안된다고 해서 <></> 처리했어요 현길*/}
-      <div>로그인</div>
+    <MainLayOut>
+      <MainTitle>로그인</MainTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormContainer>
           <div>
@@ -54,7 +53,7 @@ const LoginEmail = () => {
       </div> */}
         <Button>로그인</Button>
       </form>
-    </>
+    </MainLayOut>
   );
 };
 
