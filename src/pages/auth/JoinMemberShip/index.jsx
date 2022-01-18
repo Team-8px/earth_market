@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import { Button } from "../../../components/Button";
 import { Main } from "../../../components/MainLayOut";
 import { MainTitle } from "../../../components/MainTitle";
@@ -36,6 +37,11 @@ const JoinMemberShip = () => {
       </Main>
     </>
   );
+=======
+
+const JoinMemberShip = () => {
+  return <></>;
+>>>>>>> gh/API_pages
 };
 
 export default JoinMemberShip;

@@ -19,6 +19,10 @@ import Search from "./pages/home/Search";
 
 // post
 import PostUpload from "./pages/post/PostUpload";
+import ProductUpload from "./pages/product/Upload";
+import ProductModification from "./pages/product/Update";
+import ProfileModification from "./pages/profile/ProfileModification";
+import PostUpload from "./pages/post/Upload";
 import PostView from "./pages/post/PostView";
 
 // product
@@ -44,10 +48,14 @@ const App = () => {
           <Route path="/" component={LoginEmail} exact />
           <Route path="/join/email" component={SetMemberShip} />
           <Route path="/home" component={HomeMain} />
-          <Route path="/product" component={ProductUpload} />
+          <Route path="/product" component={ProductUpload} exact />
+          <Route
+            path="/product/update/:productId"
+            component={ProductModification}
+          />
           <Route path="/user/update" component={ProfileModification} />
           <Route path="/post/upload" component={PostUpload} />
-          <Route path="/post:postId" component={PostView} />
+          <Route path="/post/:postId" component={PostView} />
           <Route path="/myprofile" component={MyProfile} />
           {/* <Route component={NotFound} /> */}
         </Switch>

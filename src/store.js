@@ -11,8 +11,15 @@ import {
   productCreateReducer,
   productListReducer,
 } from "./reducers/productReducers";
-import { postCreateReducer, postListReducer } from "./reducers/postReducers";
-import {commentCreateReducer} from "./reducers/commentReducer";
+import {
+  postCreateReducer,
+  postListReducer,
+  postReadReducer,
+} from "./reducers/postReducers";
+import {
+  commentCreateReducer,
+  commentListReducer,
+} from "./reducers/commentReducer";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -21,8 +28,10 @@ const reducer = combineReducers({
   updateUserProfile: userUpdateReducer,
   postCreate: postCreateReducer,
   comment: commentCreateReducer,
+  commentList: commentListReducer,
   productList: productListReducer,
   postList: postListReducer,
+  postRead: postReadReducer,
   userProfile: userProfileReducer,
 });
 
@@ -39,7 +48,7 @@ const middleware = [thunk];
 const store = createStore(
   reducer,
   initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
+  composeWithDevTools(applyMiddleware(...middleware)),
 );
 
 export default store;

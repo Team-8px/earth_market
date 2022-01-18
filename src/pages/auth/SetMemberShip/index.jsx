@@ -3,10 +3,15 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { joinMembership } from "../../../actions/userActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
+<<<<<<< HEAD
 
 // 스타일 컴포넌트
 import { MainLayOut } from "./index.style";
 
+=======
+import { Main } from "../../../components/MainLayOut";
+
+>>>>>>> gh/API_pages
 /* import {
   Main,
   FormContainer,
@@ -16,7 +21,10 @@ import { MainLayOut } from "./index.style";
 } from "./index.style"; */
 
 /* 나중에 유효성 검사할때 사용해보자!! 
+<<<<<<< HEAD
 
+=======
+>>>>>>> gh/API_pages
   const {
   register,
   handleSubmit,
@@ -48,7 +56,11 @@ const SetMemberShip = () => {
   };
 
   return (
+<<<<<<< HEAD
     <MainLayOut>
+=======
+    <Main>
+>>>>>>> gh/API_pages
       <form onSubmit={handleSubmit(onSubmit)}>
         <br />
         <br />
@@ -114,7 +126,11 @@ const SetMemberShip = () => {
           <button>회원가입</button>
         </div>
       </form>
+<<<<<<< HEAD
     </MainLayOut>
+=======
+    </Main>
+>>>>>>> gh/API_pages
   );
 };
 

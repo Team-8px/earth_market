@@ -3,7 +3,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Link } from "react-router-dom";
 import { listProducts } from "../../../actions/productActions";
 import { listPosts } from "../../../actions/postActions";
-import { getUserProfile } from "../../../actions/userActions";
+import { getUserMyProfile } from "../../../actions/userActions";
 import { API_URL } from "../../../constants/defaultUrl";
 // 스타일 컴포넌트
 import { MainLayOut } from "./index.style";
@@ -19,7 +19,7 @@ const MyProfile = () => {
   useEffect(() => {
     dispatch(listProducts());
     dispatch(listPosts());
-    dispatch(getUserProfile());
+    dispatch(getUserMyProfile());
   }, [dispatch]);
 
   return (
@@ -40,7 +40,7 @@ const MyProfile = () => {
       {products &&
         products.map((product, index) => {
           return (
-            <div key={index} style={{ display: "flex" }}>
+            <div key={product.id} style={{ display: "flex" }}>
               <div>
                 <img src={`${API_URL}/${product.itemImage}`} alt="상품사진" />
               </div>
@@ -49,6 +49,11 @@ const MyProfile = () => {
                   <li>상품명: {product.itemName}</li>
                   <li>상품가격: {product.price}</li>
                   <li>상품링크: {product.link}</li>
+                  <li>
+                    <Link to={`/product/update/${product.id}`}>
+                      상품클릭 모달창
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -79,7 +84,7 @@ const MyProfile = () => {
               <div>
                 <ul>
                   <li>
-                    <Link to={`/post${post.id}`}>게시글 링크</Link>
+                    <Link to={`/post/${post.id}`}>게시글 링크</Link>
                   </li>
                 </ul>
               </div>
