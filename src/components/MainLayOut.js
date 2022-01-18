@@ -122,17 +122,14 @@ export const FolloMainLayOut = styled.main`
   ${MainLayOut}
 `;
 
-export const MyProfileMainLayOut = styled.main`
-  ${MainLayOut}
-`;
-
 export const ProfileModifiCationMainLayOut = styled.main`
   ${MainLayOut}
   display: flex;
   justify-content: center;
 `;
+//MyProfile,YourProfile
 
-export const YourProfileMainLayOut = styled.main`
+export const ProfileMainLayOut = styled.main`
   ${MainLayOut}
 `;
 

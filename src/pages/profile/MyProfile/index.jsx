@@ -6,7 +6,16 @@ import { listPosts } from "../../../actions/postActions";
 import { getUserProfile } from "../../../actions/userActions";
 import { API_URL } from "../../../constants/defaultUrl";
 // 스타일 컴포넌트
-import { MainLayOut } from "./index.style";
+import {
+  MainLayOut,
+  UserInfoContainer,
+  UserInfoWrapper,
+  ProductContainer,
+  ProductWrapper,
+  UserPostContainer,
+  UserPostWrapper,
+} from "./index.style";
+import DisplayHandler from "../../../components/DisplayHandler";
 
 const MyProfile = () => {
   const dispatch = useDispatch();
@@ -25,67 +34,80 @@ const MyProfile = () => {
   return (
     <MainLayOut>
       {/* 유저 프로필 */}
-      <h1>유저 프로필</h1>
-      <img src={image} alt="프로필 사진" />
-      <ul>
-        <li>{username}</li>
-        <li>{accountname}</li>
-        <li>{intro}</li>
-        <li>{followerCount}</li>
-        <li>{followingCount}</li>
-      </ul>
-
+      <UserInfoContainer>
+        <UserInfoWrapper>
+          <h1>유저 프로필</h1>
+          <img src={image} alt="프로필 사진" />
+          <ul>
+            <li>{username}</li>
+            <li>{accountname}</li>
+            <li>{intro}</li>
+            <li>{followerCount}</li>
+            <li>{followingCount}</li>
+          </ul>
+        </UserInfoWrapper>
+      </UserInfoContainer>
       {/* 상품목록 */}
-      <h1>상품 목록</h1>
-      {products &&
-        products.map((product, index) => {
-          return (
-            <div key={index} style={{ display: "flex" }}>
-              <div>
-                <img src={`${API_URL}/${product.itemImage}`} alt="상품사진" />
-              </div>
-              <div>
-                <ul>
-                  <li>상품명: {product.itemName}</li>
-                  <li>상품가격: {product.price}</li>
-                  <li>상품링크: {product.link}</li>
-                </ul>
-              </div>
-            </div>
-          );
-        })}
-      <hr />
-
-      {/* 게시글 목록 */}
-      <h1>게시글 목록</h1>
-      {posts &&
-        posts.map(post => {
-          /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
-          const postImages = post.image.split(",");
-
-          return (
-            <div key={post.id}>
-              <div style={{ display: "flex" }}>
-                {postImages.map((postImage, index) => {
-                  return (
+      <ProductContainer>
+        <ProductWrapper>
+          <h1>상품 목록</h1>
+          {products &&
+            products.map((product, index) => {
+              return (
+                <div key={index} style={{ display: "flex" }}>
+                  <div>
                     <img
-                      key={index}
-                      src={`${API_URL}/${postImage}`}
+                      src={`${API_URL}/${product.itemImage}`}
                       alt="상품사진"
                     />
-                  );
-                })}
-              </div>
-              <div>
-                <ul>
-                  <li>
-                    <Link to={`/post${post.id}`}>게시글 링크</Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          );
-        })}
+                  </div>
+                  <div>
+                    <ul>
+                      <li>상품명: {product.itemName}</li>
+                      <li>상품가격: {product.price}</li>
+                      <li>상품링크: {product.link}</li>
+                    </ul>
+                  </div>
+                </div>
+              );
+            })}
+        </ProductWrapper>
+      </ProductContainer>
+      {/* 게시글 목록 */}
+      <UserPostContainer>
+        <UserPostWrapper>
+          <DisplayHandler></DisplayHandler>
+          <h1>게시글 목록</h1>
+          {posts &&
+            posts.map(post => {
+              /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
+              const postImages = post.image.split(",");
+
+              return (
+                <div key={post.id}>
+                  <div style={{ display: "flex" }}>
+                    {postImages.map((postImage, index) => {
+                      return (
+                        <img
+                          key={index}
+                          src={`${API_URL}/${postImage}`}
+                          alt="상품사진"
+                        />
+                      );
+                    })}
+                  </div>
+                  <div>
+                    <ul>
+                      <li>
+                        <Link to={`/post${post.id}`}>게시글 링크</Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              );
+            })}
+        </UserPostWrapper>
+      </UserPostContainer>
     </MainLayOut>
   );
 };
