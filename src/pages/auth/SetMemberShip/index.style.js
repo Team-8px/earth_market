@@ -1,8 +1,4 @@
 import styled from "styled-components";
+import { SetMemberShipMainLayOut } from "../../../components/MainLayOut";
 
-export const FormContainer = styled.form``;
-// 공통요소
-export const InPutContainer = styled.div``;
-// 공통요소
-export const Button = styled.button``;
-// 공통요소
+export const MainLayOut = styled(SetMemberShipMainLayOut);

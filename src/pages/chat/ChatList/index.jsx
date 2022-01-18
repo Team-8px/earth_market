@@ -1,7 +1,8 @@
 import React from "react";
+import { MainLayOut } from "./index.style";
 
 const ChatList = () => {
-  return <div>ChatList</div>;
+  return <MainLayOut>ChatList</MainLayOut>;
 };
 
 export default ChatList;

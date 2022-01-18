@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getUserProfile } from "../../../actions/userActions";
+// 스타일 컴포넌트
+import { MainLayOut } from "../PostUpload/index.style";
 
 const PostView = () => {
   const { postId } = useParams();
@@ -18,9 +20,9 @@ const PostView = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <MainLayOut>
       <h1>Post view</h1>
-    </div>
+    </MainLayOut>
   );
 };
 
