@@ -13,6 +13,18 @@ const GlobalStyles = createGlobalStyle`
     body{
         font-size: 14px;
     }
+
+    img{
+        width: 100%;
+        height: auto;
+        vertical-align: top;
+    }
+    button {
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    background-color: inherit;
+}
 `;
 
 export default GlobalStyles;
