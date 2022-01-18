@@ -5,7 +5,7 @@ import { getUserMyProfile } from "../../../actions/userActions";
 import { getPost } from "../../../actions/postActions";
 import { getCommentList } from "../../../actions/commentAction";
 import { API_URL } from "../../../constants/defaultUrl";
-import Comment from "../../../components/comment";
+// import Comment from "../../../components/comment";
 //왜 PostUpload에서 참조를 하고 있을까?
 import { MainLayOut } from "../PostUpload/index.style";
 import Post from "../../../components/Post";

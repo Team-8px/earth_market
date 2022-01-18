@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../../../components/Button";
-//import { Main } from "../../../components/MainLayOut";
+import { MainLayOut } from "./index.style";
 import { MainTitle } from "../../../components/MainTitle";
 import { FormContainer } from "../../../components/Form";
 
@@ -8,7 +8,7 @@ const JoinMemberShip = () => {
   return (
     <>
       <h1>이부분이 이상하다</h1>
-      <Main>
+      <MainLayOut>
         <MainTitle>이메일로 회원가입</MainTitle>
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormContainer>
@@ -35,7 +35,7 @@ const JoinMemberShip = () => {
           </FormContainer>
         </form>
         <Button>다음</Button>
-      </Main>
+      </MainLayOut>
     </>
   );
 };

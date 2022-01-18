@@ -9,9 +9,8 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
-    "prettier": "^2.5.1",
     "dayjs": "^1.10.7",
-    "prettier-eslint": "^13.0.0",
+    "prettier": "^2.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
@@ -45,8 +44,6 @@
   },
   "devDependencies": {
     "8px-prettier": "^1.0.0",
-    "eslint": "^7.11.0",
-    "eslint-plugin-react": "^7.28.0",
     "prettier": "^2.5.1"
   }
 }
