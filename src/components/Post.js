@@ -12,7 +12,7 @@ const PostContainer = styled.article`
   position: relative;
   max-width: 358px;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 `;
 
 const PostAuthorContainer = styled.section`
