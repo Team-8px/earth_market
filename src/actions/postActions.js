@@ -8,12 +8,12 @@ import {
   POST_LIST_FAIL,
   POST_GET_REQUEST,
   POST_GET_SUCCESS,
-  POST_GET_FAIL
+  POST_GET_FAIL,
 } from "../constants/postConstants";
 import { API_URL } from "../constants/defaultUrl";
 import { logout } from "./userActions";
 
-export const getPost = () => async (dispatch, getState) => {
+export const getPost = postId => async (dispatch, getState) => {
   try {
     dispatch({ type: POST_GET_REQUEST });
 
@@ -27,10 +27,7 @@ export const getPost = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(
-      `${API_URL}/post/${userInfo.user.accountname}/userpost`,
-      config
-    );
+    const { data } = await axios.get(`${API_URL}/post/${postId}`, config);
 
     dispatch({
       type: POST_GET_SUCCESS,
@@ -46,7 +43,6 @@ export const getPost = () => async (dispatch, getState) => {
     });
   }
 };
-
 
 export const listPosts = () => async (dispatch, getState) => {
   try {
@@ -64,7 +60,7 @@ export const listPosts = () => async (dispatch, getState) => {
 
     const { data } = await axios.get(
       `${API_URL}/post/${userInfo.user.accountname}/userpost`,
-      config
+      config,
     );
 
     dispatch({

@@ -16,7 +16,7 @@ import {
 } from "../constants/userConstants";
 import { API_URL } from "../constants/defaultUrl";
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (email, password) => async dispatch => {
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
@@ -54,7 +54,7 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-export const logout = () => (dispatch) => {
+export const logout = () => dispatch => {
   localStorage.removeItem("userInfo");
 
   dispatch({ type: USER_LOGOUT });
@@ -63,7 +63,7 @@ export const logout = () => (dispatch) => {
 };
 
 export const joinMembership =
-  (email, password, username, accountname) => async (dispatch) => {
+  (email, password, username, accountname) => async dispatch => {
     try {
       dispatch({
         type: USER_JOIN_MEMBERSHIP_REQUEST,
@@ -102,7 +102,7 @@ export const joinMembership =
     }
   };
 
-export const getUserProfile = () => async (dispatch, getState) => {
+export const getUserMyProfile = () => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_READ_PROFILE_REQUEST });
 
@@ -118,7 +118,7 @@ export const getUserProfile = () => async (dispatch, getState) => {
 
     const { data } = await axios.get(
       `${API_URL}/profile/${userInfo.user.accountname}`,
-      config
+      config,
     );
     //console.log(data);
     dispatch({
