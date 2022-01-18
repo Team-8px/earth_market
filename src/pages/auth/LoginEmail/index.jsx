@@ -5,14 +5,10 @@ import { login } from "../../../actions/userActions";
 
 // 스타일 컴포넌트
 
-import { MainLayOut, Title, Btn } from "./index.style";
-/* import {
-  Main,
-  FormContainer,
-  InPutContainer,
-  Button,
-  JoinEmailBtn,
-} from "./index.style"; */
+import { Main } from "../../../components/MainLayOut";
+import { MainTitle } from "../../../components/MainTitle";
+import { Button } from "../../../components/Button";
+import { FormContainer } from "../../../components/Form";
 
 const LoginEmail = () => {
   const { register, handleSubmit } = useForm();
@@ -29,7 +25,9 @@ const LoginEmail = () => {
     <MainLayOut>
       <Title>로그인</Title>
       <form onSubmit={handleSubmit(onSubmit)}>
+      <FormContainer>
         <div>
+          <label>이메일</label>
           <input
             name="email"
             type="email"
@@ -37,7 +35,10 @@ const LoginEmail = () => {
             {...register("email")}
           />
         </div>
+      </FormContainer>
+      <FormContainer>
         <div>
+          <label>비밀번호</label>
           <input
             name="password"
             type="password"
@@ -45,12 +46,13 @@ const LoginEmail = () => {
             {...register("password")}
           />
         </div>
-
+      </FormContainer>
+      </form>
         <div>
           <input type="submit" />
         </div>
-      </form>
-      <Btn>로그인</Btn>
+        <Button>로그인</Button>
+      
     </MainLayOut>
   );
 };

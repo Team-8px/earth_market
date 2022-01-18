@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { createProduct } from "../../../actions/productActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
-// 스타일 컴포넌트
+import { FormContainer } from "../../../components/Form";
+// 스타일
 import {
   MainFormContainer,
   ProductImgWrapper,
@@ -62,35 +63,42 @@ const ProductUpload = () => {
           <br />
           <br />
           <br />
-
+          <FormContainer>
           <div>
+          <label>상품명</label>
             <input
               name="itemName"
               type="text"
-              placeholder="상품명"
+              placeholder="2~15자 이내여야 합니다."
               {...register("itemName")}
             />
           </div>
+          </FormContainer>
+          <FormContainer>
           <div>
+          <label>가격</label>
             <input
               name="price"
               type="number"
-              placeholder="가격"
+              placeholder="숫자만 입력 가능합니다."
               {...register("price")}
             />
           </div>
+          </FormContainer>
+          <FormContainer>
           <div>
+          <label>판매 링크</label>
             <input
               name="link"
               type="text"
-              placeholder="판매링크"
+              placeholder="URL을 입력해 주세요."
               {...register("link")}
             />
           </div>
-
           <div>
             <button>저장</button>
           </div>
+          </FormContainer>
         </form>
       </MainFormContainer>
     </MainLayOut>
