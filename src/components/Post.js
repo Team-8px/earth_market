@@ -5,6 +5,9 @@ import Message from "../asset/icon/icon-message-circle.png";
 import Test from "../asset/post-img-example.png";
 import Profile from "../asset/product-img-example.png";
 
+// 미해결과제
+// View 컴포넌트에서 사진 파일을 보낼 경우에 어떻게 처리해야 할 지 아직 잘 모르겠습니다.
+
 const PostContainer = styled.article`
   position: relative;
   max-width: 358px;
