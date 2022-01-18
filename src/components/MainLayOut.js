@@ -67,12 +67,28 @@ export const ChatRoomMainLayOut = styled.main`
 
 // ✅ home 페이지 레이아웃
 
-export const HomeMainLayOut = styled.main`
+export const HomeFeedMainLayOut = styled.main`
   ${Fiexd}
+  ${MainLayOut}
+  ${FullWidth} 
   ${AlignCenter}
-  ${FullWidth}
   padding: 20px 16px 0;
-  margin-top: 48px;
+`;
+
+export const HomeMainMainLayOut = styled.main`
+  ${Fiexd}
+  ${MainLayOut}
+  ${FullWidth} 
+  ${AlignCenter}
+  padding: 20px 16px 0;
+`;
+export const SearchMainLayOut = styled.main`
+  ${Fiexd}
+  ${MainLayOut}
+  ${FullWidth}
+  display:flex;
+  justify-content: center;
+  padding: 20px 16px;
 `;
 
 // post 페이지 레이아웃

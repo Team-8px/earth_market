@@ -1,9 +1,8 @@
 import React from "react";
-
-import { HomeMainLayOut } from "../../../components/MainLayOut";
+import { MainLayOut } from "./index.style";
 
 const Search = () => {
-  return <HomeMainLayOut>Search</HomeMainLayOut>;
+  return <MainLayOut>Search</MainLayOut>;
 };
 
 export default Search;

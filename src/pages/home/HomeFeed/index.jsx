@@ -1,9 +1,9 @@
 import React from "react";
 //스타일 컴포넌트
-import { HomeMainLayOut } from "../../../components/MainLayOut";
+import { MainLayOut } from "./index.style";
 
 const HomeFeed = () => {
-  return <HomeMainLayOut>HomeMainLayOut</HomeMainLayOut>;
+  return <MainLayOut>HomeMainLayOut</MainLayOut>;
 };
 
 export default HomeFeed;
