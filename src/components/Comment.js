@@ -5,15 +5,14 @@ import { commentCreateAction } from "../../actions/commentAction";
 
 const Comment = ({ postId, getComment }) => {
   const { register, handleSubmit } = useForm();
-  
+
   const dispatch = useDispatch();
 
-  
   const onSubmit = async data => {
     const { comment } = data;
-    
+
     getComment(comment);
-    
+
     await dispatch(commentCreateAction(comment, postId));
   };
 

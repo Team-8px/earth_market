@@ -8,6 +8,7 @@ import { API_URL } from "../../../constants/defaultUrl";
 import Comment from "../../../components/comment";
 //왜 PostUpload에서 참조를 하고 있을까?
 import { MainLayOut } from "../PostUpload/index.style";
+import Post from "../../../components/Post";
 
 const PostView = () => {
   const [comment, setComment] = useState();
@@ -97,9 +98,17 @@ const PostView = () => {
       <div>
         <Comment getComment={getComment} postId={postId} />
       </div>
+      <h1>Post view</h1>
+      <Post
+        authorId="테스트입니다"
+        authorName="this is test"
+        content="Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content"
+        date="2022년 1월 18일"
+        likeCount="999"
+        commentCount="999"
+      />
     </MainLayOut>
   );
 };
-
 
 export default PostView;
