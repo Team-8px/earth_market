@@ -19,10 +19,7 @@ import Search from "./pages/home/Search";
 
 // post
 import PostUpload from "./pages/post/PostUpload";
-import ProductUpload from "./pages/product/Upload";
 import ProductModification from "./pages/product/Update";
-import ProfileModification from "./pages/profile/ProfileModification";
-import PostUpload from "./pages/post/Upload";
 import PostView from "./pages/post/PostView";
 
 // product

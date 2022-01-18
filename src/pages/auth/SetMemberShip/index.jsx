@@ -3,15 +3,12 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { joinMembership } from "../../../actions/userActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
-<<<<<<< HEAD
 
 // 스타일 컴포넌트
 import { MainLayOut } from "./index.style";
 
-=======
-import { Main } from "../../../components/MainLayOut";
+//import { Main } from "../../../components/MainLayOut";
 
->>>>>>> gh/API_pages
 /* import {
   Main,
   FormContainer,
@@ -21,10 +18,7 @@ import { Main } from "../../../components/MainLayOut";
 } from "./index.style"; */
 
 /* 나중에 유효성 검사할때 사용해보자!! 
-<<<<<<< HEAD
 
-=======
->>>>>>> gh/API_pages
   const {
   register,
   handleSubmit,
@@ -56,81 +50,75 @@ const SetMemberShip = () => {
   };
 
   return (
-<<<<<<< HEAD
     <MainLayOut>
-=======
-    <Main>
->>>>>>> gh/API_pages
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <br />
-        <br />
+      <Main>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <br />
+          <br />
 
-        <div>
-          <label onChange={previewImage} htmlFor="input-file">
-            <img src={IMG_URL} alt="프로필 사진" />
+          <div>
+            <label onChange={previewImage} htmlFor="input-file">
+              <img src={IMG_URL} alt="프로필 사진" />
+              <input
+                type="file"
+                accept="image/jpg,impge/png,image/jpeg,image/gif"
+                name="profileImg"
+                {...register("profileImg")}
+              ></input>
+            </label>
+          </div>
+
+          <div>
+            {myImage && (
+              <div>
+                <img src={myImage} alt="미리보기 이미지" />
+              </div>
+            )}
+          </div>
+
+          <br />
+          <br />
+          <br />
+
+          <div>
             <input
-              type="file"
-              accept="image/jpg,impge/png,image/jpeg,image/gif"
-              name="profileImg"
-              {...register("profileImg")}
-            ></input>
-          </label>
-        </div>
+              name="email"
+              type="email"
+              placeholder="이메일"
+              {...register("email")}
+            />
+          </div>
+          <div>
+            <input
+              name="password"
+              type="password"
+              placeholder="비밀번호"
+              {...register("password")}
+            />
+          </div>
+          <div>
+            <input
+              name="username"
+              type="text"
+              placeholder="사용자 이름"
+              {...register("username")}
+            />
+          </div>
+          <div>
+            <input
+              name="accountname"
+              type="text"
+              placeholder="계정ID"
+              {...register("accountname")}
+            />
+          </div>
 
-        <div>
-          {myImage && (
-            <div>
-              <img src={myImage} alt="미리보기 이미지" />
-            </div>
-          )}
-        </div>
-
-        <br />
-        <br />
-        <br />
-
-        <div>
-          <input
-            name="email"
-            type="email"
-            placeholder="이메일"
-            {...register("email")}
-          />
-        </div>
-        <div>
-          <input
-            name="password"
-            type="password"
-            placeholder="비밀번호"
-            {...register("password")}
-          />
-        </div>
-        <div>
-          <input
-            name="username"
-            type="text"
-            placeholder="사용자 이름"
-            {...register("username")}
-          />
-        </div>
-        <div>
-          <input
-            name="accountname"
-            type="text"
-            placeholder="계정ID"
-            {...register("accountname")}
-          />
-        </div>
-
-        <div>
-          <button>회원가입</button>
-        </div>
-      </form>
-<<<<<<< HEAD
+          <div>
+            <button>회원가입</button>
+          </div>
+        </form>
+      </Main>
     </MainLayOut>
-=======
-    </Main>
->>>>>>> gh/API_pages
   );
 };
 
