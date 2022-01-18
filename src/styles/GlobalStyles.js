@@ -13,10 +13,6 @@ const GlobalStyles = createGlobalStyle`
     body{
         font-size: 14px;
     }
-    #app{
-        width: 100%;
-        height: 100vh;
-    }
 `;
 
 export default GlobalStyles;

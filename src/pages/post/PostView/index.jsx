@@ -4,10 +4,16 @@ import { useParams } from "react-router-dom";
 import { getUserProfile } from "../../../actions/userActions";
 
 const PostView = () => {
-  //const { postId } = useParams();
+  const { postId } = useParams();
   const dispatch = useDispatch();
+  const { products } = useSelector(state => state.productList, shallowEqual);
+  const { posts } = useSelector(state => state.postList, shallowEqual);
+  const { image, username, accountname, intro, followerCount, followingCount } =
+    useSelector(state => state.userProfile, shallowEqualP);
 
   useEffect(() => {
+    dispatch(listProducts());
+    dispatch(listPosts());
     dispatch(getUserProfile());
   }, [dispatch]);
 

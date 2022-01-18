@@ -6,13 +6,9 @@ import { Footer, FooterContainer } from "../../base/NaviGation/index.style";
 const HomeFeed = () => {
   return (
     <>
-      <Header>
-        <HeaderContainer></HeaderContainer>
-      </Header>
-      <Main></Main>
-      <Footer>
-        <FooterContainer></FooterContainer>
-      </Footer>
+      <div>HomeFeed</div>
     </>
   );
 };
+
+export default HomeFeed;
