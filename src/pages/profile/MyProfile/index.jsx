@@ -17,6 +17,7 @@ import {
 } from "./index.style";
 import DisplayHandler from "../../../components/DisplayHandler";
 import Alert from "../../../components/Alert";
+import HiddenMenu from "../../../components/HiddenMenu";
 
 const MyProfile = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const MyProfile = () => {
   const { image, username, accountname, intro, followerCount, followingCount } =
     useSelector(state => state.userProfile, shallowEqual);
 
+  // <!----------스타일 관련 상태관리---------->
   const [dialog, setDialog] = useState(false);
   const [alert, setAlert] = useState(false);
 
@@ -46,6 +48,7 @@ const MyProfile = () => {
     console.log("취소");
     setDialog(false);
   };
+  // <!----------스타일 관련 상태관리---------->
 
   useEffect(() => {
     dispatch(listProducts());
@@ -131,7 +134,11 @@ const MyProfile = () => {
               })}
           </UserPostWrapper>
         </UserPostContainer>
+        <button type="button" onClick={onDialog}>
+          임시 열기 버튼입니다
+        </button>
       </MainLayOut>
+      <HiddenMenu visible={dialog} onAlert={onAlert} offDialog={offDialog} />
       <Alert visible={alert} offAlert={offAlert} />
     </>
   );
