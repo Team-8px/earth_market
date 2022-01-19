@@ -1,19 +1,18 @@
-import {
-  MainLayOut,
-  ProductUpdateForm,
-  ProductUpdateLabel,
-  ProductUpdateInput,
-} from "./index.style";
+// import {
+//   ProductUpdateForm,
+//   ProductUpdateLabel,
+//   ProductUpdateInput,
+// } from "./index.style";
 
-function ProductUpdate() {
-  return (
-    <ProductUpdateForm>
-      <ProductUpdateLabel>
-        <ProductUpdateInput />
-      </ProductUpdateLabel>
-    </ProductUpdateForm>
-  );
-}
+// function ProductUpdate() {
+//   return (
+//     <ProductUpdateForm>
+//       <ProductUpdateLabel>
+//         <ProductUpdateInput />
+//       </ProductUpdateLabel>
+//     </ProductUpdateForm>
+//   );
+// }
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
@@ -21,7 +20,7 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { getProduct } from "../../../actions/productActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
-
+import { MainLayOut } from "./index.style";
 // 유효성검사 로직
 //   const {
 //   register,
