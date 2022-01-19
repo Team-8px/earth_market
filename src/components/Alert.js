@@ -1,3 +1,8 @@
+/**
+ * Alert 기능을 구현하기 위한 컴포넌트 입니다.
+ * 화면에 로그아웃 하시겠습니까? 확인 취소 버튼이 나오게 됩니다.
+ */
+
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 
