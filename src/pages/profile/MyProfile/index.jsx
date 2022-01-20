@@ -18,6 +18,7 @@ import {
 import DisplayHandler from "../../../components/DisplayHandler";
 import Alert from "../../../components/Alert";
 import HiddenMenu from "../../../components/HiddenMenu";
+import { HeaderButton, Nav } from "../../../components/Header";
 
 const MyProfile = () => {
   const dispatch = useDispatch();
@@ -59,6 +60,8 @@ const MyProfile = () => {
   return (
     <>
       <MainLayOut>
+        {/* header */}
+        <HeaderButton />
         {/* 유저 프로필 */}
         <UserInfoContainer>
           <UserInfoWrapper>

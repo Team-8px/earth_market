@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { createPost } from "../../../actions/postActions";
 import { multipleImageUploadsHandler } from "../../../util/multipleImageUploads";
 import { MainLayOut } from "./index.style";
+import { HeaderButton } from "../../../components/Header";
 // 스타일 컴포넌트
 
 const PostUpload = () => {
@@ -54,6 +55,7 @@ const PostUpload = () => {
 
   return (
     <MainLayOut>
+      <HeaderButton />
       <form onSubmit={handleSubmit(onSubmit)}>
         <br />
         <br />

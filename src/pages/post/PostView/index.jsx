@@ -7,6 +7,7 @@ import { getCommentList } from "../../../actions/commentAction";
 import { API_URL } from "../../../constants/defaultUrl";
 import { MainLayOut } from "../PostUpload/index.style";
 import Post from "../../../components/Post";
+import { HeaderBasic } from "../../../components/Header";
 // 댓글 생성 부분 컴포넌트만 다시 불러와서 적용할 예정입니다.
 
 const PostView = () => {
@@ -46,6 +47,7 @@ const PostView = () => {
 
   return (
     <MainLayOut>
+      <HeaderBasic />
       {/* 나의 프로필 정보 */}
       <div>
         <h1>프로필정보</h1>

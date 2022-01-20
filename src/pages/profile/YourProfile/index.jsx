@@ -11,6 +11,7 @@ import {
 import DisplayHandler from "../../../components/DisplayHandler";
 import Alert from "../../../components/Alert";
 import HiddenMenu from "../../../components/HiddenMenu";
+import { HeaderBasic, Nav } from "../../../components/Header";
 
 const YourProfile = () => {
   // <!----------스타일 관련 상태관리---------->
@@ -38,6 +39,7 @@ const YourProfile = () => {
   return (
     <>
       <MainLayOut>
+        <HeaderBasic />
         <UserInfoContainer>
           <UserInfoWrapper></UserInfoWrapper>
         </UserInfoContainer>
