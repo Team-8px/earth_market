@@ -6,16 +6,16 @@ import { imageUploadsHandler } from "../../../util/imageUploads";
 
 // 스타일 컴포넌트
 import { MainLayOut } from "./index.style";
-
+import { ProfileImgWrapper } from "../../../components/common/image/ProfileImageStyle";
+import { FormContainer } from "../../../components/Form";
+// 프로필 이미지
+import EllipseImg from "../../../asset/Ellipse-1.png";
 //import { Main } from "../../../components/MainLayOut";
 
-/* import {
-  Main,
-  FormContainer,
-  InPutContainer,
-  Button,
-  JoinEmailBtn,
-} from "./index.style"; */
+import {
+  EmailPwWrapper,
+  ProfileContainer,
+} from "./index.style";
 
 /* 나중에 유효성 검사할때 사용해보자!! 
 
@@ -42,22 +42,24 @@ const SetMemberShip = () => {
   };
 
   const onSubmit = async data => {
-    const { email, password, username, accountname, profileImg } = data;
+    const { email, password, username, accountname, profileImg, intro } = data;
 
     const image = await imageUploadsHandler(profileImg[0]);
 
-    dispatch(joinMembership(email, password, username, accountname, image));
+    dispatch(joinMembership(email, password, username, accountname, image, intro));
   };
 
   return (
     <MainLayOut>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <br />
-        <br />
-
+        <ProfileContainer>
+        <h2>프로필 설정</h2>
+        <p>나중에 언제든지 변경할 수 있습니다.</p>
+        </ProfileContainer>
+        <ProfileImgWrapper>
         <div>
           <label onChange={previewImage} htmlFor="input-file">
-            <img src={IMG_URL} alt="프로필 사진" />
+            <img src={EllipseImg} alt="프로필 사진" />
             <input
               type="file"
               accept="image/jpg,impge/png,image/jpeg,image/gif"
@@ -66,7 +68,6 @@ const SetMemberShip = () => {
             ></input>
           </label>
         </div>
-
         <div>
           {myImage && (
             <div>
@@ -74,11 +75,8 @@ const SetMemberShip = () => {
             </div>
           )}
         </div>
-
-        <br />
-        <br />
-        <br />
-
+        </ProfileImgWrapper>
+        <EmailPwWrapper>
         <div>
           <input
             name="email"
@@ -95,25 +93,42 @@ const SetMemberShip = () => {
             {...register("password")}
           />
         </div>
+        </EmailPwWrapper>
+        <FormContainer>
         <div>
+          <label>사용자 이름</label>
           <input
             name="username"
             type="text"
-            placeholder="사용자 이름"
+            placeholder="2~10자 이내여야 합니다."
             {...register("username")}
           />
         </div>
+        </FormContainer>
+        <FormContainer>
         <div>
+          <label>계정 ID</label>
           <input
             name="accountname"
             type="text"
-            placeholder="계정ID"
+            placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
             {...register("accountname")}
           />
         </div>
-
+        </FormContainer>
+        <FormContainer>
         <div>
-          <button>회원가입</button>
+          <label>소개</label>
+          <input
+            name="intro"
+            type="text"
+            placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
+            {...register("intro")}
+          />
+        </div>
+        </FormContainer>
+        <div>
+          <button>감귤마켓 시작하기</button>
         </div>
       </form>
     </MainLayOut>
