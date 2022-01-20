@@ -88,8 +88,8 @@ export const joinMembership =
         payload: data,
       });
 
-      //회원가입 api에서 응답으로 토큰정보를 주지 않는다.
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      //회원가입 api에서 응답으로 토큰정보를 주지 않아서 로그인 화면으로 이동.
+      document.location.href = "/";
     } catch (error) {
       console.log(error, "userActions Error");
       dispatch({

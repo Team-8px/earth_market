@@ -35,6 +35,15 @@ import YourProfile from "./pages/profile/YourProfile";
 import NotFound from "./pages/screen/NotFound";
 import SplashScreen from "./pages/screen/SplashScreen";
 
+//김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후
+import SetMemberShipGH from "./pages/auth/SetMemberShip-gh";
+import MyProfileGH from "./pages/profile/Myprofile-gh";
+import MyProfileUpdateGH from "./pages/profile/MyprofileUpdate-gh";
+import PostUploadGH from "./pages/post/PostUpload-gh";
+import ProductUploadGH from "./pages/product/ProductUpload-gh";
+import ProductUpdateGH from "./pages/product/ProductUpdate-gh";
+import PostViewGH from "./pages/post/PostView-gh";
+
 const App = () => {
   return (
     <Router>
@@ -102,6 +111,33 @@ const App = () => {
           {/* profile */}
           <Route path="/notfound" component={NotFound} exact />
           <Route path="/splashscreen" component={SplashScreen} exact />
+        </Switch>
+
+        {/* 김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후 */}
+        <Switch>
+          {/* auth */}
+
+          <Route path="/gh/join/email" component={SetMemberShipGH} exact />
+
+          {/* profile */}
+          <Route path="/gh/profile/my" component={MyProfileGH} exact />
+          <Route
+            path="/gh/profile/my/update"
+            component={MyProfileUpdateGH}
+            exact
+          />
+
+          {/* post */}
+          <Route path="/gh/post/my/upload" component={PostUploadGH} exact />
+          <Route path="/gh/post/my/:postId" component={PostViewGH} exact />
+
+          {/* product */}
+          <Route path="/gh/product/upload" component={ProductUploadGH} exact />
+          <Route
+            path="gh/product/update/:productId"
+            component={ProductUpdateGH}
+            exact
+          />
         </Switch>
       </AppliCation>
     </Router>
