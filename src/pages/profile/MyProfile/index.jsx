@@ -134,10 +134,10 @@ const MyProfile = () => {
               })}
           </UserPostWrapper>
         </UserPostContainer>
-        <button type="button" onClick={onDialog}>
-          임시 열기 버튼입니다
-        </button>
       </MainLayOut>
+      <button type="button" onClick={onDialog}>
+        임시 열기 버튼입니다
+      </button>
       <HiddenMenu visible={dialog} onAlert={onAlert} offDialog={offDialog} />
       <Alert visible={alert} offAlert={offAlert} />
     </>
