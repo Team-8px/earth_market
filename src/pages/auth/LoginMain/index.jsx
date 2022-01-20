@@ -5,6 +5,7 @@ import MarketLogo from "../../../asset/symbol-logo-W.png";
 //스타일 컴포넌트
 import { KakaoBtn, GoogleBtn, FaceBookBtn } from "../../../components/Button";
 import { MainContainer, MainLayOut, Logo } from "./index.style";
+import styled from "styled-components";
 
 const LoginMain = () => {
   return (
@@ -19,9 +20,34 @@ const LoginMain = () => {
         <GoogleBtn>구글 계정으로 로그인</GoogleBtn>
         <FaceBookBtn>페이스북 계정으로 로그인</FaceBookBtn>
         {/* 미진님 email & register Component 추가해야 하는 곳*/}
+        <LoginEmailWrap>
+          <LoginEmailTxt>이메일로 로그인</LoginEmailTxt>
+          <LoginEmailTxt>회원가입</LoginEmailTxt>
+        </LoginEmailWrap>
       </MainContainer>
     </MainLayOut>
   );
 };
+
+const LoginEmailWrap = styled.div `
+  display: flex;
+`
+
+
+const LoginEmailTxt = styled.span `
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #767676;
+    text-align: center;
+    margin-top: 10px;
+
+    &:nth-child(1)::after {
+      content: '';
+      font-size: 10px;
+      margin: 10px;
+      border-right: 1px solid #c4c4c4;
+    }
+`
 
 export default LoginMain;
