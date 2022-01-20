@@ -10,6 +10,7 @@ import {
   ProductImgWrapper,
   MainLayOut,
 } from "./index.style";
+import { HeaderButton } from "../../../components/Header";
 
 const ProductUpload = () => {
   const [myImage, setMyImage] = useState([]);
@@ -37,6 +38,7 @@ const ProductUpload = () => {
   return (
     <MainLayOut>
       <MainFormContainer>
+        <HeaderButton />
         <form onSubmit={handleSubmit(onSubmit)}>
           <ProductImgWrapper>
             <h3>이미지 등록</h3>

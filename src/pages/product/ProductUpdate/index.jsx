@@ -21,6 +21,7 @@ import { useParams } from "react-router-dom";
 import { getProduct } from "../../../actions/productActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
 import { MainLayOut } from "./index.style";
+import { HeaderButton } from "../../../components/Header";
 // 유효성검사 로직
 //   const {
 //   register,
@@ -51,7 +52,7 @@ const ProductModification = () => {
     <>
       <MainLayOut>
         <br />
-
+        <HeaderButton />
         {/* 상품 이미지 수정 */}
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>

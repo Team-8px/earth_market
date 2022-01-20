@@ -5,6 +5,7 @@ import { login } from "../../../actions/userActions";
 
 // 스타일 컴포넌트
 
+import styled from "styled-components";
 import { MainTitle } from "../../../components/MainTitle";
 import { Button } from "../../../components/Button";
 import { FormContainer } from "../../../components/Form";
@@ -53,8 +54,18 @@ const LoginEmail = () => {
       </div> */}
         <Button>로그인</Button>
       </form>
+      <LoginEmailTxt>이메일로 회원가입</LoginEmailTxt>
     </MainLayOut>
   );
 };
+
+const LoginEmailTxt = styled.span `
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #767676;
+    text-align: center;
+    margin-top: 10px;
+`
 
 export default LoginEmail;
