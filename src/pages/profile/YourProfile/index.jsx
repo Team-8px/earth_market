@@ -11,7 +11,7 @@ import {
 import DisplayHandler from "../../../components/DisplayHandler";
 import Alert from "../../../components/Alert";
 import HiddenMenu from "../../../components/HiddenMenu";
-import { StyledButton } from "../../../components/Button";
+
 const YourProfile = () => {
   // <!----------스타일 관련 상태관리---------->
   const [dialog, setDialog] = useState(false);
@@ -53,18 +53,12 @@ const YourProfile = () => {
       <button type="button" onClick={onDialog}>
         클릭하면 열립니다
       </button>
-      <HiddenMenu visible={dialog} onAlert={onAlert} offDialog={offDialog}>
-        <li>
-          <StyledButton>안녕 나는 버튼이라고해</StyledButton>
-        </li>
-        <li>
-          <StyledButton>안녕 나는 버튼이라고해</StyledButton>
-        </li>
-        <li>
-          <StyledButton>안녕 나는 버튼이라고해</StyledButton>
-        </li>
-      </HiddenMenu>
-      <Alert visible={alert} offAlert={offAlert} />
+      <HiddenMenu visible={dialog} onAlert={onAlert} offDialog={offDialog} />
+      <Alert
+        visible={alert}
+        offAlert={offAlert}
+        MessageText="로그아웃 하시겠습니까?"
+      />
     </>
   );
 };

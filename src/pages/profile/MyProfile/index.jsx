@@ -139,7 +139,11 @@ const MyProfile = () => {
         임시 열기 버튼입니다
       </button>
       <HiddenMenu visible={dialog} onAlert={onAlert} offDialog={offDialog} />
-      <Alert visible={alert} offAlert={offAlert} />
+      <Alert
+        visible={alert}
+        offAlert={offAlert}
+        MessageText="로그아웃 하시겠습니까?"
+      />
     </>
   );
 };

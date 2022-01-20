@@ -75,7 +75,7 @@ const LogOutBtn = styled.button`
   color: #f26e22;
 `;
 
-function Alert({ visible, cancelText, logoutText, offAlert }) {
+function Alert({ MessageText, visible, cancelText, logoutText, offAlert }) {
   const [animate, setAnimate] = useState(false);
   const [localVisible, setLocalVisible] = useState();
 
@@ -92,7 +92,7 @@ function Alert({ visible, cancelText, logoutText, offAlert }) {
   return (
     <AlertModalContainer>
       <AlertModalWrapper>
-        <AlertMessage>로그아웃 하시겠어요?</AlertMessage>
+        <AlertMessage>{MessageText}</AlertMessage>
         <AlertMenuList>
           <li>
             <CancelBtn type="button" onClick={offAlert}>
@@ -100,7 +100,7 @@ function Alert({ visible, cancelText, logoutText, offAlert }) {
             </CancelBtn>
           </li>
           <li>
-            <LogOutBtn type="button">{logoutText}</LogOutBtn>
+            <LogOutBtn type="but ton">{logoutText}</LogOutBtn>
           </li>
         </AlertMenuList>
       </AlertModalWrapper>
@@ -111,6 +111,7 @@ function Alert({ visible, cancelText, logoutText, offAlert }) {
 Alert.defaultProps = {
   cancelText: "취소",
   logoutText: "로그아웃",
+  MessageText: "MessageText",
 };
 
 export default Alert;
