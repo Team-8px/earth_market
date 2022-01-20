@@ -104,6 +104,8 @@ export const createPost = (content, image) => async (dispatch, getState) => {
       type: POST_CREATE_SUCCESS,
       payload: data,
     });
+
+    document.location.href = "/gh/profile/my";
   } catch (error) {
     const message =
       error.response && error.response.data.message

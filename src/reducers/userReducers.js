@@ -65,8 +65,7 @@ export const userJoinMembershipReducer = (state = {}, action) => {
   }
 };
 
-// user에는 Reqdata가 담기게 된다.
-export const userUpdateReducer = (state = { user: {} }, action) => {
+export const userUpdateReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_UPDATE_REQUEST:
       return { loading: true };
