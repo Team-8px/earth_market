@@ -100,7 +100,7 @@ function Alert({ MessageText, visible, cancelText, logoutText, offAlert }) {
             </CancelBtn>
           </li>
           <li>
-            <LogOutBtn type="but ton">{logoutText}</LogOutBtn>
+            <LogOutBtn type="button">{logoutText}</LogOutBtn>
           </li>
         </AlertMenuList>
       </AlertModalWrapper>
