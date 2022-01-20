@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import {
   MainLayOut,
-  UserInfoContainer,
-  UserInfoWrapper,
   ProductContainer,
   ProductWrapper,
   UserPostContainer,
@@ -12,6 +10,7 @@ import DisplayHandler from "../../../components/DisplayHandler";
 import Alert from "../../../components/Alert";
 import HiddenMenu from "../../../components/HiddenMenu";
 import { HeaderBasic, Nav } from "../../../components/Header";
+import UserInfo from "../../../components/UserInfo";
 
 const YourProfile = () => {
   // <!----------스타일 관련 상태관리---------->
@@ -40,9 +39,7 @@ const YourProfile = () => {
     <>
       <MainLayOut>
         <HeaderBasic />
-        <UserInfoContainer>
-          <UserInfoWrapper></UserInfoWrapper>
-        </UserInfoContainer>
+        <UserInfo></UserInfo>
         <ProductContainer>
           <ProductWrapper></ProductWrapper>
         </ProductContainer>

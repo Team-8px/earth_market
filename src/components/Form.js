@@ -1,3 +1,4 @@
+//폼 컴포넌트입니다.
 import styled from "styled-components";
 
 // 공통요소

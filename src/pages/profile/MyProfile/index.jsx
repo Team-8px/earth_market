@@ -8,8 +8,6 @@ import { API_URL } from "../../../constants/defaultUrl";
 // 스타일 컴포넌트
 import {
   MainLayOut,
-  UserInfoContainer,
-  UserInfoWrapper,
   ProductContainer,
   ProductWrapper,
   UserPostContainer,
@@ -19,7 +17,7 @@ import DisplayHandler from "../../../components/DisplayHandler";
 import Alert from "../../../components/Alert";
 import HiddenMenu from "../../../components/HiddenMenu";
 import { HeaderButton, Nav } from "../../../components/Header";
-
+import UserInfo from "../../../components/UserInfo";
 const MyProfile = () => {
   const dispatch = useDispatch();
 
@@ -59,49 +57,37 @@ const MyProfile = () => {
 
   return (
     <>
-      <MainLayOut>
-        {/* header */}
-        <HeaderButton />
-        {/* 유저 프로필 */}
-        <UserInfoContainer>
-          <UserInfoWrapper>
-            <h1>유저 프로필</h1>
-            <img src={image} alt="프로필 사진" />
-            <ul>
-              <li>{username}</li>
-              <li>{accountname}</li>
-              <li>{intro}</li>
-              <li>{followerCount}</li>
-              <li>{followingCount}</li>
-            </ul>
-          </UserInfoWrapper>
-        </UserInfoContainer>
-        {/* 상품목록 */}
-        <ProductContainer>
-          <ProductWrapper>
-            <h1>상품 목록</h1>
-            {products &&
-              products.map((product, index) => {
-                return (
-                  <div key={index} style={{ display: "flex" }}>
-                    <div>
-                      <img
-                        src={`${API_URL}/${product.itemImage}`}
-                        alt="상품사진"
-                      />
-                    </div>
-                    <div>
-                      <ul>
-                        <li>상품명: {product.itemName}</li>
-                        <li>상품가격: {product.price}</li>
-                        <li>상품링크: {product.link}</li>
-                      </ul>
-                    </div>
+    <MainLayOut>
+      {/* 유저 프로필 */}
+      {/* header */}
+      <HeaderButton />
+      <UserInfo></UserInfo>
+      {/* 상품목록 */}
+      <ProductContainer>
+        <ProductWrapper>
+          <h1>상품 목록</h1>
+          {products &&
+            products.map((product, index) => {
+              return (
+                <div key={index} style={{ display: "flex" }}>
+                  <div>
+                    <img
+                      src={`${API_URL}/${product.itemImage}`}
+                      alt="상품사진"
+                    />
                   </div>
-                );
-              })}
-          </ProductWrapper>
-        </ProductContainer>
+                  <div>
+                    <ul>
+                      <li>상품명: {product.itemName}</li>
+                      <li>상품가격: {product.price}</li>
+                      <li>상품링크: {product.link}</li>
+                    </ul>
+                  </div>
+                </div>
+              );
+            })}
+        </ProductWrapper>
+      </ProductContainer>
         {/* 게시글 목록 */}
         <UserPostContainer>
           <UserPostWrapper>

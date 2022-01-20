@@ -3,7 +3,6 @@ import { Button } from "../../../components/Button";
 import { MainLayOut } from "./index.style";
 import { MainTitle } from "../../../components/MainTitle";
 import { FormContainer } from "../../../components/Form";
-
 // 재영: 폼 컨테이너 에러인 것 같습니다.
 // form컨테이너 안에있는 register가 사용되지 않고 있으며
 // onSubmit 함수 역시 선언되어있지 않아서 에러가 발생했습니다
