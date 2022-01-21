@@ -166,7 +166,7 @@ const MoreBtn = styled.button`
   right: 0;
   width: 18px;
   height: 18px;
-  background: url(${More}}) no-repeat center / 18px 18px;
+  background: url(${More}) no-repeat center / 18px 18px;
   background-color: inherit;
 `;
 
