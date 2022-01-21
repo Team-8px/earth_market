@@ -7,7 +7,7 @@ import { login } from "../../../actions/userActions";
 
 import styled from "styled-components";
 import { MainTitle } from "../../../components/MainTitle";
-import { Button } from "../../../components/Button";
+// import { Button } from "../../../components/Button";
 import { FormContainer } from "../../../components/Form";
 import { MainLayOut } from "./index.style";
 
@@ -48,24 +48,22 @@ const LoginEmail = () => {
             />
           </div>
         </FormContainer>
-
         {/*  <div>
         <input type="submit" />
       </div> */}
-        <Button>로그인</Button>
       </form>
       <LoginEmailTxt>이메일로 회원가입</LoginEmailTxt>
     </MainLayOut>
   );
 };
 
-const LoginEmailTxt = styled.span `
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-    color: #767676;
-    text-align: center;
-    margin-top: 10px;
-`
+const LoginEmailTxt = styled.span`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #767676;
+  text-align: center;
+  margin-top: 10px;
+`;
 
 export default LoginEmail;
