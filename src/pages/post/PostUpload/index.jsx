@@ -3,9 +3,10 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { createPost } from "../../../actions/postActions";
 import { multipleImageUploadsHandler } from "../../../util/multipleImageUploads";
+// 스타일 컴포넌트
 import { MainLayOut } from "./index.style";
 import { HeaderButton } from "../../../components/Header";
-// 스타일 컴포넌트
+import UploadPost from "../../../components/UploadPost";
 
 const PostUpload = () => {
   const [myImage, setMyImage] = useState([]);
@@ -56,51 +57,7 @@ const PostUpload = () => {
   return (
     <MainLayOut>
       <HeaderButton />
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <br />
-        <br />
-
-        <div>
-          <label onChange={onChange} htmlFor="input-file">
-            {/* <img src={IMG_URL} alt="상품 업로드 사진" /> */}
-            <input
-              type="file"
-              accept="image/jpg,impge/png,image/jpeg,image/gif"
-              name="itemImage"
-              multiple="multiple"
-              {...register("itemImage")}
-            ></input>
-          </label>
-        </div>
-
-        <div>
-          {myImage &&
-            myImage.map((x, i) => {
-              return (
-                <div key={i}>
-                  <img src={x.previewImg} alt="미리보기 사진" />
-                </div>
-              );
-            })}
-        </div>
-
-        <br />
-        <br />
-        <br />
-
-        <div>
-          <input
-            name="postText"
-            type="text"
-            placeholder="상품명"
-            {...register("postText")}
-          />
-        </div>
-
-        <div>
-          <button>저장</button>
-        </div>
-      </form>
+      <UploadPost></UploadPost>
     </MainLayOut>
   );
 };
