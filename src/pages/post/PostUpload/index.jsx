@@ -7,6 +7,10 @@ import { multipleImageUploadsHandler } from "../../../util/multipleImageUploads"
 import { MainLayOut } from "./index.style";
 import { HeaderButton } from "../../../components/Header";
 import UploadPost from "../../../components/UploadPost";
+import { MainLayOut, UploadContainer, UploadWrapper, UploadPostWrapper } from "./index.style";
+import { HeaderButton } from "../../../components/Header";
+import EllipseImg from "../../../asset/Ellipse-1.png";
+// 스타일 컴포넌트
 
 const PostUpload = () => {
   const [myImage, setMyImage] = useState([]);
@@ -58,6 +62,53 @@ const PostUpload = () => {
     <MainLayOut>
       <HeaderButton />
       <UploadPost></UploadPost>
+        <UploadContainer>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <h2>게시글 작성</h2>
+          <img src={EllipseImg} alt="프로필 사진" />
+        <UploadWrapper>
+        <UploadPostWrapper>
+        <div>
+          <textarea name="text" placeholder="게시글 입력하기..."></textarea>
+          <label onChange={onChange} htmlFor="input-file">
+            {/* <img src={IMG_URL} alt="상품 업로드 사진" /> */}
+            <input
+              type="file"
+              accept="image/jpg,impge/png,image/jpeg,image/gif"
+              name="itemImage"
+              multiple="multiple"
+              {...register("itemImage")}
+            ></input>
+          </label>
+        </div>
+        </UploadPostWrapper>
+        <div>
+          {myImage &&
+            myImage.map((x, i) => {
+              return (
+                <div key={i}>
+                  <img src={x.previewImg} alt="미리보기 사진" />
+                </div>
+              );
+            })}
+        </div>
+
+        <div>
+          <input
+            name="postText"
+            type="text"
+            placeholder="상품명"
+            {...register("postText")}
+          />
+        </div>
+
+        <div>
+          <button>저장</button>
+        </div>
+        
+        </UploadWrapper>
+        </form>
+      </UploadContainer>
     </MainLayOut>
   );
 };

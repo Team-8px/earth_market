@@ -1,14 +1,13 @@
+// PostUpload 컴포넌트입니다.
+import React from "react";
 import styled from "styled-components";
-import { PostMainLayout } from "../../../components/MainLayOut";
 import Upload from "../../../asset/upload-file.png";
+import EllipseImg from "../asset/Ellipse-1.png";
 
-export const MainLayOut = styled(PostMainLayout)`
+const UploadContainer = styled.main`
     display: flex;
-    padding: 20px 0 20px 16px; // 오른쪽은 0px로 둔 이유는 스크롤 바 때문입니다.
-`;
+    padding: 20px 0 20px 16px;
 
-export const UploadContainer = styled.main`
-    
     h2 {
         position: absolute;
         left: -10000px;
@@ -27,7 +26,7 @@ export const UploadContainer = styled.main`
     }
 `;
 
-export const UploadWrapper = styled.article`
+const UploadWrapper = styled.article`
     position: relative;
     min-width: 300px;
     width: 100%;
@@ -35,7 +34,7 @@ export const UploadWrapper = styled.article`
     overflow-y: scroll;
 `;
 
-export const UploadPostWrapper = styled.div`
+const UploadPostWrapper = styled.div`
     width: 100%;
     padding-top: 12px;
 
@@ -70,3 +69,21 @@ export const UploadPostWrapper = styled.div`
     }
 }
 `;
+
+function Upload({
+
+}) {
+    return (
+        <UploadContainer>
+            <h2>게시글 작성</h2>
+            <img src={EllipseImg} alt="프로필 사진" />
+            <UploadWrapper>
+                <UploadPostWrapper>
+                </UploadPostWrapper>
+            </UploadWrapper>
+        </UploadContainer>
+        
+    );
+}
+
+export default Upload;
