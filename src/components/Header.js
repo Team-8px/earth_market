@@ -1,86 +1,84 @@
 // Header 컴포넌트 파일입니다.
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+
 import HeaderBackImg from "../asset/icon-arrow-left.svg";
 import HeaderMoreImg from "../asset/icon-more-vertical.svg";
 import HeaderSeaechImg from "../asset/icon-search.svg";
+
 // import { Button } from "./Button";
 
 export function HeaderButton () {
-    return (
-      <HeaderLayOut>
-        <HeaderContainer>
-          <HeaderWrap>
-            <HeaderLinkImg src={HeaderBackImg} />
-          </HeaderWrap>
-          {/* <Button size="small">저장</Button> */}
-        </HeaderContainer>
-      </HeaderLayOut>
+    return ( 
+      <HeaderBox>
+          <HeaderLinkImg src={HeaderBackImg} />
+        {/* <Button size="small">저장</Button> */}
+      </HeaderBox>
     )
   }
   
   export function HeaderSearch () {
     return (
-      <HeaderContainer>
-            <HeaderLinkImg src={HeaderBackImg} />
-            <HeaderInput placeholder="계정검색"></HeaderInput> 
-          </HeaderContainer>
+      <HeaderBox>
+        <HeaderLinkImg src={HeaderBackImg} />
+        <HeaderInput placeholder="계정검색"></HeaderInput> 
+      </HeaderBox>  
     )
   }
   
   export function HeaderHome () {
     return (
-      <HeaderLayOut>
-        <HeaderContainer>
-            <HeaderWrap>
-              <HeaderTitle>감귤마켓 피드</HeaderTitle>
-            </HeaderWrap>
-            <HeaderLinkImg src={HeaderSeaechImg} />
-          </HeaderContainer>
-      </HeaderLayOut>
+      <HeaderBox>
+        <HeaderTitle fontSize="big" inverted={true}>감귤마켓 피드</HeaderTitle>
+        <HeaderLinkImg src={HeaderSeaechImg} />
+      </HeaderBox>   
     )
   }
   
+  // 컴포넌트 정리 중입니다.
   export function HeaderBasic () {
     return (
-      <HeaderLayOut>
-        <HeaderContainer>
-          <HeaderWrap>
-            <HeaderLinkImg src={HeaderBackImg} />
-          </HeaderWrap>
-          <HeaderLinkImg src={HeaderMoreImg} />
-        </HeaderContainer>
-      </HeaderLayOut>
+      <HeaderBox>
+        <HeaderLinkImg src={HeaderBackImg} />      
+        <HeaderLinkImg src={HeaderMoreImg} />
+      </HeaderBox>
     )
   }
-  
+
+  // useState를 이용하여 HeaderBasic, HeaderChat 재사용성을 시도해봤습니다. false 적용하는 법은 아직 모르겠습니다.
   export function HeaderChat () {
+    const [text, setText] = useState (true);
+
     return (
-      <HeaderLayOut>
-        <HeaderContainer>
-          <HeaderWrap>
-            <HeaderLinkImg src={HeaderBackImg} />
-            <HeaderTitle>애월읍 위니브 감귤농장</HeaderTitle>
-          </HeaderWrap>
-          <HeaderLinkImg src={HeaderMoreImg} />
-        </HeaderContainer>
-      </HeaderLayOut>
+      <HeaderBox>
+        <HeaderWrap>
+          <HeaderLinkImg src={HeaderBackImg} />
+          {text ? <HeaderTitle fontSize="big">애월읍 위니브 감귤농장</HeaderTitle> : null}
+        </HeaderWrap>
+        <HeaderLinkImg src={HeaderMoreImg} />
+      </HeaderBox>    
     )
   }
   
   export function HeaderFollowList () {
     return (
-      <HeaderLayOut>
-        <HeaderContainer>
+        <HeaderBox>
           <HeaderWrap>
             <HeaderLinkImg src={HeaderBackImg} />
-            <HeaderFollowTitle>Followers</HeaderFollowTitle>
+            <HeaderTitle fontWeigt="400">Followers</HeaderTitle>
           </HeaderWrap>
-        </HeaderContainer>
-      </HeaderLayOut>
+        </HeaderBox> 
     )
   }
   
+  const HeaderBox = (props) => 
+    <HeaderLayOut>
+        <HeaderContainer>
+           {props.children}
+        </HeaderContainer>
+    </HeaderLayOut>
+  ;
+
   // Product Modification - Header Component
   const HeaderLayOut = styled.header `
       position: fixed;
@@ -116,13 +114,9 @@ export function HeaderButton () {
       cursor: pointer;
   `
   
-  const HeaderTitle = styled.h2`  
-      font-size: 20px;
-  `
-  
-  const HeaderFollowTitle = styled.h2`  
-      font-size: 14px;
-      font-weight: 400;
+  const HeaderTitle = styled.h2`
+      font-family: ${(props) => (props.fontWeigt === "400" ? "Spoqa Han Sans Neo R" : "Spoqa Han Sans Neo M")};
+      font-size: ${(props) => (props.fontSize === "big" ? "20px" : "14px")};
   `
   
   const HeaderInput = styled.input `
@@ -134,7 +128,7 @@ export function HeaderButton () {
       border-radius: 32px;
       padding: 0 16px;
       font-size: 14px;
-  
+
       &::placeholder {
       color: #C4C4C4;
     }
