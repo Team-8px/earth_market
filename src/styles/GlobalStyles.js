@@ -1,3 +1,4 @@
+import './font.css';
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
@@ -11,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
         box-sizing:border-box;
     }
     body{
+        font-family:'Spoqa Han Sans Neo R';
         font-size: 14px;
     }
     img{
