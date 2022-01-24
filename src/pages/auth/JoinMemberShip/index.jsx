@@ -3,6 +3,7 @@ import React from "react";
 import { MainLayOut } from "./index.style";
 import { MainTitle } from "../../../components/MainTitle";
 import { FormContainer } from "../../../components/Form";
+import { Button } from "../../../components/Button";
 
 const JoinMemberShip = () => {
   return (
@@ -33,7 +34,9 @@ const JoinMemberShip = () => {
           </div>
         </FormContainer>
         {/* </form> */}
-        <button>다음</button>
+        <Button size="lg" width="322px">
+          다음
+        </Button>
       </MainLayOut>
     </>
   );

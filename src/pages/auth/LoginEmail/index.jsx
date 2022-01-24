@@ -1,13 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { login } from "../../../actions/userActions";
-
-// 스타일 컴포넌트
-
-import styled from "styled-components";
 import { MainTitle } from "../../../components/MainTitle";
-// import { Button } from "../../../components/Button";
+import { Button } from "../../../components/Button";
 import { FormContainer } from "../../../components/Form";
 import { MainLayOut } from "./index.style";
 
@@ -52,6 +49,9 @@ const LoginEmail = () => {
         <input type="submit" />
       </div> */}
       </form>
+      <Button size="lg" width="322px">
+        로그인
+      </Button>
       <LoginEmailTxt>이메일로 회원가입</LoginEmailTxt>
     </MainLayOut>
   );
