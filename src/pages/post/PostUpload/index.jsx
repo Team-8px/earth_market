@@ -7,6 +7,7 @@ import { multipleImageUploadsHandler } from "../../../util/multipleImageUploads"
 import { MainLayOut } from "./index.style";
 import { HeaderButton } from "../../../components/Header";
 import UploadPost from "../../../components/UploadPost";
+import { SubmitChat } from "../../../components/SubmitChat";
 
 const PostUpload = () => {
   const [myImage, setMyImage] = useState([]);

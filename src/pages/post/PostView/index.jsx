@@ -9,6 +9,7 @@ import { MainLayOut} from "../PostUpload/index.style";
 import { CommentWrapper } from "./index.style";
 import Post from "../../../components/Post";
 import { HeaderBasic } from "../../../components/Header";
+import { SubmitChat } from "../../../components/SubmitChat";
 // 댓글 생성 부분 컴포넌트만 다시 불러와서 적용할 예정입니다.
 
 const PostView = () => {
@@ -106,6 +107,7 @@ const PostView = () => {
         likeCount="999"
         commentCount="999"
       />
+      <SubmitChat />
     </MainLayOut>
   );
 };
