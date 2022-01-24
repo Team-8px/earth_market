@@ -137,19 +137,21 @@ export const getUserMyProfile = () => async (dispatch, getState) => {
 };
 
 export const updateUserProfile =
-  (image, username, accountname, intro) => async (dispatch, getState) => {
+  (image, username, accountname) => async (dispatch, getState) => {
     try {
       dispatch({
         type: USER_UPDATE_PROFILE_REQUEST,
       });
 
+      let reqData = { user: {} };
+
       const {
         userLogin: { userInfo },
       } = getState();
 
-      const reqData = {
-        user: { image, username, accountname, intro },
-      };
+      if (!!username) reqData.user.username = username;
+      if (!!accountname) reqData.user.accountname = accountname;
+      if (!!image) reqData.user.image = image;
 
       const config = {
         headers: {
@@ -158,14 +160,33 @@ export const updateUserProfile =
         },
       };
 
-      const { data } = await axios.put(`${API_URL}/user`, reqData, config);
+      const {
+        data: { user },
+      } = await axios.put(`${API_URL}/user`, reqData, config);
 
       dispatch({
         type: USER_UPDATE_PROFILE_SUCCESS,
-        payload: data,
+        payload: {
+          accountname: user.accountname,
+          username: user.username,
+          intro: user.intro,
+          image: user.image,
+        },
       });
 
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      const localStorageData = JSON.parse(localStorage.getItem("userInfo"));
+
+      localStorageData.user.accountname = user.accountname;
+
+      localStorageData.user.username = user.username;
+
+      localStorageData.user.image = user.image;
+
+      console.log(localStorageData, "after");
+
+      localStorage.setItem("userInfo", JSON.stringify(localStorageData));
+
+      document.location.href = "/gh/profile/my";
     } catch (error) {
       const message =
         error.response && error.response.data.message

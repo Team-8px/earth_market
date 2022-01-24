@@ -116,11 +116,15 @@ const App = () => {
         {/* 김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후 */}
         <Switch>
           {/* auth */}
-
           <Route path="/gh/join/email" component={SetMemberShipGH} exact />
 
           {/* profile */}
           <Route path="/gh/profile/my" component={MyProfileGH} exact />
+          <Route
+            path="/gh/profile/you/:acccountId"
+            component={MyProfileGH}
+            exact
+          />
           <Route
             path="/gh/profile/my/update"
             component={MyProfileUpdateGH}
@@ -134,7 +138,7 @@ const App = () => {
           {/* product */}
           <Route path="/gh/product/upload" component={ProductUploadGH} exact />
           <Route
-            path="gh/product/update/:productId"
+            path="/gh/product/update/:productId"
             component={ProductUpdateGH}
             exact
           />

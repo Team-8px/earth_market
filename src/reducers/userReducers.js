@@ -6,9 +6,9 @@ import {
   USER_JOIN_MEMBERSHIP_REQUEST,
   USER_JOIN_MEMBERSHIP_SUCCESS,
   USER_JOIN_MEMBERSHIP_FAIL,
-  USER_UPDATE_REQUEST,
-  USER_UPDATE_SUCCESS,
-  USER_UPDATE_FAIL,
+  USER_UPDATE_PROFILE_REQUEST,
+  USER_UPDATE_PROFILE_SUCCESS,
+  USER_UPDATE_PROFILE_FAIL,
   USER_READ_PROFILE_REQUEST,
   USER_READ_PROFILE_SUCCESS,
   USER_READ_PROFILE_FAIL,
@@ -67,11 +67,16 @@ export const userJoinMembershipReducer = (state = {}, action) => {
 
 export const userUpdateReducer = (state = {}, action) => {
   switch (action.type) {
-    case USER_UPDATE_REQUEST:
+    case USER_UPDATE_PROFILE_REQUEST:
       return { loading: true };
-    case USER_UPDATE_SUCCESS:
-      return { loading: false, success: true };
-    case USER_UPDATE_FAIL:
+    case USER_UPDATE_PROFILE_SUCCESS:
+      return {
+        loading: false,
+        accountname: action.payload.accountname,
+        username: action.payload.username,
+        image: action.payload.image,
+      };
+    case USER_UPDATE_PROFILE_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
