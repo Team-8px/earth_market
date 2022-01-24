@@ -137,13 +137,21 @@ export const ProfileMainLayOut = styled.main`
 // Screen 페이지 레이아웃
 
 export const NotFoundLayOut = styled.main`
-  width: 100%;
-  height: 100%;
-  padding-top: 200px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
+
 export const SplashScreenLayOut = styled.main`
-  width: 100%;
+  /* width: 100%;
   height: 100%;
   padding-top: 180px;
-  ${MainLayOut}
+  ${MainLayOut} */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
