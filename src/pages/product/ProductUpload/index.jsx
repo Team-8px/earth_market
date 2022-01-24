@@ -56,9 +56,7 @@ const ProductUpload = () => {
 
           <div>
             {myImage && (
-              <div>
-                <img src={myImage} alt="미리보기 이미지" />
-              </div>
+              <div>{/* <img src={myImage} alt="미리보기 이미지" /> */}</div>
             )}
           </div>
 
@@ -66,40 +64,40 @@ const ProductUpload = () => {
           <br />
           <br />
           <FormContainer>
-          <div>
-          <label>상품명</label>
-            <input
-              name="itemName"
-              type="text"
-              placeholder="2~15자 이내여야 합니다."
-              {...register("itemName")}
-            />
-          </div>
+            <div>
+              <label>상품명</label>
+              <input
+                name="itemName"
+                type="text"
+                placeholder="2~15자 이내여야 합니다."
+                {...register("itemName")}
+              />
+            </div>
           </FormContainer>
           <FormContainer>
-          <div>
-          <label>가격</label>
-            <input
-              name="price"
-              type="number"
-              placeholder="숫자만 입력 가능합니다."
-              {...register("price")}
-            />
-          </div>
+            <div>
+              <label>가격</label>
+              <input
+                name="price"
+                type="number"
+                placeholder="숫자만 입력 가능합니다."
+                {...register("price")}
+              />
+            </div>
           </FormContainer>
           <FormContainer>
-          <div>
-          <label>판매 링크</label>
-            <input
-              name="link"
-              type="text"
-              placeholder="URL을 입력해 주세요."
-              {...register("link")}
-            />
-          </div>
-          <div>
-            <button>저장</button>
-          </div>
+            <div>
+              <label>판매 링크</label>
+              <input
+                name="link"
+                type="text"
+                placeholder="URL을 입력해 주세요."
+                {...register("link")}
+              />
+            </div>
+            <div>
+              <button>저장</button>
+            </div>
           </FormContainer>
         </form>
       </MainFormContainer>
