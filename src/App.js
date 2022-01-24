@@ -58,7 +58,7 @@ const App = () => {
           <Route path="/user/update" component={ProductUpdate} />
           <Route path="/post/upload" component={PostUpload} />
           <Route path="/post/:postId" component={PostView} />
-          <Route path="/myprofile" component={MyProfile} />
+          {/* <Route path="/myprofile" component={MyProfile} /> */}
           {/* <Route component={NotFound} /> */}
         </Switch>
 
