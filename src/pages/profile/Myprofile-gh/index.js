@@ -1,22 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Link } from "react-router-dom";
-import { listProducts } from "../../../actions/productActions";
-import { listPosts } from "../../../actions/postActions";
+import { listProducts, deleteProduct } from "../../../actions/productActions";
+import { listPosts, deletePost } from "../../../actions/postActions";
 import { getUserMyProfile } from "../../../actions/userActions";
-import { API_URL } from "../../../constants/defaultUrl";
 
 const MyProfile = () => {
+  //const [isDeleteProduct, setIsDeleteProduct] = useState(false);
+
   const dispatch = useDispatch();
 
   const { products } = useSelector(state => state.productList, shallowEqual);
   const { posts } = useSelector(state => state.postList, shallowEqual);
   const { image, username, accountname, intro, followerCount, followingCount } =
-    useSelector(state => state.userProfile, shallowEqual);
+    useSelector(state => state.userReadProfile);
+
+  const onclickDeletePost = postId => {
+    dispatch(deletePost(postId));
+  };
+
+  const onclickDeleteProduct = productId => {
+    //setIsDeleteProduct(true);
+    dispatch(deleteProduct(productId));
+  };
 
   useEffect(() => {
     dispatch(listProducts());
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(listPosts());
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(getUserMyProfile());
   }, [dispatch]);
 
@@ -27,7 +43,7 @@ const MyProfile = () => {
       {/* 프로필 사진 */}
       <img
         style={{ height: "100px", width: "100px" }}
-        src={`${API_URL}/${image}`}
+        src={image}
         alt="프로필 사진"
       />
       <ul>
@@ -39,6 +55,10 @@ const MyProfile = () => {
         <li>
           <Link to={`/gh/product/upload`}>상품등록 링크</Link>
         </li>
+        <br />
+        <li>
+          <Link to={`/gh/post/my/upload`}>게시물 등록 링크</Link>
+        </li>
       </ul>
       {/* <img src={image} alt="프로필 사진" /> */}
       <br />
@@ -47,11 +67,11 @@ const MyProfile = () => {
 
       <div>
         <ul>
-          <li>{username}</li>
-          <li>{accountname}</li>
-          <li>{intro}</li>
-          <li>{followerCount}</li>
-          <li>{followingCount}</li>
+          <li>사용자이름 : {username}</li>
+          <li>계정 : {accountname}</li>
+          <li>소개글 : {intro}</li>
+          <li>팔로우 : {followerCount}</li>
+          <li>팔로잉 : {followingCount}</li>
         </ul>
       </div>
 
@@ -62,21 +82,36 @@ const MyProfile = () => {
       {/* 상품목록 */}
       <h1>상품 목록</h1>
       {products &&
-        products.map((product, index) => {
+        products.map(product => {
           return (
             <div key={product.id} style={{ display: "flex" }}>
               <div style={{ height: "100px", width: "100px" }}>
-                <img src={`${API_URL}/${product.itemImage}`} alt="상품사진" />
+                <img src={product.itemImage} alt="상품사진" />
               </div>
               <div>
+                <br />
+                <br />
+                <br />
                 <ul>
                   <li>상품명: {product.itemName}</li>
                   <li>상품가격: {product.price}</li>
-                  <li>상품링크: {product.link}</li>
+                  <li>상품링크: {product.link}</li>+
+                  <br />
+                  <br />
                   <li>
-                    <Link to={`/product/update/${product.id}`}>
+                    <Link to={`/gh/product/update/${product.id}`}>
                       상품수정 클릭 모달창
                     </Link>
+                  </li>
+                  <br />
+                  <br />
+                  <li
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      onclickDeleteProduct(product.id);
+                    }}
+                  >
+                    상품삭제 클릭 모달창
                   </li>
                 </ul>
               </div>
@@ -100,7 +135,7 @@ const MyProfile = () => {
                     <img
                       style={{ height: "100px", width: "100px" }}
                       key={index}
-                      src={`${API_URL}/${postImage}`}
+                      src={postImage}
                       alt="게시글 사진"
                     />
                   );
@@ -109,8 +144,18 @@ const MyProfile = () => {
               <div>
                 <ul>
                   <li>{post.content}</li>
+                  <br />
+                  <br />
                   <li>
                     <Link to={`/gh/post/my/${post.id}`}>게시글 링크</Link>
+                  </li>
+                  <br />
+                  <br />
+                  <li
+                    style={{ cursor: "pointer" }}
+                    onClick={() => onclickDeletePost(post.id)}
+                  >
+                    게시글 삭제 모달창
                   </li>
                 </ul>
               </div>

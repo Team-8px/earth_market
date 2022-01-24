@@ -6,7 +6,6 @@ import {
   getUserMyProfile,
 } from "../../../actions/userActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
-import { API_URL } from "../../../constants/defaultUrl";
 
 // 유효성검사 로직
 //   const {
@@ -17,16 +16,14 @@ import { API_URL } from "../../../constants/defaultUrl";
 // } = useForm();
 
 const ProfileModification = () => {
-  const [myImage, setMyImage] = useState([]);
-  const [isProfileImage, setIsProfileImage] = useState(false);
+  const [updateImage, setUpdateImage] = useState([]);
+  const [isUpdatedImage, setIsUpdatedImage] = useState(false);
   const { register, handleSubmit } = useForm();
 
   const { image, username, accountname } = useSelector(
     state => state.userProfile,
     shallowEqual,
   );
-
-  //console.log(image);
 
   const dispatch = useDispatch();
 
@@ -39,10 +36,9 @@ const ProfileModification = () => {
 
     const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
 
-    console.log(nowImageUrl);
+    setUpdateImage(nowImageUrl);
 
-    setMyImage(nowImageUrl);
-    setIsProfileImage(true);
+    setIsUpdatedImage(true);
   };
 
   const onSubmit = async data => {
@@ -57,12 +53,13 @@ const ProfileModification = () => {
     <>
       {/* 프로필 사진 미리보기 */}
 
-      {/* 기존사진 */}
       <img
         style={{ height: "100px", width: "100px" }}
-        src={isProfileImage ? myImage : `${API_URL}/${image}`}
+        src={isUpdatedImage ? updateImage : image}
         alt="프로필 사진"
       />
+
+      <h1>{isUpdatedImage ? updateImage : image}</h1>
 
       {/* 사용자 프로필 폼*/}
       <form onSubmit={handleSubmit(onSubmit)}>

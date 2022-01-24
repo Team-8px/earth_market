@@ -9,6 +9,9 @@ import {
   POST_GET_REQUEST,
   POST_GET_SUCCESS,
   POST_GET_FAIL,
+  POST_DELETE_REQUEST,
+  POST_DELETE_SUCCESS,
+  POST_DELETE_FAIL,
 } from "../constants/postConstants";
 import { API_URL } from "../constants/defaultUrl";
 import { logout } from "./userActions";
@@ -112,10 +115,49 @@ export const createPost = (content, image) => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message;
     if (message === "Not authorized, token failed") {
-      dispatch(logout());
+      //dispatch(logout());
     }
     dispatch({
       type: POST_CREATE_FAIL,
+      payload: message,
+    });
+  }
+};
+
+export const deletePost = postId => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: POST_DELETE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.user.token}`,
+      },
+    };
+
+    const { data } = await axios.delete(`${API_URL}/post/${postId}`, config);
+
+    dispatch({
+      type: POST_DELETE_SUCCESS,
+      payload: data,
+    });
+
+    document.location.href = "/gh/profile/my";
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      //dispatch(logout());
+    }
+    dispatch({
+      type: POST_DELETE_FAIL,
       payload: message,
     });
   }

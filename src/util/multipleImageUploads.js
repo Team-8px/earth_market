@@ -1,8 +1,7 @@
 import axios from "axios";
 import { API_URL } from "../constants/defaultUrl";
 
-export const multipleImageUploadsHandler = async (files) => {
-  //console.log(files);
+export const multipleImageUploadsHandler = async files => {
   let filenames = [];
   let joinFilename = "";
 
@@ -17,11 +16,11 @@ export const multipleImageUploadsHandler = async (files) => {
       data: { filename },
     } = await axios.post(`${API_URL}/image/uploadfile`, formData);
     console.log(filename);
-    filenames.push(filename);
+    filenames.push(`${API_URL}/${filename}`);
   }
 
-  //console.log(filenames);
   // filename concat
+  // 다중이미지 배열 => 문자열 (저장할때, ","로 구별하여 문자열 저장)
   for (let i = 0; i < filenames.length; i++) {
     if (i === 0) {
       joinFilename = filenames[i];
@@ -30,8 +29,6 @@ export const multipleImageUploadsHandler = async (files) => {
       joinFilename = joinFilename + "," + filenames[i];
     }
   }
-
-  //console.log(joinFilename, "joinname");
 
   //DB에 넣을때 => “1640066364747.png,1640066364748.png” 이미지를 불러올때는 따옴표를 기준으로 split하여 사용
   return joinFilename;

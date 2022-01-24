@@ -9,9 +9,25 @@ import {
   POST_GET_REQUEST,
   POST_GET_SUCCESS,
   POST_GET_FAIL,
+  POST_DELETE_REQUEST,
+  POST_DELETE_SUCCESS,
+  POST_DELETE_FAIL,
 } from "../constants/postConstants";
 
 import dayjs from "dayjs";
+
+export const postDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case POST_DELETE_REQUEST:
+      return { loading: true };
+    case POST_DELETE_SUCCESS:
+      return { loading: false, message: action.payload };
+    case POST_DELETE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 export const postReadReducer = (state = {}, action) => {
   switch (action.type) {

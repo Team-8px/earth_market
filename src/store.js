@@ -10,29 +10,39 @@ import {
 import {
   productCreateReducer,
   productListReducer,
+  productUpdateReducer,
+  productReadReducer,
+  productDeleteReducer,
 } from "./reducers/productReducers";
 import {
   postCreateReducer,
   postListReducer,
   postReadReducer,
+  postDeleteReducer,
 } from "./reducers/postReducers";
 import {
   commentCreateReducer,
   commentListReducer,
+  commentDeleteReducer,
 } from "./reducers/commentReducer";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userJoinMembership: userJoinMembershipReducer,
   productCreate: productCreateReducer,
-  updateUserProfile: userUpdateReducer,
-  postCreate: postCreateReducer,
-  comment: commentCreateReducer,
-  commentList: commentListReducer,
+  productRead: productReadReducer,
+  productDelete: productDeleteReducer,
+  productUpdate: productUpdateReducer,
   productList: productListReducer,
+  userUpdateProfile: userUpdateReducer,
+  userReadProfile: userProfileReducer,
+  commentCreate: commentCreateReducer,
+  commentList: commentListReducer,
+  commentDelete: commentDeleteReducer,
+  postCreate: postCreateReducer,
   postList: postListReducer,
   postRead: postReadReducer,
-  userProfile: userProfileReducer,
+  postDelete: postDeleteReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
