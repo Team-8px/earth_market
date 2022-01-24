@@ -13,7 +13,6 @@ export function HeaderButton() {
         <HeaderWrap>
           <HeaderLinkImg src={HeaderBackImg} />
         </HeaderWrap>
-        <Button size="ms">저장</Button>
       </HeaderContainer>
     </HeaderLayOut>
   );
