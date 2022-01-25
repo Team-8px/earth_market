@@ -2,8 +2,8 @@ import React from "react";
 import { HeaderHome } from "../../../components/Header";
 
 //스타일 컴포넌트
-import { MainLayOut, NoneFeed } from "./index.style";
-
+import { MainLayOut} from "./index.style";
+import { NoneFeed } from "../../../components/NoneFeed";
 const HomeMain = () => {
   return (
     // 레이아웃 속성 확인하기
