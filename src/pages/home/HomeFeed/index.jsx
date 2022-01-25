@@ -23,6 +23,7 @@ const HomeFeed = () => {
           date="2022년 1월 18일"
           likeCount="999"
           commentCount="999"
+          isDialog={isDialog}
         />
         <Post
           authorId="테스트입니다"
@@ -31,6 +32,7 @@ const HomeFeed = () => {
           date="2022년 1월 18일"
           likeCount="999"
           commentCount="999"
+          isDialog={isDialog}
         />
         <Post
           authorId="테스트입니다"
@@ -39,6 +41,7 @@ const HomeFeed = () => {
           date="2022년 1월 18일"
           likeCount="999"
           commentCount="999"
+          isDialog={isDialog}
         />
         <button type="button" onClick={isDialog}>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque
