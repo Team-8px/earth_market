@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HeaderChat } from "../../../components/Header";
 import { MainLayOut } from "./index.style";
 import { Alert, AlertButton } from "../../../components/Alert";
-import { HiddenMenu, AlertBtn } from "../../../components/HiddenMenu";
+import { HiddenMenu, AlertBtn, ListBtn } from "../../../components/HiddenMenu";
 
 const ChatRoom = () => {
   // 🕹 네비게이션 메뉴
@@ -23,14 +23,20 @@ const ChatRoom = () => {
             채팅방 나가기
           </AlertBtn>
         </li>
+        <li>
+          <ListBtn type="button" isDialog={isNavDialog}>
+            임시 모달 창 끄기
+          </ListBtn>
+        </li>
       </HiddenMenu>
-      {/* 🕹 Nav Al ert */}
+      {/* 🕹 Nav Alert */}
       <Alert visible={navAlert} messageText="채팅방을 나가시겠어요?">
         <li>
           <AlertButton type="button" isAlert={isNavAlert}>
             나가기
           </AlertButton>
         </li>
+
         <li>
           <AlertButton type="button" isAlert={isNavAlert}>
             취소
