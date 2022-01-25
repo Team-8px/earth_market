@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Alert, AlertButton } from "../../../components/Alert";
 //스타일 컴포넌트
 import { HeaderHome } from "../../../components/Header";
 import { HiddenMenu, HiddenButton } from "../../../components/HiddenMenu";
@@ -6,11 +7,17 @@ import Post from "../../../components/Post";
 import { MainLayOut } from "./index.style";
 
 const HomeFeed = () => {
-  const [dialog, setDialog] = useState(false);
-  const [alert, setAlert] = useState(false);
+  // 게시글 메뉴
+  const [postDialog, setPostDialog] = useState(false);
+  const [postAlert, setPostAlert] = useState(false);
+  const isPostDialog = () => setPostDialog(!postDialog);
+  const isPostAlert = () => setPostAlert(!postAlert);
 
-  const isDialog = () => setDialog(!dialog);
-  const isAlert = () => setAlert(!alert);
+  // 네비게이션 메뉴
+  const [navDialog, setNavDialog] = useState(false);
+  const [navAlert, setNavAlert] = useState(false);
+  const isNavDialog = () => setNavDialog(!navDialog);
+  const isNavAlert = () => setNavAlert(!navAlert);
 
   return (
     <>
@@ -23,7 +30,7 @@ const HomeFeed = () => {
           date="2022년 1월 18일"
           likeCount="999"
           commentCount="999"
-          isDialog={isDialog}
+          isDialog={isPostDialog}
         />
         <Post
           authorId="테스트입니다"
@@ -32,7 +39,7 @@ const HomeFeed = () => {
           date="2022년 1월 18일"
           likeCount="999"
           commentCount="999"
-          isDialog={isDialog}
+          isDialog={isPostDialog}
         />
         <Post
           authorId="테스트입니다"
@@ -41,41 +48,49 @@ const HomeFeed = () => {
           date="2022년 1월 18일"
           likeCount="999"
           commentCount="999"
-          isDialog={isDialog}
+          isDialog={isPostDialog}
         />
-        <button type="button" onClick={isDialog}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque
-          eveniet, incidunt modi deleniti quia repellat delectus ipsam eius
-          asperiores quod reprehenderit similique blanditiis quos, vel libero
-          nesciunt consequatur expedita ipsum. Aperiam totam assumenda facere
-          dolor alias deserunt a necessitatibus ex quidem ratione provident,
-          corrupti repellendus fugit. Aperiam facilis in magnam ducimus.
-          Dignissimos repudiandae laudantium rem odio. Nostrum distinctio iste
-          aut Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
-          iure deserunt? Itaque incidunt dolores suscipit, illo debitis
-          praesentium harum alias ex nesciunt ut nemo, sequi hic veniam beatae
-          dignissimos cumque! Dignissimos at, excepturi iste ea esse ducimus
-          sunt qui quia voluptate aut ratione quam eum quibusdam! Laborum
-          voluptates numquam qui architecto eum explicabo voluptatem ratione.
-          Similique repellendus saepe neque velit. Velit placeat, similique
-          corporis sint consequuntur reiciendis officia quia quidem. Explicabo
-          ab vero tempora aliquam natus pariatur, veritatis accusamus. Error
-          maiores veniam iste mollitia similique deleniti cumque soluta beatae
-          quasi.
-          {/* 2022년 1월 21일 오후 7시 작업중
-          현재 아무것도 진행하지 않았음 
-          Modal창 구현을 우선 해야할 것 같음
-          */}
-        </button>
       </MainLayOut>
-      <HiddenMenu visible={dialog}>
+
+      {/* 게시글 모달 */}
+      <HiddenMenu visible={postDialog}>
         <li>
-          <HiddenButton type="button" isAlert={isAlert} visible={dialog}>
-            로그아웃 창입니다.
+          <HiddenButton
+            type="button"
+            isAlert={isPostAlert}
+            visible={postDialog}
+          >
+            신고하기
           </HiddenButton>
         </li>
         <li>
-          <HiddenButton type="button" isDialog={isDialog}>
+          <HiddenButton type="button" isDialog={isPostDialog}>
+            모달창 닫기
+          </HiddenButton>
+        </li>
+      </HiddenMenu>
+
+      {/* 게시글 Alert */}
+      <Alert visible={postAlert} messageText="신고하시겠습니까?">
+        <li>
+          <AlertButton type="button">네</AlertButton>
+        </li>
+        <li>
+          <AlertButton type="button" isAlert={isPostAlert}>
+            아니요
+          </AlertButton>
+        </li>
+      </Alert>
+
+      {/* 게시글 모달 */}
+      <HiddenMenu visible={navDialog}>
+        <li>
+          <HiddenButton type="button" isAlert={isNavAlert} visible={navDialog}>
+            신고하기
+          </HiddenButton>
+        </li>
+        <li>
+          <HiddenButton type="button" isDialog={isNavDialog}>
             모달창 닫기
           </HiddenButton>
         </li>
