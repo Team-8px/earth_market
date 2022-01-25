@@ -116,10 +116,11 @@ const Button = styled.button`
   line-height: 18px;
 `;
 
-export function HiddenButton({ children, isDialog, isAlert, visible }) {
-  return (
-    <Button onClick={visible === true ? isAlert : isDialog}>{children}</Button>
-  );
+export function ListBtn({ children, isDialog }) {
+  return <Button onClick={isDialog}>{children}</Button>;
+}
+export function AlertBtn({ children, isAlert }) {
+  return <Button onClick={isAlert}>{children}</Button>;
 }
 
 export function HiddenMenu({ children, visible }) {

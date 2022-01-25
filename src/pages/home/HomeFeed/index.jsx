@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Alert, AlertButton } from "../../../components/Alert";
 //스타일 컴포넌트
 import { HeaderHome } from "../../../components/Header";
-import { HiddenMenu, HiddenButton } from "../../../components/HiddenMenu";
+import { HiddenMenu, ListBtn, AlertBtn } from "../../../components/HiddenMenu";
 import Post from "../../../components/Post";
 import { MainLayOut } from "./index.style";
 
@@ -52,21 +52,17 @@ const HomeFeed = () => {
         />
       </MainLayOut>
 
-      {/* 게시글 모달 */}
+      {/* 게시글 Modal */}
       <HiddenMenu visible={postDialog}>
         <li>
-          <HiddenButton
-            type="button"
-            isAlert={isPostAlert}
-            visible={postDialog}
-          >
+          <AlertBtn type="button" isAlert={isPostAlert}>
             신고하기
-          </HiddenButton>
+          </AlertBtn>
         </li>
         <li>
-          <HiddenButton type="button" isDialog={isPostDialog}>
+          <ListBtn type="button" isDialog={isPostDialog}>
             모달창 닫기
-          </HiddenButton>
+          </ListBtn>
         </li>
       </HiddenMenu>
 
