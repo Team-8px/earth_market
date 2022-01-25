@@ -71,18 +71,18 @@ const HomeFeed = () => {
       </HiddenMenu>
 
       {/* 게시글 Alert */}
-      <Alert visible={postAlert} messageText="신고하시겠습니까?">
-        <li>
-          <AlertButton type="button">네</AlertButton>
-        </li>
+      <Alert visible={postAlert} messageText="게시글을 신고하시겠어요?">
         <li>
           <AlertButton type="button" isAlert={isPostAlert}>
-            아니요
+            취소
           </AlertButton>
+        </li>
+        <li>
+          <AlertButton type="button">신고</AlertButton>
         </li>
       </Alert>
 
-      {/* 게시글 모달 */}
+      {/* 게시글 모달
       <HiddenMenu visible={navDialog}>
         <li>
           <HiddenButton type="button" isAlert={isNavAlert} visible={navDialog}>
@@ -94,7 +94,7 @@ const HomeFeed = () => {
             모달창 닫기
           </HiddenButton>
         </li>
-      </HiddenMenu>
+      </HiddenMenu> */}
     </>
   );
 };
