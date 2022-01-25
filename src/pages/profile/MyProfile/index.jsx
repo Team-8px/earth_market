@@ -14,8 +14,8 @@ import {
   UserPostWrapper,
 } from "./index.style";
 import DisplayHandler from "../../../components/DisplayHandler";
-import Alert from "../../../components/Alert";
-import HiddenMenu from "../../../components/HiddenMenu";
+import { Alert, AlertButton } from "../../../components/Alert";
+import { HiddenMenu, HiddenButton } from "../../../components/HiddenMenu";
 import { HeaderBasic } from "../../../components/Header";
 import UserInfo from "../../../components/UserInfo";
 const MyProfile = () => {
@@ -26,28 +26,17 @@ const MyProfile = () => {
   const { image, username, accountname, intro, followerCount, followingCount } =
     useSelector(state => state.userProfile, shallowEqual);
 
-  // <!----------스타일 관련 상태관리---------->
-  const [dialog, setDialog] = useState(false);
-  const [alert, setAlert] = useState(false);
+  // 게시글 메뉴
+  const [postDialog, setPostDialog] = useState(false);
+  const [postAlert, setPostAlert] = useState(false);
+  const isPostDialog = () => setPostDialog(!postDialog);
+  const isPostAlert = () => setPostAlert(!postAlert);
 
-  const onAlert = () => {
-    console.log("확인");
-    setAlert(true);
-  };
-  const offAlert = () => {
-    console.log("취소");
-    setAlert(false);
-  };
-
-  const onDialog = () => {
-    console.log("확인");
-    setDialog(true);
-  };
-  const offDialog = () => {
-    console.log("취소");
-    setDialog(false);
-  };
-  // <!----------스타일 관련 상태관리---------->
+  // 네비게이션 메뉴
+  const [navDialog, setNavDialog] = useState(false);
+  const [navAlert, setNavAlert] = useState(false);
+  const isNavDialog = () => setNavDialog(!navDialog);
+  const isNavAlert = () => setNavAlert(!navAlert);
 
   useEffect(() => {
     dispatch(listProducts());
@@ -92,47 +81,60 @@ const MyProfile = () => {
         <UserPostContainer>
           <UserPostWrapper>
             <DisplayHandler></DisplayHandler>
-            <h1>게시글 목록</h1>
-            {posts &&
-              posts.map(post => {
-                /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
-                const postImages = post.image.split(",");
-
-                return (
-                  <div key={post.id}>
-                    <div style={{ display: "flex" }}>
-                      {postImages.map((postImage, index) => {
-                        return (
-                          <img
-                            key={index}
-                            src={`${API_URL}/${postImage}`}
-                            alt="상품사진"
-                          />
-                        );
-                      })}
-                    </div>
-                    <div>
-                      <ul>
-                        <li>
-                          <Link to={`/post${post.id}`}>게시글 링크</Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                );
-              })}
           </UserPostWrapper>
         </UserPostContainer>
       </MainLayOut>
-      <button type="button" onClick={onDialog}>
-        임시 열기 버튼입니다
-      </button>
-      {/* <HiddenMenu visible={dialog} onAlert={onAlert} offDialog={offDialog} />
-      <Alert
-        visible={alert}
-        offAlert={offAlert}
-        MessageText="로그아웃 하시겠습니까?"
-      /> */}
+      {/* 게시글 모달 */}
+      <HiddenMenu visible={postDialog}>
+        <li>
+          <HiddenButton
+            type="button"
+            isAlert={isPostAlert}
+            visible={postDialog}
+          >
+            신고하기
+          </HiddenButton>
+        </li>
+        <li>
+          <HiddenButton type="button" isDialog={isPostDialog}>
+            모달창 닫기
+          </HiddenButton>
+        </li>
+      </HiddenMenu>
+      {/* 게시글 Alert */}
+      <Alert visible={postAlert} messageText="게시글을 신고하시겠어요?">
+        <li>
+          <AlertButton type="button" isAlert={isPostAlert}>
+            취소
+          </AlertButton>
+        </li>
+        <li>
+          <AlertButton type="button">신고</AlertButton>
+        </li>
+      </Alert>
+      게시글 모달
+      <HiddenMenu visible={navDialog}>
+        <li>
+          <HiddenButton type="button" isAlert={isNavAlert} visible={navDialog}>
+            신고하기
+          </HiddenButton>
+        </li>
+        <li>
+          <HiddenButton type="button" isDialog={isNavDialog}>
+            모달창 닫기
+          </HiddenButton>
+        </li>
+      </HiddenMenu>
+      <Alert visible={postAlert} messageText="게시글을 신고하시겠어요?">
+        <li>
+          <AlertButton type="button" isAlert={isPostAlert}>
+            취소
+          </AlertButton>
+        </li>
+        <li>
+          <AlertButton type="button">신고</AlertButton>
+        </li>
+      </Alert>
     </>
   );
 };
