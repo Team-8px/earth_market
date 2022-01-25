@@ -24,15 +24,11 @@ main 브랜치를 통하여 프로젝트 완료
 
 ---
 
-```jsx
-// 예시
--Jy / Build_page - Jy / Build_Component - Jy / API_pages - Jy / Feat_ClickEvent;
-```
-
-- `Jy/Build_Page`: 퍼블리싱 관련
-- `Jy/Build_Component`: 공통 컴포넌트 생성 관련
-- `Jy/API_Pages`: API 작업 관련
-- `Jy/Feat_ClickEvent`: 기능 및 데이터 패칭 관련
+- `Bd_Page`: 퍼블리싱 관련
+- `Bd_Component`: 공통 컴포넌트 생성 관련
+- `API_Pages`: API 작업 관련
+- `Feat_ClickEvent`: 기능 및 데이터 패칭 관련
+- `Refactor_Pages`: 리팩토링 및 수정 관련
 
 # 컨벤션
 
@@ -57,7 +53,7 @@ main 브랜치를 통하여 프로젝트 완료
 ---
 
 ```css
-※커밋 종류 = 추가, 수정, 삭제, 스타일링 등...
+※커밋종류 = 추가, 수정, 삭제, 스타일링 등...
 
 --- 제목 ---
 [커밋 종류]: [작업내용을 50자 이내 요약] --- 본문 --- 1 무엇을 수정했는지 2 왜

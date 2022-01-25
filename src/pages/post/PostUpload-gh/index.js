@@ -70,11 +70,11 @@ const PostUploadGH = () => {
           </label>
         </div>
 
-        <div>
+        <div style={{ display: "flex" }}>
           {myImage &&
             myImage.map((x, i) => {
               return (
-                <div key={i}>
+                <div style={{ height: "100px", width: "100px" }} key={i}>
                   <img src={x.previewImg} alt="미리보기 사진" />
                 </div>
               );

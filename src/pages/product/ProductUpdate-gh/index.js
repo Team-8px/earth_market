@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getProduct } from "../../../actions/productActions";
+import { updateProduct } from "../../../actions/productActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
 
 // 유효성검사 로직
@@ -14,9 +15,16 @@ import { imageUploadsHandler } from "../../../util/imageUploads";
 // } = useForm();
 
 const ProductModification = () => {
+  const [updateImage, setUpdateImage] = useState([]);
+  const [isUpdatedImage, setIsUpdatedImage] = useState(false);
   const { register, handleSubmit } = useForm();
   const { productId } = useParams();
   const dispatch = useDispatch();
+
+  const { itemName, price, link, image } = useSelector(
+    state => state.productRead,
+    shallowEqual,
+  );
 
   /* 상품 조회 => 이미지 및 정보 미리보기 */
 
@@ -24,26 +32,56 @@ const ProductModification = () => {
     dispatch(getProduct(productId));
   }, [dispatch, productId]);
 
+  const previewImage = e => {
+    const nowSelectImageList = e.target.files;
+
+    const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
+
+    setUpdateImage(nowImageUrl);
+
+    setIsUpdatedImage(true);
+  };
+
   /* 상품 정보 수정하기 */
   const onSubmit = async data => {
-    const { profileImg, username, accountname, intro } = data;
-    const image = await imageUploadsHandler(profileImg[0]);
-    //dispatch(updateUserProfile(image, username, accountname, intro));
+    const { itemImg, itemName, price, link } = data;
+
+    const image = await imageUploadsHandler(itemImg[0]);
+
+    console.log(image, "수정이미지 onSubmit");
+
+    dispatch(updateProduct(image, itemName, price, link, productId));
   };
 
   return (
     <>
+      <p>
+        <Link to="/gh/profile/my">돌아가기 링크</Link>
+      </p>
+      {/* 상품 사진 미리보기 */}
+      <div>
+        <img
+          style={{ height: "100px", width: "100px" }}
+          src={isUpdatedImage ? updateImage : image}
+          alt="상품 사진"
+        />
+
+        <h1>{isUpdatedImage ? updateImage : image}</h1>
+      </div>
       <br />
 
-      {/* 상품 이미지 수정 */}
       <form onSubmit={handleSubmit(onSubmit)}>
+        {/* 상품 이미지 수정 / 파일 업로드 */}
         <div>
-          <input
-            type="file"
-            accept="image/jpg,impge/png,image/jpeg,image/gif"
-            name="itemImage"
-            {...register("itemImage")}
-          ></input>
+          <label onChange={previewImage} htmlFor="itemImg">
+            <input
+              id="itemImg"
+              type="file"
+              accept="image/jpg,impge/png,image/jpeg,image/gif"
+              name="itemImg"
+              {...register("itemImg")}
+            ></input>
+          </label>
         </div>
 
         {/* 상품명 수정 */}

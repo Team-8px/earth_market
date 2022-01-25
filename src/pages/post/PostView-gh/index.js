@@ -3,18 +3,23 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getUserMyProfile } from "../../../actions/userActions";
 import { getPost } from "../../../actions/postActions";
-import { getCommentList } from "../../../actions/commentAction";
-import { API_URL } from "../../../constants/defaultUrl";
+import { getCommentList, deleteComment } from "../../../actions/commentAction";
 import Comment from "../../../components/Comment-gh";
 // 댓글 생성 부분 컴포넌트만 다시 불러와서 적용할 예정입니다.
 
 const PostView = () => {
-  const [comment, setComment] = useState();
+  //const [comment, setComment] = useState();
+
+  const dispatch = useDispatch();
 
   const { postId } = useParams();
 
+  const { craeteCommentId } = useSelector(state => state.commentCreate);
+
+  const { deleteCommentId } = useSelector(state => state.commentDelete);
+
   const { image, username, accountname } = useSelector(
-    state => state.userProfile,
+    state => state.userReadProfile,
     shallowEqual,
   );
 
@@ -26,7 +31,13 @@ const PostView = () => {
     shallowEqual,
   );
 
-  const dispatch = useDispatch();
+  const onclickDeleteComment = commentId => {
+    dispatch(deleteComment(postId, commentId));
+  };
+
+  /* const getComment = data => {
+    setComment(data);
+  }; */
 
   useEffect(() => {
     dispatch(getUserMyProfile());
@@ -38,11 +49,7 @@ const PostView = () => {
 
   useEffect(() => {
     dispatch(getCommentList(postId));
-  }, [dispatch, postId, comment]);
-
-  const getComment = data => {
-    setComment(data);
-  };
+  }, [dispatch, postId, craeteCommentId, deleteCommentId]);
 
   return (
     <>
@@ -73,7 +80,7 @@ const PostView = () => {
                   <img
                     style={{ height: "100px", width: "100px" }}
                     key={index}
-                    src={`${API_URL}/${postImage}`}
+                    src={postImage}
                     alt="게시글 사진"
                   />
                 );
@@ -86,19 +93,35 @@ const PostView = () => {
       </div>
       {/* 댓글리스트 */}
       <div>
+        <br />
+        <br />
         <h1>댓글 리스트</h1>
+        <br />
+        <br />
         {commentList &&
-          commentList.map((comment, index) => {
+          commentList.map(comment => {
             return (
               <ul key={comment.id}>
                 <li>댓글내용: {comment.content}</li>
                 <li>작성자: {comment.id}</li>
+                <li
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    onclickDeleteComment(comment.id);
+                  }}
+                >
+                  댓글 삭제 클릭 모달창
+                </li>
+                <br />
+                <br />
               </ul>
             );
           })}
       </div>
+      <br />
+      <br />
       {/* 댓글생성 */}
-      <Comment getComment={getComment} postId={postId} />
+      <Comment postId={postId} />
     </>
   );
 };

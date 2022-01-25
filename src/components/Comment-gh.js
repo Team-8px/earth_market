@@ -3,17 +3,17 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { commentCreateAction } from "../actions/commentAction";
 
-const Comment = ({ postId, getComment }) => {
+const Comment = ({ postId }) => {
   const { register, handleSubmit } = useForm();
 
   const dispatch = useDispatch();
 
-  const onSubmit = async data => {
+  const onSubmit = data => {
     const { comment } = data;
 
-    getComment(comment);
+    //getComment(comment);
 
-    await dispatch(commentCreateAction(comment, postId));
+    dispatch(commentCreateAction(comment, postId));
   };
 
   return (

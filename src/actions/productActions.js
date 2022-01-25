@@ -9,9 +9,67 @@ import {
   PRODUCT_READ_REQUEST,
   PRODUCT_READ_SUCCESS,
   PRODUCT_READ_FAIL,
+  PRODUCT_UPDATE_REQUEST,
+  PRODUCT_UPDATE_SUCCESS,
+  PRODUCT_UPDATE_FAIL,
+  PRODUCT_DELETE_REQUEST,
+  PRODUCT_DELETE_SUCCESS,
+  PRODUCT_DELETE_FAIL,
 } from "../constants/productConstants";
 import { logout } from "./userActions";
 import { API_URL } from "../constants/defaultUrl";
+
+export const updateProduct =
+  (image, itemName, price, link, productId) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: PRODUCT_UPDATE_REQUEST,
+      });
+
+      let reqData = { product: {} };
+
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      if (!!image) reqData.product.itemImage = image;
+      if (!!itemName) reqData.product.itemName = itemName;
+      if (!!price) reqData.product.price = price;
+      if (!!link) reqData.product.link = link;
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.user.token}`,
+        },
+      };
+
+      const {
+        data: { product },
+      } = await axios.put(`${API_URL}/product/${productId}`, reqData, config);
+
+      dispatch({
+        type: PRODUCT_UPDATE_SUCCESS,
+        payload: {
+          itemName: product.itemName,
+          price: product.price,
+          link: product.link,
+          itemImage: product.itemImage,
+        },
+      });
+
+      //document.location.href = "/gh/profile/my";
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({
+        type: PRODUCT_UPDATE_FAIL,
+        payload: message,
+      });
+    }
+  };
 
 export const getProduct = productId => async (dispatch, getState) => {
   try {
@@ -27,14 +85,13 @@ export const getProduct = productId => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(
-      `${API_URL}/product/detail/${productId}`,
-      config,
-    );
-    console.log(data);
+    const {
+      data: { product },
+    } = await axios.get(`${API_URL}/product/detail/${productId}`, config);
+
     dispatch({
       type: PRODUCT_READ_SUCCESS,
-      payload: data,
+      payload: product,
     });
   } catch (error) {
     dispatch({
@@ -124,3 +181,45 @@ export const createProduct =
       });
     }
   };
+
+export const deleteProduct = productId => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: PRODUCT_DELETE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.user.token}`,
+      },
+    };
+
+    const { data } = await axios.delete(
+      `${API_URL}/product/${productId}`,
+      config,
+    );
+
+    dispatch({
+      type: PRODUCT_DELETE_SUCCESS,
+      payload: data,
+    });
+
+    document.location.href = "/gh/profile/my";
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      //dispatch(logout());
+    }
+    dispatch({
+      type: PRODUCT_DELETE_FAIL,
+      payload: message,
+    });
+  }
+};
