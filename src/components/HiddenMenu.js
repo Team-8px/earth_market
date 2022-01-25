@@ -6,7 +6,7 @@
  * 모르겠습니다. 재사용 하기 위해서는 안에 list 요소들의 개수를 동적으로 추가해줘야하는데
  * 아직은 그 방법을 모르겠네요
  */
-import React, { useEffect, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import styled, { css, keyframes } from "styled-components";
 
 const fadeIn = keyframes`
@@ -105,7 +105,7 @@ const HiddenMenuList = styled.ul`
   }
 `;
 
-const StyledLink = styled.button`
+const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -116,7 +116,13 @@ const StyledLink = styled.button`
   line-height: 18px;
 `;
 
-function HiddenMenu({ visible, settingText, logoutText, onAlert, offDialog }) {
+export function HiddenButton({ children, isDialog, isAlert, visible }) {
+  return (
+    <Button onClick={visible === true ? isAlert : isDialog}>{children}</Button>
+  );
+}
+
+export function HiddenMenu({ children, visible }) {
   const [animate, setAnimate] = useState(false);
   const [localVisible, setLocalVisible] = useState(visible);
 
@@ -132,21 +138,7 @@ function HiddenMenu({ visible, settingText, logoutText, onAlert, offDialog }) {
   if (!localVisible && !animate) return null;
   return (
     <HiddenMenuContainer disappear={!visible}>
-      <HiddenMenuList disappear={!visible}>
-        <li>
-          <StyledLink type="button">{settingText}</StyledLink>
-        </li>
-        <li>
-          <StyledLink type="button" onClick={onAlert}>
-            {logoutText}
-          </StyledLink>
-        </li>
-        <li>
-          <StyledLink type="button" onClick={offDialog}>
-            임시 닫기 버튼
-          </StyledLink>
-        </li>
-      </HiddenMenuList>
+      <HiddenMenuList disappear={!visible}>{children}</HiddenMenuList>
     </HiddenMenuContainer>
   );
 }
@@ -155,5 +147,3 @@ HiddenMenu.defaultProps = {
   settingText: "사용자 설정 및 프로필",
   logoutText: "로그아웃",
 };
-
-export default HiddenMenu;

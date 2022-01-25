@@ -52,12 +52,12 @@ const YourProfile = () => {
       <button type="button" onClick={onDialog}>
         클릭하면 열립니다
       </button>
-      <HiddenMenu visible={dialog} onAlert={onAlert} offDialog={offDialog} />
+      {/* <HiddenMenu visible={dialog} onAlert={onAlert} offDialog={offDialog} />
       <Alert
         visible={alert}
         offAlert={offAlert}
         MessageText="로그아웃 하시겠습니까?"
-      />
+      /> */}
     </>
   );
 };

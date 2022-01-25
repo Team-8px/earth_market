@@ -5,7 +5,7 @@ import { getUserMyProfile } from "../../../actions/userActions";
 import { getPost } from "../../../actions/postActions";
 import { getCommentList } from "../../../actions/commentAction";
 import { API_URL } from "../../../constants/defaultUrl";
-import { MainLayOut} from "../PostUpload/index.style";
+import { MainLayOut } from "../PostUpload/index.style";
 import { CommentWrapper } from "./index.style";
 import Post from "../../../components/Post";
 import { HeaderBasic } from "../../../components/Header";
@@ -49,54 +49,7 @@ const PostView = () => {
   return (
     <MainLayOut>
       <HeaderBasic />
-      {/* 나의 프로필 정보 */}
-      <div>
-        <h1>프로필정보</h1>
-        <ul>
-          <li>
-            <img src={image} alt="프로필 사진" />
-          </li>
-          <li>{username}</li>
-          <li>{accountname}</li>
-        </ul>
-      </div>
-      {/* 나의 상세 게시글 정보 */}
-      <div>
-        <h1>게시글 정보</h1>
-        <ul>
-          <li>content: {content}</li>
-          <li>
-            {postImages &&
-              postImages.map((postImage, index) => {
-                return (
-                  <img
-                    key={index}
-                    src={`${API_URL}/${postImage}`}
-                    alt="프로필 사진"
-                  />
-                );
-              })}
-          </li>
-          <li>updatedAt: {updatedAt}</li>
-          <li>heartCount: {heartCount}</li>
-          <li>commentCount: {commentCount}</li>
-        </ul>
-      </div>
-      <CommentWrapper>
-      {/* 댓글리스트 */}
-      <div>
-        <h1>댓글 리스트</h1>
-        {commentList &&
-          commentList.map((comment, index) => {
-            return (
-              <ul key={comment.id}>
-                <li>댓글내용: {comment.content}</li>
-                <li>작성자: {comment.id}</li>
-              </ul>
-            );
-          })}
-      </div>
-      </CommentWrapper>
+      <CommentWrapper></CommentWrapper>
       <h1>Post view</h1>
       <Post
         authorId="테스트입니다"
