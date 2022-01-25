@@ -34,19 +34,19 @@ const PostView = () => {
 
   // 스타일 컴포넌트 관련 상태관리
 
-  // 게시글 메뉴
+  // 🏞 게시글 메뉴
   const [postDialog, setPostDialog] = useState(false);
   const [postAlert, setPostAlert] = useState(false);
   const isPostDialog = () => setPostDialog(!postDialog);
   const isPostAlert = () => setPostAlert(!postAlert);
 
-  // 네비게이션 메뉴
+  // 🕹 네비게이션 메뉴
   const [navDialog, setNavDialog] = useState(false);
   const [navAlert, setNavAlert] = useState(false);
   const isNavDialog = () => setNavDialog(!navDialog);
   const isNavAlert = () => setNavAlert(!navAlert);
 
-  // 댓글 메뉴
+  // 💬 댓글 메뉴
   const [chatDialog, setChatDialog] = useState(false);
   const [chatAlert, setChatAlert] = useState(false);
   const isChatDialog = () => setChatDialog(!chatDialog);
