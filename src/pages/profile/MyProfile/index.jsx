@@ -16,9 +16,9 @@ import {
 import DisplayHandler from "../../../components/DisplayHandler";
 import { Alert, AlertButton } from "../../../components/Alert";
 import { HiddenMenu, ListBtn, AlertBtn } from "../../../components/HiddenMenu";
+import Post from "../../../components/Post";
 import { HeaderBasic } from "../../../components/Header";
 import UserInfo from "../../../components/UserInfo";
-import Post from "../../../components/Post";
 const MyProfile = () => {
   const dispatch = useDispatch();
 
@@ -114,6 +114,7 @@ const MyProfile = () => {
           <AlertButton type="button">신고</AlertButton>
         </li>
       </Alert>
+      {/* Nav Modal */}
       <HiddenMenu visible={navDialog}>
         <li>
           <ListBtn type="button" visible={navDialog}>
@@ -131,6 +132,7 @@ const MyProfile = () => {
           </ListBtn>
         </li>
       </HiddenMenu>
+      {/* Nav Alert */}
       <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
         <li>
           <AlertButton type="button" isAlert={isNavAlert}>
