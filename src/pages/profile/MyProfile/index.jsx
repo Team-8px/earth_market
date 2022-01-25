@@ -15,9 +15,10 @@ import {
 } from "./index.style";
 import DisplayHandler from "../../../components/DisplayHandler";
 import { Alert, AlertButton } from "../../../components/Alert";
-import { HiddenMenu, HiddenButton } from "../../../components/HiddenMenu";
+import { HiddenMenu, ListBtn, AlertBtn } from "../../../components/HiddenMenu";
 import { HeaderBasic } from "../../../components/Header";
 import UserInfo from "../../../components/UserInfo";
+import Post from "../../../components/Post";
 const MyProfile = () => {
   const dispatch = useDispatch();
 
@@ -49,7 +50,7 @@ const MyProfile = () => {
       <MainLayOut>
         {/* 유저 프로필 */}
         {/* header */}
-        <HeaderBasic />
+        <HeaderBasic isDialog={isNavDialog} />
         <UserInfo></UserInfo>
         {/* 상품목록 */}
         <ProductContainer>
@@ -81,24 +82,47 @@ const MyProfile = () => {
         <UserPostContainer>
           <UserPostWrapper>
             <DisplayHandler></DisplayHandler>
+            <Post
+              authorId="테스트입니다"
+              authorName="this is test"
+              content="Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content"
+              date="2022년 1월 18일"
+              likeCount="999"
+              commentCount="999"
+              isDialog={isPostDialog}
+            />
+            <Post
+              authorId="테스트입니다"
+              authorName="this is test"
+              content="Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content"
+              date="2022년 1월 18일"
+              likeCount="999"
+              commentCount="999"
+              isDialog={isPostDialog}
+            />
+            <Post
+              authorId="테스트입니다"
+              authorName="this is test"
+              content="Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content"
+              date="2022년 1월 18일"
+              likeCount="999"
+              commentCount="999"
+              isDialog={isPostDialog}
+            />
           </UserPostWrapper>
         </UserPostContainer>
       </MainLayOut>
-      {/* 게시글 모달 */}
+      {/* 게시글 Modal */}
       <HiddenMenu visible={postDialog}>
         <li>
-          <HiddenButton
-            type="button"
-            isAlert={isPostAlert}
-            visible={postDialog}
-          >
+          <AlertBtn type="button" isAlert={isPostAlert}>
             신고하기
-          </HiddenButton>
+          </AlertBtn>
         </li>
         <li>
-          <HiddenButton type="button" isDialog={isPostDialog}>
+          <ListBtn type="button" isDialog={isPostDialog}>
             모달창 닫기
-          </HiddenButton>
+          </ListBtn>
         </li>
       </HiddenMenu>
       {/* 게시글 Alert */}
@@ -112,27 +136,31 @@ const MyProfile = () => {
           <AlertButton type="button">신고</AlertButton>
         </li>
       </Alert>
-      게시글 모달
       <HiddenMenu visible={navDialog}>
         <li>
-          <HiddenButton type="button" isAlert={isNavAlert} visible={navDialog}>
-            신고하기
-          </HiddenButton>
+          <ListBtn type="button" visible={navDialog}>
+            설정 및 개인정보
+          </ListBtn>
         </li>
         <li>
-          <HiddenButton type="button" isDialog={isNavDialog}>
-            모달창 닫기
-          </HiddenButton>
+          <AlertBtn type="button" isAlert={isNavAlert}>
+            로그아웃
+          </AlertBtn>
+        </li>
+        <li>
+          <ListBtn type="button" isDialog={isNavDialog}>
+            임시 모달 창 닫기 버튼
+          </ListBtn>
         </li>
       </HiddenMenu>
-      <Alert visible={postAlert} messageText="게시글을 신고하시겠어요?">
+      <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
         <li>
-          <AlertButton type="button" isAlert={isPostAlert}>
+          <AlertButton type="button" isAlert={isNavAlert}>
             취소
           </AlertButton>
         </li>
         <li>
-          <AlertButton type="button">신고</AlertButton>
+          <AlertButton type="button">로그아웃</AlertButton>
         </li>
       </Alert>
     </>

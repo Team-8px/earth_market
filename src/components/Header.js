@@ -40,14 +40,14 @@ export function HeaderHome() {
   );
 }
 
-export function HeaderBasic() {
+export function HeaderBasic({ isDialog }) {
   return (
     <HeaderLayOut>
       <HeaderContainer>
         <HeaderWrap>
           <HeaderLinkImg src={HeaderBackImg} />
         </HeaderWrap>
-        <HeaderLinkImg src={HeaderMoreImg} />
+        <HeaderLinkImg src={HeaderMoreImg} onClick={isDialog} />
       </HeaderContainer>
     </HeaderLayOut>
   );
