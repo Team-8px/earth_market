@@ -112,9 +112,7 @@ const PostView = () => {
       {/* 🕹 Nav Modal */}
       <HiddenMenu visible={navDialog}>
         <li>
-          <ListBtn type="button" visible={navDialog}>
-            설정 및 개인정보
-          </ListBtn>
+          <ListBtn type="button">설정 및 개인정보</ListBtn>
         </li>
         <li>
           <AlertBtn type="button" isAlert={isNavAlert}>
