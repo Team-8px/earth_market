@@ -53,7 +53,7 @@ export function HeaderBasic({ isDialog }) {
   );
 }
 
-export function HeaderChat() {
+export function HeaderChat({ isDialog }) {
   return (
     <HeaderLayOut>
       <HeaderContainer>
@@ -61,7 +61,7 @@ export function HeaderChat() {
           <HeaderLinkImg src={HeaderBackImg} />
           <HeaderTitle>애월읍 위니브 감귤농장</HeaderTitle>
         </HeaderWrap>
-        <HeaderLinkImg src={HeaderMoreImg} />
+        <HeaderLinkImg src={HeaderMoreImg} onClick={isDialog} />
       </HeaderContainer>
     </HeaderLayOut>
   );
