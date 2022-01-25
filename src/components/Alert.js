@@ -3,7 +3,7 @@
  * 화면에 로그아웃 하시겠습니까? 확인 취소 버튼이 나오게 됩니다.
  */
 
-import React, { useEffect, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 const slideUp = keyframes`
@@ -57,7 +57,7 @@ const AlertMenuList = styled.ul`
   }
 `;
 
-const CancelBtn = styled.button`
+const Button = styled.button`
   width: 100%;
   height: 46px;
   font-weight: 400;
@@ -65,17 +65,26 @@ const CancelBtn = styled.button`
   line-height: 18px;
 `;
 
-const LogOutBtn = styled.button`
-  width: 100%;
-  height: 46px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  border-left: 0.5px solid #dbdbdb;
-  color: #f26e22;
-`;
+function Container({ children }) {
+  return (
+    <AlertModalContainer>
+      <AlertModalWrapper>{children}</AlertModalWrapper>
+    </AlertModalContainer>
+  );
+}
 
-function Alert({ MessageText, visible, cancelText, logoutText, offAlert }) {
+function List({ children }) {
+  return <AlertMenuList>{children}</AlertMenuList>;
+}
+
+function Message({ children }) {
+  return <AlertMessage>{children}</AlertMessage>;
+}
+
+export function AlertButton({ children, isAlert }) {
+  return <Button onClick={isAlert}>{children}</Button>;
+}
+export function Alert({ children, visible, messageText }) {
   const [animate, setAnimate] = useState(false);
   const [localVisible, setLocalVisible] = useState();
 
@@ -90,28 +99,9 @@ function Alert({ MessageText, visible, cancelText, logoutText, offAlert }) {
   if (!localVisible && !animate) return null;
 
   return (
-    <AlertModalContainer>
-      <AlertModalWrapper>
-        <AlertMessage>{MessageText}</AlertMessage>
-        <AlertMenuList>
-          <li>
-            <CancelBtn type="button" onClick={offAlert}>
-              {cancelText}
-            </CancelBtn>
-          </li>
-          <li>
-            <LogOutBtn type="button">{logoutText}</LogOutBtn>
-          </li>
-        </AlertMenuList>
-      </AlertModalWrapper>
-    </AlertModalContainer>
+    <Container>
+      <Message>{messageText}</Message>
+      <List>{children}</List>
+    </Container>
   );
 }
-
-Alert.defaultProps = {
-  cancelText: "취소",
-  logoutText: "로그아웃",
-  MessageText: "MessageText",
-};
-
-export default Alert;
