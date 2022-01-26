@@ -21,7 +21,10 @@ export function HeaderButton () {
     return (
       <HeaderBox>
         <HeaderLinkImg src={HeaderBackImg} />
-        <HeaderInput placeholder="계정검색"></HeaderInput> 
+        <Label>
+          계정 검색창입니다.
+          <HeaderInput type="text" placeholder="계정검색" />
+        </Label>
       </HeaderBox>  
     )
   }
@@ -118,9 +121,15 @@ export function HeaderButton () {
       font-family: ${(props) => (props.fontWeigt === "400" ? "Spoqa Han Sans Neo R" : "Spoqa Han Sans Neo M")};
       font-size: ${(props) => (props.fontSize === "big" ? "20px" : "14px")};
   `
+
+  const Label = styled.label `
+      display: block;
+      width: 100%; 
+      font-size: 3px;
+      color: transparent;
+  `
   
   const HeaderInput = styled.input `
-      display: block;
       width: 100%; 
       height: 32px;
       background-color: #F2F2F2;
