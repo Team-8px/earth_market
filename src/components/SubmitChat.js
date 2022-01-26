@@ -5,8 +5,11 @@ import ProfileIcon from "../asset/icon/basic-profile.svg";
 export function SubmitChat () {
     return (
       <SubmitChatBox>
-        <ProfileLinkImg src={ProfileIcon} />
-        <SubmitChatInput placeholder="댓글 입력하기..."></SubmitChatInput> 
+        <ProfileLinkImg src={ProfileIcon} alt="프로필"/>
+        <SubmitChatLabel>
+          댓글 입력하기
+          <SubmitChatInput type="text" placeholder="댓글 입력하기..." />
+        </SubmitChatLabel>
         <SubmitChatButton>게시</SubmitChatButton>
       </SubmitChatBox>  
     )
@@ -30,6 +33,7 @@ export function SubmitChat () {
       padding: 12px 0;
       border-style: none;
       border-top: 0.5px solid #DBDBDB;
+      background-color: #fff;
   `
 
   const SubmitChatContainer = styled.section `
@@ -42,39 +46,36 @@ export function SubmitChat () {
       font-size: 14px;
   `
 
+  const  ProfileLinkImg = styled.img`  
+      width: 36px;
+      cursor: pointer;
+  `
 
-const  ProfileLinkImg = styled.img`  
-    width: 36px;
-    cursor: pointer;
-`
+  // 웹 접근성을 높이는 방법입니다.
+  const SubmitChatLabel = styled.label `
+      display: block;
+      width: 100%; 
+      font-size: 3px;
+      color: transparent;
+  `
 
-// const SubmitChatLabel = styled.label `
-   
-// `
-
-const SubmitChatInput = styled.input `
-display: block;
-width: 100%; 
-height: 32px;
-border-style: none;
-margin-left: 16px;
-
-&::placeholder {
-color: #C4C4C4;
-}
-&:focus {
-outline:none;
-}
-`
+  const SubmitChatInput = styled.input `
+      display: block;
+      border-style: none;
+      margin-left: 16px;
+      &::placeholder {
+        color: #C4C4C4;
+      }
+  `
 
 const SubmitChatButton = styled.button `
-font-family: "Spoqa Han Sans Neo M";
-display: block;
-width: 30px; 
-border-style: none;
-margin-right: 4px;
-color: #C4C4C4;
-&:focus {
-color: #F26E22;;
-}
-`
+      font-family: "Spoqa Han Sans Neo M";
+      display: block;
+      width: 30px; 
+      border-style: none;
+      margin-right: 4px;
+      color: #C4C4C4;
+      &:focus {
+        color: #F26E22;;
+      }
+  `
