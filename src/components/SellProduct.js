@@ -1,77 +1,100 @@
 import React from "react";
 import styled from "styled-components";
-import SellProductLink from "../asset/unsplash_4XoCxdMnWFg.jpg";
+import SellProductLink from "../asset/product-img-example-01.jpg";
 
-const SellProductContainer = styled.div`
-  /* display: flex;
+const SellProductLayOut = styled.article `
+`
+
+const SellProductContainer = styled.ul`
+  display: flex;
   font-weight: 400;
   font-size: 12px;
   line-height: 12px;
-  margin-bottom: 16px; */
+  overflow-x: scroll;
+  overflow-y: hidden;
+`;
+
+const SellProductWrapper = styled.li`
+  margin-right: 10px;
+  cursor: pointer;
+`;
+
+const ProductImgWrapper = styled.div`
+  border: 0.5px solid #dbdbdb;
+  border-radius: 8px;
 `;
 
 const SellProductImg = styled.img`
-  /* display: flex;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 12px;
-  margin-bottom: 16px; */
   width: 140px;
   height: 90px;
   border-radius: 8px;
   background-color: #C4C4C4;
-  /* background-image: url('../asset/unsplash_4XoCxdMnWFg.jpg' center ); */
 `;
 
 const SellProductTitle = styled.h2`
   font-size: 16px;
+  line-height: 1.2;
   font-family:'Spoqa Han Sans Neo B';
   margin-bottom: 16px;
 `;
 
-const ProductTitle = styled.p`
-  margin: 6px 0 4px;
+const TextWrap = styled.figcaption`
+  padding-top: 6px;
 `;
 
-const ProductPrice = styled.span`
-  /* display: inline-block; */
+const ProductTitle = styled.strong`
+  display: block;
+  line-height: 18px;
+  margin-bottom: 4px;
+`;
+
+const ProductPrice = styled.strong`
+  display: block;
   font-size: 12px;
   font-family:'Spoqa Han Sans Neo B';
   color: #F26E22;
-;
 `;
-
-
-
 
 function SellProduct () {
     return (
-        <article>
-            <SellProductTitle>상품 목록</SellProductTitle>
-            {/* {products &&
-            products.map((product, index) => {
-              return (
-                <div key={index} style={{ display: "flex" }}>
-                  <div>
-                    <img
-                      src={`${API_URL}/${product.itemImage}`}
-                      alt="상품사진"
-                    />
-                  </div>
-                  <div>
-                    <ul>
-                      <li>상품명: {product.itemName}</li>
-                      <li>상품가격: {product.price}</li>
-                      <li>상품링크: {product.link}</li>
-                    </ul>
-                  </div>
-                </div>
-              );
-            })} */}
-            <SellProductImg src={SellProductLink} width="100%"/>
-            <ProductTitle>애월읍 노지 감귤</ProductTitle>
-            <ProductPrice>35,000원</ProductPrice>
-        </article>
+        <SellProductLayOut>
+          <SellProductTitle>판매 중인 상품</SellProductTitle>
+          <SellProductContainer>
+            <SellProductWrapper>
+              <figure>
+                <ProductImgWrapper>
+                  <SellProductImg src={SellProductLink} width="100%"/>
+                </ProductImgWrapper>
+                <TextWrap>
+                  <ProductTitle>애월읍 노지 감귤</ProductTitle>
+                  <ProductPrice>35,000원</ProductPrice>
+                </TextWrap>
+              </figure>
+            </SellProductWrapper>
+            <SellProductWrapper>
+              <figure>
+                <ProductImgWrapper>
+                  <SellProductImg src={SellProductLink} width="100%"/>
+                </ProductImgWrapper>
+                <TextWrap>
+                  <ProductTitle>애월읍 노지 감귤</ProductTitle>
+                  <ProductPrice>35,000원</ProductPrice>
+                </TextWrap>
+              </figure>
+            </SellProductWrapper>
+            <SellProductWrapper>
+              <figure>
+                <ProductImgWrapper>
+                  <SellProductImg src={SellProductLink} width="100%"/>
+                </ProductImgWrapper>
+                <TextWrap>
+                  <ProductTitle>애월읍 노지 감귤</ProductTitle>
+                  <ProductPrice>35,000원</ProductPrice>
+                </TextWrap>
+              </figure>
+            </SellProductWrapper>
+          </SellProductContainer>
+        </SellProductLayOut>
     );
 }
 

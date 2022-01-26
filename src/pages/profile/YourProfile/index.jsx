@@ -11,6 +11,7 @@ import Alert from "../../../components/Alert";
 import HiddenMenu from "../../../components/HiddenMenu";
 import { HeaderBasic, Nav } from "../../../components/Header";
 import UserInfo from "../../../components/UserInfo";
+import SellProduct from "../../../components/SellProduct";
 
 const YourProfile = () => {
   // <!----------스타일 관련 상태관리---------->
@@ -41,7 +42,9 @@ const YourProfile = () => {
         <HeaderBasic />
         <UserInfo></UserInfo>
         <ProductContainer>
-          <ProductWrapper></ProductWrapper>
+          <ProductWrapper>
+            <SellProduct />
+          </ProductWrapper>
         </ProductContainer>
         <UserPostContainer>
           <UserPostWrapper>

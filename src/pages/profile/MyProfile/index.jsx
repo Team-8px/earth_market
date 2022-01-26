@@ -16,8 +16,9 @@ import {
 import DisplayHandler from "../../../components/DisplayHandler";
 import Alert from "../../../components/Alert";
 import HiddenMenu from "../../../components/HiddenMenu";
-import { HeaderButton, Nav } from "../../../components/Header";
+import { HeaderBasic } from "../../../components/Header";
 import UserInfo from "../../../components/UserInfo";
+import SellProduct from "../../../components/SellProduct";
 const MyProfile = () => {
   const dispatch = useDispatch();
 
@@ -60,13 +61,13 @@ const MyProfile = () => {
     <MainLayOut>
       {/* 유저 프로필 */}
       {/* header */}
-      <HeaderButton />
+      <HeaderBasic />
       <UserInfo></UserInfo>
       {/* 상품목록 */}
       <ProductContainer>
         <ProductWrapper>
-          <h1>상품 목록</h1>
-          {products &&
+          <SellProduct />
+          {/* {products &&
             products.map((product, index) => {
               return (
                 <div key={index} style={{ display: "flex" }}>
@@ -85,14 +86,14 @@ const MyProfile = () => {
                   </div>
                 </div>
               );
-            })}
+            })} */}
         </ProductWrapper>
       </ProductContainer>
         {/* 게시글 목록 */}
         <UserPostContainer>
           <UserPostWrapper>
             <DisplayHandler></DisplayHandler>
-            <h1>게시글 목록</h1>
+            <h1>판매 중인 상품</h1>
             {posts &&
               posts.map(post => {
                 /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
