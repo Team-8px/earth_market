@@ -135,15 +135,11 @@ export const ProfileMainLayOut = styled.main`
 `;
 
 // Screen 페이지 레이아웃
+// NotFound 레이아웃은 view 컴포넌트 style 컴포넌트에 보관
 
-export const NotFoundLayOut = styled.main`
-  width: 100%;
-  height: 100%;
-  padding-top: 200px;
-`;
+export const NotFoundLayOut = styled.main``;
 export const SplashScreenLayOut = styled.main`
   width: 100%;
   height: 100%;
   padding-top: 180px;
-  ${MainLayOut}
 `;
