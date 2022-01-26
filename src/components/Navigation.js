@@ -2,6 +2,16 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
+// Navigation 이미지
+import HomeIcon from "../asset/icon/icon-home.svg";
+import ChatIcon from "../asset/icon/icon-message-circle.svg";
+import PostIcon from "../asset/icon/icon-edit.svg";
+import ProfileIcon from "../asset/icon/icon-user.svg";
+// Navigation 이미지 - action
+import HomeIconFill from "../asset/icon/icon-home-fill.svg";
+import ChatIconFill from "../asset/icon/icon-message-circle-fill.svg";
+import ProfileIconFill from "../asset/icon/icon-user-fill.svg";
+
 const NavigationLayOut=styled.nav `
   position: fixed;
   right: 0; bottom: 0; left: 0; 
@@ -33,37 +43,42 @@ const NavigationLink=styled(NavLink) `
     margin: 0 auto;
     width: 24px;
     height: 24px;
-    background-color: yellow;
     margin-bottom: 6px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
   }
   &.home::before {
-    /* 가상요소로 이미지가 안들어갑니다... */
+    /* import해서 변수로 넣지 않을 때 이미지가 안들어갑니다.. */
     /* background-image: url('../asset/icon/icon-home.svg'); */
-    background-image: url({ImgImg});
+    background-image: url(${HomeIcon});
   }
   &.chatlist::before {
-    background-image: url('../asset/icon/icon-message-circle.svg');
+    /* background-image: url('../asset/icon/icon-message-circle.svg'); */
+    background-image: url(${ChatIcon});
   }
   &.upload::before {
-    background-image: url('../asset/icon/icon-edit.svg');
+    /* background-image: url('../asset/icon/icon-edit.svg'); */
+    background-image: url(${PostIcon});
   }
   &.myprofile::before {
-    background-image: url('../asset/icon/icon-user.svg');
+    /* background-image: url('../asset/icon/icon-user.svg'); */
+    background-image: url(${ProfileIcon});
   }
-
+  
   &:active {
     color: #f26e22;
     &.home::before {
-      background-image: url('../asset/icon/icon-home-fill.svg');
+      /* background-image: url('../asset/icon/icon-home-fill.svg'); */
+      background-image: url(${HomeIconFill});
     }
     &.chatlist::before {
-      background-image: url('../asset/icon/icon-message-circle-fill.svg');
+      /* background-image: url('../asset/icon/icon-message-circle-fill.svg'); */
+      background-image: url(${ChatIconFill});
     }
     &.myprofile::before {
-      background-image: url('../asset/icon/icon-user-fill.svg');
+      /* background-image: url('../asset/icon/icon-user-fill.svg'); */
+      background-image: url(${ProfileIconFill});
     }
   }
 `
