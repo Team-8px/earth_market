@@ -10,6 +10,7 @@ export const ProfileImage = styled.div`
     margin-bottom: 16px;
 `;
 export const ProfileImgWrapper = styled.div`
+    margin-top: 30px;
     margin-bottom: 30px;
 
     label {
@@ -31,11 +32,12 @@ export const ProfileImgWrapper = styled.div`
             background: #c4c4c4 url(${Upload}) no-repeat center / 36px 36px;
             border-radius: 50%;
         }
+
+    img {
+        width: 110px;
+        height: 110px;
     }
-    img{
-        width: 108px;
-        height: 108px;
-    }
+
     input {
     position: absolute;
     left: -10000px;
@@ -46,4 +48,4 @@ export const ProfileImgWrapper = styled.div`
     // 기본값
     padding: 0;
     }
-    `;
+`;

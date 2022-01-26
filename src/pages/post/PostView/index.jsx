@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { MainLayOut } from "../PostUpload/index.style";
-import { CommentWrapper } from "./index.style";
+import { CommentContainer, CommentWrapper, CommentText } from "./index.style";
 import { Alert, AlertButton } from "../../../components/Alert";
 import { HiddenMenu, ListBtn, AlertBtn } from "../../../components/HiddenMenu";
 import Post from "../../../components/Post";
 import { HeaderBasic } from "../../../components/Header";
 // 댓글 생성 부분 컴포넌트만 다시 불러와서 적용할 예정입니다.
-
+// 프로필 이미지
+import EllipseImg from "../../../asset/Ellipse-1.png";
 const PostView = () => {
   // 스타일 컴포넌트 관련 상태관리
 
@@ -32,7 +33,7 @@ const PostView = () => {
     <>
       <MainLayOut>
         <HeaderBasic isDialog={isNavDialog} />
-        <CommentWrapper>
+        <CommentContainer>
           <Post
             authorId="테스트입니다"
             authorName="this is test"
@@ -42,7 +43,13 @@ const PostView = () => {
             commentCount="999"
             isDialog={isPostDialog}
           />
-        </CommentWrapper>
+          <CommentWrapper>
+            <img src={EllipseImg} alt="프로필 사진" />
+            <strong>감귤러버</strong>
+            <span>15분 전</span>
+          </CommentWrapper>
+            <CommentText>안녕하세요. 사진이 너무 멋있어요.</CommentText>
+        </CommentContainer>
         <button onClick={isChatDialog}>테스트</button>
       </MainLayOut>
       {/* 🏞 게시글 Modal */}
