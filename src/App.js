@@ -39,12 +39,19 @@ import SplashScreen from "./pages/screen/SplashScreen";
 
 //김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후
 import SetMemberShipGH from "./pages/auth/SetMemberShip-gh";
+import LoginEmailGH from "./pages/auth/LoginEmail-gh";
 import MyProfileGH from "./pages/profile/Myprofile-gh";
 import MyProfileUpdateGH from "./pages/profile/MyprofileUpdate-gh";
 import PostUploadGH from "./pages/post/PostUpload-gh";
 import ProductUploadGH from "./pages/product/ProductUpload-gh";
 import ProductUpdateGH from "./pages/product/ProductUpdate-gh";
 import PostViewGH from "./pages/post/PostView-gh";
+//홈피드, 팔로우, 검색
+import HomeGH from "./pages/home/Home-gh";
+import SearchGH from "./pages/home/Search-gh";
+import FollowerListGH from "./pages/profile/Follower-gh";
+import FollowingListGH from "./pages/profile/Following-gh";
+
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -122,6 +129,11 @@ const App = () => {
           <Switch>
             {/* auth */}
             <Route path="/gh/join/email" component={SetMemberShipGH} exact />
+            <Route path="/gh" component={LoginEmailGH} exact />
+
+            {/* 홈 */}
+            <Route path="/gh/home" component={HomeGH} exact />
+            <Route path="/gh/search" component={SearchGH} exact />
 
             {/* profile */}
             <Route path="/gh/profile/my" component={MyProfileGH} exact />
@@ -135,10 +147,20 @@ const App = () => {
               component={MyProfileUpdateGH}
               exact
             />
+            <Route
+              path="/gh/profile/:accountname/follower"
+              component={FollowerListGH}
+              exact
+            />
+            <Route
+              path="/gh/profile/:accountname/following"
+              component={FollowingListGH}
+              exact
+            />
 
             {/* post */}
             <Route path="/gh/post/my/upload" component={PostUploadGH} exact />
-            <Route path="/gh/post/my/:postId" component={PostViewGH} exact />
+            <Route path="/gh/post/:postId" component={PostViewGH} exact />
 
             {/* product */}
             <Route

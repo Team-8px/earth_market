@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getUserMyProfile } from "../../../actions/userActions";
 import { getPost } from "../../../actions/postActions";
 import { getCommentList, deleteComment } from "../../../actions/commentAction";
 import Comment from "../../../components/Comment-gh";
+import UseGNBHook from "../../../hooks/useGNB";
 // 댓글 생성 부분 컴포넌트만 다시 불러와서 적용할 예정입니다.
 
 const PostView = () => {
-  //const [comment, setComment] = useState();
-
   const dispatch = useDispatch();
 
   const { postId } = useParams();
@@ -20,24 +19,16 @@ const PostView = () => {
 
   const { image, username, accountname } = useSelector(
     state => state.userReadProfile,
-    shallowEqual,
   );
 
   const { content, updatedAt, heartCount, commentCount, postImages } =
-    useSelector(state => state.postRead, shallowEqual);
+    useSelector(state => state.postRead);
 
-  const commentList = useSelector(
-    state => state.commentList.comments,
-    shallowEqual,
-  );
+  const commentList = useSelector(state => state.commentList.comments);
 
   const onclickDeleteComment = commentId => {
     dispatch(deleteComment(postId, commentId));
   };
-
-  /* const getComment = data => {
-    setComment(data);
-  }; */
 
   useEffect(() => {
     dispatch(getUserMyProfile());
@@ -122,6 +113,10 @@ const PostView = () => {
       <br />
       {/* 댓글생성 */}
       <Comment postId={postId} />
+      <br />
+      <br />
+      <br />
+      <UseGNBHook />
     </>
   );
 };

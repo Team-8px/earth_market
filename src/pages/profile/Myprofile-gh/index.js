@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { listProducts, deleteProduct } from "../../../actions/productActions";
 import { listPosts, deletePost } from "../../../actions/postActions";
 import { getUserMyProfile } from "../../../actions/userActions";
+import UseGNBHook from "../../../hooks/useGNB";
 
 const MyProfile = () => {
   //const [isDeleteProduct, setIsDeleteProduct] = useState(false);
@@ -95,7 +96,7 @@ const MyProfile = () => {
                 <ul>
                   <li>상품명: {product.itemName}</li>
                   <li>상품가격: {product.price}</li>
-                  <li>상품링크: {product.link}</li>+
+                  <li>상품링크: {product.link}</li>
                   <br />
                   <br />
                   <li>
@@ -147,7 +148,7 @@ const MyProfile = () => {
                   <br />
                   <br />
                   <li>
-                    <Link to={`/gh/post/my/${post.id}`}>게시글 링크</Link>
+                    <Link to={`/gh/post/${post.id}`}>게시글 링크</Link>
                   </li>
                   <br />
                   <br />
@@ -162,6 +163,7 @@ const MyProfile = () => {
             </div>
           );
         })}
+      <UseGNBHook />
     </>
   );
 };
