@@ -4,6 +4,8 @@ import GrayLogo from "../../../asset/symbol-logo-gray.png";
 export const MainLayOut = styled(HomeMainMainLayOut)``;
 
 export const NoneFeed = styled.div`
+  position: fixed;
+  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +26,6 @@ export const NoneFeed = styled.div`
       height: 100px;
       background-image: url(${GrayLogo});
       margin: 0 auto 20px;
-      }
     }
+  }
 `;
-

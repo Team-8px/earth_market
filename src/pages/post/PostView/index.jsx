@@ -1,10 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getUserMyProfile } from "../../../actions/userActions";
-import { getPost } from "../../../actions/postActions";
-import { getCommentList } from "../../../actions/commentAction";
-import { API_URL } from "../../../constants/defaultUrl";
 import { MainLayOut } from "../PostUpload/index.style";
 import { CommentWrapper } from "./index.style";
 import { Alert, AlertButton } from "../../../components/Alert";
@@ -14,24 +8,6 @@ import { HeaderBasic } from "../../../components/Header";
 // 댓글 생성 부분 컴포넌트만 다시 불러와서 적용할 예정입니다.
 
 const PostView = () => {
-  const [comment, setComment] = useState();
-  const { postId } = useParams();
-
-  const dispatch = useDispatch();
-
-  const { image, username, accountname } = useSelector(
-    state => state.userProfile,
-    shallowEqual,
-  );
-
-  const { content, updatedAt, heartCount, commentCount, postImages } =
-    useSelector(state => state.postRead, shallowEqual);
-
-  const commentList = useSelector(
-    state => state.commentList.comments,
-    shallowEqual,
-  );
-
   // 스타일 컴포넌트 관련 상태관리
 
   // 🏞 게시글 메뉴
@@ -51,22 +27,6 @@ const PostView = () => {
   const [chatAlert, setChatAlert] = useState(false);
   const isChatDialog = () => setChatDialog(!chatDialog);
   const isChatAlert = () => setChatAlert(!chatAlert);
-
-  useEffect(() => {
-    dispatch(getUserMyProfile());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(getPost(postId));
-  }, [dispatch, postId]);
-
-  useEffect(() => {
-    dispatch(getCommentList(postId));
-  }, [dispatch, postId, comment]);
-
-  const getComment = data => {
-    setComment(data);
-  };
 
   return (
     <>

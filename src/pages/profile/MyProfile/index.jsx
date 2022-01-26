@@ -1,10 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { Link } from "react-router-dom";
-import { listProducts } from "../../../actions/productActions";
-import { listPosts } from "../../../actions/postActions";
-import { getUserMyProfile } from "../../../actions/userActions";
-import { API_URL } from "../../../constants/defaultUrl";
+import React, { useState } from "react";
 // 스타일 컴포넌트
 import {
   MainLayOut,
@@ -20,13 +14,6 @@ import Post from "../../../components/Post";
 import { HeaderBasic } from "../../../components/Header";
 import UserInfo from "../../../components/UserInfo";
 const MyProfile = () => {
-  const dispatch = useDispatch();
-
-  const { products } = useSelector(state => state.productList, shallowEqual);
-  const { posts } = useSelector(state => state.postList, shallowEqual);
-  const { image, username, accountname, intro, followerCount, followingCount } =
-    useSelector(state => state.userProfile, shallowEqual);
-
   // 게시글 메뉴
   const [postDialog, setPostDialog] = useState(false);
   const [postAlert, setPostAlert] = useState(false);
@@ -38,19 +25,12 @@ const MyProfile = () => {
   const [navAlert, setNavAlert] = useState(false);
   const isNavDialog = () => setNavDialog(!navDialog);
   const isNavAlert = () => setNavAlert(!navAlert);
-
-  useEffect(() => {
-    dispatch(listProducts());
-    dispatch(listPosts());
-    dispatch(getUserMyProfile());
-  }, [dispatch]);
-
   return (
     <>
+      <HeaderBasic isDialog={isNavDialog} />
       <MainLayOut>
         {/* 유저 프로필 */}
         {/* header */}
-        <HeaderBasic isDialog={isNavDialog} />
         <UserInfo></UserInfo>
         {/* 상품목록 */}
         <ProductContainer>

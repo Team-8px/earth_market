@@ -102,7 +102,6 @@ function UserInfo({
   return (
     <UserInfoContainer>
       <UserInfoWrapper>
-        <h1>유저 프로필</h1>
         <ProfileImage>
           <img src={EllipseImg} alt="프로필 사진" />
         </ProfileImage>

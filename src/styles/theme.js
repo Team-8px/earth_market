@@ -1,9 +1,9 @@
 const pixelToPx = size => `${size / 16}px`;
 
 const fontSizes = {
-  title: pixelToPx(24),
-  subtitle: pixelToPx(16),
-  paragraph: pixelToPx(14),
+  titleText: pixelToPx(24),
+  subTitleText: pixelToPx(16),
+  commonText: pixelToPx(14),
   smallText: pixelToPx(12),
   iconText: pixelToPx(10),
 };
@@ -16,6 +16,9 @@ const colors = {
   btnDisabledColor: "#ffc7a7",
   borderColor: "#dbdbdb",
   waringColor: "#EB5757",
+  kakaoColor: "#F2C94C",
+  googleColor: "#767676",
+  faceBookColor: "#2D9CDB",
 };
 
 const common = {

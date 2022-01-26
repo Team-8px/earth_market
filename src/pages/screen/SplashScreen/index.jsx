@@ -1,8 +1,8 @@
 import React from "react";
-import { PageLayOut } from "./index.style";
+import { MainLayOut } from "./index.style";
 
 const SplashScreen = () => {
-  return <PageLayOut>SplashScreen</PageLayOut>;
+  return <MainLayOut>SplashScreen</MainLayOut>;
 };
 
 export default SplashScreen;
