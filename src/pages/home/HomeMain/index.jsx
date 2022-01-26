@@ -1,7 +1,10 @@
 import React from "react";
 import { Button } from "../../../components/Button";
 import { HeaderHome } from "../../../components/Header";
-import { MainLayOut, NoneFeed } from "./index.style";
+
+//스타일 컴포넌트
+import { MainLayOut} from "./index.style";
+import { NoneFeed } from "../../../components/NoneFeed";
 const HomeMain = () => {
   return (
     // 레이아웃 속성 확인하기

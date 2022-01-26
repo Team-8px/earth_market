@@ -1,26 +1,14 @@
 import React from "react";
 import { HeaderSearch } from "../../../components/Header";
-import {
-  MainLayOut,
-  UserListContainer,
-  UserListWrapper,
-  UserInfoWrapper,
-  UserName,
-  UserId,
-} from "./index.style";
+import { MainLayOut} from "./index.style";
+import UserList from "../../../components/UserList";
 
 const Search = () => {
   return (
     <>
-      <HeaderSearch />
       <MainLayOut>
-        <UserListContainer>
-          <UserListWrapper></UserListWrapper>
-          <UserInfoWrapper>
-            <UserName></UserName>
-            <UserId></UserId>
-          </UserInfoWrapper>
-        </UserListContainer>
+        <HeaderSearch />
+        <UserList></UserList>
       </MainLayOut>
     </>
   );

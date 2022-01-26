@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { HeaderBasic } from "../../../components/Header";
 import { MainLayOut } from "./index.style";
+import ChatInfo from "../../../components/ChatInfoList";
 import { Alert, AlertButton } from "../../../components/Alert";
 import { HiddenMenu, ListBtn, AlertBtn } from "../../../components/HiddenMenu";
 
@@ -14,7 +15,7 @@ const ChatList = () => {
     <>
       <MainLayOut>
         <HeaderBasic isDialog={isNavDialog} />
-        ChatList
+        <ChatInfo/>
       </MainLayOut>
       {/* 🕹 Nav Modal */}
       <HiddenMenu visible={navDialog}>
