@@ -14,9 +14,10 @@ import {
   UserPostWrapper,
 } from "./index.style";
 import DisplayHandler from "../../../components/DisplayHandler";
-import Alert from "../../../components/Alert";
-import HiddenMenu from "../../../components/HiddenMenu";
-import { HeaderButton, Nav } from "../../../components/Header";
+import { Alert, AlertButton } from "../../../components/Alert";
+import { HiddenMenu, ListBtn, AlertBtn } from "../../../components/HiddenMenu";
+import Post from "../../../components/Post";
+import { HeaderBasic } from "../../../components/Header";
 import UserInfo from "../../../components/UserInfo";
 const MyProfile = () => {
   const dispatch = useDispatch();
@@ -26,28 +27,17 @@ const MyProfile = () => {
   const { image, username, accountname, intro, followerCount, followingCount } =
     useSelector(state => state.userProfile, shallowEqual);
 
-  // <!----------스타일 관련 상태관리---------->
-  const [dialog, setDialog] = useState(false);
-  const [alert, setAlert] = useState(false);
+  // 게시글 메뉴
+  const [postDialog, setPostDialog] = useState(false);
+  const [postAlert, setPostAlert] = useState(false);
+  const isPostDialog = () => setPostDialog(!postDialog);
+  const isPostAlert = () => setPostAlert(!postAlert);
 
-  const onAlert = () => {
-    console.log("확인");
-    setAlert(true);
-  };
-  const offAlert = () => {
-    console.log("취소");
-    setAlert(false);
-  };
-
-  const onDialog = () => {
-    console.log("확인");
-    setDialog(true);
-  };
-  const offDialog = () => {
-    console.log("취소");
-    setDialog(false);
-  };
-  // <!----------스타일 관련 상태관리---------->
+  // 네비게이션 메뉴
+  const [navDialog, setNavDialog] = useState(false);
+  const [navAlert, setNavAlert] = useState(false);
+  const isNavDialog = () => setNavDialog(!navDialog);
+  const isNavAlert = () => setNavAlert(!navAlert);
 
   useEffect(() => {
     dispatch(listProducts());
@@ -57,119 +47,102 @@ const MyProfile = () => {
 
   return (
     <>
-    <MainLayOut>
-      {/* 유저 프로필 */}
-      {/* header */}
-      <HeaderButton />
-      <UserInfo></UserInfo>
-      {/* 상품목록 */}
-      <ProductContainer>
-        <ProductWrapper>
-          <h1>상품 목록</h1>
-          {products &&
-            products.map((product, index) => {
-              return (
-                <div key={index} style={{ display: "flex" }}>
-                  <div>
-                    <img
-                      src={`${API_URL}/${product.itemImage}`}
-                      alt="상품사진"
-                    />
-                  </div>
-                  <div>
-                    <ul>
-                      <li>상품명: {product.itemName}</li>
-                      <li>상품가격: {product.price}</li>
-                      <li>상품링크: {product.link}</li>
-                    </ul>
-                  </div>
-                </div>
-              );
-            })}
-        </ProductWrapper>
-      </ProductContainer>
+      <MainLayOut>
+        {/* 유저 프로필 */}
+        {/* header */}
+        <HeaderBasic isDialog={isNavDialog} />
+        <UserInfo></UserInfo>
+        {/* 상품목록 */}
+        <ProductContainer>
+          <ProductWrapper></ProductWrapper>
+        </ProductContainer>
         {/* 게시글 목록 */}
         <UserPostContainer>
           <UserPostWrapper>
             <DisplayHandler></DisplayHandler>
-            <h1>게시글 목록</h1>
-            {posts &&
-              posts.map(post => {
-                /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
-                const postImages = post.image.split(",");
-
-                return (
-                  <div key={post.id}>
-                    <div style={{ display: "flex" }}>
-                      {postImages.map((postImage, index) => {
-                        return (
-                          <img
-                            key={index}
-                            src={`${API_URL}/${postImage}`}
-                            alt="상품사진"
-                          />
-                        );
-                      })}
-                    </div>
-                    <div>
-                      <ul>
-                        <li>
-                          <Link to={`/post${post.id}`}>게시글 링크</Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                );
-              })}
+            <Post
+              authorId="테스트입니다"
+              authorName="this is test"
+              content="Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content"
+              date="2022년 1월 18일"
+              likeCount="999"
+              commentCount="999"
+              isDialog={isPostDialog}
+            />
+            <Post
+              authorId="테스트입니다"
+              authorName="this is test"
+              content="Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content"
+              date="2022년 1월 18일"
+              likeCount="999"
+              commentCount="999"
+              isDialog={isPostDialog}
+            />
+            <Post
+              authorId="테스트입니다"
+              authorName="this is test"
+              content="Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content테스트 Content"
+              date="2022년 1월 18일"
+              likeCount="999"
+              commentCount="999"
+              isDialog={isPostDialog}
+            />
           </UserPostWrapper>
         </UserPostContainer>
       </MainLayOut>
-      <button type="button" onClick={onDialog}>
-        임시 열기 버튼입니다
-      </button>
-      <HiddenMenu visible={dialog} onAlert={onAlert} offDialog={offDialog} />
-      <Alert
-        visible={alert}
-        offAlert={offAlert}
-        MessageText="로그아웃 하시겠습니까?"
-      />
+      {/* 게시글 Modal */}
+      <HiddenMenu visible={postDialog}>
+        <li>
+          <AlertBtn type="button" isAlert={isPostAlert}>
+            신고하기
+          </AlertBtn>
+        </li>
+        <li>
+          <ListBtn type="button" isDialog={isPostDialog}>
+            모달창 닫기
+          </ListBtn>
+        </li>
+      </HiddenMenu>
+      {/* 게시글 Alert */}
+      <Alert visible={postAlert} messageText="게시글을 신고하시겠어요?">
+        <li>
+          <AlertButton type="button" isAlert={isPostAlert}>
+            취소
+          </AlertButton>
+        </li>
+        <li>
+          <AlertButton type="button">신고</AlertButton>
+        </li>
+      </Alert>
+      {/* Nav Modal */}
+      <HiddenMenu visible={navDialog}>
+        <li>
+          <ListBtn type="button">설정 및 개인정보</ListBtn>
+        </li>
+        <li>
+          <AlertBtn type="button" isAlert={isNavAlert}>
+            로그아웃
+          </AlertBtn>
+        </li>
+        <li>
+          <ListBtn type="button" isDialog={isNavDialog}>
+            임시 모달 창 닫기 버튼
+          </ListBtn>
+        </li>
+      </HiddenMenu>
+      {/* Nav Alert */}
+      <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
+        <li>
+          <AlertButton type="button" isAlert={isNavAlert}>
+            취소
+          </AlertButton>
+        </li>
+        <li>
+          <AlertButton type="button">로그아웃</AlertButton>
+        </li>
+      </Alert>
     </>
   );
 };
-
-/**
-  * @products : 상품들 array
-  [
-    {
-      id: "61db8a3c209fe0d5be04ad5b"
-      itemImage: "1641777724819.jpg"
-      itemName: "당근"
-      link: "www.naver.com"
-      price: 10,000,
-      author : {}
-    }, ....
-  ]
-  * @posts : 게시글들 array
-  [
-    {
-      commentCount: 0
-      comments: []
-      content: "안녕하세요"
-      createdAt: "2022-01-11T10:37:25.497Z"
-      heartCount: 0
-      hearted: false
-      id: "61dd5de53fe886cd13383917"
-      image: "1641897445443.jpg,1641897445466.jpg,1641897445471.jpg",
-      author : {}
-    }, ...
-  ]
-  
-  * @postImages : 게시글 이미지들 array
-  [
-    '1641802294157.jpg', 
-    '1641802294183.jpg', 
-    '1641802294203.jpg'
-  ]
-*/
 
 export default MyProfile;

@@ -13,7 +13,6 @@ export function HeaderButton() {
         <HeaderWrap>
           <HeaderLinkImg src={HeaderBackImg} />
         </HeaderWrap>
-        <Button size="ms">저장</Button>
       </HeaderContainer>
     </HeaderLayOut>
   );
@@ -41,20 +40,20 @@ export function HeaderHome() {
   );
 }
 
-export function HeaderBasic() {
+export function HeaderBasic({ isDialog }) {
   return (
     <HeaderLayOut>
       <HeaderContainer>
         <HeaderWrap>
           <HeaderLinkImg src={HeaderBackImg} />
         </HeaderWrap>
-        <HeaderLinkImg src={HeaderMoreImg} />
+        <HeaderLinkImg src={HeaderMoreImg} onClick={isDialog} />
       </HeaderContainer>
     </HeaderLayOut>
   );
 }
 
-export function HeaderChat() {
+export function HeaderChat({ isDialog }) {
   return (
     <HeaderLayOut>
       <HeaderContainer>
@@ -62,7 +61,7 @@ export function HeaderChat() {
           <HeaderLinkImg src={HeaderBackImg} />
           <HeaderTitle>애월읍 위니브 감귤농장</HeaderTitle>
         </HeaderWrap>
-        <HeaderLinkImg src={HeaderMoreImg} />
+        <HeaderLinkImg src={HeaderMoreImg} onClick={isDialog} />
       </HeaderContainer>
     </HeaderLayOut>
   );

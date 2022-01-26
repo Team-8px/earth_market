@@ -177,6 +177,7 @@ function Post({
   likeCount,
   commentCount,
   date,
+  isDialog,
 }) {
   return (
     <PostContainer>
@@ -211,7 +212,7 @@ function Post({
         <CommentButton>
           <CommentCount>{commentCount}</CommentCount>
         </CommentButton>
-        <MoreBtn></MoreBtn>
+        <MoreBtn onClick={isDialog}></MoreBtn>
       </CommentContainer>
       {/* Date 관련 Tag */}
       <PostDate>{date}</PostDate>

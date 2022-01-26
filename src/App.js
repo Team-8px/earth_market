@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
+import theme from "./styles/theme";
+
 // Auth
 import JoinMemberShip from "./pages/auth/JoinMemberShip";
 import LoginEmail from "./pages/auth/LoginEmail";
@@ -43,108 +45,116 @@ import PostUploadGH from "./pages/post/PostUpload-gh";
 import ProductUploadGH from "./pages/product/ProductUpload-gh";
 import ProductUpdateGH from "./pages/product/ProductUpdate-gh";
 import PostViewGH from "./pages/post/PostView-gh";
-
 const App = () => {
   return (
-    <Router>
+    <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <AppliCation>
-        <Switch>
-          <Route path="/" component={LoginEmail} exact />
-          <Route path="/join/email" component={SetMemberShip} />
-          <Route path="/home" component={HomeMain} />
-          <Route path="/product" component={ProductUpload} exact />
-          <Route path="/product/update/:productId" component={ProductUpdate} />
-          <Route path="/user/update" component={ProductUpdate} />
-          <Route path="/post/upload" component={PostUpload} />
-          <Route path="/post/:postId" component={PostView} />
-          <Route path="/myprofile" component={MyProfile} />
-          {/* <Route component={NotFound} /> */}
-        </Switch>
+      <Router>
+        <AppliCation>
+          <Switch>
+            <Route path="/" component={LoginEmail} exact />
+            <Route path="/join/email" component={SetMemberShip} />
+            <Route path="/home" component={HomeMain} />
+            <Route path="/product" component={ProductUpload} exact />
+            <Route
+              path="/product/update/:productId"
+              component={ProductUpdate}
+            />
+            <Route path="/user/update" component={ProductUpdate} />
+            <Route path="/post/upload" component={PostUpload} />
+            <Route path="/post/:postId" component={PostView} />
+            {/* <Route path="/myprofile" component={MyProfile} /> */}
+            {/* <Route component={NotFound} /> */}
+          </Switch>
 
-        <Switch>
-          {/* auth */}
-          <Route path="/joinmembership" component={JoinMemberShip} exact />
-          <Route path="/loginemail" component={LoginEmail} exact />
-          <Route path="/loginmain" component={LoginMain} exact />
-          <Route path="/setmembership" component={SetMemberShip} exact />
-        </Switch>
+          <Switch>
+            {/* auth */}
+            <Route path="/joinmembership" component={JoinMemberShip} exact />
+            <Route path="/loginemail" component={LoginEmail} exact />
+            <Route path="/loginmain" component={LoginMain} exact />
+            <Route path="/setmembership" component={SetMemberShip} exact />
+          </Switch>
 
-        <Switch>
-          {/* chat */}
-          <Route path="/chatlist" component={ChatList} exact />
-          <Route path="/chatroom" component={ChatRoom} exact />
-        </Switch>
+          <Switch>
+            {/* chat */}
+            <Route path="/chatlist" component={ChatList} exact />
+            <Route path="/chatroom" component={ChatRoom} exact />
+          </Switch>
 
-        <Switch>
-          {/* home */}
-          <Route path="/homefeed" component={HomeFeed} exact />
-          <Route path="/homemain" component={HomeMain} exact />
-          <Route path="/search" component={Search} exact />
-        </Switch>
+          <Switch>
+            {/* home */}
+            <Route path="/homefeed" component={HomeFeed} exact />
+            <Route path="/homemain" component={HomeMain} exact />
+            <Route path="/search" component={Search} exact />
+          </Switch>
 
-        <Switch>
-          {/* post */}
-          <Route path="/postupload" component={PostUpload} exact />
-          <Route path="/postview" component={PostView} exact />
-        </Switch>
+          <Switch>
+            {/* post */}
+            <Route path="/postupload" component={PostUpload} exact />
+            <Route path="/postview" component={PostView} exact />
+          </Switch>
 
-        <Switch>
-          {/* product */}
-          <Route path="/productupload" component={ProductUpload} exact />
-          <Route path="/productupdate" component={ProductUpdate} exact />
-        </Switch>
+          <Switch>
+            {/* product */}
+            <Route path="/productupload" component={ProductUpload} exact />
+            <Route path="/productupdate" component={ProductUpdate} exact />
+          </Switch>
 
-        <Switch>
-          {/* profile */}
-          <Route path="/follower" component={Follower} exact />
-          <Route path="/myprofile" component={MyProfile} exact />
-          <Route
-            path="/profilemodification"
-            component={ProfileModification}
-            exact
-          />
-          <Route path="/yourprofile" component={YourProfile} exact />
-        </Switch>
+          <Switch>
+            {/* profile */}
+            <Route path="/follower" component={Follower} exact />
+            <Route path="/myprofile" component={MyProfile} exact />
+            <Route
+              path="/profilemodification"
+              component={ProfileModification}
+              exact
+            />
+            <Route path="/yourprofile" component={YourProfile} exact />
+          </Switch>
 
-        <Switch>
-          {/* profile */}
-          <Route path="/notfound" component={NotFound} exact />
-          <Route path="/splashscreen" component={SplashScreen} exact />
-        </Switch>
+          <Switch>
+            {/* profile */}
+            <Route path="/notfound" component={NotFound} exact />
+            <Route path="/splashscreen" component={SplashScreen} exact />
+          </Switch>
 
-        {/* 김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후 */}
-        <Switch>
-          {/* auth */}
-          <Route path="/gh/join/email" component={SetMemberShipGH} exact />
+          {/* 김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후 */}
+          <Switch>
+            {/* auth */}
+            <Route path="/gh/join/email" component={SetMemberShipGH} exact />
 
-          {/* profile */}
-          <Route path="/gh/profile/my" component={MyProfileGH} exact />
-          <Route
-            path="/gh/profile/you/:acccountId"
-            component={MyProfileGH}
-            exact
-          />
-          <Route
-            path="/gh/profile/my/update"
-            component={MyProfileUpdateGH}
-            exact
-          />
+            {/* profile */}
+            <Route path="/gh/profile/my" component={MyProfileGH} exact />
+            <Route
+              path="/gh/profile/you/:acccountId"
+              component={MyProfileGH}
+              exact
+            />
+            <Route
+              path="/gh/profile/my/update"
+              component={MyProfileUpdateGH}
+              exact
+            />
 
-          {/* post */}
-          <Route path="/gh/post/my/upload" component={PostUploadGH} exact />
-          <Route path="/gh/post/my/:postId" component={PostViewGH} exact />
+            {/* post */}
+            <Route path="/gh/post/my/upload" component={PostUploadGH} exact />
+            <Route path="/gh/post/my/:postId" component={PostViewGH} exact />
 
-          {/* product */}
-          <Route path="/gh/product/upload" component={ProductUploadGH} exact />
-          <Route
-            path="/gh/product/update/:productId"
-            component={ProductUpdateGH}
-            exact
-          />
-        </Switch>
-      </AppliCation>
-    </Router>
+            {/* product */}
+            <Route
+              path="/gh/product/upload"
+              component={ProductUploadGH}
+              exact
+            />
+            <Route
+              path="/gh/product/update/:productId"
+              component={ProductUpdateGH}
+              exact
+            />
+          </Switch>
+        </AppliCation>
+      </Router>
+    </ThemeProvider>
   );
 };
 

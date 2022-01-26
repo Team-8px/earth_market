@@ -109,11 +109,11 @@ function UserInfo({
         <UserName>{username}</UserName>
         <AccountName>{accoutname}</AccountName>
         <Intro>{intro}</Intro>
-        <FollowerWrapper>
+        <FollowerWrapper to="#">
           <strong>{followerCount}</strong>
           <span>followers</span>
         </FollowerWrapper>
-        <FollowingWrapper>
+        <FollowingWrapper to="#">
           <strong>{followingCount}</strong>
           <span>following</span>
         </FollowingWrapper>

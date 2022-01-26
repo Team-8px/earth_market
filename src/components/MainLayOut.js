@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import theme from "../styles/theme";
 
 // 플렉스 속성과 관련해서는 @mixin을 잘 활용할 수 있는 방법을 찾아봐야한다.
 
@@ -28,7 +29,7 @@ const FullWidth = css`
 // ✅ Auth 페이지 레이아웃
 
 export const JoinMemberShipMainLayOut = styled.main`
-  ${AlignCenter}
+  ${({ theme }) => theme.common.flexCenterColumn};
 `;
 export const LoginEmailMainLayOut = styled.main`
   ${AlignCenter}
