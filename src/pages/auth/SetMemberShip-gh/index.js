@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { joinMembership } from "../../../actions/userActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
+import UseGNBHook from "../../../hooks/useGNB";
 
 /* 나중에 유효성 검사할때 사용해보자!! 
 
@@ -44,7 +45,11 @@ const SetMemberShip = () => {
 
         <div>
           <label onChange={previewImage} htmlFor="input-file">
-            <img src={IMG_URL} alt="프로필 사진" />
+            <img
+              style={{ width: "100px", height: "100px" }}
+              src={IMG_URL}
+              alt="프로필 사진"
+            />
             <input
               type="file"
               accept="image/jpg,impge/png,image/jpeg,image/gif"
@@ -57,7 +62,11 @@ const SetMemberShip = () => {
         <div>
           {myImage && (
             <div>
-              <img src={myImage} alt="미리보기 이미지" />
+              <img
+                style={{ width: "100px", height: "100px" }}
+                src={myImage}
+                alt="미리보기 이미지"
+              />
             </div>
           )}
         </div>
@@ -103,6 +112,10 @@ const SetMemberShip = () => {
           <button>회원가입</button>
         </div>
       </form>
+      <br />
+      <br />
+      <br />
+      <UseGNBHook />
     </>
   );
 };

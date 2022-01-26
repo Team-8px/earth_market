@@ -21,7 +21,7 @@ const ProfileModification = () => {
   const { register, handleSubmit } = useForm();
 
   const { image, username, accountname } = useSelector(
-    state => state.userProfile,
+    state => state.userReadProfile,
     shallowEqual,
   );
 

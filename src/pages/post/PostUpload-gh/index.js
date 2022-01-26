@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { createPost } from "../../../actions/postActions";
 import { multipleImageUploadsHandler } from "../../../util/multipleImageUploads";
+import UseGNBHook from "../../../hooks/useGNB";
 
 const PostUploadGH = () => {
   const [myImage, setMyImage] = useState([]);
@@ -98,6 +99,7 @@ const PostUploadGH = () => {
           <button>저장</button>
         </div>
       </form>
+      <UseGNBHook />
     </div>
   );
 };
