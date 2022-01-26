@@ -25,7 +25,12 @@ const GlobalStyles = createGlobalStyle`
         cursor: pointer;
         padding: 0;
         background-color: inherit;
-}
+    }
+    input {
+        &:focus {
+        outline:none;
+      }
+    }
 `;
 export default GlobalStyles;
 
