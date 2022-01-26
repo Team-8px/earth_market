@@ -13,6 +13,9 @@ export function HeaderButton() {
         <HeaderWrap>
           <HeaderLinkImg src={HeaderBackImg} />
         </HeaderWrap>
+        <Button size="ms" width="90px" color="orange">
+          업로드
+        </Button>
       </HeaderContainer>
     </HeaderLayOut>
   );
