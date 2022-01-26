@@ -5,10 +5,12 @@ import UserList from "../../../components/UserList";
 
 const Search = () => {
   return (
-    <MainLayOut>
-      <HeaderSearch />
-      <UserList></UserList>
-    </MainLayOut>
+    <>
+      <MainLayOut>
+        <HeaderSearch />
+        <UserList></UserList>
+      </MainLayOut>
+    </>
   );
 };
 

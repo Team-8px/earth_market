@@ -1,4 +1,9 @@
 import styled from "styled-components";
-import { SplashScreenLayOut } from "../../../components/MainLayOut";
 
-export const PageLayOut = styled(SplashScreenLayOut)``;
+export const MainLayOut = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`;
