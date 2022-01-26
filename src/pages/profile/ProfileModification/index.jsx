@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { updateUserProfile } from "../../../actions/userActions";
-import { HeaderButton } from '../../../components/Header';
+import { HeaderButton } from "../../../components/Header";
 import { imageUploadsHandler } from "../../../util/imageUploads";
 
 // 스타일 컴포넌트
@@ -29,8 +29,8 @@ const ProfileModification = () => {
 
   return (
     <>
+      <HeaderButton />
       <MainLayOut>
-        <HeaderButton />
         {/* 사용자 프로필 */}
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
