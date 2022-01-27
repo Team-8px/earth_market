@@ -12,7 +12,7 @@ const colors = {
   mainColor: "#f26e22",
   bgColor: "#f2f2f2",
   subTextColor: "#767676",
-  LightGray: "#c4c4c4",
+  lightGray: "#c4c4c4",
   btnDisabledColor: "#ffc7a7",
   borderColor: "#dbdbdb",
   waringColor: "#EB5757",

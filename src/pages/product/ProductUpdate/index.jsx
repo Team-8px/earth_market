@@ -2,13 +2,15 @@ import React from "react";
 import { MainLayOut } from "./index.style";
 import { HeaderButton } from "../../../components/Header";
 import { FormContainer } from "../../../components/Form";
-
+import ImgRegister from "../../../components/ImgRegister";
 const ProductModification = () => {
   return (
     <>
       <MainLayOut>
         <HeaderButton />
         <form>
+          {/* 이미지 등록 */}
+          <ImgRegister />
           {/* 상품명 수정 */}
           <FormContainer>
             <div>
