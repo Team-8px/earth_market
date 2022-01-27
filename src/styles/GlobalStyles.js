@@ -23,7 +23,15 @@ const GlobalStyles = createGlobalStyle`
         cursor: pointer;
         padding: 0;
         background-color: inherit;
-}
+    }
+    .ir {
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
 `;
 export default GlobalStyles;
 

@@ -121,7 +121,11 @@ export const ProductUploadMainLayOut = styled.main`
 // profile 페이지 레이아웃
 
 export const FolloMainLayOut = styled.main`
-  ${MainLayOut}
+  min-width: 390px;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  margin-top: 48px;
 `;
 
 export const ProfileModifiCationMainLayOut = styled.main`

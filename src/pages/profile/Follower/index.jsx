@@ -6,16 +6,12 @@ import { Button } from "../../../components/Button";
 
 const Follower = () => {
   return (
-    <FolloMainLayOut>
+    <>
       <HeaderFollowList />
+      <FolloMainLayOut>
         <FollowerList />
-          <Button size="sm" width="56px">
-            팔로우
-          </Button>
-          {/* <Button size="sm" width="56px">
-            취소
-          </Button> */}
-    </FolloMainLayOut>
+      </FolloMainLayOut>
+    </>
   );
 };
 

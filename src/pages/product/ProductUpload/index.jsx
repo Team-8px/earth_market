@@ -1,25 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { FormContainer } from "../../../components/Form";
 // 스타일
-import {
-  MainFormContainer,
-  ProductImgWrapper,
-  MainLayOut,
-} from "./index.style";
+import { MainLayOut, FormWrapper } from "./index.style";
 import { HeaderButton } from "../../../components/Header";
+import ImgRegister from "../../../components/ImgRegister";
 
 const ProductUpload = () => {
   return (
-    <MainLayOut>
-      <MainFormContainer>
-        <HeaderButton />
-        <form>
-          <ProductImgWrapper>
-            <label>
-              <input></input>
-            </label>
-          </ProductImgWrapper>
-
+    <>
+      <HeaderButton ButtonText={"저장"} />
+      <MainLayOut>
+        <FormWrapper>
+          <ImgRegister subTitleText={"이미지 등록"} />
           <FormContainer>
             <div>
               <label>상품명</label>
@@ -38,9 +30,9 @@ const ProductUpload = () => {
               <input placeholder="URL을 입력해 주세요." />
             </div>
           </FormContainer>
-        </form>
-      </MainFormContainer>
-    </MainLayOut>
+        </FormWrapper>
+      </MainLayOut>
+    </>
   );
 };
 
