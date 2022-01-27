@@ -13,6 +13,7 @@ import { HiddenMenu, ListBtn, AlertBtn } from "../../../components/HiddenMenu";
 import Post from "../../../components/Post";
 import { HeaderBasic } from "../../../components/Header";
 import UserInfo from "../../../components/UserInfo";
+import SellProduct from "../../../components/SellProduct";
 const MyProfile = () => {
   // 게시글 메뉴
   const [postDialog, setPostDialog] = useState(false);
@@ -26,7 +27,7 @@ const MyProfile = () => {
   const isNavDialog = () => setNavDialog(!navDialog);
   const isNavAlert = () => setNavAlert(!navAlert);
   return (
-    <>
+      <>
       <HeaderBasic isDialog={isNavDialog} />
       <MainLayOut>
         {/* 유저 프로필 */}
@@ -34,12 +35,17 @@ const MyProfile = () => {
         <UserInfo></UserInfo>
         {/* 상품목록 */}
         <ProductContainer>
-          <ProductWrapper></ProductWrapper>
+          <ProductWrapper>
+            <SellProduct />
+          </ProductWrapper>
         </ProductContainer>
-        {/* 게시글 목록 */}
-        <UserPostContainer>
-          <UserPostWrapper>
-            <DisplayHandler></DisplayHandler>
+    <MainLayOut>
+      {/* 유저 프로필 */}
+      {/* header */}
+      {/* 게시글 목록 */}
+      <UserPostContainer>
+        <UserPostWrapper>
+          <DisplayHandler></DisplayHandler>
             <Post
               authorId="테스트입니다"
               authorName="this is test"

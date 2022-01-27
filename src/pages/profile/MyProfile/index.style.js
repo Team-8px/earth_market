@@ -7,9 +7,10 @@ export const ProductContainer = styled.section`
     justify-content: center;
     border-top: 0.5px solid #dbdbdb;
     border-bottom: 0.5px solid #dbdbdb;
+    background-color: #fff;
 `;
 
-export const ProductWrapper = styled.div`
+export const ProductWrapper = styled.article`
     padding: 20px 0 20px 16px;
     max-width: 390px;
     width: 100%;

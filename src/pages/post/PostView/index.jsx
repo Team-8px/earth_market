@@ -5,6 +5,7 @@ import { Alert, AlertButton } from "../../../components/Alert";
 import { HiddenMenu, ListBtn, AlertBtn } from "../../../components/HiddenMenu";
 import Post from "../../../components/Post";
 import { HeaderBasic } from "../../../components/Header";
+import { SubmitChat } from "../../../components/SubmitChat";
 // 댓글 생성 부분 컴포넌트만 다시 불러와서 적용할 예정입니다.
 // 프로필 이미지
 import EllipseImg from "../../../asset/Ellipse-1.png";
@@ -51,6 +52,7 @@ const PostView = () => {
             <CommentText>안녕하세요. 사진이 너무 멋있어요.</CommentText>
         </CommentContainer>
         <button onClick={isChatDialog}>테스트</button>
+        <SubmitChat />
       </MainLayOut>
       {/* 🏞 게시글 Modal */}
       <HiddenMenu visible={postDialog}>

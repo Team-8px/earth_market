@@ -67,7 +67,6 @@ const UploadPostWrapper = styled.div`
         height: 1px;
         overflow: hidden;
     }
-}
 `;
 
 function Upload({

@@ -9,6 +9,7 @@ import {
 } from "./index.style";
 import { HeaderButton } from "../../../components/Header";
 // 스타일 컴포넌트
+import { SubmitChat } from "../../../components/SubmitChat";
 
 const PostUpload = () => {
   return (
