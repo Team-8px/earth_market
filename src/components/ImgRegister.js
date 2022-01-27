@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ImgIcon from "../asset/icon/icon-upload.png";
 const Container = styled.div`
+  width: 100%;
   margin-bottom: 30px;
 `;
 

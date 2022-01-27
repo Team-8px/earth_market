@@ -23,3 +23,12 @@ export const ProductUpdateInput = styled.input`
   border: none;
   border-bottom: 1px solid #dbdbdb;
 `;
+
+export const FormWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 390px;
+  width: 100%;
+  padding: 30px 34px 0;
+`;

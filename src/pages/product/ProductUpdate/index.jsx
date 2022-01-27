@@ -1,14 +1,14 @@
 import React from "react";
-import { MainLayOut } from "./index.style";
+import { MainLayOut, FormWrapper } from "./index.style";
 import { HeaderButton } from "../../../components/Header";
 import { FormContainer } from "../../../components/Form";
 import ImgRegister from "../../../components/ImgRegister";
 const ProductModification = () => {
   return (
     <>
+      <HeaderButton />
       <MainLayOut>
-        <HeaderButton />
-        <form>
+        <FormWrapper>
           {/* 이미지 등록 */}
           <ImgRegister subTitleText={"이미지 등록"} />
           {/* 상품명 수정 */}
@@ -32,7 +32,7 @@ const ProductModification = () => {
               <input placeholder="URL을 입력해 주세요." />
             </div>
           </FormContainer>
-        </form>
+        </FormWrapper>
       </MainLayOut>
     </>
   );
