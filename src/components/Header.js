@@ -6,7 +6,7 @@ import HeaderMoreImg from "../asset/icon-more-vertical.svg";
 import HeaderSeaechImg from "../asset/icon-search.svg";
 import { Button } from "./Button";
 
-export function HeaderButton() {
+export function HeaderButton({ ButtonText }) {
   return (
     <HeaderLayOut>
       <HeaderContainer>
@@ -14,7 +14,7 @@ export function HeaderButton() {
           <HeaderLinkImg src={HeaderBackImg} />
         </HeaderWrap>
         <Button size="ms" width="90px" color="orange">
-          업로드
+          {ButtonText}
         </Button>
       </HeaderContainer>
     </HeaderLayOut>

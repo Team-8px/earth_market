@@ -6,7 +6,7 @@ import ImgRegister from "../../../components/ImgRegister";
 const ProductModification = () => {
   return (
     <>
-      <HeaderButton />
+      <HeaderButton ButtonText="저장" />
       <MainLayOut>
         <FormWrapper>
           {/* 이미지 등록 */}
