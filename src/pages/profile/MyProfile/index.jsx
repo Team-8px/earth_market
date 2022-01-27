@@ -27,25 +27,24 @@ const MyProfile = () => {
   const isNavDialog = () => setNavDialog(!navDialog);
   const isNavAlert = () => setNavAlert(!navAlert);
   return (
-      <>
+    <>
       <HeaderBasic isDialog={isNavDialog} />
+      {/* 유저 프로필 */}
+      {/* header */}
+      <UserInfo></UserInfo>
+      {/* 상품목록 */}
+      <ProductContainer>
+        <ProductWrapper>
+          <SellProduct />
+        </ProductWrapper>
+      </ProductContainer>
       <MainLayOut>
         {/* 유저 프로필 */}
         {/* header */}
-        <UserInfo></UserInfo>
-        {/* 상품목록 */}
-        <ProductContainer>
-          <ProductWrapper>
-            <SellProduct />
-          </ProductWrapper>
-        </ProductContainer>
-    <MainLayOut>
-      {/* 유저 프로필 */}
-      {/* header */}
-      {/* 게시글 목록 */}
-      <UserPostContainer>
-        <UserPostWrapper>
-          <DisplayHandler></DisplayHandler>
+        {/* 게시글 목록 */}
+        <UserPostContainer>
+          <UserPostWrapper>
+            <DisplayHandler></DisplayHandler>
             <Post
               authorId="테스트입니다"
               authorName="this is test"
