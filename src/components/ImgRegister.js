@@ -5,6 +5,14 @@ const Container = styled.div`
   margin-bottom: 30px;
 `;
 
+const SubTitle = styled.h3`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: ${props => props.theme.colors.subTextColor};
+  margin-bottom: 18px;
+`;
+
 const Label = styled.label`
   position: relative;
   display: block;
@@ -28,9 +36,10 @@ const Label = styled.label`
   }
 `;
 
-function ImgRegister() {
+function ImgRegister({ subTitleText }) {
   return (
     <Container>
+      <SubTitle>{subTitleText}</SubTitle>
       <Label htmlFor="productImg" />
       <input
         type="file"

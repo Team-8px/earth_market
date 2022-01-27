@@ -10,7 +10,7 @@ const ProductModification = () => {
         <HeaderButton />
         <form>
           {/* 이미지 등록 */}
-          <ImgRegister />
+          <ImgRegister subTitleText={"이미지 등록"} />
           {/* 상품명 수정 */}
           <FormContainer>
             <div>
