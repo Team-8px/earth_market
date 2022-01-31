@@ -13,6 +13,7 @@ import { Alert, AlertButton } from "../../../components/Alert";
 import { HiddenMenu, ListBtn, AlertBtn } from "../../../components/HiddenMenu";
 import Post from "../../../components/Post";
 import SellProduct from "../../../components/SellProduct";
+import Navigation from "../../../components/Navigation";
 
 const YourProfile = () => {
   // 게시글 메뉴
@@ -29,8 +30,8 @@ const YourProfile = () => {
 
   return (
     <>
+      <HeaderBasic isDialog={isNavDialog} />
       <MainLayOut>
-        <HeaderBasic isDialog={isNavDialog} />
         <UserInfo></UserInfo>
         <ProductContainer>
           <ProductWrapper>
@@ -70,6 +71,7 @@ const YourProfile = () => {
           </UserPostWrapper>
         </UserPostContainer>
       </MainLayOut>
+      <Navigation />
       {/* 게시글 Modal */}
       <HiddenMenu visible={postDialog}>
         <li>

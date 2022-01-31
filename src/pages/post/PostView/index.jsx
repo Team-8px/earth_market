@@ -32,8 +32,8 @@ const PostView = () => {
 
   return (
     <>
+      <HeaderBasic isDialog={isNavDialog} />
       <MainLayOut>
-        <HeaderBasic isDialog={isNavDialog} />
         <CommentContainer>
           <Post
             authorId="테스트입니다"
