@@ -4,6 +4,7 @@ import { MainLayOut, ChatRoomLayOut,ChatRoomContainer, UserImgWrapper, UserMsgWr
 import { Alert, AlertButton } from "../../../components/Alert";
 import { HiddenMenu, AlertBtn, ListBtn } from "../../../components/HiddenMenu";
 import EllipseImg from "../../../asset/Ellipse-1.png";
+import { SubmitChat } from "../../../components/SubmitChat";
 
 const ChatRoom = () => {
   // 🕹 네비게이션 메뉴
@@ -13,8 +14,8 @@ const ChatRoom = () => {
   const isNavAlert = () => setNavAlert(!navAlert);
   return (
     <>
+      <HeaderChat isDialog={isNavDialog} />
       <MainLayOut>
-        <HeaderChat isDialog={isNavDialog} />
         <ChatRoomLayOut>
       <ChatRoomContainer>
         <UserImgWrapper>
@@ -27,6 +28,7 @@ const ChatRoom = () => {
       </ChatRoomContainer>
       </ChatRoomLayOut>
       </MainLayOut>
+      <SubmitChat />
       {/* 🕹 Nav Modal */}
       <HiddenMenu visible={navDialog}>
         <li>
