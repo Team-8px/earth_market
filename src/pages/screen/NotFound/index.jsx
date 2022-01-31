@@ -25,6 +25,7 @@ const LoginEmailTxt = styled.span`
   line-height: 15px;
   color: #767676;
   text-align: center;
+  margin-bottom: 20px;
 `;
 
 const NotFoundImg = styled.img`
