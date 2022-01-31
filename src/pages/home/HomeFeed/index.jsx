@@ -3,6 +3,7 @@ import { Alert, AlertButton } from "../../../components/Alert";
 //스타일 컴포넌트
 import { HeaderHome } from "../../../components/Header";
 import { HiddenMenu, ListBtn, AlertBtn } from "../../../components/HiddenMenu";
+import Navigation from "../../../components/Navigation";
 import Post from "../../../components/Post";
 import { MainLayOut } from "./index.style";
 
@@ -21,8 +22,8 @@ const HomeFeed = () => {
 
   return (
     <>
+      <HeaderHome />
       <MainLayOut>
-        <HeaderHome />
         <Post
           authorId="테스트입니다"
           authorName="this is test"
@@ -51,6 +52,7 @@ const HomeFeed = () => {
           isDialog={isPostDialog}
         />
       </MainLayOut>
+      <Navigation />
 
       {/* 게시글 Modal */}
       <HiddenMenu visible={postDialog}>

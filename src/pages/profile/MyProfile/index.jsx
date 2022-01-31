@@ -14,6 +14,7 @@ import Post from "../../../components/Post";
 import { HeaderBasic } from "../../../components/Header";
 import UserInfo from "../../../components/UserInfo";
 import SellProduct from "../../../components/SellProduct";
+import Navigation from "../../../components/Navigation";
 const MyProfile = () => {
   // 게시글 메뉴
   const [postDialog, setPostDialog] = useState(false);
@@ -75,6 +76,7 @@ const MyProfile = () => {
           </UserPostWrapper>
         </UserPostContainer>
       </MainLayOut>
+      <Navigation />
       {/* 게시글 Modal */}
       <HiddenMenu visible={postDialog}>
         <li>

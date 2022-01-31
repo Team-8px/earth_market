@@ -4,6 +4,7 @@ import { MainLayOut } from "./index.style";
 import ChatInfo from "../../../components/ChatInfoList";
 import { Alert, AlertButton } from "../../../components/Alert";
 import { HiddenMenu, ListBtn, AlertBtn } from "../../../components/HiddenMenu";
+import Navigation from "../../../components/Navigation";
 
 const ChatList = () => {
   // 🕹 네비게이션 메뉴
@@ -13,8 +14,8 @@ const ChatList = () => {
   const isNavAlert = () => setNavAlert(!navAlert);
   return (
     <>
+      <HeaderBasic isDialog={isNavDialog} />
       <MainLayOut>
-        <HeaderBasic isDialog={isNavDialog} />
         <ChatInfo/>
       </MainLayOut>
       {/* 🕹 Nav Modal */}
@@ -44,6 +45,7 @@ const ChatList = () => {
           <AlertButton type="button">로그아웃</AlertButton>
         </li>
       </Alert>
+      <Navigation />
     </>
   );
 };
