@@ -1,8 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import Kakao from "../asset/message-circle.png";
-import Google from "../asset/google.png";
-import FaceBook from "../asset/facebook.png";
 
 const buttonStyles = css`
   position: relative;
@@ -25,7 +22,6 @@ const iconStyles = css`
   width: 24px;
   height: 24px;
   transform: translateY(-50%);
-  background: url(${Kakao}) no-repeat center / 24px 24px;
 `;
 
 const sizeMap = {
