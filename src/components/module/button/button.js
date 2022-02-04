@@ -46,38 +46,36 @@ const sizeStyles = css`
   `}
 `;
 
-const colorStyles = css`
-  ${({ color, theme, border }) => {
-    const selected = theme.palette[color];
-    const borderTheme = theme.palette[border];
-    return css`
-      background: ${selected};
-      }
-      ${props =>
-        props.outline &&
-        css`
-          color: ${theme.palette["subText"]};
-          background: none;
-          border: 1px solid ${borderTheme};
-        `},
-        ${props =>
-          props.off &&
-          css`
-            color: #fff;
-            border: none;
-            background: ${theme.palette["lightMain"]};
-          `}
-    `;
-  }}
-`;
+// const colorStyles = css`
+//   ${({ color, theme, border }) => {
+//     const selected = theme.palette[color];
+//     const borderTheme = theme.palette[border];
+//     return css`
+//       background: ${selected};
+//       }
+//       ${props =>
+//         props.outline &&
+//         css`
+//           color: ${theme.palette["subText"]};
+//           background: none;
+//           border: 1px solid ${borderTheme};
+//         `},
+//         ${props =>
+//           props.off &&
+//           css`
+//             color: #fff;
+//             border: none;
+//             background: ${theme.palette["lightMain"]};
+//           `}
+//     `;
+//   }}
+// `;
 
 const StyledButton = styled.button`
   /* 공통 스타일 */
   ${buttonStyles}
   /* 사이즈 */
-  ${sizeStyles}
-  /* 컬러 */
-  ${colorStyles}
+  ${sizeStyles} /* 컬러 */
 `;
 
 export default function Button({ children, size, color, ...rest }) {
@@ -90,5 +88,5 @@ export default function Button({ children, size, color, ...rest }) {
 
 Button.defaultProps = {
   size: "md",
-  color: "main",
+  color: "red",
 };
