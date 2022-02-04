@@ -71,8 +71,16 @@ const MyProfile = () => {
           <li>사용자이름 : {username}</li>
           <li>계정 : {accountname}</li>
           <li>소개글 : {intro}</li>
-          <li>팔로우 : {followerCount}</li>
-          <li>팔로잉 : {followingCount}</li>
+          <li>
+            <Link to={`/gh/profile/${accountname}/follower`}>
+              팔로워: {followerCount}
+            </Link>
+          </li>
+          <li>
+            <Link to={`/gh/profile/${accountname}/following`}>
+              팔로잉 : {followingCount}
+            </Link>
+          </li>
         </ul>
       </div>
 

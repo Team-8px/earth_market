@@ -30,6 +30,8 @@ import {
   followerPostListReducer,
   followerListReducer,
   followingListReducer,
+  followUserReducer,
+  unFollowUserReducer,
 } from "./reducers/followReducer";
 
 const reducer = combineReducers({
@@ -53,6 +55,8 @@ const reducer = combineReducers({
   followerPostList: followerPostListReducer,
   followerList: followerListReducer,
   followingList: followingListReducer,
+  followUser: followUserReducer,
+  unfollowUser: unFollowUserReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
