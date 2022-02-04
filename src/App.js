@@ -4,38 +4,26 @@ import styled, { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/theme";
 
-// Auth
-import JoinMemberShip from "./pages/auth/JoinMemberShip";
-import LoginEmail from "./pages/auth/LoginEmail";
-import LoginMain from "./pages/auth/LoginMain";
-import SetMemberShip from "./pages/auth/SetMemberShip";
-
-// chat
-import ChatList from "./pages/chat/ChatList";
-import ChatRoom from "./pages/chat/ChatRoom";
-
-// home
-import HomeFeed from "./pages/home/HomeFeed";
-import HomeMain from "./pages/home/HomeMain";
-import Search from "./pages/home/Search";
-
-// post
-import PostUpload from "./pages/post/PostUpload";
-import PostView from "./pages/post/PostView";
-
-// product
-import ProductUpload from "./pages/product/ProductUpload";
-import ProductUpdate from "./pages/product/ProductUpdate";
-
-// profile
-import Follower from "./pages/profile/Follower";
-import MyProfile from "./pages/profile/MyProfile";
-import ProfileModification from "./pages/profile/ProfileModification";
-import YourProfile from "./pages/profile/YourProfile";
-
-// screen
-import NotFound from "./pages/screen/NotFound";
-import SplashScreen from "./pages/screen/SplashScreen";
+// 최재영 독립적인 라우트 2월 4일 이후 생성
+import ChatList from "./components/template/chat/ChatList";
+import ChatRoom from "./components/template/chat/ChatRoom";
+import Header from "./components/template/common/Header";
+import Navigation from "./components/template/common/Navigation";
+import HomeFeed from "./components/template/home/HomeFeed";
+import Search from "./components/template/home/Search";
+import JoinEmail from "./components/template/join/JoinEmail";
+import JoinProfile from "./components/template/join/JoinProfile";
+import LoginEmail from "./components/template/login/LoginEmail";
+import LoginMain from "./components/template/login/LoginMain";
+import PostUpload from "./components/template/post/PostUpload";
+import PostView from "./components/template/post/PostView";
+import ProductEdit from "./components/template/product/ProductEdit";
+import ProductUpload from "./components/template/product/ProductUpload";
+import Follower from "./components/template/profile/Follower";
+import Profile from "./components/template/profile/Profile";
+import ProfileEdit from "./components/template/profile/ProfileEdit";
+import NotFound from "./components/template/screen/NotFound";
+import SplashScreen from "./components/template/screen/SplashScreen";
 
 //김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후
 import SetMemberShipGH from "./pages/auth/SetMemberShip-gh";
@@ -58,73 +46,37 @@ const App = () => {
       <GlobalStyles />
       <Router>
         <AppliCation>
-          <Switch>
-            <Route path="/" component={LoginEmail} exact />
-            <Route path="/join/email" component={SetMemberShip} />
-            <Route path="/home" component={HomeMain} />
-            <Route path="/product" component={ProductUpload} exact />
-            <Route
-              path="/product/update/:productId"
-              component={ProductUpdate}
-            />
-            <Route path="/user/update" component={ProductUpdate} />
-            <Route path="/post/upload" component={PostUpload} />
-            <Route path="/post/:postId" component={PostView} />
-            {/* <Route path="/myprofile" component={MyProfile} /> */}
-            {/* <Route component={NotFound} /> */}
-          </Switch>
-
-          <Switch>
-            {/* auth */}
-            <Route path="/joinmembership" component={JoinMemberShip} exact />
-            <Route path="/loginemail" component={LoginEmail} exact />
-            <Route path="/loginmain" component={LoginMain} exact />
-            <Route path="/setmembership" component={SetMemberShip} exact />
-          </Switch>
-
+          {/* 최재영 독립적인 라우트 2월 4일 이후 생성 */}
           <Switch>
             {/* chat */}
             <Route path="/chatlist" component={ChatList} exact />
             <Route path="/chatroom" component={ChatRoom} exact />
-          </Switch>
-
-          <Switch>
+            {/* common */}
+            <Route path="/Header" component={Header} exact />
+            <Route path="/navigation" component={Navigation} exact />
             {/* home */}
             <Route path="/homefeed" component={HomeFeed} exact />
-            <Route path="/homemain" component={HomeMain} exact />
             <Route path="/search" component={Search} exact />
-          </Switch>
-
-          <Switch>
+            {/* join */}
+            <Route path="/joinemail" component={JoinEmail} exact />
+            <Route path="/joinprofile" component={JoinProfile} exact />
+            {/* login */}
+            <Route path="/loginemail" component={LoginEmail} exact />
+            <Route path="/loginmain" component={LoginMain} exact />
             {/* post */}
             <Route path="/postupload" component={PostUpload} exact />
             <Route path="/postview" component={PostView} exact />
-          </Switch>
-
-          <Switch>
             {/* product */}
+            <Route path="/productedit" component={ProductEdit} exact />
             <Route path="/productupload" component={ProductUpload} exact />
-            <Route path="/productupdate" component={ProductUpdate} exact />
-          </Switch>
-
-          <Switch>
             {/* profile */}
             <Route path="/follower" component={Follower} exact />
-            <Route path="/myprofile" component={MyProfile} exact />
-            <Route
-              path="/profilemodification"
-              component={ProfileModification}
-              exact
-            />
-            <Route path="/yourprofile" component={YourProfile} exact />
-          </Switch>
-
-          <Switch>
-            {/* profile */}
+            <Route path="/profile" component={Profile} exact />
+            <Route path="/profileedit" component={ProfileEdit} exact />
+            {/* screen */}
             <Route path="/notfound" component={NotFound} exact />
             <Route path="/splashscreen" component={SplashScreen} exact />
           </Switch>
-
           {/* 김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후 */}
           <Switch>
             {/* auth */}

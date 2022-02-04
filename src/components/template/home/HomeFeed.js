@@ -1,15 +1,12 @@
+import React, { useState } from "react";
 import styled from "styled-components";
-import UserBox from "../../Molecules/Box/UserBox";
-import IconBox from "../../Molecules/Box/IconBox";
-import Text from "../../Atoms/Text";
-
 const LayOut = styled.main``;
 const Container = styled.section``;
+
 function HomeFeed() {
   const [test, SetTest] = useState(null);
-  return (
-    <>
-      <Header></Header>
+  return <div>HomeFeed</div>;
+  /* <Header></Header>
       {test ? (
         <LayOut>
           <HomeLogo></HomeLogo>
@@ -25,9 +22,7 @@ function HomeFeed() {
           </PostLayOut>
         </LayOut>
       )}
-      <Navigation></Navigation>
-    </>
-  );
+      <Navigation></Navigation> */
 }
 
 export default HomeFeed;

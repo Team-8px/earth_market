@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-
+import styled from "styled-components";
 const LayOut = styled.div``;
 const List = styled.div``;
 
 export default function Search() {
   const [test, SetTest] = useState(null);
-  return (
-    <>
-      <Header></Header>
+  return <div>Search</div>;
+  /* <Header></Header>
       {test ? (
         <LayOut></LayOut>
       ) : (
@@ -17,7 +16,5 @@ export default function Search() {
           </List>
         </LayOut>
       )}
-      <Navigation></Navigation>
-    </>
-  );
+      <Navigation></Navigation> */
 }

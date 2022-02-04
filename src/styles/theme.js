@@ -9,16 +9,16 @@ const fontSizes = {
 };
 
 const colors = {
-  mainColor: "#f26e22",
-  bgColor: "#f2f2f2",
-  subTextColor: "#767676",
+  main: "#f26e22",
+  bg: "#f2f2f2",
+  subText: "#767676",
   lightGray: "#c4c4c4",
-  btnDisabledColor: "#ffc7a7",
-  borderColor: "#dbdbdb",
-  waringColor: "#EB5757",
-  kakaoColor: "#F2C94C",
-  googleColor: "#767676",
-  faceBookColor: "#2D9CDB",
+  btnDisabled: "#ffc7a7",
+  border: "#dbdbdb",
+  waring: "#EB5757",
+  kakao: "#F2C94C",
+  google: "#767676",
+  faceBook: "#2D9CDB",
 };
 
 const common = {
