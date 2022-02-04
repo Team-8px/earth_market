@@ -8,7 +8,7 @@ const fontSizes = {
   iconText: pixelToPx(10),
 };
 
-const colors = {
+const palette = {
   main: "#f26e22",
   bg: "#f2f2f2",
   subText: "#767676",
@@ -42,7 +42,7 @@ const common = {
 
 const theme = {
   fontSizes,
-  colors,
+  palette,
   common,
 };
 
