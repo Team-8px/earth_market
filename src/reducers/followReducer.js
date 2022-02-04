@@ -8,7 +8,39 @@ import {
   FOLLOWING_LIST_REQUEST,
   FOLLOWING_LIST_SUCCESS,
   FOLLOWING_LIST_FAIL,
+  FOLLOW_USER_REQUEST,
+  FOLLOW_USER_SUCCESS,
+  FOLLOW_USER_FAIL,
+  UNFOLLOW_USER_REQUEST,
+  UNFOLLOW_USER_SUCCESS,
+  UNFOLLOW_USER_FAIL,
 } from "../constants/followConstants";
+
+export const followUserReducer = (state = {}, action) => {
+  switch (action.type) {
+    case FOLLOW_USER_REQUEST:
+      return { loading: true };
+    case FOLLOW_USER_SUCCESS:
+      return { loading: false, follow: action.payload };
+    case FOLLOW_USER_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const unFollowUserReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UNFOLLOW_USER_REQUEST:
+      return { loading: true };
+    case UNFOLLOW_USER_SUCCESS:
+      return { loading: false, unfollow: action.payload };
+    case UNFOLLOW_USER_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 export const followerPostListReducer = (state = {}, action) => {
   switch (action.type) {

@@ -100,12 +100,12 @@ const App = () => {
               exact
             />
             <Route
-              path="/gh/profile/:accountname/follower"
+              path="/gh/profile/:accountId/follower"
               component={FollowerListGH}
               exact
             />
             <Route
-              path="/gh/profile/:accountname/following"
+              path="/gh/profile/:accountId/following"
               component={FollowingListGH}
               exact
             />

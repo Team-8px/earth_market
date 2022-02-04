@@ -7,7 +7,12 @@ const UseGNB = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (pathname === "/gh" || pathname === "/gh/join/email") {
+    if (
+      pathname === "/gh" ||
+      pathname === "/gh/join/email" ||
+      pathname === "/gh/" ||
+      pathname === "/gh/join/email/"
+    ) {
       setIsAppeardGNB(true);
     }
   }, [isAppeardGNB, setIsAppeardGNB]);
