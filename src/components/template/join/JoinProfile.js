@@ -1,15 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import { Button } from "../../module/button/Button";
 
-const LayOut = styled.div``;
+const LayOut = styled.main`
+  ${props => props.theme.common.flexCenterColumn}
+`;
 
 export default function JoinProfile() {
-  return <div>JoinProfile</div>;
-  // <LayOut>
-  //   <ProfileTitle></ProfileTitle>
-  //   <SubTitle></SubTitle>
-  //   <ProfileUpload></ProfileUpload>
-  //   <ProfileForm></ProfileForm>
-  //   <Button></Button>
-  // </LayOut>
+  return (
+    <>
+      <LayOut>
+        {/* <ProfileTitle></ProfileTitle> */}
+        {/* <SubTitle></SubTitle> */}
+        {/* <ProfileUpload></ProfileUpload> */}
+        {/* <ProfileForm></ProfileForm> */}
+        <Button width="322px" size="lg" off>
+          감귤마켓 시작하기
+        </Button>
+      </LayOut>
+    </>
+  );
 }
