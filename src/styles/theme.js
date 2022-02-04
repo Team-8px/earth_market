@@ -8,8 +8,9 @@ const fontSizes = {
   iconText: pixelToPx(10),
 };
 
-const colors = {
+const palette = {
   main: "#f26e22",
+  lightMain: "#FFC7A7",
   bg: "#f2f2f2",
   subText: "#767676",
   lightGray: "#c4c4c4",
@@ -30,7 +31,6 @@ const common = {
   flexCenterColumn: `
     display: flex;
     flex-direction: column;
-    justify-contents: center;
     align-items: center;
     `,
   flexSpaceBetween: `
@@ -42,7 +42,7 @@ const common = {
 
 const theme = {
   fontSizes,
-  colors,
+  palette,
   common,
 };
 

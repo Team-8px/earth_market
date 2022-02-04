@@ -1,6 +1,10 @@
 // 기존 로직 적용
 import React from "react";
 import styled, { css } from "styled-components";
+import faceBook from "../../../asset/facebook.png";
+//
+// import google from "../asset/google.png";
+// import kakao from "../asset/facebook.png";
 
 const buttonStyles = css`
   position: relative;
@@ -13,6 +17,20 @@ const buttonStyles = css`
   color: #fff;
   font-weight: bold;
   cursor: pointer;
+  margin-bottom: 10px;
+`;
+
+const iconStyles = css`
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  display: block;
+  content: "";
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
+  background: url(${props => props.icon || faceBook}) no-repeat center / 24px
+    24px;
 `;
 
 const sizeMap = {
@@ -46,39 +64,56 @@ const sizeStyles = css`
   `}
 `;
 
-// const colorStyles = css`
-//   ${({ color, theme, border }) => {
-//     const selected = theme.palette[color];
-//     const borderTheme = theme.palette[border];
-//     return css`
-//       background: ${selected};
-//       }
-//       ${props =>
-//         props.outline &&
-//         css`
-//           color: ${theme.palette["subText"]};
-//           background: none;
-//           border: 1px solid ${borderTheme};
-//         `},
-//         ${props =>
-//           props.off &&
-//           css`
-//             color: #fff;
-//             border: none;
-//             background: ${theme.palette["lightMain"]};
-//           `}
-//     `;
-//   }}
-// `;
+const colorStyles = css`
+  ${({ color, theme, border }) => {
+    const selected = theme.palette[color];
+    const borderTheme = theme.palette[border];
+    return css`
+      background: ${selected};
+      }
+      ${props =>
+        props.outline &&
+        css`
+          color: ${theme.palette["subText"]};
+          background: none;
+          border: 1px solid ${borderTheme};
+        `},
+
+        /* on,off 이런식으로 두는게 맞을까? */
+      ${props =>
+        props.on &&
+        css`
+          color: #fff;
+          border: none;
+          background: ${theme.palette["main"]};
+        `}
+      ${props =>
+        props.off &&
+        css`
+          color: #fff;
+          border: none;
+          background: ${theme.palette["lightMain"]};
+        `}
+    `;
+  }}
+`;
 
 const StyledButton = styled.button`
   /* 공통 스타일 */
   ${buttonStyles}
   /* 사이즈 */
-  ${sizeStyles} /* 컬러 */
+  ${sizeStyles}
+  /* 컬러 */
+  ${colorStyles}
 `;
 
-export default function Button({ children, size, color, ...rest }) {
+const StyledIconButton = styled(StyledButton)`
+  &::before {
+    ${iconStyles}
+  }
+`;
+
+export function Button({ children, size, color, ...rest }) {
   return (
     <StyledButton size={size} color={color} {...rest}>
       {children}
@@ -88,5 +123,13 @@ export default function Button({ children, size, color, ...rest }) {
 
 Button.defaultProps = {
   size: "md",
-  color: "red",
+  color: "main",
 };
+
+export function IconButton({ children, size, color, ...rest }) {
+  return (
+    <StyledIconButton size={size} color={color} {...rest}>
+      {children}
+    </StyledIconButton>
+  );
+}
