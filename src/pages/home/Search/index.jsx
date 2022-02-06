@@ -1,7 +1,7 @@
 import React from "react";
 import { HeaderSearch } from "../../../components/Header";
 import { MainLayOut} from "./index.style";
-import UserList from "../../../components/UserList";
+import SearchUser from "../../../components/module/user/SearchUser";
 import Navigation from "../../../components/Navigation";
 
 const Search = () => {
@@ -9,7 +9,7 @@ const Search = () => {
     <>
       <HeaderSearch />
       <MainLayOut>
-        <UserList></UserList>
+        <SearchUser></SearchUser>
       </MainLayOut>
       <Navigation />
     </>
