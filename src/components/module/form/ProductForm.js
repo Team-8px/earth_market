@@ -35,7 +35,7 @@ return (
         <FormContainer>
             <ProductFormWrapper>
                 <label>상품명</label>
-                <input placeholder="2~15자 이내여야 합니다." />
+                <input placeholder="2~10자 이내여야 합니다." />
             </ProductFormWrapper>
             <ProductFormWrapper>
                 <label>가격</label>
