@@ -46,7 +46,7 @@ return (
                 <input placeholder="URL을 입력해 주세요." />
             </ProductFormWrapper>
         </FormContainer>
-    )
-};
+    );
+}
 
 export default ProductForm;

@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import GrayLogo from "../asset/symbol-logo-gray.png";
 
-export const NoneFeed = styled.div`
+const NoneFeed = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,3 +27,11 @@ export const NoneFeed = styled.div`
         }
     }
 `;
+
+export default function NoneFeed() {
+    return (
+        <NoneFeed>
+            <p>유저를 검색해 팔로우 해보세요!</p>
+        </NoneFeed>
+    );
+}
