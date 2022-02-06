@@ -3,8 +3,8 @@ import styled from "styled-components";
 import faceBook from "../../../asset/facebook.png";
 // import kakao from "../../../asset/kakao.png";
 import google from "../../../asset/google.png";
-import { IconButton } from "../../module/button/Button";
-
+import { IconButton } from "../../module/button/button";
+import LoginLogo from "../../module/logo/LoginLogo";
 const LayOut = styled.div`
   ${props => props.theme.common.flexCenterColumn};
   width: 100%;
@@ -27,7 +27,9 @@ const Container = styled.div`
 export default function LoginMain() {
   return (
     <>
-      <LayOut>{/* <LoginLogo></LoginLogo> */}</LayOut>
+      <LayOut>
+        <LoginLogo></LoginLogo>
+      </LayOut>
       <Container>
         <IconButton
           width="322px"

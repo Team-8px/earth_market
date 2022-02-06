@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "../../module/button/Button";
-
+import { Button } from "../../module/button/button";
+import ProfileForm from "../../module/form/ProfileForm";
 const LayOut = styled.main`
   ${props => props.theme.common.flexCenterColumn}
 `;
@@ -13,7 +13,7 @@ export default function JoinProfile() {
         {/* <ProfileTitle></ProfileTitle> */}
         {/* <SubTitle></SubTitle> */}
         {/* <ProfileUpload></ProfileUpload> */}
-        {/* <ProfileForm></ProfileForm> */}
+        <ProfileForm></ProfileForm>
         <Button width="322px" size="lg" off>
           감귤마켓 시작하기
         </Button>
