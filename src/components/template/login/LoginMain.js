@@ -3,7 +3,7 @@ import styled from "styled-components";
 import faceBook from "../../../asset/facebook.png";
 // import kakao from "../../../asset/kakao.png";
 import google from "../../../asset/google.png";
-import { IconButton } from "../../module/button/Button";
+import { IconButton } from "../../module/button/button";
 
 const LayOut = styled.div`
   ${props => props.theme.common.flexCenterColumn};
