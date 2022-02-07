@@ -40,6 +40,7 @@ export default function PostView() {
         </PostLayOut>
         댓글 창
         {/* <List>
+        List 태그는 아래 스타일 컴포넌트에 있습니다 !
         <ReplyBox></ReplyBox>
       </List> */}
         댓글 입력창
