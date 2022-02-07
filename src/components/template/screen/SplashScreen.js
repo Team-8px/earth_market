@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-const LayOut = styled.div``;
+
+const LayOut = styled.main`
+  height: 100vh;
+  ${props => props.theme.common["flexCenterColumn"]}
+  justify-content: center;
+`;
 
 export default function Splash() {
-  return <div>Splash</div>;
-  // <LayOut>
-  //   <SplashLogo></SplashLogo>
-  // </LayOut>
+  return <LayOut>{/* <SplashLogo></SplashLogo> */}</LayOut>;
 }
