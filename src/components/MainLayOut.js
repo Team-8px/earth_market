@@ -49,9 +49,9 @@ export const SetMemberShipMainLayOut = styled.main`
 
 export const ChatListMainLayOut = styled.main`
   ${MainLayOut}
-  display: flex;
   justify-content: center;
   position: fixed;
+  display: flex;
   padding: 24px 16px;
   overflow-y: scroll;
 `;
