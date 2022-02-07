@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ProductForm from "../../module/form/ProductForm";
 import UploadProfile from "../../module/upload/UploadProfile";
 
-export default function ProductUpload() {
+const ProductUpload = () => {
   return (
     <>
       {/* <Header></Header> */}
@@ -15,7 +15,7 @@ export default function ProductUpload() {
       </LayOut>
     </>
   );
-}
+};
 
 const LayOut = styled.main`
   display: flex;
@@ -33,3 +33,5 @@ const FormContainer = styled.section`
   width: 100%;
   padding: 30px 34px 0;
 `;
+
+export default ProductUpload;

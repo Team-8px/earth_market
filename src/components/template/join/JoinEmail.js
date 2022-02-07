@@ -2,11 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "../../module/button/button";
 import RegisterForm from "../../module/form/RegisterForm";
-const LayOut = styled.main`
-  ${props => props.theme.common.flexCenterColumn}
-`;
 
-export default function JoinEmail() {
+const JoinEmail = () => {
   return (
     <>
       <LayOut>
@@ -18,4 +15,9 @@ export default function JoinEmail() {
       </LayOut>
     </>
   );
-}
+};
+const LayOut = styled.main`
+  ${props => props.theme.common.flexCenterColumn}
+`;
+
+export default JoinEmail;

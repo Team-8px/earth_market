@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Follower() {
+const Follower = () => {
   return (
     <>
       {/* <Header></Header> */}
@@ -13,7 +13,7 @@ export default function Follower() {
       {/* <Navigation></Navigation> */}
     </>
   );
-}
+};
 
 const LayOut = styled.main`
   min-width: 390px;
@@ -23,3 +23,5 @@ const LayOut = styled.main`
   margin-top: 48px;
 `;
 const List = styled.div``;
+
+export default Follower;

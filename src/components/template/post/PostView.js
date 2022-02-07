@@ -13,7 +13,7 @@ import testImg from "../../../asset/Ellipse 6.png";
 import testImg2 from "../../../asset/8px.png";
 import more from "../../../asset/icon-more-vertical.svg";
 
-export default function PostView() {
+const PostView = () => {
   return (
     <>
       {/* <Header></Header> */}
@@ -48,7 +48,7 @@ export default function PostView() {
       </LayOut>
     </>
   );
-}
+};
 
 const LayOut = styled.main`
   min-width: 390px;
@@ -82,3 +82,5 @@ const MoreBtn = styled.button`
   background-color: inherit;
 `;
 const List = styled.div``;
+
+export default PostView;

@@ -14,39 +14,7 @@ import testImg from "../../../asset/Ellipse 6.png";
 import testImg2 from "../../../asset/8px.png";
 import more from "../../../asset/icon-more-vertical.svg";
 
-const LayOut = styled.main`
-  ${props => props.theme.common.flexCenterColumn}
-  ${props =>
-    props.center &&
-    css`
-      justify-content: center;
-    `}
-  position: fixed;
-  height: calc(100% - 108px);
-  overflow-y: scroll;
-  min-width: 390px;
-  width: 100%;
-  min-width: 100%;
-  height: 100%;
-  margin-top: 48px;
-`;
-const Container = styled.article`
-  position: relative;
-  max-width: 358px;
-  width: 100%;
-  margin-bottom: 40px;
-`;
-const MoreBtn = styled.button`
-  position: absolute;
-  top: 4px;
-  right: 0;
-  width: 18px;
-  height: 18px;
-  background: url(${more}) no-repeat center / 18px 18px;
-  background-color: inherit;
-`;
-
-function HomeFeed() {
+const HomeFeed = () => {
   const [test, SetTest] = useState(true);
   return (
     <>
@@ -83,6 +51,38 @@ function HomeFeed() {
       {/* <Navigation></Navigation> */}
     </>
   );
-}
+};
+
+const LayOut = styled.main`
+  ${props => props.theme.common.flexCenterColumn}
+  ${props =>
+    props.center &&
+    css`
+      justify-content: center;
+    `}
+  position: fixed;
+  height: calc(100% - 108px);
+  overflow-y: scroll;
+  min-width: 390px;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  margin-top: 48px;
+`;
+const Container = styled.article`
+  position: relative;
+  max-width: 358px;
+  width: 100%;
+  margin-bottom: 40px;
+`;
+const MoreBtn = styled.button`
+  position: absolute;
+  top: 4px;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  background: url(${more}) no-repeat center / 18px 18px;
+  background-color: inherit;
+`;
 
 export default HomeFeed;

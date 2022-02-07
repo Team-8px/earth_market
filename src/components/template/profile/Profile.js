@@ -16,7 +16,7 @@ import more from "../../../asset/icon-more-vertical.svg";
 // myProfile 부분입니다.
 // yourProfile 부분입니다.
 
-export default function Profile() {
+const Profile = () => {
   return (
     <>
       {/* <Header></Header> */}
@@ -48,7 +48,7 @@ export default function Profile() {
       {/* <Navigation></Navigation> */}
     </>
   );
-}
+};
 
 const LayOut = styled.main`
   min-width: 390px;
@@ -86,3 +86,5 @@ const MoreBtn = styled.button`
   background: url(${more}) no-repeat center / 18px 18px;
   background-color: inherit;
 `;
+
+export default Profile;

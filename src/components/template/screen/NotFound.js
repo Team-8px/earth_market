@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Button } from "../../module/button/button";
 import SubText from "../../module/Text/SubText";
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <LayOut>
       {/* <NotFoundLogo></NotFoundLogo> */}
@@ -13,10 +13,12 @@ export default function NotFound() {
       </Button>
     </LayOut>
   );
-}
+};
 
 const LayOut = styled.main`
   height: 100vh;
   ${props => props.theme.common["flexCenterColumn"]}
   justify-content: center;
 `;
+
+export default NotFound;
