@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import UserInfoBox from "../../module/post/UserInfoBox";
 import {
   ContentBox,
@@ -7,6 +7,7 @@ import {
   ButtonList,
   ImgList,
 } from "../../module/post/ContentBox";
+import { Button } from "../../module/button/button";
 import IconBox from "../../module/post/IconBox";
 import Date from "../../module/post/Date";
 import testImg from "../../../asset/Ellipse 6.png";
@@ -15,6 +16,11 @@ import more from "../../../asset/icon-more-vertical.svg";
 
 const LayOut = styled.main`
   ${props => props.theme.common.flexCenterColumn}
+  ${props =>
+    props.center &&
+    css`
+      justify-content: center;
+    `}
   position: fixed;
   height: calc(100% - 108px);
   overflow-y: scroll;
@@ -41,14 +47,16 @@ const MoreBtn = styled.button`
 `;
 
 function HomeFeed() {
-  const [test, SetTest] = useState(null);
+  const [test, SetTest] = useState(true);
   return (
     <>
       {/* <Header></Header> */}
       {test ? (
-        <LayOut>
+        <LayOut center>
           {/* <HomeLogo></HomeLogo> */}
-          {/* <Button></Button> */}
+          <Button size="lg" width="120px">
+            검색하기
+          </Button>
         </LayOut>
       ) : (
         <LayOut>
