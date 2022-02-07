@@ -4,16 +4,7 @@ import { UploadPost, UploadImg } from "../../module/upload/UploadPost";
 import testIcon from "../../../asset/upload-file.png";
 import testPostImg from "../../../asset/post-img-example.png";
 
-const LayOut = styled.main`
-  display: flex;
-  padding: 20px 0 20px 16px;
-  min-width: 390px;
-  width: 100%;
-  height: 100%;
-  margin-top: 48px;
-`;
-
-export default function PostUpload() {
+const PostUpload = () => {
   const testData = [1, 2, 3];
   const test = null;
   return (
@@ -31,4 +22,14 @@ export default function PostUpload() {
       </LayOut>
     </>
   );
-}
+};
+const LayOut = styled.main`
+  display: flex;
+  padding: 20px 0 20px 16px;
+  min-width: 390px;
+  width: 100%;
+  height: 100%;
+  margin-top: 48px;
+`;
+
+export default PostUpload;

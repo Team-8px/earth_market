@@ -1,14 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const LayOut = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 20px 16px;
-  min-height: 100%;
-`;
-export default function ChatRoom() {
+const ChatRoom = () => {
   return (
     <>
       {/* <Header></Header> */}
@@ -16,4 +9,13 @@ export default function ChatRoom() {
       {/* <Comment></Comment> */}
     </>
   );
-}
+};
+const LayOut = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 16px;
+  min-height: 100%;
+`;
+
+export default ChatRoom;

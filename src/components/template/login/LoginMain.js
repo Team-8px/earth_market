@@ -5,7 +5,47 @@ import faceBook from "../../../asset/facebook.png";
 import google from "../../../asset/google.png";
 import { IconButton } from "../../module/button/button";
 import LoginLogo from "../../module/logo/LoginLogo";
-const LayOut = styled.div`
+
+const LoginMain = () => {
+  return (
+    <>
+      <LayOut>
+        <LoginLogo></LoginLogo>
+        <Container>
+          <IconButton
+            width="322px"
+            size="lg"
+            border="kakao"
+            outline
+            icon={google}
+          >
+            카카오톡 계정으로 로그인
+          </IconButton>
+          <IconButton
+            width="322px"
+            size="lg"
+            border="google"
+            outline
+            // icon={google} 카카오 파일 어디갔지..?
+          >
+            구글 계정으로 로그인
+          </IconButton>
+          <IconButton
+            width="322px"
+            size="lg"
+            border="faceBook"
+            outline
+            icon={faceBook}
+          >
+            페이스북 계정으로 로그인
+          </IconButton>
+          {/* <LoginText></LoginText> */}
+        </Container>
+      </LayOut>
+    </>
+  );
+};
+const LayOut = styled.main`
   ${props => props.theme.common.flexCenterColumn};
   width: 100%;
   height: 100%;
@@ -24,42 +64,4 @@ const Container = styled.div`
   color: ${props => props.theme.palette.subText};
 `;
 
-export default function LoginMain() {
-  return (
-    <>
-      <LayOut>
-        <LoginLogo></LoginLogo>
-      </LayOut>
-      <Container>
-        <IconButton
-          width="322px"
-          size="lg"
-          border="kakao"
-          outline
-          icon={google}
-        >
-          카카오톡 계정으로 로그인
-        </IconButton>
-        <IconButton
-          width="322px"
-          size="lg"
-          border="google"
-          outline
-          // icon={google} 카카오 파일 어디갔지..?
-        >
-          구글 계정으로 로그인
-        </IconButton>
-        <IconButton
-          width="322px"
-          size="lg"
-          border="faceBook"
-          outline
-          icon={faceBook}
-        >
-          페이스북 계정으로 로그인
-        </IconButton>
-        {/* <LoginText></LoginText> */}
-      </Container>
-    </>
-  );
-}
+export default LoginMain;

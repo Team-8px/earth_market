@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ProfileUpload from "../../module/profile/ProfileIUpload";
 import ProfileForm from "../../module/form/ProfileForm";
 
-export default function ProfileEdit() {
+const ProfileEdit = () => {
   return (
     <>
       {/* <Header></Header> */}
@@ -15,7 +15,7 @@ export default function ProfileEdit() {
       </LayOut>
     </>
   );
-}
+};
 
 const LayOut = styled.main`
   display: flex;
@@ -33,3 +33,5 @@ const FormContainer = styled.section`
   width: 100%;
   padding: 30px 34px 0;
 `;
+
+export default ProfileEdit;

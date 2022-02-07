@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-const LayOut = styled.div``;
 
-function Navigation() {
+const Navigation = () => {
   return <div>Navigation</div>;
-}
+};
+const LayOut = styled.div``;
 
 export default Navigation;

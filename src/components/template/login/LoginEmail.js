@@ -4,11 +4,7 @@ import { Button } from "../../module/button/button";
 import LoginTitle from "../../module/title/LoginTitle";
 import LoginForm from "../../module/form/LoginForm";
 
-const LayOut = styled.main`
-  ${props => props.theme.common.flexCenterColumn}
-`;
-
-export default function LoginEmail() {
+const LoginEmail = () => {
   return (
     <>
       <LayOut>
@@ -21,4 +17,10 @@ export default function LoginEmail() {
       </LayOut>
     </>
   );
-}
+};
+
+const LayOut = styled.main`
+  ${props => props.theme.common.flexCenterColumn}
+`;
+
+export default LoginEmail;
