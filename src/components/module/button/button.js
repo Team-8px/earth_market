@@ -81,20 +81,18 @@ const colorStyles = css`
 
         /* on,off 이런식으로 두는게 맞을까? */
       ${props =>
-        props.on &&
-        css`
-          color: #fff;
-          border: none;
-          background: ${theme.palette["main"]};
-        `}
-      ${props =>
-        props.off &&
-        css`
-          color: #fff;
-          border: none;
-          background: ${theme.palette["lightMain"]};
-        `}
-    `;
+        props.isButtonStatus
+          ? css`
+              color: #fff;
+              border: none;
+              background: ${theme.palette["main"]};
+            `
+          : css`
+              color: #fff;
+              border: none;
+              background: ${theme.palette["lightMain"]};
+            `}
+     `;
   }}
 `;
 

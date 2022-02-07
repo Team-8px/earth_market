@@ -16,6 +16,7 @@ const JoinEmail = () => {
     </>
   );
 };
+
 const LayOut = styled.main`
   ${props => props.theme.common.flexCenterColumn}
 `;
