@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { login } from "../../../actions/userActions";
 import { MainTitle } from "../../../components/MainTitle";
 import { FormContainer } from "../../../components/Form";
-import { MainLayOut } from "../LoginEmail/index.style";
+/* 내용을 몰라서 주석처리 했어요 -현길- */
+/* import { MainLayOut } from "../LoginEmail/index.style"; */
 import UseGNBHook from "../../../hooks/useGNB";
 
 const LoginEmail = () => {
@@ -21,7 +22,7 @@ const LoginEmail = () => {
   };
 
   return (
-    <MainLayOut>
+    <div>
       <MainTitle>로그인</MainTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormContainer>
@@ -56,7 +57,7 @@ const LoginEmail = () => {
       <br />
       <br />
       <UseGNBHook />
-    </MainLayOut>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { LoginEmailMainLayOut } from "../../../components/MainLayOut";
+/* import { LoginEmailMainLayOut } from "../../../components/MainLayOut"; */
 import { MainTitle } from "../../../components/MainTitle";
 // import { Button } from "../../../components/Button";
 

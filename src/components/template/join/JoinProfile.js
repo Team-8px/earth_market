@@ -12,7 +12,7 @@ const JoinProfile = () => {
         {/* <ProfileUpload></ProfileUpload> */}
         <ProfileForm></ProfileForm>
         <Button width="322px" size="lg" off>
-          감귤마켓 시작하기
+          감귤마켓 시작하세요 안녕하세요.
         </Button>
       </LayOut>
     </>
