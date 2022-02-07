@@ -27,9 +27,7 @@ export default function Profile() {
           <DisplayButton></DisplayButton>
           <PostWrapper>
             <Container>
-              {/* 유저 인포 */}
               <UserInfoBox name="text" id="id" />
-              {/* 게시글 영역 */}
               <ContentBox content="content">
                 <ImgContainer>
                   <ImgList>
