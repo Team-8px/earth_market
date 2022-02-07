@@ -6,10 +6,12 @@ import ProfileForm from "../../module/form/ProfileForm";
 export default function ProfileEdit() {
   return (
     <>
-      <Header></Header>
+      {/* <Header></Header> */}
       <LayOut>
-        <ProfileUpload></ProfileUpload>
-        <ProfileForm></ProfileForm>
+        <FormContainer>
+          <ProfileUpload></ProfileUpload>
+          <ProfileForm></ProfileForm>
+        </FormContainer>
       </LayOut>
     </>
   );
@@ -23,4 +25,11 @@ const LayOut = styled.main`
   height: 100%;
   background-color: #fff;
   margin-top: 48px;
+`;
+
+const FormContainer = styled.section`
+  ${props => props.theme.common["flexCenterColumn"]}
+  max-width: 390px;
+  width: 100%;
+  padding: 30px 34px 0;
 `;
