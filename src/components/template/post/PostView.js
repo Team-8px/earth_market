@@ -12,11 +12,12 @@ import Date from "../../module/post/Date";
 import testImg from "../../../asset/Ellipse 6.png";
 import testImg2 from "../../../asset/8px.png";
 import more from "../../../asset/icon-more-vertical.svg";
+import Header from "../common/Header";
 
 const PostView = () => {
   return (
     <>
-      {/* <Header></Header> */}
+      <Header />
       <LayOut>
         <PostLayOut>
           <Container>

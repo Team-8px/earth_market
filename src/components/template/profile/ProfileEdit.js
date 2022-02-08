@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import ProfileUpload from "../../module/profile/ProfileIUpload";
 import ProfileForm from "../../module/form/ProfileForm";
+import { HeaderButton } from "../common/Header";
 
 const ProfileEdit = () => {
   return (
     <>
-      {/* <Header></Header> */}
+      <HeaderButton buttonText={"저장"} />
       <LayOut>
         <FormContainer>
           <ProfileUpload></ProfileUpload>

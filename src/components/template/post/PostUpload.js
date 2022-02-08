@@ -3,13 +3,14 @@ import styled from "styled-components";
 import { UploadPost, UploadImg } from "../../module/upload/UploadPost";
 import testIcon from "../../../asset/upload-file.png";
 import testPostImg from "../../../asset/post-img-example.png";
+import { HeaderButton } from "../common/Header";
 
 const PostUpload = () => {
   const testData = [1, 2, 3];
   const test = null;
   return (
     <>
-      {/* <Header></Header> */}
+      <HeaderButton buttonText={"저장"} />
       <LayOut>
         <UploadPost
           img={test || testIcon}

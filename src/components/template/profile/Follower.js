@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { HeaderFollow } from "../common/Header";
 
 const Follower = () => {
   return (
     <>
-      {/* <Header></Header> */}
+      <HeaderFollow />
       <LayOut>
         {/* <List> */}
         {/* <FollowersUser></FollowersUser> */}

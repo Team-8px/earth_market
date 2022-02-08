@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import Header from "../common/Header";
 
 const ChatList = () => {
   return (
     <>
-      {/* <Header></Header> */}
+      <Header />
       <LayOut>
         {/* <List> */}
         {/* <ChatListUser></ChatListUser> */}
