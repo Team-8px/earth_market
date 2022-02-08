@@ -5,6 +5,7 @@ import faceBook from "../../../asset/facebook.png";
 import google from "../../../asset/google.png";
 import { IconButton } from "../../module/button/Button";
 import LoginLogo from "../../module/logo/LoginLogo";
+import LoginText from "../../module/Text/LoginText";
 
 const LoginMain = () => {
   return (
@@ -39,7 +40,7 @@ const LoginMain = () => {
           >
             페이스북 계정으로 로그인
           </IconButton>
-          {/* <LoginText></LoginText> */}
+          <LoginText />
         </Container>
       </LayOut>
     </>
