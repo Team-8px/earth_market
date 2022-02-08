@@ -7,16 +7,9 @@ import styled from "styled-components";
 import Upload from "../../../asset/upload-file.png";
 import EllipseImg from "../../../asset/Ellipse-1.png";
 
-const ProfileImage = styled.div`
-    width: 110px;
-    height: 110px;
-    border: 1px solid #dbdbdb;
-    border-radius: 50%;
-    margin-bottom: 16px;
-`;
 const ProfileImgWrapper = styled.div`
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 16px;
 
     label {
         position: relative;

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import UserInfo from "../../UserInfo";
 import UserInfoBox from "../../module/post/UserInfoBox";
 import {
   ContentBox,
@@ -22,7 +23,7 @@ const Profile = () => {
     <>
       <Header />
       <LayOut>
-        {/* <UserInfo></UserInfo> */}
+        <UserInfo></UserInfo>
         {/* <Product></Product> */}
         <PostContainer>
           <DisplayButton></DisplayButton>
