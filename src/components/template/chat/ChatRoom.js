@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { HeaderFollow } from "../common/Header";
 import Chat from "../../module/chat/Chat";
+import { CommentUser } from "../../module/user/CommentUser";
 
 const ChatRoom = () => {
   return (
@@ -10,7 +11,7 @@ const ChatRoom = () => {
       <LayOut>
         <Chat></Chat>
       </LayOut>
-      {/* <Comment></Comment> */}
+      <CommentUser buttonText={"전송"} />
     </>
   );
 };
