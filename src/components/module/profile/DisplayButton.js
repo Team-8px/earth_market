@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import listOn from "../asset/icon/icon-post-list-on.png";
-import listOff from "../asset/icon/icon-post-list-off.png";
-import postOn from "../asset/icon/icon-post-album-on.png";
-import postOff from "../asset/icon/icon-post-album-on.png";
+import listOn from "../../../asset/icon/icon-post-list-on.png";
+import listOff from "../../../asset/icon/icon-post-list-off.png";
+import postOn from "../../../asset/icon/icon-post-album-on.png";
+import postOff from "../../../asset/icon/icon-post-album-on.png";
 
 const HandlerContainer = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-function DisplayHandler() {
+function DisplayButton() {
   return (
     <HandlerContainer>
       <ButtonWrapper>
@@ -46,4 +46,4 @@ function DisplayHandler() {
   );
 }
 
-export default DisplayHandler;
+export default DisplayButton;

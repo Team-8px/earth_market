@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { login } from "../../../actions/userActions";
 import { MainTitle } from "../../../components/MainTitle";
-import { Button } from "../../../components/Button";
 import { FormContainer } from "../../../components/Form";
 import { MainLayOut } from "../LoginEmail/index.style";
 import UseGNBHook from "../../../hooks/useGNB";
@@ -47,9 +46,7 @@ const LoginEmail = () => {
             />
           </div>
         </FormContainer>
-        <Button size="lg" width="322px">
-          로그인
-        </Button>
+        <button>로그인</button>
       </form>
 
       <LoginEmailTxt>
