@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "../common/Header";
 import Chat from "../../module/chat/Chat";
 
-const ChatRoom = () => {
+const ChatList = () => {
   return (
     <>
       <Header />
