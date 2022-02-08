@@ -17,7 +17,7 @@ import testImg2 from "../../../asset/8px.png";
 import more from "../../../asset/icon-more-vertical.svg";
 
 const HomeFeed = () => {
-  const [test, SetTest] = useState(true);
+  const [test, SetTest] = useState(false);
 
   // 게시글 메뉴
   const [postDialog, setPostDialog] = useState(false);
@@ -52,7 +52,7 @@ const HomeFeed = () => {
               <IconBox like="9999" comment="9999" />
               <Date>2022년 2월 4일</Date>
             </ContentBox>
-            <MoreBtn />
+            <MoreBtn onClick={isPostDialog} />
           </Container>
         </LayOut>
       )}
