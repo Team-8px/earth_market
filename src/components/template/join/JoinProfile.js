@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "../../module/button/button";
 import ProfileForm from "../../module/form/ProfileForm";
+import ProfileUpload from "../../module/profile/ProfileIUpload";
 
 const JoinProfile = () => {
   return (
@@ -9,7 +10,7 @@ const JoinProfile = () => {
       <LayOut>
         {/* <ProfileTitle></ProfileTitle> */}
         {/* <SubTitle></SubTitle> */}
-        {/* <ProfileUpload></ProfileUpload> */}
+        <ProfileUpload></ProfileUpload>
         <ProfileForm></ProfileForm>
         <Button width="322px" size="lg" off>
           감귤마켓 시작하세요 안녕하세요.
