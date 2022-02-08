@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import EllipseImg from "../asset/Ellipse-1.png";
 import { ProfileImage } from "./common/image/ProfileImageStyle";
-import { Button } from "./Button";
 
 const UserInfoContainer = styled.header`
   display: flex;
@@ -91,6 +90,8 @@ const FollowingWrapper = styled(Link)`
     color: #767676;
   }
 `;
+
+const Button = styled.button``;
 
 function UserInfo({
   username,

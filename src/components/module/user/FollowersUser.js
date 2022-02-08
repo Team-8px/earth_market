@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import EllipseImg from "../../../asset/Ellipse-1.png";
-import { Button } from "../../../components/Button";
 
 const UserListContainer = styled.ul`
   max-width: 390px;
@@ -49,6 +48,8 @@ const UserIntro = styled.strong`
   font-size: 12px;
   line-height: 15px;
 `;
+
+const Button = styled.button``;
 
 export default function FollowersUser({ username, intro }) {
   const [test, setTest] = useState(true);
