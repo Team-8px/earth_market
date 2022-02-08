@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "../../module/button/button";
+import { Button } from "../../module/button/Button";
 import ProfileForm from "../../module/form/ProfileForm";
 import ProfileUpload from "../../module/profile/ProfileIUpload";
 

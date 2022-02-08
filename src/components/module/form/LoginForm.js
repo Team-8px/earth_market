@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Button } from "../../module/button/button";
+import { Button } from "../button/Button";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { login } from "../../../actions/userActions";
@@ -64,7 +64,7 @@ const EmailWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    font-color: #dbdbdb;
+    color: #dbdbdb;
     line-height: 14px;
     padding-bottom: 8px;
     border: none;
@@ -86,7 +86,7 @@ const PwWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    font-color: #dbdbdb;
+    color: #dbdbdb;
     line-height: 14px;
     padding-bottom: 8px;
     border: none;

@@ -7,7 +7,7 @@ import {
   ButtonList,
   ImgList,
 } from "../../module/post/ContentBox";
-import { Button } from "../../module/button/button";
+import { Button } from "../../module/button/Button";
 import IconBox from "../../module/post/IconBox";
 import Date from "../../module/post/Date";
 import testImg from "../../../asset/Ellipse 6.png";

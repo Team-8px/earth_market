@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "../../module/button/button";
+import { Button } from "../../module/button/Button";
 import RegisterForm from "../../module/form/RegisterForm";
 
 const JoinEmail = () => {

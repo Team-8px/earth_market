@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import EllipseImg from "../../../asset/Ellipse-1.png";
-import { Button } from "../../../components/Button";
+import { Button } from "../button/Button";
 
 const UserListContainer = styled.ul`
   max-width: 390px;

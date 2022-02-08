@@ -3,7 +3,7 @@ import styled from "styled-components";
 import faceBook from "../../../asset/facebook.png";
 // import kakao from "../../../asset/kakao.png";
 import google from "../../../asset/google.png";
-import { IconButton } from "../../module/button/button";
+import { IconButton } from "../../module/button/Button";
 import LoginLogo from "../../module/logo/LoginLogo";
 
 const LoginMain = () => {

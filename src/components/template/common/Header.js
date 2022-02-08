@@ -5,10 +5,9 @@ import styled from "styled-components";
 import PrevBtn from "../../../asset/icon-arrow-left.svg";
 import MoreBtn from "../../../asset/icon-more-vertical.svg";
 import SearchBtn from "../../../asset/icon-search.svg";
-import { Button } from "../../module/button/button";
+import { Button } from "../../module/button/Button";
 
 const Header = () => {
-  const [text, setText] = useState(false);
   return (
     <HeaderNav>
       <PrevBtnWrap />
