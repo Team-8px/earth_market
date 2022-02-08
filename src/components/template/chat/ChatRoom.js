@@ -2,22 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import Chat from "../../module/chat/Chat";
 
-<<<<<<< HEAD
-export default function ChatRoom() {
-  return (
-    // <Header></Header>
-    // <LayOut>
-    <Chat></Chat>
-    // </LayOut>
-    // <Comment></Comment> */
-  );
-}
-=======
 const ChatRoom = () => {
   return (
     <>
       {/* <Header></Header> */}
-      <LayOut>{/* <Chat></Chat> */}</LayOut>
+      <LayOut>
+        <Chat></Chat>
+      </LayOut>
       {/* <Comment></Comment> */}
     </>
   );
@@ -31,4 +22,3 @@ const LayOut = styled.main`
 `;
 
 export default ChatRoom;
->>>>>>> f8c65edb0caa6a558d961afea2df603f98fdb76c

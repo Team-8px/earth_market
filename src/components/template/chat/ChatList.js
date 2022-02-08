@@ -14,11 +14,16 @@ const ChatRoom = () => {
   );
 };
 const LayOut = styled.main`
+  min-width: 390px;
+  width: 100%;
+  height: 100%;
+  margin-top: 48px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 20px 16px;
-  min-height: 100%;
+  justify-content: center;
+  position: fixed;
+  padding: 24px 16px;
+  overflow-y: scroll;
 `;
+const List = styled.div``;
 
-export default ChatRoom;
+export default ChatList;
