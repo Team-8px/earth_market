@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../common/Header";
 import Chat from "../../module/chat/Chat";
+import Navigation from "../common/Navigation";
 
 const ChatList = () => {
   return (
@@ -10,7 +11,7 @@ const ChatList = () => {
       <LayOut>
         <Chat></Chat>
       </LayOut>
-      {/* <Comment></Comment> */}
+      <Navigation />
     </>
   );
 };
