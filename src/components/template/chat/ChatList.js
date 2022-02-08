@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "../common/Header";
+import Chat from "../../module/chat/Chat";
 
-const ChatList = () => {
+const ChatRoom = () => {
   return (
     <>
       <Header />
       <LayOut>
-        {/* <List> */}
-        {/* <ChatListUser></ChatListUser> */}
-        {/* </List> */}
+        <Chat></Chat>
       </LayOut>
+      {/* <Comment></Comment> */}
     </>
   );
 };

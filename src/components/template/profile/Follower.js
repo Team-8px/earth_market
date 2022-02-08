@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { HeaderFollow } from "../common/Header";
+import FollowersUser from "../../module/user/FollowersUser";
 
 const Follower = () => {
   return (
@@ -8,7 +9,7 @@ const Follower = () => {
       <HeaderFollow />
       <LayOut>
         {/* <List> */}
-        {/* <FollowersUser></FollowersUser> */}
+        <FollowersUser></FollowersUser>
         {/* </List> */}
       </LayOut>
       {/* <Navigation></Navigation> */}
