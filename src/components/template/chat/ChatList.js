@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import Header from "../common/Header";
 import Chat from "../../module/chat/Chat";
 
 const ChatRoom = () => {
   return (
     <>
-      {/* <Header></Header> */}
+      <Header />
       <LayOut>
         <Chat></Chat>
       </LayOut>

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import UserInfo from "../../UserInfo";
 import UserInfoBox from "../../module/post/UserInfoBox";
 import {
   ContentBox,
@@ -13,6 +12,7 @@ import Date from "../../module/post/Date";
 import DisplayButton from "../../module/profile/DisplayButton";
 import testImg2 from "../../../asset/8px.png";
 import more from "../../../asset/icon-more-vertical.svg";
+import Header from "../common/Header";
 
 // myProfile 부분입니다.
 // yourProfile 부분입니다.
@@ -20,9 +20,9 @@ import more from "../../../asset/icon-more-vertical.svg";
 const Profile = () => {
   return (
     <>
-      {/* <Header></Header> */}
+      <Header />
       <LayOut>
-        <UserInfo></UserInfo>
+        {/* <UserInfo></UserInfo> */}
         {/* <Product></Product> */}
         <PostContainer>
           <DisplayButton></DisplayButton>

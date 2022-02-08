@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { HeaderSearch } from "../common/Header";
 
 const Search = () => {
   const [test, SetTest] = useState(null);
   return (
     <>
-      {/* <Header></Header> */}
+      <HeaderSearch />
       {test ? (
         <LayOut></LayOut>
       ) : (
