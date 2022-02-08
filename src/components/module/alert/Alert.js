@@ -49,6 +49,11 @@ const List = styled.ul`
 
 const Item = styled.li`
   width: 50%;
+
+  &:nth-child(2) {
+    border-left: 0.5px solid ${props => props.theme.palette["border"]};
+  }
+
   button {
     width: 100%;
     height: 46px;
@@ -84,8 +89,10 @@ export function Alert({ children, visible, messageText }) {
 
   return (
     <Container>
-      <AlertMessage>{messageText}</AlertMessage>
-      <List>{children}</List>
+      <Wrapper>
+        <AlertMessage>{messageText}</AlertMessage>
+        <List>{children}</List>
+      </Wrapper>
     </Container>
   );
 }

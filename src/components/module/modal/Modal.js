@@ -44,6 +44,7 @@ const MenuContainer = styled.section`
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.3);
+  z-index: 100;
 
   animation-duration: 0.35s;
   animation-timing-function: ease-out;
