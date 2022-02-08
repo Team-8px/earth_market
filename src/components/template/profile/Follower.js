@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-
+import FollowersUser from "../../module/user/FollowersUser";
 const Follower = () => {
   return (
     <>
       {/* <Header></Header> */}
       <LayOut>
         {/* <List> */}
-        {/* <FollowersUser></FollowersUser> */}
+        <FollowersUser></FollowersUser>
         {/* </List> */}
       </LayOut>
       {/* <Navigation></Navigation> */}

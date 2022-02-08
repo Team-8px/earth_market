@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import Chat from "../../module/chat/Chat";
 
 const ChatRoom = () => {
   return (
     <>
       {/* <Header></Header> */}
-      <LayOut>{/* <Chat></Chat> */}</LayOut>
+      <LayOut>
+        <Chat></Chat>
+      </LayOut>
       {/* <Comment></Comment> */}
     </>
   );
