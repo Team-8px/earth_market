@@ -46,6 +46,7 @@ function LoginForm() {
 // 공통요소
 const FormContainer = styled.form`
   box-sizing: border-box;
+  margin-top: 40px;
 `;
 
 const EmailWrapper = styled.div`
