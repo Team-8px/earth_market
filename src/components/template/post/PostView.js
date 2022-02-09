@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import UserInfoBox from "../../module/post/UserInfoBox";
 import {
@@ -7,13 +7,34 @@ import {
   ButtonList,
   ImgList,
 } from "../../module/post/ContentBox";
+import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
+import { Alert, AlertBox } from "../../module/alert/Alert";
 import IconBox from "../../module/post/IconBox";
 import Date from "../../module/post/Date";
 import testImg from "../../../asset/Ellipse 6.png";
 import testImg2 from "../../../asset/8px.png";
 import more from "../../../asset/icon-more-vertical.svg";
 import ReplyBox from "../../module/post/ReplyBox";
+
 const PostView = () => {
+  // 🕹 네비게이션 메뉴
+  const [navDialog, setNavDialog] = useState(false);
+  const [navAlert, setNavAlert] = useState(false);
+  const isNavDialog = () => setNavDialog(!navDialog);
+  const isNavAlert = () => setNavAlert(!navAlert);
+
+  // 🏞 게시글 메뉴
+  const [postDialog, setPostDialog] = useState(false);
+  const [postAlert, setPostAlert] = useState(false);
+  const isPostDialog = () => setPostDialog(!postDialog);
+  const isPostAlert = () => setPostAlert(!postAlert);
+
+  // 💬 댓글 메뉴
+  const [chatDialog, setChatDialog] = useState(false);
+  const [chatAlert, setChatAlert] = useState(false);
+  const isChatDialog = () => setChatDialog(!chatDialog);
+  const isChatAlert = () => setChatAlert(!chatAlert);
+
   return (
     <>
       {/* <Header></Header> */}
@@ -35,17 +56,49 @@ const PostView = () => {
               <IconBox like="9999" comment="9999" />
               <Date>2022년 2월 4일</Date>
             </ContentBox>
-            <MoreBtn />
+            <MoreBtn onClick={isPostDialog} />
           </Container>
         </PostLayOut>
-        댓글 창
-        <List>
-        List 태그는 아래 스타일 컴포넌트에 있습니다 !
         <ReplyBox></ReplyBox>
-        </List>
-        댓글 입력창
         {/* <ConmentBox></ConmentBox> */}
+        <button onClick={isNavDialog}>isNavDialog버튼</button>
+        <button onClick={isChatDialog}>isChatDialog버튼</button>
       </LayOut>
+
+      {/* Nav Modal */}
+      <Modal visible={navDialog}>
+        <ListBtn isDialog={isNavDialog}>설정 및 개인정보</ListBtn>
+        <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
+        <ListBtn isDialog={isNavDialog}>모달창 닫기</ListBtn>
+      </Modal>
+      {/* Nav Alert */}
+      <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
+        <AlertBox isAlert={isNavAlert}>예</AlertBox>
+        <AlertBox isAlert={isNavAlert}>아니요</AlertBox>
+      </Alert>
+
+      {/* Post Modal */}
+      <Modal visible={postDialog}>
+        <AlertBtn isAlert={isPostAlert}>신고하기</AlertBtn>
+        <ListBtn isDialog={isPostDialog}>모달창 닫기</ListBtn>
+      </Modal>
+      {/* Post Alert */}
+      <Alert visible={postAlert} messageText="신고하시겠어요?">
+        <AlertBox isAlert={isPostAlert}>예</AlertBox>
+        <AlertBox isAlert={isPostAlert}>아니요</AlertBox>
+      </Alert>
+
+      {/* chat Modal */}
+      <Modal visible={chatDialog}>
+        <AlertBtn isAlert={isChatAlert}>신고하기</AlertBtn>
+        <ListBtn isDialog={isChatDialog}>모달창 닫기</ListBtn>
+      </Modal>
+
+      {/* chat Alert */}
+      <Alert visible={chatAlert} messageText="신고하시겠어요?">
+        <AlertBox isAlert={isChatAlert}>예</AlertBox>
+        <AlertBox isAlert={isChatAlert}>아니요</AlertBox>
+      </Alert>
     </>
   );
 };
@@ -81,6 +134,5 @@ const MoreBtn = styled.button`
   background: url(${more}) no-repeat center / 18px 18px;
   background-color: inherit;
 `;
-const List = styled.div``;
 
 export default PostView;
