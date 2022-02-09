@@ -15,7 +15,7 @@ import testImg2 from "../../../asset/8px.png";
 import more from "../../../asset/icon-more-vertical.svg";
 
 const HomeFeed = () => {
-  const [test, SetTest] = useState(true);
+  const [test, SetTest] = useState(false);
   return (
     <>
       {/* <Header></Header> */}
@@ -48,7 +48,6 @@ const HomeFeed = () => {
           </Container>
         </LayOut>
       )}
-      {/* <Navigation></Navigation> */}
     </>
   );
 };

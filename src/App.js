@@ -25,9 +25,13 @@ import ProfileEdit from "./components/template/profile/ProfileEdit";
 import NotFound from "./components/template/screen/NotFound";
 import SplashScreen from "./components/template/screen/SplashScreen";
 
+//김현길 독립적인 라우트 2월 8일 데이터 바인딩 작업
+import LoginEmailKHK from "./PAGE/LoginEmail";
+import HomeKHK from "./PAGE/Home";
+
 //김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후
 import SetMemberShipGH from "./pages/auth/SetMemberShip-gh";
-import LoginEmailGH from "./pages/auth/LoginEmail-gh";
+//import LoginEmailGH from "./pages/auth/LoginEmail-gh";
 import MyProfileGH from "./pages/profile/Myprofile-gh";
 import MyProfileUpdateGH from "./pages/profile/MyprofileUpdate-gh";
 import PostUploadGH from "./pages/post/PostUpload-gh";
@@ -81,10 +85,10 @@ const App = () => {
           <Switch>
             {/* auth */}
             <Route path="/gh/join/email" component={SetMemberShipGH} exact />
-            <Route path="/gh" component={LoginEmailGH} exact />
+            <Route path="/gh" component={LoginEmailKHK} exact />
 
             {/* 홈 */}
-            <Route path="/gh/home" component={HomeGH} exact />
+            <Route path="/gh/home" component={HomeKHK} exact />
             <Route path="/gh/search" component={SearchGH} exact />
 
             {/* profile */}

@@ -47,7 +47,10 @@ export const followerPostListReducer = (state = {}, action) => {
     case FOLLOW_POST_LIST_REQUEST:
       return { loading: true };
     case FOLLOW_POST_LIST_SUCCESS:
-      return { loading: false, posts: action.payload };
+      return {
+        loading: false,
+        posts: action.payload,
+      };
     case FOLLOW_POST_LIST_FAIL:
       return { loading: false, error: action.payload };
     default:

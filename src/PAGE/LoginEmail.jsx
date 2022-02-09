@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { Button } from "../../module/button/button";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import { login } from "../../../actions/userActions";
+import { login } from "../actions/userActions";
+import styled from "styled-components";
+import { Button } from "../components/module/button/button";
+import LoginTitle from "../components/module/title/LoginTitle";
 
-function LoginForm() {
+const LoginEmail = () => {
   const [isButtonStatus, setIsButtonStatus] = useState(false);
   const { register, handleSubmit, watch } = useForm();
 
@@ -23,29 +24,39 @@ function LoginForm() {
   const onSubmit = data => {
     const { email, password } = data;
 
-    //dispatch(login(email, password));
+    dispatch(login(email, password));
   };
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)}>
-      <EmailWrapper>
-        <label>이메일</label>
-        <input name="email" type="email" {...register("email")} />
-      </EmailWrapper>
-      <PwWrapper>
-        <label>비밀번호</label>
-        <input name="password" type="password" {...register("password")} />
-      </PwWrapper>
-      <Button width="322px" size="lg" isButtonStatus={isButtonStatus}>
-        로그인
-      </Button>
-    </FormContainer>
+    <>
+      <LayOut>
+        <LoginTitle>로그인</LoginTitle>
+        <FormContainer onSubmit={handleSubmit(onSubmit)}>
+          <EmailWrapper>
+            <label>이메일</label>
+            <input name="email" type="email" {...register("email")} />
+          </EmailWrapper>
+          <PwWrapper>
+            <label>비밀번호</label>
+            <input name="password" type="password" {...register("password")} />
+          </PwWrapper>
+          <Button width="322px" size="lg" isButtonStatus={isButtonStatus}>
+            로그인
+          </Button>
+        </FormContainer>
+        {/* <EmailText></EmailText> */}
+      </LayOut>
+    </>
   );
-}
+};
 
 export function Wrapper({ children }) {
   return <EmailWrapper>{children}</EmailWrapper>;
 }
+
+const LayOut = styled.main`
+  ${props => props.theme.common.flexCenterColumn}
+`;
 
 // 공통요소
 const FormContainer = styled.form`
@@ -98,4 +109,4 @@ const PwWrapper = styled.div`
   }
 `;
 
-export default LoginForm;
+export default LoginEmail;
