@@ -37,10 +37,10 @@ const Id = styled.strong`
   }
 `;
 
-export default function UserInfoBox({ src, name, id }) {
+export default function UserInfoBox({ profileImage, name, id }) {
   return (
     <LayOut>
-      <ProfileImg src={src} />
+      <ProfileImg src={profileImage} />
       <Wrapper>
         <Name>{name}</Name>
         <Id>{id}</Id>

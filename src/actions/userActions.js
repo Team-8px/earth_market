@@ -80,7 +80,7 @@ export const login = (email, password) => async dispatch => {
 
     localStorage.setItem("userInfo", JSON.stringify(data));
 
-    document.location.href = "/gh/profile/my";
+    document.location.href = "/homeFeed";
   } catch (error) {
     console.log(error, "userActions Error");
     dispatch({

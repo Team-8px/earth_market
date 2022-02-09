@@ -26,6 +26,7 @@ const HomeFeed = () => {
   const [postAlert, setPostAlert] = useState(false);
   const isPostDialog = () => setPostDialog(!postDialog);
   const isPostAlert = () => setPostAlert(!postAlert);
+  
   return (
     <>
       <HeaderHome />
@@ -58,6 +59,7 @@ const HomeFeed = () => {
           </Container>
         </LayOut>
       )}
+
       <Navigation />
       {/* 게시글 Modal */}
       <Modal visible={postDialog}>
@@ -71,6 +73,7 @@ const HomeFeed = () => {
       </Alert>
 
       {/* <Navigation></Navigation> */}
+
     </>
   );
 };
