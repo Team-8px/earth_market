@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import Header from "../common/Header";
+import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
+import { Alert, AlertBox } from "../../module/alert/Alert";
+import Chat from "../../module/chat/Chat";
+import Navigation from "../common/Navigation";
 
 const ChatList = () => {
+  // 🕹 네비게이션 메뉴
+  const [navDialog, setNavDialog] = useState(false);
+  const [navAlert, setNavAlert] = useState(false);
+  const isNavDialog = () => setNavDialog(!navDialog);
+  const isNavAlert = () => setNavAlert(!navAlert);
   return (
     <>
-      {/* <Header></Header> */}
+      <Header />
       <LayOut>
-        {/* <List> */}
-        {/* <ChatListUser></ChatListUser> */}
-        {/* </List> */}
+        <Chat></Chat>
       </LayOut>
+      <Navigation />
+      {/* <Comment></Comment> */}
+      <button onClick={isNavDialog}>isNavDialog버튼</button>
+      <Modal visible={navDialog}>
+        <ListBtn isDialog={isNavDialog}>설정 및 개인정보</ListBtn>
+        <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
+        <ListBtn isDialog={isNavDialog}>모달창 닫기</ListBtn>
+      </Modal>
+      {/* Nav Alert */}
+      <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
+        <AlertBox isAlert={isNavAlert}>예</AlertBox>
+        <AlertBox isAlert={isNavAlert}>아니요</AlertBox>
+      </Alert>
     </>
   );
 };

@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "../../module/button/button";
+import { Button } from "../../module/button/Button";
 import RegisterForm from "../../module/form/RegisterForm";
+import LoginTitle from "../../module/title/LoginTitle";
 
 const JoinEmail = () => {
   return (
     <>
       <LayOut>
-        {/* <LoginTitle></LoginTitle> */}
+        <LoginTitle>이메일로 회원가입</LoginTitle>
         <RegisterForm></RegisterForm>
         <Button width="322px" size="lg" off>
           다음

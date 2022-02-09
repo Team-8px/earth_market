@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import ProductForm from "../../module/form/ProductForm";
 import UploadProfile from "../../module/upload/UploadProfile";
+import { HeaderButton } from "../common/Header";
 
 const ProductUpload = () => {
   return (
     <>
-      {/* <Header></Header> */}
+      <HeaderButton buttonText={"저장"} />
       <LayOut>
         <FormContainer>
           <UploadProfile subTitleText={"이미지 업로드"}></UploadProfile>

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import EllipseImg from "../asset/Ellipse-1.png";
 import { ProfileImage } from "./common/image/ProfileImageStyle";
-import { Button } from "./Button";
+// import { Button } from "./module/button/Button";
 
 const UserInfoContainer = styled.header`
   display: flex;
@@ -92,6 +92,8 @@ const FollowingWrapper = styled(Link)`
   }
 `;
 
+const Button = styled.button``;
+
 function UserInfo({
   username,
   accoutname,
@@ -116,16 +118,16 @@ function UserInfo({
           <strong>128</strong>
           <span>following</span>
         </FollowingWrapper>
-        <Button size="md" width="120px">
+        {/* <Button size="md" width="120px">
           팔로우
         </Button>
-        {/* <Button size="md" width="120px">
+        <Button size="md" width="120px">
           언팔로우
-        </Button> */}
-        {/* <Button size="md" width="120px">
+        </Button>
+        <Button size="md" width="120px">
           프로필 수정
-        </Button> */}
-        {/* <Button size="md" width="120px">
+        </Button>
+        <Button size="md" width="120px">
           상품 등록
         </Button> */}
       </UserInfoWrapper>

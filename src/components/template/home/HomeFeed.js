@@ -7,18 +7,29 @@ import {
   ButtonList,
   ImgList,
 } from "../../module/post/ContentBox";
-import { Button } from "../../module/button/button";
+import { Button } from "../../module/button/Button";
+import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
+import { Alert, AlertBox } from "../../module/alert/Alert";
 import IconBox from "../../module/post/IconBox";
 import Date from "../../module/post/Date";
 import testImg from "../../../asset/Ellipse 6.png";
 import testImg2 from "../../../asset/8px.png";
 import more from "../../../asset/icon-more-vertical.svg";
+import { HeaderHome } from "../common/Header";
+import Navigation from "../common/Navigation";
 
 const HomeFeed = () => {
   const [test, SetTest] = useState(false);
+
+  // 게시글 메뉴
+  const [postDialog, setPostDialog] = useState(false);
+  const [postAlert, setPostAlert] = useState(false);
+  const isPostDialog = () => setPostDialog(!postDialog);
+  const isPostAlert = () => setPostAlert(!postAlert);
+  
   return (
     <>
-      {/* <Header></Header> */}
+      <HeaderHome />
       {test ? (
         <LayOut center>
           {/* <HomeLogo></HomeLogo> */}
@@ -44,10 +55,25 @@ const HomeFeed = () => {
               <IconBox like="9999" comment="9999" />
               <Date>2022년 2월 4일</Date>
             </ContentBox>
-            <MoreBtn />
+            <MoreBtn onClick={isPostDialog} />
           </Container>
         </LayOut>
       )}
+
+      <Navigation />
+      {/* 게시글 Modal */}
+      <Modal visible={postDialog}>
+        <AlertBtn isAlert={isPostAlert}>신고하기</AlertBtn>
+        <ListBtn isDialog={isPostDialog}>모달창 닫기</ListBtn>
+      </Modal>
+      {/* 게시글 Alert */}
+      <Alert visible={postAlert} messageText="게시글을 신고하시겠어요?">
+        <AlertBox isAlert={isPostAlert}>예</AlertBox>
+        <AlertBox isAlert={isPostAlert}>아니요</AlertBox>
+      </Alert>
+
+      {/* <Navigation></Navigation> */}
+
     </>
   );
 };

@@ -1,10 +1,6 @@
 /**
  * Dialog 기능을 구현하기 위한 컴포넌트 입니다.
  * 설정 버튼을 누를 경우 배경화면이 검게 변하면서 하단에 히든메뉴가 나타나게 됩니다.
- *
- * #1 재영 : HiddenMenuContainer 내부의 list요소들 동적으로 추가하고 빼는방법을
- * 모르겠습니다. 재사용 하기 위해서는 안에 list 요소들의 개수를 동적으로 추가해줘야하는데
- * 아직은 그 방법을 모르겠네요
  */
 import React, { Children, useEffect, useState } from "react";
 import styled, { css, keyframes } from "styled-components";

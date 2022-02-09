@@ -1,16 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import { HeaderFollow } from "../common/Header";
+import FollowersUser from "../../module/user/FollowersUser";
+import Navigation from "../common/Navigation";
 
 const Follower = () => {
   return (
     <>
-      {/* <Header></Header> */}
+      <HeaderFollow />
       <LayOut>
         {/* <List> */}
-        {/* <FollowersUser></FollowersUser> */}
+        <FollowersUser></FollowersUser>
         {/* </List> */}
       </LayOut>
-      {/* <Navigation></Navigation> */}
+      <Navigation />
     </>
   );
 };
