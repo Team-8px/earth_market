@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import EllipseImg from "../asset/Ellipse-1.png";
 import { ProfileImage } from "./common/image/ProfileImageStyle";
-import { Button } from "./module/button/Button";
+// import { Button } from "./module/button/Button";
 
 const UserInfoContainer = styled.header`
   display: flex;
