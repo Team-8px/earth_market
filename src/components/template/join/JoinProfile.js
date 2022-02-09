@@ -1,15 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "../../module/button/button";
+import { Button } from "../../module/button/Button";
 import ProfileForm from "../../module/form/ProfileForm";
 import ProfileUpload from "../../module/profile/ProfileIUpload";
+import LoginTitle, { SubTitleTitle } from "../../module/title/LoginTitle";
 
 const JoinProfile = () => {
   return (
     <>
       <LayOut>
-        {/* <ProfileTitle></ProfileTitle> */}
-        {/* <SubTitle></SubTitle> */}
+        <LoginTitle>
+          프로필 설정
+          <SubTitleTitle />
+        </LoginTitle>
         <ProfileUpload></ProfileUpload>
         <ProfileForm></ProfileForm>
         <Button width="322px" size="lg" off>

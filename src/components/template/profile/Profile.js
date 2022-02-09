@@ -14,6 +14,7 @@ import DisplayButton from "../../module/profile/DisplayButton";
 import testImg2 from "../../../asset/8px.png";
 import more from "../../../asset/icon-more-vertical.svg";
 import Header from "../common/Header";
+import Navigation from "../common/Navigation";
 
 // myProfile 부분입니다.
 // yourProfile 부분입니다.
@@ -47,7 +48,7 @@ const Profile = () => {
           </PostWrapper>
         </PostContainer>
       </LayOut>
-      {/* <Navigation></Navigation> */}
+      <Navigation />
     </>
   );
 };

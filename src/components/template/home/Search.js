@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { HeaderSearch } from "../common/Header";
+import Navigation from "../common/Navigation";
 
 const Search = () => {
   const [test, SetTest] = useState(null);
@@ -16,7 +17,7 @@ const Search = () => {
           {/* </List> */}
         </LayOut>
       )}
-      {/* <Navigation></Navigation> */}
+      <Navigation />
     </>
   );
 };

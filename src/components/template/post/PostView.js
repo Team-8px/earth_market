@@ -14,6 +14,7 @@ import testImg2 from "../../../asset/8px.png";
 import more from "../../../asset/icon-more-vertical.svg";
 import Header from "../common/Header";
 import ReplyBox from "../../module/post/ReplyBox";
+import { CommentUser } from "../../module/user/CommentUser";
 
 const PostView = () => {
   return (
@@ -45,7 +46,7 @@ const PostView = () => {
           List 태그는 아래 스타일 컴포넌트에 있습니다 !<ReplyBox></ReplyBox>
         </List>
         댓글 입력창
-        {/* <ConmentBox></ConmentBox> */}
+        <CommentUser buttonText={"게시"} />
       </LayOut>
     </>
   );

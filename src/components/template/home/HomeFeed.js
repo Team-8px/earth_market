@@ -7,13 +7,14 @@ import {
   ButtonList,
   ImgList,
 } from "../../module/post/ContentBox";
-import { Button } from "../../module/button/button";
+import { Button } from "../../module/button/Button";
 import IconBox from "../../module/post/IconBox";
 import Date from "../../module/post/Date";
 import testImg from "../../../asset/Ellipse 6.png";
 import testImg2 from "../../../asset/8px.png";
 import more from "../../../asset/icon-more-vertical.svg";
 import { HeaderHome } from "../common/Header";
+import Navigation from "../common/Navigation";
 
 const HomeFeed = () => {
   const [test, SetTest] = useState(true);
@@ -49,7 +50,7 @@ const HomeFeed = () => {
           </Container>
         </LayOut>
       )}
-      {/* <Navigation></Navigation> */}
+      <Navigation />
     </>
   );
 };
