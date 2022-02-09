@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import UserInfo from "../../UserInfo";
 import UserInfoBox from "../../module/post/UserInfoBox";
@@ -20,19 +20,25 @@ import Navigation from "../common/Navigation";
 
 // myProfile 부분입니다.
 // yourProfile 부분입니다.
-
 const Profile = () => {
-  // 🕹 네비게이션 메뉴
+  // 🕹 네비게이션 Modal & Alert
   const [navDialog, setNavDialog] = useState(false);
   const [navAlert, setNavAlert] = useState(false);
   const isNavDialog = () => setNavDialog(!navDialog);
   const isNavAlert = () => setNavAlert(!navAlert);
 
-  // 🏞 게시글 메뉴
+  // 🏞 게시글 모달 Modal & Alert
   const [postDialog, setPostDialog] = useState(false);
   const [postAlert, setPostAlert] = useState(false);
   const isPostDialog = () => setPostDialog(!postDialog);
   const isPostAlert = () => setPostAlert(!postAlert);
+
+  // 🏞 상품 모달 Modal & Alert
+  const [productDialog, setProductDialog] = useState(false);
+  const [productAlert, setProductAlert] = useState(false);
+  const isProductDialog = () => setProductDialog(!productDialog);
+  const isProductAlert = () => setProductAlert(!productAlert);
+
   return (
     <>
       <Header />
@@ -57,15 +63,13 @@ const Profile = () => {
                 <Date>2022년 2월 4일</Date>
               </ContentBox>
               <MoreBtn onClick={isPostDialog} />
+              <button onClick={isNavDialog}>테스트 버튼 삭제 가능</button>
+              <button onClick={isProductDialog}>테스트 버튼 삭제 가능</button>
             </Container>
           </PostWrapper>
         </PostContainer>
       </LayOut>
       <Navigation />
-      {/* <Navigation></Navigation> */}
-      {/* Nav Modal */}
-      <button onClick={isNavDialog}>isNavDialog버튼</button>
-
       <Modal visible={navDialog}>
         <ListBtn isDialog={isNavDialog}>설정 및 개인정보</ListBtn>
         <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
@@ -75,6 +79,18 @@ const Profile = () => {
       <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
         <AlertBox isAlert={isNavAlert}>예</AlertBox>
         <AlertBox isAlert={isNavAlert}>아니요</AlertBox>
+      </Alert>
+
+      {/* Product Modal */}
+      <Modal visible={productDialog}>
+        <AlertBtn isAlert={isProductAlert}>삭제</AlertBtn>
+        <ListBtn isDialog={isProductDialog}>수정</ListBtn>
+        <ListBtn isDialog={isProductDialog}>웹사이트에서 상품 보기</ListBtn>
+      </Modal>
+      {/* Product Alert */}
+      <Alert visible={productAlert} messageText="상품을 삭제할까요?">
+        <AlertBox isAlert={isProductAlert}>예</AlertBox>
+        <AlertBox isAlert={isProductAlert}>아니요</AlertBox>
       </Alert>
 
       {/* Post Modal */}
