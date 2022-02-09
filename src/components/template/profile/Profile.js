@@ -8,6 +8,8 @@ import {
   ButtonList,
   ImgList,
 } from "../../module/post/ContentBox";
+import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
+import { Alert, AlertBox } from "../../module/alert/Alert";
 import IconBox from "../../module/post/IconBox";
 import Date from "../../module/post/Date";
 import DisplayButton from "../../module/profile/DisplayButton";
@@ -20,6 +22,17 @@ import Navigation from "../common/Navigation";
 // yourProfile 부분입니다.
 
 const Profile = () => {
+  // 🕹 네비게이션 메뉴
+  const [navDialog, setNavDialog] = useState(false);
+  const [navAlert, setNavAlert] = useState(false);
+  const isNavDialog = () => setNavDialog(!navDialog);
+  const isNavAlert = () => setNavAlert(!navAlert);
+
+  // 🏞 게시글 메뉴
+  const [postDialog, setPostDialog] = useState(false);
+  const [postAlert, setPostAlert] = useState(false);
+  const isPostDialog = () => setPostDialog(!postDialog);
+  const isPostAlert = () => setPostAlert(!postAlert);
   return (
     <>
       <Header />
@@ -43,12 +56,38 @@ const Profile = () => {
                 <IconBox like="9999" comment="9999" />
                 <Date>2022년 2월 4일</Date>
               </ContentBox>
-              <MoreBtn />
+              <MoreBtn onClick={isPostDialog} />
             </Container>
           </PostWrapper>
         </PostContainer>
       </LayOut>
       <Navigation />
+      {/* <Navigation></Navigation> */}
+      {/* Nav Modal */}
+      <button onClick={isNavDialog}>isNavDialog버튼</button>
+
+      <Modal visible={navDialog}>
+        <ListBtn isDialog={isNavDialog}>설정 및 개인정보</ListBtn>
+        <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
+        <ListBtn isDialog={isNavDialog}>모달창 닫기</ListBtn>
+      </Modal>
+      {/* Nav Alert */}
+      <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
+        <AlertBox isAlert={isNavAlert}>예</AlertBox>
+        <AlertBox isAlert={isNavAlert}>아니요</AlertBox>
+      </Alert>
+
+      {/* Post Modal */}
+      <Modal visible={postDialog}>
+        <ListBtn isDialog={isPostDialog}>수정</ListBtn>
+        <AlertBtn isAlert={isPostAlert}>삭제</AlertBtn>
+        <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
+      </Modal>
+      {/* Post Alert */}
+      <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
+        <AlertBox isAlert={isPostAlert}>예</AlertBox>
+        <AlertBox isAlert={isPostAlert}>아니요</AlertBox>
+      </Alert>
     </>
   );
 };
