@@ -117,16 +117,16 @@ function UserInfo({
           <strong>128</strong>
           <span>following</span>
         </FollowingWrapper>
-        <Button size="md" width="120px">
+        {/* <Button size="md" width="120px">
           팔로우
         </Button>
-        {/* <Button size="md" width="120px">
+        <Button size="md" width="120px">
           언팔로우
-        </Button> */}
-        {/* <Button size="md" width="120px">
+        </Button>
+        <Button size="md" width="120px">
           프로필 수정
-        </Button> */}
-        {/* <Button size="md" width="120px">
+        </Button>
+        <Button size="md" width="120px">
           상품 등록
         </Button> */}
       </UserInfoWrapper>
