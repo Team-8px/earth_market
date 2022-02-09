@@ -17,6 +17,7 @@ import testImg2 from "../../../asset/8px.png";
 import more from "../../../asset/icon-more-vertical.svg";
 import Header from "../common/Header";
 import Navigation from "../common/Navigation";
+import Product from "../../module/product/Product";
 
 // myProfile 부분입니다.
 // yourProfile 부분입니다.
@@ -44,7 +45,7 @@ const Profile = () => {
       <Header />
       <LayOut>
         <UserInfo></UserInfo>
-        {/* <Product></Product> */}
+        <Product></Product>
         <PostContainer>
           <DisplayButton></DisplayButton>
           <PostWrapper>

@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Button } from "../../module/button/Button";
+import NotFoundLogo from "../../module/logo/NotFoundLogo";
 import SubText from "../../module/Text/SubText";
 
 const NotFound = () => {
   return (
     <LayOut>
-      {/* <NotFoundLogo></NotFoundLogo> */}
+      <NotFoundLogo />
       <SubText>페이지를 찾을 수 없습니다. :(</SubText>
       <Button width="120px" size="lg">
         이전페이지
