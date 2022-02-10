@@ -7,8 +7,6 @@ import {
   unfollowUser,
 } from "../../../actions/followAction";
 import UseGNBHook from "../../../hooks/useGNB";
-import axios from "axios";
-import { API_URL } from "../../../constants/defaultUrl";
 
 const FollowerList = () => {
   const dispatch = useDispatch();

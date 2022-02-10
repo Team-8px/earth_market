@@ -15,6 +15,8 @@ const ProductUpload = () => {
 
   const dispatch = useDispatch();
 
+  // 이미지 미리 보기
+  //<label onChange={previewImage} htmlFor="itemImg"><Input /></label>
   const previewImage = e => {
     const nowSelectImageList = e.target.files;
 
