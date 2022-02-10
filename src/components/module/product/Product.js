@@ -75,7 +75,9 @@ const ProductList = ({ productText, productPrice }) => {
   );
 };
 
-function Product({}) {
+
+
+function Product() {
   return (
     <ProductLayOut>
       <ProductTitle>판매 중인 상품</ProductTitle>
