@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/theme";
+import NavigationBar from "./hooks/useGNB";
 
 // 최재영 독립적인 라우트 2월 4일 이후 생성
 import ChatList from "./components/template/chat/ChatList";
@@ -28,6 +29,11 @@ import SplashScreen from "./components/template/screen/SplashScreen";
 //김현길 독립적인 라우트 2월 8일 데이터 바인딩 작업
 import LoginEmailKHK from "./PAGE/LoginEmail";
 import HomeKHK from "./PAGE/Home";
+import SearchKHK from "./PAGE/Search";
+import MyprofileKHK from "./PAGE/MyProfile";
+import ProductUploadKHK from "./PAGE/ProductUpload";
+import PostUploadKHK from "./PAGE/PostUpload";
+import ProfileUpdateKHK from "./PAGE/ProfileUpdate";
 
 //김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후
 import SetMemberShipGH from "./pages/auth/SetMemberShip-gh";
@@ -89,10 +95,10 @@ const App = () => {
 
             {/* 홈 */}
             <Route path="/gh/home" component={HomeKHK} exact />
-            <Route path="/gh/search" component={SearchGH} exact />
+            <Route path="/gh/search" component={SearchKHK} exact />
 
             {/* profile */}
-            <Route path="/gh/profile/my" component={MyProfileGH} exact />
+            <Route path="/gh/profile/my" component={MyprofileKHK} exact />
             <Route
               path="/gh/profile/you/:acccountId"
               component={MyProfileGH}
@@ -100,7 +106,7 @@ const App = () => {
             />
             <Route
               path="/gh/profile/my/update"
-              component={MyProfileUpdateGH}
+              component={ProfileUpdateKHK}
               exact
             />
             <Route
@@ -115,13 +121,13 @@ const App = () => {
             />
 
             {/* post */}
-            <Route path="/gh/post/my/upload" component={PostUploadGH} exact />
+            <Route path="/gh/post/my/upload" component={PostUploadKHK} exact />
             <Route path="/gh/post/:postId" component={PostViewGH} exact />
 
             {/* product */}
             <Route
               path="/gh/product/upload"
-              component={ProductUploadGH}
+              component={ProductUploadKHK}
               exact
             />
             <Route
@@ -130,6 +136,7 @@ const App = () => {
               exact
             />
           </Switch>
+          <NavigationBar />
         </AppliCation>
       </Router>
     </ThemeProvider>

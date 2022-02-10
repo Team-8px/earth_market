@@ -75,6 +75,8 @@ const ProductList = ({ productText, productPrice }) => {
   );
 };
 
+
+
 function Product() {
   return (
     <ProductLayOut>

@@ -2,6 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import ImgIcon from "../../../asset/icon/icon-upload.png";
 
+export default function UploadProfile({ subTitleText, getItem }) {
+  return (
+    <Container>
+      <SubTitle>{subTitleText}</SubTitle>
+      <Label onChange={getItem} htmlFor="productImg" />
+      <input
+        type="file"
+        accept="image/png,image/jpeg"
+        className="ir"
+        id="productImg"
+      />
+    </Container>
+  );
+}
+
 const Container = styled.div`
   width: 100%;
   margin-bottom: 30px;
@@ -37,18 +52,3 @@ const Label = styled.label`
     border-radius: 50%;
   }
 `;
-
-export default function UploadProfile({ subTitleText }) {
-  return (
-    <Container>
-      <SubTitle>{subTitleText}</SubTitle>
-      <Label htmlFor="productImg" />
-      <input
-        type="file"
-        accept="image/png,image/jpeg"
-        className="ir"
-        id="productImg"
-      />
-    </Container>
-  );
-}

@@ -7,7 +7,7 @@ import {
   ButtonList,
   ImgList,
 } from "../../module/post/ContentBox";
-import { Button } from "../../module/button/Button";
+import { Button } from "../../module/button/button";
 import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
 import { Alert, AlertBox } from "../../module/alert/Alert";
 import IconBox from "../../module/post/IconBox";
@@ -26,7 +26,7 @@ const HomeFeed = () => {
   const [postAlert, setPostAlert] = useState(false);
   const isPostDialog = () => setPostDialog(!postDialog);
   const isPostAlert = () => setPostAlert(!postAlert);
-  
+
   return (
     <>
       <HeaderHome />
@@ -73,7 +73,6 @@ const HomeFeed = () => {
       </Alert>
 
       {/* <Navigation></Navigation> */}
-
     </>
   );
 };

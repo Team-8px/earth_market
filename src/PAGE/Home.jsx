@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFollowerPostList } from "../actions/followAction";
 import styled, { css } from "styled-components";
@@ -10,23 +10,35 @@ import {
   ImgList,
 } from "../components/module/post/ContentBox";
 import { Button } from "../components/module/button/button";
+import { Modal, AlertBtn, ListBtn } from "../components/module/modal/Modal";
+import { Alert, AlertBox } from "../components/module/alert/Alert";
+import { HeaderHome } from "../components/template/common/Header";
 import IconBox from "../components/module/post/IconBox";
 import Date from "../components/module/post/Date";
 import more from "../asset/icon-more-vertical.svg";
 import dayjs from "dayjs";
 
 const Home = () => {
-  const dispatch = useDispatch();
+  // 게시글 메뉴
+  const [postDialog, setPostDialog] = useState(false);
+  const [postAlert, setPostAlert] = useState(false);
+  const isPostDialog = () => setPostDialog(!postDialog);
+  const isPostAlert = () => setPostAlert(!postAlert);
 
+  const dispatch = useDispatch();
+  //팔로우 한 사람들의 게시글 목록 불러오기
   const { posts } = useSelector(state => state.followerPostList);
 
+  console.log(posts && posts);
+
   useEffect(() => {
+    // 게시글 불러오기 API
     dispatch(getFollowerPostList());
   }, [dispatch]);
 
   return (
     <>
-      {/* <Header /> */}
+      <HeaderHome />
       {posts ? (
         <LayOut>
           {posts &&
@@ -57,7 +69,7 @@ const Home = () => {
                       {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
                     </Date>
                   </ContentBox>
-                  <MoreBtn />
+                  <MoreBtn onClick={isPostDialog} />
                 </Container>
               );
             })}
@@ -70,6 +82,16 @@ const Home = () => {
           </Button>
         </LayOut>
       )}
+      {/* 게시글 Modal */}
+      <Modal visible={postDialog}>
+        <AlertBtn isAlert={isPostAlert}>신고하기</AlertBtn>
+        <ListBtn isDialog={isPostDialog}>모달창 닫기</ListBtn>
+      </Modal>
+      {/* 게시글 Alert */}
+      <Alert visible={postAlert} messageText="게시글을 신고하시겠어요?">
+        <AlertBox isAlert={isPostAlert}>예</AlertBox>
+        <AlertBox isAlert={isPostAlert}>아니요</AlertBox>
+      </Alert>
     </>
   );
 };

@@ -121,6 +121,7 @@ export function ListBtn({ children, isDialog }) {
     </ListButton>
   );
 }
+
 export function AlertBtn({ children, isAlert }) {
   return (
     <ListButton>
@@ -130,7 +131,6 @@ export function AlertBtn({ children, isAlert }) {
     </ListButton>
   );
 }
-
 export function Modal({ children, visible }) {
   const [animate, setAnimate] = useState(false);
   const [localVisible, setLocalVisible] = useState(visible);
