@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { listProducts, deleteProduct } from "../../../actions/productActions";
 import { listPosts, deletePost } from "../../../actions/postActions";
@@ -7,12 +7,9 @@ import { getUserMyProfile } from "../../../actions/userActions";
 import UseGNBHook from "../../../hooks/useGNB";
 
 const MyProfile = () => {
-  //const [isDeleteProduct, setIsDeleteProduct] = useState(false);
-
   const dispatch = useDispatch();
-
-  const { products } = useSelector(state => state.productList, shallowEqual);
-  const { posts } = useSelector(state => state.postList, shallowEqual);
+  const { products } = useSelector(state => state.productList);
+  const { posts } = useSelector(state => state.postList);
   const { image, username, accountname, intro, followerCount, followingCount } =
     useSelector(state => state.userReadProfile);
 

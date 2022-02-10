@@ -1,6 +1,6 @@
 import React from "react";
 
-const YourProfile = () => {
+const ProductUpdate = () => {
   return (
     <>
       <Header />
@@ -10,4 +10,4 @@ const YourProfile = () => {
   );
 };
 
-export default YourProfile;
+export default ProductUpdate;

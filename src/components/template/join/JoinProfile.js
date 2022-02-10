@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "../../module/button/Button";
+import { Button } from "../../module/button/button";
 import ProfileForm from "../../module/form/ProfileForm";
 import ProfileUpload from "../../module/profile/ProfileIUpload";
 import LoginTitle, { SubTitleTitle } from "../../module/title/LoginTitle";

@@ -107,15 +107,15 @@ function UserInfo({
         <ProfileImage>
           <img src={EllipseImg} alt="프로필 사진" />
         </ProfileImage>
-        <UserName>애월읍 위니브 감귤농장</UserName>
-        <AccountName>weniv_Mandarin</AccountName>
-        <Intro>애월읍 감귤 전국 배송, 귤따기 체험, 감귤 농장</Intro>
+        <UserName>{username}</UserName>
+        <AccountName>{accoutname}</AccountName>
+        <Intro>{intro}</Intro>
         <FollowerWrapper to="#">
-          <strong>2950</strong>
+          <strong>{followerCount}</strong>
           <span>followers</span>
         </FollowerWrapper>
         <FollowingWrapper to="#">
-          <strong>128</strong>
+          <strong>{followingCount}</strong>
           <span>following</span>
         </FollowingWrapper>
         {/* <Button size="md" width="120px">

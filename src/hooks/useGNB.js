@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Footer from "../components/Footer";
+import Navigation from "../components/template/common/Navigation";
 
 const UseGNB = () => {
   const [isAppeardGNB, setIsAppeardGNB] = useState(false);
@@ -22,14 +22,7 @@ const UseGNB = () => {
       {isAppeardGNB && isAppeardGNB ? (
         <React.Fragment></React.Fragment>
       ) : (
-        <div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <h1>GNB</h1>
-          <Footer />
-        </div>
+        <Navigation />
       )}
     </React.Fragment>
   );
