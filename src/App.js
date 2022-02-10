@@ -34,6 +34,10 @@ import MyprofileKHK from "./PAGE/MyProfile";
 import ProductUploadKHK from "./PAGE/ProductUpload";
 import PostUploadKHK from "./PAGE/PostUpload";
 import ProfileUpdateKHK from "./PAGE/ProfileUpdate";
+import FollowerListKHK from "./PAGE/FollowerList";
+import FollowingListKHK from "./PAGE/FollowingList";
+import PostViewKHK from "./PAGE/PostView";
+import ProductUpdateKHK from "./PAGE/ProductUpdate";
 
 //김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후
 import SetMemberShipGH from "./pages/auth/SetMemberShip-gh";
@@ -111,18 +115,18 @@ const App = () => {
             />
             <Route
               path="/gh/profile/:accountId/follower"
-              component={FollowerListGH}
+              component={FollowerListKHK}
               exact
             />
             <Route
               path="/gh/profile/:accountId/following"
-              component={FollowingListGH}
+              component={FollowingListKHK}
               exact
             />
 
             {/* post */}
             <Route path="/gh/post/my/upload" component={PostUploadKHK} exact />
-            <Route path="/gh/post/:postId" component={PostViewGH} exact />
+            <Route path="/gh/post/:postId" component={PostViewKHK} exact />
 
             {/* product */}
             <Route
@@ -132,7 +136,7 @@ const App = () => {
             />
             <Route
               path="/gh/product/update/:productId"
-              component={ProductUpdateGH}
+              component={ProductUpdateKHK}
               exact
             />
           </Switch>

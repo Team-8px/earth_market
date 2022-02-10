@@ -21,6 +21,7 @@ import Header from "../components/template/common/Header";
 import UserInfo from "../components/UserInfo";
 import Product from "../components/module/product/Product";
 import dayjs from "dayjs";
+
 // import Product
 const MyProfile = () => {
   const dispatch = useDispatch();
@@ -121,7 +122,6 @@ const MyProfile = () => {
                         like={post.heartCount}
                         comment={post.commentCount}
                       />
-                      {/*  dayjs(post.updatedAt).format("YY년 MM월 DD일") */}
                       <Date>
                         {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
                       </Date>

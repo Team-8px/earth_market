@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "../../module/button/Button";
+import { Button } from "../../module/button/button";
 import NotFoundLogo from "../../module/logo/NotFoundLogo";
 import SubText from "../../module/Text/SubText";
 

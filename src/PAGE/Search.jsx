@@ -9,6 +9,7 @@ const Search = () => {
 
   const dispatch = useDispatch();
 
+  //검색결과 사용자들 스토어에서 가져오기
   const { users } = useSelector(state => state.userSearch);
 
   //API성공 후 users 확인
@@ -18,6 +19,7 @@ const Search = () => {
     const { keyword } = data;
     //API함수에 전달전에 매개변수 keyword가 잘 들어가는지 확인
     console.log(keyword);
+    //유저 검색 API
     dispatch(getSearchUser(keyword));
   };
   return (
