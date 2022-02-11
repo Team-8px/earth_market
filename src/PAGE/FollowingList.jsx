@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 // 스타일 로직
 import { HeaderFollow } from "../components/template/common/Header";
-import { List, Item } from "../components/module/user/FollowersUser";
 import Navigation from "../components/template/common/Navigation";
+
 //Navigation
 // 비즈니스 로직
 import { useDispatch, useSelector } from "react-redux";
@@ -39,25 +39,40 @@ const FollowingList = () => {
     <>
       <HeaderFollow />
       <LayOut>
-        <List>
+        <UserList>
           {following &&
             following.map(user => {
               return (
-                <Item
-                  key={user.username}
-                  img={user.image}
-                  intro={"user.intro"}
-                  username={user.username}
-                  // onTestClick={onUnfollowClick(id)}
-                />
+                <UserItem>
+                  <UserImgWrapper>
+                    <img src={user.img} alt="프로필 사진" />
+                  </UserImgWrapper>
+                  <UserInfoWrapper>
+                    <UserName>{user.username}</UserName>
+                    <UserIntro>{user.intro}</UserIntro>
+                  </UserInfoWrapper>
+                  {/* {조건부렌더링 ? (
+                    <Button width="56px" size="sm" color="main">
+                      팔로우
+                    </Button>
+                  ) : (
+                    <Button width="56px" size="sm" color="lightMain">
+                      취소
+                    </Button>
+                  )} */}
+                </UserItem>
               );
             })}
-        </List>
+        </UserList>
       </LayOut>
       <Navigation />
     </>
   );
 };
+// key={user.username}
+// img={user.image}
+// intro={"user.intro"}
+// username={user.username}
 
 const LayOut = styled.main`
   min-width: 390px;
@@ -66,20 +81,51 @@ const LayOut = styled.main`
   background-color: #fff;
   margin-top: 48px;
 `;
-// 1. 스타일로직 링크 맞추기
-// 2. 새로운 로직에 following 불러오기
-export default FollowingList;
 
-// {following &&
-//   following.map(item => {
-//     return (
-//       <>
-//         <div>{item.username}</div>
-//         <div>{item.username}</div>
-//         <div>{item.username}</div>
-//         <div>{item.username}</div>
-//         <div>{item.username}</div>
-//         <img src={item.image} />
-//       </>
-//     );
-//   })}
+const UserList = styled.ul`
+  max-width: 390px;
+  margin: 0 auto;
+  padding: 24px 16px;
+`;
+
+const UserItem = styled.li`
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+`;
+const UserImgWrapper = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 0.5px solid #dbdbdb;
+  font-size: 10px;
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+const UserInfoWrapper = styled.div`
+  margin-left: 12px;
+  width: calc(100% - 118px);
+  height: 100%;
+  align-self: flex-start;
+`;
+
+const UserName = styled.strong`
+  display: block;
+  margin: 5px 0 6px;
+  line-height: 18px;
+  font-size: 14px;
+  font-weight: 500;
+`;
+
+const UserIntro = styled.strong`
+  color: #767676;
+  font-size: 12px;
+  line-height: 15px;
+`;
+export default FollowingList;
