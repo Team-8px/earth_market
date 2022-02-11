@@ -1,18 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { HeaderFollow } from "../common/Header";
-import FollowersUser from "../../module/user/FollowersUser";
+// 팔로우 유저 모듈에서 List,Item 불러와야함
 import Navigation from "../common/Navigation";
 
 const Follower = () => {
   return (
     <>
       <HeaderFollow />
-      <LayOut>
-        {/* <List> */}
-        <FollowersUser></FollowersUser>
-        {/* </List> */}
-      </LayOut>
+      <LayOut></LayOut>
       <Navigation />
     </>
   );
