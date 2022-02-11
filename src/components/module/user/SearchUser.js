@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import EllipseImg from "../asset/Ellipse-1.png";
 
 const UserListContainer = styled.ul`
   max-width: 390px;
@@ -8,7 +7,7 @@ const UserListContainer = styled.ul`
   padding: 24px 16px;
 `;
 
-const UserListWrapper = styled.li` 
+const UserListWrapper = styled.li`
   position: relative;
   display: flex;
   align-items: center;
@@ -22,11 +21,11 @@ const UserImgWrapper = styled.div`
   border: 0.5px solid #dbdbdb;
   font-size: 10px;
   overflow: hidden;
-  
+
   img {
-      height: 100%;
-      object-fit: cover;
-      }
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 const UserInfoWrapper = styled.div`
@@ -48,27 +47,29 @@ const UserId = styled.strong`
   font-size: 12px;
   line-height: 15px;
   &::before {
-      content: "@";
-      margin-right: 3px;
+    content: "@";
+    margin-right: 3px;
   }
 `;
 
-export default function SearchUser() {
+export function SearchUserList({ children }) {
+  return <UserListContainer>{children}</UserListContainer>;
+}
+
+export function SearchUserItem({ username, userid, img }) {
   return (
-      <UserListContainer>
-          <UserListWrapper>
-          <UserImgWrapper>
-              <img src={EllipseImg} alt="프로필 사진" />
-          </UserImgWrapper>
-          <UserInfoWrapper>
-              <UserName>
-                  <strong>유저네임</strong>
-              </UserName>
-              <UserId>
-                  <strong>유저아이디</strong>
-              </UserId>
-          </UserInfoWrapper>
-          </UserListWrapper>
-      </UserListContainer>
-    )
+    <UserListWrapper>
+      <UserImgWrapper>
+        <img src={img} alt="프로필 사진" />
+      </UserImgWrapper>
+      <UserInfoWrapper>
+        <UserName>
+          <strong>{username}</strong>
+        </UserName>
+        <UserId>
+          <strong>{userid}</strong>
+        </UserId>
+      </UserInfoWrapper>
+    </UserListWrapper>
+  );
 }

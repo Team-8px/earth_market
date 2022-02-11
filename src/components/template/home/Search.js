@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { HeaderSearch } from "../common/Header";
 import Navigation from "../common/Navigation";
-
 const Search = () => {
   const [test, SetTest] = useState(null);
   return (
@@ -34,6 +33,5 @@ const LayOut = styled.main`
   justify-content: center;
   padding: 20px 16px;
 `;
-const List = styled.div``;
 
 export default Search;
