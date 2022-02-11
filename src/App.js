@@ -5,27 +5,6 @@ import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/theme";
 import NavigationBar from "./hooks/useGNB";
 
-// 최재영 독립적인 라우트 2월 4일 이후 생성
-import ChatList from "./components/template/chat/ChatList";
-import ChatRoom from "./components/template/chat/ChatRoom";
-import Header from "./components/template/common/Header";
-import Navigation from "./components/template/common/Navigation";
-import HomeFeed from "./components/template/home/HomeFeed";
-import Search from "./components/template/home/Search";
-import JoinEmail from "./components/template/join/JoinEmail";
-import JoinProfile from "./components/template/join/JoinProfile";
-import LoginEmail from "./components/template/login/LoginEmail";
-import LoginMain from "./components/template/login/LoginMain";
-import PostUpload from "./components/template/post/PostUpload";
-import PostView from "./components/template/post/PostView";
-import ProductEdit from "./components/template/product/ProductEdit";
-import ProductUpload from "./components/template/product/ProductUpload";
-import Follower from "./components/template/profile/Follower";
-import Profile from "./components/template/profile/Profile";
-import ProfileEdit from "./components/template/profile/ProfileEdit";
-import NotFound from "./components/template/screen/NotFound";
-import SplashScreen from "./components/template/screen/SplashScreen";
-
 //김현길 독립적인 라우트 2월 8일 데이터 바인딩 작업
 import LoginEmailKHK from "./PAGE/LoginEmail";
 import HomeKHK from "./PAGE/Home";
@@ -60,37 +39,6 @@ const App = () => {
       <GlobalStyles />
       <Router>
         <AppliCation>
-          {/* 최재영 독립적인 라우트 2월 4일 이후 생성 */}
-          <Switch>
-            {/* chat */}
-            <Route path="/chatlist" component={ChatList} exact />
-            <Route path="/chatroom" component={ChatRoom} exact />
-            {/* common */}
-            <Route path="/Header" component={Header} exact />
-            <Route path="/navigation" component={Navigation} exact />
-            {/* home */}
-            <Route path="/homefeed" component={HomeFeed} exact />
-            <Route path="/search" component={Search} exact />
-            {/* join */}
-            <Route path="/joinemail" component={JoinEmail} exact />
-            <Route path="/joinprofile" component={JoinProfile} exact />
-            {/* login */}
-            <Route path="/loginemail" component={LoginEmail} exact />
-            <Route path="/loginmain" component={LoginMain} exact />
-            {/* post */}
-            <Route path="/postupload" component={PostUpload} exact />
-            <Route path="/postview" component={PostView} exact />
-            {/* product */}
-            <Route path="/productedit" component={ProductEdit} exact />
-            <Route path="/productupload" component={ProductUpload} exact />
-            {/* profile */}
-            <Route path="/follower" component={Follower} exact />
-            <Route path="/profile" component={Profile} exact />
-            <Route path="/profileedit" component={ProfileEdit} exact />
-            {/* screen */}
-            <Route path="/notfound" component={NotFound} exact />
-            <Route path="/splashscreen" component={SplashScreen} exact />
-          </Switch>
           {/* 김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후 */}
           <Switch>
             {/* auth */}
@@ -140,7 +88,7 @@ const App = () => {
               exact
             />
           </Switch>
-          <NavigationBar />
+          {/* <NavigationBar /> */}
         </AppliCation>
       </Router>
     </ThemeProvider>
