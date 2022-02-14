@@ -24,6 +24,8 @@ const PostView = () => {
   const { content, updatedAt, heartCount, commentCount, postImages } =
     useSelector(state => state.postRead);
 
+  console.log(postImages && postImages);
+
   const commentList = useSelector(state => state.commentList.comments);
 
   const onclickDeleteComment = commentId => {

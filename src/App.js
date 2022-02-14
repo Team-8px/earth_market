@@ -15,7 +15,7 @@ import PostUploadKHK from "./PAGE/PostUpload";
 import ProfileUpdateKHK from "./PAGE/ProfileUpdate";
 import FollowerListKHK from "./PAGE/FollowerList";
 import FollowingListKHK from "./PAGE/FollowingList";
-import PostViewKHK from "./PAGE/PostView";
+//import PostViewKHK from "./PAGE/PostView";
 import ProductUpdateKHK from "./PAGE/ProductUpdate";
 
 //김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후
@@ -74,7 +74,7 @@ const App = () => {
 
             {/* post */}
             <Route path="/gh/post/my/upload" component={PostUploadKHK} exact />
-            <Route path="/gh/post/:postId" component={PostViewKHK} exact />
+            <Route path="/gh/post/:postId" component={PostViewGH} exact />
 
             {/* product */}
             <Route

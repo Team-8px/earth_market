@@ -62,6 +62,12 @@ const PostView = () => {
     dispatch(commentCreateAction(comment, postId));
   };
 
+  // 댓글 생성
+  const onSubmit = data => {
+    const { comment } = data;
+    dispatch(commentCreateAction(comment, postId));
+  };
+
   const onClickDeleteComment = commentId => {
     //댓글 삭제 API
     dispatch(deleteComment(postId, commentId));
