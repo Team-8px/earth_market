@@ -54,7 +54,7 @@ export function HeaderButton({ buttonText }) {
   return (
     <HeaderNav>
       <HeaderLinkImg src={PrevBtn} />
-      <Button width="90px" size="ms" off>
+      <Button width="90px" size="ms">
         {buttonText}
       </Button>
     </HeaderNav>

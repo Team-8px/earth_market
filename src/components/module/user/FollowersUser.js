@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import EllipseImg from "../../../asset/Ellipse-1.png";
+import { Button } from "../button/button";
 
-const UserListContainer = styled.ul`
+const UserList = styled.ul`
   max-width: 390px;
   margin: 0 auto;
   padding: 24px 16px;
 `;
 
-const UserListWrapper = styled.li`
+const UserItem = styled.li`
   position: relative;
   display: flex;
   align-items: center;
@@ -49,30 +50,30 @@ const UserIntro = styled.strong`
   line-height: 15px;
 `;
 
-const Button = styled.button``;
+export function List({ children }) {
+  return <UserList>{children}</UserList>;
+}
 
-export default function FollowersUser({ username, intro }) {
+export function Item({ username, intro, img, onTestClick }) {
   const [test, setTest] = useState(true);
   return (
-    <UserListContainer>
-      <UserListWrapper>
-        <UserImgWrapper>
-          <img src={EllipseImg} alt="프로필 사진" />
-        </UserImgWrapper>
-        <UserInfoWrapper>
-          <UserName>유저네임</UserName>
-          <UserIntro>유저인트로</UserIntro>
-        </UserInfoWrapper>
-        {test ? (
-          <Button width="56px" size="sm">
-            팔로우
-          </Button>
-        ) : (
-          <Button width="56px" size="sm">
-            취소
-          </Button>
-        )}
-      </UserListWrapper>
-    </UserListContainer>
+    <UserItem>
+      <UserImgWrapper>
+        <img src={img || EllipseImg} alt="프로필 사진" />
+      </UserImgWrapper>
+      <UserInfoWrapper>
+        <UserName>{username}</UserName>
+        <UserIntro>{intro}</UserIntro>
+      </UserInfoWrapper>
+      {test ? (
+        <Button width="56px" size="sm" isButtonStatus onClick={onTestClick}>
+          팔로우
+        </Button>
+      ) : (
+        <Button width="56px" size="sm">
+          취소
+        </Button>
+      )}
+    </UserItem>
   );
 }

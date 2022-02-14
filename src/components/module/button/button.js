@@ -92,6 +92,7 @@ const colorStyles = css`
               border: none;
               background: ${theme.palette["main"]};
             `}
+
      `;
   }}
 `;
