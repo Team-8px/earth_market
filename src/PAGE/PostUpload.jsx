@@ -9,13 +9,14 @@ import { UploadPost, UploadImg } from "../components/module/upload/UploadPost";
 import { Button } from "../components/module/button/button";
 import { getUserMyProfile } from "../actions/userActions";
 
-import testPostImg from "../asset/post-img-example.png";
-import testIcon from "../asset/upload-file.png";
 import xIcon from "../asset/icon/icon-delete.svg";
 import uploadIcon from "../asset/upload-file.png";
 import PrevBtn from "../asset/icon-arrow-left.svg";
 
 const PostUpload = () => {
+  // 이미지 업로드 갯수 제한
+  const MAX_UPLOAD = 3;
+
   const [myImage, setMyImage] = useState([]);
 
   const { register, handleSubmit } = useForm();
@@ -29,19 +30,11 @@ const PostUpload = () => {
     dispatch(getUserMyProfile());
   }, [dispatch]);
 
-  // 이미지 업로드 갯수 제한
-  const MAX_UPLOAD = 3;
-
   const onChange = e => {
-    console.log(myImage.length);
     if (myImage.length <= MAX_UPLOAD - 1) {
       const nowSelectImageList = e.target.files; //최종1건만, 한번에 받은 파일리스트 (obj임)
 
-      console.log(nowSelectImageList, "파일 데이터"); // 한번에 받은 파일리스트 (obj임)
-
       const nowImgURLList = [...myImage]; // 현재 myImage를 복사하고 깊은 복사? 얕은복사?
-
-      console.log(nowImgURLList, "미리보기 파일 & 파일 배열");
 
       const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
 
@@ -49,9 +42,6 @@ const PostUpload = () => {
         previewImg: nowImageUrl,
         fileData: nowSelectImageList[0],
       });
-
-      console.log(nowImgURLList, "미리보기 파일 & 파일 배열");
-      //nowImgURLList.push(nowImageUrl);
 
       setMyImage(nowImgURLList);
     } else {
@@ -64,8 +54,8 @@ const PostUpload = () => {
     const fileDatas = myImage;
     //console.log(fileDatas);
     const image = await multipleImageUploadsHandler(fileDatas);
-    console.log(data);
-    //dispatch(createPost(postText, image));
+    console.log(data, "입력데이터");
+    dispatch(createPost(postText, image));
   };
 
   return (
@@ -104,10 +94,10 @@ const PostUpload = () => {
             <PostPhotoList></PostPhotoList>
             <PhotoList>
               {myImage &&
-                myImage.map((x, i) => {
+                myImage.map((image, i) => {
                   return (
                     <Item key={i}>
-                      <PostImage src={x.previewImg} />
+                      <PostImage src={image.previewImg} />
                     </Item>
                   );
                 })}

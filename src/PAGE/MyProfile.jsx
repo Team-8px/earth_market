@@ -19,8 +19,9 @@ import DisplayButton from "../components/module/profile/DisplayButton";
 import more from "../asset/icon-more-vertical.svg";
 import Header from "../components/template/common/Header";
 import UserInfo from "../components/UserInfo";
-import Product from "../components/module/product/Product";
+import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
+import SellProductLink from "../asset/product-img-example-01.jpg";
 
 // import Product
 const MyProfile = () => {
@@ -34,7 +35,7 @@ const MyProfile = () => {
     useSelector(state => state.userReadProfile);
 
   console.log(products, "products");
-  console.log(posts, "posts");
+  //console.log(posts, "posts");
 
   //게시글 삭제 API (이동 가능성 높음)
   const onClickDeletePost = postId => {
@@ -95,11 +96,30 @@ const MyProfile = () => {
           followerCount={followerCount}
           followingCount={followingCount}
         />
-        <Product></Product>
+        {/* <Product></Product>   */}
+        <ProductLayOut>
+          <Product>
+            {products &&
+              products.map(product => {
+                return (
+                  <ProductList
+                    key={product.id}
+                    productText={product.itemName}
+                    productPrice={product.price}
+                    img={product.itemImage}
+                  />
+                );
+              })}
+          </Product>
+        </ProductLayOut>
         <DisplayButton></DisplayButton>
-
+        {/* 게시글 */}
         {posts &&
           posts.map(post => {
+            /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
+            const postImages = post.image.split(",");
+            console.log(postImages, "이미지들");
+
             return (
               <PostContainer key={post.id}>
                 <PostWrapper>
@@ -111,9 +131,17 @@ const MyProfile = () => {
                     />
                     <ContentBox content={post.content}>
                       <ImgContainer>
-                        <ImgList>
-                          <img src={post.image} />
-                        </ImgList>
+                        {postImages &&
+                          postImages.map((postImage, i) => {
+                            console.log(postImage, "이미지 하나");
+                            return (
+                              <ImgList key={i}>
+                                <h3>{postImage}</h3>
+                                <img src={postImage} />
+                              </ImgList>
+                            );
+                          })}
+
                         <ButtonList>
                           <button></button>
                         </ButtonList>
@@ -211,6 +239,64 @@ const MoreBtn = styled.button`
   height: 18px;
   background: url(${more}) no-repeat center / 18px 18px;
   background-color: inherit;
+`;
+
+// product스타일 컴포넌트
+const ProductLayOut = styled.article`
+  margin: 20px auto;
+  width: 358px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow-y: hidden;
+`;
+
+const ProductContainer = styled.ul`
+  display: flex;
+  font-size: 12px;
+  line-height: 12px;
+  overflow-x: scroll;
+`;
+
+const ProductWrapper = styled.li`
+  margin-right: 10px;
+  cursor: pointer;
+`;
+
+const ProductImgWrapper = styled.div`
+  border: 0.5px solid #dbdbdb;
+  border-radius: 8px;
+`;
+
+const ProductImg = styled.img`
+  width: 140px;
+  height: 90px;
+  border-radius: 8px;
+  background-color: #c4c4c4;
+`;
+
+const ProductTitle = styled.h2`
+  font-size: 16px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  font-weight: 700;
+`;
+
+const TextWrap = styled.figcaption`
+  padding-top: 6px;
+`;
+
+const ProductText = styled.strong`
+  display: block;
+  line-height: 18px;
+  margin-bottom: 4px;
+`;
+
+const ProductPrice = styled.strong`
+  display: block;
+  font-size: 12px;
+  color: #f26e22;
+  font-weight: 700;
 `;
 
 export default MyProfile;
