@@ -79,7 +79,7 @@ const EmailWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    font-color: #dbdbdb;
+    color: #dbdbdb;
     line-height: 14px;
     padding-bottom: 8px;
     border: none;
@@ -101,7 +101,7 @@ const PwWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    font-color: #dbdbdb;
+    color: #dbdbdb;
     line-height: 14px;
     padding-bottom: 8px;
     border: none;

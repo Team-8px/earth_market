@@ -49,7 +49,7 @@ const ProductUpload = () => {
       {/*  <HeaderButton buttonText={"저장"} /> */}
       <LayOut>
         <FormContainerSection>
-          {/*  <UploadProfile
+          {/* <UploadProfile
             getItem={productImage}
             subTitleText={"이미지 업로드"}
           ></UploadProfile> */}
@@ -100,7 +100,9 @@ const LayOut = styled.main`
 `;
 
 const FormContainerSection = styled.section`
-  ${props => props.theme.common["flexCenterColumn"]}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 390px;
   width: 100%;
   padding: 30px 34px 0;
@@ -117,7 +119,7 @@ const ProductFormWrapper = styled.div`
 
   label {
     display: block;
-    color: #767676;
+    color: ${props => props.theme.palette["subText"]};
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
@@ -126,11 +128,11 @@ const ProductFormWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    font-color: #dbdbdb;
+    color: ${props => props.theme.palette["border"]};
     line-height: 14px;
     padding-bottom: 8px;
     border: none;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid ${props => props.theme.palette["border"]};
   }
 `;
 
