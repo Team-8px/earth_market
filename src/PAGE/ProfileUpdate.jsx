@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+ 
 // 스타일로직
-import ProfileUpload from "../components/module/profile/ProfileIUpload";
-import { HeaderButton } from "../components/template/common/Header";
+import PrevBtn from "../asset/icon-arrow-left.svg";
 import Upload from "../asset/upload-file.png";
+import { Button } from "../components/module/button/button";
+
 // 비즈니스 로직
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
@@ -65,81 +67,104 @@ const ProfileUpdate = () => {
   };
 
   return (
-    <>
-      <HeaderButton buttonText={"저장"} />
-      <LayOut>
-        <FormLayOut>
-          <ProfileImgWrapper>
-            <label onChange={previewImage} htmlFor="profileImg">
-              <input
-                type="file"
-                accept="image/jpg,image/png,image/jpeg,image/gif"
-                name="profileImg"
-                id="profileImg"
-                {...register("profileImg")}
-              ></input>
-              <img
-                src={isUpdatedImage ? updateImage : image}
-                alt="프로필 사진"
-              />
-            </label>
-          </ProfileImgWrapper>
-          <FormContainer onSubmit={handleSubmit(onSubmit)}>
-            <ProfileFormWrapper>
-              <label>사용자 이름</label>
-              <input
-                name="username"
-                type="text"
-                placeholder="2~10자 이내여야 합니다."
-                {...register("username")}
-              />
-            </ProfileFormWrapper>
-            <ProfileFormWrapper>
-              <label>계정 ID</label>
-              <input
-                name="accountname"
-                type="text"
-                placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
-                {...register("accountname")}
-              />
-            </ProfileFormWrapper>
-            <ProfileFormWrapper>
-              <label>소개</label>
-              <input
-                name="intro"
-                type="text"
-                placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
-                {...register("intro")}
-              />
-            </ProfileFormWrapper>
-            <button>안녕 난버튼이야</button>
-          </FormContainer>
-        </FormLayOut>
-      </LayOut>
-    </>
+    <Form onSubmit={handleSubmit(onSubmit)}> 
+    {/* 헤더필드 영역 */}
+    <HeaderFieldSet>
+      <HeaderContainer>
+        <HeaderLinkImg src={PrevBtn} />
+        <Button width="90px" size="ms" color="#fff">
+          저장
+        </Button>
+      </HeaderContainer>
+    </HeaderFieldSet>
+    {/* 메인필드 영역 */}
+    <MainFieldSet>
+      <ProfileImgWrapper>
+        <label onChange={previewImage} htmlFor="profileImg">
+          <input
+            type="file"
+            accept="image/jpg,image/png,image/jpeg,image/gif"
+            name="profileImg"
+            id="profileImg"
+            {...register("profileImg")} />
+          <img
+            src={isUpdatedImage ? updateImage : image}
+            alt="프로필 사진" />
+        </label>
+      </ProfileImgWrapper>
+        <ProfileFormWrapper>
+          <label>사용자 이름
+          <input
+            name="username"
+            type="text"
+            placeholder="2~10자 이내여야 합니다."
+            {...register("username")}
+          />
+          </label>
+          <label>계정 ID
+          <input
+            name="accountname"
+            type="text"
+            placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
+            {...register("accountname")}
+          />
+          </label>
+          <label>소개
+          <input
+            name="intro"
+            type="text"
+            placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
+            {...register("intro")}
+          />
+          </label>
+        </ProfileFormWrapper>
+        <button>안녕 난버튼이야</button>
+    </MainFieldSet>
+    </Form>
   );
 };
 
-const LayOut = styled.main`
-  display: flex;
-  justify-content: center;
-  min-width: 390px;
+const Form = styled.form`
+  box-sizing: border-box;
+`;
+//  메인
+const MainFieldSet = styled.fieldset`
+  margin: 30px auto;
+  max-width: 322px;
   width: 100%;
-  height: 100%;
+`;
+//  헤더
+const HeaderFieldSet = styled.fieldset`
   background-color: #fff;
-  margin-top: 48px;
+`;
+
+const HeaderContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-bottom: 0.5px solid #dbdbdb;
+`;
+
+const HeaderLinkImg = styled.img`
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+  cursor: pointer;
 `;
 
 const ProfileImgWrapper = styled.div`
-  margin-top: 30px;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
 
   label {
     position: relative;
     display: block;
     width: 110px;
     height: 110px;
-    margin: 0 auto 30px;
+    margin: 0 auto;
     border: 1px solid #dbdbdb;
     border-radius: 50%;
     cursor: pointer;
@@ -167,44 +192,32 @@ const ProfileImgWrapper = styled.div`
       width: 1px;
       height: 1px;
       overflow: hidden;
-      // 기본값
       padding: 0;
     }
   }
 `;
 
-const FormLayOut = styled.section`
-  ${props => props.theme.common["flexCenterColumn"]}
-  max-width: 390px;
-  width: 100%;
-  padding: 30px 34px 0;
-`;
-
-const FormContainer = styled.form`
-  box-sizing: border-box;
-`;
-
 const ProfileFormWrapper = styled.div`
-  width: 322px;
-  height: 48px;
-  margin-bottom: 16px;
+  margin: 0 auto 16px;
 
   label {
     display: block;
-    color: #767676;
+    color: ${props => props.theme.palette["subText"]};
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
     margin-bottom: 10px;
+    margin-top: 16px;
   }
   input {
     width: 100%;
     font-size: 14px;
-    color: #dbdbdb;
+    color: ${props => props.theme.palette["border"]};
     line-height: 14px;
     padding-bottom: 8px;
     border: none;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid ${props => props.theme.palette["border"]};
+    margin-top: 10px;
   }
 `;
 
