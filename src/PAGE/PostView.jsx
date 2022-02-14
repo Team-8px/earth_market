@@ -29,7 +29,6 @@ import more from "../asset/icon-more-vertical.svg";
 import styled, { css } from "styled-components";
 import dayjs from "dayjs";
 import { ReplyBox, CommentList } from "../components/module/post/ReplyBox";
-import { CommentUser } from "../components/module/user/CommentUser";
 const PostView = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
