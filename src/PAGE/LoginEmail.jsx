@@ -29,9 +29,11 @@ const LoginEmail = () => {
 
   return (
     <>
-      <LayOut>
-        <LoginTitle>로그인</LoginTitle>
-        <FormContainer onSubmit={handleSubmit(onSubmit)}>
+      {/* 💡 1. 첫번쨰로 form태그를 가장 최상위 태그로 만들었음 */}
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        {/* 💡 2. 필드셋 설정 페이지의 레이아웃을 담당한다. */}
+        <MainFieldSet>
+          <LoginTitle>로그인</LoginTitle>
           <EmailWrapper>
             <label>이메일</label>
             <input name="email" type="email" {...register("email")} />
@@ -43,25 +45,23 @@ const LoginEmail = () => {
           <Button width="322px" size="lg" isButtonStatus={isButtonStatus}>
             로그인
           </Button>
-        </FormContainer>
-        {/* <EmailText></EmailText> */}
-      </LayOut>
+        </MainFieldSet>
+      </Form>
     </>
   );
 };
 
-export function Wrapper({ children }) {
-  return <EmailWrapper>{children}</EmailWrapper>;
-}
-
-const LayOut = styled.main`
-  ${props => props.theme.common.flexCenterColumn}
-`;
-
-// 공통요소
-const FormContainer = styled.form`
+const Form = styled.form`
   box-sizing: border-box;
 `;
+//  메인
+const MainFieldSet = styled.fieldset`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+//  헤더
+const HeaderFieldSet = styled.fieldset``;
 
 const EmailWrapper = styled.div`
   width: 322px;
@@ -88,7 +88,9 @@ const EmailWrapper = styled.div`
 `;
 
 const PwWrapper = styled.div`
-  margin-bottom: 30px;
+  width: 322px;
+  height: 48px;
+  margin-bottom: 16px;
 
   label {
     display: block;
