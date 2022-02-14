@@ -58,6 +58,7 @@ const BtnList = styled.div`
 export function ButtonList({ children }) {
   return <BtnList>{children}</BtnList>;
 }
+
 export function ImgList({ children }) {
   return (
     <ImageList>
@@ -65,6 +66,7 @@ export function ImgList({ children }) {
     </ImageList>
   );
 }
+
 export function ImgContainer({ children }) {
   return <Container>{children}</Container>;
 }

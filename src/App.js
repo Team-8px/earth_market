@@ -43,8 +43,8 @@ const App = () => {
           {/* 김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후 */}
           <Switch>
             {/* auth */}
-            <Route path="/gh/join/email" component={SetMemberShipKHK} exact />
-            <Route path="/gh" component={LoginEmailKHK} exact />
+            <Route path="/join/email" component={SetMemberShipKHK} exact />
+            <Route path="/" component={LoginEmailKHK} exact />
 
             {/* 홈 */}
             <Route path="/home" component={HomeKHK} exact />
@@ -64,7 +64,7 @@ const App = () => {
               exact
             />
             <Route
-              path="/gh/profile/:accountId/follower"
+              path="/profile/:accountId/follower"
               component={FollowerListKHK}
               exact
             />

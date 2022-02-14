@@ -59,12 +59,12 @@ const ProductPrice = styled.strong`
   font-weight: 700;
 `;
 
-const ProductList = ({ productText, productPrice }) => {
+export const ProductList = ({ productText, productPrice, img }) => {
   return (
     <ProductWrapper>
       <figure>
         <ProductImgWrapper>
-          <ProductImg src={SellProductLink} width="100%" />
+          <ProductImg src={img} width="100%" />
         </ProductImgWrapper>
         <TextWrap>
           <ProductText>{productText}</ProductText>
@@ -75,25 +75,11 @@ const ProductList = ({ productText, productPrice }) => {
   );
 };
 
-
-
-function Product() {
+export function Product({ children }) {
   return (
     <ProductLayOut>
       <ProductTitle>판매 중인 상품</ProductTitle>
-      <ProductContainer>
-        <ProductList
-          productText={"애월읍 노지 감귤"}
-          productPrice={"35,000원"}
-        />
-        <ProductList
-          productText={"애월읍 한라봉 10kg..."}
-          productPrice={"45,000원"}
-        />
-        <ProductList productText={"감귤 파치"} productPrice={"25,000원"} />
-      </ProductContainer>
+      <ProductContainer>{children}</ProductContainer>
     </ProductLayOut>
   );
 }
-
-export default Product;
