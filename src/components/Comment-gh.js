@@ -10,9 +10,6 @@ const Comment = ({ postId }) => {
 
   const onSubmit = data => {
     const { comment } = data;
-
-    //getComment(comment);
-
     dispatch(commentCreateAction(comment, postId));
   };
 

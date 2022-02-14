@@ -112,6 +112,8 @@ export const getFollowerList = accountName => async (dispatch, getState) => {
       config,
     );
 
+    console.log(data);
+
     dispatch({
       type: FOLLOWER_LIST_SUCCESS,
       payload: data,

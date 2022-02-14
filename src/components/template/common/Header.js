@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 // import { Button } from "./Button";
@@ -19,16 +19,22 @@ const Header = () => {
 export default Header;
 
 export function HeaderFollow() {
-  const [text, setText] = useState("");
   return (
     <HeaderNav>
       <HeaderWrap>
         <PrevBtnWrap />
-        {text ? (
-          <HeaderTitle fontWeigt="400">Followers</HeaderTitle>
-        ) : (
-          <HeaderTitle fontSize="big">애월읍 위니브 감귤농장</HeaderTitle>
-        )}
+        <HeaderTitle fontWeigt="400">Followers</HeaderTitle>
+      </HeaderWrap>
+    </HeaderNav>
+  );
+}
+
+export function HeaderChat() {
+  return (
+    <HeaderNav>
+      <HeaderWrap>
+        <PrevBtnWrap />
+        <HeaderTitle fontSize="big">애월읍 위니브 감귤농장</HeaderTitle>
       </HeaderWrap>
       <MoreBtnWrap />
     </HeaderNav>

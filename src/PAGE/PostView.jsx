@@ -28,6 +28,12 @@ const PostView = () => {
   // 댓글 리스트 배열을 스토어에서 가져오기
   const commentList = useSelector(state => state.commentList.comments);
 
+  // 댓글 생성
+  const onSubmit = data => {
+    const { comment } = data;
+    dispatch(commentCreateAction(comment, postId));
+  };
+
   const onClickDeleteComment = commentId => {
     //댓글 삭제 API
     dispatch(deleteComment(postId, commentId));

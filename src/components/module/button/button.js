@@ -85,12 +85,12 @@ const colorStyles = css`
           ? css`
               color: #fff;
               border: none;
-              background: ${theme.palette["main"]};
+              background: ${theme.palette["lightMain"]};
             `
           : css`
               color: #fff;
               border: none;
-              background: ${theme.palette["lightMain"]};
+              background: ${theme.palette["main"]};
             `}
      `;
   }}
