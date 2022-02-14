@@ -4,7 +4,7 @@ import styled from "styled-components";
 import xIcon from "../../../asset/icon/icon-delete.svg";
 import uploadIcon from "../../../asset/upload-file.png";
 
-const PrifileImage = styled.img`
+const ProfileImage = styled.img`
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -109,7 +109,7 @@ export function UploadPost({ children, img, contentText }) {
 
   return (
     <>
-      <PrifileImage src={img}></PrifileImage>
+      <ProfileImage src={img}></ProfileImage>
       <PostUploadContainer>
         <PostFormContainer autocomplete="off">
           <TextBox name="text" placeholder={value}>

@@ -93,10 +93,18 @@ const Navigation = () => {
   return (
     <NavLayOut>
       <NavContainer>
-        <NavList url={"/"} NavText={"홈"} className={"home"}></NavList>
+        <NavList url={"/home"} NavText={"홈"} className={"home"}></NavList>
         <NavList url={"/chatlist"} NavText={"채팅"} className={"chatlist"} />
-        <NavList url={"/"} NavText={"게시물 작성"} className={"upload"} />
-        <NavList url={"/"} NavText={"프로필"} className={"myprofile"} />
+        <NavList
+          url={"/post/my/upload"}
+          NavText={"게시물 작성"}
+          className={"upload"}
+        />
+        <NavList
+          url={"/profile/my"}
+          NavText={"프로필"}
+          className={"myprofile"}
+        />
       </NavContainer>
     </NavLayOut>
   );

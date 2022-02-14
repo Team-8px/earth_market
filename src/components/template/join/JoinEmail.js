@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "../../module/button/button";
-import RegisterForm from "../../module/form/RegisterForm";
-import LoginTitle from "../../module/title/LoginTitle";
+import { Button } from "../components/module/button/button";
+import RegisterForm from "../components/module/form/RegisterForm";
+import LoginTitle from "../components/module/title/LoginTitle";
 
 const JoinEmail = () => {
   return (
@@ -19,7 +19,9 @@ const JoinEmail = () => {
 };
 
 const LayOut = styled.main`
-  ${props => props.theme.common.flexCenterColumn}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default JoinEmail;

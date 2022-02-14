@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Navigation from "../components/template/common/Navigation";
 
 const UseGNB = () => {
   const [isAppeardGNB, setIsAppeardGNB] = useState(false);
   const { pathname } = useLocation();
+  const {} = useParams();
 
   useEffect(() => {
     if (
-      pathname === "/gh" ||
-      pathname === "/gh/join/email" ||
-      pathname === "/gh/" ||
-      pathname === "/gh/join/email/"
+      pathname === "/" ||
+      pathname === "/join/email" ||
+      pathname === "/join/email/" ||
+      pathname === "/post/my/upload" ||
+      pathname === "/post/my/upload/"
     ) {
       setIsAppeardGNB(true);
     }

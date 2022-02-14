@@ -35,7 +35,7 @@ const Search = () => {
     <>
       <HeaderLayOut>
         <HeaderContainer>
-          <HeaderLink to={"/"}>
+          <HeaderLink to={"/home"}>
             <img src={PrevBtn} alt="이전 페이지 버튼" />
           </HeaderLink>
           <Form onSubmit={handleSubmit(onSubmit)}>
@@ -56,7 +56,7 @@ const Search = () => {
           {users &&
             users.map(user => {
               return (
-                <UserListWrapper>
+                <UserListWrapper key={user._id}>
                   <UserImgWrapper>
                     <img src={user?.image} alt="프로필 사진" />
                   </UserImgWrapper>

@@ -101,7 +101,7 @@ const MoreBtnWrap = () => {
 
 const SearchBtnWrap = () => {
   return (
-    <HeaderLink to={"/"}>
+    <HeaderLink to={"/search"}>
       <img src={SearchBtn} alt="검색 버튼" />
     </HeaderLink>
   );
