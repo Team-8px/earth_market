@@ -167,7 +167,7 @@ const EmailWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    color: #dbdbdb;
+    color: ${props => props.theme.palette["black"]};
     line-height: 14px;
     padding-bottom: 8px;
     border: none;
@@ -233,7 +233,7 @@ const ProfileFormWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    color: #dbdbdb;
+    color: ${props => props.theme.palette["black"]};
     line-height: 14px;
     padding-bottom: 8px;
     border: none;
@@ -257,7 +257,7 @@ const PwWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    color: #dbdbdb;
+    color: ${props => props.theme.palette["black"]};
     line-height: 14px;
     padding-bottom: 8px;
     border: none;

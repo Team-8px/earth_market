@@ -212,7 +212,7 @@ const ProfileFormWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    color: ${props => props.theme.palette["border"]};
+    color: ${props => props.theme.palette["black"]};
     line-height: 14px;
     padding-bottom: 8px;
     border: none;

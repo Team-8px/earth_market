@@ -57,13 +57,6 @@ const PostView = () => {
   // 댓글 생성
   const onSubmit = data => {
     const { comment } = data;
-    console.log(comment);
-    dispatch(commentCreateAction(comment, postId));
-  };
-
-  // 댓글 생성
-  const onSubmit = data => {
-    const { comment } = data;
     dispatch(commentCreateAction(comment, postId));
   };
 

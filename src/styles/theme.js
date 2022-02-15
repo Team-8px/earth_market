@@ -20,6 +20,7 @@ const palette = {
   kakao: "#F2C94C",
   google: "#767676",
   faceBook: "#2D9CDB",
+  black: "#000000",
 };
 
 const common = {
