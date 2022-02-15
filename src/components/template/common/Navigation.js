@@ -76,7 +76,6 @@ const NavListLink = styled(NavLink)`
 
 const Navigation = () => {
   const [toggle, setToggle] = useState(0);
-  console.log(toggle);
   const toggleHandler = index => {
     setToggle(index);
   };
@@ -103,7 +102,7 @@ const Navigation = () => {
         </NavWrap>
         <NavWrap>
           <NavListLink
-            to="/home"
+            to="/post/my/upload"
             className={toggle === 3 ? "upload on" : "upload"}
             onClick={() => toggleHandler(3)}
           >
@@ -112,7 +111,7 @@ const Navigation = () => {
         </NavWrap>
         <NavWrap>
           <NavListLink
-            to="/home"
+            to="/profile/my"
             className={toggle === 4 ? "myprofile on" : "myprofile"}
             onClick={() => toggleHandler(4)}
           >
