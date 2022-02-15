@@ -104,7 +104,7 @@ export const getProduct = productId => async (dispatch, getState) => {
   }
 };
 
-export const listProducts = () => async (dispatch, getState) => {
+export const listProducts = accountId => async (dispatch, getState) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
@@ -119,7 +119,7 @@ export const listProducts = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(
-      `${API_URL}/product/${userInfo.user.accountname}`,
+      `${API_URL}/product/${accountId ? accountId : userInfo.user.accountname}`,
       config,
     );
 

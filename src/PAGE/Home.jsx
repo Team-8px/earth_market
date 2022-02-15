@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFollowerPostList } from "../actions/followAction";
 import styled, { css } from "styled-components";
-import UserInfoBox from "../components/module/post/UserInfoBox";
+import { UserInfoBox } from "../components/module/post/UserInfoBox";
 import {
   ContentBox,
   ImgContainer,

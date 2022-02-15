@@ -58,7 +58,9 @@ const Search = () => {
               return (
                 <UserListWrapper key={user._id}>
                   <UserImgWrapper>
-                    <img src={user?.image} alt="프로필 사진" />
+                    <Link to={`/profile/you/${user.accountname}`}>
+                      <img src={user?.image} alt="프로필 사진" />
+                    </Link>
                   </UserImgWrapper>
                   <UserInfoWrapper>
                     <UserName>

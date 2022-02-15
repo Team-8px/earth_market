@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useRouteMatch } from "react-router-dom";
 import Navigation from "../components/template/common/Navigation";
 
 const UseGNB = () => {
   const [isAppeardGNB, setIsAppeardGNB] = useState(false);
   const { pathname } = useLocation();
-  const {} = useParams();
+
+  const id = pathname.split("/");
+
+  //console.log(postId);
 
   useEffect(() => {
     if (
@@ -13,7 +16,17 @@ const UseGNB = () => {
       pathname === "/join/email" ||
       pathname === "/join/email/" ||
       pathname === "/post/my/upload" ||
-      pathname === "/post/my/upload/"
+      pathname === "/post/my/upload/" ||
+      pathname === "/profile/my/update" ||
+      pathname === "/profile/my/update/" ||
+      pathname === "/post/my/upload" ||
+      pathname === "/post/my/upload/" ||
+      pathname === "/product/upload" ||
+      pathname === "/product/upload/" ||
+      pathname === `/post/${id[2]}` ||
+      pathname === `/post/${id[2]}/` ||
+      pathname === `/product/${id[2]}/update` ||
+      pathname === `/product/${id[2]}/update/`
     ) {
       setIsAppeardGNB(true);
     }

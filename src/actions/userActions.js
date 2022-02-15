@@ -98,7 +98,7 @@ export const logout = () => dispatch => {
 
   dispatch({ type: USER_LOGOUT });
 
-  document.location.href = "/gh";
+  document.location.href = "/";
 };
 
 export const joinMembership =
@@ -128,7 +128,7 @@ export const joinMembership =
       });
 
       //회원가입 api에서 응답으로 토큰정보를 주지 않아서 로그인 화면으로 이동.
-      document.location.href = "/gh";
+      document.location.href = "/";
     } catch (error) {
       console.log(error, "userActions Error");
       dispatch({
@@ -141,7 +141,7 @@ export const joinMembership =
     }
   };
 
-export const getUserMyProfile = () => async (dispatch, getState) => {
+export const getUserMyProfile = accountId => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_READ_PROFILE_REQUEST });
 
@@ -156,7 +156,7 @@ export const getUserMyProfile = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(
-      `${API_URL}/profile/${userInfo.user.accountname}`,
+      `${API_URL}/profile/${accountId ? accountId : userInfo.user.accountname}`,
       config,
     );
     //console.log(data);

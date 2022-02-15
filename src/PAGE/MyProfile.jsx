@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { listProducts, deleteProduct } from "../actions/productActions";
 import { listPosts, deletePost } from "../actions/postActions";
 import { getUserMyProfile } from "../actions/userActions";
-import UserInfoBox from "../components/module/post/UserInfoBox";
+import { UserInfoBoxInMyProfile } from "../components/module/post/UserInfoBox";
 import {
   ContentBox,
   ImgContainer,
@@ -33,9 +34,6 @@ const MyProfile = () => {
   //나의 프로필 정보
   const { image, username, accountname, intro, followerCount, followingCount } =
     useSelector(state => state.userReadProfile);
-
-  console.log(products, "products");
-  //console.log(posts, "posts");
 
   //게시글 삭제 API (이동 가능성 높음)
   const onClickDeletePost = postId => {
@@ -84,19 +82,14 @@ const MyProfile = () => {
     <>
       <Header />
       <LayOut>
-        {/* username,
-  accoutname,
-  intro,
-  followerCount,
-  followingCount, */}
         <UserInfo
           username={username}
           accoutname={accountname}
           intro={intro}
           followerCount={followerCount}
           followingCount={followingCount}
+          profileImage={image}
         />
-        {/* <Product></Product>   */}
         <ProductLayOut>
           <Product>
             {products &&
@@ -118,34 +111,34 @@ const MyProfile = () => {
           posts.map(post => {
             /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
             const postImages = post.image.split(",");
-            console.log(postImages, "이미지들");
 
             return (
               <PostContainer key={post.id}>
                 <PostWrapper>
                   <Container>
-                    <UserInfoBox
+                    <UserInfoBoxInMyProfile
                       profileImage={post.author.image}
                       name={post.author.username}
                       id={post.author.accountname}
                     />
                     <ContentBox content={post.content}>
-                      <ImgContainer>
-                        {postImages &&
-                          postImages.map((postImage, i) => {
-                            console.log(postImage, "이미지 하나");
-                            return (
-                              <ImgList key={i}>
-                                <h3>{postImage}</h3>
-                                <img src={postImage} />
-                              </ImgList>
-                            );
-                          })}
+                      <Link to={`/post/${post.id}`}>
+                        <ImgContainer>
+                          {postImages &&
+                            postImages.map((postImage, i) => {
+                              return (
+                                <ImgList key={i}>
+                                  <h3>{postImage}</h3>
+                                  <img src={postImage} />
+                                </ImgList>
+                              );
+                            })}
 
-                        <ButtonList>
-                          <button></button>
-                        </ButtonList>
-                      </ImgContainer>
+                          <ButtonList>
+                            <button></button>
+                          </ButtonList>
+                        </ImgContainer>
+                      </Link>
                       <IconBox
                         like={post.heartCount}
                         comment={post.commentCount}

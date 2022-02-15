@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import styled from "styled-components";
 // import { Button } from "./Button";
 import PrevBtn from "../../../asset/icon-arrow-left.svg";
@@ -18,12 +18,14 @@ const Header = () => {
 
 export default Header;
 
-export function HeaderFollow() {
+export function HeaderFollow({ following }) {
   return (
     <HeaderNav>
       <HeaderWrap>
         <PrevBtnWrap />
-        <HeaderTitle fontWeigt="400">Followers</HeaderTitle>
+        <HeaderTitle fontWeigt="400">
+          {following ? "Followings" : "Followers"}
+        </HeaderTitle>
       </HeaderWrap>
     </HeaderNav>
   );
@@ -84,8 +86,9 @@ const HeaderNav = props => {
 };
 
 const PrevBtnWrap = () => {
+  const history = useHistory();
   return (
-    <HeaderLink to={"/"}>
+    <HeaderLink onClick={() => history.goBack()}>
       <img src={PrevBtn} alt="이전 페이지 버튼" />
     </HeaderLink>
   );
@@ -100,9 +103,14 @@ const MoreBtnWrap = () => {
 };
 
 const SearchBtnWrap = () => {
+  const history = useHistory();
   return (
-    <HeaderLink to={"/search"}>
-      <img src={SearchBtn} alt="검색 버튼" />
+    <HeaderLink>
+      <img
+        onClick={() => history.push("/search")}
+        src={SearchBtn}
+        alt="검색 버튼"
+      />
     </HeaderLink>
   );
 };
@@ -133,7 +141,7 @@ const HeaderWrap = styled.div`
   align-items: center;
 `;
 
-const HeaderLink = styled(Link)`
+const HeaderLink = styled.div`
   width: 22px;
   height: 22px;
   border: none;

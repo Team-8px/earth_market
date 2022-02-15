@@ -89,6 +89,10 @@ export const getCommentList = postId => async (dispatch, getState) => {
       type: COMMENT_LIST_SUCCESS,
       payload: data,
     });
+    //새로고침
+    //window.location.reload(1);
+    //document.location.href = document.location.href;
+    //window.location.replace(`/post/${postId} `);
   } catch (error) {
     const message =
       error.response && error.response.data.message
