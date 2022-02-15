@@ -186,20 +186,20 @@ const MyProfile = () => {
       </Modal>
       {/* Product Alert */}
       <Alert visible={productAlert} messageText="상품을 삭제할까요?">
-        <AlertBox isAlert={isProductAlert}>예</AlertBox>
-        <AlertBox isAlert={isProductAlert}>아니요</AlertBox>
+        <AlertBox isAlert={isProductAlert}>취소</AlertBox>
+        <AlertBox isAlert={isProductAlert}>삭제</AlertBox>
       </Alert>
 
       {/* Post Modal */}
       <Modal visible={postDialog}>
-        <ListBtn isDialog={isPostDialog}>수정</ListBtn>
         <AlertBtn isAlert={isPostAlert}>삭제</AlertBtn>
+        <ListBtn isDialog={isPostDialog}>수정</ListBtn>
         <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
       </Modal>
       {/* Post Alert */}
       <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
-        <AlertBox isAlert={isPostAlert}>예</AlertBox>
-        <AlertBox isAlert={isPostAlert}>아니요</AlertBox>
+        <AlertBox isAlert={isPostAlert}>취소</AlertBox>
+        <AlertBox isAlert={isPostAlert}>삭제</AlertBox>
       </Alert>
     </>
   );

@@ -61,6 +61,10 @@ const Item = styled.li`
     font-size: 14px;
     line-height: 18px;
   }
+
+  &:nth-child(2) button {
+    color: #f26e22;
+  }
 `;
 
 export function AlertBox({ children, isAlert }) {
