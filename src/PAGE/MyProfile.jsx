@@ -107,6 +107,7 @@ const MyProfile = () => {
                     productText={product.itemName}
                     productPrice={product.price}
                     img={product.itemImage}
+                    onClick={isProductDialog}
                   />
                 );
               })}

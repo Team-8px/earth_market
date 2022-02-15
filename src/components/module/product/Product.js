@@ -59,9 +59,9 @@ const ProductPrice = styled.strong`
   font-weight: 700;
 `;
 
-export const ProductList = ({ productText, productPrice, img }) => {
+export const ProductList = ({ productText, productPrice, img, onClick }) => {
   return (
-    <ProductWrapper>
+    <ProductWrapper onClick={onClick}>
       <figure>
         <ProductImgWrapper>
           <ProductImg src={img} width="100%" />
