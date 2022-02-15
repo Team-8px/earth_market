@@ -108,14 +108,14 @@ export const createPost = (content, image) => async (dispatch, getState) => {
       payload: data,
     });
 
-    document.location.href = "/gh/profile/my";
+    document.location.href = "/home";
   } catch (error) {
     const message =
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
     if (message === "Not authorized, token failed") {
-      //dispatch(logout());
+      dispatch(logout());
     }
     dispatch({
       type: POST_CREATE_FAIL,
