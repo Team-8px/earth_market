@@ -60,11 +60,11 @@ const PostUpload = () => {
     //console.log(fileDatas);
     const image = await multipleImageUploadsHandler(fileDatas);
     console.log(data, "입력데이터");
-    dispatch(createPost(postText, image));
+    // dispatch(createPost(postText, image));
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}> 
+    <Form onSubmit={handleSubmit(onSubmit)}>
       {/* 헤더필드 영역 */}
       <HeaderFieldSet>
         <HeaderContainer>
@@ -104,7 +104,7 @@ const PostUpload = () => {
               );
             })}
         </PhotoList>
-        </MainFieldSet>
+      </MainFieldSet>
     </Form>
   );
 };

@@ -53,11 +53,7 @@ const App = () => {
             {/* profile */}
             <Route path="/profile/my" component={MyprofileKHK} exact />
             <Route path="/gh/profile/you" component={MyprofileKHK} exact />
-            <Route
-              path="/gh/profile/you/:acccountId"
-              component={MyProfileGH}
-              exact
-            />
+
             <Route
               path="/profile/my/update"
               component={ProfileUpdateKHK}
