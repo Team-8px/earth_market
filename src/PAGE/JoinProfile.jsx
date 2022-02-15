@@ -95,7 +95,7 @@ const JoinProfile = () => {
             </LoginTitle>
             <ProfileImgWrapper>
               <label onChange={previewImage} htmlFor="profileImg">
-                <img src={myImage} alt="프로필 사진" />
+                <img src={myImage} alt="프로필 이미지" />
                 <input
                   type="file"
                   accept="image/jpg,image/png,image/jpeg,image/gif"

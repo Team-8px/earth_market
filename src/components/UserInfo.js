@@ -2,9 +2,50 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import EllipseImg from "../asset/Ellipse-1.png";
 import { ProfileImage } from "./common/image/ProfileImageStyle";
 // import { Button } from "./module/button/Button";
+
+const UserInfo = ({
+  username,
+  accoutname,
+  intro,
+  followerCount,
+  followingCount,
+  profileImage,
+}) => {
+  return (
+    <UserInfoContainer>
+      <UserInfoWrapper>
+        <ProfileImage>
+          <img src={profileImage} alt="프로필 사진" />
+        </ProfileImage>
+        <UserName>{username}</UserName>
+        <AccountName>{accoutname}</AccountName>
+        <Intro>{intro}</Intro>
+        <FollowerWrapper to={`/profile/${accoutname}/follower`}>
+          <strong>{followerCount}</strong>
+          <span>followers</span>
+        </FollowerWrapper>
+        <FollowingWrapper to={`/profile/${accoutname}/following`}>
+          <strong>{followingCount}</strong>
+          <span>following</span>
+        </FollowingWrapper>
+        {/* <Button size="md" width="120px">
+          팔로우
+        </Button>
+        <Button size="md" width="120px">
+          언팔로우
+        </Button>
+        <Button size="md" width="120px">
+          프로필 수정
+        </Button>
+        <Button size="md" width="120px">
+          상품 등록
+        </Button> */}
+      </UserInfoWrapper>
+    </UserInfoContainer>
+  );
+};
 
 const UserInfoContainer = styled.header`
   display: flex;
@@ -93,46 +134,5 @@ const FollowingWrapper = styled(Link)`
 `;
 
 const Button = styled.button``;
-
-function UserInfo({
-  username,
-  accoutname,
-  intro,
-  followerCount,
-  followingCount,
-}) {
-  return (
-    <UserInfoContainer>
-      <UserInfoWrapper>
-        <ProfileImage>
-          <img src={EllipseImg} alt="프로필 사진" />
-        </ProfileImage>
-        <UserName>{username}</UserName>
-        <AccountName>{accoutname}</AccountName>
-        <Intro>{intro}</Intro>
-        <FollowerWrapper /* to={`/profile/${accountId}/follower`} */>
-          <strong>{followerCount}</strong>
-          <span>followers</span>
-        </FollowerWrapper>
-        <FollowingWrapper /* to={`/profile/${accountId}/following`} */>
-          <strong>{followingCount}</strong>
-          <span>following</span>
-        </FollowingWrapper>
-        {/* <Button size="md" width="120px">
-          팔로우
-        </Button>
-        <Button size="md" width="120px">
-          언팔로우
-        </Button>
-        <Button size="md" width="120px">
-          프로필 수정
-        </Button>
-        <Button size="md" width="120px">
-          상품 등록
-        </Button> */}
-      </UserInfoWrapper>
-    </UserInfoContainer>
-  );
-}
 
 export default UserInfo;

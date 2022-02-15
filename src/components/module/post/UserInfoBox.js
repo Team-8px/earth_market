@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 const LayOut = styled.section`
   display: flex;
   align-items: center;
@@ -37,10 +38,27 @@ const Id = styled.strong`
   }
 `;
 
-export default function UserInfoBox({ profileImage, name, id }) {
+export function UserInfoBox({ profileImage, name, id }) {
+  console.log(id, "UserInfoBox");
   return (
     <LayOut>
-      <ProfileImg src={profileImage} />
+      <Link to={`/profile/you/${id}`}>
+        <ProfileImg src={profileImage} />
+      </Link>
+      <Wrapper>
+        <Name>{name}</Name>
+        <Id>{id}</Id>
+      </Wrapper>
+    </LayOut>
+  );
+}
+export function UserInfoBoxInMyProfile({ profileImage, name, id }) {
+  console.log(id, "UserInfoBoxInMyProfile");
+  return (
+    <LayOut>
+      <Link to="/profile/my">
+        <ProfileImg src={profileImage} />
+      </Link>
       <Wrapper>
         <Name>{name}</Name>
         <Id>{id}</Id>

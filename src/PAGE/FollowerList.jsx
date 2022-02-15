@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
   getFollowerList,
   followUser,
@@ -51,7 +51,9 @@ const FollowerList = () => {
               <UserListContainer key={followerUser?._id}>
                 <UserListWrapper>
                   <UserImgWrapper>
-                    <img src={followerUser.image} alt="프로필 사진" />
+                    <Link to={`/profile/you/${followerUser.accountname}`}>
+                      <img src={followerUser.image} alt="프로필 사진" />
+                    </Link>
                   </UserImgWrapper>
                   <UserInfoWrapper>
                     <UserName>{followerUser.username}</UserName>
