@@ -17,7 +17,7 @@ import IconBox from "../components/module/post/IconBox";
 import Date from "../components/module/post/Date";
 import more from "../asset/icon-more-vertical.svg";
 import dayjs from "dayjs";
-
+import NoneFeed from "../components/NoneFeed";
 const Home = () => {
   // 게시글 메뉴
   const [postDialog, setPostDialog] = useState(false);
@@ -76,7 +76,7 @@ const Home = () => {
         </LayOut>
       ) : (
         <LayOut center>
-          {/* <HomeLogo></HomeLogo> */}
+          <NoneFeed></NoneFeed>
           <Button size="lg" width="120px">
             검색하기
           </Button>
