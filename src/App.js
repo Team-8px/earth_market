@@ -27,13 +27,13 @@ import MyProfileUpdateGH from "./pages/profile/MyprofileUpdate-gh";
 import PostUploadGH from "./pages/post/PostUpload-gh";
 import ProductUploadGH from "./pages/product/ProductUpload-gh";
 import ProductUpdateGH from "./pages/product/ProductUpdate-gh";
-import PostViewGH from "./pages/post/PostView-gh";
+import PostView from "./PAGE/PostView";
 //홈피드, 팔로우, 검색
 import HomeGH from "./pages/home/Home-gh";
 import SearchGH from "./pages/home/Search-gh";
 import FollowerListGH from "./pages/profile/Follower-gh";
 import FollowingListGH from "./pages/profile/Following-gh";
-
+import FollowerList from "./PAGE/FollowerList";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -65,7 +65,7 @@ const App = () => {
             />
             <Route
               path="/profile/:accountId/follower"
-              component={FollowerListKHK}
+              component={FollowerList}
               exact
             />
             <Route
@@ -76,7 +76,7 @@ const App = () => {
 
             {/* post */}
             <Route path="/post/my/upload" component={PostUploadKHK} exact />
-            <Route path="/post/:postId" component={PostViewGH} exact />
+            <Route path="/post/:postId" component={PostView} exact />
 
             {/* product */}
             <Route
