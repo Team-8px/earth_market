@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+ 
+// 스타일로직
+import PrevBtn from "../asset/icon-arrow-left.svg";
+import UploadProfile from "../components/module/upload/UploadProfile";
+import { Button } from "../components/module/button/button";
+
+// 비즈니스 로직
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { createProduct } from "../actions/productActions";
-import { imageUploadsHandler } from "../util/imageUploads";
-import ProductForm from "../components/module/form/ProductForm";
-import UploadProfile from "../components/module/upload/UploadProfile";
-import { HeaderButton } from "../components/template/common/Header";
+
 
 const ProductUpload = () => {
   const [productImage, setProductImage] = useState([]);
@@ -45,77 +49,80 @@ const ProductUpload = () => {
   };
 
   return (
-    <>
-      {/*  <HeaderButton buttonText={"저장"} /> */}
-      <LayOut>
-        <FormContainerSection>
-          {/* <UploadProfile
+      <Form onSubmit={handleSubmit(onSubmit)}>            
+          {/* 헤더필드 영역 */}
+          <HeaderFieldSet>
+            <HeaderContainer>
+              <HeaderLinkImg src={PrevBtn} />
+              <Button width="90px" size="ms" color="#fff">
+                저장
+              </Button>
+            </HeaderContainer>
+          </HeaderFieldSet>
+          {/* 메인필드 영역 */}
+          <MainFieldSet>
+            <UploadProfile
             getItem={productImage}
-            subTitleText={"이미지 업로드"}
-          ></UploadProfile> */}
-          <FormContainer onSubmit={handleSubmit(onSubmit)}>
-            <HeaderButton buttonText={"저장"} />
+            subTitleText={"이미지 업로드"} />
             <ProductFormWrapper>
               <label>상품명</label>
               <input
                 name="itemName"
                 type="text"
                 {...register("itemName")}
-                placeholder="2~10자 이내여야 합니다."
-              />
-            </ProductFormWrapper>
-            <ProductFormWrapper>
+                placeholder="2~10자 이내여야 합니다." />
               <label>가격</label>
               <input
                 name="price"
                 type="text"
                 {...register("price")}
-                placeholder="숫자만 입력 가능합니다."
-              />
-            </ProductFormWrapper>
-            <ProductFormWrapper>
+                placeholder="숫자만 입력 가능합니다." />
               <label>판매 링크</label>
               <input
                 name="link"
                 type="text"
                 {...register("link")}
-                placeholder="URL을 입력해 주세요."
-              />
+                placeholder="URL을 입력해 주세요." />
             </ProductFormWrapper>
-          </FormContainer>
-        </FormContainerSection>
-      </LayOut>
-    </>
+          </MainFieldSet>
+      </Form> 
   );
 };
 
-const LayOut = styled.main`
-  display: flex;
-  justify-content: center;
-  min-width: 390px;
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  margin-top: 48px;
-`;
-
-const FormContainerSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 390px;
-  width: 100%;
-  padding: 30px 34px 0;
-`;
-
-const FormContainer = styled.form`
+const Form = styled.form`
   box-sizing: border-box;
+`;
+//  메인
+const MainFieldSet = styled.fieldset`
+  margin: 30px auto;
+  max-width: 322px;
+  width: 100%;
+`;
+//  헤더
+const HeaderFieldSet = styled.fieldset`
+  background-color: #fff;
+`;
+
+const HeaderContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-bottom: 0.5px solid #dbdbdb;
+`;
+
+const HeaderLinkImg = styled.img`
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+  cursor: pointer;
 `;
 
 const ProductFormWrapper = styled.div`
-  width: 322px;
-  height: 48px;
-  margin-bottom: 16px;
+  margin: 0 auto 16px;
 
   label {
     display: block;
@@ -124,6 +131,7 @@ const ProductFormWrapper = styled.div`
     font-size: 12px;
     line-height: 15px;
     margin-bottom: 10px;
+    margin-top: 16px;
   }
   input {
     width: 100%;

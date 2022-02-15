@@ -17,7 +17,6 @@ const buttonStyles = css`
   color: #fff;
   font-weight: bold;
   cursor: pointer;
-  margin-bottom: 10px;
 `;
 
 const iconStyles = css`

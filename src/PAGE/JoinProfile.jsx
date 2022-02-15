@@ -55,9 +55,9 @@ const JoinProfile = () => {
   };
   return (
     <>
-      <FormContainer onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         {isButtonStatus ? (
-          <LayOut>
+          <MainFieldSet>
             <LoginTitle>이메일로 회원가입</LoginTitle>
             <h1>{isButtonStatus}</h1>
             <EmailWrapper>
@@ -86,9 +86,9 @@ const JoinProfile = () => {
             >
               다음
             </Button>
-          </LayOut>
+          </MainFieldSet>
         ) : (
-          <LayOut>
+          <MainFieldSet>
             <LoginTitle>
               프로필 설정
               <SubTitleTitle />
@@ -133,24 +133,22 @@ const JoinProfile = () => {
               />
             </ProfileFormWrapper>
             <Button width="322px" size="lg" off>
-              감귤마켓 시작하세요 안녕하세요.
+              감귤마켓 시작하기
             </Button>
-          </LayOut>
+          </MainFieldSet>
         )}
-      </FormContainer>
+      </Form>
     </>
   );
 };
+const Form = styled.form`
+  box-sizing: border-box;
+`;
 
-const LayOut = styled.main`
+const MainFieldSet = styled.fieldset`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const FormContainer = styled.form`
-  box-sizing: border-box;
-  margin-top: 40px;
 `;
 
 const EmailWrapper = styled.div`
@@ -244,7 +242,9 @@ const ProfileFormWrapper = styled.div`
 `;
 
 const PwWrapper = styled.div`
-  margin-bottom: 30px;
+  width: 322px;
+  height: 48px;
+  margin-bottom: 16px;
 
   label {
     display: block;

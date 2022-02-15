@@ -56,13 +56,12 @@ const Search = () => {
           {users &&
             users.map(user => {
               return (
+                  // 링크 타면 해당 유저 프로필로 이동
                 <UserListWrapper key={user._id}>
-                  <UserImgWrapper>
                     <Link to={`/profile/you/${user.accountname}`}>
                       <img src={user?.image} alt="프로필 사진" />
                     </Link>
-                  </UserImgWrapper>
-                  <UserInfoWrapper>
+                 <UserInfoWrapper>
                     <UserName>
                       <strong>{user?.username}</strong>
                     </UserName>
@@ -139,36 +138,37 @@ const LayOut = styled.main`
   padding: 20px 16px;
   overflow-y: scroll;
   min-width: 100%;
-  width: 100%;
-  background-color: #fff;
   margin-top: 48px;
-`;
+  `;
 
 const UserListContainer = styled.ul`
   max-width: 390px;
-  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 const UserListWrapper = styled.li`
+  margin-bottom: 16px;
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  width: 100%;
 `;
 
-const UserImgWrapper = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 0.5px solid #dbdbdb;
-  font-size: 10px;
-  overflow: hidden;
-
+// 프로필 사진 크기 수정 필요
+const UserImgLink = styled(Link)`
+  cursor: pointer;
+  
   img {
-    height: 100%;
-    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 0.5px solid #dbdbdb;
+    font-size: 10px;
+    overflow: hidden;
   }
 `;
+
 
 const UserInfoWrapper = styled.div`
   margin-left: 12px;
