@@ -9,6 +9,8 @@ import {
 import styled from "styled-components";
 import { HeaderFollow } from "../components/template/common/Header";
 import { Button } from "../components/module/button/button";
+import { Link } from "react-router-dom";
+import Navigation from "../components/template/common/Navigation";
 
 const FollowerList = () => {
   const dispatch = useDispatch();
@@ -45,42 +47,43 @@ const FollowerList = () => {
     <>
       <HeaderFollow />
       <LayOut>
+        <UserList>
         {follower &&
           follower.map(followerUser => {
             return (
-              <UserListContainer key={followerUser?._id}>
-                <UserListWrapper>
-                  <UserImgWrapper>
-                    <img src={followerUser.image} alt="프로필 사진" />
-                  </UserImgWrapper>
-                  <UserInfoWrapper>
-                    <UserName>{followerUser.username}</UserName>
-                    {/* <UserIntro>유저인트로</UserIntro> */}
-                  </UserInfoWrapper>
-                  {followerUser.isfollow ? (
-                    <Button
-                      onClick={() => onUnfollowClick(followerUser?.accountname)}
-                      isButtonStatus={followerUser.isfollow}
-                      width="56px"
-                      size="sm"
-                    >
-                      취소
-                    </Button>
-                  ) : (
-                    <Button
-                      onClick={() => onFollowClick(followerUser?.accountname)}
-                      isButtonStatus={followerUser.isfollow}
-                      width="56px"
-                      size="sm"
-                    >
-                      팔로우
-                    </Button>
+              <UserItem key={followerUser?._id}>
+                <UserImgWrapper>
+                  <img src={followerUser.image} alt="프로필 사진" />
+                </UserImgWrapper>
+                <UserInfoWrapper>
+                  <UserName>{followerUser.username}</UserName>
+                  <UserIntro>{followerUser.intro}</UserIntro>
+                </UserInfoWrapper>
+                {followerUser.isfollow ? (
+                  <Button
+                    onClick={() => onUnfollowClick(followerUser?.accountname)}
+                    isButtonStatus={followerUser.isfollow}
+                    width="56px"
+                    size="sm"
+                  >
+                    취소
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={() => onFollowClick(followerUser?.accountname)}
+                    isButtonStatus={followerUser.isfollow}
+                    width="56px"
+                    size="sm"
+                  >
+                    팔로우
+                  </Button>
                   )}
-                </UserListWrapper>
-              </UserListContainer>
+              </UserItem>
             );
           })}
+          </UserList>
       </LayOut>
+      <Navigation />
     </>
   );
 };
@@ -93,19 +96,19 @@ const LayOut = styled.main`
   margin-top: 48px;
 `;
 
-const UserListContainer = styled.ul`
+const UserList = styled.ul`
   max-width: 390px;
   margin: 0 auto;
   padding: 24px 16px;
 `;
 
-const UserListWrapper = styled.li`
+const UserItem = styled.li`
   position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 16px;
 `;
-const UserImgWrapper = styled.div`
+const UserImgWrapper = styled(Link)`
   width: 50px;
   height: 50px;
   border-radius: 50%;

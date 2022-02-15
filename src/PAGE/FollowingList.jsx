@@ -4,13 +4,13 @@ import styled from "styled-components";
 // 스타일 로직
 import { HeaderFollow } from "../components/template/common/Header";
 import Navigation from "../components/template/common/Navigation";
-
+import { Button } from "../components/module/button/button";
 //Navigation
 // 비즈니스 로직
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getFollowingList, unfollowUser } from "../actions/followAction";
-
+import { getFollowingList, unfollowUser, followUser } from "../actions/followAction";
+import { Link } from "react-router-dom";
 const FollowingList = () => {
   const dispatch = useDispatch();
   //accountId 계정이 필요한 이유는 myprofile과 yourprofile 둘다 커버하기 위한 노력
@@ -26,15 +26,23 @@ const FollowingList = () => {
   //readux스토어에서 팔로우취소여부를 불러와 useEffect에서 재 렌더링을 하기 위한 의도
   const { unfollow } = useSelector(state => state?.unfollowUser);
 
+  //readux스토어에서 팔로우등록여부를 불러와 useEffect에서 재 렌더링을 하기 위한 의도
+  const { follow } = useSelector(state => state?.followUser);
+  
   //팔로우 취소 API 자식 컴포넌트로 이동 가능성 있음
   const onUnfollowClick = otherAccountId => {
     dispatch(unfollowUser(otherAccountId));
   };
 
+  //팔로우 등록 API 자식 컴포넌트로 이동 가능성 있음
+  const onFollowClick = otherAccountId => {
+    dispatch(followUser(otherAccountId));
+  };
+
   //팔로잉 리스트 불러오기 API
   useEffect(() => {
     dispatch(getFollowingList(accountId));
-  }, [dispatch, unfollow]);
+  }, [dispatch, unfollow, follow]);
   return (
     <>
       <HeaderFollow />
@@ -43,23 +51,33 @@ const FollowingList = () => {
           {following &&
             following.map(user => {
               return (
-                <UserItem>
+                <UserItem key={user?._id}>
                   <UserImgWrapper>
-                    <img src={user.img} alt="프로필 사진" />
+                    <img src={user.image} alt="프로필 사진" />
                   </UserImgWrapper>
                   <UserInfoWrapper>
                     <UserName>{user.username}</UserName>
                     <UserIntro>{user.intro}</UserIntro>
                   </UserInfoWrapper>
-                  {/* {조건부렌더링 ? (
-                    <Button width="56px" size="sm" color="main">
-                      팔로우
-                    </Button>
-                  ) : (
-                    <Button width="56px" size="sm" color="lightMain">
-                      취소
-                    </Button>
-                  )} */}
+                  {user.isfollow ? (
+                  <Button
+                    onClick={() => onUnfollowClick(user?.accountname)}
+                    isButtonStatus={user.isfollow}
+                    width="56px"
+                    size="sm"
+                  >
+                    취소
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={() => onFollowClick(user?.accountname)}
+                    isButtonStatus={user.isfollow}
+                    width="56px"
+                    size="sm"
+                  >
+                    팔로우
+                  </Button>
+                  )}
                 </UserItem>
               );
             })}
@@ -94,7 +112,7 @@ const UserItem = styled.li`
   align-items: center;
   margin-bottom: 16px;
 `;
-const UserImgWrapper = styled.div`
+const UserImgWrapper = styled(Link)`
   width: 50px;
   height: 50px;
   border-radius: 50%;
