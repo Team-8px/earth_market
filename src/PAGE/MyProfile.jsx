@@ -27,8 +27,6 @@ import prev from "../asset/icon-arrow-left.svg";
 import more from "../asset/icon-more-vertical.svg";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
 
-// import Product
-
 const MyProfile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -86,19 +84,19 @@ const MyProfile = () => {
 
   return (
     <>
-      <LayOut>      
-      {/* 헤더 */}
-      <HeaderLayOut>
-        <HeaderContainer>
-          <HeaderLink>
-            <img src={prev} alt="이전 페이지 버튼" />
-          </HeaderLink>
-          <HeaderLink>
-            <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
-          </HeaderLink>
-        </HeaderContainer>
-      </HeaderLayOut>
-      {/* 유저 프로필 */}
+      <LayOut>
+        {/* 헤더 */}
+        <HeaderLayOut>
+          <HeaderContainer>
+            <HeaderLink>
+              <img src={prev} alt="이전 페이지 버튼" />
+            </HeaderLink>
+            <HeaderLink>
+              <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
+            </HeaderLink>
+          </HeaderContainer>
+        </HeaderLayOut>
+        {/* 유저 프로필 */}
         <MyUserInfo
           profileImage={image}
           username={username}
@@ -245,7 +243,7 @@ const HeaderLink = styled(Link)`
 const LayOut = styled.main`
   min-width: 390px;
   width: 100%;
-  background: ${theme.palette["bg"]};
+  background: ${props => props.theme.palette["bg"]};
   margin: 0 auto;
 `;
 
@@ -278,8 +276,8 @@ const MoreBtn = styled.button`
 `;
 
 const SectionContainer = styled.section`
-  border-top: 0.5px solid ${theme.palette["border"]};
-  border-bottom: 0.5px solid ${theme.palette["border"]};
+  border-top: 0.5px solid ${props => props.theme.palette["border"]};
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
   background-color: #fff;
   margin-bottom: 6px;
 `;
