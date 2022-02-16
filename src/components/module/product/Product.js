@@ -2,31 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "../../../styles/theme";
 
-export const ProductList = ({ productText, productPrice, img }) => {
-  return (
-    <ProductWrapper>
-      <figure>
-        <ProductImgWrapper>
-          <ProductImg src={img} width="100%" />
-        </ProductImgWrapper>
-        <TextWrap>
-          <ProductText>{productText}</ProductText>
-          <ProductPrice>{productPrice}</ProductPrice>
-        </TextWrap>
-      </figure>
-    </ProductWrapper>
-  );
-};
-
-export function Product({ children }) {
-  return (
-    <ProductLayOut>
-      <ProductTitle>판매 중인 상품</ProductTitle>
-      <ProductContainer>{children}</ProductContainer>
-    </ProductLayOut>
-  );
-}
-
 const ProductLayOut = styled.div`
   margin: 0 auto;
   padding: 20px 0;
