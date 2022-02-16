@@ -17,77 +17,47 @@ import Upload from "../asset/upload-file.png";
 import { updateUserProfile } from "../actions/userActions";
 
 const JoinProfile = () => {
-  const [isButtonStatus, setIsButtonStatus] = useState(true);
-  // true
+  const [isButtonStatus, setIsButtonStatus] = useState(false);
+  const [nextPage, setNextPage] = useState(false);
+
+  const nextPageHandler = () => {
+    setNextPage(true);
+    setIsButtonStatus(false);
+  };
 
   const [myImage, setMyImage] = useState([]);
-
-  console.log(isButtonStatus && isButtonStatus, "버튼상태");
-
   const { register, handleSubmit, watch } = useForm();
-
   const dispatch = useDispatch();
-
   const previewImage = e => {
     const nowSelectImageList = e.target.files;
-
     const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
-
     setMyImage(nowImageUrl);
   };
 
   //이메일, 비밀번호 입력시 버튼 background color 변경
-  /* useEffect(() => {
-    const subscription = watch(({ email, password }) => {
-      if (email && password) {
+  useEffect(() => {
+    const subscription = watch(({ email, password, username, accountname }) => {
+      if (email && password && !username && !accountname) {
+        setIsButtonStatus(true);
+      } else if (username && accountname) {
         setIsButtonStatus(true);
       }
     });
     return () => subscription.unsubscribe();
-  }, [isButtonStatus]); */
+  }, [isButtonStatus]);
 
   const onSubmit = async data => {
     const { email, password, username, accountname, profileImg } = data;
     console.log(data, "입력값");
     const image = await imageUploadsHandler(profileImg[0]);
-
-    dispatch(joinMembership(email, password, username, accountname, image));
+    if (email && password && username && accountname) {
+      dispatch(joinMembership(email, password, username, accountname, image));
+    }
   };
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        {isButtonStatus ? (
-          <MainFieldSet>
-            <LoginTitle>이메일로 회원가입</LoginTitle>
-            <h1>{isButtonStatus}</h1>
-            <EmailWrapper>
-              <label>이메일</label>
-              <input
-                name="email"
-                type="email"
-                placeholder="이메일 주소를 입력해 주세요."
-                {...register("email")}
-              />
-            </EmailWrapper>
-            <PwWrapper>
-              <label>비밀번호</label>
-              <input
-                name="password"
-                type="password"
-                placeholder="비밀번호를 설정해 주세요."
-                {...register("password")}
-              />
-            </PwWrapper>{" "}
-            <Button
-              width="322px"
-              size="lg"
-              off
-              onClick={() => setIsButtonStatus(false)}
-            >
-              다음
-            </Button>
-          </MainFieldSet>
-        ) : (
+        {nextPage ? (
           <MainFieldSet>
             <LoginTitle>
               프로필 설정
@@ -132,8 +102,38 @@ const JoinProfile = () => {
                 {...register("intro")}
               />
             </ProfileFormWrapper>
-            <Button width="322px" size="lg" off>
+            <Button width="322px" size="lg" isButtonStatus={isButtonStatus}>
               감귤마켓 시작하기
+            </Button>
+          </MainFieldSet>
+        ) : (
+          <MainFieldSet>
+            <LoginTitle>이메일로 회원가입</LoginTitle>
+            <EmailWrapper>
+              <label>이메일</label>
+              <input
+                name="email"
+                type="email"
+                placeholder="이메일 주소를 입력해 주세요."
+                {...register("email")}
+              />
+            </EmailWrapper>
+            <PwWrapper>
+              <label>비밀번호</label>
+              <input
+                name="password"
+                type="password"
+                placeholder="비밀번호를 설정해 주세요."
+                {...register("password")}
+              />
+            </PwWrapper>{" "}
+            <Button
+              width="322px"
+              size="lg"
+              onClick={nextPageHandler}
+              isButtonStatus={isButtonStatus}
+            >
+              다음
             </Button>
           </MainFieldSet>
         )}

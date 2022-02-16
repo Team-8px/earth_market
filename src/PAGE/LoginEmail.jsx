@@ -13,7 +13,8 @@ const LoginEmail = () => {
   useEffect(() => {
     const subscription = watch(({ email, password }) => {
       if (email && password) {
-        setIsButtonStatus(true);
+        // 예시입니다
+        setIsButtonStatus("123456" === password);
       }
     });
     return () => subscription.unsubscribe();
