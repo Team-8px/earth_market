@@ -15,7 +15,7 @@ const buttonStyles = css`
   outline: none;
   border: none;
   color: #fff;
-  font-weight: bold;
+  font-weight: 400;
   cursor: pointer;
 `;
 

@@ -116,16 +116,16 @@ const SearchBtnWrap = () => {
 };
 
 const HeaderLayOut = styled.header`
-  position: fixed;
+  position: sticky;
   width: 100%;
+  height: 47.5px;
   min-width: 390px;
-  left: 0;
   top: 0;
   background-color: #fff;
   z-index: 10;
 `;
 
-const HeaderContainer = styled.section`
+const HeaderContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -145,7 +145,7 @@ const HeaderLink = styled.div`
   width: 22px;
   height: 22px;
   border: none;
-  margin-right: 10px;
+  /* margin-right: 10px; */
   cursor: pointer;
 `;
 
@@ -157,7 +157,7 @@ const HeaderLinkImg = styled.img`
 `;
 
 const HeaderTitle = styled.h2`
-  /* margin-left: 10px; */
+  margin-left: 8px;
   font-family: ${props =>
     props.fontWeigt === "400"
       ? "Spoqa Han Sans Neo R"

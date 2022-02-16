@@ -3,7 +3,8 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ProfileImage } from "./common/image/ProfileImageStyle";
-// import { Button } from "./module/button/button";
+import theme from "../styles/theme";
+// import { Button } from "./module/button/Button";
 
 const UserInfo = ({
   username,
@@ -47,21 +48,20 @@ const UserInfo = ({
   );
 };
 
-const UserInfoContainer = styled.header`
-  display: flex;
-  justify-content: center;
-  border-bottom: 0.5px solid;
+const UserInfoContainer = styled.section`
+  border-bottom: 0.5px solid ${theme.palette["border"]};
   background-color: #fff;
   margin-bottom: 6px;
 `;
 const UserInfoWrapper = styled.div`
   position: relative;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 390px;
   width: 100%;
-  padding: 30px 16px 26px;
+  padding: 30px 0 26px;
 
   img {
     margin-bottom: 16px;
@@ -103,7 +103,6 @@ const FollowerWrapper = styled(Link)`
     font-weight: 700;
     font-size: 18px;
     line-height: 23px;
-    margin-bottom: 6px;
   }
 
   span {
@@ -124,7 +123,6 @@ const FollowingWrapper = styled(Link)`
     font-weight: 700;
     font-size: 18px;
     line-height: 23px;
-    margin-bottom: 6px;
   }
 
   span {
