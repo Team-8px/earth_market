@@ -5,13 +5,13 @@ import MoreButton from "../../../asset/icon/icon-more-vertical.png";
 const CommentLayout = styled.section`
   width: 100%;
   padding: 20px 16px 0;
+  box-sizing: border-box;
   border-top: 1px solid #dbdbdb;
 `;
 
 const CommentContainer = styled.ul`
   max-width: 390px;
   margin: 0 auto;
-  box-sizing: border-box;
   list-style: none;
 `;
 const CommonetList = styled.li`

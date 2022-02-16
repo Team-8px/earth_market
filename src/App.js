@@ -15,25 +15,11 @@ import PostUploadKHK from "./PAGE/PostUpload";
 import ProfileUpdateKHK from "./PAGE/ProfileUpdate";
 import FollowerListKHK from "./PAGE/FollowerList";
 import FollowingListKHK from "./PAGE/FollowingList";
-//import PostViewKHK from "./PAGE/PostView";
+import PostViewKHK from "./PAGE/PostView";
 import ProductUpdateKHK from "./PAGE/ProductUpdate";
-
-//김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후
-//import SetMemberShipGH from "./pages/auth/SetMemberShip-gh";
 import SetMemberShipKHK from "./PAGE/JoinProfile";
-//import LoginEmailGH from "./pages/auth/LoginEmail-gh";
-import MyProfileGH from "./pages/profile/Myprofile-gh";
-import MyProfileUpdateGH from "./pages/profile/MyprofileUpdate-gh";
-import PostUploadGH from "./pages/post/PostUpload-gh";
-import ProductUploadGH from "./pages/product/ProductUpload-gh";
-import ProductUpdateGH from "./pages/product/ProductUpdate-gh";
-import PostView from "./PAGE/PostView";
-//홈피드, 팔로우, 검색
-import HomeGH from "./pages/home/Home-gh";
-import SearchGH from "./pages/home/Search-gh";
-import FollowerListGH from "./pages/profile/Follower-gh";
-import FollowingListGH from "./pages/profile/Following-gh";
-import FollowerList from "./PAGE/FollowerList";
+import YourProfile from "./PAGE/YourProfile";
+
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -52,10 +38,9 @@ const App = () => {
 
             {/* profile */}
             <Route path="/profile/my" component={MyprofileKHK} exact />
-            <Route path="/gh/profile/you" component={MyprofileKHK} exact />
             <Route
-              path="/gh/profile/you/:acccountId"
-              component={MyProfileGH}
+              path="/profile/you/:accountId"
+              component={YourProfile}
               exact
             />
             <Route
@@ -65,27 +50,23 @@ const App = () => {
             />
             <Route
               path="/profile/:accountId/follower"
-              component={FollowerList}
+              component={FollowerListKHK}
               exact
             />
             <Route
-              path="/gh/profile/:accountId/following"
+              path="/profile/:accountId/following"
               component={FollowingListKHK}
               exact
             />
 
             {/* post */}
             <Route path="/post/my/upload" component={PostUploadKHK} exact />
-            <Route path="/post/:postId" component={PostView} exact />
+            <Route path="/post/:postId" component={PostViewKHK} exact />
 
             {/* product */}
+            <Route path="/product/upload" component={ProductUploadKHK} exact />
             <Route
-              path="/gh/product/upload"
-              component={ProductUploadKHK}
-              exact
-            />
-            <Route
-              path="/gh/product/update/:productId"
+              path="/product/:productId/update"
               component={ProductUpdateKHK}
               exact
             />

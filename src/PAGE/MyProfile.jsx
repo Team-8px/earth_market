@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { listProducts, deleteProduct } from "../actions/productActions";
 import { listPosts, deletePost } from "../actions/postActions";
 import { getUserMyProfile } from "../actions/userActions";
-import UserInfoBox from "../components/module/post/UserInfoBox";
+import { UserInfoBoxInMyProfile } from "../components/module/post/UserInfoBox";
 import {
   ContentBox,
   ImgContainer,
@@ -18,12 +19,9 @@ import Date from "../components/module/post/Date";
 import DisplayButton from "../components/module/profile/DisplayButton";
 import more from "../asset/icon-more-vertical.svg";
 import Header from "../components/template/common/Header";
-import UserInfo from "../components/UserInfo";
 import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
 import SellProductLink from "../asset/product-img-example-01.jpg";
-import { Link } from "react-router-dom";
-import EllipseImg from "../asset/Ellipse-1.png";
 import { ProfileImage } from "../components/common/image/ProfileImageStyle";
 import { Button } from "../components/module/button/button";
 
@@ -35,11 +33,8 @@ const MyProfile = () => {
   //게시글 리스트 배열
   const { posts } = useSelector(state => state.postList);
   //나의 프로필 정보
-  const { image, username, accountname, intro, followerCount, followingCount } =
+  const { profileImage, username, accountname, intro, followerCount, followingCount } =
     useSelector(state => state.userReadProfile);
-
-  console.log(products, "products");
-  //console.log(posts, "posts");
 
   //게시글 삭제 API (이동 가능성 높음)
   const onClickDeletePost = postId => {
@@ -91,16 +86,16 @@ const MyProfile = () => {
       <UserInfoContainer>
         <UserInfoWrapper>
           <ProfileImage>
-            <img src={EllipseImg} alt="프로필 사진" />
+            <img src={profileImage} alt="프로필 사진" />
           </ProfileImage>
           <UserName>{username}</UserName>
           <AccountName>{accountname}</AccountName>
           <Intro>{intro}</Intro>
-          <FollowerWrapper /* to={`/profile/${accountId}/follower`} */>
+          <FollowerWrapper to={`/profile/${accountname}/follower`}>
             <strong>{followerCount}</strong>
             <span>followers</span>
           </FollowerWrapper>
-          <FollowingWrapper /* to={`/profile/${accountId}/following`} */>
+          <FollowingWrapper to={`/profile/${accountname}/following`}>
             <strong>{followingCount}</strong>
             <span>following</span>
           </FollowingWrapper>
@@ -136,34 +131,34 @@ const MyProfile = () => {
           posts.map(post => {
             /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
             const postImages = post.image.split(",");
-            console.log(postImages, "이미지들");
 
             return (
               <PostContainer key={post.id}>
                 <PostWrapper>
                   <Container>
-                    <UserInfoBox
+                    <UserInfoBoxInMyProfile
                       profileImage={post.author.image}
                       name={post.author.username}
                       id={post.author.accountname}
                     />
                     <ContentBox content={post.content}>
-                      <ImgContainer>
-                        {postImages &&
-                          postImages.map((postImage, i) => {
-                            console.log(postImage, "이미지 하나");
-                            return (
-                              <ImgList key={i}>
-                                <h3>{postImage}</h3>
-                                <img src={postImage} />
-                              </ImgList>
-                            );
-                          })}
+                      <Link to={`/post/${post.id}`}>
+                        <ImgContainer>
+                          {postImages &&
+                            postImages.map((postImage, i) => {
+                              return (
+                                <ImgList key={i}>
+                                  <h3>{postImage}</h3>
+                                  <img src={postImage} />
+                                </ImgList>
+                              );
+                            })}
 
-                        <ButtonList>
-                          <button></button>
-                        </ButtonList>
-                      </ImgContainer>
+                          <ButtonList>
+                            <button></button>
+                          </ButtonList>
+                        </ImgContainer>
+                      </Link>
                       <IconBox
                         like={post.heartCount}
                         comment={post.commentCount}

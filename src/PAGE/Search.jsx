@@ -58,7 +58,7 @@ const Search = () => {
               return (
                   // 링크 타면 해당 유저 프로필로 이동
                 <UserListWrapper key={user._id}>
-                  <UserImgLink to={"/gh/profile/you"}>
+                  <UserImgLink to={`/profile/you/${user.accountname}`}>
                     <img src={user?.image} alt="프로필 사진" />
                   </UserImgLink>
                   <UserInfoWrapper>

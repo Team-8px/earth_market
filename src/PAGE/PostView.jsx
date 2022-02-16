@@ -9,10 +9,9 @@ import {
   deleteComment,
   commentCreateAction,
 } from "../actions/commentAction";
-//import Comment from "../../../components/Comment-gh";
 
 // 스타일로직
-import UserInfoBox from "../components/module/post/UserInfoBox";
+import { UserInfoBox } from "../components/module/post/UserInfoBox";
 import {
   ContentBox,
   ImgContainer,
@@ -49,16 +48,14 @@ const PostView = () => {
   const { content, updatedAt, heartCount, commentCount, postImages } =
     useSelector(state => state.postRead);
 
-  console.log(postImages && postImages);
-
   // 댓글 리스트 배열을 스토어에서 가져오기
   const commentListArr = useSelector(state => state.commentList.comments);
 
   // 댓글 생성
-  const onSubmit = data => {
-    const { comment } = data;
-    dispatch(commentCreateAction(comment, postId));
-  };
+  // const onSubmit = data => {
+  //   const { comment } = data;
+  //   dispatch(commentCreateAction(comment, postId));
+  // };
 
   const onClickDeleteComment = commentId => {
     //댓글 삭제 API
@@ -116,7 +113,6 @@ const PostView = () => {
         <CommentList>
           {commentListArr &&
             commentListArr.map(user => {
-              console.log(user, "댓글 사용자");
               return (
                 <ReplyBox
                   img={user?.author?.image}
@@ -129,7 +125,7 @@ const PostView = () => {
             })}
         </CommentList>
         {/* 댓글 생성 */}
-        <CommentContainer onSubmit={handleSubmit(onSubmit)}>
+        <CommentContainer /*onSubmit={handleSubmit(onSubmit)}> */>
           <CommentLayOut>
             <ProfileLinkImg />
             <CommentLabel>

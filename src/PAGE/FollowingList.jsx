@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-
+import { useDispatch, useSelector } from "react-redux";
+import { useParams, Link } from "react-router-dom";
+import { getFollowingList, unfollowUser, followUser } from "../actions/followAction";
 // 스타일 로직
 import { HeaderFollow } from "../components/template/common/Header";
 import Navigation from "../components/template/common/Navigation";
 import { Button } from "../components/module/button/button";
-//Navigation
-// 비즈니스 로직
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getFollowingList, unfollowUser, followUser } from "../actions/followAction";
-import { Link } from "react-router-dom";
+
 const FollowingList = () => {
   const dispatch = useDispatch();
-  //accountId 계정이 필요한 이유는 myprofile과 yourprofile 둘다 커버하기 위한 노력
+
   const { accountId } = useParams();
 
-  // http://localhost:3000/gh/profile/js/following
-
-  //readux스토어에서 팔로잉 리스트 불러오기
   const { following } = useSelector(state => state.followingList);
-  console.log(following);
 
   //현재 unfollow가 되면 리스트에서 사라짐, follow기능은 보류
   //readux스토어에서 팔로우취소여부를 불러와 useEffect에서 재 렌더링을 하기 위한 의도
@@ -45,15 +38,17 @@ const FollowingList = () => {
   }, [dispatch, unfollow, follow]);
   return (
     <>
-      <HeaderFollow />
+      <HeaderFollow following />
       <LayOut>
         <UserList>
           {following &&
             following.map(user => {
               return (
-                <UserItem key={user?._id}>
+                <UserItem key={user._id}>
                   <UserImgWrapper>
-                    <img src={user.image} alt="프로필 사진" />
+                    <Link to={`/profile/you/${user.accountname}`}>
+                      <img src={user.image} alt="프로필 사진" />
+                    </Link>
                   </UserImgWrapper>
                   <UserInfoWrapper>
                     <UserName>{user.username}</UserName>
@@ -82,8 +77,8 @@ const FollowingList = () => {
               );
             })}
         </UserList>
+        <Navigation/>
       </LayOut>
-      <Navigation />
     </>
   );
 };
