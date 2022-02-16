@@ -89,7 +89,7 @@ const MyProfile = () => {
       <UserInfo
         profileImage={profileImage}
         username={username}
-        accoutname={accountname}
+        accountname={accountname}
         intro={intro}
         followerCount={followerCount}
         followingCount={followingCount}
