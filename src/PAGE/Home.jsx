@@ -27,16 +27,7 @@ const Home = () => {
 
   const dispatch = useDispatch();
   //팔로우 한 사람들의 게시글 목록 불러오기
-  const { posts } = useSelector(state => state.followerPostList);
-
-  function isEmptyArr(posts) {
-    if (Array.isArray(posts) && posts.length === 0) {
-      return false;
-    }
-    return true;
-  }
-  console.log(posts && posts);
-
+  const { posts } = useSelector(state => state?.followerPostList);
   useEffect(() => {
     // 게시글 불러오기 API
     dispatch(getFollowerPostList());
@@ -45,10 +36,11 @@ const Home = () => {
   return (
     <>
       <HeaderHome />
-      {isEmptyArr(posts) ? (
+      {posts ? (
         <LayOut>
           {posts &&
             posts.map(post => {
+              console.log(post);
               return (
                 <Container key={post.id}>
                   {/* 유저 인포 */}

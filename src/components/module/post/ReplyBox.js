@@ -60,16 +60,16 @@ const CommentText = styled.p`
 `;
 
 const CommentBox = styled.button`
-    content: "";
-    position: absolute;
-    top : 10px;
-    right: 0px;
-    width: 20px;
-    height: 20px;
-    background-image: url(${MoreButton});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  width: 20px;
+  height: 20px;
+  background-image: url(${MoreButton});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 `;
 
 export function CommentList({ children }) {
@@ -80,9 +80,9 @@ export function CommentList({ children }) {
   );
 }
 
-export function ReplyBox({ img, username, time, comment, alt }) {
+export function ReplyBox({ img, username, time, comment, alt, isDialog }) {
   return (
-    <CommonetList>
+    <CommonetList onClick={isDialog}>
       <CommentWrapper>
         <img src={img || EllipseImg} alt={alt} />
         <strong>{username}</strong>
