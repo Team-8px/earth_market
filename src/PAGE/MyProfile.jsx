@@ -21,7 +21,7 @@ import Header from "../components/template/common/Header";
 import UserInfo from "../components/UserInfo";
 import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
-import SellProductLink from "../asset/product-img-example-01.jpg";
+import theme from "../styles/theme";
 
 // import Product
 const MyProfile = () => {
@@ -82,8 +82,8 @@ const MyProfile = () => {
 
   return (
     <>
-      <Header />
       <LayOut>
+      <Header />
         {/* username,
   accoutname,
   intro,
@@ -96,8 +96,7 @@ const MyProfile = () => {
           followerCount={followerCount}
           followingCount={followingCount}
         />
-        {/* <Product></Product>   */}
-        <ProductLayOut>
+        <ProfileContainer>
           <Product>
             {products &&
               products.map(product => {
@@ -111,7 +110,8 @@ const MyProfile = () => {
                 );
               })}
           </Product>
-        </ProductLayOut>
+        </ProfileContainer>
+        <ProfileContainer>
         <DisplayButton></DisplayButton>
         {/* 게시글 */}
         {posts &&
@@ -155,15 +155,12 @@ const MyProfile = () => {
                       </Date>
                     </ContentBox>
                     <MoreBtn onClick={isPostDialog} />
-                    {/* <button onClick={isNavDialog}>테스트 버튼 삭제 가능</button>
-                    <button onClick={isProductDialog}>
-                      테스트 버튼 삭제 가능
-                    </button> */}
                   </Container>
                 </PostWrapper>
               </PostContainer>
             );
           })}
+          </ProfileContainer>
       </LayOut>
 
       <Modal visible={navDialog}>
@@ -207,18 +204,16 @@ const MyProfile = () => {
 const LayOut = styled.main`
   min-width: 390px;
   width: 100%;
-  height: 100%;
-  background-color: #fff;
-  margin-top: 48px;
+  background: ${theme.palette["bg"]};
+  margin: 0 auto;
 `;
 
 const PostContainer = styled.section`
-  ${props => props.theme.common["flexCenterColumn"]}
   margin-bottom: 0;
 `;
 
 const PostWrapper = styled.div`
-  ${props => props.theme.common["flexCenterColumn"]}
+  margin: 0 auto;
   max-width: 390px;
   width: 100%;
   padding: 16px 16px 70px;
@@ -241,62 +236,11 @@ const MoreBtn = styled.button`
   background-color: inherit;
 `;
 
-// product스타일 컴포넌트
-const ProductLayOut = styled.article`
-  margin: 20px auto;
-  width: 358px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  overflow-y: hidden;
-`;
-
-const ProductContainer = styled.ul`
-  display: flex;
-  font-size: 12px;
-  line-height: 12px;
-  overflow-x: scroll;
-`;
-
-const ProductWrapper = styled.li`
-  margin-right: 10px;
-  cursor: pointer;
-`;
-
-const ProductImgWrapper = styled.div`
-  border: 0.5px solid #dbdbdb;
-  border-radius: 8px;
-`;
-
-const ProductImg = styled.img`
-  width: 140px;
-  height: 90px;
-  border-radius: 8px;
-  background-color: #c4c4c4;
-`;
-
-const ProductTitle = styled.h2`
-  font-size: 16px;
-  line-height: 1.2;
-  margin-bottom: 16px;
-  font-weight: 700;
-`;
-
-const TextWrap = styled.figcaption`
-  padding-top: 6px;
-`;
-
-const ProductText = styled.strong`
-  display: block;
-  line-height: 18px;
-  margin-bottom: 4px;
-`;
-
-const ProductPrice = styled.strong`
-  display: block;
-  font-size: 12px;
-  color: #f26e22;
-  font-weight: 700;
+const ProfileContainer = styled.section`
+  border-top: 0.5px solid ${theme.palette["border"]};
+  border-bottom: 0.5px solid ${theme.palette["border"]};
+  background-color: #fff;
+  margin-bottom: 6px;
 `;
 
 export default MyProfile;
