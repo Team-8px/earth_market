@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { listProducts, deleteProduct } from "../actions/productActions";
 import { listPosts, deletePost } from "../actions/postActions";
 import { getUserMyProfile } from "../actions/userActions";
@@ -17,18 +17,21 @@ import { Alert, AlertBox } from "../components/module/alert/Alert";
 import IconBox from "../components/module/post/IconBox";
 import Date from "../components/module/post/Date";
 import DisplayButton from "../components/module/profile/DisplayButton";
-import more from "../asset/icon-more-vertical.svg";
-import Header from "../components/template/common/Header";
 import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
-import SellProductLink from "../asset/product-img-example-01.jpg";
 import UserInfo from "../components/module/profile/UserInfo";
-import { ProfileImage } from "../components/common/image/ProfileImageStyle";
-import { Button } from "../components/module/button/button";
+// import { ProfileImage } from "../components/common/image/ProfileImageStyle";
+// import { Button } from "../components/module/button/button";
 import theme from "../styles/theme";
 
+import prev from "../asset/icon-arrow-left.svg";
+import more from "../asset/icon-more-vertical.svg";
+// import SellProductLink from "../asset/product-img-example-01.jpg";
+
 // import Product
+
 const MyProfile = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   //상품 리스트 배열
   const { products } = useSelector(state => state.productList);
@@ -89,8 +92,19 @@ const MyProfile = () => {
 
   return (
     <>
+      {/* 헤더 */}
+      <HeaderLayOut>
+        <HeaderContainer>
+          <HeaderLink>
+            <img src={prev} alt="이전 페이지 버튼" />
+          </HeaderLink>
+          <HeaderLink>
+            <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
+          </HeaderLink>
+        </HeaderContainer>
+      </HeaderLayOut>
+      {/* 유저 프로필 */}
       <LayOut>
-        <Header />
         <UserInfo
           profileImage={profileImage}
           username={username}
@@ -100,7 +114,7 @@ const MyProfile = () => {
           followingCount={followingCount}
         />
         {/* <Product></Product>   */}
-        <ProfileContainer>
+        <SectionContainer>
           <Product>
             {products &&
               products.map(product => {
@@ -115,8 +129,8 @@ const MyProfile = () => {
                 );
               })}
           </Product>
-        </ProfileContainer>
-        <ProfileContainer>
+        </SectionContainer>
+        <SectionContainer>
           <DisplayButton></DisplayButton>
           {/* 게시글 */}
           {posts &&
@@ -164,7 +178,7 @@ const MyProfile = () => {
                 </PostContainer>
               );
             })}
-        </ProfileContainer>
+        </SectionContainer>
       </LayOut>
 
       <Modal visible={navDialog}>
@@ -205,6 +219,35 @@ const MyProfile = () => {
   );
 };
 
+const HeaderLayOut = styled.header`
+  position: sticky;
+  width: 100%;
+  height: 47.5px;
+  min-width: 390px;
+  top: 0;
+  background-color: #fff;
+  z-index: 10;
+`;
+
+const HeaderContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-bottom: 0.5px solid #dbdbdb;
+`;
+
+const HeaderLink = styled(Link)`
+  width: 22px;
+  height: 22px;
+  border: none;
+  /* margin-right: 10px; */
+  cursor: pointer;
+`;
+
 const LayOut = styled.main`
   min-width: 390px;
   width: 100%;
@@ -240,19 +283,19 @@ const MoreBtn = styled.button`
   background-color: inherit;
 `;
 
-const ProfileContainer = styled.section`
+const SectionContainer = styled.section`
   border-top: 0.5px solid ${theme.palette["border"]};
   border-bottom: 0.5px solid ${theme.palette["border"]};
   background-color: #fff;
   margin-bottom: 6px;
 `;
-const ProductLayOut = styled.article`
-  margin: 20px auto;
-  width: 358px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  overflow-y: hidden;
-`;
+// const ProductLayOut = styled.article`
+//   margin: 20px auto;
+//   width: 358px;
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+//   overflow-y: hidden;
+// `;
 
 export default MyProfile;

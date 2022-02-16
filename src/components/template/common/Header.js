@@ -96,7 +96,7 @@ const PrevBtnWrap = () => {
 
 const MoreBtnWrap = () => {
   return (
-    <HeaderLink to={"/"}>
+    <HeaderLink>
       <img src={MoreBtn} alt="더보기 버튼" />
     </HeaderLink>
   );

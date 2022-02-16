@@ -82,6 +82,11 @@ const PostView = () => {
   const isPostDialog = () => setPostDialog(!postDialog);
   const isPostAlert = () => setPostAlert(!postAlert);
 
+  const [chatDialog, setChatDialog] = useState(false);
+  const [chatAlert, setChatAlert] = useState(false);
+  const isChatDialog = () => setChatDialog(!chatDialog);
+  const isChatAlert = () => setChatAlert(!chatAlert);
+
   return (
     <>
       <HeaderHome />
@@ -120,6 +125,7 @@ const PostView = () => {
                   time={"15분전"}
                   comment={user?.content}
                   key={user?.id}
+                  isDialog={isChatDialog}
                 />
               );
             })}
@@ -151,6 +157,18 @@ const PostView = () => {
       <Alert visible={postAlert} messageText="게시글을 신고하시겠어요?">
         <AlertBox isAlert={isPostAlert}>예</AlertBox>
         <AlertBox isAlert={isPostAlert}>아니요</AlertBox>
+      </Alert>
+
+      {/* chat Modal */}
+      <Modal visible={chatDialog}>
+        <AlertBtn isAlert={isChatAlert}>신고하기</AlertBtn>
+        <ListBtn isDialog={isChatDialog}>모달창 닫기</ListBtn>
+      </Modal>
+
+      {/* chat Alert */}
+      <Alert visible={chatAlert} messageText="신고하시겠어요?">
+        <AlertBox isAlert={isChatAlert}>예</AlertBox>
+        <AlertBox isAlert={isChatAlert}>아니요</AlertBox>
       </Alert>
     </>
   );
