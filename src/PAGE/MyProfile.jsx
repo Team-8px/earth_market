@@ -21,9 +21,10 @@ import more from "../asset/icon-more-vertical.svg";
 import Header from "../components/template/common/Header";
 import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
-import SellProductLink from "../asset/product-img-example-01.jpg";
 import { ProfileImage } from "../components/common/image/ProfileImageStyle";
 import { Button } from "../components/module/button/button";
+import theme from "../styles/theme";
+import UserInfo from "../components/UserInfo";
 
 // import Product
 const MyProfile = () => {
@@ -81,9 +82,16 @@ const MyProfile = () => {
 
   return (
     <>
+      <LayOut>      
       <Header />
-      <LayOut>
-      <UserInfoContainer>
+        {/* <UserInfo
+          username={username}
+          accoutname={accountname}
+          intro={intro}
+          followerCount={followerCount}
+          followingCount={followingCount}
+        /> */}
+      <UserInfoContainer  serInfoContainer>
         <UserInfoWrapper>
           <ProfileImage>
             <img src={profileImage} alt="프로필 사진" />
@@ -109,8 +117,7 @@ const MyProfile = () => {
           </ButtonWrapper>
         </UserInfoWrapper>
       </UserInfoContainer>
-        {/* <Product></Product>   */}
-        <ProductLayOut>
+        <ProfileContainer>
           <Product>
             {products &&
               products.map(product => {
@@ -124,14 +131,14 @@ const MyProfile = () => {
                 );
               })}
           </Product>
-        </ProductLayOut>
+        </ProfileContainer>
+        <ProfileContainer>
         <DisplayButton></DisplayButton>
         {/* 게시글 */}
         {posts &&
           posts.map(post => {
             /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
             const postImages = post.image.split(",");
-
             return (
               <PostContainer key={post.id}>
                 <PostWrapper>
@@ -168,15 +175,12 @@ const MyProfile = () => {
                       </Date>
                     </ContentBox>
                     <MoreBtn onClick={isPostDialog} />
-                    {/* <button onClick={isNavDialog}>테스트 버튼 삭제 가능</button>
-                    <button onClick={isProductDialog}>
-                      테스트 버튼 삭제 가능
-                    </button> */}
                   </Container>
                 </PostWrapper>
               </PostContainer>
             );
           })}
+          </ProfileContainer>
       </LayOut>
 
       <Modal visible={navDialog}>
@@ -220,18 +224,16 @@ const MyProfile = () => {
 const LayOut = styled.main`
   min-width: 390px;
   width: 100%;
-  height: 100%;
-  background-color: #fff;
-  margin-top: 48px;
+  background: ${theme.palette["bg"]};
+  margin: 0 auto;
 `;
 
 const PostContainer = styled.section`
-  ${props => props.theme.common["flexCenterColumn"]}
   margin-bottom: 0;
 `;
 
 const PostWrapper = styled.div`
-  ${props => props.theme.common["flexCenterColumn"]}
+  margin: 0 auto;
   max-width: 390px;
   width: 100%;
   padding: 16px 16px 70px;
@@ -254,62 +256,11 @@ const MoreBtn = styled.button`
   background-color: inherit;
 `;
 
-// product스타일 컴포넌트
-const ProductLayOut = styled.article`
-  margin: 20px auto;
-  width: 358px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  overflow-y: hidden;
-`;
-
-const ProductContainer = styled.ul`
-  display: flex;
-  font-size: 12px;
-  line-height: 12px;
-  overflow-x: scroll;
-`;
-
-const ProductWrapper = styled.li`
-  margin-right: 10px;
-  cursor: pointer;
-`;
-
-const ProductImgWrapper = styled.div`
-  border: 0.5px solid #dbdbdb;
-  border-radius: 8px;
-`;
-
-const ProductImg = styled.img`
-  width: 140px;
-  height: 90px;
-  border-radius: 8px;
-  background-color: #c4c4c4;
-`;
-
-const ProductTitle = styled.h2`
-  font-size: 16px;
-  line-height: 1.2;
-  margin-bottom: 16px;
-  font-weight: 700;
-`;
-
-const TextWrap = styled.figcaption`
-  padding-top: 6px;
-`;
-
-const ProductText = styled.strong`
-  display: block;
-  line-height: 18px;
-  margin-bottom: 4px;
-`;
-
-const ProductPrice = styled.strong`
-  display: block;
-  font-size: 12px;
-  color: #f26e22;
-  font-weight: 700;
+const ProfileContainer = styled.section`
+  border-top: 0.5px solid ${theme.palette["border"]};
+  border-bottom: 0.5px solid ${theme.palette["border"]};
+  background-color: #fff;
+  margin-bottom: 6px;
 `;
 const UserInfoContainer = styled.header`
   display: flex;
@@ -367,7 +318,6 @@ const FollowerWrapper = styled(Link)`
     font-weight: 700;
     font-size: 18px;
     line-height: 23px;
-    margin-bottom: 6px;
   }
 
   span {
@@ -388,7 +338,6 @@ const FollowingWrapper = styled(Link)`
     font-weight: 700;
     font-size: 18px;
     line-height: 23px;
-    margin-bottom: 6px;
   }
 
   span {

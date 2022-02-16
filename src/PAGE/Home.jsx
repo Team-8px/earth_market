@@ -103,14 +103,14 @@ const LayOut = styled.main`
     css`
       justify-content: center;
     `}
-  position: fixed;
+  /* position: fixed; */
   height: calc(100% - 108px);
   overflow-y: scroll;
   min-width: 390px;
   width: 100%;
   min-width: 100%;
   height: 100%;
-  margin-top: 48px;
+  margin-top: 20px;
 `;
 
 const Container = styled.article`

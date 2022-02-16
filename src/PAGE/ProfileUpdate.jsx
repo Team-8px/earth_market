@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
  
-// 스타일로직
+// 스타일 로직
 import PrevBtn from "../asset/icon-arrow-left.svg";
 import Upload from "../asset/upload-file.png";
 import { Button } from "../components/module/button/button";

@@ -9,8 +9,8 @@ const fontSizes = {
 };
 
 const palette = {
-  main: "#f26e22",
-  lightMain: "#FFC7A7",
+  main: "#3f97fb",
+  lightMain: "#9fcbfd",
   bg: "#f2f2f2",
   subText: "#767676",
   lightGray: "#c4c4c4",
