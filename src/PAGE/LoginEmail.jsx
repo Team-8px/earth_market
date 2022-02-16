@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
-import { login } from "../actions/userActions";
 import styled from "styled-components";
+
+// 스타일 로직
 import { Button } from "../components/module/button/button";
+import { Link } from "react-router-dom";
 import LoginTitle from "../components/module/title/LoginTitle";
+
+// 비즈니스 로직
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { login } from "../actions/userActions";
 
 const LoginEmail = () => {
   const [isButtonStatus, setIsButtonStatus] = useState(false);
@@ -34,17 +39,18 @@ const LoginEmail = () => {
         {/* 💡 2. 필드셋 설정 페이지의 레이아웃을 담당한다. */}
         <MainFieldSet>
           <LoginTitle>로그인</LoginTitle>
-          <EmailWrapper>
-            <label>이메일</label>
+          <InputWrapper>
+            <label>이메일
             <input name="email" type="email" {...register("email")} />
-          </EmailWrapper>
-          <PwWrapper>
-            <label>비밀번호</label>
+            </label>
+            <label>비밀번호
             <input name="password" type="password" {...register("password")} />
-          </PwWrapper>
+            </label>
+          </InputWrapper>
           <Button width="322px" size="lg" isButtonStatus={isButtonStatus}>
             로그인
           </Button>
+          <LoginText to="/">이메일로 회원가입</LoginText>
         </MainFieldSet>
       </Form>
     </>
@@ -53,61 +59,50 @@ const LoginEmail = () => {
 
 const Form = styled.form`
   box-sizing: border-box;
+  margin-top: 30px;
 `;
+
 //  메인
 const MainFieldSet = styled.fieldset`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
-//  헤더
-const HeaderFieldSet = styled.fieldset``;
 
-const EmailWrapper = styled.div`
+const InputWrapper = styled.div`
   width: 322px;
-  height: 48px;
-  margin-bottom: 16px;
+  margin: 40px 0 14px;
 
   label {
     display: block;
     color: #767676;
     font-weight: 500;
     font-size: 12px;
-    line-height: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+    cursor: pointer;
   }
   input {
-    width: 100%;
+    width: 100% ;
     font-size: 14px;
     color: #dbdbdb;
-    line-height: 14px;
-    padding-bottom: 8px;
+    padding: 10px 0 8px;
     border: none;
     border-bottom: 1px solid #dbdbdb;
   }
 `;
 
-const PwWrapper = styled.div`
-  width: 322px;
-  height: 48px;
-  margin-bottom: 16px;
+const LoginText = styled(Link)`
+  font-weight: 400;
+  font-size: 12px;
+  color: #767676;
+  margin-top: 20px;
+  cursor: pointer;
 
-  label {
-    display: block;
-    color: #767676;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    margin-bottom: 10px;
-  }
-  input {
-    width: 100%;
-    font-size: 14px;
-    color: #dbdbdb;
-    line-height: 14px;
-    padding-bottom: 8px;
-    border: none;
-    border-bottom: 1px solid #dbdbdb;
+  &:first-child::after {
+    content: "";
+    font-size: 10px;
+    margin: 10px;
+    border-right: 1px solid #c4c4c4;
   }
 `;
 

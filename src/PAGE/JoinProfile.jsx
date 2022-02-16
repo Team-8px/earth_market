@@ -8,13 +8,15 @@ import { imageUploadsHandler } from "../util/imageUploads";
 import ProfileForm from "../components/module/form/ProfileForm";
 import ProfileUpload from "../components/module/profile/ProfileIUpload";
 import LoginTitle, {
-  SubTitleTitle,
+  SubTitle,
 } from "../components/module/title/LoginTitle";
 import { Button } from "../components/module/button/button";
 import RegisterForm from "../components/module/form/RegisterForm";
 import Upload from "../asset/upload-file.png";
 // import LoginTitle from "../components/module/title/LoginTitle";
 import { updateUserProfile } from "../actions/userActions";
+import ProfileImg from "../asset/icon/basic-profile.svg"
+import theme from "../styles/theme";
 
 const JoinProfile = () => {
   const [isButtonStatus, setIsButtonStatus] = useState(true);
@@ -54,30 +56,29 @@ const JoinProfile = () => {
     dispatch(joinMembership(email, password, username, accountname, image));
   };
   return (
-    <>
       <Form onSubmit={handleSubmit(onSubmit)}>
         {isButtonStatus ? (
           <MainFieldSet>
             <LoginTitle>이메일로 회원가입</LoginTitle>
             <h1>{isButtonStatus}</h1>
-            <EmailWrapper>
-              <label>이메일</label>
+            <InputWrapper>
+              <label>이메일
               <input
                 name="email"
                 type="email"
                 placeholder="이메일 주소를 입력해 주세요."
                 {...register("email")}
               />
-            </EmailWrapper>
-            <PwWrapper>
-              <label>비밀번호</label>
+              </label>
+              <label>비밀번호
               <input
                 name="password"
                 type="password"
                 placeholder="비밀번호를 설정해 주세요."
                 {...register("password")}
               />
-            </PwWrapper>{" "}
+              </label>
+            </InputWrapper>{" "}
             <Button
               width="322px"
               size="lg"
@@ -89,60 +90,58 @@ const JoinProfile = () => {
           </MainFieldSet>
         ) : (
           <MainFieldSet>
-            <LoginTitle>
-              프로필 설정
-              <SubTitleTitle />
-            </LoginTitle>
+            <LoginTitle>프로필 설정</LoginTitle>
+            <SubTitle />
             <ProfileImgWrapper>
               <label onChange={previewImage} htmlFor="profileImg">
+                {/* 조건부 렌더링 */}
                 <img src={myImage} alt="프로필 사진" />
                 <input
                   type="file"
                   accept="image/jpg,image/png,image/jpeg,image/gif"
                   name="profileImg"
                   id="profileImg"
-                  {...register("profileImg")}
-                ></input>
+                  {...register("profileImg")} />
               </label>
             </ProfileImgWrapper>
-            <ProfileFormWrapper>
-              <label>사용자 이름</label>
+            <InputWrapper>
+              <label>
+                사용자 이름
               <input
                 name="username"
                 type="text"
                 placeholder="2~10자 이내여야 합니다."
-                {...register("username")}
-              />
-            </ProfileFormWrapper>
-            <ProfileFormWrapper>
-              <label>계정 ID</label>
+                {...register("username")} />
+              </label>
+              <label>
+                계정 ID
               <input
                 name="accountname"
                 type="text"
                 placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
-                {...register("accountname")}
-              />
-            </ProfileFormWrapper>
-            <ProfileFormWrapper>
-              <label>소개</label>
+                {...register("accountname")} />
+              </label>
+              <label>
+                소개
               <input
                 name="intro"
                 type="text"
                 placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
-                {...register("intro")}
-              />
-            </ProfileFormWrapper>
+                {...register("intro")} />
+                </label>
+            </InputWrapper>
             <Button width="322px" size="lg" off>
-              감귤마켓 시작하기
+              어스마켓 시작하기
             </Button>
           </MainFieldSet>
         )}
       </Form>
-    </>
   );
 };
+
 const Form = styled.form`
   box-sizing: border-box;
+  margin-top: 30px;
 `;
 
 const MainFieldSet = styled.fieldset`
@@ -151,43 +150,44 @@ const MainFieldSet = styled.fieldset`
   align-items: center;
 `;
 
-const EmailWrapper = styled.div`
+const InputWrapper = styled.div`
   width: 322px;
-  height: 48px;
-  margin-bottom: 16px;
+  margin: 40px 0 14px;
 
   label {
     display: block;
     color: #767676;
     font-weight: 500;
     font-size: 12px;
-    line-height: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+    cursor: pointer;
   }
   input {
-    width: 100%;
+    width: 100% ;
     font-size: 14px;
     color: #dbdbdb;
-    line-height: 14px;
-    padding-bottom: 8px;
+    padding: 10px 0 8px;
     border: none;
     border-bottom: 1px solid #dbdbdb;
+    
+    &::placeholder {
+      color: ${theme.palette["border"]};
+  }
   }
 `;
+
 const ProfileImgWrapper = styled.div`
   margin-top: 30px;
-  margin-bottom: 16px;
 
   label {
     position: relative;
     display: block;
     width: 110px;
     height: 110px;
-    margin: 0 auto 30px;
-    border: 1px solid #dbdbdb;
     border-radius: 50%;
     cursor: pointer;
-
+    background: url(${ProfileImg}) no-repeat center / contain;
+    
     &::after {
       position: absolute;
       content: "";
@@ -202,6 +202,7 @@ const ProfileImgWrapper = styled.div`
     img {
       width: 110px;
       height: 110px;
+      border-radius: 50%;
     }
 
     input {
@@ -211,57 +212,8 @@ const ProfileImgWrapper = styled.div`
       width: 1px;
       height: 1px;
       overflow: hidden;
-      // 기본값
       padding: 0;
     }
-  }
-`;
-
-const ProfileFormWrapper = styled.div`
-  width: 322px;
-  height: 48px;
-  margin-bottom: 16px;
-
-  label {
-    display: block;
-    color: #767676;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    margin-bottom: 10px;
-  }
-  input {
-    width: 100%;
-    font-size: 14px;
-    color: #dbdbdb;
-    line-height: 14px;
-    padding-bottom: 8px;
-    border: none;
-    border-bottom: 1px solid #dbdbdb;
-  }
-`;
-
-const PwWrapper = styled.div`
-  width: 322px;
-  height: 48px;
-  margin-bottom: 16px;
-
-  label {
-    display: block;
-    color: #767676;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    margin-bottom: 10px;
-  }
-  input {
-    width: 100%;
-    font-size: 14px;
-    color: #dbdbdb;
-    line-height: 14px;
-    padding-bottom: 8px;
-    border: none;
-    border-bottom: 1px solid #dbdbdb;
   }
 `;
 
