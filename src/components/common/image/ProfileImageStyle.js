@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import Upload from "../../../asset/upload-file.png";
 
-export const ProfileImage = styled.div`
+export const ProfileImage = styled.img`
     width: 110px;
     height: 110px;
     border: 1px solid #dbdbdb;
