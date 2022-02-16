@@ -3,13 +3,15 @@ import styled from "styled-components";
 import EllipseImg from "../../../asset/Ellipse-1.png";
 import MoreButton from "../../../asset/icon/icon-more-vertical.png";
 const CommentLayout = styled.section`
-  max-width: 390px;
+  width: 100%;
   padding: 20px 16px 0;
-  margin: 0 auto;
+  box-sizing: border-box;
+  border-top: 1px solid #dbdbdb;
 `;
 
 const CommentContainer = styled.ul`
-  box-sizing: border-box;
+  max-width: 390px;
+  margin: 0 auto;
   list-style: none;
 `;
 const CommonetList = styled.li`
@@ -57,18 +59,18 @@ const CommentText = styled.p`
   color: #333333;
 `;
 
-// const CommentBox = styled.button`
-//     content: "";
-//     position: absolute;
-//     top : 10px;
-//     right: 0px;
-//     width: 20px;
-//     height: 20px;
-//     background-image: url(${MoreButton});
-//     background-position: center;
-//     background-repeat: no-repeat;
-//     background-size: contain;
-// `;
+const CommentBox = styled.button`
+    content: "";
+    position: absolute;
+    top : 10px;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+    background-image: url(${MoreButton});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+`;
 
 export function CommentList({ children }) {
   return (
@@ -87,6 +89,7 @@ export function ReplyBox({ img, username, time, comment, alt }) {
         <span>{time}</span>
       </CommentWrapper>
       <CommentText>{comment}</CommentText>
+      <CommentBox></CommentBox>
     </CommonetList>
   );
 }

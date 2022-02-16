@@ -3,11 +3,11 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ProfileImage } from "./common/image/ProfileImageStyle";
-// import { Button } from "./module/button/Button";
+// import { Button } from "./module/button/button";
 
 const UserInfo = ({
   username,
-  accoutname,
+  accountname,
   intro,
   followerCount,
   followingCount,
@@ -20,13 +20,13 @@ const UserInfo = ({
           <img src={profileImage} alt="프로필 사진" />
         </ProfileImage>
         <UserName>{username}</UserName>
-        <AccountName>{accoutname}</AccountName>
+        <AccountName>{accountname}</AccountName>
         <Intro>{intro}</Intro>
-        <FollowerWrapper to={`/profile/${accoutname}/follower`}>
+        <FollowerWrapper to={`/profile/${accountname}/follower`}>
           <strong>{followerCount}</strong>
           <span>followers</span>
         </FollowerWrapper>
-        <FollowingWrapper to={`/profile/${accoutname}/following`}>
+        <FollowingWrapper to={`/profile/${accountname}/following`}>
           <strong>{followingCount}</strong>
           <span>following</span>
         </FollowingWrapper>
@@ -132,7 +132,5 @@ const FollowingWrapper = styled(Link)`
     color: #767676;
   }
 `;
-
-const Button = styled.button``;
 
 export default UserInfo;

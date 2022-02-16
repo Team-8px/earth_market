@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { getFollowingList, unfollowUser } from "../actions/followAction";
+import { getFollowingList, unfollowUser, followUser } from "../actions/followAction";
 // 스타일 로직
 import { HeaderFollow } from "../components/template/common/Header";
+import Navigation from "../components/template/common/Navigation";
 import { Button } from "../components/module/button/button";
 
 const FollowingList = () => {
@@ -18,15 +19,23 @@ const FollowingList = () => {
   //readux스토어에서 팔로우취소여부를 불러와 useEffect에서 재 렌더링을 하기 위한 의도
   const { unfollow } = useSelector(state => state?.unfollowUser);
 
+  //readux스토어에서 팔로우등록여부를 불러와 useEffect에서 재 렌더링을 하기 위한 의도
+  const { follow } = useSelector(state => state?.followUser);
+  
   //팔로우 취소 API 자식 컴포넌트로 이동 가능성 있음
   const onUnfollowClick = otherAccountId => {
     dispatch(unfollowUser(otherAccountId));
   };
 
+  //팔로우 등록 API 자식 컴포넌트로 이동 가능성 있음
+  const onFollowClick = otherAccountId => {
+    dispatch(followUser(otherAccountId));
+  };
+
   //팔로잉 리스트 불러오기 API
   useEffect(() => {
     dispatch(getFollowingList(accountId));
-  }, [dispatch, unfollow]);
+  }, [dispatch, unfollow, follow]);
   return (
     <>
       <HeaderFollow following />
@@ -46,21 +55,29 @@ const FollowingList = () => {
                     <UserIntro>{user.intro}</UserIntro>
                   </UserInfoWrapper>
                   {user.isfollow ? (
-                    <Button
-                      onClick={() => onUnfollowClick(user?.accountname)}
-                      isButtonStatus={user.isfollow}
-                      width="56px"
-                      size="sm"
-                    >
-                      취소
-                    </Button>
-                  ) : (
-                    <></>
+                  <Button
+                    onClick={() => onUnfollowClick(user?.accountname)}
+                    isButtonStatus={user.isfollow}
+                    width="56px"
+                    size="sm"
+                  >
+                    취소
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={() => onFollowClick(user?.accountname)}
+                    isButtonStatus={user.isfollow}
+                    width="56px"
+                    size="sm"
+                  >
+                    팔로우
+                  </Button>
                   )}
                 </UserItem>
               );
             })}
         </UserList>
+        <Navigation/>
       </LayOut>
     </>
   );
@@ -90,7 +107,7 @@ const UserItem = styled.li`
   align-items: center;
   margin-bottom: 16px;
 `;
-const UserImgWrapper = styled.div`
+const UserImgWrapper = styled(Link)`
   width: 50px;
   height: 50px;
   border-radius: 50%;

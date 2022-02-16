@@ -52,11 +52,10 @@ const PostView = () => {
   const commentListArr = useSelector(state => state.commentList.comments);
 
   // 댓글 생성
-  const onSubmit = data => {
-    const { comment } = data;
-
-    dispatch(commentCreateAction(comment, postId));
-  };
+  // const onSubmit = data => {
+  //   const { comment } = data;
+  //   dispatch(commentCreateAction(comment, postId));
+  // };
 
   const onClickDeleteComment = commentId => {
     //댓글 삭제 API
@@ -126,7 +125,7 @@ const PostView = () => {
             })}
         </CommentList>
         {/* 댓글 생성 */}
-        <CommentContainer onSubmit={handleSubmit(onSubmit)}>
+        <CommentContainer /*onSubmit={handleSubmit(onSubmit)}> */>
           <CommentLayOut>
             <ProfileLinkImg />
             <CommentLabel>
