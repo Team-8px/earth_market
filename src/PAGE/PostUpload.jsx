@@ -14,7 +14,7 @@ import PrevBtn from "../asset/icon-arrow-left.svg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-// import { createPost } from "../actions/postActions";
+import { createPost } from "../actions/postActions";
 import { multipleImageUploadsHandler } from "../util/multipleImageUploads";
 import { getUserMyProfile } from "../actions/userActions";
 
