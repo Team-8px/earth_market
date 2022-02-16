@@ -73,7 +73,7 @@ const colorStyles = css`
       ${props =>
         props.outline &&
         css`
-          color: ${theme.palette["subText"]};
+          color: #fff;
           background: none;
           border: 1px solid ${borderTheme};
         `},

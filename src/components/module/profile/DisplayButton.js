@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 import listOn from "../../../asset/icon/icon-post-list-on.svg";
-import listOff from "../../../asset/icon/icon-post-list-off.svg";
-import postOn from "../../../asset/icon/icon-post-album-on.svg";
+// import listOff from "../../../asset/icon/icon-post-list-off.svg";
+// import postOn from "../../../asset/icon/icon-post-album-on.svg";
 import postOff from "../../../asset/icon/icon-post-album-on.svg";
 
 const HandlerContainer = styled.div`
