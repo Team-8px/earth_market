@@ -4,23 +4,23 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import EllipseImg from "../asset/Ellipse-1.png";
 import { ProfileImage } from "./common/image/ProfileImageStyle";
+import theme from "../styles/theme";
 // import { Button } from "./module/button/Button";
 
-const UserInfoContainer = styled.header`
-  display: flex;
-  justify-content: center;
-  border-bottom: 0.5px solid;
+const UserInfoContainer = styled.section`
+  border-bottom: 0.5px solid ${theme.palette["border"]};
   background-color: #fff;
   margin-bottom: 6px;
 `;
 const UserInfoWrapper = styled.div`
   position: relative;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 390px;
   width: 100%;
-  padding: 30px 16px 26px;
+  padding: 30px 0 26px;
 
   img {
     margin-bottom: 16px;
@@ -62,7 +62,6 @@ const FollowerWrapper = styled(Link)`
     font-weight: 700;
     font-size: 18px;
     line-height: 23px;
-    margin-bottom: 6px;
   }
 
   span {
@@ -83,7 +82,6 @@ const FollowingWrapper = styled(Link)`
     font-weight: 700;
     font-size: 18px;
     line-height: 23px;
-    margin-bottom: 6px;
   }
 
   span {
@@ -91,8 +89,6 @@ const FollowingWrapper = styled(Link)`
     color: #767676;
   }
 `;
-
-const Button = styled.button``;
 
 function UserInfo({
   username,
@@ -110,11 +106,11 @@ function UserInfo({
         <UserName>{username}</UserName>
         <AccountName>{accoutname}</AccountName>
         <Intro>{intro}</Intro>
-        <FollowerWrapper /* to={`/profile/${accountId}/follower`} */>
+        <FollowerWrapper to="/" /* to={`/profile/${accountId}/follower`} */>
           <strong>{followerCount}</strong>
           <span>followers</span>
         </FollowerWrapper>
-        <FollowingWrapper /* to={`/profile/${accountId}/following`} */>
+        <FollowingWrapper to="/" /* to={`/profile/${accountId}/following`} */>
           <strong>{followingCount}</strong>
           <span>following</span>
         </FollowingWrapper>
