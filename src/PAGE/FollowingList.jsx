@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
 // 스타일 로직
 import { HeaderFollow } from "../components/template/common/Header";
 import Navigation from "../components/template/common/Navigation";
-
-//Navigation
 // 비즈니스 로직
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -69,10 +66,6 @@ const FollowingList = () => {
     </>
   );
 };
-// key={user.username}
-// img={user.image}
-// intro={"user.intro"}
-// username={user.username}
 
 const LayOut = styled.main`
   min-width: 390px;

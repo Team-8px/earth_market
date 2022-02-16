@@ -92,7 +92,6 @@ const PostUpload = () => {
             {...register("profileImg")}
           ></input>
         </label>
-        {/* 테스트 */}
         <PostPhotoList></PostPhotoList>
         <PhotoList>
           {myImage &&

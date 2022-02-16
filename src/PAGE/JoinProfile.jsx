@@ -5,13 +5,10 @@ import { useForm } from "react-hook-form";
 import { joinMembership } from "../actions/userActions";
 import { imageUploadsHandler } from "../util/imageUploads";
 //스타일
-import ProfileForm from "../components/module/form/ProfileForm";
-import ProfileUpload from "../components/module/profile/ProfileIUpload";
 import LoginTitle, {
   SubTitleTitle,
 } from "../components/module/title/LoginTitle";
 import { Button } from "../components/module/button/button";
-import RegisterForm from "../components/module/form/RegisterForm";
 import Upload from "../asset/upload-file.png";
 // import LoginTitle from "../components/module/title/LoginTitle";
 import { updateUserProfile } from "../actions/userActions";
@@ -34,7 +31,6 @@ const JoinProfile = () => {
     setMyImage(nowImageUrl);
   };
 
-  //이메일, 비밀번호 입력시 버튼 background color 변경
   useEffect(() => {
     const subscription = watch(({ email, password, username, accountname }) => {
       if (email && password && !username && !accountname) {

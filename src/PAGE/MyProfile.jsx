@@ -84,11 +84,6 @@ const MyProfile = () => {
     <>
       <Header />
       <LayOut>
-        {/* username,
-  accoutname,
-  intro,
-  followerCount,
-  followingCount, */}
         <UserInfo
           username={username}
           accoutname={accountname}
@@ -96,7 +91,6 @@ const MyProfile = () => {
           followerCount={followerCount}
           followingCount={followingCount}
         />
-        {/* <Product></Product>   */}
         <ProductLayOut>
           <Product>
             {products &&
@@ -156,10 +150,6 @@ const MyProfile = () => {
                       </Date>
                     </ContentBox>
                     <MoreBtn onClick={isPostDialog} />
-                    {/* <button onClick={isNavDialog}>테스트 버튼 삭제 가능</button>
-                    <button onClick={isProductDialog}>
-                      테스트 버튼 삭제 가능
-                    </button> */}
                   </Container>
                 </PostWrapper>
               </PostContainer>
@@ -242,7 +232,6 @@ const MoreBtn = styled.button`
   background-color: inherit;
 `;
 
-// product스타일 컴포넌트
 const ProductLayOut = styled.article`
   margin: 20px auto;
   width: 358px;
@@ -250,54 +239,6 @@ const ProductLayOut = styled.article`
   justify-content: center;
   flex-direction: column;
   overflow-y: hidden;
-`;
-
-const ProductContainer = styled.ul`
-  display: flex;
-  font-size: 12px;
-  line-height: 12px;
-  overflow-x: scroll;
-`;
-
-const ProductWrapper = styled.li`
-  margin-right: 10px;
-  cursor: pointer;
-`;
-
-const ProductImgWrapper = styled.div`
-  border: 0.5px solid #dbdbdb;
-  border-radius: 8px;
-`;
-
-const ProductImg = styled.img`
-  width: 140px;
-  height: 90px;
-  border-radius: 8px;
-  background-color: #c4c4c4;
-`;
-
-const ProductTitle = styled.h2`
-  font-size: 16px;
-  line-height: 1.2;
-  margin-bottom: 16px;
-  font-weight: 700;
-`;
-
-const TextWrap = styled.figcaption`
-  padding-top: 6px;
-`;
-
-const ProductText = styled.strong`
-  display: block;
-  line-height: 18px;
-  margin-bottom: 4px;
-`;
-
-const ProductPrice = styled.strong`
-  display: block;
-  font-size: 12px;
-  color: #f26e22;
-  font-weight: 700;
 `;
 
 export default MyProfile;
