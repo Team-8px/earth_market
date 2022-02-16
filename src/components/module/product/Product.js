@@ -89,3 +89,28 @@ const ProductPrice = styled.strong`
   color: #f26e22;
   font-weight: 700;
 `;
+
+export const ProductList = ({ productText, productPrice, img, onClick }) => {
+  return (
+    <ProductWrapper onClick={onClick}>
+      <figure>
+        <ProductImgWrapper>
+          <ProductImg src={img} width="100%" />
+        </ProductImgWrapper>
+        <TextWrap>
+          <ProductText>{productText}</ProductText>
+          <ProductPrice>{productPrice}</ProductPrice>
+        </TextWrap>
+      </figure>
+    </ProductWrapper>
+  );
+};
+
+export function Product({ children }) {
+  return (
+    <ProductLayOut>
+      <ProductTitle>판매 중인 상품</ProductTitle>
+      <ProductContainer>{children}</ProductContainer>
+    </ProductLayOut>
+  );
+}

@@ -18,7 +18,8 @@ const LoginEmail = () => {
   useEffect(() => {
     const subscription = watch(({ email, password }) => {
       if (email && password) {
-        setIsButtonStatus(true);
+        // 예시입니다
+        setIsButtonStatus("123456" === password);
       }
     });
     return () => subscription.unsubscribe();
@@ -34,17 +35,21 @@ const LoginEmail = () => {
 
   return (
     <>
-      {/* 💡 1. 첫번쨰로 form태그를 가장 최상위 태그로 만들었음 */}
       <Form onSubmit={handleSubmit(onSubmit)}>
-        {/* 💡 2. 필드셋 설정 페이지의 레이아웃을 담당한다. */}
         <MainFieldSet>
           <LoginTitle>로그인</LoginTitle>
           <InputWrapper>
-            <label>이메일
-            <input name="email" type="email" {...register("email")} />
+            <label>
+              이메일
+              <input name="email" type="email" {...register("email")} />
             </label>
-            <label>비밀번호
-            <input name="password" type="password" {...register("password")} />
+            <label>
+              비밀번호
+              <input
+                name="password"
+                type="password"
+                {...register("password")}
+              />
             </label>
           </InputWrapper>
           <Button width="322px" size="lg" isButtonStatus={isButtonStatus}>
@@ -82,7 +87,7 @@ const InputWrapper = styled.div`
     cursor: pointer;
   }
   input {
-    width: 100% ;
+    width: 100%;
     font-size: 14px;
     color: ${props => props.theme.palette["black"]};
     /* line-height: 14px; */
