@@ -28,7 +28,6 @@ const Home = () => {
   const dispatch = useDispatch();
   //팔로우 한 사람들의 게시글 목록 불러오기
   const { posts } = useSelector(state => state.followerPostList);
-  console.log();
 
   function isEmptyArr(posts) {
     if (Array.isArray(posts) && posts.length === 0) {
