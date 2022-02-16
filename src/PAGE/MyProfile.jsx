@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { listProducts, deleteProduct } from "../actions/productActions";
 import { listPosts, deletePost } from "../actions/postActions";
 import { getUserMyProfile } from "../actions/userActions";
@@ -22,7 +22,7 @@ import Header from "../components/template/common/Header";
 import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
 import SellProductLink from "../asset/product-img-example-01.jpg";
-import UserInfo from "../components/module/profile/UserInfo";
+import MyUserInfo from "../components/module/profile/MyUserInfo";
 import { ProfileImage } from "../components/common/image/ProfileImageStyle";
 import { Button } from "../components/module/button/button";
 import theme from "../styles/theme";
@@ -31,12 +31,13 @@ import theme from "../styles/theme";
 // import Product
 const MyProfile = () => {
   const dispatch = useDispatch();
+  const { accountId } = useParams();
   //상품 리스트 배열
   const { products } = useSelector(state => state.productList);
   //게시글 리스트 배열
   const { posts } = useSelector(state => state.postList);
   //나의 프로필 정보
-  const { profileImage, username, accountname, intro, followerCount, followingCount } =
+  const { image, username, accountname, intro, followerCount, followingCount } =
     useSelector(state => state.userReadProfile);
 
   //게시글 삭제 API (이동 가능성 높음)
@@ -61,7 +62,7 @@ const MyProfile = () => {
 
   useEffect(() => {
     //나의 프로필 정보 얻기
-    dispatch(getUserMyProfile());
+    dispatch(getUserMyProfile(accountId));
   }, [dispatch]);
 
   // 🕹 네비게이션 Modal & Alert
@@ -86,8 +87,8 @@ const MyProfile = () => {
     <>
       <LayOut>      
       <Header />
-      <UserInfo
-        profileImage={profileImage}
+      <MyUserInfo
+        profileImage={image}
         username={username}
         accountname={accountname}
         intro={intro}
