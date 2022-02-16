@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { getFollowingList, unfollowUser, followUser } from "../actions/followAction";
+import {
+  getFollowingList,
+  unfollowUser,
+  followUser,
+} from "../actions/followAction";
 // 스타일 로직
 import { HeaderFollow } from "../components/template/common/Header";
 import Navigation from "../components/template/common/Navigation";
@@ -21,7 +25,7 @@ const FollowingList = () => {
 
   //readux스토어에서 팔로우등록여부를 불러와 useEffect에서 재 렌더링을 하기 위한 의도
   const { follow } = useSelector(state => state?.followUser);
-  
+
   //팔로우 취소 API 자식 컴포넌트로 이동 가능성 있음
   const onUnfollowClick = otherAccountId => {
     dispatch(unfollowUser(otherAccountId));
@@ -55,37 +59,33 @@ const FollowingList = () => {
                     <UserIntro>{user.intro}</UserIntro>
                   </UserInfoWrapper>
                   {user.isfollow ? (
-                  <Button
-                    onClick={() => onUnfollowClick(user?.accountname)}
-                    isButtonStatus={user.isfollow}
-                    width="56px"
-                    size="sm"
-                  >
-                    취소
-                  </Button>
-                ) : (
-                  <Button
-                    onClick={() => onFollowClick(user?.accountname)}
-                    isButtonStatus={user.isfollow}
-                    width="56px"
-                    size="sm"
-                  >
-                    팔로우
-                  </Button>
+                    <Button
+                      onClick={() => onUnfollowClick(user?.accountname)}
+                      isButtonStatus={user.isfollow}
+                      width="56px"
+                      size="sm"
+                    >
+                      취소
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={() => onFollowClick(user?.accountname)}
+                      isButtonStatus={user.isfollow}
+                      width="56px"
+                      size="sm"
+                    >
+                      팔로우
+                    </Button>
                   )}
                 </UserItem>
               );
             })}
         </UserList>
-        <Navigation/>
+        <Navigation />
       </LayOut>
     </>
   );
 };
-// key={user.username}
-// img={user.image}
-// intro={"user.intro"}
-// username={user.username}
 
 const LayOut = styled.main`
   min-width: 390px;

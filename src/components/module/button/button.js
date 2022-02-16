@@ -91,25 +91,25 @@ const colorStyles = css`
       ${props =>
         props.outline &&
         css`
-          color: ${theme.palette["subText"]};
+          color: #fff;
           background: none;
           border: 1px solid ${borderTheme};
         `},
 
-        /* on,off 이런식으로 두는게 맞을까? */
-      ${props =>
-        props.isButtonStatus
-          ? css`
-              color: #fff;
-              border: none;
-              background: ${theme.palette["lightMain"]};
-            `
-          : css`
-              color: #fff;
-              border: none;
-              background: ${theme.palette["main"]};
-            `}
-    `;
+        ${props =>
+          props.isButtonStatus
+            ? css`
+                color: #fff;
+                border: none;
+                background: ${theme.palette["main"]};
+              `
+            : css`
+                color: #fff;
+                border: none;
+                background: ${theme.palette["lightMain"]};
+              `}
+
+     `;
   }}
 `;
 

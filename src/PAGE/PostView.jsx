@@ -30,7 +30,7 @@ import dayjs from "dayjs";
 import { ReplyBox, CommentList } from "../components/module/post/ReplyBox";
 const PostView = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   // getPost API에 사용될 데이터
   const { postId } = useParams();
   // 댓글 생성시 useEffect에 적용하여, 재 렌더링 하기 위함
@@ -55,6 +55,7 @@ const PostView = () => {
   const onSubmit = data => {
     const { comment } = data;
     dispatch(commentCreateAction(comment, postId));
+    reset();
   };
 
   const onClickDeleteComment = commentId => {

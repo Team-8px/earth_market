@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFollowerPostList } from "../actions/followAction";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { UserInfoBox } from "../components/module/post/UserInfoBox";
 import {
   ContentBox,
@@ -29,6 +29,12 @@ const Home = () => {
   //팔로우 한 사람들의 게시글 목록 불러오기
   const { posts } = useSelector(state => state.followerPostList);
 
+  function isEmptyArr(posts) {
+    if (Array.isArray(posts) && posts.length === 0) {
+      return false;
+    }
+    return true;
+  }
   console.log(posts && posts);
 
   useEffect(() => {
@@ -39,7 +45,7 @@ const Home = () => {
   return (
     <>
       <HeaderHome />
-      {posts ? (
+      {isEmptyArr(posts) ? (
         <LayOut>
           {posts &&
             posts.map(post => {
@@ -75,7 +81,7 @@ const Home = () => {
             })}
         </LayOut>
       ) : (
-        <LayOut center>
+        <LayOut>
           <NoneFeed></NoneFeed>
           <Button size="lg" width="120px">
             검색하기
@@ -97,13 +103,11 @@ const Home = () => {
 };
 
 const LayOut = styled.main`
-  ${props => props.theme.common.flexCenterColumn}
-  ${props =>
-    props.center &&
-    css`
-      justify-content: center;
-    `}
-  /* position: fixed; */
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 16px 0;
   height: calc(100% - 108px);
   overflow-y: scroll;
   min-width: 390px;

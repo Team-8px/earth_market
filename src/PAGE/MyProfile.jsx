@@ -27,7 +27,6 @@ import { ProfileImage } from "../components/common/image/ProfileImageStyle";
 import { Button } from "../components/module/button/button";
 import theme from "../styles/theme";
 
-
 // import Product
 const MyProfile = () => {
   const dispatch = useDispatch();
@@ -106,60 +105,61 @@ const MyProfile = () => {
                     productText={product.itemName}
                     productPrice={product.price}
                     img={product.itemImage}
+                    onClick={isProductDialog}
                   />
                 );
               })}
           </Product>
         </ProfileContainer>
         <ProfileContainer>
-        <DisplayButton></DisplayButton>
-        {/* 게시글 */}
-        {posts &&
-          posts.map(post => {
-            /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
-            const postImages = post.image.split(",");
-            return (
-              <PostContainer key={post.id}>
-                <PostWrapper>
-                  <Container>
-                    <UserInfoBoxInMyProfile
-                      profileImage={post.author.image}
-                      name={post.author.username}
-                      id={post.author.accountname}
-                    />
-                    <ContentBox content={post.content}>
-                      <Link to={`/post/${post.id}`}>
-                        <ImgContainer>
-                          {postImages &&
-                            postImages.map((postImage, i) => {
-                              return (
-                                <ImgList key={i}>
-                                  <h3>{postImage}</h3>
-                                  <img src={postImage} />
-                                </ImgList>
-                              );
-                            })}
-
-                          <ButtonList>
-                            <button></button>
-                          </ButtonList>
-                        </ImgContainer>
-                      </Link>
-                      <IconBox
-                        like={post.heartCount}
-                        comment={post.commentCount}
+          <DisplayButton></DisplayButton>
+          {/* 게시글 */}
+          {posts &&
+            posts.map(post => {
+              /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
+              const postImages = post.image.split(",");
+              return (
+                <PostContainer key={post.id}>
+                  <PostWrapper>
+                    <Container>
+                      <UserInfoBoxInMyProfile
+                        profileImage={post.author.image}
+                        name={post.author.username}
+                        id={post.author.accountname}
                       />
-                      <Date>
-                        {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
-                      </Date>
-                    </ContentBox>
-                    <MoreBtn onClick={isPostDialog} />
-                  </Container>
-                </PostWrapper>
-              </PostContainer>
-            );
-          })}
-          </ProfileContainer>
+                      <ContentBox content={post.content}>
+                        <Link to={`/post/${post.id}`}>
+                          <ImgContainer>
+                            {postImages &&
+                              postImages.map((postImage, i) => {
+                                return (
+                                  <ImgList key={i}>
+                                    <h3>{postImage}</h3>
+                                    <img src={postImage} />
+                                  </ImgList>
+                                );
+                              })}
+
+                            <ButtonList>
+                              <button></button>
+                            </ButtonList>
+                          </ImgContainer>
+                        </Link>
+                        <IconBox
+                          like={post.heartCount}
+                          comment={post.commentCount}
+                        />
+                        <Date>
+                          {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
+                        </Date>
+                      </ContentBox>
+                      <MoreBtn onClick={isPostDialog} />
+                    </Container>
+                  </PostWrapper>
+                </PostContainer>
+              );
+            })}
+        </ProfileContainer>
       </LayOut>
 
       <Modal visible={navDialog}>
@@ -181,20 +181,20 @@ const MyProfile = () => {
       </Modal>
       {/* Product Alert */}
       <Alert visible={productAlert} messageText="상품을 삭제할까요?">
-        <AlertBox isAlert={isProductAlert}>예</AlertBox>
-        <AlertBox isAlert={isProductAlert}>아니요</AlertBox>
+        <AlertBox isAlert={isProductAlert}>취소</AlertBox>
+        <AlertBox isAlert={isProductAlert}>삭제</AlertBox>
       </Alert>
 
       {/* Post Modal */}
       <Modal visible={postDialog}>
-        <ListBtn isDialog={isPostDialog}>수정</ListBtn>
         <AlertBtn isAlert={isPostAlert}>삭제</AlertBtn>
+        <ListBtn isDialog={isPostDialog}>수정</ListBtn>
         <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
       </Modal>
       {/* Post Alert */}
       <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
-        <AlertBox isAlert={isPostAlert}>예</AlertBox>
-        <AlertBox isAlert={isPostAlert}>아니요</AlertBox>
+        <AlertBox isAlert={isPostAlert}>취소</AlertBox>
+        <AlertBox isAlert={isPostAlert}>삭제</AlertBox>
       </Alert>
     </>
   );
@@ -241,4 +241,13 @@ const ProfileContainer = styled.section`
   background-color: #fff;
   margin-bottom: 6px;
 `;
+const ProductLayOut = styled.article`
+  margin: 20px auto;
+  width: 358px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow-y: hidden;
+`;
+
 export default MyProfile;
