@@ -60,16 +60,15 @@ const FollowerList = () => {
                   {followerUser.isfollow ? (
                     <Button
                       onClick={() => onUnfollowClick(followerUser?.accountname)}
-                      isButtonStatus={followerUser.isfollow}
                       width="56px"
                       size="sm"
+                      outline
                     >
                       취소
                     </Button>
                   ) : (
                     <Button
                       onClick={() => onFollowClick(followerUser?.accountname)}
-                      isButtonStatus={followerUser.isfollow}
                       width="56px"
                       size="sm"
                     >

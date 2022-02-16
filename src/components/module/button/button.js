@@ -78,20 +78,6 @@ const colorStyles = css`
           border: 1px solid ${borderTheme};
         `},
 
-        /* on,off 이런식으로 두는게 맞을까? */
-      ${props =>
-        props.isButtonStatus
-          ? css`
-              color: #fff;
-              border: none;
-              background: ${theme.palette["lightMain"]};
-            `
-          : css`
-              color: #fff;
-              border: none;
-              background: ${theme.palette["main"]};
-            `}
-
      `;
   }}
 `;
