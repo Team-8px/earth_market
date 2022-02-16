@@ -78,6 +78,19 @@ const colorStyles = css`
           border: 1px solid ${borderTheme};
         `},
 
+        ${props =>
+          props.isButtonStatus
+            ? css`
+                color: #fff;
+                border: none;
+                background: ${theme.palette["main"]};
+              `
+            : css`
+                color: #fff;
+                border: none;
+                background: ${theme.palette["lightMain"]};
+              `}
+
      `;
   }}
 `;
