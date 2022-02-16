@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { listProducts, deleteProduct } from "../actions/productActions";
 import { listPosts, deletePost } from "../actions/postActions";
 import { getUserMyProfile } from "../actions/userActions";
@@ -19,11 +19,10 @@ import Date from "../components/module/post/Date";
 import DisplayButton from "../components/module/profile/DisplayButton";
 import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
-import UserInfo from "../components/module/profile/UserInfo";
+import SellProductLink from "../asset/product-img-example-01.jpg";
+import MyUserInfo from "../components/module/profile/MyUserInfo";
 // import { ProfileImage } from "../components/common/image/ProfileImageStyle";
 // import { Button } from "../components/module/button/button";
-import theme from "../styles/theme";
-
 import prev from "../asset/icon-arrow-left.svg";
 import more from "../asset/icon-more-vertical.svg";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
@@ -33,19 +32,14 @@ import more from "../asset/icon-more-vertical.svg";
 const MyProfile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { accountId } = useParams();
   //상품 리스트 배열
   const { products } = useSelector(state => state.productList);
   //게시글 리스트 배열
   const { posts } = useSelector(state => state.postList);
   //나의 프로필 정보
-  const {
-    profileImage,
-    username,
-    accountname,
-    intro,
-    followerCount,
-    followingCount,
-  } = useSelector(state => state.userReadProfile);
+  const { image, username, accountname, intro, followerCount, followingCount } =
+    useSelector(state => state.userReadProfile);
 
   //게시글 삭제 API (이동 가능성 높음)
   const onClickDeletePost = postId => {
@@ -69,7 +63,7 @@ const MyProfile = () => {
 
   useEffect(() => {
     //나의 프로필 정보 얻기
-    dispatch(getUserMyProfile());
+    dispatch(getUserMyProfile(accountId));
   }, [dispatch]);
 
   // 🕹 네비게이션 Modal & Alert
@@ -92,6 +86,7 @@ const MyProfile = () => {
 
   return (
     <>
+      <LayOut>      
       {/* 헤더 */}
       <HeaderLayOut>
         <HeaderContainer>
@@ -104,9 +99,8 @@ const MyProfile = () => {
         </HeaderContainer>
       </HeaderLayOut>
       {/* 유저 프로필 */}
-      <LayOut>
-        <UserInfo
-          profileImage={profileImage}
+        <MyUserInfo
+          profileImage={image}
           username={username}
           accountname={accountname}
           intro={intro}

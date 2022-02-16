@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { ProfileImage } from "../../common/image/ProfileImageStyle";
 import { Button } from "../button/button";
 
-const UserInfo = ({
+const MyUserInfo = ({
     username,
     accountname,
     intro,
@@ -130,4 +130,5 @@ const FollowingWrapper = styled(Link)`
 const ButtonWrapper = styled.div`
     display: flex;
 `;
-export default UserInfo;
+export default MyUserInfo;
+

@@ -19,7 +19,7 @@ import Date from "../components/module/post/Date";
 import DisplayButton from "../components/module/profile/DisplayButton";
 import more from "../asset/icon-more-vertical.svg";
 import Header from "../components/template/common/Header";
-import UserInfo from "../components/UserInfo";
+import YourUserInfo from "../components/module/profile/YourUserInfo";
 import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
 
@@ -86,18 +86,13 @@ const YourProfile = () => {
     <>
       <Header />
       <LayOut>
-        {/* username,
-  accoutname,
-  intro,
-  followerCount,
-  followingCount, */}
-        <UserInfo
+        <YourUserInfo
+          profileImage={image}
           username={username}
-          accoutname={accountname}
+          accountname={accountname}
           intro={intro}
           followerCount={followerCount}
           followingCount={followingCount}
-          profileImage={image}
         />
         {/* <Product></Product>   */}
         <ProductLayOut>

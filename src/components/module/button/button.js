@@ -2,7 +2,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import faceBook from "../../../asset/facebook.png";
-//
+import chatImage from "../../../asset/icon/icon-message-circle.png";
+import shareImage from "../../../asset/icon/icon-share.png";
 // import google from "../asset/google.png";
 // import kakao from "../asset/facebook.png";
 
@@ -32,6 +33,23 @@ const iconStyles = css`
     24px;
 `;
 
+const chatStyles = css`
+  width: 34px;
+  height: 34px;
+  border: 1px solid #dbdbdb;
+  border-radius: 50%;
+  background: url(${chatImage}) no-repeat center / 20px 20px;
+}
+`
+
+const shareStyles = css`
+  width: 34px;
+  height: 34px;
+  border: 1px solid #dbdbdb;
+  border-radius: 50%;
+  background: url(${shareImage}) no-repeat center / 20px 20px;
+}
+`
 const sizeMap = {
   lg: {
     height: "44px",
@@ -110,6 +128,18 @@ const StyledIconButton = styled(StyledButton)`
   }
 `;
 
+const StyledShareButton = styled(StyledButton)`
+  {
+    ${shareStyles}
+  }
+`;
+
+const StyledChatButton = styled(StyledButton)`
+  {
+    ${chatStyles}
+  }
+`;
+
 export function Button({ children, size, color, ...rest }) {
   return (
     <StyledButton size={size} color={color} {...rest}>
@@ -120,7 +150,7 @@ export function Button({ children, size, color, ...rest }) {
 
 Button.defaultProps = {
   size: "md",
-  color: "main",
+  color: "bg",
 };
 
 export function IconButton({ children, size, color, ...rest }) {
@@ -128,5 +158,21 @@ export function IconButton({ children, size, color, ...rest }) {
     <StyledIconButton size={size} color={color} {...rest}>
       {children}
     </StyledIconButton>
+  );
+}
+
+export function ChatButton({ children, size, color, ...rest }) {
+  return (
+    <StyledChatButton size={size} color={color} {...rest}>
+      {children}
+    </StyledChatButton>
+  );
+}
+
+export function ShareButton({ children, size, color, ...rest }) {
+  return (
+    <StyledShareButton size={size} color={color} {...rest}>
+      {children}
+    </StyledShareButton>
   );
 }
