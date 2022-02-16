@@ -63,13 +63,13 @@ const NavListLink = styled(NavLink)`
     background-image: url(${ProfileIcon});
   }
 
-  &.home .on ::before {
+  &.home.on::before {
     background-image: url(${HomeIconFill});
   }
-  &.chatlist .on ::before {
+  &.chatlist.on::before {
     background-image: url(${ChatIconFill});
   }
-  &.myprofile .on ::before {
+  &.myprofile.on::before {
     background-image: url(${ProfileIconFill});
   }
 `;
