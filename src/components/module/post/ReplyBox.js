@@ -4,7 +4,7 @@ import EllipseImg from "../../../asset/Ellipse-1.png";
 import MoreButton from "../../../asset/icon/icon-more-vertical.png";
 const CommentLayout = styled.section`
   width: 100%;
-  padding: 20px 16px 0;
+  padding: 20px 16px;
   box-sizing: border-box;
   border-top: 1px solid #dbdbdb;
 `;
@@ -60,16 +60,16 @@ const CommentText = styled.p`
 `;
 
 const CommentBox = styled.button`
-    content: "";
-    position: absolute;
-    top : 10px;
-    right: 0px;
-    width: 20px;
-    height: 20px;
-    background-image: url(${MoreButton});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  width: 20px;
+  height: 20px;
+  background-image: url(${MoreButton});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 `;
 
 export function CommentList({ children }) {

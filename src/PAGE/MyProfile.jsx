@@ -22,9 +22,8 @@ import Header from "../components/template/common/Header";
 import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
 import { ProfileImage } from "../components/common/image/ProfileImageStyle";
-import { Button } from "../components/module/button/button";
-import theme from "../styles/theme";
 import UserInfo from "../components/UserInfo";
+import { Button } from "../components/module/button/button";
 
 // import Product
 const MyProfile = () => {
@@ -224,7 +223,7 @@ const MyProfile = () => {
 const LayOut = styled.main`
   min-width: 390px;
   width: 100%;
-  background: ${theme.palette["bg"]};
+  background: ${props => props.theme.palette["bg"]};
   margin: 0 auto;
 `;
 
@@ -257,15 +256,15 @@ const MoreBtn = styled.button`
 `;
 
 const ProfileContainer = styled.section`
-  border-top: 0.5px solid ${theme.palette["border"]};
-  border-bottom: 0.5px solid ${theme.palette["border"]};
+  border-top: 0.5px solid ${props => props.theme.palette["border"]};
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
   background-color: #fff;
   margin-bottom: 6px;
 `;
 const UserInfoContainer = styled.header`
   display: flex;
   justify-content: center;
-  border-bottom: 0.5px solid #DBDBDB;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
   background-color: #fff;
   margin-bottom: 6px;
 `;
@@ -303,7 +302,7 @@ const Intro = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: #767676;
+  color: ${props => props.theme.palette["google"]};
   margin-bottom: 24px;
 `;
 const FollowerWrapper = styled(Link)`
@@ -322,7 +321,7 @@ const FollowerWrapper = styled(Link)`
 
   span {
     font-size: 10px;
-    color: #767676;
+    color: ${props => props.theme.palette["google"]};
   }
 `;
 
@@ -342,7 +341,7 @@ const FollowingWrapper = styled(Link)`
 
   span {
     font-size: 10px;
-    color: #767676;
+    color: ${props => props.theme.palette["google"]};
   }
 `;
 

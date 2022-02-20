@@ -34,7 +34,7 @@ const NavWrap = styled.li`
 const NavListLink = styled(NavLink)`
   display: block;
   font-size: 10px;
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
   padding: 12px 0 6px;
   text-align: center;
   cursor: pointer;
@@ -51,8 +51,6 @@ const NavListLink = styled(NavLink)`
     background-repeat: no-repeat;
   }
   &.home::before {
-    /* public 폴더 안에 이미지 파일을 넣어서 사용할 경우 아래 주석처럼 코드를 줄일 수 있습니다! */
-    /* background-image: url("/img/icon/icon-home.svg"); */
     background-image: url(${HomeIcon});
   }
   &.chatlist::before {
@@ -66,7 +64,7 @@ const NavListLink = styled(NavLink)`
   }
 
   &:active {
-    color: #f26e22;
+    color: ${props => props.theme.palette["main"]};
     &.home::before {
       background-image: url(${HomeIconFill});
     }
