@@ -99,18 +99,21 @@ const ProductUpdate = () => {
               name="itemName"
               type="text"
               {...register("itemName")}
+              autoComplete="off"
               placeholder="2~10자 이내여야 합니다." />
             <label>가격</label>
             <input
               name="price"
               type="text"
               {...register("price")}
+              autoComplete="off"
               placeholder="숫자만 입력 가능합니다." />
             <label>판매 링크</label>
             <input
               name="link"
               type="text"
               {...register("link")}
+              autoComplete="off"
               placeholder="URL을 입력해 주세요." />
           </ProductFormWrapper>
         </MainFieldSet>
@@ -203,6 +206,7 @@ const ProductFormWrapper = styled.div`
     margin-bottom: 10px;
     margin-top: 16px;
   }
+
   input {
     width: 100%;
     font-size: 14px;
@@ -211,6 +215,11 @@ const ProductFormWrapper = styled.div`
     padding-bottom: 8px;
     border: none;
     border-bottom: 1px solid ${props => props.theme.palette["border"]};
+    caret-color: ${props => props.theme.palette["main"]};
+
+    &::placeholder {
+      color: ${props => props.theme.palette["border"]};
+    }
   }
 `;
 

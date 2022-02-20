@@ -70,19 +70,22 @@ const ProductUpload = () => {
                 name="itemName"
                 type="text"
                 {...register("itemName")}
-                placeholder="2~10자 이내여야 합니다." />
+                placeholder="2~10자 이내여야 합니다."
+                autoComplete="off" />
               <label>가격</label>
               <input
                 name="price"
                 type="text"
                 {...register("price")}
-                placeholder="숫자만 입력 가능합니다." />
+                placeholder="숫자만 입력 가능합니다."
+                autoComplete="off" />
               <label>판매 링크</label>
               <input
                 name="link"
                 type="text"
                 {...register("link")}
-                placeholder="URL을 입력해 주세요." />
+                placeholder="URL을 입력해 주세요."
+                autoComplete="off" />
             </ProductFormWrapper>
           </MainFieldSet>
       </Form> 
@@ -141,6 +144,11 @@ const ProductFormWrapper = styled.div`
     padding-bottom: 8px;
     border: none;
     border-bottom: 1px solid ${props => props.theme.palette["border"]};
+    caret-color: ${props => props.theme.palette["main"]};
+    
+    &::placeholder {
+      color: ${props => props.theme.palette["border"]};
+    }
   }
 `;
 

@@ -46,6 +46,7 @@ const Search = () => {
                 {...register("keyword")}
                 type="text"
                 placeholder="계정검색"
+                autoComplete="off"
               />
             </Label>
           </Form>
@@ -125,6 +126,7 @@ const HeaderInput = styled.input`
   border-radius: 32px;
   padding: 0 16px;
   font-size: 14px;
+  caret-color: ${props => props.theme.palette["main"]};
 
   &::placeholder {
     color: #c4c4c4;

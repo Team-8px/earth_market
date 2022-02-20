@@ -41,7 +41,7 @@ const LoginEmail = () => {
           <LoginTitle>로그인</LoginTitle>
           <InputWrapper>
             <label>이메일
-            <input name="email" type="email" {...register("email")} />
+            <input name="email" type="email" autoComplete="off" {...register("email")} />
             </label>
             <label>비밀번호
             <input name="password" type="password" {...register("password")} />
@@ -89,6 +89,7 @@ const InputWrapper = styled.div`
     padding: 10px 0 8px;
     border: none;
     border-bottom: 1px solid #dbdbdb;
+    caret-color: ${props => props.theme.palette["main"]};
   }
 `;
 

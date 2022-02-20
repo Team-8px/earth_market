@@ -67,7 +67,9 @@ const JoinProfile = () => {
                 name="email"
                 type="email"
                 placeholder="이메일 주소를 입력해 주세요."
+                autoComplete="off"
                 {...register("email")}
+
               />
               </label>
               <label>비밀번호
@@ -75,6 +77,7 @@ const JoinProfile = () => {
                 name="password"
                 type="password"
                 placeholder="비밀번호를 설정해 주세요."
+                autoComplete="off"
                 {...register("password")}
               />
               </label>
@@ -95,7 +98,7 @@ const JoinProfile = () => {
             <ProfileImgWrapper>
               <label onChange={previewImage} htmlFor="profileImg">
                 {/* 조건부 렌더링 */}
-                <img src={myImage} alt="프로필 사진" />
+                <img src={myImage} alt="프로필 사진" className="ir"/>
                 <input
                   type="file"
                   accept="image/jpg,image/png,image/jpeg,image/gif"
@@ -111,6 +114,7 @@ const JoinProfile = () => {
                 name="username"
                 type="text"
                 placeholder="2~10자 이내여야 합니다."
+                autoComplete="off"
                 {...register("username")} />
               </label>
               <label>
@@ -119,6 +123,7 @@ const JoinProfile = () => {
                 name="accountname"
                 type="text"
                 placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
+                autoComplete="off"
                 {...register("accountname")} />
               </label>
               <label>
@@ -127,6 +132,7 @@ const JoinProfile = () => {
                 name="intro"
                 type="text"
                 placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
+                autoComplete="off"
                 {...register("intro")} />
                 </label>
             </InputWrapper>
@@ -170,6 +176,7 @@ const InputWrapper = styled.div`
     padding: 10px 0 8px;
     border: none;
     border-bottom: 1px solid #dbdbdb;
+    caret-color: ${props => props.theme.palette["main"]};
     
     &::placeholder {
       color: ${theme.palette["border"]};
