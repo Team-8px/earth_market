@@ -12,7 +12,7 @@ import LoginTitle, {
 } from "../components/module/title/LoginTitle";
 import { Button } from "../components/module/button/button";
 import RegisterForm from "../components/module/form/RegisterForm";
-import Upload from "../asset/upload-file.png";
+import Upload from "../asset/upload-file.svg";
 // import LoginTitle from "../components/module/title/LoginTitle";
 import { updateUserProfile } from "../actions/userActions";
 import ProfileImg from "../asset/icon/basic-profile.svg"
@@ -162,7 +162,7 @@ const InputWrapper = styled.div`
 
   label {
     display: block;
-    color: #767676;
+    color: ${props => props.theme.palette["subText"]};
     font-weight: 500;
     font-size: 12px;
     margin-bottom: 16px;
@@ -171,7 +171,7 @@ const InputWrapper = styled.div`
   input {
     width: 100% ;
     font-size: 14px;
-    color: ${props => props.theme.palette["black"]};
+    color: ${props => props.theme.palette["main"]};
     line-height: 14px;
     padding: 10px 0 8px;
     border: none;
