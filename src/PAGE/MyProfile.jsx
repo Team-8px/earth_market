@@ -302,7 +302,7 @@ const Intro = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: ${props => props.theme.palette["google"]};
+  color: ${props => props.theme.palette["subText"]};
   margin-bottom: 24px;
 `;
 const FollowerWrapper = styled(Link)`
@@ -321,7 +321,7 @@ const FollowerWrapper = styled(Link)`
 
   span {
     font-size: 10px;
-    color: ${props => props.theme.palette["google"]};
+    color: ${props => props.theme.palette["subText"]};
   }
 `;
 
@@ -341,7 +341,7 @@ const FollowingWrapper = styled(Link)`
 
   span {
     font-size: 10px;
-    color: ${props => props.theme.palette["google"]};
+    color: ${props => props.theme.palette["subText"]};
   }
 `;
 

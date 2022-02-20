@@ -114,7 +114,7 @@ const HeaderContainer = styled.div`
   max-width: 100%;
   height: 48px;
   padding: 0 16px;
-  border-bottom: 0.5px solid #dbdbdb;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 const HeaderLinkImg = styled.img`

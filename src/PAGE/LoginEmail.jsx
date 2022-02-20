@@ -75,7 +75,7 @@ const InputWrapper = styled.div`
 
   label {
     display: block;
-    color: #767676;
+    color: ${props => props.theme.palette["subText"]};
     font-weight: 500;
     font-size: 12px;
     margin-bottom: 16px;
@@ -85,10 +85,10 @@ const InputWrapper = styled.div`
     width: 100% ;
     font-size: 14px;
     color: ${props => props.theme.palette["black"]};
-    /* line-height: 14px; */
     padding: 10px 0 8px;
     border: none;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid ${props => props.theme.palette["border"]};
+    color: ${props => props.theme.palette["main"]};
     caret-color: ${props => props.theme.palette["main"]};
   }
 `;
@@ -96,7 +96,7 @@ const InputWrapper = styled.div`
 const LoginText = styled(Link)`
   font-weight: 400;
   font-size: 12px;
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
   margin-top: 20px;
   cursor: pointer;
 
@@ -104,7 +104,7 @@ const LoginText = styled(Link)`
     content: "";
     font-size: 10px;
     margin: 10px;
-    border-right: 1px solid #c4c4c4;
+    border-right: 1px solid ${props => props.theme.palette["lightGray"]};
   }
 `;
 

@@ -149,7 +149,7 @@ const HeaderContainer = styled.div`
   max-width: 100%;
   height: 48px;
   padding: 0 16px;
-  border-bottom: 0.5px solid #dbdbdb;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 const HeaderLinkImg = styled.img`
@@ -168,7 +168,7 @@ const ProfileImgWrapper = styled.div`
     width: 110px;
     height: 110px;
     margin: 0 auto;
-    border: 1px solid #dbdbdb;
+    border: 1px solid ${props => props.theme.palette["border"]};
     border-radius: 50%;
     cursor: pointer;
 
@@ -179,7 +179,7 @@ const ProfileImgWrapper = styled.div`
       bottom: 0;
       width: 36px;
       height: 36px;
-      background: #c4c4c4 url(${Upload}) no-repeat center / 36px 36px;
+      background: ${props => props.theme.palette["lightGray"]} url(${Upload}) no-repeat center / 36px 36px;
       border-radius: 50%;
     }
 

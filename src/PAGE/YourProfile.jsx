@@ -273,7 +273,7 @@ const ProductWrapper = styled.li`
 `;
 
 const ProductImgWrapper = styled.div`
-  border: 0.5px solid #dbdbdb;
+  border: 0.5px solid ${props => props.theme.palette["border"]};
   border-radius: 8px;
 `;
 
@@ -281,7 +281,7 @@ const ProductImg = styled.img`
   width: 140px;
   height: 90px;
   border-radius: 8px;
-  background-color: #c4c4c4;
+  background-color: ${props => props.theme.palette["lightGray"]};
 `;
 
 const ProductTitle = styled.h2`

@@ -97,7 +97,7 @@ const HeaderContainer = styled.section`
   max-width: 100%;
   height: 48px;
   padding: 0 16px;
-  border-bottom: 0.5px solid #dbdbdb;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 const HeaderLink = styled(Link)`
@@ -121,15 +121,16 @@ const Label = styled.label`
 const HeaderInput = styled.input`
   width: 100%;
   height: 32px;
-  background-color: #f2f2f2;
+  background-color: ${props => props.theme.palette["bg"]};
   border-style: none;
   border-radius: 32px;
   padding: 0 16px;
   font-size: 14px;
+  color: ${props => props.theme.palette["main"]};
   caret-color: ${props => props.theme.palette["main"]};
 
   &::placeholder {
-    color: #c4c4c4;
+    color: ${props => props.theme.palette["lightGray"]};
   }
 `;
 const LayOut = styled.main`
@@ -165,7 +166,7 @@ const UserImgLink = styled(Link)`
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 0.5px solid #dbdbdb;
+    border: 0.5px solid ${props => props.theme.palette["border"]};
     font-size: 10px;
     overflow: hidden;
   }
@@ -187,7 +188,7 @@ const UserName = styled.strong`
 `;
 
 const UserId = styled.strong`
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
   font-size: 12px;
   line-height: 15px;
   &::before {
