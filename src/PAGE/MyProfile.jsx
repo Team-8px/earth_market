@@ -20,8 +20,9 @@ import DisplayButton from "../components/module/profile/DisplayButton";
 import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
 import SellProductLink from "../asset/product-img-example-01.jpg";
-import { ProfileImage } from "../components/common/image/ProfileImageStyle";
-import { Button } from "../components/module/button/button";
+import MyUserInfo from "../components/module/profile/MyUserInfo";
+// import { ProfileImage } from "../components/common/image/ProfileImageStyle";
+// import { Button } from "../components/module/button/button";
 import prev from "../asset/icon-arrow-left.svg";
 import more from "../asset/icon-more-vertical.svg";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
@@ -35,15 +36,9 @@ const MyProfile = () => {
   //게시글 리스트 배열
   const { posts } = useSelector(state => state.postList);
   //나의 프로필 정보
-  const {
-    profileImage,
-    username,
-    accountname,
-    intro,
-    followerCount,
-    followingCount,
-  } = useSelector(state => state.userReadProfile);
-
+  const { image, username, accountname, intro, followerCount, followingCount } =
+    useSelector(state => state.userReadProfile);
+  console.log(image);
   //게시글 삭제 API (이동 가능성 높음)
   const onClickDeletePost = postId => {
     dispatch(deletePost(postId));
@@ -90,7 +85,39 @@ const MyProfile = () => {
   return (
     <>
       <LayOut>
-        {/* <ProductLayOut> */}
+
+        <UserInfoContainer>
+          <UserInfoWrapper>
+            <ProfileImage>
+              <img src={image} alt="프로필 사진" />
+            </ProfileImage>
+            <UserName>{username}</UserName>
+            <AccountName>{accountname}</AccountName>
+            <Intro>{intro}</Intro>
+            <FollowerWrapper to={`/profile/${accountname}/follower`}>
+              <strong>{followerCount}</strong>
+              <span>followers</span>
+            </FollowerWrapper>
+            <FollowingWrapper to={`/profile/${accountname}/following`}>
+              <strong>{followingCount}</strong>
+              <span>following</span>
+            </FollowingWrapper>
+            <ButtonWrapper>
+              <Link to="/profile/my/update">
+                <Button size="md" width="120px">
+                  프로필 수정
+                </Button>
+              </Link>
+              <Link to="/product/upload">
+                <Button size="md" width="120px">
+                  상품 등록
+                </Button>
+              </Link>
+            </ButtonWrapper>
+          </UserInfoWrapper>
+        </UserInfoContainer>
+
+        <ProductLayOut>
 
         {/* 헤더 */}
         <HeaderLayOut>
@@ -104,32 +131,17 @@ const MyProfile = () => {
           </HeaderContainer>
         </HeaderLayOut>
         {/* 유저 프로필 */}
-        <UserInfoContainer>
-          <UserInfoWrapper>
-            <ProfileImage src={profileImage} alt="프로필 사진" />
-            <UserName>{username}</UserName>
-            <AccountName>{accountname}</AccountName>
-            <Intro>{intro}</Intro>
-            <FollowerWrapper to={`/profile/${accountname}/follower`}>
-              <strong>{followerCount}</strong>
-              <span>followers</span>
-            </FollowerWrapper>
-            <FollowingWrapper to={`/profile/${accountname}/following`}>
-              <strong>{followingCount}</strong>
-              <span>following</span>
-            </FollowingWrapper>
-            <ButtonWrapper>
-              <Button size="md" width="120px">
-                프로필 수정
-              </Button>
-              <Button size="md" width="120px">
-                상품 등록
-              </Button>
-            </ButtonWrapper>
-          </UserInfoWrapper>
-        </UserInfoContainer>
+        <MyUserInfo
+          profileImage={image}
+          username={username}
+          accountname={accountname}
+          intro={intro}
+          followerCount={followerCount}
+          followingCount={followingCount}
+        />
         {/* <Product></Product>   */}
         <SectionContainer>
+
           <Product>
             {products &&
               products.map(product => {
@@ -298,6 +310,7 @@ const MoreBtn = styled.button`
   background-color: inherit;
 `;
 
+
 // product스타일 컴포넌트
 const ProductLayOut = styled.article`
   margin: 20px auto;
@@ -355,11 +368,10 @@ const ProductPrice = styled.strong`
   color: #f26e22;
   font-weight: 700;
 `;
-// const UserInfoContainer = styled.header`
-//   display: flex;
-//   justify-content: center;
-//   border-bottom: 0.5px solid #dbdbdb;
-// `;
+const UserInfoContainer = styled.header`
+  display: flex;
+  justify-content: center;
+  border-bottom: 0.5px solid #dbdbdb;
 
 const SectionContainer = styled.section`
   border-top: 0.5px solid ${props => props.theme.palette["border"]};
@@ -376,95 +388,5 @@ const SectionContainer = styled.section`
 //   flex-direction: column;
 //   overflow-y: hidden;
 // `;
-
-const UserInfoContainer = styled.header`
-  display: flex;
-  justify-content: center;
-  border-bottom: 0.5px solid #dbdbdb;
-  background-color: #fff;
-  margin-bottom: 6px;
-`;
-const UserInfoWrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 390px;
-  width: 100%;
-  padding: 30px 16px 26px;
-
-  img {
-    margin-bottom: 16px;
-  }
-`;
-const UserName = styled.strong`
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  margin-bottom: 6px;
-`;
-const AccountName = styled.strong`
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  color: #767676;
-  margin-bottom: 16px;
-  &::before {
-    content: "@";
-    margin-right: 3px;
-  }
-`;
-const Intro = styled.p`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  color: #767676;
-  margin-bottom: 24px;
-`;
-const FollowerWrapper = styled(Link)`
-  position: absolute;
-  left: 56px;
-  top: 65px;
-  text-align: center;
-  cursor: pointer;
-
-  strong {
-    display: block;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 23px;
-    margin-bottom: 6px;
-  }
-
-  span {
-    font-size: 10px;
-    color: #767676;
-  }
-`;
-
-const FollowingWrapper = styled(Link)`
-  position: absolute;
-  left: 287px;
-  top: 65px;
-  text-align: center;
-  cursor: pointer;
-
-  strong {
-    display: block;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 23px;
-    margin-bottom: 6px;
-  }
-
-  span {
-    font-size: 10px;
-    color: #767676;
-  }
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-`;
 
 export default MyProfile;
