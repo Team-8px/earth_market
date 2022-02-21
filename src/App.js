@@ -20,15 +20,9 @@ import PostViewKHK from "./PAGE/PostView";
 import ProductUpdateKHK from "./PAGE/ProductUpdate";
 import SetMemberShipKHK from "./PAGE/JoinProfile";
 import YourProfile from "./PAGE/YourProfile";
+import NotFound from "./components/template/screen/NotFound";
 
 const App = () => {
-  const [navHidden, setNavHidden] = useState(false);
-  console.log(navHidden && navHidden);
-  const isNavHidden = props => {
-    console.log(props, "isnav");
-    setNavHidden(true);
-  };
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -37,21 +31,11 @@ const App = () => {
           {/* 김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후 */}
           <Switch>
             {/* auth */}
-            <Route
-              path="/join/email"
-              /* component={SetMemberShipKHK} */
-              render={() => <SetMemberShipKHK hidden={isNavHidden} />}
-              exact
-            />
+            <Route path="/join/email" component={SetMemberShipKHK} exact />
             <Route path="/" component={LoginEmailKHK} exact />
 
             {/* 홈 */}
-            <Route
-              path="/home"
-              component={HomeKHK}
-              /*  render={() => <HomeKHK hidden={isNavHidden} />} */
-              exact
-            />
+            <Route path="/home" component={HomeKHK} exact />
             <Route path="/search" component={SearchKHK} exact />
 
             {/* profile */}
@@ -76,7 +60,6 @@ const App = () => {
               component={FollowingListKHK}
               exact
             />
-
             {/* post */}
             <Route path="/post/my/upload" component={PostUploadKHK} exact />
             <Route path="/post/:postId" component={PostViewKHK} exact />
@@ -88,9 +71,8 @@ const App = () => {
               component={ProductUpdateKHK}
               exact
             />
+            <Route path={"*"} component={NotFound} />
           </Switch>
-          {/*  <NavigationBar /> */}
-          {navHidden ? <></> : <Navigation />}
         </AppliCation>
       </Router>
     </ThemeProvider>
