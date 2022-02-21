@@ -82,7 +82,7 @@ export const login = (email, password) => async dispatch => {
 
     localStorage.setItem("userInfo", JSON.stringify(data));
 
-    //document.location.href = "/home";
+    document.location.href = "/home";
   } catch (error) {
     console.log(error, "userActions Error");
     dispatch({
