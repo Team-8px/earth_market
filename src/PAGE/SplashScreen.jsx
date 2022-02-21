@@ -5,6 +5,7 @@ const SplashScreen = () => {
     <>
       <Header />
       <Main />
+      <Navigation />
     </>
   );
 };

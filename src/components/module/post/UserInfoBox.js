@@ -40,6 +40,7 @@ const Id = styled.strong`
 `;
 
 export function UserInfoBox({ profileImage, name, id }) {
+  console.log(id, "UserInfoBox");
   return (
     <LayOut>
       <Link to={`/profile/you/${id}`}>

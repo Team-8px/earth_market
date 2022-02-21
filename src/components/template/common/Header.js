@@ -46,9 +46,7 @@ export function HeaderChat() {
 export const HeaderHome = () => {
   return (
     <HeaderNav>
-      <Link to="/home">
-        <HeaderTitle fontSize="big">어스마켓 피드</HeaderTitle>
-      </Link>
+      <HeaderTitle fontSize="big">어스마켓 피드</HeaderTitle>
       <SearchBtnWrap />
     </HeaderNav>
   );

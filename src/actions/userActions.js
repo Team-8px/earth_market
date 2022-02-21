@@ -73,8 +73,6 @@ export const login = (email, password) => async dispatch => {
 
     const { data } = await axios.post(`${API_URL}/user/login`, reqData, config);
 
-    console.log(data, "로그인 axios 응답값");
-
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: data,
@@ -82,7 +80,7 @@ export const login = (email, password) => async dispatch => {
 
     localStorage.setItem("userInfo", JSON.stringify(data));
 
-    //document.location.href = "/home";
+    document.location.href = "/home";
   } catch (error) {
     console.log(error, "userActions Error");
     dispatch({
