@@ -41,7 +41,7 @@ const LoginEmail = () => {
           <LoginTitle>로그인</LoginTitle>
           <InputWrapper>
             <label>이메일
-            <input name="email" type="email" autoComplete="off" {...register("email")} />
+            <input name="email" type="email" autoComplete="off" spellCheck="false" {...register("email")} />
             </label>
             <label>비밀번호
             <input name="password" type="password" {...register("password")} />
