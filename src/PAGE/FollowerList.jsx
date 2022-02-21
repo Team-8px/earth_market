@@ -10,7 +10,6 @@ import styled from "styled-components";
 import { HeaderFollow } from "../components/template/common/Header";
 import { Button } from "../components/module/button/button";
 
-
 const FollowerList = () => {
   const dispatch = useDispatch();
   //accountId 계정이 필요한 이유는 myprofile과 yourprofile 둘다 커버하기 위한 노력
@@ -47,40 +46,42 @@ const FollowerList = () => {
       <HeaderFollow />
       <LayOut>
         <UserList>
-        {follower &&
-          follower.map(followerUser => {
-            return (
-              <UserItem key={followerUser?._id}>
-                <UserImgWrapper>
-                  <img src={followerUser.image} alt="프로필 사진" />
-                </UserImgWrapper>
-                <UserInfoWrapper>
-                  <UserName>{followerUser.username}</UserName>
-                  <UserIntro>{followerUser.intro}</UserIntro>
-                </UserInfoWrapper>
-                {followerUser.isfollow ? (
-                  <Button
-                    onClick={() => onUnfollowClick(followerUser?.accountname)}
-                    isButtonStatus={followerUser.isfollow}
-                    width="56px"
-                    size="sm"
-                  >
-                    취소
-                  </Button>
-                ) : (
-                  <Button
-                    onClick={() => onFollowClick(followerUser?.accountname)}
-                    isButtonStatus={followerUser.isfollow}
-                    width="56px"
-                    size="sm"
-                  >
-                    팔로우
-                  </Button>
+          {follower &&
+            follower.map(followerUser => {
+              return (
+                <UserItem key={followerUser?._id}>
+                  <UserImgWrapper>
+                    <Link to={`/profile/you/${followerUser.accountname}`}>
+                      <img src={followerUser.image} alt="프로필 사진" />
+                    </Link>
+                  </UserImgWrapper>
+                  <UserInfoWrapper>
+                    <UserName>{followerUser.username}</UserName>
+                    <UserIntro>{followerUser.intro}</UserIntro>
+                  </UserInfoWrapper>
+                  {followerUser.isfollow ? (
+                    <Button
+                      onClick={() => onUnfollowClick(followerUser?.accountname)}
+                      isButtonStatus={followerUser.isfollow}
+                      width="56px"
+                      size="sm"
+                    >
+                      취소
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={() => onFollowClick(followerUser?.accountname)}
+                      isButtonStatus={followerUser.isfollow}
+                      width="56px"
+                      size="sm"
+                    >
+                      팔로우
+                    </Button>
                   )}
-              </UserItem>
-            );
-          })}
-          </UserList>
+                </UserItem>
+              );
+            })}
+        </UserList>
       </LayOut>
     </>
   );

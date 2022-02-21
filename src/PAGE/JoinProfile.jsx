@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { joinMembership } from "../actions/userActions";
 import { imageUploadsHandler } from "../util/imageUploads";
 //스타일
+import EllipseImg from "../asset/Ellipse 6.png";
 import ProfileForm from "../components/module/form/ProfileForm";
 import ProfileUpload from "../components/module/profile/ProfileIUpload";
 import LoginTitle, {
@@ -18,7 +19,8 @@ import { updateUserProfile } from "../actions/userActions";
 
 const JoinProfile = () => {
   const [isButtonStatus, setIsButtonStatus] = useState(true);
-  // true
+
+  const [isPreviewImage, setIsPreviewImage] = useState(true);
 
   const [myImage, setMyImage] = useState([]);
 
@@ -34,6 +36,7 @@ const JoinProfile = () => {
     const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
 
     setMyImage(nowImageUrl);
+    setIsPreviewImage(false);
   };
 
   //이메일, 비밀번호 입력시 버튼 background color 변경
@@ -95,7 +98,10 @@ const JoinProfile = () => {
             </LoginTitle>
             <ProfileImgWrapper>
               <label onChange={previewImage} htmlFor="profileImg">
-                <img src={myImage} alt="프로필 사진" />
+                <img
+                  src={isPreviewImage ? EllipseImg : myImage}
+                  alt="프로필 사진"
+                />
                 <input
                   type="file"
                   accept="image/jpg,image/png,image/jpeg,image/gif"

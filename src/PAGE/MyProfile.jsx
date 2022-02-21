@@ -33,9 +33,9 @@ const MyProfile = () => {
   //게시글 리스트 배열
   const { posts } = useSelector(state => state.postList);
   //나의 프로필 정보
-  const { profileImage, username, accountname, intro, followerCount, followingCount } =
+  const { image, username, accountname, intro, followerCount, followingCount } =
     useSelector(state => state.userReadProfile);
-
+  console.log(image);
   //게시글 삭제 API (이동 가능성 높음)
   const onClickDeletePost = postId => {
     dispatch(deletePost(postId));
@@ -83,33 +83,37 @@ const MyProfile = () => {
     <>
       <Header />
       <LayOut>
-      <UserInfoContainer>
-        <UserInfoWrapper>
-          <ProfileImage>
-            <img src={profileImage} alt="프로필 사진" />
-          </ProfileImage>
-          <UserName>{username}</UserName>
-          <AccountName>{accountname}</AccountName>
-          <Intro>{intro}</Intro>
-          <FollowerWrapper to={`/profile/${accountname}/follower`}>
-            <strong>{followerCount}</strong>
-            <span>followers</span>
-          </FollowerWrapper>
-          <FollowingWrapper to={`/profile/${accountname}/following`}>
-            <strong>{followingCount}</strong>
-            <span>following</span>
-          </FollowingWrapper>
-          <ButtonWrapper>
-          <Button size="md" width="120px">
-            프로필 수정
-          </Button>
-          <Button size="md" width="120px">
-            상품 등록
-          </Button>
-          </ButtonWrapper>
-        </UserInfoWrapper>
-      </UserInfoContainer>
-        {/* <Product></Product>   */}
+        <UserInfoContainer>
+          <UserInfoWrapper>
+            <ProfileImage>
+              <img src={image} alt="프로필 사진" />
+            </ProfileImage>
+            <UserName>{username}</UserName>
+            <AccountName>{accountname}</AccountName>
+            <Intro>{intro}</Intro>
+            <FollowerWrapper to={`/profile/${accountname}/follower`}>
+              <strong>{followerCount}</strong>
+              <span>followers</span>
+            </FollowerWrapper>
+            <FollowingWrapper to={`/profile/${accountname}/following`}>
+              <strong>{followingCount}</strong>
+              <span>following</span>
+            </FollowingWrapper>
+            <ButtonWrapper>
+              <Link to="/profile/my/update">
+                <Button size="md" width="120px">
+                  프로필 수정
+                </Button>
+              </Link>
+              <Link to="/product/upload">
+                <Button size="md" width="120px">
+                  상품 등록
+                </Button>
+              </Link>
+            </ButtonWrapper>
+          </UserInfoWrapper>
+        </UserInfoContainer>
+
         <ProductLayOut>
           <Product>
             {products &&
@@ -314,7 +318,7 @@ const ProductPrice = styled.strong`
 const UserInfoContainer = styled.header`
   display: flex;
   justify-content: center;
-  border-bottom: 0.5px solid #DBDBDB;
+  border-bottom: 0.5px solid #dbdbdb;
   background-color: #fff;
   margin-bottom: 6px;
 `;

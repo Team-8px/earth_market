@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/theme";
 import NavigationBar from "./hooks/useGNB";
+import Navigation from "../src/components/template/common/Navigation";
 
 //김현길 독립적인 라우트 2월 8일 데이터 바인딩 작업
 import LoginEmailKHK from "./PAGE/LoginEmail";
@@ -21,6 +22,13 @@ import SetMemberShipKHK from "./PAGE/JoinProfile";
 import YourProfile from "./PAGE/YourProfile";
 
 const App = () => {
+  const [navHidden, setNavHidden] = useState(false);
+  console.log(navHidden && navHidden);
+  const isNavHidden = props => {
+    console.log(props, "isnav");
+    setNavHidden(true);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -29,11 +37,21 @@ const App = () => {
           {/* 김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후 */}
           <Switch>
             {/* auth */}
-            <Route path="/join/email" component={SetMemberShipKHK} exact />
+            <Route
+              path="/join/email"
+              /* component={SetMemberShipKHK} */
+              render={() => <SetMemberShipKHK hidden={isNavHidden} />}
+              exact
+            />
             <Route path="/" component={LoginEmailKHK} exact />
 
             {/* 홈 */}
-            <Route path="/home" component={HomeKHK} exact />
+            <Route
+              path="/home"
+              component={HomeKHK}
+              /*  render={() => <HomeKHK hidden={isNavHidden} />} */
+              exact
+            />
             <Route path="/search" component={SearchKHK} exact />
 
             {/* profile */}
@@ -71,7 +89,8 @@ const App = () => {
               exact
             />
           </Switch>
-          <NavigationBar />
+          {/*  <NavigationBar /> */}
+          {navHidden ? <></> : <Navigation />}
         </AppliCation>
       </Router>
     </ThemeProvider>
