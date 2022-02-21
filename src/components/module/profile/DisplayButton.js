@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import listOn from "../../../asset/icon/icon-post-list-on.png";
-import listOff from "../../../asset/icon/icon-post-list-off.png";
-import postOn from "../../../asset/icon/icon-post-album-on.png";
-import postOff from "../../../asset/icon/icon-post-album-on.png";
+import listOn from "../../../asset/icon/icon-post-list-on.svg";
+// import listOff from "../../../asset/icon/icon-post-list-off.svg";
+// import postOn from "../../../asset/icon/icon-post-album-on.svg";
+import postOff from "../../../asset/icon/icon-post-album-on.svg";
 
 const HandlerContainer = styled.div`
   display: flex;

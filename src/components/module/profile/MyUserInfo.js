@@ -2,11 +2,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { ProfileImage } from "./common/image/ProfileImageStyle";
-import theme from "../styles/theme";
-// import { Button } from "./module/button/Button";
+import { ProfileImage } from "../../common/image/ProfileImageStyle";
+import { Button } from "../button/button";
 
-const UserInfo = ({
+const MyUserInfo = ({
   username,
   accountname,
   intro,
@@ -17,9 +16,7 @@ const UserInfo = ({
   return (
     <UserInfoContainer>
       <UserInfoWrapper>
-        <ProfileImage>
-          <img src={profileImage} alt="프로필 사진" />
-        </ProfileImage>
+        <ProfileImage src={profileImage} alt="프로필 사진" />
         <UserName>{username}</UserName>
         <AccountName>{accountname}</AccountName>
         <Intro>{intro}</Intro>
@@ -31,37 +28,34 @@ const UserInfo = ({
           <strong>{followingCount}</strong>
           <span>following</span>
         </FollowingWrapper>
-        {/* <Button size="md" width="120px">
-          팔로우
-        </Button>
-        <Button size="md" width="120px">
-          언팔로우
-        </Button>
-        <Button size="md" width="120px">
-          프로필 수정
-        </Button>
-        <Button size="md" width="120px">
-          상품 등록
-        </Button> */}
+        <ButtonWrapper>
+          <Button size="md" width="120px">
+            프로필 수정
+          </Button>
+          <Button size="md" width="120px">
+            상품 등록
+          </Button>
+        </ButtonWrapper>
       </UserInfoWrapper>
     </UserInfoContainer>
   );
 };
 
-const UserInfoContainer = styled.section`
-  border-bottom: 0.5px solid ${theme.palette["border"]};
+const UserInfoContainer = styled.header`
+  display: flex;
+  justify-content: center;
+  border-bottom: 0.5px solid #dbdbdb;
   background-color: #fff;
   margin-bottom: 6px;
 `;
 const UserInfoWrapper = styled.div`
   position: relative;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 390px;
   width: 100%;
-  padding: 30px 0 26px;
+  padding: 30px 16px 26px;
 
   img {
     margin-bottom: 16px;
@@ -103,6 +97,7 @@ const FollowerWrapper = styled(Link)`
     font-weight: 700;
     font-size: 18px;
     line-height: 23px;
+    margin-bottom: 6px;
   }
 
   span {
@@ -123,6 +118,7 @@ const FollowingWrapper = styled(Link)`
     font-weight: 700;
     font-size: 18px;
     line-height: 23px;
+    margin-bottom: 6px;
   }
 
   span {
@@ -131,4 +127,7 @@ const FollowingWrapper = styled(Link)`
   }
 `;
 
-export default UserInfo;
+const ButtonWrapper = styled.div`
+  display: flex;
+`;
+export default MyUserInfo;

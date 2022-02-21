@@ -67,6 +67,7 @@ const MenuList = styled.ul`
   border-top-right-radius: 10px;
   background-color: #dbdbdb;
   z-index: 10;
+  background-color: #fff;
 
   animation-duration: 0.35s;
   animation-timing-function: ease-out;

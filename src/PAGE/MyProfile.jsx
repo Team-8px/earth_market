@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { listProducts, deleteProduct } from "../actions/productActions";
 import { listPosts, deletePost } from "../actions/postActions";
 import { getUserMyProfile } from "../actions/userActions";
@@ -17,17 +17,20 @@ import { Alert, AlertBox } from "../components/module/alert/Alert";
 import IconBox from "../components/module/post/IconBox";
 import Date from "../components/module/post/Date";
 import DisplayButton from "../components/module/profile/DisplayButton";
-import more from "../asset/icon-more-vertical.svg";
-import Header from "../components/template/common/Header";
 import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
 import SellProductLink from "../asset/product-img-example-01.jpg";
-import { ProfileImage } from "../components/common/image/ProfileImageStyle";
-import { Button } from "../components/module/button/button";
+import MyUserInfo from "../components/module/profile/MyUserInfo";
+// import { ProfileImage } from "../components/common/image/ProfileImageStyle";
+// import { Button } from "../components/module/button/button";
+import prev from "../asset/icon-arrow-left.svg";
+import more from "../asset/icon-more-vertical.svg";
+// import SellProductLink from "../asset/product-img-example-01.jpg";
 
-// import Product
 const MyProfile = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
+  const { accountId } = useParams();
   //상품 리스트 배열
   const { products } = useSelector(state => state.productList);
   //게시글 리스트 배열
@@ -58,7 +61,7 @@ const MyProfile = () => {
 
   useEffect(() => {
     //나의 프로필 정보 얻기
-    dispatch(getUserMyProfile());
+    dispatch(getUserMyProfile(accountId));
   }, [dispatch]);
 
   // 🕹 네비게이션 Modal & Alert
@@ -81,8 +84,8 @@ const MyProfile = () => {
 
   return (
     <>
-      <Header />
       <LayOut>
+
         <UserInfoContainer>
           <UserInfoWrapper>
             <ProfileImage>
@@ -115,6 +118,30 @@ const MyProfile = () => {
         </UserInfoContainer>
 
         <ProductLayOut>
+
+        {/* 헤더 */}
+        <HeaderLayOut>
+          <HeaderContainer>
+            <HeaderLink>
+              <img src={prev} alt="이전 페이지 버튼" />
+            </HeaderLink>
+            <HeaderLink>
+              <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
+            </HeaderLink>
+          </HeaderContainer>
+        </HeaderLayOut>
+        {/* 유저 프로필 */}
+        <MyUserInfo
+          profileImage={image}
+          username={username}
+          accountname={accountname}
+          intro={intro}
+          followerCount={followerCount}
+          followingCount={followingCount}
+        />
+        {/* <Product></Product>   */}
+        <SectionContainer>
+
           <Product>
             {products &&
               products.map(product => {
@@ -124,63 +151,61 @@ const MyProfile = () => {
                     productText={product.itemName}
                     productPrice={product.price}
                     img={product.itemImage}
+                    onClick={isProductDialog}
                   />
                 );
               })}
           </Product>
-        </ProductLayOut>
-        <DisplayButton></DisplayButton>
-        {/* 게시글 */}
-        {posts &&
-          posts.map(post => {
-            /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
-            const postImages = post.image.split(",");
-
-            return (
-              <PostContainer key={post.id}>
-                <PostWrapper>
-                  <Container>
-                    <UserInfoBoxInMyProfile
-                      profileImage={post.author.image}
-                      name={post.author.username}
-                      id={post.author.accountname}
-                    />
-                    <ContentBox content={post.content}>
-                      <Link to={`/post/${post.id}`}>
-                        <ImgContainer>
-                          {postImages &&
-                            postImages.map((postImage, i) => {
-                              return (
-                                <ImgList key={i}>
-                                  <h3>{postImage}</h3>
-                                  <img src={postImage} />
-                                </ImgList>
-                              );
-                            })}
-
-                          <ButtonList>
-                            <button></button>
-                          </ButtonList>
-                        </ImgContainer>
-                      </Link>
-                      <IconBox
-                        like={post.heartCount}
-                        comment={post.commentCount}
+        </SectionContainer>
+        <SectionContainer>
+          <DisplayButton></DisplayButton>
+          {/* 게시글 */}
+          {posts &&
+            posts.map(post => {
+              /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
+              const postImages = post.image.split(",");
+              return (
+                <PostContainer key={post.id}>
+                  <PostWrapper>
+                    <Container>
+                      <UserInfoBoxInMyProfile
+                        profileImage={post.author.image}
+                        name={post.author.username}
+                        id={post.author.accountname}
                       />
-                      <Date>
-                        {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
-                      </Date>
-                    </ContentBox>
-                    <MoreBtn onClick={isPostDialog} />
-                    {/* <button onClick={isNavDialog}>테스트 버튼 삭제 가능</button>
-                    <button onClick={isProductDialog}>
-                      테스트 버튼 삭제 가능
-                    </button> */}
-                  </Container>
-                </PostWrapper>
-              </PostContainer>
-            );
-          })}
+                      <ContentBox content={post.content}>
+                        <Link to={`/post/${post.id}`}>
+                          <ImgContainer>
+                            {postImages &&
+                              postImages.map((postImage, i) => {
+                                return (
+                                  <ImgList key={i}>
+                                    <h3>{postImage}</h3>
+                                    <img src={postImage} />
+                                  </ImgList>
+                                );
+                              })}
+
+                            <ButtonList>
+                              <button></button>
+                            </ButtonList>
+                          </ImgContainer>
+                        </Link>
+                        <IconBox
+                          like={post.heartCount}
+                          comment={post.commentCount}
+                        />
+                        <Date>
+                          {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
+                        </Date>
+                      </ContentBox>
+                      <MoreBtn onClick={isPostDialog} />
+                    </Container>
+                  </PostWrapper>
+                </PostContainer>
+              );
+            })}
+        </SectionContainer>
       </LayOut>
 
       <Modal visible={navDialog}>
@@ -202,40 +227,67 @@ const MyProfile = () => {
       </Modal>
       {/* Product Alert */}
       <Alert visible={productAlert} messageText="상품을 삭제할까요?">
-        <AlertBox isAlert={isProductAlert}>예</AlertBox>
-        <AlertBox isAlert={isProductAlert}>아니요</AlertBox>
+        <AlertBox isAlert={isProductAlert}>취소</AlertBox>
+        <AlertBox isAlert={isProductAlert}>삭제</AlertBox>
       </Alert>
 
       {/* Post Modal */}
       <Modal visible={postDialog}>
-        <ListBtn isDialog={isPostDialog}>수정</ListBtn>
         <AlertBtn isAlert={isPostAlert}>삭제</AlertBtn>
+        <ListBtn isDialog={isPostDialog}>수정</ListBtn>
         <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
       </Modal>
       {/* Post Alert */}
       <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
-        <AlertBox isAlert={isPostAlert}>예</AlertBox>
-        <AlertBox isAlert={isPostAlert}>아니요</AlertBox>
+        <AlertBox isAlert={isPostAlert}>취소</AlertBox>
+        <AlertBox isAlert={isPostAlert}>삭제</AlertBox>
       </Alert>
     </>
   );
 };
 
+const HeaderLayOut = styled.header`
+  position: sticky;
+  width: 100%;
+  height: 47.5px;
+  min-width: 390px;
+  top: 0;
+  background-color: #fff;
+  z-index: 10;
+`;
+
+const HeaderContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-bottom: 0.5px solid #dbdbdb;
+`;
+
+const HeaderLink = styled(Link)`
+  width: 22px;
+  height: 22px;
+  border: none;
+  /* margin-right: 10px; */
+  cursor: pointer;
+`;
+
 const LayOut = styled.main`
   min-width: 390px;
   width: 100%;
-  height: 100%;
-  background-color: #fff;
-  margin-top: 48px;
+  background: ${props => props.theme.palette["bg"]};
+  margin: 0 auto;
 `;
 
 const PostContainer = styled.section`
-  ${props => props.theme.common["flexCenterColumn"]}
   margin-bottom: 0;
 `;
 
 const PostWrapper = styled.div`
-  ${props => props.theme.common["flexCenterColumn"]}
+  margin: 0 auto;
   max-width: 390px;
   width: 100%;
   padding: 16px 16px 70px;
@@ -257,6 +309,7 @@ const MoreBtn = styled.button`
   background: url(${more}) no-repeat center / 18px 18px;
   background-color: inherit;
 `;
+
 
 // product스타일 컴포넌트
 const ProductLayOut = styled.article`
@@ -319,90 +372,21 @@ const UserInfoContainer = styled.header`
   display: flex;
   justify-content: center;
   border-bottom: 0.5px solid #dbdbdb;
+
+const SectionContainer = styled.section`
+  border-top: 0.5px solid ${props => props.theme.palette["border"]};
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
+
   background-color: #fff;
   margin-bottom: 6px;
 `;
-const UserInfoWrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 390px;
-  width: 100%;
-  padding: 30px 16px 26px;
-
-  img {
-    margin-bottom: 16px;
-  }
-`;
-const UserName = styled.strong`
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  margin-bottom: 6px;
-`;
-const AccountName = styled.strong`
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  color: #767676;
-  margin-bottom: 16px;
-  &::before {
-    content: "@";
-    margin-right: 3px;
-  }
-`;
-const Intro = styled.p`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  color: #767676;
-  margin-bottom: 24px;
-`;
-const FollowerWrapper = styled(Link)`
-  position: absolute;
-  left: 56px;
-  top: 65px;
-  text-align: center;
-  cursor: pointer;
-
-  strong {
-    display: block;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 23px;
-    margin-bottom: 6px;
-  }
-
-  span {
-    font-size: 10px;
-    color: #767676;
-  }
-`;
-
-const FollowingWrapper = styled(Link)`
-  position: absolute;
-  left: 287px;
-  top: 65px;
-  text-align: center;
-  cursor: pointer;
-
-  strong {
-    display: block;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 23px;
-    margin-bottom: 6px;
-  }
-
-  span {
-    font-size: 10px;
-    color: #767676;
-  }
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-`;
+// const ProductLayOut = styled.article`
+//   margin: 20px auto;
+//   width: 358px;
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+//   overflow-y: hidden;
+// `;
 
 export default MyProfile;

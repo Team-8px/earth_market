@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import SellProductLink from "../../../asset/product-img-example-01.jpg";
+import theme from "../../../styles/theme";
 
-const ProductLayOut = styled.article`
-  margin: 20px auto;
+const ProductLayOut = styled.div`
+  margin: 0 auto;
+  padding: 20px 0;
   width: 358px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  overflow-y: hidden;
 `;
 
 const ProductContainer = styled.ul`
   display: flex;
   font-size: 12px;
   line-height: 12px;
-  overflow-x: scroll;
+  overflow-y: hidden;
+
+  ::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: ${theme.palette["lightMain"]};
+  }
 `;
 
 const ProductWrapper = styled.li`
@@ -59,9 +65,9 @@ const ProductPrice = styled.strong`
   font-weight: 700;
 `;
 
-export const ProductList = ({ productText, productPrice, img }) => {
+export const ProductList = ({ productText, productPrice, img, onClick }) => {
   return (
-    <ProductWrapper>
+    <ProductWrapper onClick={onClick}>
       <figure>
         <ProductImgWrapper>
           <ProductImg src={img} width="100%" />

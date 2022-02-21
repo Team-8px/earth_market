@@ -85,10 +85,6 @@ const FollowingList = () => {
     </>
   );
 };
-// key={user.username}
-// img={user.image}
-// intro={"user.intro"}
-// username={user.username}
 
 const LayOut = styled.main`
   min-width: 390px;

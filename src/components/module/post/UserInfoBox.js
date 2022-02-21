@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 const LayOut = styled.section`
   display: flex;
   align-items: center;
@@ -42,7 +43,7 @@ export function UserInfoBox({ profileImage, name, id }) {
   return (
     <LayOut>
       <Link to={`/profile/you/${id}`}>
-        <ProfileImg src={profileImage} />
+        <ProfileImg src={profileImage} alt="프로필 이미지" />
       </Link>
       <Wrapper>
         <Name>{name}</Name>

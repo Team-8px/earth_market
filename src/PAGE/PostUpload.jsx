@@ -60,7 +60,7 @@ const PostUpload = () => {
     //console.log(fileDatas);
     const image = await multipleImageUploadsHandler(fileDatas);
     console.log(data, "입력데이터");
-    dispatch(createPost(postText, image));
+    // dispatch(createPost(postText, image));
   };
 
   return (
@@ -92,7 +92,6 @@ const PostUpload = () => {
             {...register("profileImg")}
           ></input>
         </label>
-        {/* 테스트 */}
         <PostPhotoList></PostPhotoList>
         <PhotoList>
           {myImage &&

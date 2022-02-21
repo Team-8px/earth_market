@@ -2,7 +2,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import faceBook from "../../../asset/facebook.png";
-//
 // import google from "../asset/google.png";
 // import kakao from "../asset/facebook.png";
 
@@ -15,7 +14,7 @@ const buttonStyles = css`
   outline: none;
   border: none;
   color: #fff;
-  font-weight: bold;
+  font-weight: 400;
   cursor: pointer;
 `;
 
@@ -30,6 +29,22 @@ const iconStyles = css`
   transform: translateY(-50%);
   background: url(${props => props.icon || faceBook}) no-repeat center / 24px
     24px;
+`;
+
+const chatStyles = css`
+  width: 34px;
+  height: 34px;
+  border: 1px solid #dbdbdb;
+  border-radius: 50%;
+  background: url(${props => props.icon}) no-repeat center / 20px 20px;
+`;
+
+const shareStyles = css`
+  width: 34px;
+  height: 34px;
+  border: 1px solid #dbdbdb;
+  border-radius: 50%;
+  background: url(${props => props.icon}) no-repeat center / 20px 20px;
 `;
 
 const sizeMap = {
@@ -73,24 +88,23 @@ const colorStyles = css`
       ${props =>
         props.outline &&
         css`
-          color: ${theme.palette["subText"]};
+          color: #fff;
           background: none;
           border: 1px solid ${borderTheme};
         `},
 
-        /* on,off 이런식으로 두는게 맞을까? */
-      ${props =>
-        props.isButtonStatus
-          ? css`
-              color: #fff;
-              border: none;
-              background: ${theme.palette["lightMain"]};
-            `
-          : css`
-              color: #fff;
-              border: none;
-              background: ${theme.palette["main"]};
-            `}
+        ${props =>
+          props.isButtonStatus
+            ? css`
+                color: #fff;
+                border: none;
+                background: ${theme.palette["main"]};
+              `
+            : css`
+                color: #fff;
+                border: none;
+                background: ${theme.palette["lightMain"]};
+              `}
 
      `;
   }}
@@ -111,6 +125,10 @@ const StyledIconButton = styled(StyledButton)`
   }
 `;
 
+const MiniIconButton = styled.button`
+  ${chatStyles}
+`;
+
 export function Button({ children, size, color, ...rest }) {
   return (
     <StyledButton size={size} color={color} {...rest}>
@@ -121,7 +139,7 @@ export function Button({ children, size, color, ...rest }) {
 
 Button.defaultProps = {
   size: "md",
-  color: "main",
+  color: "bg",
 };
 
 export function IconButton({ children, size, color, ...rest }) {
@@ -130,4 +148,8 @@ export function IconButton({ children, size, color, ...rest }) {
       {children}
     </StyledIconButton>
   );
+}
+
+export function SmaillIconButton({ children, icon }) {
+  return <MiniIconButton icon={icon}>{children}</MiniIconButton>;
 }

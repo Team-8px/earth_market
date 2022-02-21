@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getFollowerPostList } from "../actions/followAction";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { UserInfoBox } from "../components/module/post/UserInfoBox";
 import {
   ContentBox,
@@ -30,8 +30,6 @@ const Home = () => {
   //팔로우 한 사람들의 게시글 목록 불러오기
   const { posts } = useSelector(state => state?.followerPostList);
 
-  console.log(posts);
-
   useEffect(() => {
     // 게시글 불러오기 API
     dispatch(getFollowerPostList());
@@ -44,6 +42,7 @@ const Home = () => {
         <LayOut>
           {posts &&
             posts.map(post => {
+              console.log(post);
               return (
                 <Container key={post.id}>
                   {/* 유저 인포 */}
@@ -78,7 +77,7 @@ const Home = () => {
             })}
         </LayOut>
       ) : (
-        <LayOut center>
+        <LayOut>
           <NoneFeed></NoneFeed>
           <Button size="lg" width="120px">
             검색하기
@@ -100,20 +99,18 @@ const Home = () => {
 };
 
 const LayOut = styled.main`
-  ${props => props.theme.common.flexCenterColumn}
-  ${props =>
-    props.center &&
-    css`
-      justify-content: center;
-    `}
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 16px 0;
   height: calc(100% - 108px);
   overflow-y: scroll;
   min-width: 390px;
   width: 100%;
   min-width: 100%;
   height: 100%;
-  margin-top: 48px;
+  margin-top: 20px;
 `;
 
 const Container = styled.article`
