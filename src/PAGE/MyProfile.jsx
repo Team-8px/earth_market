@@ -36,14 +36,8 @@ const MyProfile = () => {
   //게시글 리스트 배열
   const { posts } = useSelector(state => state.postList);
   //나의 프로필 정보
-  const {
-    profileImage,
-    username,
-    accountname,
-    intro,
-    followerCount,
-    followingCount,
-  } = useSelector(state => state.userReadProfile);
+  const { image, username, accountname, intro, followerCount, followingCount } =
+    useSelector(state => state.userReadProfile);
 
   //게시글 삭제 API (이동 가능성 높음)
   const onClickDeletePost = postId => {
@@ -107,7 +101,7 @@ const MyProfile = () => {
         {/* 유저 프로필 */}
         <UserInfoContainer>
           <UserInfoWrapper>
-            <ProfileImage src={profileImage} alt="프로필 사진" />
+            <ProfileImage src={image} alt="프로필 사진" />
             <UserName>{username}</UserName>
             <AccountName>{accountname}</AccountName>
             <Intro>{intro}</Intro>
