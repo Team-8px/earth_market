@@ -19,7 +19,7 @@ import FollowingListKHK from "./PAGE/FollowingList";
 import PostViewKHK from "./PAGE/PostView";
 import ProductUpdateKHK from "./PAGE/ProductUpdate";
 import SetMemberShipKHK from "./PAGE/JoinProfile";
-import YourProfile from "./PAGE/YourProfile";
+// import YourProfile from "./PAGE/YourProfile";
 
 const App = () => {
   const [navHidden, setNavHidden] = useState(false);
@@ -56,11 +56,11 @@ const App = () => {
 
             {/* profile */}
             <Route path="/profile/my" component={MyprofileKHK} exact />
-            <Route
+            {/* <Route
               path="/profile/you/:accountId"
               component={YourProfile}
               exact
-            />
+            /> */}
             <Route
               path="/profile/my/update"
               component={ProfileUpdateKHK}
