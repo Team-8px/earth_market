@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getFollowerPostList } from "../actions/followAction";
 import styled from "styled-components";
 import { UserInfoBox } from "../components/module/post/UserInfoBox";
@@ -27,9 +28,7 @@ const Home = () => {
 
   const dispatch = useDispatch();
   //팔로우 한 사람들의 게시글 목록 불러오기
-  const { posts } = useSelector(state => state.followerPostList);
-
-  console.log(posts && posts);
+  const { posts } = useSelector(state => state?.followerPostList);
 
   useEffect(() => {
     // 게시글 불러오기 API
@@ -39,7 +38,7 @@ const Home = () => {
   return (
     <>
       <HeaderHome />
-      {posts ? (
+      {posts?.length !== 0 ? (
         <LayOut>
           {posts &&
             posts.map(post => {
@@ -56,7 +55,9 @@ const Home = () => {
                   <ContentBox content={post.content}>
                     <ImgContainer>
                       <ImgList>
-                        <img src={post.image} alt="게시글 이미지" />
+                        <Link to={`/post/${post.id}`}>
+                          <img src={post.image} alt="게시글 이미지" />
+                        </Link>
                       </ImgList>
                       <ButtonList>
                         <button></button>

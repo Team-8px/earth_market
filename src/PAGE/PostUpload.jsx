@@ -64,7 +64,7 @@ const PostUpload = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}> 
+    <Form onSubmit={handleSubmit(onSubmit)}>
       {/* 헤더필드 영역 */}
       <HeaderFieldSet>
         <HeaderContainer>
@@ -103,7 +103,7 @@ const PostUpload = () => {
               );
             })}
         </PhotoList>
-        </MainFieldSet>
+      </MainFieldSet>
     </Form>
   );
 };

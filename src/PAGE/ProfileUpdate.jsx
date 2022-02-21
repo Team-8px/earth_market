@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-// 스타일로직
+import { useHistory } from "react-router-dom";
 import PrevBtn from "../asset/icon-arrow-left.svg";
 import Upload from "../asset/upload-file.png";
 import { Button } from "../components/module/button/button";
+
 // 비즈니스 로직
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { updateUserProfile, getUserMyProfile } from "../actions/userActions";
-
 import { imageUploadsHandler } from "../util/imageUploads";
 
 const ProfileUpdate = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // updateImage 업데이트한 사진, 이미지 변경 여부를 따지고, 미리보기 사진을 변경
   const [updateImage, setUpdateImage] = useState([]);
@@ -70,7 +71,7 @@ const ProfileUpdate = () => {
       {/* 헤더필드 영역 */}
       <HeaderFieldSet>
         <HeaderContainer>
-          <HeaderLinkImg src={PrevBtn} />
+          <HeaderLinkImg onClick={() => history.goBack()} src={PrevBtn} />
           <Button width="90px" size="ms" color="#fff">
             저장
           </Button>

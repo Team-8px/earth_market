@@ -5,9 +5,15 @@ import { useForm } from "react-hook-form";
 import { joinMembership } from "../actions/userActions";
 import { imageUploadsHandler } from "../util/imageUploads";
 //스타일
+
+import EllipseImg from "../asset/Ellipse 6.png";
 import ProfileForm from "../components/module/form/ProfileForm";
 import ProfileUpload from "../components/module/profile/ProfileIUpload";
+import LoginTitle, {
+  SubTitleTitle,
+} from "../components/module/title/LoginTitle";
 
+import LoginTitle, { SubTitle } from "../components/module/title/LoginTitle";
 import { Button } from "../components/module/button/button";
 import Upload from "../asset/upload-file.png";
 // import LoginTitle from "../components/module/title/LoginTitle";
@@ -16,8 +22,14 @@ import ProfileImg from "../asset/icon/basic-profile.svg";
 import theme from "../styles/theme";
 
 const JoinProfile = () => {
+
+  const [isButtonStatus, setIsButtonStatus] = useState(true);
+
+  const [isPreviewImage, setIsPreviewImage] = useState(true);
+
   const [isButtonStatus, setIsButtonStatus] = useState(false);
   const [nextPage, setNextPage] = useState(false);
+
 
   const nextPageHandler = () => {
     setNextPage(true);
@@ -31,6 +43,7 @@ const JoinProfile = () => {
     const nowSelectImageList = e.target.files;
     const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
     setMyImage(nowImageUrl);
+    setIsPreviewImage(false);
   };
 
   useEffect(() => {
@@ -56,12 +69,11 @@ const JoinProfile = () => {
     <Form onSubmit={handleSubmit(onSubmit)}>
       {nextPage ? (
         <MainFieldSet>
-          <Title>
-            프로필 설정
-            <SubText></SubText>
-          </Title>
+          <LoginTitle>프로필 설정</LoginTitle>
+          <SubTitle />
           <ProfileImgWrapper>
             <label onChange={previewImage} htmlFor="profileImg">
+              {/* 조건부 렌더링 */}
               <img src={myImage} alt="프로필 사진" />
               <input
                 type="file"
@@ -69,11 +81,54 @@ const JoinProfile = () => {
                 name="profileImg"
                 id="profileImg"
                 {...register("profileImg")}
-              ></input>
+              />
+
+            </EmailWrapper>
+            <PwWrapper>
+              <label>비밀번호</label>
+              <input
+                name="password"
+                type="password"
+                placeholder="비밀번호를 설정해 주세요."
+                {...register("password")}
+              />
+            </PwWrapper>{" "}
+            <Button
+              width="322px"
+              size="lg"
+              off
+              onClick={() => setIsButtonStatus(false)}
+            >
+              다음
+            </Button>
+          </MainFieldSet>
+        ) : (
+          <MainFieldSet>
+            <LoginTitle>
+              프로필 설정
+              <SubTitleTitle />
+            </LoginTitle>
+            <ProfileImgWrapper>
+              <label onChange={previewImage} htmlFor="profileImg">
+                <img
+                  src={isPreviewImage ? EllipseImg : myImage}
+                  alt="프로필 사진"
+                />
+                <input
+                  type="file"
+                  accept="image/jpg,image/png,image/jpeg,image/gif"
+                  name="profileImg"
+                  id="profileImg"
+                  {...register("profileImg")}
+                ></input>
+              </label>
+            </ProfileImgWrapper>
+            <ProfileFormWrapper>
+              <label>사용자 이름</label>
+
             </label>
           </ProfileImgWrapper>
           <InputWrapper>
-            <label>사용자 이름</label>
             <label>
               사용자 이름
               <input
@@ -108,7 +163,7 @@ const JoinProfile = () => {
         </MainFieldSet>
       ) : (
         <MainFieldSet>
-          <Title>이메일로 회원가입</Title>
+          <LoginTitle>이메일로 회원가입</LoginTitle>
           <EmailWrapper>
             <label>이메일</label>
             <input
@@ -266,22 +321,6 @@ const PwWrapper = styled.div`
     border: none;
     border-bottom: 1px solid #dbdbdb;
   }
-`;
-
-const Title = styled.h2`
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 30px;
-  text-align: center;
-`;
-
-const SubText = styled.p`
-  font-weight: 400;
-  font-size: 14px;
-  color: #767676;
-  line-height: 14px;
-  margin-top: 12px;
-  text-align: center;
 `;
 
 export default JoinProfile;
