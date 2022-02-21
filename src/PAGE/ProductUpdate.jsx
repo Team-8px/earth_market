@@ -220,6 +220,9 @@ const ProductFormWrapper = styled.div`
     &::placeholder {
       color: ${props => props.theme.palette["border"]};
     }
+    &:focus {
+    border-bottom: 1px solid ${props => props.theme.palette["main"]};
+    }
   }
 `;
 

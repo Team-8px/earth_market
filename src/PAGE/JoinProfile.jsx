@@ -15,14 +15,6 @@ import { updateUserProfile } from "../actions/userActions";
 import ProfileImg from "../asset/icon/basic-profile.svg";
 import theme from "../styles/theme";
 
-// 💛미진 충돌 잡기 ( 없어도 되는지 확인 )
-import LoginTitle, 
-  {SubTitleTitle, } from "../components/module/title/LoginTitle";
-import { SubTitle } from "../components/module/title/LoginTitle";
-
-import RegisterForm from "../components/module/form/RegisterForm";
-
-
 const JoinProfile = () => {
   const [isButtonStatus, setIsButtonStatus] = useState(false);
   const [nextPage, setNextPage] = useState(false);
@@ -80,6 +72,7 @@ const JoinProfile = () => {
               </label>
           </ProfileImgWrapper>
           <InputWrapper>
+            <label>사용자 이름</label>
             <label>
               사용자 이름
               <input

@@ -11,6 +11,8 @@ import {
   SearchUserItem,
 } from "../components/module/user/SearchUser";
 import PrevBtn from "../asset/icon-arrow-left.svg";
+import Navigation from "../components/template/common/Navigation";
+
 // icon-arrow-left.svg
 const Search = () => {
   //리덕스 스토어에서 어떤 액션이 있는지 확인 후, API성공시 데이터 확인
@@ -57,7 +59,7 @@ const Search = () => {
           {users &&
             users.map(user => {
               return (
-                  // 링크 타면 해당 유저 프로필로 이동
+                // 링크 타면 해당 유저 프로필로 이동
                 <UserListWrapper key={user._id}>
                   <UserImgLink to={`/profile/you/${user.accountname}`}>
                     <img src={user?.image} alt="프로필 사진" />
@@ -75,6 +77,7 @@ const Search = () => {
             })}
         </UserListContainer>
       </LayOut>
+      <Navigation />
     </>
   );
 };
@@ -142,7 +145,7 @@ const LayOut = styled.main`
   overflow-y: scroll;
   min-width: 100%;
   margin-top: 48px;
-  `;
+`;
 
 const UserListContainer = styled.ul`
   max-width: 390px;
@@ -161,7 +164,7 @@ const UserListWrapper = styled.li`
 // 프로필 사진 크기 수정 필요
 const UserImgLink = styled(Link)`
   cursor: pointer;
-  
+
   img {
     width: 50px;
     height: 50px;
@@ -171,7 +174,6 @@ const UserImgLink = styled(Link)`
     overflow: hidden;
   }
 `;
-
 
 const UserInfoWrapper = styled.div`
   margin-left: 12px;

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { getUserMyProfile } from "../actions/userActions";
 import { getPost } from "../actions/postActions";
 import {
@@ -24,14 +24,15 @@ import { Alert, AlertBox } from "../components/module/alert/Alert";
 import { HeaderHome } from "../components/template/common/Header";
 import IconBox from "../components/module/post/IconBox";
 import Date from "../components/module/post/Date";
-import more from "../asset/icon-more-vertical.svg";
 import styled, { css } from "styled-components";
 import dayjs from "dayjs";
 import { ReplyBox, CommentList } from "../components/module/post/ReplyBox";
 import ProfileIcon from "../asset/icon/basic-profile.svg";
 import prev from "../asset/icon-arrow-left.svg";
+import more from "../asset/icon-more-vertical.svg";
 
 const PostView = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const { register, handleSubmit, reset } = useForm();
@@ -82,21 +83,21 @@ const PostView = () => {
     dispatch(getCommentList(postId));
   }, [dispatch, postId, craeteCommentId, deleteCommentId]);
 
-  const [postDialog, setPostDialog] = useState(false);
-  const [postAlert, setPostAlert] = useState(false);
-  const isPostDialog = () => setPostDialog(!postDialog);
-  const isPostAlert = () => setPostAlert(!postAlert);
-
-  const [chatDialog, setChatDialog] = useState(false);
-  const [chatAlert, setChatAlert] = useState(false);
-  const isChatDialog = () => setChatDialog(!chatDialog);
-  const isChatAlert = () => setChatAlert(!chatAlert);
-
   // 🕹 네비게이션 Modal & Alert
   const [navDialog, setNavDialog] = useState(false);
   const [navAlert, setNavAlert] = useState(false);
   const isNavDialog = () => setNavDialog(!navDialog);
   const isNavAlert = () => setNavAlert(!navAlert);
+  // 🏞 게시글 모달 Modal & Alert
+  const [postDialog, setPostDialog] = useState(false);
+  const [postAlert, setPostAlert] = useState(false);
+  const isPostDialog = () => setPostDialog(!postDialog);
+  const isPostAlert = () => setPostAlert(!postAlert);
+  // 🏞 댓글 모달 Modal & Alert
+  const [chatDialog, setChatDialog] = useState(false);
+  const [chatAlert, setChatAlert] = useState(false);
+  const isChatDialog = () => setChatDialog(!chatDialog);
+  const isChatAlert = () => setChatAlert(!chatAlert);
 
   return (
     <>
@@ -170,6 +171,17 @@ const PostView = () => {
         </SubmitChatContainer>
     </SubmitChatLayOut>
       </LayOut>
+
+      <Modal visible={navDialog}>
+        <ListBtn isDialog={isNavDialog}>설정 및 개인정보</ListBtn>
+        <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
+        <ListBtn isDialog={isNavDialog}>모달창 닫기</ListBtn>
+      </Modal>
+      {/* Nav Alert */}
+      <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
+        <AlertBox isAlert={isNavAlert}>예</AlertBox>
+        <AlertBox isAlert={isNavAlert}>아니요</AlertBox>
+      </Alert>
 
       {/* 게시글 Modal */}
       <Modal visible={postDialog}>

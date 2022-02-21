@@ -19,6 +19,7 @@ import Date from "../components/module/post/Date";
 import more from "../asset/icon-more-vertical.svg";
 import dayjs from "dayjs";
 import NoneFeed from "../components/NoneFeed";
+import Navigation from "../components/template/common/Navigation";
 const Home = () => {
   // 게시글 메뉴
   const [postDialog, setPostDialog] = useState(false);
@@ -84,6 +85,7 @@ const Home = () => {
           </Button>
         </LayOut>
       )}
+      <Navigation />
       {/* 게시글 Modal */}
       <Modal visible={postDialog}>
         <AlertBtn isAlert={isPostAlert}>신고하기</AlertBtn>
