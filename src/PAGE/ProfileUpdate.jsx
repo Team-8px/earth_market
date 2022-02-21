@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
- 
-// 스타일 로직
+import { useHistory } from "react-router-dom";
 import PrevBtn from "../asset/icon-arrow-left.svg";
 import Upload from "../asset/upload-file.png";
 import { Button } from "../components/module/button/button";
@@ -15,6 +14,7 @@ import { imageUploadsHandler } from "../util/imageUploads";
 const ProfileUpdate = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // updateImage 업데이트한 사진, 이미지 변경 여부를 따지고, 미리보기 사진을 변경
   const [updateImage, setUpdateImage] = useState([]);
@@ -67,59 +67,61 @@ const ProfileUpdate = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}> 
-    {/* 헤더필드 영역 */}
-    <HeaderFieldSet>
-      <HeaderContainer>
-        <HeaderLinkImg src={PrevBtn} />
-        <Button width="90px" size="ms" color="#fff">
-          저장
-        </Button>
-      </HeaderContainer>
-    </HeaderFieldSet>
-    {/* 메인필드 영역 */}
-    <MainFieldSet>
-      <ProfileImgWrapper>
-        <label onChange={previewImage} htmlFor="profileImg">
-          <input
-            type="file"
-            accept="image/jpg,image/png,image/jpeg,image/gif"
-            name="profileImg"
-            id="profileImg"
-            {...register("profileImg")} />
-          <img
-            src={isUpdatedImage ? updateImage : image}
-            alt="프로필 사진" />
-        </label>
-      </ProfileImgWrapper>
+    <Form onSubmit={handleSubmit(onSubmit)}>
+      {/* 헤더필드 영역 */}
+      <HeaderFieldSet>
+        <HeaderContainer>
+          <HeaderLinkImg onClick={() => history.goBack()} src={PrevBtn} />
+          <Button width="90px" size="ms" color="#fff">
+            저장
+          </Button>
+        </HeaderContainer>
+      </HeaderFieldSet>
+      {/* 메인필드 영역 */}
+      <MainFieldSet>
+        <ProfileImgWrapper>
+          <label onChange={previewImage} htmlFor="profileImg">
+            <input
+              type="file"
+              accept="image/jpg,image/png,image/jpeg,image/gif"
+              name="profileImg"
+              id="profileImg"
+              {...register("profileImg")}
+            />
+            <img src={isUpdatedImage ? updateImage : image} alt="프로필 사진" />
+          </label>
+        </ProfileImgWrapper>
         <ProfileFormWrapper>
-          <label>사용자 이름
-          <input
-            name="username"
-            type="text"
-            placeholder="2~10자 이내여야 합니다."
-            {...register("username")}
-          />
+          <label>
+            사용자 이름
+            <input
+              name="username"
+              type="text"
+              placeholder="2~10자 이내여야 합니다."
+              {...register("username")}
+            />
           </label>
-          <label>계정 ID
-          <input
-            name="accountname"
-            type="text"
-            placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
-            {...register("accountname")}
-          />
+          <label>
+            계정 ID
+            <input
+              name="accountname"
+              type="text"
+              placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
+              {...register("accountname")}
+            />
           </label>
-          <label>소개
-          <input
-            name="intro"
-            type="text"
-            placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
-            {...register("intro")}
-          />
+          <label>
+            소개
+            <input
+              name="intro"
+              type="text"
+              placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
+              {...register("intro")}
+            />
           </label>
         </ProfileFormWrapper>
         <button>안녕 난버튼이야</button>
-    </MainFieldSet>
+      </MainFieldSet>
     </Form>
   );
 };

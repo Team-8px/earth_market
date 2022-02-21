@@ -38,7 +38,7 @@ const MyProfile = () => {
   //나의 프로필 정보
   const { image, username, accountname, intro, followerCount, followingCount } =
     useSelector(state => state.userReadProfile);
-
+  console.log(image);
   //게시글 삭제 API (이동 가능성 높음)
   const onClickDeletePost = postId => {
     dispatch(deletePost(postId));
@@ -85,6 +85,40 @@ const MyProfile = () => {
   return (
     <>
       <LayOut>
+
+        <UserInfoContainer>
+          <UserInfoWrapper>
+            <ProfileImage>
+              <img src={image} alt="프로필 사진" />
+            </ProfileImage>
+            <UserName>{username}</UserName>
+            <AccountName>{accountname}</AccountName>
+            <Intro>{intro}</Intro>
+            <FollowerWrapper to={`/profile/${accountname}/follower`}>
+              <strong>{followerCount}</strong>
+              <span>followers</span>
+            </FollowerWrapper>
+            <FollowingWrapper to={`/profile/${accountname}/following`}>
+              <strong>{followingCount}</strong>
+              <span>following</span>
+            </FollowingWrapper>
+            <ButtonWrapper>
+              <Link to="/profile/my/update">
+                <Button size="md" width="120px">
+                  프로필 수정
+                </Button>
+              </Link>
+              <Link to="/product/upload">
+                <Button size="md" width="120px">
+                  상품 등록
+                </Button>
+              </Link>
+            </ButtonWrapper>
+          </UserInfoWrapper>
+        </UserInfoContainer>
+
+        <ProductLayOut>
+
         {/* 헤더 */}
         <HeaderLayOut>
           <HeaderContainer>
@@ -107,6 +141,7 @@ const MyProfile = () => {
         />
         {/* <Product></Product>   */}
         <SectionContainer>
+
           <Product>
             {products &&
               products.map(product => {
@@ -275,9 +310,73 @@ const MoreBtn = styled.button`
   background-color: inherit;
 `;
 
+
+// product스타일 컴포넌트
+const ProductLayOut = styled.article`
+  margin: 20px auto;
+  width: 358px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow-y: hidden;
+`;
+
+const ProductContainer = styled.ul`
+  display: flex;
+  font-size: 12px;
+  line-height: 12px;
+  overflow-x: scroll;
+`;
+
+const ProductWrapper = styled.li`
+  margin-right: 10px;
+  cursor: pointer;
+`;
+
+const ProductImgWrapper = styled.div`
+  border: 0.5px solid #dbdbdb;
+  border-radius: 8px;
+`;
+
+const ProductImg = styled.img`
+  width: 140px;
+  height: 90px;
+  border-radius: 8px;
+  background-color: #c4c4c4;
+`;
+
+const ProductTitle = styled.h2`
+  font-size: 16px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  font-weight: 700;
+`;
+
+const TextWrap = styled.figcaption`
+  padding-top: 6px;
+`;
+
+const ProductText = styled.strong`
+  display: block;
+  line-height: 18px;
+  margin-bottom: 4px;
+`;
+
+const ProductPrice = styled.strong`
+  display: block;
+  font-size: 12px;
+  color: #f26e22;
+  font-weight: 700;
+`;
+const UserInfoContainer = styled.header`
+  display: flex;
+  justify-content: center;
+  border-bottom: 0.5px solid #dbdbdb;
+
 const SectionContainer = styled.section`
   border-top: 0.5px solid ${props => props.theme.palette["border"]};
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
+
   background-color: #fff;
   margin-bottom: 6px;
 `;

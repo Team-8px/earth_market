@@ -30,6 +30,7 @@ import dayjs from "dayjs";
 import { ReplyBox, CommentList } from "../components/module/post/ReplyBox";
 const PostView = () => {
   const dispatch = useDispatch();
+
   const { register, handleSubmit, reset } = useForm();
   // getPost API에 사용될 데이터
   const { postId } = useParams();

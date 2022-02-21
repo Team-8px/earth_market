@@ -81,7 +81,6 @@ const FollowingList = () => {
               );
             })}
         </UserList>
-        <Navigation />
       </LayOut>
     </>
   );
