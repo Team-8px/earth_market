@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 
 // 스타일로직
 import { Button } from "../components/module/button/button";
-import uploadIcon from "../asset/upload-file.png";
+import uploadIcon from "../asset/upload-file.svg";
 import PrevBtn from "../asset/icon-arrow-left.svg";
 // import { UploadPost, UploadImg } from "../components/module/upload/UploadPost";
 // import testPostImg from "../asset/post-img-example.png";
@@ -62,15 +62,42 @@ const PostUpload = () => {
     console.log(data, "입력데이터");
     dispatch(createPost(postText, image));
   };
+  
+  // 글자 칸 수 넘어갈 때마다 height값 증가하는 이벤트
+  const resizeHeight = useCallback(() => {
+    if (ref === null || ref.current === null) {
+      return;
+    }
+    ref.current.style.height = '10vh';
+    ref.current.style.height = `${ref.current.scrollHeight}px`;
+  }, []);
+  useEffect(() => {
+    if (ref === null || ref.current === null) {
+      return;
+    }
+    ref.current.style.height = '10vh';
+    ref.current.style.height = `${ref.current.scrollHeight}px`;
+  }, []);
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (ref === null || ref.current === null) {
+      return;
+    }
+    ref.current.style.height = '10vh';
+    ref.current.style.height = `${ref.current.scrollHeight}px`;
+  }, []);  
 
   return (
+    <>
     <Form onSubmit={handleSubmit(onSubmit)}> 
       {/* 헤더필드 영역 */}
       <HeaderFieldSet>
         <HeaderContainer>
           <HeaderLinkImg src={PrevBtn} />
           <Button width="90px" size="ms" color="#fff">
-            저장
+            업로드
           </Button>
         </HeaderContainer>
       </HeaderFieldSet>
@@ -79,21 +106,30 @@ const PostUpload = () => {
         <ProfileImage src={image} />
         <TextBox
           name="postText"
-          placeholder={"입력해주세요"}
+          placeholder={"게시글 입력하기..."}
           {...register("postText")}
+          onChange={onChange}
+          ref={ref}
+          onInput={resizeHeight}
+          maxLength="200"
         />
-        <UploadImgIcon htmlFor="imgUpload" />
-        <label onChange={onChange} htmlFor="profileImg">
-          <input
-            type="file"
-            accept="image/jpg,image/png,image/jpeg,image/gif"
-            name="profileImg"
-            id="profileImg"
-            {...register("profileImg")}
-          ></input>
-        </label>
+        </MainFieldSet>
+        </Form>
+        {/* Form 태그 추가. 이 부분 상의하기. */}
+        <PostFormContainer htmlFor="imgUpload">
+          <UploadImgIcon>
+          <label onChange={onChange} htmlFor="profileImg" onError={(event) => event.target.style.display = 'none'}>
+            <input
+              type="file"
+              accept="image/jpg,image/png,image/jpeg,image/gif"
+              name="profileImg"
+              id="profileImg"
+              {...register("profileImg")} />
+          </label>
+        </UploadImgIcon>
+        </PostFormContainer>
         {/* 테스트 */}
-        <PostPhotoList></PostPhotoList>
+        {/* <PostPhotoList></PostPhotoList>
         <PhotoList>
           {myImage &&
             myImage.map((x, i) => {
@@ -103,9 +139,10 @@ const PostUpload = () => {
                 </Item>
               );
             })}
-        </PhotoList>
-        </MainFieldSet>
-    </Form>
+        </PhotoList> */}
+        {/* </MainFieldSet> */}
+    {/* </Form> */}
+    </>
   );
 };
 
@@ -114,9 +151,8 @@ const Form = styled.form`
 `;
 //  메인
 const MainFieldSet = styled.fieldset`
-  margin: 30px auto;
-  max-width: 322px;
-  width: 100%;
+  margin: 20px 16px;
+  display: flex;
 `;
 //  헤더
 const HeaderFieldSet = styled.fieldset`
@@ -131,7 +167,7 @@ const HeaderContainer = styled.div`
   max-width: 100%;
   height: 48px;
   padding: 0 16px;
-  border-bottom: 0.5px solid #dbdbdb;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 const HeaderLinkImg = styled.img`
@@ -146,43 +182,40 @@ const ProfileImage = styled.img`
   height: 42px;
   border-radius: 50%;
   margin-right: 12px;
-  border: 0.5px solid #dbdbdb;
+  border: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
-// PostForm
+const PostFormContainer = styled.form`
+  width: 100%;
+  padding-top: 12px;
 
-// const PostUploadContainer = styled.article`
-//   position: relative;
-//   min-width: 300px;
-//   width: 100%;
-//   padding-right: 16px;
-//   overflow-y: scroll;
-// `;
-
-// const PostFormContainer = styled.form`
-//   width: 100%;
-//   padding-top: 12px;
-
-//   input {
-//     position: absolute;
-//     left: -10000px;
-//     top: auto;
-//     width: 1px;
-//     height: 1px;
-//     overflow: hidden;
-//     padding: 0;
-//   }
-// `;
+  input {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+  }
+`;
 
 const TextBox = styled.textarea`
   width: 100%;
-  height: 36px;
-  margin-bottom: 16px;
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
+  display: block;
+  padding: 16px 0;
   font-weight: 400;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 1.3;
+  overflow-y: hidden;
+  caret-color: ${props => props.theme.palette["main"]};
+  
+
+  &::placeholder {
+    color: ${props => props.theme.palette["lightGray"]};
+  }
 `;
-// 글자 칸 수 넘어갈 때마다 height값 증가하는 이벤트 잘 모르겠음
 
 const UploadImgIcon = styled.label`
   position: fixed;
@@ -230,7 +263,7 @@ const Item = styled.li`
   min-width: 304px; // 줄어들어도 박스크기에 영향이 가지 않게. min설정
   height: 228px;
   overflow: hidden;
-  border: 0.5px solid #dbdbdb;
+  border: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 export default PostUpload;
