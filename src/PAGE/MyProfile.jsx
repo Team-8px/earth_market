@@ -137,7 +137,8 @@ const MyProfile = () => {
         {posts &&
           posts.map(post => {
             /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
-            const postImages = post.image.split(",");
+            // const postImages = post.image.split(",");
+            // console.log(postImages);
             return (
               <PostContainer key={post.id}>
                 <PostWrapper>
@@ -149,7 +150,7 @@ const MyProfile = () => {
                     />
                     <ContentBox content={post.content}>
                       <Link to={`/post/${post.id}`}>
-                        <ImgContainer>
+                        {/* <ImgContainer>
                           {postImages &&
                             postImages.map((postImage, i) => {
                               return (
@@ -163,7 +164,7 @@ const MyProfile = () => {
                           <ButtonList>
                             <button></button>
                           </ButtonList>
-                        </ImgContainer>
+                        </ImgContainer> */}
                       </Link>
                       <IconBox
                         like={post.heartCount}
