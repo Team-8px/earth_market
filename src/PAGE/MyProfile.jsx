@@ -26,6 +26,9 @@ import prev from "../asset/icon-arrow-left.svg";
 import more from "../asset/icon-more-vertical.svg";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
 
+// 💛 미진 충돌 잡기
+import UserInfo from "../components/UserInfo";
+
 const MyProfile = () => {
   const history = useHistory();
 
@@ -129,7 +132,7 @@ const MyProfile = () => {
             </ButtonWrapper>
           </UserInfoWrapper>
         </UserInfoContainer>
-        <SectionContainer>
+        <ProfileContainer>
           <Product>
             {products &&
               products.map(product => {
@@ -144,8 +147,8 @@ const MyProfile = () => {
                 );
               })}
           </Product>
-        </SectionContainer>
-        <SectionContainer>
+        </ProfileContainer>
+        <ProfileContainer>
           <DisplayButton></DisplayButton>
           {/* 게시글 */}
           {posts &&
@@ -194,7 +197,7 @@ const MyProfile = () => {
                 </PostContainer>
               );
             })}
-        </SectionContainer>
+        </ProfileContainer>
       </LayOut>
 
       <Modal visible={navDialog}>
@@ -253,7 +256,7 @@ const HeaderContainer = styled.div`
   max-width: 100%;
   height: 48px;
   padding: 0 16px;
-  border-bottom: 0.5px solid #dbdbdb;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 const HeaderLink = styled(Link)`
@@ -299,84 +302,18 @@ const MoreBtn = styled.button`
   background-color: inherit;
 `;
 
-// product스타일 컴포넌트
-
-const ProductLayOut = styled.article`
-  margin: 20px auto;
-  width: 358px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  overflow-y: hidden;
-`;
-
-const ProductContainer = styled.ul`
-  display: flex;
-  font-size: 12px;
-  line-height: 12px;
-  overflow-x: scroll;
-`;
-
-const ProductWrapper = styled.li`
-  margin-right: 10px;
-  cursor: pointer;
-`;
-
-const ProductImgWrapper = styled.div`
-  border: 0.5px solid #dbdbdb;
-  border-radius: 8px;
-`;
-
-const ProductImg = styled.img`
-  width: 140px;
-  height: 90px;
-  border-radius: 8px;
-  background-color: #c4c4c4;
-`;
-
-const ProductTitle = styled.h2`
-  font-size: 16px;
-  line-height: 1.2;
-  margin-bottom: 16px;
-  font-weight: 700;
-`;
-
-const TextWrap = styled.figcaption`
-  padding-top: 6px;
-`;
-
-const ProductText = styled.strong`
-  display: block;
-  line-height: 18px;
-  margin-bottom: 4px;
-`;
-
-const ProductPrice = styled.strong`
-  display: block;
-  font-size: 12px;
-  color: #f26e22;
-  font-weight: 700;
-`;
-
-const SectionContainer = styled.section`
+const ProfileContainer = styled.section`
   border-top: 0.5px solid ${props => props.theme.palette["border"]};
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
   background-color: #fff;
   margin-bottom: 6px;
 `;
-// const ProductLayOut = styled.article`
-//   margin: 20px auto;
-//   width: 358px;
-//   display: flex;
-//   justify-content: center;
-//   flex-direction: column;
-//   overflow-y: hidden;
-// `;
+
 
 const UserInfoContainer = styled.header`
   display: flex;
   justify-content: center;
-  border-bottom: 0.5px solid #dbdbdb;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
   background-color: #fff;
   margin-bottom: 6px;
 `;
@@ -403,7 +340,7 @@ const AccountName = styled.strong`
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
   margin-bottom: 16px;
   &::before {
     content: "@";
@@ -414,7 +351,7 @@ const Intro = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
   margin-bottom: 24px;
 `;
 const FollowerWrapper = styled(Link)`
@@ -434,7 +371,7 @@ const FollowerWrapper = styled(Link)`
 
   span {
     font-size: 10px;
-    color: #767676;
+    color: ${props => props.theme.palette["subText"]};
   }
 `;
 
@@ -455,7 +392,7 @@ const FollowingWrapper = styled(Link)`
 
   span {
     font-size: 10px;
-    color: #767676;
+    color: ${props => props.theme.palette["subText"]};
   }
 `;
 

@@ -58,9 +58,9 @@ const ProductUpload = () => {
       </HeaderFieldSet>
       {/* 메인필드 영역 */}
       <MainFieldSet>
-        <Container>
+        {/* <Container> */}
           <SubTitle>이미지 업로드</SubTitle>
-          {/* <ProfileImgWrapper> */}
+          <ProductFormWrapper>
           <Label onChange={previewImage} htmlFor="itemImage">
             <img
               src={productImage}
@@ -77,8 +77,8 @@ const ProductUpload = () => {
               {...register("itemImage")}
             ></input>
           </Label>
-          {/*  </ProfileImgWrapper> */}
-        </Container>
+        </ProductFormWrapper>
+        {/* </Container> */}
         <ProductFormWrapper>
           <label>상품명</label>
           <input
@@ -86,24 +86,27 @@ const ProductUpload = () => {
             type="text"
             {...register("itemName")}
             placeholder="2~10자 이내여야 합니다."
-          />
+            autoComplete="off"
+            spellCheck="false" />
           <label>가격</label>
           <input
             name="price"
             type="text"
             {...register("price")}
             placeholder="숫자만 입력 가능합니다."
-          />
+            autoComplete="off"
+            spellCheck="false" />
           <label>판매 링크</label>
           <input
             name="link"
             type="text"
             {...register("link")}
             placeholder="URL을 입력해 주세요."
-          />
-        </ProductFormWrapper>
-      </MainFieldSet>
-    </Form>
+            autoComplete="off"
+            spellCheck="false" />
+          </ProductFormWrapper>
+        </MainFieldSet>
+      </Form> 
   );
 };
 
@@ -129,7 +132,7 @@ const HeaderContainer = styled.div`
   max-width: 100%;
   height: 48px;
   padding: 0 16px;
-  border-bottom: 0.5px solid #dbdbdb;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 const HeaderLinkImg = styled.img`
@@ -154,11 +157,19 @@ const ProductFormWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    color: ${props => props.theme.palette["black"]};
+    color: ${props => props.theme.palette["main"]};
     line-height: 14px;
     padding-bottom: 8px;
     border: none;
     border-bottom: 1px solid ${props => props.theme.palette["border"]};
+    caret-color: ${props => props.theme.palette["main"]};
+  
+    &::placeholder {
+      color: ${props => props.theme.palette["border"]};
+    }
+    &:focus {
+      border-bottom: 1px solid ${props => props.theme.palette["main"]};
+    }
   }
 `;
 

@@ -41,7 +41,7 @@ const LoginEmail = () => {
           <InputWrapper>
             <label>
               이메일
-              <input name="email" type="email" {...register("email")} />
+              <input name="email" type="email" autoComplete="off" spellCheck="false" {...register("email")} />
             </label>
             <label>
               비밀번호
@@ -55,7 +55,7 @@ const LoginEmail = () => {
           <Button width="322px" size="lg" isButtonStatus={isButtonStatus}>
             로그인
           </Button>
-          <LoginText to="/">이메일로 회원가입</LoginText>
+          <LoginText to="/join/email">이메일로 회원가입</LoginText>
         </MainFieldSet>
       </Form>
     </>
@@ -80,7 +80,7 @@ const InputWrapper = styled.div`
 
   label {
     display: block;
-    color: #767676;
+    color: ${props => props.theme.palette["subText"]};
     font-weight: 500;
     font-size: 12px;
     margin-bottom: 16px;
@@ -90,17 +90,22 @@ const InputWrapper = styled.div`
     width: 100%;
     font-size: 14px;
     color: ${props => props.theme.palette["black"]};
-    /* line-height: 14px; */
     padding: 10px 0 8px;
     border: none;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid ${props => props.theme.palette["border"]};
+    color: ${props => props.theme.palette["main"]};
+    caret-color: ${props => props.theme.palette["main"]};
+
+    &:focus {
+      border-bottom: 1px solid ${props => props.theme.palette["main"]};
+    }
   }
 `;
 
 const LoginText = styled(Link)`
   font-weight: 400;
   font-size: 12px;
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
   margin-top: 20px;
   cursor: pointer;
 
@@ -108,7 +113,7 @@ const LoginText = styled(Link)`
     content: "";
     font-size: 10px;
     margin: 10px;
-    border-right: 1px solid #c4c4c4;
+    border-right: 1px solid ${props => props.theme.palette["lightGray"]};
   }
 `;
 

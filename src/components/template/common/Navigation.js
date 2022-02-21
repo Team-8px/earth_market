@@ -34,7 +34,7 @@ const NavWrap = styled.li`
 const NavListLink = styled(NavLink)`
   display: block;
   font-size: 10px;
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
   padding: 12px 0 6px;
   text-align: center;
   cursor: pointer;
@@ -71,6 +71,9 @@ const NavListLink = styled(NavLink)`
   }
   &.myprofile.on::before {
     background-image: url(${ProfileIconFill});
+  }
+  &:active {
+    color: ${props => props.theme.palette["main"]};
   }
 `;
 

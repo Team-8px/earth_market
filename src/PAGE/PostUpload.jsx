@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 
 // 스타일로직
@@ -63,35 +63,67 @@ const PostUpload = () => {
     // dispatch(createPost(postText, image));
   };
 
+    // 글자 칸 수 넘어갈 때마다 height값 증가하는 이벤트
+    const resizeHeight = useCallback(() => {
+      if (ref === null || ref.current === null) {
+        return;
+      }
+      ref.current.style.height = '10vh';
+      ref.current.style.height = `${ref.current.scrollHeight}px`;
+    }, []);
+    useEffect(() => {
+      if (ref === null || ref.current === null) {
+        return;
+      }
+      ref.current.style.height = '10vh';
+      ref.current.style.height = `${ref.current.scrollHeight}px`;
+    }, []);
+  
+    const ref = useRef(null);
+  
+    useEffect(() => {
+      if (ref === null || ref.current === null) {
+        return;
+      }
+      ref.current.style.height = '10vh';
+      ref.current.style.height = `${ref.current.scrollHeight}px`;
+    }, []);    
+
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      {/* 헤더필드 영역 */}
-      <HeaderFieldSet>
-        <HeaderContainer>
-          <HeaderLinkImg src={PrevBtn} />
-          <Button width="90px" size="ms" color="#fff">
-            저장
-          </Button>
-        </HeaderContainer>
-      </HeaderFieldSet>
-      {/* 메인필드 영역 */}
-      <MainFieldSet>
-        <ProfileImage src={image} />
-        <TextBox
-          name="postText"
-          placeholder={"입력해주세요"}
-          {...register("postText")}
-        />
-        <UploadImgIcon htmlFor="imgUpload" />
-        <label onChange={onChange} htmlFor="profileImg">
-          <input
-            type="file"
-            accept="image/jpg,image/png,image/jpeg,image/gif"
-            name="profileImg"
-            id="profileImg"
-            {...register("profileImg")}
-          ></input>
-        </label>
+    <>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        {/* 헤더필드 영역 */}
+        <HeaderFieldSet>
+          <HeaderContainer>
+            <HeaderLinkImg src={PrevBtn} />
+            <Button width="90px" size="ms" color="#fff">
+              저장
+            </Button>
+          </HeaderContainer>
+        </HeaderFieldSet>
+        {/* 메인필드 영역 */}
+        <MainFieldSet>
+          <ProfileImage src={image} />
+          <TextBox
+            name="postText"
+            placeholder={"게시글 입력하기..."}
+            {...register("postText")}
+            nChange={onChange}
+            ref={ref}
+            onInput={resizeHeight}
+            maxLength="200" />
+        </MainFieldSet>
+      </Form>
+      <PostFormContainer htmlFor="imgUpload">
+        <UploadImgIcon />
+          <label onChange={onChange} htmlFor="profileImg">
+            <input
+              type="file"
+              accept="image/jpg,image/png,image/jpeg,image/gif"
+              name="profileImg"
+              id="profileImg"
+              {...register("profileImg")}/>
+          </label>
         <PostPhotoList></PostPhotoList>
         <PhotoList>
           {myImage &&
@@ -103,8 +135,8 @@ const PostUpload = () => {
               );
             })}
         </PhotoList>
-      </MainFieldSet>
-    </Form>
+      </PostFormContainer>
+    </>
   );
 };
 
@@ -113,9 +145,8 @@ const Form = styled.form`
 `;
 //  메인
 const MainFieldSet = styled.fieldset`
-  margin: 30px auto;
-  max-width: 322px;
-  width: 100%;
+  margin: 20px 16px;
+  display: flex;
 `;
 //  헤더
 const HeaderFieldSet = styled.fieldset`
@@ -130,7 +161,7 @@ const HeaderContainer = styled.div`
   max-width: 100%;
   height: 48px;
   padding: 0 16px;
-  border-bottom: 0.5px solid #dbdbdb;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 const HeaderLinkImg = styled.img`
@@ -145,7 +176,7 @@ const ProfileImage = styled.img`
   height: 42px;
   border-radius: 50%;
   margin-right: 12px;
-  border: 0.5px solid #dbdbdb;
+  border: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 // PostForm
@@ -158,20 +189,20 @@ const ProfileImage = styled.img`
 //   overflow-y: scroll;
 // `;
 
-// const PostFormContainer = styled.form`
-//   width: 100%;
-//   padding-top: 12px;
+const PostFormContainer = styled.div`
+  width: 100%;
+  padding-top: 12px;
 
-//   input {
-//     position: absolute;
-//     left: -10000px;
-//     top: auto;
-//     width: 1px;
-//     height: 1px;
-//     overflow: hidden;
-//     padding: 0;
-//   }
-// `;
+  input {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+  }
+`;
 
 const TextBox = styled.textarea`
   width: 100%;
@@ -229,7 +260,7 @@ const Item = styled.li`
   min-width: 304px; // 줄어들어도 박스크기에 영향이 가지 않게. min설정
   height: 228px;
   overflow: hidden;
-  border: 0.5px solid #dbdbdb;
+  border: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 export default PostUpload;

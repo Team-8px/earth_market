@@ -99,18 +99,21 @@ const ProductUpdate = () => {
               name="itemName"
               type="text"
               {...register("itemName")}
+              autoComplete="off"
               placeholder="2~10자 이내여야 합니다." />
             <label>가격</label>
             <input
               name="price"
               type="text"
               {...register("price")}
+              autoComplete="off"
               placeholder="숫자만 입력 가능합니다." />
             <label>판매 링크</label>
             <input
               name="link"
               type="text"
               {...register("link")}
+              autoComplete="off"
               placeholder="URL을 입력해 주세요." />
           </ProductFormWrapper>
         </MainFieldSet>
@@ -140,7 +143,7 @@ const HeaderContainer = styled.div`
   max-width: 100%;
   height: 48px;
   padding: 0 16px;
-  border-bottom: 0.5px solid #dbdbdb;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 const HeaderLinkImg = styled.img`
@@ -159,7 +162,7 @@ const ProfileImgWrapper = styled.div`
     width: 110px;
     height: 110px;
     margin: 0 auto;
-    border: 1px solid #dbdbdb;
+    border: 1px solid ${props => props.theme.palette["border"]};
     border-radius: 50%;
     cursor: pointer;
 
@@ -203,14 +206,20 @@ const ProductFormWrapper = styled.div`
     margin-bottom: 10px;
     margin-top: 16px;
   }
+
   input {
     width: 100%;
     font-size: 14px;
-    color: ${props => props.theme.palette["black"]};
+    color: ${props => props.theme.palette["main"]};
     line-height: 14px;
     padding-bottom: 8px;
     border: none;
     border-bottom: 1px solid ${props => props.theme.palette["border"]};
+    caret-color: ${props => props.theme.palette["main"]};
+
+    &::placeholder {
+      color: ${props => props.theme.palette["border"]};
+    }
   }
 `;
 

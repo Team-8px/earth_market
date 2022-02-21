@@ -16,11 +16,13 @@ const ProductContainer = styled.ul`
 
   ::-webkit-scrollbar {
     height: 8px;
+    /* transition: background 0.3s ease; */
   }
 
   &:hover::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: ${theme.palette["lightMain"]};
+    /* background: ${theme.palette["lightMain"]}; */
+    background: rgba(0, 0, 0, 0.3);
   }
 `;
 

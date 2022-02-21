@@ -5,31 +5,27 @@ import { useForm } from "react-hook-form";
 import { joinMembership } from "../actions/userActions";
 import { imageUploadsHandler } from "../util/imageUploads";
 //스타일
-
-import EllipseImg from "../asset/Ellipse 6.png";
 import ProfileForm from "../components/module/form/ProfileForm";
 import ProfileUpload from "../components/module/profile/ProfileIUpload";
-import LoginTitle, {
-  SubTitleTitle,
-} from "../components/module/title/LoginTitle";
 
-import LoginTitle, { SubTitle } from "../components/module/title/LoginTitle";
 import { Button } from "../components/module/button/button";
-import Upload from "../asset/upload-file.png";
+import Upload from "../asset/upload-file.svg";
 // import LoginTitle from "../components/module/title/LoginTitle";
 import { updateUserProfile } from "../actions/userActions";
 import ProfileImg from "../asset/icon/basic-profile.svg";
 import theme from "../styles/theme";
 
+// 💛미진 충돌 잡기 ( 없어도 되는지 확인 )
+import LoginTitle, 
+  {SubTitleTitle, } from "../components/module/title/LoginTitle";
+import { SubTitle } from "../components/module/title/LoginTitle";
+
+import RegisterForm from "../components/module/form/RegisterForm";
+
+
 const JoinProfile = () => {
-
-  const [isButtonStatus, setIsButtonStatus] = useState(true);
-
-  const [isPreviewImage, setIsPreviewImage] = useState(true);
-
   const [isButtonStatus, setIsButtonStatus] = useState(false);
   const [nextPage, setNextPage] = useState(false);
-
 
   const nextPageHandler = () => {
     setNextPage(true);
@@ -43,7 +39,6 @@ const JoinProfile = () => {
     const nowSelectImageList = e.target.files;
     const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
     setMyImage(nowImageUrl);
-    setIsPreviewImage(false);
   };
 
   useEffect(() => {
@@ -69,64 +64,20 @@ const JoinProfile = () => {
     <Form onSubmit={handleSubmit(onSubmit)}>
       {nextPage ? (
         <MainFieldSet>
-          <LoginTitle>프로필 설정</LoginTitle>
-          <SubTitle />
+          <Title>
+            프로필 설정
+            <SubText>나중에 언제든지 변경할 수 있습니다.</SubText>
+          </Title>
           <ProfileImgWrapper>
             <label onChange={previewImage} htmlFor="profileImg">
-              {/* 조건부 렌더링 */}
-              <img src={myImage} alt="프로필 사진" />
-              <input
-                type="file"
-                accept="image/jpg,image/png,image/jpeg,image/gif"
-                name="profileImg"
-                id="profileImg"
-                {...register("profileImg")}
-              />
-
-            </EmailWrapper>
-            <PwWrapper>
-              <label>비밀번호</label>
-              <input
-                name="password"
-                type="password"
-                placeholder="비밀번호를 설정해 주세요."
-                {...register("password")}
-              />
-            </PwWrapper>{" "}
-            <Button
-              width="322px"
-              size="lg"
-              off
-              onClick={() => setIsButtonStatus(false)}
-            >
-              다음
-            </Button>
-          </MainFieldSet>
-        ) : (
-          <MainFieldSet>
-            <LoginTitle>
-              프로필 설정
-              <SubTitleTitle />
-            </LoginTitle>
-            <ProfileImgWrapper>
-              <label onChange={previewImage} htmlFor="profileImg">
-                <img
-                  src={isPreviewImage ? EllipseImg : myImage}
-                  alt="프로필 사진"
-                />
+                <img src={myImage} alt="프로필 사진" className="ir"/>
                 <input
                   type="file"
                   accept="image/jpg,image/png,image/jpeg,image/gif"
                   name="profileImg"
                   id="profileImg"
-                  {...register("profileImg")}
-                ></input>
+                  {...register("profileImg")} />
               </label>
-            </ProfileImgWrapper>
-            <ProfileFormWrapper>
-              <label>사용자 이름</label>
-
-            </label>
           </ProfileImgWrapper>
           <InputWrapper>
             <label>
@@ -135,6 +86,7 @@ const JoinProfile = () => {
                 name="username"
                 type="text"
                 placeholder="2~10자 이내여야 합니다."
+                autoComplete="off"
                 {...register("username")}
               />
             </label>
@@ -144,6 +96,7 @@ const JoinProfile = () => {
                 name="accountname"
                 type="text"
                 placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
+                autoComplete="off"
                 {...register("accountname")}
               />
             </label>
@@ -153,6 +106,7 @@ const JoinProfile = () => {
                 name="intro"
                 type="text"
                 placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
+                autoComplete="off"
                 {...register("intro")}
               />
             </label>
@@ -163,25 +117,26 @@ const JoinProfile = () => {
         </MainFieldSet>
       ) : (
         <MainFieldSet>
-          <LoginTitle>이메일로 회원가입</LoginTitle>
-          <EmailWrapper>
-            <label>이메일</label>
+          <Title>이메일로 회원가입</Title>
+          <InputWrapper>
+            <label>이메일
             <input
               name="email"
               type="email"
               placeholder="이메일 주소를 입력해 주세요."
+              autoComplete="off"
               {...register("email")}
             />
-          </EmailWrapper>
-          <PwWrapper>
-            <label>비밀번호</label>
+            </label>
+            <label>비밀번호
             <input
               name="password"
               type="password"
               placeholder="비밀번호를 설정해 주세요."
               {...register("password")}
             />
-          </PwWrapper>{" "}
+            </label>
+          </InputWrapper>{" "}
           <Button
             width="322px"
             size="lg"
@@ -213,7 +168,7 @@ const InputWrapper = styled.div`
 
   label {
     display: block;
-    color: #767676;
+    color: ${props => props.theme.palette["subText"]};
     font-weight: 500;
     font-size: 12px;
     margin-bottom: 16px;
@@ -222,14 +177,18 @@ const InputWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    color: ${props => props.theme.palette["black"]};
+    color: ${props => props.theme.palette["main"]};
     line-height: 14px;
     padding: 10px 0 8px;
     border: none;
     border-bottom: 1px solid #dbdbdb;
-
+    caret-color: ${props => props.theme.palette["main"]};
+    
     &::placeholder {
       color: ${theme.palette["border"]};
+    }
+    &:focus {
+      border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
   }
 `;
@@ -291,11 +250,11 @@ const EmailWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    color: #dbdbdb;
+    color: ${props => props.theme.palette["border"]};
     line-height: 14px;
     padding-bottom: 8px;
     border: none;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid ${props => props.theme.palette["border"]};
   }
 `;
 
@@ -306,7 +265,7 @@ const PwWrapper = styled.div`
 
   label {
     display: block;
-    color: #767676;
+    color: ${props => props.theme.palette["subText"]};
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
@@ -315,12 +274,28 @@ const PwWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    color: #dbdbdb;
+    color: ${props => props.theme.palette["main"]};
     line-height: 14px;
     padding-bottom: 8px;
     border: none;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid ${props => props.theme.palette["border"]};
   }
+`;
+
+const Title = styled.h2`
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+`;
+
+const SubText = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+  color: ${props => props.theme.palette["subText"]};
+  line-height: 14px;
+  margin-top: 12px;
+  text-align: center;
 `;
 
 export default JoinProfile;

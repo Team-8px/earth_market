@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getUserMyProfile } from "../actions/userActions";
 import { getPost } from "../actions/postActions";
 import {
@@ -28,6 +28,9 @@ import more from "../asset/icon-more-vertical.svg";
 import styled, { css } from "styled-components";
 import dayjs from "dayjs";
 import { ReplyBox, CommentList } from "../components/module/post/ReplyBox";
+import ProfileIcon from "../asset/icon/basic-profile.svg";
+import prev from "../asset/icon-arrow-left.svg";
+
 const PostView = () => {
   const dispatch = useDispatch();
 
@@ -89,9 +92,26 @@ const PostView = () => {
   const isChatDialog = () => setChatDialog(!chatDialog);
   const isChatAlert = () => setChatAlert(!chatAlert);
 
+  // 🕹 네비게이션 Modal & Alert
+  const [navDialog, setNavDialog] = useState(false);
+  const [navAlert, setNavAlert] = useState(false);
+  const isNavDialog = () => setNavDialog(!navDialog);
+  const isNavAlert = () => setNavAlert(!navAlert);
+
   return (
     <>
-      <HeaderHome />
+      {/* 헤더 */}
+      <HeaderLayOut>
+        <HeaderContainer>
+          <HeaderLink to="/to">
+            <img src={prev} alt="이전 페이지 버튼" />
+          </HeaderLink>
+          <HeaderLink to="/to">
+            <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
+          </HeaderLink>
+        </HeaderContainer>
+      </HeaderLayOut>
+      {/* <HeaderHome /> */}
       <LayOut>
         <Container>
           {/* 유저 인포 */}
@@ -133,21 +153,22 @@ const PostView = () => {
             })}
         </CommentList>
         {/* 댓글 생성 */}
-        <CommentContainer onSubmit={handleSubmit(onSubmit)}>
-          <CommentLayOut>
-            <ProfileLinkImg />
-            <CommentLabel>
-              댓글 입력하기
-              <CommentInput
-                name="comment"
-                type="text"
-                placeholder="댓글 입력하기"
-                {...register("comment")}
-              />
-            </CommentLabel>
-            <CommentButton>게시</CommentButton>
-          </CommentLayOut>
-        </CommentContainer>
+        <SubmitChatLayOut>
+        <SubmitChatContainer onSubmit={handleSubmit(onSubmit)} autocomplete="new-password">
+        <ProfileLinkImg src={ProfileIcon} alt="프로필"/>
+        <SubmitChatLabel>
+          댓글 입력하기
+          <SubmitChatInput 
+            name="comment"
+            type="text"
+            placeholder="댓글 입력하기"
+            autoComplete="off"
+            {...register("comment")}
+            />
+        </SubmitChatLabel>
+        <SubmitChatButton>게시</SubmitChatButton>
+        </SubmitChatContainer>
+    </SubmitChatLayOut>
       </LayOut>
 
       {/* 게시글 Modal */}
@@ -176,6 +197,35 @@ const PostView = () => {
   );
 };
 
+const HeaderLayOut = styled.header`
+  position: sticky;
+  width: 100%;
+  height: 47.5px;
+  min-width: 390px;
+  top: 0;
+  background-color: #fff;
+  z-index: 10;
+`;
+
+const HeaderContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
+`;
+
+const HeaderLink = styled(Link)`
+  width: 22px;
+  height: 22px;
+  border: none;
+  /* margin-right: 10px; */
+  cursor: pointer;
+`;
+
 const LayOut = styled.main`
   ${props => props.theme.common.flexCenterColumn}
   ${props =>
@@ -186,22 +236,19 @@ const LayOut = styled.main`
   position: fixed;
   height: calc(100% - 108px);
   overflow-y: scroll;
-  min-width: 390px;
   width: 100%;
   min-width: 100%;
-  height: 100%;
-  margin-top: 48px;
 `;
 
 const Container = styled.article`
   position: relative;
   max-width: 358px;
   width: 100%;
-  margin-bottom: 40px;
+  padding: 20px 0 24px;
 `;
 const MoreBtn = styled.button`
   position: absolute;
-  top: 4px;
+  top: 24px;
   right: 0;
   width: 18px;
   height: 18px;
@@ -209,55 +256,58 @@ const MoreBtn = styled.button`
   background-color: inherit;
 `;
 
-const CommentLayOut = styled.section`
-  position: fixed;
-  width: 0 auto;
-  left: 0;
-  bottom: 0;
-  min-width: 390px;
-  width: 100%;
-  padding: 12px 0;
-  border-style: none;
-  border-top: 0.5px solid #dbdbdb;
-  background-color: #fff;
-`;
-
-const CommentContainer = styled.form`
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  font-size: 14px;
-`;
-
 const ProfileLinkImg = styled.img`
   width: 36px;
-  cursor: pointer;
 `;
 
-const CommentLabel = styled.label`
-  display: block;
-  width: 100%;
-  font-size: 1px;
-  color: transparent;
-`;
+const SubmitChatLayOut = styled.section `
+position: fixed;
+left: 0;
+bottom: 0;
+min-width: 390px;
+width: 100%;
+border-style: none;
+border-top: 0.5px solid ${props => props.theme.palette["border"]};
+background-color: #fff;
+`
 
-const CommentInput = styled.input`
-  display: block;
-  border-style: none;
-  margin-left: 16px;
-  &::placeholder {
-    color: #c4c4c4;
-  }
-`;
+const SubmitChatContainer = styled.form `
+position: relative;
+display: flex;
+align-items: center;
+max-width: 100%;
+height: 60px;
+padding: 0 16px;
+`
 
-const CommentButton = styled.button`
-  width: 30px;
-  border-style: none;
-  margin-right: 4px;
-  color: #c4c4c4;
-  &:focus {
-    color: #f26e22;
-  }
-`;
+// 웹 접근성을 높이는 방법입니다.
+const SubmitChatLabel = styled.label `
+display: block;
+width: 100%;
+font-size: 3px;
+color: transparent;
+margin: 0 16px;
+`
+
+const SubmitChatInput = styled.input `
+display: block;
+width: 100%;
+border-style: none;
+
+&::placeholder {
+  color: ${props => props.theme.palette["border"]};
+}
+`
+
+const SubmitChatButton = styled.button `
+display: block;
+width: 30px; 
+border-style: none;
+cursor: pointer;
+color: ${props => props.theme.palette["lightGray"]};
+&:focus {
+  color: ${props => props.theme.palette["main"]};
+}
+`
 
 export default PostView;

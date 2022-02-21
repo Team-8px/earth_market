@@ -98,6 +98,7 @@ const ProfileUpdate = () => {
               name="username"
               type="text"
               placeholder="2~10자 이내여야 합니다."
+              autoComplete="off"
               {...register("username")}
             />
           </label>
@@ -107,6 +108,7 @@ const ProfileUpdate = () => {
               name="accountname"
               type="text"
               placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
+              autoComplete="off"
               {...register("accountname")}
             />
           </label>
@@ -116,6 +118,7 @@ const ProfileUpdate = () => {
               name="intro"
               type="text"
               placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
+              autoComplete="off"
               {...register("intro")}
             />
           </label>
@@ -148,7 +151,7 @@ const HeaderContainer = styled.div`
   max-width: 100%;
   height: 48px;
   padding: 0 16px;
-  border-bottom: 0.5px solid #dbdbdb;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 const HeaderLinkImg = styled.img`
@@ -167,7 +170,7 @@ const ProfileImgWrapper = styled.div`
     width: 110px;
     height: 110px;
     margin: 0 auto;
-    border: 1px solid #dbdbdb;
+    border: 1px solid ${props => props.theme.palette["border"]};
     border-radius: 50%;
     cursor: pointer;
 
@@ -178,7 +181,7 @@ const ProfileImgWrapper = styled.div`
       bottom: 0;
       width: 36px;
       height: 36px;
-      background: #c4c4c4 url(${Upload}) no-repeat center / 36px 36px;
+      background: ${props => props.theme.palette["lightGray"]} url(${Upload}) no-repeat center / 36px 36px;
       border-radius: 50%;
     }
 
@@ -214,12 +217,20 @@ const ProfileFormWrapper = styled.div`
   input {
     width: 100%;
     font-size: 14px;
-    color: ${props => props.theme.palette["black"]};
+    color: ${props => props.theme.palette["main"]};
     line-height: 14px;
     padding-bottom: 8px;
     border: none;
     border-bottom: 1px solid ${props => props.theme.palette["border"]};
     margin-top: 10px;
+    caret-color: ${props => props.theme.palette["main"]};
+
+    &:focus {
+      border-bottom: 1px solid ${props => props.theme.palette["main"]};
+    }
+    &::placeholder {
+      color: ${props => props.theme.palette["border"]};
+    }
   }
 `;
 

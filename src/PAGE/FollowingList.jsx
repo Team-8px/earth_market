@@ -110,7 +110,7 @@ const UserImgWrapper = styled(Link)`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 0.5px solid #dbdbdb;
+  border: 0.5px solid ${props => props.theme.palette["border"]};
   font-size: 10px;
   overflow: hidden;
 
@@ -136,7 +136,7 @@ const UserName = styled.strong`
 `;
 
 const UserIntro = styled.strong`
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
   font-size: 12px;
   line-height: 15px;
 `;

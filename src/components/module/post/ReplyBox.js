@@ -4,7 +4,7 @@ import EllipseImg from "../../../asset/Ellipse-1.png";
 import MoreButton from "../../../asset/icon/icon-more-vertical.png";
 const CommentLayout = styled.section`
   width: 100%;
-  padding: 20px 16px 0;
+  padding: 20px 16px;
   box-sizing: border-box;
   border-top: 1px solid #dbdbdb;
 `;
