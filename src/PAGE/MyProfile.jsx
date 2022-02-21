@@ -28,6 +28,7 @@ import more from "../asset/icon-more-vertical.svg";
 
 const MyProfile = () => {
   const history = useHistory();
+
   const dispatch = useDispatch();
   const { accountId } = useParams();
   //상품 리스트 배열
@@ -95,10 +96,10 @@ const MyProfile = () => {
         {/* 헤더 */}
         <HeaderLayOut>
           <HeaderContainer>
-            <HeaderLink>
+            <HeaderLink to="/to">
               <img src={prev} alt="이전 페이지 버튼" />
             </HeaderLink>
-            <HeaderLink>
+            <HeaderLink to="/to">
               <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
             </HeaderLink>
           </HeaderContainer>
@@ -128,7 +129,6 @@ const MyProfile = () => {
             </ButtonWrapper>
           </UserInfoWrapper>
         </UserInfoContainer>
-        {/* <Product></Product>   */}
         <SectionContainer>
           <Product>
             {products &&
@@ -151,7 +151,8 @@ const MyProfile = () => {
           {posts &&
             posts.map(post => {
               /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
-              const postImages = post.image.split(",");
+              const postImages = post?.image?.split(",");
+
               return (
                 <PostContainer key={post.id}>
                   <PostWrapper>
@@ -299,6 +300,7 @@ const MoreBtn = styled.button`
 `;
 
 // product스타일 컴포넌트
+
 const ProductLayOut = styled.article`
   margin: 20px auto;
   width: 358px;
@@ -355,16 +357,10 @@ const ProductPrice = styled.strong`
   color: #f26e22;
   font-weight: 700;
 `;
-// const UserInfoContainer = styled.header`
-//   display: flex;
-//   justify-content: center;
-//   border-bottom: 0.5px solid #dbdbdb;
-// `;
 
 const SectionContainer = styled.section`
   border-top: 0.5px solid ${props => props.theme.palette["border"]};
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
-
   background-color: #fff;
   margin-bottom: 6px;
 `;

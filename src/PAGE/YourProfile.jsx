@@ -19,8 +19,11 @@
 // import DisplayButton from "../components/module/profile/DisplayButton";
 // import more from "../asset/icon-more-vertical.svg";
 // import Header from "../components/template/common/Header";
+// import UserInfo from "../components/UserInfo";
 // import { ProductList, Product } from "../components/module/product/Product";
 // import dayjs from "dayjs";
+// import { ProfileImage } from "../components/common/image/ProfileImageStyle";
+// import { Button } from "../components/module/button/button";
 
 // // import Product
 // const YourProfile = () => {
@@ -85,10 +88,11 @@
 //     <>
 //       <Header />
 //       <LayOut>
-//         {/* 프로필 */}
-//         <YourUserInfoContainer>
-//           <YourUserInfoWrapper>
-//             <ProfileImage src={profileImage} alt="프로필 사진" />
+//         <UserInfoContainer>
+//           <UserInfoWrapper>
+//             <ProfileImage>
+//               <img src={image} alt="프로필 사진" />
+//             </ProfileImage>
 //             <UserName>{username}</UserName>
 //             <AccountName>{accountname}</AccountName>
 //             <Intro>{intro}</Intro>
@@ -101,15 +105,16 @@
 //               <span>following</span>
 //             </FollowingWrapper>
 //             <ButtonWrapper>
-//               <SmaillIconButton icon={chatImage} />
-//               <Button size="md" width="120px" color="bg">
-//                 언팔로우
+//               <Button size="md" width="120px">
+//                 프로필 수정
 //               </Button>
-//               <SmaillIconButton icon={shareImage} />
+//               <Button size="md" width="120px">
+//                 상품 등록
+//               </Button>
 //             </ButtonWrapper>
-//           </YourUserInfoWrapper>
-//         </YourUserInfoContainer>
-//         {/* <Product></Product>   */}
+//           </UserInfoWrapper>
+//         </UserInfoContainer>
+
 //         <ProductLayOut>
 //           <Product>
 //             {products &&
@@ -318,14 +323,15 @@
 //   font-weight: 700;
 // `;
 
-// const YourUserInfoContainer = styled.header`
+// const UserInfoContainer = styled.header`
 //   display: flex;
 //   justify-content: center;
 //   border-bottom: 0.5px solid #dbdbdb;
 //   background-color: #fff;
 //   margin-bottom: 6px;
 // `;
-// const YourUserInfoWrapper = styled.div`
+
+// const UserInfoWrapper = styled.div`
 //   position: relative;
 //   display: flex;
 //   flex-direction: column;
@@ -362,6 +368,7 @@
 //   color: #767676;
 //   margin-bottom: 24px;
 // `;
+
 // const FollowerWrapper = styled(Link)`
 //   position: absolute;
 //   left: 56px;
