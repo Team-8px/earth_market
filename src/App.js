@@ -19,6 +19,7 @@ import PostViewKHK from "./PAGE/PostView";
 import ProductUpdateKHK from "./PAGE/ProductUpdate";
 import SetMemberShipKHK from "./PAGE/JoinProfile";
 import YourProfile from "./PAGE/YourProfile";
+import SplashScreen from "./PAGE/SplashScreen";
 
 const App = () => {
   return (
@@ -70,6 +71,8 @@ const App = () => {
               component={ProductUpdateKHK}
               exact
             />
+            {/* splash */}
+            <Route path="/splash" component={SplashScreen} exact />
           </Switch>
           <NavigationBar />
         </AppliCation>
