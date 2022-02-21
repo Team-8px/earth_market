@@ -24,6 +24,7 @@ import { ProfileImage } from "../components/common/image/ProfileImageStyle";
 import { Button } from "../components/module/button/button";
 import prev from "../asset/icon-arrow-left.svg";
 import more from "../asset/icon-more-vertical.svg";
+import Navigation from "../components/template/common/Navigation";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
 
 const MyProfile = () => {
@@ -90,10 +91,10 @@ const MyProfile = () => {
         {/* 헤더 */}
         <HeaderLayOut>
           <HeaderContainer>
-            <HeaderLink to="/to">
+            <HeaderLink onClick={() => history.goBack()}>
               <img src={prev} alt="이전 페이지 버튼" />
             </HeaderLink>
-            <HeaderLink to="/to">
+            <HeaderLink>
               <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
             </HeaderLink>
           </HeaderContainer>
@@ -114,12 +115,16 @@ const MyProfile = () => {
               <span>following</span>
             </FollowingWrapper>
             <ButtonWrapper>
-              <Button size="md" width="120px">
-                프로필 수정
-              </Button>
-              <Button size="md" width="120px">
-                상품 등록
-              </Button>
+              <Link to="/profile/my/update">
+                <Button size="md" width="120px">
+                  프로필 수정
+                </Button>
+              </Link>
+              <Link to="/product/upload">
+                <Button size="md" width="120px">
+                  상품 등록
+                </Button>
+              </Link>
             </ButtonWrapper>
           </UserInfoWrapper>
         </UserInfoContainer>
@@ -164,7 +169,16 @@ const MyProfile = () => {
                                 return (
                                   <ImgList key={i}>
                                     <h3>{postImage}</h3>
-                                    <img src={postImage} />
+                                    <img
+                                      src={postImage}
+                                      onError={event =>
+                                        (event.target.style.display = "none")
+                                      }
+                                      onLoad={event =>
+                                        (event.target.style.display =
+                                          "inline-block")
+                                      }
+                                    />
                                   </ImgList>
                                 );
                               })}
@@ -191,6 +205,8 @@ const MyProfile = () => {
         </SectionContainer>
       </LayOut>
 
+      <Navigation />
+
       <Modal visible={navDialog}>
         <ListBtn isDialog={isNavDialog}>설정 및 개인정보</ListBtn>
         <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
@@ -201,7 +217,6 @@ const MyProfile = () => {
         <AlertBox isAlert={isNavAlert}>예</AlertBox>
         <AlertBox isAlert={isNavAlert}>아니요</AlertBox>
       </Alert>
-
       {/* Product Modal */}
       <Modal visible={productDialog}>
         <AlertBtn isAlert={isProductAlert}>삭제</AlertBtn>
@@ -213,7 +228,6 @@ const MyProfile = () => {
         <AlertBox isAlert={isProductAlert}>취소</AlertBox>
         <AlertBox isAlert={isProductAlert}>삭제</AlertBox>
       </Alert>
-
       {/* Post Modal */}
       <Modal visible={postDialog}>
         <AlertBtn isAlert={isPostAlert}>삭제</AlertBtn>
@@ -250,7 +264,7 @@ const HeaderContainer = styled.div`
   border-bottom: 0.5px solid #dbdbdb;
 `;
 
-const HeaderLink = styled(Link)`
+const HeaderLink = styled.div`
   width: 22px;
   height: 22px;
   border: none;

@@ -24,6 +24,7 @@ import { ProfileImage } from "../components/common/image/ProfileImageStyle";
 import { Button } from "../components/module/button/button";
 import prev from "../asset/icon-arrow-left.svg";
 import more from "../asset/icon-more-vertical.svg";
+import Navigation from "../components/template/common/Navigation";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
 
 const YourProfile = () => {
@@ -188,6 +189,8 @@ const YourProfile = () => {
         </SectionContainer>
       </LayOut>
 
+      <Navigation />
+
       <Modal visible={navDialog}>
         <ListBtn isDialog={isNavDialog}>설정 및 개인정보</ListBtn>
         <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
@@ -198,7 +201,6 @@ const YourProfile = () => {
         <AlertBox isAlert={isNavAlert}>예</AlertBox>
         <AlertBox isAlert={isNavAlert}>아니요</AlertBox>
       </Alert>
-
       {/* Product Modal */}
       <Modal visible={productDialog}>
         <AlertBtn isAlert={isProductAlert}>삭제</AlertBtn>
@@ -210,7 +212,6 @@ const YourProfile = () => {
         <AlertBox isAlert={isProductAlert}>취소</AlertBox>
         <AlertBox isAlert={isProductAlert}>삭제</AlertBox>
       </Alert>
-
       {/* Post Modal */}
       <Modal visible={postDialog}>
         <AlertBtn isAlert={isPostAlert}>삭제</AlertBtn>

@@ -9,6 +9,7 @@ import {
 import styled from "styled-components";
 import { HeaderFollow } from "../components/template/common/Header";
 import { Button } from "../components/module/button/button";
+import Navigation from "../components/template/common/Navigation";
 
 const FollowerList = () => {
   const dispatch = useDispatch();
@@ -51,13 +52,11 @@ const FollowerList = () => {
               return (
                 <UserItem key={followerUser?._id}>
                   <UserImgWrapper>
-
                     <Link to={`/profile/you/${followerUser.accountname}`}>
                       <img src={followerUser.image} alt="프로필 사진" />
                     </Link>
 
                     <img src={followerUser.image} alt="프로필 사진" />
-
                   </UserImgWrapper>
                   <UserInfoWrapper>
                     <UserName>{followerUser.username}</UserName>
@@ -66,11 +65,9 @@ const FollowerList = () => {
                   {followerUser.isfollow ? (
                     <Button
                       onClick={() => onUnfollowClick(followerUser?.accountname)}
-
                       isButtonStatus={followerUser.isfollow}
                       width="56px"
                       size="sm"
-
                       width="56px"
                       size="sm"
                       outline
@@ -92,6 +89,7 @@ const FollowerList = () => {
             })}
         </UserList>
       </LayOut>
+      <Navigation />
     </>
   );
 };

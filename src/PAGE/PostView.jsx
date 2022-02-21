@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { getUserMyProfile } from "../actions/userActions";
 import { getPost } from "../actions/postActions";
 import {
@@ -24,11 +24,14 @@ import { Alert, AlertBox } from "../components/module/alert/Alert";
 import { HeaderHome } from "../components/template/common/Header";
 import IconBox from "../components/module/post/IconBox";
 import Date from "../components/module/post/Date";
-import more from "../asset/icon-more-vertical.svg";
 import styled, { css } from "styled-components";
 import dayjs from "dayjs";
 import { ReplyBox, CommentList } from "../components/module/post/ReplyBox";
+import prev from "../asset/icon-arrow-left.svg";
+import more from "../asset/icon-more-vertical.svg";
+
 const PostView = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const { register, handleSubmit, reset } = useForm();
@@ -79,11 +82,17 @@ const PostView = () => {
     dispatch(getCommentList(postId));
   }, [dispatch, postId, craeteCommentId, deleteCommentId]);
 
+  // 🕹 네비게이션 Modal & Alert
+  const [navDialog, setNavDialog] = useState(false);
+  const [navAlert, setNavAlert] = useState(false);
+  const isNavDialog = () => setNavDialog(!navDialog);
+  const isNavAlert = () => setNavAlert(!navAlert);
+  // 🏞 게시글 모달 Modal & Alert
   const [postDialog, setPostDialog] = useState(false);
   const [postAlert, setPostAlert] = useState(false);
   const isPostDialog = () => setPostDialog(!postDialog);
   const isPostAlert = () => setPostAlert(!postAlert);
-
+  // 🏞 댓글 모달 Modal & Alert
   const [chatDialog, setChatDialog] = useState(false);
   const [chatAlert, setChatAlert] = useState(false);
   const isChatDialog = () => setChatDialog(!chatDialog);
@@ -91,7 +100,17 @@ const PostView = () => {
 
   return (
     <>
-      <HeaderHome />
+      {/* 헤더 */}
+      <HeaderLayOut>
+        <HeaderContainer>
+          <HeaderLink onClick={() => history.goBack()}>
+            <img src={prev} alt="이전 페이지 버튼" />
+          </HeaderLink>
+          <HeaderLink>
+            <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
+          </HeaderLink>
+        </HeaderContainer>
+      </HeaderLayOut>
       <LayOut>
         <Container>
           {/* 유저 인포 */}
@@ -150,6 +169,17 @@ const PostView = () => {
         </CommentContainer>
       </LayOut>
 
+      <Modal visible={navDialog}>
+        <ListBtn isDialog={isNavDialog}>설정 및 개인정보</ListBtn>
+        <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
+        <ListBtn isDialog={isNavDialog}>모달창 닫기</ListBtn>
+      </Modal>
+      {/* Nav Alert */}
+      <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
+        <AlertBox isAlert={isNavAlert}>예</AlertBox>
+        <AlertBox isAlert={isNavAlert}>아니요</AlertBox>
+      </Alert>
+
       {/* 게시글 Modal */}
       <Modal visible={postDialog}>
         <AlertBtn isAlert={isPostAlert}>신고하기</AlertBtn>
@@ -175,6 +205,35 @@ const PostView = () => {
     </>
   );
 };
+
+const HeaderLayOut = styled.header`
+  position: sticky;
+  width: 100%;
+  height: 47.5px;
+  min-width: 390px;
+  top: 0;
+  background-color: #fff;
+  z-index: 10;
+`;
+
+const HeaderContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-bottom: 0.5px solid #dbdbdb;
+`;
+
+const HeaderLink = styled.div`
+  width: 22px;
+  height: 22px;
+  border: none;
+  /* margin-right: 10px; */
+  cursor: pointer;
+`;
 
 const LayOut = styled.main`
   ${props => props.theme.common.flexCenterColumn}
