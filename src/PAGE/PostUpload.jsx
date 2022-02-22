@@ -1,5 +1,6 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 // 스타일로직
 import { Button } from "../components/module/button/button";
@@ -22,13 +23,15 @@ const PostUpload = () => {
   // 이미지 업로드 갯수 제한
   const MAX_UPLOAD = 3;
 
+  const history = useHistory();
+
   const [myImage, setMyImage] = useState([]);
 
   const { register, handleSubmit } = useForm();
 
   const dispatch = useDispatch();
 
-  const { image } = useSelector(state => state.userReadProfile);
+  const { image } = useSelector(state => state?.userReadProfile);
 
   useEffect(() => {
     //나의 프로필 정보 얻기
@@ -59,35 +62,35 @@ const PostUpload = () => {
     const fileDatas = myImage;
     //console.log(fileDatas);
     const image = await multipleImageUploadsHandler(fileDatas);
-    console.log(data, "입력데이터");
-    // dispatch(createPost(postText, image));
+    console.log(data, "입력데이터 postUpload");
+    dispatch(createPost(postText, image));
   };
 
-    // 글자 칸 수 넘어갈 때마다 height값 증가하는 이벤트
-    const resizeHeight = useCallback(() => {
-      if (ref === null || ref.current === null) {
-        return;
-      }
-      ref.current.style.height = '10vh';
-      ref.current.style.height = `${ref.current.scrollHeight}px`;
-    }, []);
-    useEffect(() => {
-      if (ref === null || ref.current === null) {
-        return;
-      }
-      ref.current.style.height = '10vh';
-      ref.current.style.height = `${ref.current.scrollHeight}px`;
-    }, []);
-  
-    const ref = useRef(null);
-  
-    useEffect(() => {
-      if (ref === null || ref.current === null) {
-        return;
-      }
-      ref.current.style.height = '10vh';
-      ref.current.style.height = `${ref.current.scrollHeight}px`;
-    }, []);    
+  // 글자 칸 수 넘어갈 때마다 height값 증가하는 이벤트
+  const resizeHeight = useCallback(() => {
+    if (ref === null || ref.current === null) {
+      return;
+    }
+    ref.current.style.height = "10vh";
+    ref.current.style.height = `${ref.current.scrollHeight}px`;
+  }, []);
+  useEffect(() => {
+    if (ref === null || ref.current === null) {
+      return;
+    }
+    ref.current.style.height = "10vh";
+    ref.current.style.height = `${ref.current.scrollHeight}px`;
+  }, []);
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (ref === null || ref.current === null) {
+      return;
+    }
+    ref.current.style.height = "10vh";
+    ref.current.style.height = `${ref.current.scrollHeight}px`;
+  }, []);
 
   return (
     <>
@@ -95,7 +98,7 @@ const PostUpload = () => {
         {/* 헤더필드 영역 */}
         <HeaderFieldSet>
           <HeaderContainer>
-            <HeaderLinkImg src={PrevBtn} />
+            <HeaderLinkImg onClick={() => history.goBack()} src={PrevBtn} />
             <Button width="90px" size="ms" color="#fff">
               저장
             </Button>
@@ -104,33 +107,36 @@ const PostUpload = () => {
         {/* 메인필드 영역 */}
         <MainFieldSet>
           <ProfileImage src={image} />
-          <TextBox
-            name="postText"
-            placeholder={"게시글 입력하기..."}
-            {...register("postText")}
-            nChange={onChange}
-            ref={ref}
-            onInput={resizeHeight}
-            maxLength="200" />
+          <TextBox {...register("postText")} htmlFor="postText">
+            <textarea
+              type="text"
+              name="postText"
+              id="postText"
+              placeholder={"게시글 입력하기..."}
+              ref={ref}
+              onInput={resizeHeight}
+              maxLength="200"
+            />
+          </TextBox>
         </MainFieldSet>
       </Form>
       <PostFormContainer htmlFor="imgUpload">
-        <UploadImgIcon />
-          <label onChange={onChange} htmlFor="profileImg">
-            <input
-              type="file"
-              accept="image/jpg,image/png,image/jpeg,image/gif"
-              name="profileImg"
-              id="profileImg"
-              {...register("profileImg")}/>
-          </label>
+        <UploadImgIcon onChange={onChange} htmlFor="profileImg">
+          <input
+            type="file"
+            accept="image/jpg,image/png,image/jpeg,image/gif"
+            name="profileImg"
+            id="profileImg"
+            {...register("profileImg")}
+          />
+        </UploadImgIcon>
         <PostPhotoList></PostPhotoList>
         <PhotoList>
           {myImage &&
-            myImage.map((x, i) => {
+            myImage.map((image, i) => {
               return (
                 <Item key={i}>
-                  <PostImage src={x.previewImg} />
+                  <PostImage src={image.previewImg} />
                 </Item>
               );
             })}
@@ -204,7 +210,7 @@ const PostFormContainer = styled.div`
   }
 `;
 
-const TextBox = styled.textarea`
+const TextBox = styled.label`
   width: 100%;
   height: 36px;
   margin-bottom: 16px;

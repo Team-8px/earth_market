@@ -34,6 +34,7 @@ const MyProfile = () => {
   const history = useHistory();
 
   const dispatch = useDispatch();
+
   const { accountId } = useParams();
   //상품 리스트 배열
   const { products } = useSelector(state => state.productList);
@@ -77,13 +78,25 @@ const MyProfile = () => {
   // 🏞 게시글 모달 Modal & Alert
   const [postDialog, setPostDialog] = useState(false);
   const [postAlert, setPostAlert] = useState(false);
-  const isPostDialog = () => setPostDialog(!postDialog);
+  const [postId, setPostId] = useState("");
+
+  const isPostDialog = postId => {
+    console.log(postId, "postId 값 들어와라!");
+    setPostDialog(!postDialog);
+    setPostId(postId);
+  };
   const isPostAlert = () => setPostAlert(!postAlert);
 
   // 🏞 상품 모달 Modal & Alert
   const [productDialog, setProductDialog] = useState(false);
   const [productAlert, setProductAlert] = useState(false);
-  const isProductDialog = () => setProductDialog(!productDialog);
+  const [productId, setProductId] = useState("");
+
+  const isProductDialog = productId => {
+    console.log(productId, "productId 들어와라!");
+    setProductDialog(!productDialog);
+    setProductId(productId);
+  };
   const isProductAlert = () => setProductAlert(!productAlert);
 
   return (
@@ -141,7 +154,7 @@ const MyProfile = () => {
                     productText={product.itemName}
                     productPrice={product.price}
                     img={product.itemImage}
-                    onClick={isProductDialog}
+                    onClick={() => isProductDialog(product.id)}
                   />
                 );
               })}
@@ -223,7 +236,9 @@ const MyProfile = () => {
       {/* Product Modal */}
       <Modal visible={productDialog}>
         <AlertBtn isAlert={isProductAlert}>삭제</AlertBtn>
-        <ListBtn isDialog={isProductDialog}>수정</ListBtn>
+        <ListBtn isDialog={isProductDialog}>
+          <Link to={`/product/${productId}/update`}>수정 </Link>
+        </ListBtn>
         <ListBtn isDialog={isProductDialog}>웹사이트에서 상품 보기</ListBtn>
       </Modal>
       {/* Product Alert */}
@@ -316,7 +331,6 @@ const ProfileContainer = styled.section`
   background-color: #fff;
   margin-bottom: 6px;
 `;
-
 
 const UserInfoContainer = styled.header`
   display: flex;
