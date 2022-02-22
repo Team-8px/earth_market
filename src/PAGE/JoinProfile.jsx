@@ -7,7 +7,7 @@ import { imageUploadsHandler } from "../util/imageUploads";
 //스타일
 import ProfileForm from "../components/module/form/ProfileForm";
 import ProfileUpload from "../components/module/profile/ProfileIUpload";
-
+import EllipseImg from "../asset/Ellipse 6.png";
 import { Button } from "../components/module/button/button";
 import Upload from "../asset/upload-file.svg";
 // import LoginTitle from "../components/module/title/LoginTitle";
@@ -17,20 +17,24 @@ import theme from "../styles/theme";
 
 const JoinProfile = () => {
   const [isButtonStatus, setIsButtonStatus] = useState(false);
+  const [isPreviewImage, setIsPreviewImage] = useState(true);
   const [nextPage, setNextPage] = useState(false);
+  const [myImage, setMyImage] = useState([]);
+  const { register, handleSubmit, watch } = useForm();
+  const dispatch = useDispatch();
 
+  //console.log(myImage && myImage);
   const nextPageHandler = () => {
     setNextPage(true);
     setIsButtonStatus(false);
   };
 
-  const [myImage, setMyImage] = useState([]);
-  const { register, handleSubmit, watch } = useForm();
-  const dispatch = useDispatch();
   const previewImage = e => {
     const nowSelectImageList = e.target.files;
     const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
+    console.log(nowImageUrl);
     setMyImage(nowImageUrl);
+    setIsPreviewImage(false);
   };
 
   useEffect(() => {
@@ -60,19 +64,19 @@ const JoinProfile = () => {
             프로필 설정
             <SubText>나중에 언제든지 변경할 수 있습니다.</SubText>
           </Title>
-          <ProfileImgWrapper>
+          <ProfileImgWrapper isPreviewImage={isPreviewImage} myImage={myImage}>
             <label onChange={previewImage} htmlFor="profileImg">
-                <img src={myImage} alt="프로필 사진" className="ir"/>
-                <input
-                  type="file"
-                  accept="image/jpg,image/png,image/jpeg,image/gif"
-                  name="profileImg"
-                  id="profileImg"
-                  {...register("profileImg")} />
-              </label>
+              <img alt="프로필 사진" className="ir" />
+              <input
+                type="file"
+                accept="image/jpg,image/png,image/jpeg,image/gif"
+                name="profileImg"
+                id="profileImg"
+                {...register("profileImg")}
+              />
+            </label>
           </ProfileImgWrapper>
           <InputWrapper>
-            <label>사용자 이름</label>
             <label>
               사용자 이름
               <input
@@ -112,22 +116,24 @@ const JoinProfile = () => {
         <MainFieldSet>
           <Title>이메일로 회원가입</Title>
           <InputWrapper>
-            <label>이메일
-            <input
-              name="email"
-              type="email"
-              placeholder="이메일 주소를 입력해 주세요."
-              autoComplete="off"
-              {...register("email")}
-            />
+            <label>
+              이메일
+              <input
+                name="email"
+                type="email"
+                placeholder="이메일 주소를 입력해 주세요."
+                autoComplete="off"
+                {...register("email")}
+              />
             </label>
-            <label>비밀번호
-            <input
-              name="password"
-              type="password"
-              placeholder="비밀번호를 설정해 주세요."
-              {...register("password")}
-            />
+            <label>
+              비밀번호
+              <input
+                name="password"
+                type="password"
+                placeholder="비밀번호를 설정해 주세요."
+                {...register("password")}
+              />
             </label>
           </InputWrapper>{" "}
           <Button
@@ -176,7 +182,7 @@ const InputWrapper = styled.div`
     border: none;
     border-bottom: 1px solid #dbdbdb;
     caret-color: ${props => props.theme.palette["main"]};
-    
+
     &::placeholder {
       color: ${theme.palette["border"]};
     }
@@ -196,7 +202,9 @@ const ProfileImgWrapper = styled.div`
     height: 110px;
     border-radius: 50%;
     cursor: pointer;
-    background: url(${ProfileImg}) no-repeat center / contain;
+    background: url(${props =>
+        props?.isPreviewImage ? ProfileImg : props?.myImage})
+      no-repeat center / contain;
 
     &::after {
       position: absolute;

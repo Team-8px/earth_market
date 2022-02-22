@@ -80,9 +80,11 @@ const Home = () => {
       ) : (
         <LayOut>
           <NoneFeed></NoneFeed>
-          <Button size="lg" width="120px">
-            검색하기
-          </Button>
+          <Link to="/search">
+            <Button size="lg" width="120px">
+              검색하기
+            </Button>
+          </Link>
         </LayOut>
       )}
       <Navigation />
