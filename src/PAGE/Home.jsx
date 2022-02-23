@@ -4,12 +4,6 @@ import { Link } from "react-router-dom";
 import { getFollowerPostList } from "../actions/followAction";
 import styled from "styled-components";
 import { UserInfoBox } from "../components/module/post/UserInfoBox";
-import {
-  ContentBox,
-  ImgContainer,
-  ButtonList,
-  ImgList,
-} from "../components/module/post/ContentBox";
 import { Button } from "../components/module/button/button";
 import { Modal, AlertBtn, ListBtn } from "../components/module/modal/Modal";
 import { Alert, AlertBox } from "../components/module/alert/Alert";
@@ -30,7 +24,7 @@ const Home = () => {
   const dispatch = useDispatch();
   //팔로우 한 사람들의 게시글 목록 불러오기
   const { posts } = useSelector(state => state?.followerPostList);
-
+  console.log(posts);
   useEffect(() => {
     // 게시글 불러오기 API
     dispatch(getFollowerPostList());
@@ -43,6 +37,7 @@ const Home = () => {
         <LayOut>
           {posts &&
             posts.map(post => {
+              const postImages = post?.image?.split(",");
               return (
                 <Container key={post.id}>
                   {/* 유저 인포 */}
@@ -52,17 +47,26 @@ const Home = () => {
                     id={post.author.accountname}
                   />
                   {/* 게시글 영역 */}
-                  <ContentBox content={post.content}>
-                    <ImgContainer>
-                      <ImgList>
-                        <Link to={`/post/${post.id}`}>
-                          <img src={post.image} alt="게시글 이미지" />
-                        </Link>
-                      </ImgList>
-                      <ButtonList>
-                        <button></button>
-                      </ButtonList>
-                    </ImgContainer>
+                  <ContentBox>
+                    <ContentText>{post.content}</ContentText>
+                    <ImageContainer>
+                      <ImageList>
+                        {postImages &&
+                          postImages.map(img => {
+                            return (
+                              <ItemWrapper to={`/post/${post.id}`} key={img}>
+                                <img src={img} alt="게시글 이미지" />
+                              </ItemWrapper>
+                            );
+                          })}
+                      </ImageList>
+                      <BtnList>
+                        {postImages &&
+                          postImages.map(item => {
+                            return <button key={item} />;
+                          })}
+                      </BtnList>
+                    </ImageContainer>
                     <IconBox
                       like={post.heartCount}
                       comment={post.comments.length}
@@ -121,6 +125,60 @@ const Container = styled.article`
   max-width: 358px;
   width: 100%;
   margin-bottom: 40px;
+`;
+const ContentBox = styled.section`
+  padding-left: 54px;
+`;
+const ContentText = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 16px;
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  margin-bottom: 16px;
+  max-height: 228px;
+  border-radius: 10px;
+  overflow: hidden;
+`;
+
+const ImageList = styled.ul`
+  display: flex;
+  transition: all 0.4s;
+`;
+
+const ItemWrapper = styled.li`
+  min-width: 304px;
+  width: 100%;
+  max-height: 228px;
+  min-height: 228px;
+  border: 0.5px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+`;
+const BtnList = styled.div`
+  position: absolute;
+  display: flex;
+  gap: 6px;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+
+  button {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #fff;
+  }
 `;
 const MoreBtn = styled.button`
   position: absolute;

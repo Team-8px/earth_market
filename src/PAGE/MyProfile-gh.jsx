@@ -185,20 +185,15 @@ const MyProfile = () => {
                         name={post.author.username}
                         id={post.author.accountname}
                       />
-                      <ContentBox>
-                        <ContentText>{post.content}</ContentText>
-                        <ImageContainer>
-                          <ImageList>
+                      <ContentBox content={post.content}>
+                        <Link to={`/post/${post.id}`}>
+                          <ImgContainer>
                             {postImages &&
-                              postImages.map(postImage => {
+                              postImages.map((postImage, i) => {
                                 return (
-                                  <ItemWrapper
-                                    to={`/post/${post.id}`}
-                                    key={postImage}
-                                  >
+                                  <ImgList key={i}>
                                     <img
                                       src={postImage}
-                                      alt="게시글 이미지"
                                       onError={event =>
                                         (event.target.style.display = "none")
                                       }
@@ -207,20 +202,19 @@ const MyProfile = () => {
                                           "inline-block")
                                       }
                                     />
-                                  </ItemWrapper>
+                                  </ImgList>
                                 );
                               })}
-                          </ImageList>
-                          <BtnList>
-                            {postImages &&
-                              postImages.map(item => {
-                                return <button key={item} />;
-                              })}
-                          </BtnList>
-                        </ImageContainer>
+                            <ButtonList>
+                              <button></button>
+                            </ButtonList>
+                          </ImgContainer>
+                        </Link>
                         <IconBox
+                          hearted={post.hearted}
                           like={post.heartCount}
-                          comment={post.comments.length}
+                          comment={post.commentCount}
+                          likeAction={likeAction}
                         />
                         <Date>
                           {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
@@ -465,63 +459,6 @@ const HandlerButtonWrapper = styled.div`
     width: 26px;
     height: 26px;
     background: url(${postOff}) no-repeat center / contain;
-  }
-`;
-
-// Post관련 스타일컴포넌트 입니다.
-
-const ContentBox = styled.section`
-  padding-left: 54px;
-`;
-const ContentText = styled.p`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  margin-bottom: 16px;
-`;
-
-const ImageContainer = styled.div`
-  position: relative;
-  margin-bottom: 16px;
-  max-height: 228px;
-  border-radius: 10px;
-  overflow: hidden;
-`;
-
-const ImageList = styled.ul`
-  display: flex;
-  transition: all 0.4s;
-`;
-
-const ItemWrapper = styled.li`
-  min-width: 304px;
-  width: 100%;
-  max-height: 228px;
-  min-height: 228px;
-  border: 0.5px solid var(--border-color);
-  border-radius: 10px;
-  overflow: hidden;
-
-  img {
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 16px;
-  }
-`;
-const BtnList = styled.div`
-  position: absolute;
-  display: flex;
-  gap: 6px;
-  left: 50%;
-  bottom: 16px;
-  transform: translateX(-50%);
-
-  button {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #fff;
   }
 `;
 

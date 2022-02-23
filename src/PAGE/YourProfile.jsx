@@ -6,12 +6,6 @@ import { listProducts, deleteProduct } from "../actions/productActions";
 import { listPosts, deletePost } from "../actions/postActions";
 import { getUserMyProfile } from "../actions/userActions";
 import { UserInfoBoxInMyProfile } from "../components/module/post/UserInfoBox";
-import {
-  ContentBox,
-  ImgContainer,
-  ButtonList,
-  ImgList,
-} from "../components/module/post/ContentBox";
 import { Modal, AlertBtn, ListBtn } from "../components/module/modal/Modal";
 import { Alert, AlertBox } from "../components/module/alert/Alert";
 import IconBox from "../components/module/post/IconBox";
@@ -154,27 +148,32 @@ const YourProfile = () => {
                         name={post.author.username}
                         id={post.author.accountname}
                       />
-                      <ContentBox content={post.content}>
-                        <Link to={`/post/${post.id}`}>
-                          <ImgContainer>
+                      <ContentBox>
+                        <ContentText>{post.content}</ContentText>
+                        <ImageContainer>
+                          <ImageList>
                             {postImages &&
-                              postImages.map((postImage, i) => {
+                              postImages.map(img => {
                                 return (
-                                  <ImgList key={i}>
-                                    <h3>{postImage}</h3>
-                                    <img src={postImage} />
-                                  </ImgList>
+                                  <ItemWrapper
+                                    to={`/post/${post.id}`}
+                                    key={img}
+                                  >
+                                    <img src={img} alt="게시글 이미지" />
+                                  </ItemWrapper>
                                 );
                               })}
-
-                            <ButtonList>
-                              <button></button>
-                            </ButtonList>
-                          </ImgContainer>
-                        </Link>
+                          </ImageList>
+                          <BtnList>
+                            {postImages &&
+                              postImages.map(item => {
+                                return <button key={item} />;
+                              })}
+                          </BtnList>
+                        </ImageContainer>
                         <IconBox
                           like={post.heartCount}
-                          comment={post.commentCount}
+                          comment={post.comments.length}
                         />
                         <Date>
                           {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
@@ -279,16 +278,6 @@ const Container = styled.article`
   max-width: 358px;
   width: 100%;
   margin-bottom: 20px;
-`;
-
-const MoreBtn = styled.button`
-  position: absolute;
-  top: 4px;
-  right: 0;
-  width: 18px;
-  height: 18px;
-  background: url(${more}) no-repeat center / 18px 18px;
-  background-color: inherit;
 `;
 
 // product스타일 컴포넌트
@@ -455,4 +444,68 @@ const ButtonWrapper = styled.div`
   display: flex;
 `;
 
+const ContentBox = styled.section`
+  padding-left: 54px;
+`;
+const ContentText = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 16px;
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  margin-bottom: 16px;
+  max-height: 228px;
+  border-radius: 10px;
+  overflow: hidden;
+`;
+
+const ImageList = styled.ul`
+  display: flex;
+  transition: all 0.4s;
+`;
+
+const ItemWrapper = styled.li`
+  min-width: 304px;
+  width: 100%;
+  max-height: 228px;
+  min-height: 228px;
+  border: 0.5px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+`;
+const BtnList = styled.div`
+  position: absolute;
+  display: flex;
+  gap: 6px;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+
+  button {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+`;
+
+const MoreBtn = styled.button`
+  position: absolute;
+  top: 4px;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  background: url(${more}) no-repeat center / 18px 18px;
+  background-color: inherit;
+`;
 export default YourProfile;

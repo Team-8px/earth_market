@@ -10,7 +10,6 @@ const HandlerContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  border-top: 0.5px solid #dbdbdb;
   border-bottom: 0.5px solid #dbdbdb;
 `;
 const ButtonWrapper = styled.div`
