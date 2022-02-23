@@ -12,12 +12,6 @@ import {
 
 // 스타일로직
 import { UserInfoBox } from "../components/module/post/UserInfoBox";
-import {
-  ContentBox,
-  ImgContainer,
-  ButtonList,
-  ImgList,
-} from "../components/module/post/ContentBox";
 import { Button } from "../components/module/button/button";
 import { Modal, AlertBtn, ListBtn } from "../components/module/modal/Modal";
 import { Alert, AlertBox } from "../components/module/alert/Alert";
@@ -118,20 +112,23 @@ const PostView = () => {
           {/* 유저 인포 */}
           <UserInfoBox profileImage={image} name={username} id={accountname} />
           {/* 게시글 영역 */}
-          <ContentBox content={content}>
-            <ImgContainer>
-              <ImgList>
+          <ContentBox>
+            <ContentText>{content}</ContentText>
+            <ImageContainer>
+              <ImageList>
                 {postImages &&
                   postImages.map((postImage, index) => {
                     return (
-                      <img key={index} src={postImage} alt="게시글 이미지" />
+                      <ItemWrapper>
+                        <img key={index} src={postImage} alt="게시글 이미지" />
+                      </ItemWrapper>
                     );
                   })}
-              </ImgList>
-              <ButtonList>
+              </ImageList>
+              <BtnList>
                 <button></button>
-              </ButtonList>
-            </ImgContainer>
+              </BtnList>
+            </ImageContainer>
             <IconBox like={heartCount} comment={commentCount} />
             <Date>{dayjs(updatedAt).format("YY년 MM월 DD일")}</Date>
           </ContentBox>
@@ -155,21 +152,24 @@ const PostView = () => {
         </CommentList>
         {/* 댓글 생성 */}
         <SubmitChatLayOut>
-        <SubmitChatContainer onSubmit={handleSubmit(onSubmit)} autocomplete="new-password">
-        <ProfileLinkImg src={ProfileIcon} alt="프로필"/>
-        <SubmitChatLabel>
-          댓글 입력하기
-          <SubmitChatInput 
-            name="comment"
-            type="text"
-            placeholder="댓글 입력하기"
-            autoComplete="off"
-            {...register("comment")}
-            />
-        </SubmitChatLabel>
-        <SubmitChatButton>게시</SubmitChatButton>
-        </SubmitChatContainer>
-    </SubmitChatLayOut>
+          <SubmitChatContainer
+            onSubmit={handleSubmit(onSubmit)}
+            autocomplete="new-password"
+          >
+            <ProfileLinkImg src={ProfileIcon} alt="프로필" />
+            <SubmitChatLabel>
+              댓글 입력하기
+              <SubmitChatInput
+                name="comment"
+                type="text"
+                placeholder="댓글 입력하기"
+                autoComplete="off"
+                {...register("comment")}
+              />
+            </SubmitChatLabel>
+            <SubmitChatButton>게시</SubmitChatButton>
+          </SubmitChatContainer>
+        </SubmitChatLayOut>
       </LayOut>
 
       <Modal visible={navDialog}>
@@ -258,6 +258,61 @@ const Container = styled.article`
   width: 100%;
   padding: 20px 0 24px;
 `;
+const ContentBox = styled.section`
+  padding-left: 54px;
+`;
+const ContentText = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 16px;
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  margin-bottom: 16px;
+  max-height: 228px;
+  border-radius: 10px;
+  overflow: hidden;
+`;
+
+const ImageList = styled.ul`
+  display: flex;
+  transition: all 0.4s;
+`;
+
+const ItemWrapper = styled.li`
+  min-width: 304px;
+  width: 100%;
+  max-height: 228px;
+  min-height: 228px;
+  border: 0.5px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+`;
+const BtnList = styled.div`
+  position: absolute;
+  display: flex;
+  gap: 6px;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+
+  button {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+`;
+
 const MoreBtn = styled.button`
   position: absolute;
   top: 24px;
@@ -272,54 +327,54 @@ const ProfileLinkImg = styled.img`
   width: 36px;
 `;
 
-const SubmitChatLayOut = styled.section `
-position: fixed;
-left: 0;
-bottom: 0;
-min-width: 390px;
-width: 100%;
-border-style: none;
-border-top: 0.5px solid ${props => props.theme.palette["border"]};
-background-color: #fff;
-`
+const SubmitChatLayOut = styled.section`
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  min-width: 390px;
+  width: 100%;
+  border-style: none;
+  border-top: 0.5px solid ${props => props.theme.palette["border"]};
+  background-color: #fff;
+`;
 
-const SubmitChatContainer = styled.form `
-position: relative;
-display: flex;
-align-items: center;
-max-width: 100%;
-height: 60px;
-padding: 0 16px;
-`
+const SubmitChatContainer = styled.form`
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  height: 60px;
+  padding: 0 16px;
+`;
 
 // 웹 접근성을 높이는 방법입니다.
-const SubmitChatLabel = styled.label `
-display: block;
-width: 100%;
-font-size: 3px;
-color: transparent;
-margin: 0 16px;
-`
+const SubmitChatLabel = styled.label`
+  display: block;
+  width: 100%;
+  font-size: 3px;
+  color: transparent;
+  margin: 0 16px;
+`;
 
-const SubmitChatInput = styled.input `
-display: block;
-width: 100%;
-border-style: none;
+const SubmitChatInput = styled.input`
+  display: block;
+  width: 100%;
+  border-style: none;
 
-&::placeholder {
-  color: ${props => props.theme.palette["border"]};
-}
-`
+  &::placeholder {
+    color: ${props => props.theme.palette["border"]};
+  }
+`;
 
-const SubmitChatButton = styled.button `
-display: block;
-width: 30px; 
-border-style: none;
-cursor: pointer;
-color: ${props => props.theme.palette["lightGray"]};
-&:focus {
-  color: ${props => props.theme.palette["main"]};
-}
-`
+const SubmitChatButton = styled.button`
+  display: block;
+  width: 30px;
+  border-style: none;
+  cursor: pointer;
+  color: ${props => props.theme.palette["lightGray"]};
+  &:focus {
+    color: ${props => props.theme.palette["main"]};
+  }
+`;
 
 export default PostView;
