@@ -6,12 +6,11 @@ import { listProducts, deleteProduct } from "../actions/productActions";
 import { listPosts, deletePost } from "../actions/postActions";
 import { getUserMyProfile } from "../actions/userActions";
 import { UserInfoBoxInMyProfile } from "../components/module/post/UserInfoBox";
-// import {
-//   ContentBox,
-//   ImgContainer,
-//   ButtonList,
-//   ImgList,
-// } from "../components/module/post/ContentBox";
+// 핸들러 버튼 이미지
+import listOn from "../asset/icon/icon-post-list-on.svg";
+import listOff from "../asset/icon/icon-post-list-off.svg";
+import postOn from "../asset/icon/icon-post-album-on.svg";
+import postOff from "../asset/icon/icon-post-album-on.svg";
 import { Modal, AlertBtn, ListBtn } from "../components/module/modal/Modal";
 import { Alert, AlertBox } from "../components/module/alert/Alert";
 import IconBox from "../components/module/post/IconBox";
@@ -164,7 +163,13 @@ const MyProfile = () => {
           </Product>
         </SectionContainer>
         <SectionContainer>
-          <DisplayButton></DisplayButton>
+          {/* 디스플레이 핸들러 버튼 영역입니다. */}
+          <DisplayHandlerContainer>
+            <HandlerButtonWrapper>
+              <button />
+              <button />
+            </HandlerButtonWrapper>
+          </DisplayHandlerContainer>
           {/* 게시글 */}
           {posts &&
             posts.map(post => {
@@ -425,6 +430,36 @@ const FollowingWrapper = styled(Link)`
 
 const ButtonWrapper = styled.div`
   display: flex;
+`;
+
+//  Albun 부분 관련 StyledComponent입니다
+const DisplayHandlerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 0.5px solid #dbdbdb;
+`;
+
+const HandlerButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 390px;
+  width: 100%;
+  height: 44px;
+  padding-right: 16px;
+
+  & > button:nth-child(1) {
+    width: 26px;
+    height: 26px;
+    background: url(${listOn}) no-repeat center / contain;
+  }
+  & > button:nth-child(2) {
+    margin-left: 16px;
+    width: 26px;
+    height: 26px;
+    background: url(${postOff}) no-repeat center / contain;
+  }
 `;
 
 export default MyProfile;
