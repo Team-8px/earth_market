@@ -26,14 +26,9 @@ import more from "../asset/icon-more-vertical.svg";
 import Navigation from "../components/template/common/Navigation";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
 
-// 💛 미진 충돌 잡기
-import UserInfo from "../components/UserInfo";
-
 const MyProfile = () => {
   const history = useHistory();
-
   const dispatch = useDispatch();
-
   const { accountId } = useParams();
   //상품 리스트 배열
   const { products } = useSelector(state => state.productList);
@@ -102,7 +97,9 @@ const MyProfile = () => {
       dispatch(deleteProduct(productId));
     }
   };
-
+  const [test, setTest] = useState(true);
+  console.log(test);
+  const DisplayHandler = () => setTest(!test);
   return (
     <>
       {/* 헤더 */}
@@ -166,8 +163,8 @@ const MyProfile = () => {
           {/* 디스플레이 핸들러 버튼 영역입니다. */}
           <DisplayHandlerContainer>
             <HandlerButtonWrapper>
-              <button />
-              <button />
+              <button onClick={DisplayHandler} isClickd={"click"} />
+              <button onClick={DisplayHandler} isClickd={"click"} />
             </HandlerButtonWrapper>
           </DisplayHandlerContainer>
           {/* 게시글 */}
