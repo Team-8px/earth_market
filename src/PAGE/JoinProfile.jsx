@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { joinMembership } from "../actions/userActions";
 import { imageUploadsHandler } from "../util/imageUploads";
+import axios from "axios";
 //스타일
 import ProfileForm from "../components/module/form/ProfileForm";
 import ProfileUpload from "../components/module/profile/ProfileIUpload";
@@ -25,7 +26,7 @@ const JoinProfile = () => {
   };
 
   const [myImage, setMyImage] = useState([]);
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit, watch,  formState: { errors } } = useForm();
   const dispatch = useDispatch();
   const previewImage = e => {
     const nowSelectImageList = e.target.files;
@@ -45,13 +46,30 @@ const JoinProfile = () => {
   }, [isButtonStatus]);
 
   const onSubmit = async data => {
-    const { email, password, username, accountname, profileImg } = data;
-    console.log(data, "입력값");
-    const image = await imageUploadsHandler(profileImg[0]);
-    if (email && password && username && accountname) {
-      dispatch(joinMembership(email, password, username, accountname, image));
+    if (nextPage) {
+      const { email, password, username, accountname, profileImg } = data;
+      const image = await imageUploadsHandler(profileImg[0]);
+      try {
+        const response = await axios.post(`http://146.56.183.55:5050/user`, {
+          email,
+          password,
+          username, 
+          accountname, 
+          profileImg,
+          image
+        });
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+        alert(error.response.data);
+      }
+    } else {
+      const { email, password } = data;
+      console.log(data, "입력값");
+      setNextPage(true);
     }
   };
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       {nextPage ? (
@@ -72,7 +90,6 @@ const JoinProfile = () => {
               </label>
           </ProfileImgWrapper>
           <InputWrapper>
-            <label>사용자 이름</label>
             <label>
               사용자 이름
               <input
@@ -80,8 +97,10 @@ const JoinProfile = () => {
                 type="text"
                 placeholder="2~10자 이내여야 합니다."
                 autoComplete="off"
-                {...register("username")}
+                {...register("username", {required: true, minLength: 2, maxLength: 10,})}
               />
+              {errors.username?.type ==="minLength" && (<p>*2~10자 이내여야 합니다.</p>)}
+              {errors.username?.type ==="maxLength" && (<p>*2~10자 이내여야 합니다.</p>)}
             </label>
             <label>
               계정 ID
@@ -90,8 +109,9 @@ const JoinProfile = () => {
                 type="text"
                 placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
                 autoComplete="off"
-                {...register("accountname")}
+                {...register("accountname", {required: true, pattern: /^[-._a-z0-9]+$/gi})}
               />
+              {errors.accountname?.type === 'pattern' &&(<p>*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.</p>)}
             </label>
             <label>
               소개
@@ -115,29 +135,28 @@ const JoinProfile = () => {
             <label>이메일
             <input
               name="email"
-              type="email"
+              type="text"
               placeholder="이메일 주소를 입력해 주세요."
               autoComplete="off"
-              {...register("email")}
-            />
+              {...register("email", {required: true, pattern: /^\S+@\S+$/i,})}
+              />
+              {errors.email?.type === 'pattern' &&(<p>*올바르지 않은 이메일 형식입니다.</p>)}
             </label>
             <label>비밀번호
             <input
               name="password"
               type="password"
               placeholder="비밀번호를 설정해 주세요."
-              {...register("password")}
-            />
+              {...register("password", {required: true, minLength: 6})}
+              />
+              {errors.password?.type === "minLength"&& (<p>*비밀번호는 6자 이상이어야 합니다.</p>)}
             </label>
           </InputWrapper>{" "}
-          <Button
-            width="322px"
-            size="lg"
-            onClick={nextPageHandler}
-            isButtonStatus={isButtonStatus}
-          >
-            다음
-          </Button>
+          <InputButton>
+            <input
+            type="submit"
+            value="다음"/>
+            </InputButton>
         </MainFieldSet>
       )}
     </Form>
@@ -158,7 +177,6 @@ const MainFieldSet = styled.fieldset`
 const InputWrapper = styled.div`
   width: 322px;
   margin: 40px 0 14px;
-
   label {
     display: block;
     color: ${props => props.theme.palette["subText"]};
@@ -184,11 +202,17 @@ const InputWrapper = styled.div`
       border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
   }
+  p{
+    color: #EB5757;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 6px;
+    }
 `;
 
 const ProfileImgWrapper = styled.div`
   margin-top: 30px;
-
   label {
     position: relative;
     display: block;
@@ -197,7 +221,6 @@ const ProfileImgWrapper = styled.div`
     border-radius: 50%;
     cursor: pointer;
     background: url(${ProfileImg}) no-repeat center / contain;
-
     &::after {
       position: absolute;
       content: "";
@@ -208,13 +231,11 @@ const ProfileImgWrapper = styled.div`
       background: #c4c4c4 url(${Upload}) no-repeat center / 36px 36px;
       border-radius: 50%;
     }
-
     img {
       width: 110px;
       height: 110px;
       border-radius: 50%;
     }
-
     input {
       position: absolute;
       left: -10000px;
@@ -224,54 +245,6 @@ const ProfileImgWrapper = styled.div`
       overflow: hidden;
       padding: 0;
     }
-  }
-`;
-
-const EmailWrapper = styled.div`
-  width: 322px;
-  height: 48px;
-  margin-bottom: 16px;
-
-  label {
-    display: block;
-    color: #767676;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    margin-bottom: 10px;
-  }
-  input {
-    width: 100%;
-    font-size: 14px;
-    color: ${props => props.theme.palette["border"]};
-    line-height: 14px;
-    padding-bottom: 8px;
-    border: none;
-    border-bottom: 1px solid ${props => props.theme.palette["border"]};
-  }
-`;
-
-const PwWrapper = styled.div`
-  width: 322px;
-  height: 48px;
-  margin-bottom: 16px;
-
-  label {
-    display: block;
-    color: ${props => props.theme.palette["subText"]};
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    margin-bottom: 10px;
-  }
-  input {
-    width: 100%;
-    font-size: 14px;
-    color: ${props => props.theme.palette["main"]};
-    line-height: 14px;
-    padding-bottom: 8px;
-    border: none;
-    border-bottom: 1px solid ${props => props.theme.palette["border"]};
   }
 `;
 
@@ -291,4 +264,23 @@ const SubText = styled.p`
   text-align: center;
 `;
 
+const InputButton = styled.div`
+position: relative;
+
+input {
+width: 322px;
+height: 44px;
+border-radius: 44px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+outline: none;
+border: none;
+background: ${theme.palette["main"]};
+color: #fff;
+font-weight: 400;
+cursor: pointer;
+}
+
+`;
 export default JoinProfile;
