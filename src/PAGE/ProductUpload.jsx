@@ -17,7 +17,7 @@ import { createProduct } from "../actions/productActions";
 const ProductUpload = () => {
   const [productImage, setProductImage] = useState([]);
 
-  const [isPreviewImage, setIsPreviewImage] = useState(true);
+  /* const [isPreviewImage, setIsPreviewImage] = useState(true); */
 
   const { register, handleSubmit } = useForm();
 
@@ -33,7 +33,7 @@ const ProductUpload = () => {
     const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
 
     setProductImage(nowImageUrl);
-    setIsPreviewImage(false);
+    /*  setIsPreviewImage(false); */
   };
 
   const onSubmit = async data => {
@@ -59,8 +59,8 @@ const ProductUpload = () => {
       {/* 메인필드 영역 */}
       <MainFieldSet>
         {/* <Container> */}
-          <SubTitle>이미지 업로드</SubTitle>
-          <ProductFormWrapper>
+        <SubTitle>이미지 업로드</SubTitle>
+        <ProductFormWrapper>
           <Label onChange={previewImage} htmlFor="itemImage">
             <img
               src={productImage}
@@ -87,7 +87,8 @@ const ProductUpload = () => {
             {...register("itemName")}
             placeholder="2~10자 이내여야 합니다."
             autoComplete="off"
-            spellCheck="false" />
+            spellCheck="false"
+          />
           <label>가격</label>
           <input
             name="price"
@@ -95,7 +96,8 @@ const ProductUpload = () => {
             {...register("price")}
             placeholder="숫자만 입력 가능합니다."
             autoComplete="off"
-            spellCheck="false" />
+            spellCheck="false"
+          />
           <label>판매 링크</label>
           <input
             name="link"
@@ -103,10 +105,11 @@ const ProductUpload = () => {
             {...register("link")}
             placeholder="URL을 입력해 주세요."
             autoComplete="off"
-            spellCheck="false" />
-          </ProductFormWrapper>
-        </MainFieldSet>
-      </Form> 
+            spellCheck="false"
+          />
+        </ProductFormWrapper>
+      </MainFieldSet>
+    </Form>
   );
 };
 
@@ -163,7 +166,7 @@ const ProductFormWrapper = styled.div`
     border: none;
     border-bottom: 1px solid ${props => props.theme.palette["border"]};
     caret-color: ${props => props.theme.palette["main"]};
-  
+
     &::placeholder {
       color: ${props => props.theme.palette["border"]};
     }

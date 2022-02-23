@@ -53,7 +53,6 @@ export function UserInfoBox({ profileImage, name, id }) {
   );
 }
 export function UserInfoBoxInMyProfile({ profileImage, name, id }) {
-  console.log(id, "UserInfoBoxInMyProfile");
   return (
     <LayOut>
       <Link to="/profile/my">

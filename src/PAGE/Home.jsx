@@ -43,7 +43,6 @@ const Home = () => {
         <LayOut>
           {posts &&
             posts.map(post => {
-              console.log(post);
               return (
                 <Container key={post.id}>
                   {/* 유저 인포 */}
@@ -80,9 +79,11 @@ const Home = () => {
       ) : (
         <LayOut>
           <NoneFeed></NoneFeed>
-          <Button size="lg" width="120px">
-            검색하기
-          </Button>
+          <Link to="/search">
+            <Button size="lg" width="120px">
+              검색하기
+            </Button>
+          </Link>
         </LayOut>
       )}
       <Navigation />

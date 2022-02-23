@@ -34,6 +34,7 @@ const MyProfile = () => {
   const history = useHistory();
 
   const dispatch = useDispatch();
+
   const { accountId } = useParams();
   //상품 리스트 배열
   const { products } = useSelector(state => state.productList);
@@ -42,16 +43,6 @@ const MyProfile = () => {
   //나의 프로필 정보
   const { image, username, accountname, intro, followerCount, followingCount } =
     useSelector(state => state.userReadProfile);
-
-  //게시글 삭제 API (이동 가능성 높음)
-  const onClickDeletePost = postId => {
-    dispatch(deletePost(postId));
-  };
-
-  //상품 삭제 API (이동 가능성 높음)
-  const onClickDeleteProduct = productId => {
-    dispatch(deleteProduct(productId));
-  };
 
   useEffect(() => {
     //상품 리스트 얻기
@@ -68,6 +59,11 @@ const MyProfile = () => {
     dispatch(getUserMyProfile(accountId));
   }, [dispatch]);
 
+  // 좋아요
+  const [isLikeAction, setLikeAction] = useState(false);
+  console.log(isLikeAction && isLikeAction, "isLikeAction");
+  const likeAction = () => setLikeAction(!isLikeAction);
+
   // 🕹 네비게이션 Modal & Alert
   const [navDialog, setNavDialog] = useState(false);
   const [navAlert, setNavAlert] = useState(false);
@@ -77,14 +73,36 @@ const MyProfile = () => {
   // 🏞 게시글 모달 Modal & Alert
   const [postDialog, setPostDialog] = useState(false);
   const [postAlert, setPostAlert] = useState(false);
-  const isPostDialog = () => setPostDialog(!postDialog);
-  const isPostAlert = () => setPostAlert(!postAlert);
+  const [postId, setPostId] = useState("");
+
+  const isPostDialog = postId => {
+    console.log(postId, "postId 값 들어와라!");
+    setPostDialog(!postDialog);
+    setPostId(postId);
+  };
+  const isPostAlert = postId => {
+    setPostAlert(!postAlert);
+    if (typeof postId === "string") {
+      dispatch(deletePost(postId));
+    }
+  };
 
   // 🏞 상품 모달 Modal & Alert
   const [productDialog, setProductDialog] = useState(false);
   const [productAlert, setProductAlert] = useState(false);
-  const isProductDialog = () => setProductDialog(!productDialog);
-  const isProductAlert = () => setProductAlert(!productAlert);
+  const [productId, setProductId] = useState("");
+
+  const isProductDialog = productId => {
+    console.log(productId, "productId 들어와라!");
+    setProductDialog(!productDialog);
+    setProductId(productId);
+  };
+  const isProductAlert = productId => {
+    setProductAlert(!productAlert);
+    if (typeof productId === "string") {
+      dispatch(deleteProduct(productId));
+    }
+  };
 
   return (
     <>
@@ -141,7 +159,7 @@ const MyProfile = () => {
                     productText={product.itemName}
                     productPrice={product.price}
                     img={product.itemImage}
-                    onClick={isProductDialog}
+                    onClick={() => isProductDialog(product.id)}
                   />
                 );
               })}
@@ -171,7 +189,6 @@ const MyProfile = () => {
                               postImages.map((postImage, i) => {
                                 return (
                                   <ImgList key={i}>
-                                    <h3>{postImage}</h3>
                                     <img
                                       src={postImage}
                                       onError={event =>
@@ -192,14 +209,16 @@ const MyProfile = () => {
                           </ImgContainer>
                         </Link>
                         <IconBox
+                          hearted={post.hearted}
                           like={post.heartCount}
                           comment={post.commentCount}
+                          likeAction={likeAction}
                         />
                         <Date>
                           {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
                         </Date>
                       </ContentBox>
-                      <MoreBtn onClick={isPostDialog} />
+                      <MoreBtn onClick={() => isPostDialog(post.id)} />
                     </Container>
                   </PostWrapper>
                 </PostContainer>
@@ -223,13 +242,17 @@ const MyProfile = () => {
       {/* Product Modal */}
       <Modal visible={productDialog}>
         <AlertBtn isAlert={isProductAlert}>삭제</AlertBtn>
-        <ListBtn isDialog={isProductDialog}>수정</ListBtn>
+        <ListBtn isDialog={isProductDialog}>
+          <Link to={`/product/${productId}/update`}>수정 </Link>
+        </ListBtn>
         <ListBtn isDialog={isProductDialog}>웹사이트에서 상품 보기</ListBtn>
       </Modal>
       {/* Product Alert */}
       <Alert visible={productAlert} messageText="상품을 삭제할까요?">
         <AlertBox isAlert={isProductAlert}>취소</AlertBox>
-        <AlertBox isAlert={isProductAlert}>삭제</AlertBox>
+        <AlertBox isAlert={() => isProductAlert(productId && productId)}>
+          삭제
+        </AlertBox>
       </Alert>
       {/* Post Modal */}
       <Modal visible={postDialog}>
@@ -240,7 +263,7 @@ const MyProfile = () => {
       {/* Post Alert */}
       <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
         <AlertBox isAlert={isPostAlert}>취소</AlertBox>
-        <AlertBox isAlert={isPostAlert}>삭제</AlertBox>
+        <AlertBox isAlert={() => isPostAlert(postId && postId)}>삭제</AlertBox>
       </Alert>
     </>
   );
@@ -316,7 +339,6 @@ const ProfileContainer = styled.section`
   background-color: #fff;
   margin-bottom: 6px;
 `;
-
 
 const UserInfoContainer = styled.header`
   display: flex;

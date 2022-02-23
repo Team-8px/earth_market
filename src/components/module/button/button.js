@@ -94,7 +94,7 @@ const colorStyles = css`
         `},
 
         ${props =>
-          props.isButtonStatus
+          props.isValid
             ? css`
                 color: #fff;
                 border: none;

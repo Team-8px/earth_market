@@ -58,7 +58,7 @@ export const updateProduct =
         },
       });
 
-      //document.location.href = "/gh/profile/my";
+      document.location.href = "/profile/my";
     } catch (error) {
       const message =
         error.response && error.response.data.message
@@ -208,7 +208,7 @@ export const deleteProduct = productId => async (dispatch, getState) => {
       payload: data,
     });
 
-    document.location.href = "/gh/profile/my";
+    document.location.href = "/profile/my";
   } catch (error) {
     const message =
       error.response && error.response.data.message

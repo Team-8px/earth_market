@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 // 스타일로직
 import PrevBtn from "../asset/icon-arrow-left.svg";
@@ -17,7 +18,10 @@ import { imageUploadsHandler } from "../util/imageUploads";
 //
 const ProductUpdate = () => {
   const { register, handleSubmit } = useForm();
+
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   //updateImage 업데이트한 사진, 이미지 변경 여부를 따지고, 미리보기 사진을 변경
   const [updateImage, setUpdateImage] = useState([]);
@@ -57,67 +61,63 @@ const ProductUpdate = () => {
   const onSubmit = async data => {
     const { profileImg, itemName, price, link } = data;
 
-    console.log(data);
-
     const image = await imageUploadsHandler(profileImg[0]);
-    // 이미지 파일 변환 잘됬는지 확인
-    console.log(image, "productImg 확인");
 
-    console.log(image, itemName, price, link, productId, "입력데이터 확인");
-    // 상품 수정 API
     dispatch(updateProduct(image, itemName, price, link, productId));
   };
   return (
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        {/* 헤더필드 영역 */}
-        <HeaderFieldSet>
-          <HeaderContainer>
-            <HeaderLinkImg src={PrevBtn} />
-            <Button width="90px" size="ms" color="#fff">
-              저장
-            </Button>
-          </HeaderContainer>
-        </HeaderFieldSet>
-        {/* 메인필드 영역 */}
-        <MainFieldSet>
-          <ProfileImgWrapper>
-            <label onChange={previewImage} htmlFor="profileImg">
-              <img
-                src={isUpdatedImage ? updateImage : image}
-                alt="프로필 사진" />
-              <input
-                type="file"
-                accept="image/jpg,image/png,image/jpeg,image/gif"
-                name="profileImg"
-                id="profileImg"
-                {...register("profileImg")} />
-            </label>
-          </ProfileImgWrapper>
-          <ProductFormWrapper>
-            <label>상품명</label>
+    <Form onSubmit={handleSubmit(onSubmit)}>
+      {/* 헤더필드 영역 */}
+      <HeaderFieldSet>
+        <HeaderContainer>
+          <HeaderLinkImg onClick={() => history.goBack()} src={PrevBtn} />
+          <Button width="90px" size="ms" color="#fff">
+            저장
+          </Button>
+        </HeaderContainer>
+      </HeaderFieldSet>
+      {/* 메인필드 영역 */}
+      <MainFieldSet>
+        <ProfileImgWrapper>
+          <label onChange={previewImage} htmlFor="profileImg">
+            <img src={isUpdatedImage ? updateImage : image} alt="프로필 사진" />
             <input
-              name="itemName"
-              type="text"
-              {...register("itemName")}
-              autoComplete="off"
-              placeholder="2~10자 이내여야 합니다." />
-            <label>가격</label>
-            <input
-              name="price"
-              type="text"
-              {...register("price")}
-              autoComplete="off"
-              placeholder="숫자만 입력 가능합니다." />
-            <label>판매 링크</label>
-            <input
-              name="link"
-              type="text"
-              {...register("link")}
-              autoComplete="off"
-              placeholder="URL을 입력해 주세요." />
-          </ProductFormWrapper>
-        </MainFieldSet>
-      </Form>
+              type="file"
+              accept="image/jpg,image/png,image/jpeg,image/gif"
+              name="profileImg"
+              id="profileImg"
+              {...register("profileImg")}
+            />
+          </label>
+        </ProfileImgWrapper>
+        <ProductFormWrapper>
+          <label>상품명</label>
+          <input
+            name="itemName"
+            type="text"
+            {...register("itemName")}
+            autoComplete="off"
+            placeholder="2~10자 이내여야 합니다."
+          />
+          <label>가격</label>
+          <input
+            name="price"
+            type="text"
+            {...register("price")}
+            autoComplete="off"
+            placeholder="숫자만 입력 가능합니다."
+          />
+          <label>판매 링크</label>
+          <input
+            name="link"
+            type="text"
+            {...register("link")}
+            autoComplete="off"
+            placeholder="URL을 입력해 주세요."
+          />
+        </ProductFormWrapper>
+      </MainFieldSet>
+    </Form>
   );
 };
 
@@ -221,7 +221,7 @@ const ProductFormWrapper = styled.div`
       color: ${props => props.theme.palette["border"]};
     }
     &:focus {
-    border-bottom: 1px solid ${props => props.theme.palette["main"]};
+      border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
   }
 `;

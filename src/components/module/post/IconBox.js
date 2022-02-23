@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import heart from "../../../asset/icon/icon-heart.svg";
+import heartActive from "../../../asset/icon/icon-heart-active.png";
 import comment from "../../../asset/icon/icon-message-circle.svg";
 
 const LayOut = styled.div`
@@ -24,7 +25,8 @@ const LikeButton = styled.button`
     content: "";
     width: 20px;
     height: 20px;
-    background: url(${heart}) no-repeat center / 20px 20px;
+    background: url(${props => (props?.hearted ? heartActive : heart)})
+      no-repeat center / 20px 20px;
     margin-right: 6px;
   }
 `;
@@ -47,10 +49,10 @@ const CommentButton = styled.a`
 `;
 const CommentCount = styled.span``;
 
-export default function IconBox({ like, comment }) {
+export default function IconBox({ like, comment, hearted, likeAction }) {
   return (
     <LayOut>
-      <LikeButton>
+      <LikeButton onClick={likeAction} hearted={hearted}>
         <LikeCount>{like}</LikeCount>
       </LikeButton>
       <CommentButton>
