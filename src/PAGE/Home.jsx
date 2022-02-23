@@ -63,12 +63,7 @@ const Home = () => {
                       <BtnList>
                         {postImages &&
                           postImages.map((item, index) => {
-                            return (
-                              <button
-                                key={index}
-                                onClick={() => setData(item)}
-                              ></button>
-                            );
+                            return <button key={index}></button>;
                           })}
                       </BtnList>
                     </ImageContainer>
