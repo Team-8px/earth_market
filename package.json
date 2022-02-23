@@ -4,10 +4,10 @@
   "prettier": "8px-prettier",
   "private": true,
   "dependencies": {
-    "8px-prettier": "^1.0.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "8px-prettier": "^1.0.0",
     "axios": "^0.20.0",
     "dayjs": "^1.10.7",
     "prettier": "^2.5.1",

@@ -13,7 +13,7 @@ import { login } from "../actions/userActions";
 
 const LoginEmail = () => {
   const [isButtonStatus, setIsButtonStatus] = useState(false);
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit, watch, formState: { errors }} = useForm();
 
   useEffect(() => {
     const subscription = watch(({ email, password }) => {
@@ -41,20 +41,33 @@ const LoginEmail = () => {
           <InputWrapper>
             <label>
               이메일
-              <input name="email" type="email" autoComplete="off" spellCheck="false" {...register("email")} />
+              <input 
+              name="email" 
+              type="text" 
+              autoComplete="off" 
+              spellCheck="false" 
+              {...register("email", {validate:(value) => value === watch("email")})}
+              />
             </label>
             <label>
               비밀번호
               <input
                 name="password"
                 type="password"
-                {...register("password")}
+                {...register("password", {validate:(value) => value === watch("password")})}
               />
             </label>
+            {errors.password && errors.password.type === "validate" && (<p>*이메일 또는 비밀번호가 일치하지 않습니다. </p>)}
           </InputWrapper>
-          <Button width="322px" size="lg" isButtonStatus={isButtonStatus}>
+          <InputButton>
+          <input 
+            type="submit" 
+            value="로그인" 
+            />
+          </InputButton>
+          {/* <Button width="322px" size="lg" isButtonStatus={isButtonStatus}>
             로그인
-          </Button>
+          </Button> */}
           <LoginText to="/join/email">이메일로 회원가입</LoginText>
         </MainFieldSet>
       </Form>
@@ -100,6 +113,13 @@ const InputWrapper = styled.div`
       border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
   }
+  p{
+    color: #EB5757;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 6px;
+    }
 `;
 
 const LoginText = styled(Link)`
@@ -114,6 +134,25 @@ const LoginText = styled(Link)`
     font-size: 10px;
     margin: 10px;
     border-right: 1px solid ${props => props.theme.palette["lightGray"]};
+  }
+`;
+
+const InputButton = styled.div`
+  position: relative;
+
+  input {
+  width: 322px;
+  height: 44px;
+  border-radius: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+  background: ${props => props.theme.palette["main"]};
+  color: #fff;
+  font-weight: 400;
+  cursor: pointer;
   }
 `;
 

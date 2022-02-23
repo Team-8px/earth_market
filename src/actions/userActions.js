@@ -117,7 +117,7 @@ export const joinMembership =
       };
 
       const reqData = {
-        user: { email, password, username, accountname },
+        user: { email, password, username, accountname},
       };
 
       const { data } = await axios.post(`${API_URL}/user`, reqData, config);
