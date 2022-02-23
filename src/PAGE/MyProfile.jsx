@@ -44,16 +44,6 @@ const MyProfile = () => {
   const { image, username, accountname, intro, followerCount, followingCount } =
     useSelector(state => state.userReadProfile);
 
-  //게시글 삭제 API (이동 가능성 높음)
-  const onClickDeletePost = postId => {
-    dispatch(deletePost(postId));
-  };
-
-  //상품 삭제 API (이동 가능성 높음)
-  const onClickDeleteProduct = productId => {
-    dispatch(deleteProduct(productId));
-  };
-
   useEffect(() => {
     //상품 리스트 얻기
     dispatch(listProducts());
@@ -68,6 +58,11 @@ const MyProfile = () => {
     //나의 프로필 정보 얻기
     dispatch(getUserMyProfile(accountId));
   }, [dispatch]);
+
+  // 좋아요
+  const [isLikeAction, setLikeAction] = useState(false);
+  console.log(isLikeAction && isLikeAction, "isLikeAction");
+  const likeAction = () => setLikeAction(!isLikeAction);
 
   // 🕹 네비게이션 Modal & Alert
   const [navDialog, setNavDialog] = useState(false);
@@ -85,7 +80,12 @@ const MyProfile = () => {
     setPostDialog(!postDialog);
     setPostId(postId);
   };
-  const isPostAlert = () => setPostAlert(!postAlert);
+  const isPostAlert = postId => {
+    setPostAlert(!postAlert);
+    if (typeof postId === "string") {
+      dispatch(deletePost(postId));
+    }
+  };
 
   // 🏞 상품 모달 Modal & Alert
   const [productDialog, setProductDialog] = useState(false);
@@ -97,7 +97,12 @@ const MyProfile = () => {
     setProductDialog(!productDialog);
     setProductId(productId);
   };
-  const isProductAlert = () => setProductAlert(!productAlert);
+  const isProductAlert = productId => {
+    setProductAlert(!productAlert);
+    if (typeof productId === "string") {
+      dispatch(deleteProduct(productId));
+    }
+  };
 
   return (
     <>
@@ -184,7 +189,6 @@ const MyProfile = () => {
                               postImages.map((postImage, i) => {
                                 return (
                                   <ImgList key={i}>
-                                    <h3>{postImage}</h3>
                                     <img
                                       src={postImage}
                                       onError={event =>
@@ -205,14 +209,16 @@ const MyProfile = () => {
                           </ImgContainer>
                         </Link>
                         <IconBox
+                          hearted={post.hearted}
                           like={post.heartCount}
                           comment={post.commentCount}
+                          likeAction={likeAction}
                         />
                         <Date>
                           {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
                         </Date>
                       </ContentBox>
-                      <MoreBtn onClick={isPostDialog} />
+                      <MoreBtn onClick={() => isPostDialog(post.id)} />
                     </Container>
                   </PostWrapper>
                 </PostContainer>
@@ -244,7 +250,9 @@ const MyProfile = () => {
       {/* Product Alert */}
       <Alert visible={productAlert} messageText="상품을 삭제할까요?">
         <AlertBox isAlert={isProductAlert}>취소</AlertBox>
-        <AlertBox isAlert={isProductAlert}>삭제</AlertBox>
+        <AlertBox isAlert={() => isProductAlert(productId && productId)}>
+          삭제
+        </AlertBox>
       </Alert>
       {/* Post Modal */}
       <Modal visible={postDialog}>
@@ -255,7 +263,7 @@ const MyProfile = () => {
       {/* Post Alert */}
       <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
         <AlertBox isAlert={isPostAlert}>취소</AlertBox>
-        <AlertBox isAlert={isPostAlert}>삭제</AlertBox>
+        <AlertBox isAlert={() => isPostAlert(postId && postId)}>삭제</AlertBox>
       </Alert>
     </>
   );
