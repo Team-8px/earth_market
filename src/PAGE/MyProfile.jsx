@@ -190,11 +190,11 @@ const MyProfile = () => {
                         <ImageContainer>
                           <ImageList>
                             {postImages &&
-                              postImages.map((postImage, index) => {
+                              postImages.map(postImage => {
                                 return (
                                   <ItemWrapper
                                     to={`/post/${post.id}`}
-                                    key={index}
+                                    key={postImage}
                                   >
                                     <img
                                       src={postImage}
@@ -213,8 +213,8 @@ const MyProfile = () => {
                           </ImageList>
                           <BtnList>
                             {postImages &&
-                              postImages.map((item, index) => {
-                                return <button key={index}></button>;
+                              postImages.map(item => {
+                                return <button key={item} />;
                               })}
                           </BtnList>
                         </ImageContainer>

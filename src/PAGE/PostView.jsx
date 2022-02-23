@@ -117,16 +117,19 @@ const PostView = () => {
             <ImageContainer>
               <ImageList>
                 {postImages &&
-                  postImages.map((postImage, index) => {
+                  postImages.map(postImage => {
                     return (
-                      <ItemWrapper>
-                        <img key={index} src={postImage} alt="게시글 이미지" />
+                      <ItemWrapper key={postImage}>
+                        <img src={postImage} alt="게시글 이미지" />
                       </ItemWrapper>
                     );
                   })}
               </ImageList>
               <BtnList>
-                <button></button>
+                {postImages &&
+                  postImages.map(item => {
+                    return <button key={item} />;
+                  })}
               </BtnList>
             </ImageContainer>
             <IconBox like={heartCount} comment={commentCount} />
