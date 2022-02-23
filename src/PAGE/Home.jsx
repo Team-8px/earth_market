@@ -52,9 +52,9 @@ const Home = () => {
                     <ImageContainer>
                       <ImageList>
                         {postImages &&
-                          postImages.map((img, index) => {
+                          postImages.map(img => {
                             return (
-                              <ItemWrapper to={`/post/${post.id}`} key={index}>
+                              <ItemWrapper to={`/post/${post.id}`} key={img}>
                                 <img src={img} alt="게시글 이미지" />
                               </ItemWrapper>
                             );
@@ -62,8 +62,8 @@ const Home = () => {
                       </ImageList>
                       <BtnList>
                         {postImages &&
-                          postImages.map((item, index) => {
-                            return <button key={index}></button>;
+                          postImages.map(item => {
+                            return <button key={item} />;
                           })}
                       </BtnList>
                     </ImageContainer>
