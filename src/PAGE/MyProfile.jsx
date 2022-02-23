@@ -6,12 +6,12 @@ import { listProducts, deleteProduct } from "../actions/productActions";
 import { listPosts, deletePost } from "../actions/postActions";
 import { getUserMyProfile } from "../actions/userActions";
 import { UserInfoBoxInMyProfile } from "../components/module/post/UserInfoBox";
-import {
-  ContentBox,
-  ImgContainer,
-  ButtonList,
-  ImgList,
-} from "../components/module/post/ContentBox";
+// import {
+//   ContentBox,
+//   ImgContainer,
+//   ButtonList,
+//   ImgList,
+// } from "../components/module/post/ContentBox";
 import { Modal, AlertBtn, ListBtn } from "../components/module/modal/Modal";
 import { Alert, AlertBox } from "../components/module/alert/Alert";
 import IconBox from "../components/module/post/IconBox";
@@ -106,20 +106,18 @@ const MyProfile = () => {
 
   return (
     <>
+      {/* 헤더 */}
+      <HeaderLayOut>
+        <HeaderContainer>
+          <HeaderLink onClick={() => history.goBack()}>
+            <img src={prev} alt="이전 페이지 버튼" />
+          </HeaderLink>
+          <HeaderLink>
+            <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
+          </HeaderLink>
+        </HeaderContainer>
+      </HeaderLayOut>
       <LayOut>
-        {/* <ProductLayOut> */}
-
-        {/* 헤더 */}
-        <HeaderLayOut>
-          <HeaderContainer>
-            <HeaderLink onClick={() => history.goBack()}>
-              <img src={prev} alt="이전 페이지 버튼" />
-            </HeaderLink>
-            <HeaderLink>
-              <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
-            </HeaderLink>
-          </HeaderContainer>
-        </HeaderLayOut>
         {/* 유저 프로필 */}
         <UserInfoContainer>
           <UserInfoWrapper>
@@ -149,7 +147,7 @@ const MyProfile = () => {
             </ButtonWrapper>
           </UserInfoWrapper>
         </UserInfoContainer>
-        <ProfileContainer>
+        <SectionContainer>
           <Product>
             {products &&
               products.map(product => {
@@ -164,8 +162,8 @@ const MyProfile = () => {
                 );
               })}
           </Product>
-        </ProfileContainer>
-        <ProfileContainer>
+        </SectionContainer>
+        <SectionContainer>
           <DisplayButton></DisplayButton>
           {/* 게시글 */}
           {posts &&
@@ -182,7 +180,7 @@ const MyProfile = () => {
                         name={post.author.username}
                         id={post.author.accountname}
                       />
-                      <ContentBox content={post.content}>
+                      {/* <ContentBox content={post.content}>
                         <Link to={`/post/${post.id}`}>
                           <ImgContainer>
                             {postImages &&
@@ -202,7 +200,6 @@ const MyProfile = () => {
                                   </ImgList>
                                 );
                               })}
-
                             <ButtonList>
                               <button></button>
                             </ButtonList>
@@ -217,14 +214,14 @@ const MyProfile = () => {
                         <Date>
                           {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
                         </Date>
-                      </ContentBox>
+                      </ContentBox> */}
                       <MoreBtn onClick={() => isPostDialog(post.id)} />
                     </Container>
                   </PostWrapper>
                 </PostContainer>
               );
             })}
-        </ProfileContainer>
+        </SectionContainer>
       </LayOut>
 
       <Navigation />
@@ -333,7 +330,7 @@ const MoreBtn = styled.button`
   background-color: inherit;
 `;
 
-const ProfileContainer = styled.section`
+const SectionContainer = styled.section`
   border-top: 0.5px solid ${props => props.theme.palette["border"]};
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
   background-color: #fff;
