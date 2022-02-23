@@ -190,14 +190,14 @@ const MyProfile = () => {
                         <ImageContainer>
                           <ImageList>
                             {postImages &&
-                              postImages.map((img, index) => {
+                              postImages.map((postImage, index) => {
                                 return (
                                   <ItemWrapper
                                     to={`/post/${post.id}`}
                                     key={index}
                                   >
                                     <img
-                                      src={img}
+                                      src={postImage}
                                       alt="게시글 이미지"
                                       onError={event =>
                                         (event.target.style.display = "none")
