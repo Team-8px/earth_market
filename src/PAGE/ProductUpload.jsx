@@ -38,13 +38,33 @@ const ProductUpload = () => {
 
   const onSubmit = async data => {
     const { itemName, price, link, itemImage } = data;
-
+    const str = await getValues('productPrice');
+    // setValue('productPrice', parseInt(str.replace(/[^0-9]/g, ''), 10));
     const image = await imageUploadsHandler(itemImage[0]);
 
     //API 상품등록
     dispatch(createProduct(itemName, Number(price), link, image));
   };
 
+  // 3자리 마다 콤마
+  const { getValues } = useForm({
+      mode: 'all',
+  });
+
+  const [num, setNum] = useState('');
+
+  const inputPriceFormat = (str) => {
+    const comma = (str) => {
+      str = String(str);
+      return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
+    };
+    const uncomma = (str) => {
+      str = String(str);
+      return str.replace(/[^\d]+/g, "");
+    };
+    return comma(uncomma(str));
+  };
+  
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       {/* 헤더필드 영역 */}
@@ -93,7 +113,9 @@ const ProductUpload = () => {
           <input
             name="price"
             type="text"
-            {...register("price")}
+            value={num}
+            onChange={(e) => setNum(inputPriceFormat(e.target.value))}
+            // {...register("price")}
             placeholder="숫자만 입력 가능합니다."
             autoComplete="off"
             spellCheck="false"
