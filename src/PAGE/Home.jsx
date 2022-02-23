@@ -43,7 +43,6 @@ const Home = () => {
         <LayOut>
           {posts &&
             posts.map(post => {
-              console.log(post);
               return (
                 <Container key={post.id}>
                   {/* 유저 인포 */}

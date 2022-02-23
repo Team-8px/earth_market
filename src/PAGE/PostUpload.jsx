@@ -109,6 +109,7 @@ const PostUpload = () => {
           <ProfileImage src={image} />
           <TextBox {...register("postText")} htmlFor="postText">
             <textarea
+              style={{ width: "100%" }}
               type="text"
               name="postText"
               id="postText"
