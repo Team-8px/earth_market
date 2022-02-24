@@ -15,7 +15,7 @@ import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
 import SellProductLink from "../asset/product-img-example-01.jpg";
 import { ProfileImage } from "../components/common/image/ProfileImageStyle";
-import { Button } from "../components/module/button/button";
+import { Button, ChatButton, ShareButton } from "../components/module/button/button";
 import cardOn from "../asset/icon/icon-post-list-on.svg";
 import cardOff from "../asset/icon/icon-post-list-off.svg";
 import albumOn from "../asset/icon/icon-post-album-on.svg";
@@ -122,6 +122,24 @@ const YourProfile = () => {
               <strong>{followingCount}</strong>
               <span>following</span>
             </FollowingWrapper>
+            <ButtonWrapper>
+              <Link to="/">
+                <ChatButton size="md" width="120px">
+                </ChatButton>
+              </Link>
+              <Link to="/">
+                <Button
+                  size="md" 
+                  width="120px"
+                >
+                  언팔로우
+                </Button>
+              </Link>
+              <Link to="/">
+                <ShareButton size="md" width="120px">  
+                </ShareButton>
+              </Link>
+            </ButtonWrapper>
           </UserInfoWrapper>
         </UserInfoContainer>
         <ProductSectionContainer>
@@ -473,6 +491,10 @@ const FollowingWrapper = styled(Link)`
 `;
 const ButtonWrapper = styled.div`
   display: flex;
+
+  a {
+    padding : 8px;
+  }
 `;
 
 //  갤러리
