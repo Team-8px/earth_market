@@ -16,6 +16,11 @@ import dayjs from "dayjs";
 import SellProductLink from "../asset/product-img-example-01.jpg";
 import { ProfileImage } from "../components/common/image/ProfileImageStyle";
 import { Button } from "../components/module/button/button";
+import cardOn from "../asset/icon/icon-post-list-on.svg";
+import cardOff from "../asset/icon/icon-post-list-off.svg";
+import albumOn from "../asset/icon/icon-post-album-on.svg";
+import albumOff from "../asset/icon/icon-post-album-off.svg";
+import imageLayers from "../asset/icon/iccon-img-layers.svg";
 import prev from "../asset/icon-arrow-left.svg";
 import more from "../asset/icon-more-vertical.svg";
 import Navigation from "../components/template/common/Navigation";
@@ -77,11 +82,15 @@ const YourProfile = () => {
   const isProductDialog = () => setProductDialog(!productDialog);
   const isProductAlert = () => setProductAlert(!productAlert);
 
+  // DisplayButton에 대한 코드
+  const [gallery, setGallery] = useState(true);
+  const galleryHandler = () => {
+    setGallery(!gallery);
+  };
+
   return (
     <>
       <LayOut>
-        {/* <ProductLayOut> */}
-
         {/* 헤더 */}
         <HeaderLayOut>
           <HeaderContainer>
@@ -115,7 +124,7 @@ const YourProfile = () => {
             </FollowingWrapper>
           </UserInfoWrapper>
         </UserInfoContainer>
-        <SectionContainer>
+        <ProductSectionContainer>
           <Product>
             {products &&
               products.map(product => {
@@ -125,69 +134,125 @@ const YourProfile = () => {
                     productText={product.itemName}
                     productPrice={product.price}
                     img={product.itemImage}
-                    onClick={isProductDialog}
+                    onClick={() => isProductDialog(product.id)}
                   />
                 );
               })}
           </Product>
-        </SectionContainer>
-        <SectionContainer>
-          <DisplayButton></DisplayButton>
-          {/* 게시글 */}
-          {posts &&
-            posts.map(post => {
-              /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
-              const postImages = post?.image?.split(",");
-
-              return (
-                <PostContainer key={post.id}>
-                  <PostWrapper>
-                    <Container>
-                      <UserInfoBoxInMyProfile
-                        profileImage={post.author.image}
-                        name={post.author.username}
-                        id={post.author.accountname}
+        </ProductSectionContainer>
+        <PostSectionContainer>
+          {/* 디스플레이 핸들러 버튼 영역입니다. */}
+          <PostHeader>
+            <PostHeaderWrapper>
+              <CardGalleryBtn
+                onClick={galleryHandler}
+                disabled={gallery}
+                type="button"
+              >
+                {gallery ? (
+                  <img src={cardOn} alt="카드켜짐" />
+                ) : (
+                  <img src={cardOff} alt="카드꺼짐" />
+                )}
+              </CardGalleryBtn>
+              <AlbumGalleryBtn
+                onClick={galleryHandler}
+                disabled={!gallery}
+                type="button"
+              >
+                {gallery ? (
+                  <img src={albumOff} alt="앨범켜짐" />
+                ) : (
+                  <img src={albumOn} alt="앨범꺼짐" />
+                )}
+              </AlbumGalleryBtn>
+            </PostHeaderWrapper>
+          </PostHeader>
+          <PostContainer>
+            {gallery ? (
+              posts &&
+              posts.map(post => {
+                /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
+                const postImages = post?.image?.split(",");
+                return (
+                  <CardGalleryList key={post.id}>
+                    <UserInfoBoxInMyProfile
+                      profileImage={post.author.image}
+                      name={post.author.username}
+                      id={post.author.accountname}
+                    />
+                    <ContentBox>
+                      <ContentText>{post.content}</ContentText>
+                      <ImageContainer>
+                        <ImageList>
+                          {postImages &&
+                            postImages.map(postImage => {
+                              return (
+                                <ItemWrapper
+                                  to={`/post/${post.id}`}
+                                  key={postImage}
+                                >
+                                  <img
+                                    src={postImage}
+                                    alt="게시글 이미지"
+                                    onError={event =>
+                                      (event.target.style.display = "none")
+                                    }
+                                    onLoad={event =>
+                                      (event.target.style.display =
+                                        "inline-block")
+                                    }
+                                  />
+                                </ItemWrapper>
+                              );
+                            })}
+                        </ImageList>
+                        <BtnList>
+                          {postImages &&
+                            postImages.map(item => {
+                              return <button key={item} />;
+                            })}
+                        </BtnList>
+                      </ImageContainer>
+                      <IconBox
+                        like={post.heartCount}
+                        comment={post.comments.length}
                       />
-                      <ContentBox>
-                        <ContentText>{post.content}</ContentText>
-                        <ImageContainer>
-                          <ImageList>
-                            {postImages &&
-                              postImages.map(img => {
-                                return (
-                                  <ItemWrapper
-                                    to={`/post/${post.id}`}
-                                    key={img}
-                                  >
-                                    <img src={img} alt="게시글 이미지" />
-                                  </ItemWrapper>
-                                );
-                              })}
-                          </ImageList>
-                          <BtnList>
-                            {postImages &&
-                              postImages.map(item => {
-                                return <button key={item} />;
-                              })}
-                          </BtnList>
-                        </ImageContainer>
-                        <IconBox
-                          like={post.heartCount}
-                          comment={post.comments.length}
-                        />
-                        <Date>
-                          {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
-                        </Date>
-                      </ContentBox>
-                      <MoreBtn onClick={isPostDialog} />
-                    </Container>
-                  </PostWrapper>
-                </PostContainer>
-              );
-            })}
-        </SectionContainer>
+                      <Date>
+                        {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
+                      </Date>
+                    </ContentBox>
+                    <MoreBtn onClick={() => isPostDialog(post.id)} />
+                  </CardGalleryList>
+                );
+              })
+            ) : (
+              <AlbumGalleryList>
+                {posts &&
+                  posts.map(post => {
+                    const firstImage = post?.image?.split(",")[0];
+                    return (
+                      <AlbumItem key={Math.random() * 100}>
+                        {/* 현길님 여기에 라우팅 해주시면 됩니다. */}
+                        <ImgWrapper to={"/test"}>
+                          <img
+                            src={firstImage}
+                            onError={event =>
+                              (event.target.style.display = "none")
+                            }
+                            onLoad={event =>
+                              (event.target.style.display = "inline-block")
+                            }
+                          />
+                        </ImgWrapper>
+                      </AlbumItem>
+                    );
+                  })}
+              </AlbumGalleryList>
+            )}
+          </PostContainer>
+        </PostSectionContainer>
       </LayOut>
-
       <Navigation />
 
       <Modal visible={navDialog}>
@@ -235,7 +300,6 @@ const HeaderLayOut = styled.header`
   background-color: #fff;
   z-index: 10;
 `;
-
 const HeaderContainer = styled.div`
   position: relative;
   display: flex;
@@ -246,7 +310,6 @@ const HeaderContainer = styled.div`
   padding: 0 16px;
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
-
 const HeaderLink = styled(Link)`
   width: 22px;
   height: 22px;
@@ -254,34 +317,14 @@ const HeaderLink = styled(Link)`
   /* margin-right: 10px; */
   cursor: pointer;
 `;
-
 const LayOut = styled.main`
   min-width: 390px;
   width: 100%;
+  height: 100%;
   background: ${props => props.theme.palette["bg"]};
-  margin: 0 auto;
 `;
 
-const PostContainer = styled.section`
-  margin-bottom: 0;
-`;
-
-const PostWrapper = styled.div`
-  margin: 0 auto;
-  max-width: 390px;
-  width: 100%;
-  padding: 16px 16px 70px;
-`;
-
-const Container = styled.article`
-  position: relative;
-  max-width: 358px;
-  width: 100%;
-  margin-bottom: 20px;
-`;
-
-// product스타일 컴포넌트
-
+// product 스타일 컴포넌트 모듈 해체 하는 과정 필요합니다.
 const ProductLayOut = styled.article`
   margin: 20px auto;
   width: 358px;
@@ -290,60 +333,45 @@ const ProductLayOut = styled.article`
   flex-direction: column;
   overflow-y: hidden;
 `;
-
 const ProductContainer = styled.ul`
   display: flex;
   font-size: 12px;
   line-height: 12px;
   overflow-x: scroll;
 `;
-
 const ProductWrapper = styled.li`
   margin-right: 10px;
   cursor: pointer;
 `;
-
 const ProductImgWrapper = styled.div`
   border: 0.5px solid ${props => props.theme.palette["border"]};
   border-radius: 8px;
 `;
-
 const ProductImg = styled.img`
   width: 140px;
   height: 90px;
   border-radius: 8px;
   background-color: ${props => props.theme.palette["lightGray"]};
 `;
-
 const ProductTitle = styled.h2`
   font-size: 16px;
   line-height: 1.2;
   margin-bottom: 16px;
   font-weight: 700;
 `;
-
 const TextWrap = styled.figcaption`
   padding-top: 6px;
 `;
-
 const ProductText = styled.strong`
   display: block;
   line-height: 18px;
   margin-bottom: 4px;
 `;
-
 const ProductPrice = styled.strong`
   display: block;
   font-size: 12px;
   color: #f26e22;
   font-weight: 700;
-`;
-
-const SectionContainer = styled.section`
-  border-top: 0.5px solid ${props => props.theme.palette["border"]};
-  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
-  background-color: #fff;
-  margin-bottom: 6px;
 `;
 // const ProductLayOut = styled.article`
 //   margin: 20px auto;
@@ -353,7 +381,12 @@ const SectionContainer = styled.section`
 //   flex-direction: column;
 //   overflow-y: hidden;
 // `;
-
+const ProductSectionContainer = styled.section`
+  border-top: 0.5px solid ${props => props.theme.palette["border"]};
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
+  background-color: #fff;
+  margin-bottom: 6px;
+`;
 const UserInfoContainer = styled.header`
   display: flex;
   justify-content: center;
@@ -418,7 +451,6 @@ const FollowerWrapper = styled(Link)`
     color: #767676;
   }
 `;
-
 const FollowingWrapper = styled(Link)`
   position: absolute;
   left: 287px;
@@ -439,11 +471,72 @@ const FollowingWrapper = styled(Link)`
     color: #767676;
   }
 `;
-
 const ButtonWrapper = styled.div`
   display: flex;
 `;
 
+//  갤러리
+const PostSectionContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0;
+  background-color: #fff;
+`;
+const PostHeader = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 0.5px solid #dbdbdb;
+`;
+const PostHeaderWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 390px;
+  width: 100%;
+  height: 44px;
+  padding-right: 16px;
+`;
+const CardGalleryBtn = styled.button`
+  border: none;
+  background-color: inherit;
+  width: 26px;
+  height: 26px;
+
+  img {
+    width: 26px;
+    height: 26px;
+  }
+`;
+const AlbumGalleryBtn = styled.button`
+  border: none;
+  background-color: inherit;
+  margin-left: 16px;
+  width: 26px;
+  height: 26px;
+  img {
+    width: 26px;
+    height: 26px;
+  }
+`;
+// Post관련 스타일컴포넌트 입니다.
+// card & Album 공통 컨테이너
+const PostContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 390px;
+  width: 100%;
+  padding: 16px 16px 70px;
+`;
+// CardGallery 컨테이너
+const CardGalleryList = styled.article`
+  position: relative;
+  max-width: 358px;
+  width: 100%;
+  margin-bottom: 20px;
+`;
 const ContentBox = styled.section`
   padding-left: 54px;
 `;
@@ -453,7 +546,6 @@ const ContentText = styled.p`
   line-height: 18px;
   margin-bottom: 16px;
 `;
-
 const ImageContainer = styled.div`
   position: relative;
   margin-bottom: 16px;
@@ -461,12 +553,10 @@ const ImageContainer = styled.div`
   border-radius: 10px;
   overflow: hidden;
 `;
-
 const ImageList = styled.ul`
   display: flex;
   transition: all 0.4s;
 `;
-
 const ItemWrapper = styled.li`
   min-width: 304px;
   width: 100%;
@@ -498,7 +588,6 @@ const BtnList = styled.div`
     background-color: #fff;
   }
 `;
-
 const MoreBtn = styled.button`
   position: absolute;
   top: 4px;
@@ -507,5 +596,36 @@ const MoreBtn = styled.button`
   height: 18px;
   background: url(${more}) no-repeat center / 18px 18px;
   background-color: inherit;
+`;
+// AlbumGallery 컨테이너
+const AlbumGalleryList = styled.ul`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+`;
+const AlbumItem = styled.li`
+  position: relative;
+  max-height: 114px;
+  min-height: 114px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    width: 20px;
+    height: 20px;
+    background: url(${imageLayers}) no-repeat center / contain;
+  }
+`;
+const ImgWrapper = styled(Link)`
+  width: 100%;
+  height: 100%;
+
+  img {
+    margin-bottom: 0;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 export default YourProfile;
