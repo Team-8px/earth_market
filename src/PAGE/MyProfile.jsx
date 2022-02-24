@@ -6,11 +6,16 @@ import { listProducts, deleteProduct } from "../actions/productActions";
 import { listPosts, deletePost } from "../actions/postActions";
 import { getUserMyProfile } from "../actions/userActions";
 import { UserInfoBoxInMyProfile } from "../components/module/post/UserInfoBox";
-// 핸들러 버튼 이미지
+// 이미지 모음
 import cardOn from "../asset/icon/icon-post-list-on.svg";
 import cardOff from "../asset/icon/icon-post-list-off.svg";
 import albumOn from "../asset/icon/icon-post-album-on.svg";
 import albumOff from "../asset/icon/icon-post-album-off.svg";
+import imageLayers from "../asset/icon/iccon-img-layers.svg";
+import testimage from "../asset/8px.png";
+import prev from "../asset/icon-arrow-left.svg";
+import more from "../asset/icon-more-vertical.svg";
+
 import { Modal, AlertBtn, ListBtn } from "../components/module/modal/Modal";
 import { Alert, AlertBox } from "../components/module/alert/Alert";
 import IconBox from "../components/module/post/IconBox";
@@ -21,8 +26,6 @@ import dayjs from "dayjs";
 import SellProductLink from "../asset/product-img-example-01.jpg";
 import { ProfileImage } from "../components/common/image/ProfileImageStyle";
 import { Button } from "../components/module/button/button";
-import prev from "../asset/icon-arrow-left.svg";
-import more from "../asset/icon-more-vertical.svg";
 import Navigation from "../components/template/common/Navigation";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
 
@@ -146,7 +149,7 @@ const MyProfile = () => {
             </ButtonWrapper>
           </UserInfoWrapper>
         </UserInfoContainer>
-        <SectionContainer>
+        <ProductSectionContainer>
           <Product>
             {products &&
               products.map(product => {
@@ -161,8 +164,8 @@ const MyProfile = () => {
                 );
               })}
           </Product>
-        </SectionContainer>
-        <SectionContainer>
+        </ProductSectionContainer>
+        <PostSectionContainer>
           {/* 디스플레이 핸들러 버튼 영역입니다. */}
           <PostHeader>
             <PostHeaderWrapper>
@@ -190,14 +193,15 @@ const MyProfile = () => {
               </AlbumGalleryBtn>
             </PostHeaderWrapper>
           </PostHeader>
-          {/* 게시글 */}
-          {posts &&
-            posts.map(post => {
-              /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
-              const postImages = post?.image?.split(",");
-              return (
-                <PostContainer key={post.id}>
-                  {gallery ? (
+          <>
+            {gallery ? (
+              posts &&
+              posts.map(post => {
+                /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
+                const postImages = post?.image?.split(",");
+                // const firstImage = post?.image?.split(",")[0];
+                return (
+                  <PostContainer key={post.id}>
                     <CardGalleryList>
                       <UserInfoBoxInMyProfile
                         profileImage={post.author.image}
@@ -247,13 +251,25 @@ const MyProfile = () => {
                       </ContentBox>
                       <MoreBtn onClick={() => isPostDialog(post.id)} />
                     </CardGalleryList>
-                  ) : (
-                    <AlbumGalleryList></AlbumGalleryList>
-                  )}
-                </PostContainer>
-              );
-            })}
-        </SectionContainer>
+                  </PostContainer>
+                );
+              })
+            ) : (
+              <AlbumGalleryList>
+                <AlbumItem>
+                  <ImgWrapper to={"/test"}>
+                    <img src={testimage} />
+                  </ImgWrapper>
+                </AlbumItem>
+                <AlbumItem>
+                  <ImgWrapper to={"/test"}>
+                    <img src={testimage} />
+                  </ImgWrapper>
+                </AlbumItem>
+              </AlbumGalleryList>
+            )}
+          </>
+        </PostSectionContainer>
       </LayOut>
 
       <Navigation />
@@ -327,8 +343,8 @@ const HeaderLink = styled.div`
 const LayOut = styled.main`
   min-width: 390px;
   width: 100%;
+  height: 100%;
   background: ${props => props.theme.palette["bg"]};
-  margin: 0 auto;
 `;
 const MoreBtn = styled.button`
   position: absolute;
@@ -339,7 +355,7 @@ const MoreBtn = styled.button`
   background: url(${more}) no-repeat center / 18px 18px;
   background-color: inherit;
 `;
-const SectionContainer = styled.section`
+const ProductSectionContainer = styled.section`
   border-top: 0.5px solid ${props => props.theme.palette["border"]};
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
   background-color: #fff;
@@ -434,13 +450,19 @@ const ButtonWrapper = styled.div`
 `;
 
 //  Album 부분 관련 StyledComponent입니다
+const PostSectionContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0;
+  background-color: #fff;
+`;
 const PostHeader = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
   border-bottom: 0.5px solid #dbdbdb;
 `;
-
 const PostHeaderWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -450,7 +472,6 @@ const PostHeaderWrapper = styled.div`
   height: 44px;
   padding-right: 16px;
 `;
-
 const CardGalleryBtn = styled.button`
   border: none;
   background-color: inherit;
@@ -475,9 +496,7 @@ const AlbumGalleryBtn = styled.button`
 `;
 
 // Post관련 스타일컴포넌트 입니다.
-
 // card & Album 공통 컨테이너
-
 const PostContainer = styled.section`
   display: flex;
   flex-direction: column;
@@ -486,7 +505,6 @@ const PostContainer = styled.section`
   width: 100%;
   padding: 16px 16px 70px;
 `;
-
 // CardGallery 컨테이너
 const CardGalleryList = styled.article`
   position: relative;
@@ -551,6 +569,29 @@ const AlbumGalleryList = styled.ul`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
 `;
-const AlbumItems
+const AlbumItem = styled.li`
+  position: relative;
+  max-height: 114px;
+  min-height: 114px;
 
+  &::before {
+    content: "";
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    width: 20px;
+    height: 20px;
+    background: url(${imageLayers}) no-repeat center / contain;
+  }
+`;
+const ImgWrapper = styled(Link)`
+  width: 100%;
+  height: 100%;
+
+  img {
+    margin-bottom: 0;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
 export default MyProfile;
