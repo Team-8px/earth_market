@@ -18,8 +18,14 @@ const ProductUpload = () => {
   const [productImage, setProductImage] = useState([]);
 
   /* const [isPreviewImage, setIsPreviewImage] = useState(true); */
+  const [nextPage, setNextPage] = useState(true);
+  const { register, handleSubmit, formState: { errors, isValid } } = useForm({
+    mode: "onChange",
+  });
 
-  const { register, handleSubmit } = useForm();
+  const nextPageHandler = () => {
+    setNextPage(false);
+  };
 
   const dispatch = useDispatch();
 
@@ -51,7 +57,14 @@ const ProductUpload = () => {
       <HeaderFieldSet>
         <HeaderContainer>
           <HeaderLinkImg onClick={() => history.goBack()} src={PrevBtn} />
-          <Button width="90px" size="ms" color="#fff">
+          <Button 
+          type="submit"
+          width="90px" 
+          size="ms" 
+          color="#fff"
+          onClick={nextPageHandler}
+          isValid={isValid}
+          >
             저장
           </Button>
         </HeaderContainer>
@@ -74,7 +87,7 @@ const ProductUpload = () => {
               name="itemImage"
               id="itemImage"
               className="ir"
-              {...register("itemImage")}
+              {...register("itemImage", {required: true})}
             ></input>
           </Label>
         </ProductFormWrapper>
@@ -84,28 +97,31 @@ const ProductUpload = () => {
           <input
             name="itemName"
             type="text"
-            {...register("itemName")}
             placeholder="2~10자 이내여야 합니다."
             autoComplete="off"
             spellCheck="false"
+            {...register("itemName", {required: true, minLength: 2, maxLength: 10,})}
           />
+          {errors.itemName?.type ==="minLength" && (<p>*2~10자 이내여야 합니다.</p>)}
+          {errors.itemName?.type ==="maxLength" && (<p>*2~10자 이내여야 합니다.</p>)}
           <label>가격</label>
           <input
             name="price"
             type="text"
-            {...register("price")}
             placeholder="숫자만 입력 가능합니다."
             autoComplete="off"
             spellCheck="false"
+            {...register("price", {required: true, pattern: /^[0-9]/g })}
           />
+          {errors.price?.type === "pattern" && (<p>*숫자만 입력 가능합니다.</p>)}
           <label>판매 링크</label>
           <input
             name="link"
             type="text"
-            {...register("link")}
             placeholder="URL을 입력해 주세요."
             autoComplete="off"
             spellCheck="false"
+            {...register("link", {required: true})}
           />
         </ProductFormWrapper>
       </MainFieldSet>
@@ -174,6 +190,13 @@ const ProductFormWrapper = styled.div`
       border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
   }
+  p{
+    color: #EB5757;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 6px;
+    }
 `;
 
 const Container = styled.div`
@@ -215,48 +238,5 @@ const Label = styled.label`
     border-radius: 50%;
   }
 `;
-
-/* const ProfileImgWrapper = styled.div`
-  margin-top: 30px;
-  margin-bottom: 16px;
-
-  label {
-    position: relative;
-    display: block;
-    width: 110px;
-    height: 110px;
-    margin: 0 auto 30px;
-    border: 1px solid #dbdbdb;
-    border-radius: 50%;
-    cursor: pointer;
-
-    &::after {
-      position: absolute;
-      content: "";
-      right: 0;
-      bottom: 0;
-      width: 36px;
-      height: 36px;
-
-      border-radius: 50%;
-    }
-
-    img {
-      width: 110px;
-      height: 110px;
-    }
-
-    input {
-      position: absolute;
-      left: -10000px;
-      top: auto;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      // 기본값
-      padding: 0;
-    }
-  }
-`; */
 
 export default ProductUpload;
