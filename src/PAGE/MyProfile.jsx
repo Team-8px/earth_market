@@ -6,12 +6,11 @@ import { listProducts, deleteProduct } from "../actions/productActions";
 import { listPosts, deletePost } from "../actions/postActions";
 import { getUserMyProfile } from "../actions/userActions";
 import { UserInfoBoxInMyProfile } from "../components/module/post/UserInfoBox";
-import {
-  ContentBox,
-  ImgContainer,
-  ButtonList,
-  ImgList,
-} from "../components/module/post/ContentBox";
+// 핸들러 버튼 이미지
+import listOn from "../asset/icon/icon-post-list-on.svg";
+import listOff from "../asset/icon/icon-post-list-off.svg";
+import postOn from "../asset/icon/icon-post-album-on.svg";
+import postOff from "../asset/icon/icon-post-album-on.svg";
 import { Modal, AlertBtn, ListBtn } from "../components/module/modal/Modal";
 import { Alert, AlertBox } from "../components/module/alert/Alert";
 import IconBox from "../components/module/post/IconBox";
@@ -106,20 +105,18 @@ const MyProfile = () => {
 
   return (
     <>
+      {/* 헤더 */}
+      <HeaderLayOut>
+        <HeaderContainer>
+          <HeaderLink onClick={() => history.goBack()}>
+            <img src={prev} alt="이전 페이지 버튼" />
+          </HeaderLink>
+          <HeaderLink>
+            <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
+          </HeaderLink>
+        </HeaderContainer>
+      </HeaderLayOut>
       <LayOut>
-        {/* <ProductLayOut> */}
-
-        {/* 헤더 */}
-        <HeaderLayOut>
-          <HeaderContainer>
-            <HeaderLink onClick={() => history.goBack()}>
-              <img src={prev} alt="이전 페이지 버튼" />
-            </HeaderLink>
-            <HeaderLink>
-              <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
-            </HeaderLink>
-          </HeaderContainer>
-        </HeaderLayOut>
         {/* 유저 프로필 */}
         <UserInfoContainer>
           <UserInfoWrapper>
@@ -149,7 +146,7 @@ const MyProfile = () => {
             </ButtonWrapper>
           </UserInfoWrapper>
         </UserInfoContainer>
-        <ProfileContainer>
+        <SectionContainer>
           <Product>
             {products &&
               products.map(product => {
@@ -164,9 +161,15 @@ const MyProfile = () => {
                 );
               })}
           </Product>
-        </ProfileContainer>
-        <ProfileContainer>
-          <DisplayButton></DisplayButton>
+        </SectionContainer>
+        <SectionContainer>
+          {/* 디스플레이 핸들러 버튼 영역입니다. */}
+          <DisplayHandlerContainer>
+            <HandlerButtonWrapper>
+              <button />
+              <button />
+            </HandlerButtonWrapper>
+          </DisplayHandlerContainer>
           {/* 게시글 */}
           {posts &&
             posts.map(post => {
@@ -182,15 +185,20 @@ const MyProfile = () => {
                         name={post.author.username}
                         id={post.author.accountname}
                       />
-                      <ContentBox content={post.content}>
-                        <Link to={`/post/${post.id}`}>
-                          <ImgContainer>
+                      <ContentBox>
+                        <ContentText>{post.content}</ContentText>
+                        <ImageContainer>
+                          <ImageList>
                             {postImages &&
-                              postImages.map((postImage, i) => {
+                              postImages.map(postImage => {
                                 return (
-                                  <ImgList key={i}>
+                                  <ItemWrapper
+                                    to={`/post/${post.id}`}
+                                    key={postImage}
+                                  >
                                     <img
                                       src={postImage}
+                                      alt="게시글 이미지"
                                       onError={event =>
                                         (event.target.style.display = "none")
                                       }
@@ -199,20 +207,20 @@ const MyProfile = () => {
                                           "inline-block")
                                       }
                                     />
-                                  </ImgList>
+                                  </ItemWrapper>
                                 );
                               })}
-
-                            <ButtonList>
-                              <button></button>
-                            </ButtonList>
-                          </ImgContainer>
-                        </Link>
+                          </ImageList>
+                          <BtnList>
+                            {postImages &&
+                              postImages.map(item => {
+                                return <button key={item} />;
+                              })}
+                          </BtnList>
+                        </ImageContainer>
                         <IconBox
-                          hearted={post.hearted}
                           like={post.heartCount}
-                          comment={post.commentCount}
-                          likeAction={likeAction}
+                          comment={post.comments.length}
                         />
                         <Date>
                           {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
@@ -224,7 +232,7 @@ const MyProfile = () => {
                 </PostContainer>
               );
             })}
-        </ProfileContainer>
+        </SectionContainer>
       </LayOut>
 
       <Navigation />
@@ -333,7 +341,7 @@ const MoreBtn = styled.button`
   background-color: inherit;
 `;
 
-const ProfileContainer = styled.section`
+const SectionContainer = styled.section`
   border-top: 0.5px solid ${props => props.theme.palette["border"]};
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
   background-color: #fff;
@@ -428,6 +436,93 @@ const FollowingWrapper = styled(Link)`
 
 const ButtonWrapper = styled.div`
   display: flex;
+`;
+
+//  Albun 부분 관련 StyledComponent입니다
+const DisplayHandlerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 0.5px solid #dbdbdb;
+`;
+
+const HandlerButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 390px;
+  width: 100%;
+  height: 44px;
+  padding-right: 16px;
+
+  & > button:nth-child(1) {
+    width: 26px;
+    height: 26px;
+    background: url(${listOn}) no-repeat center / contain;
+  }
+  & > button:nth-child(2) {
+    margin-left: 16px;
+    width: 26px;
+    height: 26px;
+    background: url(${postOff}) no-repeat center / contain;
+  }
+`;
+
+// Post관련 스타일컴포넌트 입니다.
+
+const ContentBox = styled.section`
+  padding-left: 54px;
+`;
+const ContentText = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 16px;
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  margin-bottom: 16px;
+  max-height: 228px;
+  border-radius: 10px;
+  overflow: hidden;
+`;
+
+const ImageList = styled.ul`
+  display: flex;
+  transition: all 0.4s;
+`;
+
+const ItemWrapper = styled.li`
+  min-width: 304px;
+  width: 100%;
+  max-height: 228px;
+  min-height: 228px;
+  border: 0.5px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+`;
+const BtnList = styled.div`
+  position: absolute;
+  display: flex;
+  gap: 6px;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+
+  button {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #fff;
+  }
 `;
 
 export default MyProfile;
