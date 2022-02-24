@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import EllipseImg from "../../../asset/Ellipse-1.png";
 import MoreButton from "../../../asset/icon/icon-more-vertical.png";
+import { timeForToday } from "../../../util/timeForToday";
+
 const CommentLayout = styled.section`
   width: 100%;
   padding: 20px 16px;
@@ -86,7 +88,7 @@ export function ReplyBox({ img, username, time, comment, alt, isDialog }) {
       <CommentWrapper>
         <img src={img || EllipseImg} alt={alt} />
         <strong>{username}</strong>
-        <span>{time}</span>
+        <span>{timeForToday(time)}</span>
       </CommentWrapper>
       <CommentText>{comment}</CommentText>
       <CommentBox></CommentBox>

@@ -75,8 +75,8 @@ const PostView = () => {
   useEffect(() => {
     //댓글 리스트 가져오기 API
     dispatch(getCommentList(postId));
-  }, [dispatch, postId, craeteCommentId, deleteCommentId]);
-
+  }, [dispatch, postId, craeteCommentId, deleteCommentId]);  
+  
   // 🕹 네비게이션 Modal & Alert
   const [navDialog, setNavDialog] = useState(false);
   const [navAlert, setNavAlert] = useState(false);
@@ -149,7 +149,7 @@ const PostView = () => {
                 <ReplyBox
                   img={user?.author?.image}
                   username={user?.author?.username}
-                  time={"15분전"}
+                  time={user?.createdAt}
                   comment={user?.content}
                   key={user?.id}
                   isDialog={isChatDialog}
