@@ -6,11 +6,12 @@ import { listProducts, deleteProduct } from "../actions/productActions";
 import { listPosts, deletePost } from "../actions/postActions";
 import { getUserMyProfile } from "../actions/userActions";
 import { UserInfoBoxInMyProfile } from "../components/module/post/UserInfoBox";
-// 핸들러 버튼 이미지
-import listOn from "../asset/icon/icon-post-list-on.svg";
-import listOff from "../asset/icon/icon-post-list-off.svg";
-import postOn from "../asset/icon/icon-post-album-on.svg";
-import postOff from "../asset/icon/icon-post-album-on.svg";
+import {
+  ContentBox,
+  ImgContainer,
+  ButtonList,
+  ImgList,
+} from "../components/module/post/ContentBox";
 import { Modal, AlertBtn, ListBtn } from "../components/module/modal/Modal";
 import { Alert, AlertBox } from "../components/module/alert/Alert";
 import IconBox from "../components/module/post/IconBox";
@@ -25,6 +26,8 @@ import prev from "../asset/icon-arrow-left.svg";
 import more from "../asset/icon-more-vertical.svg";
 import Navigation from "../components/template/common/Navigation";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
+// 이미지 슬라이드 필요없으면 바로 버릴 예정
+import { Carousel } from "antd";
 
 // 💛 미진 충돌 잡기
 import UserInfo from "../components/UserInfo";
@@ -105,18 +108,20 @@ const MyProfile = () => {
 
   return (
     <>
-      {/* 헤더 */}
-      <HeaderLayOut>
-        <HeaderContainer>
-          <HeaderLink onClick={() => history.goBack()}>
-            <img src={prev} alt="이전 페이지 버튼" />
-          </HeaderLink>
-          <HeaderLink>
-            <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
-          </HeaderLink>
-        </HeaderContainer>
-      </HeaderLayOut>
       <LayOut>
+        {/* <ProductLayOut> */}
+
+        {/* 헤더 */}
+        <HeaderLayOut>
+          <HeaderContainer>
+            <HeaderLink onClick={() => history.goBack()}>
+              <img src={prev} alt="이전 페이지 버튼" />
+            </HeaderLink>
+            <HeaderLink>
+              <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
+            </HeaderLink>
+          </HeaderContainer>
+        </HeaderLayOut>
         {/* 유저 프로필 */}
         <UserInfoContainer>
           <UserInfoWrapper>
@@ -146,7 +151,7 @@ const MyProfile = () => {
             </ButtonWrapper>
           </UserInfoWrapper>
         </UserInfoContainer>
-        <SectionContainer>
+        <ProfileContainer>
           <Product>
             {products &&
               products.map(product => {
@@ -161,15 +166,9 @@ const MyProfile = () => {
                 );
               })}
           </Product>
-        </SectionContainer>
-        <SectionContainer>
-          {/* 디스플레이 핸들러 버튼 영역입니다. */}
-          <DisplayHandlerContainer>
-            <HandlerButtonWrapper>
-              <button />
-              <button />
-            </HandlerButtonWrapper>
-          </DisplayHandlerContainer>
+        </ProfileContainer>
+        <ProfileContainer>
+          <DisplayButton></DisplayButton>
           {/* 게시글 */}
           {posts &&
             posts.map(post => {
@@ -186,30 +185,36 @@ const MyProfile = () => {
                         id={post.author.accountname}
                       />
                       <ContentBox content={post.content}>
-                        <Link to={`/post/${post.id}`}>
-                          <ImgContainer>
-                            {postImages &&
-                              postImages.map((postImage, i) => {
-                                return (
-                                  <ImgList key={i}>
-                                    <img
-                                      src={postImage}
-                                      onError={event =>
-                                        (event.target.style.display = "none")
-                                      }
-                                      onLoad={event =>
-                                        (event.target.style.display =
-                                          "inline-block")
-                                      }
-                                    />
-                                  </ImgList>
-                                );
-                              })}
-                            <ButtonList>
+                        {/*  <Link to={`/post/${post.id}`}> */}
+                        {/* <ImgContainer> */}
+
+                        {/* 이미지 슬라이드 필요없으면 바로 버릴 예정 */}
+                        <Carousel>
+                          {postImages.map((image, index) => {
+                            console.log(image);
+                            return (
+                              <div key={index}>
+                                <img
+                                  style={{ width: "100%", maxHeight: "200px" }}
+                                  src={image}
+                                  alt="productImage"
+                                  onError={event =>
+                                    (event.target.style.display = "none")
+                                  }
+                                  onLoad={event =>
+                                    (event.target.style.display =
+                                      "inline-block")
+                                  }
+                                />
+                              </div>
+                            );
+                          })}
+                        </Carousel>
+                        {/* <ButtonList>
                               <button></button>
-                            </ButtonList>
-                          </ImgContainer>
-                        </Link>
+                            </ButtonList> */}
+                        {/* </ImgContainer> */}
+                        {/* </Link> */}
                         <IconBox
                           hearted={post.hearted}
                           like={post.heartCount}
@@ -226,7 +231,7 @@ const MyProfile = () => {
                 </PostContainer>
               );
             })}
-        </SectionContainer>
+        </ProfileContainer>
       </LayOut>
 
       <Navigation />
@@ -335,7 +340,7 @@ const MoreBtn = styled.button`
   background-color: inherit;
 `;
 
-const SectionContainer = styled.section`
+const ProfileContainer = styled.section`
   border-top: 0.5px solid ${props => props.theme.palette["border"]};
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
   background-color: #fff;
@@ -430,36 +435,6 @@ const FollowingWrapper = styled(Link)`
 
 const ButtonWrapper = styled.div`
   display: flex;
-`;
-
-//  Albun 부분 관련 StyledComponent입니다
-const DisplayHandlerContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  border-bottom: 0.5px solid #dbdbdb;
-`;
-
-const HandlerButtonWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  max-width: 390px;
-  width: 100%;
-  height: 44px;
-  padding-right: 16px;
-
-  & > button:nth-child(1) {
-    width: 26px;
-    height: 26px;
-    background: url(${listOn}) no-repeat center / contain;
-  }
-  & > button:nth-child(2) {
-    margin-left: 16px;
-    width: 26px;
-    height: 26px;
-    background: url(${postOff}) no-repeat center / contain;
-  }
 `;
 
 export default MyProfile;
