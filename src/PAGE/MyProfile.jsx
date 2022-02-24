@@ -193,87 +193,85 @@ const MyProfile = () => {
               </AlbumGalleryBtn>
             </PostHeaderWrapper>
           </PostHeader>
-          <>
+          <PostContainer>
             {gallery ? (
               posts &&
               posts.map(post => {
                 /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
                 const postImages = post?.image?.split(",");
-                // const firstImage = post?.image?.split(",")[0];
                 return (
-                  <PostContainer key={post.id}>
-                    <CardGalleryList>
-                      <UserInfoBoxInMyProfile
-                        profileImage={post.author.image}
-                        name={post.author.username}
-                        id={post.author.accountname}
+                  <CardGalleryList key={postImages}>
+                    <UserInfoBoxInMyProfile
+                      profileImage={post.author.image}
+                      name={post.author.username}
+                      id={post.author.accountname}
+                    />
+                    <ContentBox>
+                      <ContentText>{post.content}</ContentText>
+                      <ImageContainer>
+                        <ImageList>
+                          {postImages &&
+                            postImages.map(postImage => {
+                              return (
+                                <ItemWrapper
+                                  to={`/post/${post.id}`}
+                                  key={postImage}
+                                >
+                                  <img
+                                    src={postImage}
+                                    alt="게시글 이미지"
+                                    onError={event =>
+                                      (event.target.style.display = "none")
+                                    }
+                                    onLoad={event =>
+                                      (event.target.style.display =
+                                        "inline-block")
+                                    }
+                                  />
+                                </ItemWrapper>
+                              );
+                            })}
+                        </ImageList>
+                        <BtnList>
+                          {postImages &&
+                            postImages.map(item => {
+                              return <button key={item} />;
+                            })}
+                        </BtnList>
+                      </ImageContainer>
+                      <IconBox
+                        like={post.heartCount}
+                        comment={post.comments.length}
                       />
-                      <ContentBox>
-                        <ContentText>{post.content}</ContentText>
-                        <ImageContainer>
-                          <ImageList>
-                            {postImages &&
-                              postImages.map(postImage => {
-                                return (
-                                  <ItemWrapper
-                                    to={`/post/${post.id}`}
-                                    key={postImage}
-                                  >
-                                    <img
-                                      src={postImage}
-                                      alt="게시글 이미지"
-                                      onError={event =>
-                                        (event.target.style.display = "none")
-                                      }
-                                      onLoad={event =>
-                                        (event.target.style.display =
-                                          "inline-block")
-                                      }
-                                    />
-                                  </ItemWrapper>
-                                );
-                              })}
-                          </ImageList>
-                          <BtnList>
-                            {postImages &&
-                              postImages.map(item => {
-                                return <button key={item} />;
-                              })}
-                          </BtnList>
-                        </ImageContainer>
-                        <IconBox
-                          like={post.heartCount}
-                          comment={post.comments.length}
-                        />
-                        <Date>
-                          {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
-                        </Date>
-                      </ContentBox>
-                      <MoreBtn onClick={() => isPostDialog(post.id)} />
-                    </CardGalleryList>
-                  </PostContainer>
+                      <Date>
+                        {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
+                      </Date>
+                    </ContentBox>
+                    <MoreBtn onClick={() => isPostDialog(post.id)} />
+                  </CardGalleryList>
                 );
               })
             ) : (
               <AlbumGalleryList>
-                <AlbumItem>
-                  <ImgWrapper to={"/test"}>
-                    <img src={testimage} />
-                  </ImgWrapper>
-                </AlbumItem>
-                <AlbumItem>
-                  <ImgWrapper to={"/test"}>
-                    <img src={testimage} />
-                  </ImgWrapper>
-                </AlbumItem>
+                {posts &&
+                  posts.map(post => {
+                    const firstImage = post?.image?.split(",")[0];
+                    return (
+                      <AlbumItem key={firstImage}>
+                        {/* 현길님 여기에 라우팅 해주시면 됩니다. */}
+                        <ImgWrapper to={"/test"}>
+                          <img src={firstImage} />
+                        </ImgWrapper>
+                      </AlbumItem>
+                    );
+                  })}
               </AlbumGalleryList>
             )}
-          </>
+          </PostContainer>
         </PostSectionContainer>
       </LayOut>
 
       <Navigation />
-
       <Modal visible={navDialog}>
         <ListBtn isDialog={isNavDialog}>설정 및 개인정보</ListBtn>
         <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
