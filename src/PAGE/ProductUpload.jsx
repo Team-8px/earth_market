@@ -51,6 +51,25 @@ const ProductUpload = () => {
     dispatch(createProduct(itemName, Number(price), link, image));
   };
 
+  // 3자리 마다 콤마
+//   const { getValues } = useForm({
+//     mode: 'all',
+// });
+
+//   const [num, setNum] = useState('');
+
+//   const inputPriceFormat = (str) => {
+//     const comma = (str) => {
+//       str = String(str);
+//       return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
+//     };
+//     const uncomma = (str) => {
+//       str = String(str);
+//       return str.replace(/[^\d]+/g, "");
+//     };
+//     return comma(uncomma(str));
+//   };
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       {/* 헤더필드 영역 */}
@@ -108,6 +127,8 @@ const ProductUpload = () => {
           <input
             name="price"
             type="text"
+            // value={num}
+            // onChange={(e) => setNum(inputPriceFormat(e.target.value))}
             placeholder="숫자만 입력 가능합니다."
             autoComplete="off"
             spellCheck="false"
