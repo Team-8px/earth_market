@@ -24,6 +24,7 @@ const JoinProfile = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
@@ -41,11 +42,12 @@ const JoinProfile = () => {
     setIsPreviewImage(false);
   };
 
+
   const onSubmit = async data => {
-    const { email, password, username, accountname, profileImg, intro } = data;
+    const { email, password, username, accountname, profileImg, intro } = getValues();
     console.log(data, "입력값");
     const image = await imageUploadsHandler(profileImg[0]);
-    if (email && password && username && accountname) {
+    if (email && password && username && accountname && image && intro) {
       dispatch(
         joinMembership(email, password, username, accountname, image, intro),
       );
@@ -69,11 +71,11 @@ const JoinProfile = () => {
                 {...register("email", {
                   required: true,
                   pattern: /^\S+@\S+$/i,
+                  validate:(value) => value === getValues('email')
                 })}
               />
-              {errors.email?.type === "pattern" && (
-                <p>*올바르지 않은 이메일 형식입니다.</p>
-              )}
+              {errors.email?.type === "pattern" && (<p>*올바르지 않은 이메일 형식입니다.</p>)}
+              {errors.email?.type === "validate" && (<p>*이미 가입된 이메일 주소입니다. </p>)}
             </label>
             <label>
               비밀번호
@@ -89,7 +91,7 @@ const JoinProfile = () => {
             </label>
           </InputWrapper>{" "}
           <Button
-            type="button"
+            type="submit"
             width="322px"
             size="lg"
             onClick={nextPageHandler}
@@ -148,7 +150,7 @@ const JoinProfile = () => {
                 type="text"
                 placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
                 autoComplete="off"
-                {...register("intro")}
+                {...register("intro", {required: true})}
               />
             </label>
           </InputWrapper>
@@ -263,23 +265,4 @@ const SubText = styled.p`
   text-align: center;
 `;
 
-const InputButton = styled.div`
-position: relative;
-
-input {
-width: 322px;
-height: 44px;
-border-radius: 44px;
-display: inline-flex;
-align-items: center;
-justify-content: center;
-outline: none;
-border: none;
-background: ${theme.palette["main"]};
-color: #fff;
-font-weight: 400;
-cursor: pointer;
-}
-
-`;
 export default JoinProfile;
