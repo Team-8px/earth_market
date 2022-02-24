@@ -13,7 +13,9 @@ import { login } from "../actions/userActions";
 
 const LoginEmail = () => {
   const [isButtonStatus, setIsButtonStatus] = useState(false);
-  const { register, handleSubmit, watch, formState: { errors }} = useForm();
+  const { register, handleSubmit, watch, formState: { errors, isValid }} = useForm({
+    mode: "onChange",
+  });
 
   useEffect(() => {
     const subscription = watch(({ email, password }) => {
@@ -59,15 +61,9 @@ const LoginEmail = () => {
             </label>
             {errors.password && errors.password.type === "validate" && (<p>*이메일 또는 비밀번호가 일치하지 않습니다. </p>)}
           </InputWrapper>
-          <InputButton>
-          <input 
-            type="submit" 
-            value="로그인" 
-            />
-          </InputButton>
-          {/* <Button width="322px" size="lg" isButtonStatus={isButtonStatus}>
+          <Button type="submit" width="322px" size="lg" isValid={isValid}>
             로그인
-          </Button> */}
+          </Button>
           <LoginText to="/join/email">이메일로 회원가입</LoginText>
         </MainFieldSet>
       </Form>
