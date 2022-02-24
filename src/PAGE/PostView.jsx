@@ -104,10 +104,14 @@ const PostView = () => {
       {/* 헤더 */}
       <HeaderLayOut>
         <HeaderContainer>
-          <HeaderLink to="/to">
-            <img src={prev} alt="이전 페이지 버튼" />
+          <HeaderLink>
+            <img
+              src={prev}
+              onClick={() => history.goBack()}
+              alt="이전 페이지 버튼"
+            />
           </HeaderLink>
-          <HeaderLink to="/to">
+          <HeaderLink>
             <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
           </HeaderLink>
         </HeaderContainer>
@@ -155,21 +159,24 @@ const PostView = () => {
         </CommentList>
         {/* 댓글 생성 */}
         <SubmitChatLayOut>
-        <SubmitChatContainer onSubmit={handleSubmit(onSubmit)} autocomplete="new-password">
-        <ProfileLinkImg src={ProfileIcon} alt="프로필"/>
-        <SubmitChatLabel>
-          댓글 입력하기
-          <SubmitChatInput 
-            name="comment"
-            type="text"
-            placeholder="댓글 입력하기"
-            autoComplete="off"
-            {...register("comment")}
-            />
-        </SubmitChatLabel>
-        <SubmitChatButton>게시</SubmitChatButton>
-        </SubmitChatContainer>
-    </SubmitChatLayOut>
+          <SubmitChatContainer
+            onSubmit={handleSubmit(onSubmit)}
+            autocomplete="new-password"
+          >
+            <ProfileLinkImg src={ProfileIcon} alt="프로필" />
+            <SubmitChatLabel>
+              댓글 입력하기
+              <SubmitChatInput
+                name="comment"
+                type="text"
+                placeholder="댓글 입력하기"
+                autoComplete="off"
+                {...register("comment")}
+              />
+            </SubmitChatLabel>
+            <SubmitChatButton>게시</SubmitChatButton>
+          </SubmitChatContainer>
+        </SubmitChatLayOut>
       </LayOut>
 
       <Modal visible={navDialog}>
@@ -230,7 +237,7 @@ const HeaderContainer = styled.div`
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
-const HeaderLink = styled(Link)`
+const HeaderLink = styled.div`
   width: 22px;
   height: 22px;
   border: none;
@@ -272,54 +279,54 @@ const ProfileLinkImg = styled.img`
   width: 36px;
 `;
 
-const SubmitChatLayOut = styled.section `
-position: fixed;
-left: 0;
-bottom: 0;
-min-width: 390px;
-width: 100%;
-border-style: none;
-border-top: 0.5px solid ${props => props.theme.palette["border"]};
-background-color: #fff;
-`
+const SubmitChatLayOut = styled.section`
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  min-width: 390px;
+  width: 100%;
+  border-style: none;
+  border-top: 0.5px solid ${props => props.theme.palette["border"]};
+  background-color: #fff;
+`;
 
-const SubmitChatContainer = styled.form `
-position: relative;
-display: flex;
-align-items: center;
-max-width: 100%;
-height: 60px;
-padding: 0 16px;
-`
+const SubmitChatContainer = styled.form`
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  height: 60px;
+  padding: 0 16px;
+`;
 
 // 웹 접근성을 높이는 방법입니다.
-const SubmitChatLabel = styled.label `
-display: block;
-width: 100%;
-font-size: 3px;
-color: transparent;
-margin: 0 16px;
-`
+const SubmitChatLabel = styled.label`
+  display: block;
+  width: 100%;
+  font-size: 3px;
+  color: transparent;
+  margin: 0 16px;
+`;
 
-const SubmitChatInput = styled.input `
-display: block;
-width: 100%;
-border-style: none;
+const SubmitChatInput = styled.input`
+  display: block;
+  width: 100%;
+  border-style: none;
 
-&::placeholder {
-  color: ${props => props.theme.palette["border"]};
-}
-`
+  &::placeholder {
+    color: ${props => props.theme.palette["border"]};
+  }
+`;
 
-const SubmitChatButton = styled.button `
-display: block;
-width: 30px; 
-border-style: none;
-cursor: pointer;
-color: ${props => props.theme.palette["lightGray"]};
-&:focus {
-  color: ${props => props.theme.palette["main"]};
-}
-`
+const SubmitChatButton = styled.button`
+  display: block;
+  width: 30px;
+  border-style: none;
+  cursor: pointer;
+  color: ${props => props.theme.palette["lightGray"]};
+  &:focus {
+    color: ${props => props.theme.palette["main"]};
+  }
+`;
 
 export default PostView;

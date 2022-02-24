@@ -2,8 +2,10 @@ import React, { useState, useEffect, useMemo } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import { joinMembership } from "../actions/userActions";
 import { imageUploadsHandler } from "../util/imageUploads";
+import { API_URL } from "../constants/defaultUrl";
 //스타일
 import ProfileForm from "../components/module/form/ProfileForm";
 import ProfileUpload from "../components/module/profile/ProfileIUpload";
@@ -19,17 +21,41 @@ const JoinProfile = () => {
   const [isPreviewImage, setIsPreviewImage] = useState(true);
   const [nextPage, setNextPage] = useState(true);
   const [myImage, setMyImage] = useState([]);
+  const [emailErrorMessage, setEmailErrorMessage] = useState("");
+
   const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
   });
 
-  const nextPageHandler = () => {
-    setNextPage(false);
+  const nextPageHandler = async () => {
+    if (isValid) {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const reqData = {
+        user: { email: getValues().email },
+      };
+      const { data } = await axios.post(
+        `${API_URL}/user/emailvalid`,
+        reqData,
+        config,
+      );
+      console.log(data);
+      if (data.message === "사용 가능한 이메일 입니다.") {
+        setNextPage(false);
+      }
+      if (data.message === "이미 가입된 이메일 주소 입니다.") {
+        setEmailErrorMessage(data.message);
+      }
+    }
   };
 
   const previewImage = e => {
@@ -44,12 +70,20 @@ const JoinProfile = () => {
     const { email, password, username, accountname, profileImg, intro } = data;
     console.log(data, "입력값");
     const image = await imageUploadsHandler(profileImg[0]);
-    if (email && password && username && accountname) {
+    if (isValid) {
+      if (data.message === "사용 가능한 이메일 입니다.") {
+        setNextPage(false);
+      }
+      if (data.message === "이미 가입된 이메일 주소 입니다.") {
+        setEmailErrorMessage(data.message);
+      }
+
       dispatch(
         joinMembership(email, password, username, accountname, image, intro),
       );
     }
   };
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       {nextPage ? (
@@ -64,13 +98,18 @@ const JoinProfile = () => {
                 type="email"
                 placeholder="이메일 주소를 입력해 주세요."
                 autoComplete="off"
+                spellCheck="false"
                 {...register("email", {
                   required: true,
-                  pattern: /^\S+@\S+$/i,
+                  /* pattern: /^\S+@\S+$/i, */
+                  pattern: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
                 })}
               />
               {errors.email?.type === "pattern" && (
                 <p>*올바르지 않은 이메일 형식입니다.</p>
+              )}
+              {errors.email?.type === undefined && getValues().email && (
+                <p>{emailErrorMessage}</p>
               )}
             </label>
 
@@ -79,6 +118,7 @@ const JoinProfile = () => {
               <input
                 name="password"
                 type="password"
+                spellCheck="false"
                 placeholder="비밀번호를 설정해 주세요."
                 {...register("password", { required: true, minLength: 6 })}
               />
@@ -124,6 +164,7 @@ const JoinProfile = () => {
                 type="text"
                 placeholder="2~10자 이내여야 합니다."
                 autoComplete="off"
+                spellCheck="false"
                 {...register("username", {
                   required: true,
                   minLength: 2,
@@ -143,6 +184,7 @@ const JoinProfile = () => {
                 type="text"
                 placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
                 autoComplete="off"
+                spellCheck="false"
                 {...register("accountname", {
                   required: true,
                   pattern: /^[-._a-z0-9]+$/gi,
@@ -160,6 +202,7 @@ const JoinProfile = () => {
                 type="text"
                 placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
                 autoComplete="off"
+                spellCheck="false"
                 {...register("intro")}
               />
             </label>
