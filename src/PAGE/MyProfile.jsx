@@ -12,7 +12,6 @@ import cardOff from "../asset/icon/icon-post-list-off.svg";
 import albumOn from "../asset/icon/icon-post-album-on.svg";
 import albumOff from "../asset/icon/icon-post-album-off.svg";
 import imageLayers from "../asset/icon/iccon-img-layers.svg";
-import testimage from "../asset/8px.png";
 import prev from "../asset/icon-arrow-left.svg";
 import more from "../asset/icon-more-vertical.svg";
 
@@ -346,15 +345,7 @@ const LayOut = styled.main`
   height: 100%;
   background: ${props => props.theme.palette["bg"]};
 `;
-const MoreBtn = styled.button`
-  position: absolute;
-  top: 4px;
-  right: 0;
-  width: 18px;
-  height: 18px;
-  background: url(${more}) no-repeat center / 18px 18px;
-  background-color: inherit;
-`;
+
 const ProductSectionContainer = styled.section`
   border-top: 0.5px solid ${props => props.theme.palette["border"]};
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
@@ -562,6 +553,15 @@ const BtnList = styled.div`
     border-radius: 50%;
     background-color: #fff;
   }
+`;
+const MoreBtn = styled.button`
+  position: absolute;
+  top: 4px;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  background: url(${more}) no-repeat center / 18px 18px;
+  background-color: inherit;
 `;
 // AlbumGallery 컨테이너
 const AlbumGalleryList = styled.ul`
