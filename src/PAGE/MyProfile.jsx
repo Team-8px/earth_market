@@ -260,7 +260,15 @@ const MyProfile = () => {
                       <AlbumItem key={firstImage}>
                         {/* 현길님 여기에 라우팅 해주시면 됩니다. */}
                         <ImgWrapper to={"/test"}>
-                          <img src={firstImage} />
+                          <img
+                            src={firstImage}
+                            onError={event =>
+                              (event.target.style.display = "none")
+                            }
+                            onLoad={event =>
+                              (event.target.style.display = "inline-block")
+                            }
+                          />
                         </ImgWrapper>
                       </AlbumItem>
                     );
