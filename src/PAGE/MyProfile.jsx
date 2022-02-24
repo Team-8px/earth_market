@@ -166,7 +166,7 @@ const MyProfile = () => {
           {/* 디스플레이 핸들러 버튼 영역입니다. */}
           <PostHeader>
             <PostHeaderWrapper>
-              <CardGallery
+              <CardGalleryBtn
                 onClick={galleryHandler}
                 disabled={gallery}
                 type="button"
@@ -176,8 +176,8 @@ const MyProfile = () => {
                 ) : (
                   <img src={cardOff} alt="카드꺼짐" />
                 )}
-              </CardGallery>
-              <AlbumGallery
+              </CardGalleryBtn>
+              <AlbumGalleryBtn
                 onClick={galleryHandler}
                 disabled={!gallery}
                 type="button"
@@ -187,7 +187,7 @@ const MyProfile = () => {
                 ) : (
                   <img src={albumOn} alt="앨범꺼짐" />
                 )}
-              </AlbumGallery>
+              </AlbumGalleryBtn>
             </PostHeaderWrapper>
           </PostHeader>
           {/* 게시글 */}
@@ -197,8 +197,8 @@ const MyProfile = () => {
               const postImages = post?.image?.split(",");
               return (
                 <PostContainer key={post.id}>
-                  <PostWrapper>
-                    <Container>
+                  {gallery ? (
+                    <CardGalleryContainer>
                       <UserInfoBoxInMyProfile
                         profileImage={post.author.image}
                         name={post.author.username}
@@ -246,8 +246,10 @@ const MyProfile = () => {
                         </Date>
                       </ContentBox>
                       <MoreBtn onClick={() => isPostDialog(post.id)} />
-                    </Container>
-                  </PostWrapper>
+                    </CardGalleryContainer>
+                  ) : (
+                    <AlbumGalleryContainer></AlbumGalleryContainer>
+                  )}
                 </PostContainer>
               );
             })}
@@ -305,7 +307,6 @@ const HeaderLayOut = styled.header`
   background-color: #fff;
   z-index: 10;
 `;
-
 const HeaderContainer = styled.div`
   position: relative;
   display: flex;
@@ -316,7 +317,6 @@ const HeaderContainer = styled.div`
   padding: 0 16px;
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
-
 const HeaderLink = styled.div`
   width: 22px;
   height: 22px;
@@ -324,32 +324,12 @@ const HeaderLink = styled.div`
   /* margin-right: 10px; */
   cursor: pointer;
 `;
-
 const LayOut = styled.main`
   min-width: 390px;
   width: 100%;
   background: ${props => props.theme.palette["bg"]};
   margin: 0 auto;
 `;
-
-const PostContainer = styled.section`
-  margin-bottom: 0;
-`;
-
-const PostWrapper = styled.div`
-  margin: 0 auto;
-  max-width: 390px;
-  width: 100%;
-  padding: 16px 16px 70px;
-`;
-
-const Container = styled.article`
-  position: relative;
-  max-width: 358px;
-  width: 100%;
-  margin-bottom: 20px;
-`;
-
 const MoreBtn = styled.button`
   position: absolute;
   top: 4px;
@@ -359,14 +339,12 @@ const MoreBtn = styled.button`
   background: url(${more}) no-repeat center / 18px 18px;
   background-color: inherit;
 `;
-
 const SectionContainer = styled.section`
   border-top: 0.5px solid ${props => props.theme.palette["border"]};
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
   background-color: #fff;
   margin-bottom: 6px;
 `;
-
 const UserInfoContainer = styled.header`
   display: flex;
   justify-content: center;
@@ -431,7 +409,6 @@ const FollowerWrapper = styled(Link)`
     color: ${props => props.theme.palette["subText"]};
   }
 `;
-
 const FollowingWrapper = styled(Link)`
   position: absolute;
   left: 287px;
@@ -456,7 +433,7 @@ const ButtonWrapper = styled.div`
   display: flex;
 `;
 
-//  Albun 부분 관련 StyledComponent입니다
+//  Album 부분 관련 StyledComponent입니다
 const PostHeader = styled.div`
   display: flex;
   justify-content: center;
@@ -474,7 +451,7 @@ const PostHeaderWrapper = styled.div`
   padding-right: 16px;
 `;
 
-const CardGallery = styled.button`
+const CardGalleryBtn = styled.button`
   border: none;
   background-color: inherit;
   width: 26px;
@@ -485,7 +462,7 @@ const CardGallery = styled.button`
     height: 26px;
   }
 `;
-const AlbumGallery = styled.button`
+const AlbumGalleryBtn = styled.button`
   border: none;
   background-color: inherit;
   margin-left: 16px;
@@ -498,6 +475,34 @@ const AlbumGallery = styled.button`
 `;
 
 // Post관련 스타일컴포넌트 입니다.
+
+// card & Album 공통 컨테이너
+
+const PostContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 390px;
+  width: 100%;
+  padding: 16px 16px 70px;
+`;
+
+// CardGallery 컨테이너
+
+const CardGalleryContainer = styled.article`
+  position: relative;
+  max-width: 358px;
+  width: 100%;
+  margin-bottom: 20px;
+`;
+
+// AlbumGallery 컨테이너
+
+const AlbumGalleryContainer = styled.ul`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+`;
 
 const ContentBox = styled.section`
   padding-left: 54px;
