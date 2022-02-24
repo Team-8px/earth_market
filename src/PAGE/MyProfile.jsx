@@ -198,7 +198,7 @@ const MyProfile = () => {
               return (
                 <PostContainer key={post.id}>
                   {gallery ? (
-                    <CardGalleryContainer>
+                    <CardGalleryList>
                       <UserInfoBoxInMyProfile
                         profileImage={post.author.image}
                         name={post.author.username}
@@ -246,9 +246,9 @@ const MyProfile = () => {
                         </Date>
                       </ContentBox>
                       <MoreBtn onClick={() => isPostDialog(post.id)} />
-                    </CardGalleryContainer>
+                    </CardGalleryList>
                   ) : (
-                    <AlbumGalleryContainer></AlbumGalleryContainer>
+                    <AlbumGalleryList></AlbumGalleryList>
                   )}
                 </PostContainer>
               );
@@ -488,22 +488,12 @@ const PostContainer = styled.section`
 `;
 
 // CardGallery 컨테이너
-
-const CardGalleryContainer = styled.article`
+const CardGalleryList = styled.article`
   position: relative;
   max-width: 358px;
   width: 100%;
   margin-bottom: 20px;
 `;
-
-// AlbumGallery 컨테이너
-
-const AlbumGalleryContainer = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-`;
-
 const ContentBox = styled.section`
   padding-left: 54px;
 `;
@@ -513,7 +503,6 @@ const ContentText = styled.p`
   line-height: 18px;
   margin-bottom: 16px;
 `;
-
 const ImageContainer = styled.div`
   position: relative;
   margin-bottom: 16px;
@@ -521,12 +510,10 @@ const ImageContainer = styled.div`
   border-radius: 10px;
   overflow: hidden;
 `;
-
 const ImageList = styled.ul`
   display: flex;
   transition: all 0.4s;
 `;
-
 const ItemWrapper = styled.li`
   min-width: 304px;
   width: 100%;
@@ -558,5 +545,12 @@ const BtnList = styled.div`
     background-color: #fff;
   }
 `;
+// AlbumGallery 컨테이너
+const AlbumGalleryList = styled.ul`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+`;
+const AlbumItems
 
 export default MyProfile;
