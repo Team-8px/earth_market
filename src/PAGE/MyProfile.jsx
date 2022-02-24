@@ -149,6 +149,7 @@ const MyProfile = () => {
             </ButtonWrapper>
           </UserInfoWrapper>
         </UserInfoContainer>
+        {/* --- MyProfile 부분 ---- */}
         <ProductSectionContainer>
           <Product>
             {products &&
@@ -200,7 +201,7 @@ const MyProfile = () => {
                 /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
                 const postImages = post?.image?.split(",");
                 return (
-                  <CardGalleryList key={postImages}>
+                  <CardGalleryList key={post.id}>
                     <UserInfoBoxInMyProfile
                       profileImage={post.author.image}
                       name={post.author.username}
@@ -269,6 +270,7 @@ const MyProfile = () => {
             )}
           </PostContainer>
         </PostSectionContainer>
+        {/* --- MyProfile 부분 ---- */}
       </LayOut>
 
       <Navigation />
