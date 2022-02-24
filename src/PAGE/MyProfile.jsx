@@ -7,10 +7,10 @@ import { listPosts, deletePost } from "../actions/postActions";
 import { getUserMyProfile } from "../actions/userActions";
 import { UserInfoBoxInMyProfile } from "../components/module/post/UserInfoBox";
 // 핸들러 버튼 이미지
-import listOn from "../asset/icon/icon-post-list-on.svg";
-import listOff from "../asset/icon/icon-post-list-off.svg";
-import postOn from "../asset/icon/icon-post-album-on.svg";
-import postOff from "../asset/icon/icon-post-album-on.svg";
+import cardOn from "../asset/icon/icon-post-list-on.svg";
+import cardOff from "../asset/icon/icon-post-list-off.svg";
+import albumOn from "../asset/icon/icon-post-album-on.svg";
+import albumOff from "../asset/icon/icon-post-album-off.svg";
 import { Modal, AlertBtn, ListBtn } from "../components/module/modal/Modal";
 import { Alert, AlertBox } from "../components/module/alert/Alert";
 import IconBox from "../components/module/post/IconBox";
@@ -97,9 +97,12 @@ const MyProfile = () => {
       dispatch(deleteProduct(productId));
     }
   };
-  const [test, setTest] = useState(true);
-  console.log(test);
-  const DisplayHandler = () => setTest(!test);
+  // DisplayButton에 대한 코드
+  const [gallery, setGallery] = useState(true);
+  const galleryHandler = () => {
+    setGallery(!gallery);
+  };
+
   return (
     <>
       {/* 헤더 */}
@@ -161,18 +164,37 @@ const MyProfile = () => {
         </SectionContainer>
         <SectionContainer>
           {/* 디스플레이 핸들러 버튼 영역입니다. */}
-          <DisplayHandlerContainer>
-            <HandlerButtonWrapper>
-              <button onClick={DisplayHandler} isClickd={"click"} />
-              <button onClick={DisplayHandler} isClickd={"click"} />
-            </HandlerButtonWrapper>
-          </DisplayHandlerContainer>
+          <PostHeader>
+            <PostHeaderWrapper>
+              <CardGallery
+                onClick={galleryHandler}
+                disabled={gallery}
+                type="button"
+              >
+                {gallery ? (
+                  <img src={cardOn} alt="카드켜짐" />
+                ) : (
+                  <img src={cardOff} alt="카드꺼짐" />
+                )}
+              </CardGallery>
+              <AlbumGallery
+                onClick={galleryHandler}
+                disabled={!gallery}
+                type="button"
+              >
+                {gallery ? (
+                  <img src={albumOff} alt="앨범켜짐" />
+                ) : (
+                  <img src={albumOn} alt="앨범꺼짐" />
+                )}
+              </AlbumGallery>
+            </PostHeaderWrapper>
+          </PostHeader>
           {/* 게시글 */}
           {posts &&
             posts.map(post => {
               /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
               const postImages = post?.image?.split(",");
-
               return (
                 <PostContainer key={post.id}>
                   <PostWrapper>
@@ -430,20 +452,19 @@ const FollowingWrapper = styled(Link)`
     color: ${props => props.theme.palette["subText"]};
   }
 `;
-
 const ButtonWrapper = styled.div`
   display: flex;
 `;
 
 //  Albun 부분 관련 StyledComponent입니다
-const DisplayHandlerContainer = styled.div`
+const PostHeader = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
   border-bottom: 0.5px solid #dbdbdb;
 `;
 
-const HandlerButtonWrapper = styled.div`
+const PostHeaderWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -451,17 +472,28 @@ const HandlerButtonWrapper = styled.div`
   width: 100%;
   height: 44px;
   padding-right: 16px;
+`;
 
-  & > button:nth-child(1) {
+const CardGallery = styled.button`
+  border: none;
+  background-color: inherit;
+  width: 26px;
+  height: 26px;
+
+  img {
     width: 26px;
     height: 26px;
-    background: url(${listOn}) no-repeat center / contain;
   }
-  & > button:nth-child(2) {
-    margin-left: 16px;
+`;
+const AlbumGallery = styled.button`
+  border: none;
+  background-color: inherit;
+  margin-left: 16px;
+  width: 26px;
+  height: 26px;
+  img {
     width: 26px;
     height: 26px;
-    background: url(${postOff}) no-repeat center / contain;
   }
 `;
 
