@@ -22,8 +22,10 @@ const JoinProfile = () => {
   const [nextPage, setNextPage] = useState(true);
   const [myImage, setMyImage] = useState([]);
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
+  const [accountIdErrorMessage, setAccountIdErrorMessage] = useState("");
 
   const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -33,55 +35,114 @@ const JoinProfile = () => {
     mode: "onChange",
   });
 
-  const nextPageHandler = async () => {
-    if (isValid) {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      const reqData = {
-        user: { email: getValues().email },
-      };
-      const { data } = await axios.post(
-        `${API_URL}/user/emailvalid`,
-        reqData,
-        config,
-      );
-      console.log(data);
-      if (data.message === "사용 가능한 이메일 입니다.") {
-        setNextPage(false);
-      }
-      if (data.message === "이미 가입된 이메일 주소 입니다.") {
-        setEmailErrorMessage(data.message);
-      }
+  useEffect(() => {
+    if (emailErrorMessage) {
+      setEmailErrorMessage("");
     }
-  };
+  }, [getValues().email]);
+
+  useEffect(() => {
+    if (accountIdErrorMessage) {
+      setAccountIdErrorMessage("");
+    }
+  }, [getValues().accountname]);
+
+  //console.log(errors.accountname);
+  //console.log(getValues().accountname);
 
   const previewImage = e => {
     const nowSelectImageList = e.target.files;
+
     const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
-    console.log(nowImageUrl);
+
     setMyImage(nowImageUrl);
+
     setIsPreviewImage(false);
+  };
+
+
+  const getEmailValid = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const reqData = {
+      user: { email: getValues().email },
+    };
+    const { data } = await axios.post(
+      `${API_URL}/user/emailvalid`,
+      reqData,
+      config,
+    );
+
+    return data;
+  };
+
+  const getAccountNameValid = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const reqData = {
+      user: { accountname: getValues().accountname },
+    };
+    const { data } = await axios.post(
+      `${API_URL}/user/accountnamevalid`,
+      reqData,
+      config,
+    );
+    return data;
+  };
+
+  const nextPageHandler = async () => {
+    if (isValid) {
+      try {
+        const response = await getEmailValid();
+
+        if (response.message === "사용 가능한 이메일 입니다.") {
+          setNextPage(false);
+        }
+        if (response.message === "이미 가입된 이메일 주소 입니다.") {
+          setEmailErrorMessage(response.message);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
   };
 
 
   const onSubmit = async data => {
     const { email, password, username, accountname, profileImg, intro } = getValues();
     console.log(data, "입력값");
-    const image = await imageUploadsHandler(profileImg[0]);
-    if (isValid) {
-      if (data.message === "사용 가능한 이메일 입니다.") {
-        setNextPage(false);
+    try {
+      const image = await imageUploadsHandler(profileImg[0]);
+      if (isValid) {
+        try {
+          const response = await getAccountNameValid();
+          if (response.message === "사용 가능한 계정ID 입니다.") {
+            dispatch(
+              joinMembership(
+                email,
+                password,
+                username,
+                accountname,
+                image,
+                intro,
+              ),
+            );
+          }
+          if (response.message === "이미 가입된 계정ID 입니다.") {
+            setAccountIdErrorMessage(response.message);
+          }
+        } catch (e) {
+          console.log(e);
+        }
       }
-      if (data.message === "이미 가입된 이메일 주소 입니다.") {
-        setEmailErrorMessage(data.message);
-      }
-
-      dispatch(
-        joinMembership(email, password, username, accountname, image, intro),
-      );
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -90,7 +151,6 @@ const JoinProfile = () => {
       {nextPage ? (
         <MainFieldSet>
           <Title>이메일로 회원가입</Title>
-          <h1>{`${isValid}`}</h1>
           <InputWrapper>
             <label>
               이메일
@@ -105,12 +165,13 @@ const JoinProfile = () => {
                   pattern: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
                 })}
               />
+              {errors?.email?.type === "required" && (
+                <p>* 필수 입력사항입니다.</p>
+              )}
               {errors.email?.type === "pattern" && (
                 <p>*올바르지 않은 이메일 형식입니다.</p>
               )}
-              {errors.email?.type === undefined && getValues().email && (
-                <p>{emailErrorMessage}</p>
-              )}
+              {emailErrorMessage && <p>{emailErrorMessage}</p>}
             </label>
             <label>
               비밀번호
@@ -121,6 +182,9 @@ const JoinProfile = () => {
                 placeholder="비밀번호를 설정해 주세요."
                 {...register("password", { required: true, minLength: 6 })}
               />
+              {errors?.password?.type === "required" && (
+                <p>* 필수 입력사항입니다.</p>
+              )}
               {errors.password?.type === "minLength" && (
                 <p>*비밀번호는 6자 이상이어야 합니다.</p>
               )}
@@ -142,7 +206,7 @@ const JoinProfile = () => {
             프로필 설정
             <SubText>나중에 언제든지 변경할 수 있습니다.</SubText>
           </Title>
-          <h1>{`${isValid}`}</h1>
+
           <ProfileImgWrapper isPreviewImage={isPreviewImage} myImage={myImage}>
             <label onChange={previewImage} htmlFor="profileImg">
               <img alt="프로필 사진" className="ir" />
@@ -170,8 +234,14 @@ const JoinProfile = () => {
                   maxLength: 10,
                 })}
               />
-              {errors.username?.type ==="minLength" && (<p>*2~10자 이내여야 합니다.</p>)}
-              {errors.username?.type ==="maxLength" && (<p>*2~10자 이내여야 합니다.</p>)}
+
+              {errors?.username?.type === "required" && (
+                <p>* 필수 입력사항입니다.</p>
+              )}
+              {errors.username?.type === "minLength" ||
+                (errors.username?.type === "maxLength" && (
+                  <p>*2~10자 이내여야 합니다.</p>
+                ))}
             </label>
             <label>
               계정 ID
@@ -186,7 +256,15 @@ const JoinProfile = () => {
                   pattern: /^[-._a-z0-9]+$/gi,
                 })}
               />
-              {errors.accountname?.type === 'pattern' &&(<p>*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.</p>)}
+
+              {errors?.accountname?.type === "required" && (
+                <p>* 필수 입력사항입니다.</p>
+              )}
+              {errors?.accountname?.type === "pattern" && (
+                <p>*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.</p>
+              )}
+              {accountIdErrorMessage && <p>{accountIdErrorMessage}</p>}
+
             </label>
             <label>
               소개

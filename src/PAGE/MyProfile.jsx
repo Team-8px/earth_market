@@ -375,7 +375,6 @@ const UserInfoWrapper = styled.div`
   max-width: 390px;
   width: 100%;
   padding: 30px 16px 26px;
-
   img {
     margin-bottom: 16px;
   }
@@ -410,7 +409,6 @@ const FollowerWrapper = styled(Link)`
   top: 65px;
   text-align: center;
   cursor: pointer;
-
   strong {
     display: block;
     font-weight: 700;
@@ -418,7 +416,6 @@ const FollowerWrapper = styled(Link)`
     line-height: 23px;
     margin-bottom: 6px;
   }
-
   span {
     font-size: 10px;
     color: ${props => props.theme.palette["subText"]};
@@ -430,7 +427,6 @@ const FollowingWrapper = styled(Link)`
   top: 65px;
   text-align: center;
   cursor: pointer;
-
   strong {
     display: block;
     font-weight: 700;
@@ -438,7 +434,6 @@ const FollowingWrapper = styled(Link)`
     line-height: 23px;
     margin-bottom: 6px;
   }
-
   span {
     font-size: 10px;
     color: ${props => props.theme.palette["subText"]};
@@ -446,7 +441,6 @@ const FollowingWrapper = styled(Link)`
 `;
 const ButtonWrapper = styled.div`
   display: flex;
-
   a {
     padding : 8px;
 `;
@@ -479,7 +473,6 @@ const CardGalleryBtn = styled.button`
   background-color: inherit;
   width: 26px;
   height: 26px;
-
   img {
     width: 26px;
     height: 26px;
@@ -542,7 +535,6 @@ const ItemWrapper = styled.li`
   border: 0.5px solid var(--border-color);
   border-radius: 10px;
   overflow: hidden;
-
   img {
     height: 100%;
     object-fit: cover;
@@ -557,7 +549,6 @@ const BtnList = styled.div`
   left: 50%;
   bottom: 16px;
   transform: translateX(-50%);
-
   button {
     width: 6px;
     height: 6px;
@@ -584,7 +575,6 @@ const AlbumItem = styled.li`
   position: relative;
   max-height: 114px;
   min-height: 114px;
-
   &::before {
     content: "";
     position: absolute;
@@ -598,7 +588,6 @@ const AlbumItem = styled.li`
 const ImgWrapper = styled(Link)`
   width: 100%;
   height: 100%;
-
   img {
     margin-bottom: 0;
     height: 100%;

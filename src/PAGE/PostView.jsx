@@ -145,6 +145,7 @@ const PostView = () => {
         <CommentList>
           {commentListArr &&
             commentListArr.map(user => {
+              console.log(user?.createdAt);
               return (
                 <ReplyBox
                   img={user?.author?.image}
