@@ -42,7 +42,7 @@ const Search = () => {
           </HeaderLink>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Label>
-              계정 검색창입니다.
+              <span className="textHidden">계정 검색창입니다.</span>
               <HeaderInput
                 name="keyword"
                 {...register("keyword")}
