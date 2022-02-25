@@ -62,6 +62,7 @@ const App = () => {
               component={FollowingListKHK}
               exact
             />
+            {/* 62183cfb9d09d36b2150a8c6 */}
             {/* post */}
             <Route path="/post/my/upload" component={PostUploadKHK} exact />
             <Route path="/post/:postId" component={PostViewKHK} exact />
