@@ -38,8 +38,7 @@ const chatStyles = css`
   height: 34px;
   border: 1px solid #dbdbdb;
   border-radius: 50%;
-  // background: url(${props => props.icon}) no-repeat center / 20px 20px;
-  background: url(${chatImage}) no-repeat center / 20px 20px;
+  background: url(${props => props.icon || chatImage}) no-repeat center / 20px 20px;
 `;
 
 const shareStyles = css`
@@ -47,8 +46,7 @@ const shareStyles = css`
   height: 34px;
   border: 1px solid #dbdbdb;
   border-radius: 50%;
-  // background: url(${props => props.icon}) no-repeat center / 20px 20px;
-  background: url(${shareImage}) no-repeat center / 20px 20px;
+  background: url(${props => props.icon || shareImage}) no-repeat center / 20px 20px;
 `;
 
 const sizeMap = {
