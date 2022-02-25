@@ -10,65 +10,87 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { updateUserProfile, getUserMyProfile } from "../actions/userActions";
 import { imageUploadsHandler } from "../util/imageUploads";
+import { API_URL } from "../constants/defaultUrl";
+import axios from "axios";
 
 const ProfileUpdate = () => {
-  const [nextPage, setNextPage] = useState(true);
-  const { register, handleSubmit, formState: { errors, isValid }} = useForm({mode: "onChange"});
+  const {
+    register,
+    getValues,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({ mode: "onChange" });
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const nextPageHandler = () => {
-    setNextPage(false);
-  };
-
-  // updateImage 업데이트한 사진, 이미지 변경 여부를 따지고, 미리보기 사진을 변경
   const [updateImage, setUpdateImage] = useState([]);
-  console.log(updateImage);
-  /* 
-  이미지 업데이트 여부 isUpdatedImage 활용예시
-  <img src={isUpdatedImage ? updateImage : image} />"
-  */
+  const [accountIdErrorMessage, setAccountIdErrorMessage] = useState("");
   const [isUpdatedImage, setIsUpdatedImage] = useState(false);
-
-  //나의 프로필을 리덕스 스토어에서 가져오기
   const { image, username, accountname } = useSelector(
     state => state.userReadProfile,
   );
 
-  // /gh/profile/my/update
+  useEffect(() => {
+    if (accountIdErrorMessage) {
+      setAccountIdErrorMessage("");
+    }
+  }, [getValues().accountname]);
 
   useEffect(() => {
     // 나의 프로필 가져오기 API
     dispatch(getUserMyProfile());
   }, [dispatch]);
 
-  // 이미지 미리 보기
-  //<label onChange={previewImage} htmlFor="itemImg"><Input /></label>
   const previewImage = e => {
     const nowSelectImageList = e.target.files;
 
-    console.log(nowSelectImageList);
-
     const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
-
-    console.log(nowImageUrl);
 
     setUpdateImage(nowImageUrl);
 
     setIsUpdatedImage(true);
   };
 
+  const getAccountNameValid = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const reqData = {
+      user: { accountname: getValues().accountname },
+    };
+    const { data } = await axios.post(
+      `${API_URL}/user/accountnamevalid`,
+      reqData,
+      config,
+    );
+    return data;
+  };
+
   const onSubmit = async data => {
-    const { profileImg, username, accountname, intro } = data;
-
-    console.log(profileImg);
-    console.log(username);
-    console.log(accountname);
-    console.log(intro);
-
-    const image = await imageUploadsHandler(profileImg[0]);
-    console.log(image, "image 전처리 후");
-    dispatch(updateUserProfile(image, username, accountname, intro));
+    try {
+      const { profileImg, username, accountname, intro } = getValues();
+      const image = await imageUploadsHandler(profileImg[0]);
+      if (isValid) {
+        try {
+          const response = await getAccountNameValid();
+          console.log(response);
+          if (response.message === "사용 가능한 계정ID 입니다.") {
+            dispatch(
+              updateUserProfile(image && image, username, accountname, intro),
+            );
+          }
+          if (response.message === "이미 가입된 계정ID 입니다.") {
+            setAccountIdErrorMessage(response.message);
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -77,13 +99,12 @@ const ProfileUpdate = () => {
       <HeaderFieldSet>
         <HeaderContainer>
           <HeaderLinkImg onClick={() => history.goBack()} src={PrevBtn} />
-          <Button 
-          type="submit" 
-          width="90px" 
-          size="ms" 
-          color="#fff" 
-          onClick={nextPageHandler}
-          isValid={isValid}
+          <Button
+            type="submit"
+            width="90px"
+            size="ms"
+            color="#fff"
+            isValid={isValid}
           >
             저장
           </Button>
@@ -111,10 +132,15 @@ const ProfileUpdate = () => {
               type="text"
               placeholder="2~10자 이내여야 합니다."
               autoComplete="off"
-              {...register("username", {required: true, minLength: 2, maxLength: 10,})}
+              {...register("username", {
+                required: true,
+                minLength: 2,
+                maxLength: 10,
+              })}
             />
-            {errors.username?.type ==="minLength" && (<p>*2~10자 이내여야 합니다.</p>)}
-            {errors.username?.type ==="maxLength" && (<p>*2~10자 이내여야 합니다.</p>)}
+            {errors.username?.type === "minLength" && (
+              <p>*2~10자 이내여야 합니다.</p>
+            )}
           </label>
           <label>
             계정 ID
@@ -123,9 +149,15 @@ const ProfileUpdate = () => {
               type="text"
               placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
               autoComplete="off"
-              {...register("accountname", {required: true, pattern: /^[-._a-z0-9]+$/gi})}
+              {...register("accountname", {
+                required: true,
+                pattern: /^[-._a-z0-9]+$/gi,
+              })}
             />
-          {errors.accountname?.type === 'pattern' &&(<p>*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.</p>)}
+            {errors.accountname?.type === "pattern" && (
+              <p>*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.</p>
+            )}
+            {accountIdErrorMessage && <p>{accountIdErrorMessage}</p>}
           </label>
           <label>
             소개
@@ -134,11 +166,10 @@ const ProfileUpdate = () => {
               type="text"
               placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
               autoComplete="off"
-              {...register("intro", {required: true})}
+              {...register("intro", { required: true })}
             />
           </label>
         </ProfileFormWrapper>
-        <button>안녕 난버튼이야</button>
       </MainFieldSet>
     </Form>
   );
@@ -196,7 +227,8 @@ const ProfileImgWrapper = styled.div`
       bottom: 0;
       width: 36px;
       height: 36px;
-      background: ${props => props.theme.palette["lightGray"]} url(${Upload}) no-repeat center / 36px 36px;
+      background: ${props => props.theme.palette["lightGray"]} url(${Upload})
+        no-repeat center / 36px 36px;
       border-radius: 50%;
     }
 
@@ -248,13 +280,13 @@ const ProfileFormWrapper = styled.div`
     }
   }
 
-  p{
-    color: #EB5757;
+  p {
+    color: #eb5757;
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
     margin-top: 6px;
-    }
+  }
 `;
 
 export default ProfileUpdate;
