@@ -132,7 +132,7 @@ const ProductUpload = () => {
             placeholder="숫자만 입력 가능합니다."
             autoComplete="off"
             spellCheck="false"
-            {...register("price", {required: true, pattern: /^[0-9]/g })}
+            {...register("price", {required: true, pattern: /^[0-9]*$/})}
           />
           {errors.price?.type === "pattern" && (<p>*숫자만 입력 가능합니다.</p>)}
           <label>판매 링크</label>
