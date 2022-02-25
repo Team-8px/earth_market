@@ -38,7 +38,8 @@ const chatStyles = css`
   height: 34px;
   border: 1px solid #dbdbdb;
   border-radius: 50%;
-  background: url(${props => props.icon || chatImage}) no-repeat center / 20px 20px;
+  background: url(${props => props.icon || chatImage}) no-repeat center / 20px
+    20px;
 `;
 
 const shareStyles = css`
@@ -46,7 +47,8 @@ const shareStyles = css`
   height: 34px;
   border: 1px solid #dbdbdb;
   border-radius: 50%;
-  background: url(${props => props.icon || shareImage}) no-repeat center / 20px 20px;
+  background: url(${props => props.icon || shareImage}) no-repeat center / 20px
+    20px;
 `;
 
 const sizeMap = {
@@ -71,7 +73,6 @@ const sizeMap = {
     fontSize: "12px",
   },
 };
-
 const sizeStyles = css`
   ${({ size }) => css`
     height: ${sizeMap[size].height};
@@ -83,6 +84,7 @@ const sizeStyles = css`
 const colorStyles = css`
   ${({ color, theme, border }) => {
     const selected = theme.palette[color];
+    // selected = "#3f97fb"
     const borderTheme = theme.palette[border];
     return css`
       background: ${selected};
@@ -132,20 +134,16 @@ const MiniIconButton = styled.button`
 `;
 
 const StyledShareButton = styled(StyledButton)`
-  {
-    ${shareStyles}
-  }
+  ${shareStyles}
 `;
 
 const StyledChatButton = styled(StyledButton)`
-  {
-    ${chatStyles}
-  }
+  ${chatStyles}
 `;
 
-export function Button({ children, size, color, ...rest }) {
+export function Button({ children, size, color, border, ...rest }) {
   return (
-    <StyledButton size={size} color={color} {...rest}>
+    <StyledButton size={size} color={color} border={border} {...rest}>
       {children}
     </StyledButton>
   );
