@@ -145,11 +145,12 @@ const PostView = () => {
         <CommentList>
           {commentListArr &&
             commentListArr.map(user => {
+              console.log(user?.createdAt);
               return (
                 <ReplyBox
                   img={user?.author?.image}
                   username={user?.author?.username}
-                  time={"15분전"}
+                  time={user?.createdAt}
                   comment={user?.content}
                   key={user?.id}
                   isDialog={isChatDialog}

@@ -192,21 +192,21 @@ const MyProfile = () => {
                             {postImages &&
                               postImages.map(postImage => {
                                 return (
-                                  <ItemWrapper
-                                    to={`/post/${post.id}`}
-                                    key={postImage}
-                                  >
-                                    <img
-                                      src={postImage}
-                                      alt="게시글 이미지"
-                                      onError={event =>
-                                        (event.target.style.display = "none")
-                                      }
-                                      onLoad={event =>
-                                        (event.target.style.display =
-                                          "inline-block")
-                                      }
-                                    />
+                                  <ItemWrapper key={postImage}>
+                                    <Link to={`/post/${post.id}`}>
+                                      <img
+                                        src={postImage}
+                                        alt="게시글 이미지"
+
+                                        /* onError={event =>
+                                          (event.target.style.display = "none")
+                                        }
+                                        onLoad={event =>
+                                          (event.target.style.display =
+                                            "inline-block")
+                                        } */
+                                      />
+                                    </Link>
                                   </ItemWrapper>
                                 );
                               })}
