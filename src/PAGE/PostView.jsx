@@ -75,8 +75,8 @@ const PostView = () => {
   useEffect(() => {
     //댓글 리스트 가져오기 API
     dispatch(getCommentList(postId));
-  }, [dispatch, postId, craeteCommentId, deleteCommentId]);  
-  
+  }, [dispatch, postId, craeteCommentId, deleteCommentId]);
+
   // 🕹 네비게이션 Modal & Alert
   const [navDialog, setNavDialog] = useState(false);
   const [navAlert, setNavAlert] = useState(false);
@@ -165,7 +165,7 @@ const PostView = () => {
           >
             <ProfileLinkImg src={ProfileIcon} alt="프로필" />
             <SubmitChatLabel>
-              댓글 입력하기
+              <span className="textHidden">댓글 입력하기</span>
               <SubmitChatInput
                 name="comment"
                 type="text"
