@@ -99,7 +99,6 @@ const LayOut = styled.main`
   width: 100%;
   height: 100%;
   background-color: #fff;
-  margin-top: 48px;
 `;
 
 const UserList = styled.ul`
@@ -114,7 +113,7 @@ const UserItem = styled.li`
   align-items: center;
   margin-bottom: 16px;
 `;
-const UserImgWrapper = styled(Link)`
+const UserImgWrapper = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;

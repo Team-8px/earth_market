@@ -2,6 +2,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import faceBook from "../../../asset/facebook.png";
+import chatImage from "../../../asset/icon/icon-message-circle.png";
+import shareImage from "../../../asset/icon/icon-share.png";
 // import google from "../asset/google.png";
 // import kakao from "../asset/facebook.png";
 
@@ -36,7 +38,8 @@ const chatStyles = css`
   height: 34px;
   border: 1px solid #dbdbdb;
   border-radius: 50%;
-  background: url(${props => props.icon}) no-repeat center / 20px 20px;
+  background: url(${props => props.icon || chatImage}) no-repeat center / 20px
+    20px;
 `;
 
 const shareStyles = css`
@@ -44,7 +47,8 @@ const shareStyles = css`
   height: 34px;
   border: 1px solid #dbdbdb;
   border-radius: 50%;
-  background: url(${props => props.icon}) no-repeat center / 20px 20px;
+  background: url(${props => props.icon || shareImage}) no-repeat center / 20px
+    20px;
 `;
 
 const sizeMap = {
@@ -69,7 +73,6 @@ const sizeMap = {
     fontSize: "12px",
   },
 };
-
 const sizeStyles = css`
   ${({ size }) => css`
     height: ${sizeMap[size].height};
@@ -81,6 +84,7 @@ const sizeStyles = css`
 const colorStyles = css`
   ${({ color, theme, border }) => {
     const selected = theme.palette[color];
+    // selected = "#3f97fb"
     const borderTheme = theme.palette[border];
     return css`
       background: ${selected};
@@ -106,7 +110,7 @@ const colorStyles = css`
                 background: ${theme.palette["lightMain"]};
               `}
 
-     `;
+    `;
   }}
 `;
 
@@ -129,9 +133,17 @@ const MiniIconButton = styled.button`
   ${chatStyles}
 `;
 
-export function Button({ children, size, color, ...rest }) {
+const StyledShareButton = styled(StyledButton)`
+  ${shareStyles}
+`;
+
+const StyledChatButton = styled(StyledButton)`
+  ${chatStyles}
+`;
+
+export function Button({ children, size, color, border, ...rest }) {
   return (
-    <StyledButton size={size} color={color} {...rest}>
+    <StyledButton size={size} color={color} border={border} {...rest}>
       {children}
     </StyledButton>
   );
@@ -152,4 +164,20 @@ export function IconButton({ children, size, color, ...rest }) {
 
 export function SmaillIconButton({ children, icon }) {
   return <MiniIconButton icon={icon}>{children}</MiniIconButton>;
+}
+
+export function ChatButton({ children, size, color, ...rest }) {
+  return (
+    <StyledChatButton size={size} color={color} {...rest}>
+      {children}
+    </StyledChatButton>
+  );
+}
+
+export function ShareButton({ children, size, color, ...rest }) {
+  return (
+    <StyledShareButton size={size} color={color} {...rest}>
+      {children}
+    </StyledShareButton>
+  );
 }

@@ -166,7 +166,7 @@ const PostView = () => {
           >
             <ProfileLinkImg src={ProfileIcon} alt="프로필" />
             <SubmitChatLabel>
-              댓글 입력하기
+              <span className="textHidden">댓글 입력하기</span>
               <SubmitChatInput
                 name="comment"
                 type="text"

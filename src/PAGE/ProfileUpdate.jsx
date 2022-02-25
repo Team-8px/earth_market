@@ -12,9 +12,14 @@ import { updateUserProfile, getUserMyProfile } from "../actions/userActions";
 import { imageUploadsHandler } from "../util/imageUploads";
 
 const ProfileUpdate = () => {
-  const { register, handleSubmit } = useForm();
+  const [nextPage, setNextPage] = useState(true);
+  const { register, handleSubmit, formState: { errors, isValid }} = useForm({mode: "onChange"});
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const nextPageHandler = () => {
+    setNextPage(false);
+  };
 
   // updateImage 업데이트한 사진, 이미지 변경 여부를 따지고, 미리보기 사진을 변경
   const [updateImage, setUpdateImage] = useState([]);
@@ -63,7 +68,7 @@ const ProfileUpdate = () => {
 
     const image = await imageUploadsHandler(profileImg[0]);
     console.log(image, "image 전처리 후");
-    // dispatch(updateUserProfile(image, username, accountname));
+    dispatch(updateUserProfile(image, username, accountname, intro));
   };
 
   return (
@@ -72,7 +77,14 @@ const ProfileUpdate = () => {
       <HeaderFieldSet>
         <HeaderContainer>
           <HeaderLinkImg onClick={() => history.goBack()} src={PrevBtn} />
-          <Button width="90px" size="ms" color="#fff">
+          <Button 
+          type="submit" 
+          width="90px" 
+          size="ms" 
+          color="#fff" 
+          onClick={nextPageHandler}
+          isValid={isValid}
+          >
             저장
           </Button>
         </HeaderContainer>
@@ -99,8 +111,10 @@ const ProfileUpdate = () => {
               type="text"
               placeholder="2~10자 이내여야 합니다."
               autoComplete="off"
-              {...register("username")}
+              {...register("username", {required: true, minLength: 2, maxLength: 10,})}
             />
+            {errors.username?.type ==="minLength" && (<p>*2~10자 이내여야 합니다.</p>)}
+            {errors.username?.type ==="maxLength" && (<p>*2~10자 이내여야 합니다.</p>)}
           </label>
           <label>
             계정 ID
@@ -109,8 +123,9 @@ const ProfileUpdate = () => {
               type="text"
               placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
               autoComplete="off"
-              {...register("accountname")}
+              {...register("accountname", {required: true, pattern: /^[-._a-z0-9]+$/gi})}
             />
+          {errors.accountname?.type === 'pattern' &&(<p>*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.</p>)}
           </label>
           <label>
             소개
@@ -119,7 +134,7 @@ const ProfileUpdate = () => {
               type="text"
               placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
               autoComplete="off"
-              {...register("intro")}
+              {...register("intro", {required: true})}
             />
           </label>
         </ProfileFormWrapper>
@@ -232,6 +247,14 @@ const ProfileFormWrapper = styled.div`
       color: ${props => props.theme.palette["border"]};
     }
   }
+
+  p{
+    color: #EB5757;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 6px;
+    }
 `;
 
 export default ProfileUpdate;

@@ -60,6 +60,7 @@ const JoinProfile = () => {
     setIsPreviewImage(false);
   };
 
+
   const getEmailValid = async () => {
     const config = {
       headers: {
@@ -112,8 +113,9 @@ const JoinProfile = () => {
     }
   };
 
+
   const onSubmit = async data => {
-    const { email, password, username, accountname, profileImg, intro } = data;
+    const { email, password, username, accountname, profileImg, intro } = getValues();
     console.log(data, "입력값");
     try {
       const image = await imageUploadsHandler(profileImg[0]);
@@ -171,7 +173,6 @@ const JoinProfile = () => {
               )}
               {emailErrorMessage && <p>{emailErrorMessage}</p>}
             </label>
-
             <label>
               비밀번호
               <input
@@ -190,7 +191,7 @@ const JoinProfile = () => {
             </label>
           </InputWrapper>{" "}
           <Button
-            type="button"
+            type="submit"
             width="322px"
             size="lg"
             onClick={nextPageHandler}
@@ -233,6 +234,7 @@ const JoinProfile = () => {
                   maxLength: 10,
                 })}
               />
+
               {errors?.username?.type === "required" && (
                 <p>* 필수 입력사항입니다.</p>
               )}
@@ -241,7 +243,6 @@ const JoinProfile = () => {
                   <p>*2~10자 이내여야 합니다.</p>
                 ))}
             </label>
-
             <label>
               계정 ID
               <input
@@ -255,6 +256,7 @@ const JoinProfile = () => {
                   pattern: /^[-._a-z0-9]+$/gi,
                 })}
               />
+
               {errors?.accountname?.type === "required" && (
                 <p>* 필수 입력사항입니다.</p>
               )}
@@ -262,8 +264,8 @@ const JoinProfile = () => {
                 <p>*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.</p>
               )}
               {accountIdErrorMessage && <p>{accountIdErrorMessage}</p>}
-            </label>
 
+            </label>
             <label>
               소개
               <input
@@ -323,13 +325,13 @@ const InputWrapper = styled.div`
       border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
   }
-  p {
-    color: #eb5757;
+  p{
+    color: #EB5757;
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
     margin-top: 6px;
-  }
+    }
 `;
 
 const ProfileImgWrapper = styled.div`
@@ -368,52 +370,6 @@ const ProfileImgWrapper = styled.div`
       overflow: hidden;
       padding: 0;
     }
-  }
-`;
-
-const EmailWrapper = styled.div`
-  width: 322px;
-  height: 48px;
-  margin-bottom: 16px;
-  label {
-    display: block;
-    color: #767676;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    margin-bottom: 10px;
-  }
-  input {
-    width: 100%;
-    font-size: 14px;
-    color: ${props => props.theme.palette["border"]};
-    line-height: 14px;
-    padding-bottom: 8px;
-    border: none;
-    border-bottom: 1px solid ${props => props.theme.palette["border"]};
-  }
-`;
-
-const PwWrapper = styled.div`
-  width: 322px;
-  height: 48px;
-  margin-bottom: 16px;
-  label {
-    display: block;
-    color: ${props => props.theme.palette["subText"]};
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    margin-bottom: 10px;
-  }
-  input {
-    width: 100%;
-    font-size: 14px;
-    color: ${props => props.theme.palette["main"]};
-    line-height: 14px;
-    padding-bottom: 8px;
-    border: none;
-    border-bottom: 1px solid ${props => props.theme.palette["border"]};
   }
 `;
 
