@@ -118,7 +118,7 @@ const Form = styled.form`
 const Label = styled.label`
   display: block;
   font-size: 1px;
-  color: transparent;
+  // color: transparent;
 `;
 
 const HeaderInput = styled.input`
@@ -154,16 +154,18 @@ const UserListContainer = styled.ul`
 `;
 
 const UserListWrapper = styled.li`
-  margin-bottom: 16px;
   position: relative;
   display: flex;
   align-items: center;
-  width: 100%;
+  margin-bottom: 16px;
 `;
 
 // 프로필 사진 크기 수정 필요
 const UserImgLink = styled(Link)`
   cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
 
   img {
     width: 50px;
@@ -177,6 +179,7 @@ const UserImgLink = styled(Link)`
 
 const UserInfoWrapper = styled.div`
   margin-left: 12px;
+  width: calc(100% - 118px);
   height: 100%;
   align-self: flex-start;
 `;

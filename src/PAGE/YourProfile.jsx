@@ -15,7 +15,11 @@ import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
 import SellProductLink from "../asset/product-img-example-01.jpg";
 import { ProfileImage } from "../components/common/image/ProfileImageStyle";
-import { Button, ChatButton, ShareButton } from "../components/module/button/button";
+import {
+  Button,
+  ChatButton,
+  ShareButton,
+} from "../components/module/button/button";
 import cardOn from "../asset/icon/icon-post-list-on.svg";
 import cardOff from "../asset/icon/icon-post-list-off.svg";
 import albumOn from "../asset/icon/icon-post-album-on.svg";
@@ -88,6 +92,11 @@ const YourProfile = () => {
     setGallery(!gallery);
   };
 
+  const [isbtn, isBtn] = useState(true);
+  const followHandler = () => {
+    isBtn(!isbtn);
+  };
+
   return (
     <>
       <LayOut>
@@ -124,20 +133,28 @@ const YourProfile = () => {
             </FollowingWrapper>
             <ButtonWrapper>
               <Link to="/">
-                <ChatButton size="md" width="120px">
-                </ChatButton>
+                <ChatButton size="md" width="120px"></ChatButton>
               </Link>
+              {isbtn ? (
+                <Link to={"/profile/you/bread_fit"}>
+                  <Button
+                    size="md"
+                    width="120px"
+                    onClick={() => followHandler()}
+                  >
+                    팔로우
+                  </Button>
+                </Link>
+              ) : (
+                <Link to={"/profile/you/bread_fit"}>
+                  <UnfollowButton width="120px" onClick={() => followHandler()}>
+                    언팔로우
+                  </UnfollowButton>
+                </Link>
+              )}
+
               <Link to="/">
-                <Button
-                  size="md" 
-                  width="120px"
-                >
-                  언팔로우
-                </Button>
-              </Link>
-              <Link to="/">
-                <ShareButton size="md" width="120px">  
-                </ShareButton>
+                <ShareButton size="md" width="120px"></ShareButton>
               </Link>
             </ButtonWrapper>
           </UserInfoWrapper>
@@ -491,10 +508,25 @@ const FollowingWrapper = styled(Link)`
 `;
 const ButtonWrapper = styled.div`
   display: flex;
-
   a {
-    padding : 8px;
+    padding: 8px;
   }
+`;
+// border: 1px soild ${props => props.theme.palette["subText"]};
+const UnfollowButton = styled.button`
+  position: relative;
+  width: ${props => props.width || "100px"};
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: 1px solid ${props => props.theme.palette["border"]};
+  color: ${props => props.theme.palette["subText"]};
+  font-weight: 400;
+  cursor: pointer;
+  height: 34px;
+  font-size: 14px;
+  border-radius: 30px;
 `;
 
 //  갤러리
