@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -47,9 +47,6 @@ const JoinProfile = () => {
     }
   }, [getValues().accountname]);
 
-  //console.log(errors.accountname);
-  //console.log(getValues().accountname);
-
   const previewImage = e => {
     const nowSelectImageList = e.target.files;
 
@@ -59,7 +56,6 @@ const JoinProfile = () => {
 
     setIsPreviewImage(false);
   };
-
 
   const getEmailValid = async () => {
     const config = {
@@ -113,11 +109,10 @@ const JoinProfile = () => {
     }
   };
 
-
   const onSubmit = async data => {
-    const { email, password, username, accountname, profileImg, intro } = getValues();
-    console.log(data, "입력값");
     try {
+      const { email, password, username, accountname, profileImg, intro } =
+        getValues();
       const image = await imageUploadsHandler(profileImg[0]);
       if (isValid) {
         try {
@@ -234,7 +229,6 @@ const JoinProfile = () => {
                   maxLength: 10,
                 })}
               />
-
               {errors?.username?.type === "required" && (
                 <p>* 필수 입력사항입니다.</p>
               )}
@@ -256,7 +250,6 @@ const JoinProfile = () => {
                   pattern: /^[-._a-z0-9]+$/gi,
                 })}
               />
-
               {errors?.accountname?.type === "required" && (
                 <p>* 필수 입력사항입니다.</p>
               )}
@@ -264,7 +257,6 @@ const JoinProfile = () => {
                 <p>*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.</p>
               )}
               {accountIdErrorMessage && <p>{accountIdErrorMessage}</p>}
-
             </label>
             <label>
               소개
@@ -325,13 +317,13 @@ const InputWrapper = styled.div`
       border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
   }
-  p{
-    color: #EB5757;
+  p {
+    color: #eb5757;
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
     margin-top: 6px;
-    }
+  }
 `;
 
 const ProfileImgWrapper = styled.div`
