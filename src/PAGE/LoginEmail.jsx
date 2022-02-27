@@ -8,31 +8,34 @@ import LoginTitle from "../components/module/title/LoginTitle";
 
 // 비즈니스 로직
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/userActions";
 
 const LoginEmail = () => {
-  const [isButtonStatus, setIsButtonStatus] = useState(false);
-  const { register, handleSubmit, watch, formState: { errors, isValid }} = useForm({
+  const [notMatchError, setNotMatchError] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors, isValid },
+  } = useForm({
     mode: "onChange",
   });
 
-  useEffect(() => {
-    const subscription = watch(({ email, password }) => {
-      if (email && password) {
-        // 예시입니다
-        setIsButtonStatus("123456" === password);
-      }
-    });
-    return () => subscription.unsubscribe();
-  }, [watch]);
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (notMatchError) {
+      setNotMatchError("");
+    }
+  }, [getValues().password, getValues().email]);
 
   const onSubmit = data => {
     const { email, password } = data;
-
-    dispatch(login(email, password));
+    if (isValid) {
+      dispatch(login(email, password, setNotMatchError));
+    }
   };
 
   return (
@@ -43,23 +46,41 @@ const LoginEmail = () => {
           <InputWrapper>
             <label>
               이메일
-              <input 
-              name="email" 
-              type="text" 
-              autoComplete="off" 
-              spellCheck="false" 
-              {...register("email", {validate:(value) => value === watch("email")})}
+              <input
+                name="email"
+                type="email"
+                placeholder="이메일 주소를 입력해 주세요."
+                autoComplete="off"
+                spellCheck="false"
+                {...register("email", {
+                  required: true,
+                  pattern: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                })}
               />
+              {errors?.email?.type === "required" && (
+                <p>* 필수 입력사항입니다.</p>
+              )}
+              {errors.email?.type === "pattern" && (
+                <p>*올바르지 않은 이메일 형식입니다.</p>
+              )}
             </label>
             <label>
               비밀번호
               <input
                 name="password"
                 type="password"
-                {...register("password", {validate:(value) => value === watch("password")})}
+                spellCheck="false"
+                placeholder="비밀번호를 설정해 주세요."
+                {...register("password", { required: true, minLength: 6 })}
               />
+              {errors?.password?.type === "required" && (
+                <p>* 필수 입력사항입니다.</p>
+              )}
+              {errors.password?.type === "minLength" && (
+                <p>*비밀번호는 6자 이상이어야 합니다.</p>
+              )}
+              {notMatchError && <p>{notMatchError}</p>}
             </label>
-            {errors.password && errors.password.type === "validate" && (<p>*이메일 또는 비밀번호가 일치하지 않습니다. </p>)}
           </InputWrapper>
           <Button type="submit" width="322px" size="lg" isValid={isValid}>
             로그인
@@ -109,13 +130,13 @@ const InputWrapper = styled.div`
       border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
   }
-  p{
-    color: #EB5757;
+  p {
+    color: #eb5757;
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
     margin-top: 6px;
-    }
+  }
 `;
 
 const LoginText = styled(Link)`
@@ -137,18 +158,18 @@ const InputButton = styled.div`
   position: relative;
 
   input {
-  width: 322px;
-  height: 44px;
-  border-radius: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  outline: none;
-  border: none;
-  background: ${props => props.theme.palette["main"]};
-  color: #fff;
-  font-weight: 400;
-  cursor: pointer;
+    width: 322px;
+    height: 44px;
+    border-radius: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    background: ${props => props.theme.palette["main"]};
+    color: #fff;
+    font-weight: 400;
+    cursor: pointer;
   }
 `;
 
