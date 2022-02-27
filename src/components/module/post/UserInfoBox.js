@@ -45,10 +45,12 @@ export function UserInfoBox({ profileImage, name, id }) {
       <Link to={`/profile/you/${id}`}>
         <ProfileImg src={profileImage} alt="프로필 이미지" />
       </Link>
+      <Link to={`/profile/you/${id}`}>
       <Wrapper>
         <Name>{name}</Name>
         <Id>{id}</Id>
       </Wrapper>
+      </Link>
     </LayOut>
   );
 }
@@ -58,10 +60,12 @@ export function UserInfoBoxInMyProfile({ profileImage, name, id }) {
       <Link to="/profile/my">
         <ProfileImg src={profileImage} />
       </Link>
+      <Link to="/profile/my">
       <Wrapper>
         <Name>{name}</Name>
         <Id>{id}</Id>
       </Wrapper>
+      </Link>
     </LayOut>
   );
 }
