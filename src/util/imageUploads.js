@@ -11,9 +11,5 @@ export const imageUploadsHandler = async files => {
     data: { filename },
   } = await axios.post(`${API_URL}/image/uploadfile`, formData);
 
-  const fullFilename = `${API_URL}/${filename}`;
-
-  console.log(fullFilename, "한개의 이미지 이름");
-
-  return fullFilename;
+  return filename ? `${API_URL}/${filename}` : undefined;
 };

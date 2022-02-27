@@ -184,7 +184,6 @@ const HeaderLinkImg = styled.img`
 
 const ProductFormWrapper = styled.div`
   margin: 0 auto 16px;
-
   label {
     display: block;
     color: ${props => props.theme.palette["subText"]};
@@ -203,7 +202,6 @@ const ProductFormWrapper = styled.div`
     border: none;
     border-bottom: 1px solid ${props => props.theme.palette["border"]};
     caret-color: ${props => props.theme.palette["main"]};
-
     &::placeholder {
       color: ${props => props.theme.palette["border"]};
     }
@@ -243,7 +241,6 @@ const Label = styled.label`
   border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
-
   img {
     background: no-repeat center / contain;
   }

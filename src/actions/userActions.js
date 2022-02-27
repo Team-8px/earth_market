@@ -117,7 +117,7 @@ export const joinMembership =
       };
 
       const reqData = {
-        user: { email, password, username, accountname},
+        user: { email, password, username, accountname },
       };
 
       const { data } = await axios.post(`${API_URL}/user`, reqData, config);
@@ -130,7 +130,7 @@ export const joinMembership =
       });
 
       //회원가입 api에서 응답으로 토큰정보를 주지 않아서 로그인 화면으로 이동.
-      //document.location.href = "/";
+      document.location.href = "/";
     } catch (error) {
       console.log(error, "userActions Error");
       dispatch({
@@ -178,7 +178,7 @@ export const getUserMyProfile = accountId => async (dispatch, getState) => {
 };
 
 export const updateUserProfile =
-  (image, username, accountname) => async (dispatch, getState) => {
+  (image, username, accountname, intro) => async (dispatch, getState) => {
     try {
       dispatch({
         type: USER_UPDATE_PROFILE_REQUEST,
@@ -193,6 +193,7 @@ export const updateUserProfile =
       if (!!username) reqData.user.username = username;
       if (!!accountname) reqData.user.accountname = accountname;
       if (!!image) reqData.user.image = image;
+      if (!!intro) reqData.user.intro = intro;
 
       const config = {
         headers: {
@@ -227,7 +228,7 @@ export const updateUserProfile =
 
       localStorage.setItem("userInfo", JSON.stringify(localStorageData));
 
-      document.location.href = "/gh/profile/my";
+      document.location.href = "/profile/my";
     } catch (error) {
       const message =
         error.response && error.response.data.message
