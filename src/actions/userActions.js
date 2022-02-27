@@ -39,7 +39,6 @@ export const getSearchUser = keyword => async (dispatch, getState) => {
       config,
     );
 
-    console.log(data);
     dispatch({
       type: USER_SEARCH_SUCCESS,
       payload: data,
@@ -55,7 +54,7 @@ export const getSearchUser = keyword => async (dispatch, getState) => {
   }
 };
 
-export const login = (email, password) => async dispatch => {
+export const login = (email, password, setNotMatchError) => async dispatch => {
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
@@ -73,18 +72,20 @@ export const login = (email, password) => async dispatch => {
 
     const { data } = await axios.post(`${API_URL}/user/login`, reqData, config);
 
-    console.log(data, "로그인 axios 응답값");
-
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: data,
     });
 
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    if (data?.user) {
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      document.location.href = "/home";
+    }
 
-    document.location.href = "/home";
+    if (data?.status === 422) {
+      setNotMatchError(data.message);
+    }
   } catch (error) {
-    console.log(error, "userActions Error");
     dispatch({
       type: USER_LOGIN_FAIL,
       payload:
