@@ -12,6 +12,8 @@ const CommentLayout = styled.section`
 `;
 
 const CommentContainer = styled.ul`
+  display: flex;
+  flex-direction: column-reverse;
   max-width: 390px;
   margin: 0 auto;
   list-style: none;
