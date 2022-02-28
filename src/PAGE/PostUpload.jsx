@@ -4,8 +4,9 @@ import { useHistory } from "react-router-dom";
 
 // 스타일로직
 import { Button } from "../components/module/button/button";
-import uploadIcon from "../asset/upload-file.png";
+import uploadIcon from "../asset/upload-file.svg";
 import PrevBtn from "../asset/icon-arrow-left.svg";
+import RemoveBtn from "../asset/icon/icon-remove.svg";
 // import { UploadPost, UploadImg } from "../components/module/upload/UploadPost";
 // import testPostImg from "../asset/post-img-example.png";
 // import testIcon from "../asset/upload-file.png";
@@ -107,42 +108,47 @@ const PostUpload = () => {
         {/* 메인필드 영역 */}
         <MainFieldSet>
           <ProfileImage src={image} />
-          <TextBox {...register("postText")} htmlFor="postText">
-            <textarea
-              style={{ width: "100%" }}
-              type="text"
-              name="postText"
-              id="postText"
-              placeholder={"게시글 입력하기..."}
-              ref={ref}
-              onInput={resizeHeight}
-              maxLength="200"
-            />
-          </TextBox>
+          <PostForm>
+            <TextBox {...register("postText")} htmlFor="postText">
+              <textarea
+                type="text"
+                name="postText"
+                id="postText"
+                placeholder={"게시글 입력하기..."}
+                ref={ref}
+                onInput={resizeHeight}
+                maxLength="200"
+              />
+            </TextBox>
+            <PostFormContainer htmlFor="imgUpload">
+              <UploadImgIcon onChange={onChange} htmlFor="profileImg">
+              <input
+                type="file"
+                accept="image/jpg,image/png,image/jpeg,image/gif"
+                name="profileImg"
+                id="profileImg"
+                {...register("profileImg")}
+              />
+            </UploadImgIcon>
+           <PostPhotoList></PostPhotoList>
+            <PhotoList>
+              {myImage &&
+                myImage.map((image, i) => {
+                  return (
+                    <Item key={i}>
+                      <PostImage src={image.previewImg} />
+                    <RemoveButton>
+                      <span className="ir">이미지 삭제하기</span>
+                    </RemoveButton>
+                    </Item>
+
+                  );
+                })}
+            </PhotoList>
+          </PostFormContainer>
+        </PostForm>  
         </MainFieldSet>
       </Form>
-      <PostFormContainer htmlFor="imgUpload">
-        <UploadImgIcon onChange={onChange} htmlFor="profileImg">
-          <input
-            type="file"
-            accept="image/jpg,image/png,image/jpeg,image/gif"
-            name="profileImg"
-            id="profileImg"
-            {...register("profileImg")}
-          />
-        </UploadImgIcon>
-        <PostPhotoList></PostPhotoList>
-        <PhotoList>
-          {myImage &&
-            myImage.map((image, i) => {
-              return (
-                <Item key={i}>
-                  <PostImage src={image.previewImg} />
-                </Item>
-              );
-            })}
-        </PhotoList>
-      </PostFormContainer>
     </>
   );
 };
@@ -195,10 +201,15 @@ const ProfileImage = styled.img`
 //   padding-right: 16px;
 //   overflow-y: scroll;
 // `;
+const PostForm = styled.article `
+width: 100%;
+;`
 
 const PostFormContainer = styled.div`
   width: 100%;
   padding-top: 12px;
+  overflow-x: scroll;
+  overflow: hidden;
 
   input {
     position: absolute;
@@ -213,11 +224,14 @@ const PostFormContainer = styled.div`
 
 const TextBox = styled.label`
   width: 100%;
-  height: 36px;
   margin-bottom: 16px;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
+
+  textarea {
+    width: 100%;
+  }
 `;
 // 글자 칸 수 넘어갈 때마다 height값 증가하는 이벤트 잘 모르겠음
 
@@ -236,11 +250,17 @@ const UploadImgIcon = styled.label`
 
 // PostImg
 
-const PostPhotoList = styled.section``;
+const PostPhotoList = styled.section`
+`;
+
 const PhotoList = styled.ul`
+/* @media  */
   display: flex;
+  width: 100%;
   gap: 8px;
+  max-width: 390px;
   overflow-x: scroll;
+  overflow-y: hidden;
 `;
 
 const PostImage = styled.img`
@@ -249,17 +269,17 @@ const PostImage = styled.img`
   object-fit: cover;
 `;
 
-// const XButton = styled.button`
-//   position: absolute;
-//   top: 6px;
-//   right: 6px;
-//   height: 22px;
-//   width: 22px;
-//   background-image: url(${xIcon});
-//   background-size: contain;
-//   background-repeat: no-repeat;
-//   background-position: center;
-// `;
+const RemoveButton = styled.button`
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  height: 22px;
+  width: 22px;
+  background-image: url(${RemoveBtn});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
 
 const Item = styled.li`
   position: relative;
@@ -268,6 +288,7 @@ const Item = styled.li`
   height: 228px;
   overflow: hidden;
   border: 0.5px solid ${props => props.theme.palette["border"]};
+  margin-right: 5px;
 `;
 
 export default PostUpload;
