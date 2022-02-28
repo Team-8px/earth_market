@@ -70,7 +70,7 @@ const ProfileUpdate = () => {
 
   const onSubmit = async data => {
     try {
-      const { profileImg, username, accountname, intro } = getValues();
+      const { profileImg, username, accountname, intro } = data;
       const image = await imageUploadsHandler(profileImg[0]);
       if (isValid) {
         try {
@@ -133,7 +133,6 @@ const ProfileUpdate = () => {
               placeholder="2~10자 이내여야 합니다."
               autoComplete="off"
               {...register("username", {
-                required: true,
                 minLength: 2,
                 maxLength: 10,
               })}
@@ -150,7 +149,6 @@ const ProfileUpdate = () => {
               placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
               autoComplete="off"
               {...register("accountname", {
-                required: true,
                 pattern: /^[-._a-z0-9]+$/gi,
               })}
             />
@@ -166,7 +164,7 @@ const ProfileUpdate = () => {
               type="text"
               placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
               autoComplete="off"
-              {...register("intro", { required: true })}
+              {...register("intro", {})}
             />
           </label>
         </ProfileFormWrapper>
