@@ -283,7 +283,7 @@ const MyProfile = () => {
       <Navigation />
       <Modal visible={navDialog}>
         <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
-        <ListBtn isDialog={isNavDialog}>모달창 닫기</ListBtn>
+        <ListBtn isDialog={isNavDialog}>닫기</ListBtn>
       </Modal>
       {/* Nav Alert */}
       <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
@@ -297,6 +297,7 @@ const MyProfile = () => {
           <Link to={`/product/${productId}/update`}>수정 </Link>
         </ListBtn>
         <ListBtn isDialog={isProductDialog}>웹사이트에서 상품 보기</ListBtn>
+        <ListBtn isDialog={isProductDialog}>닫기</ListBtn>
       </Modal>
       {/* Product Alert */}
       <Alert visible={productAlert} messageText="상품을 삭제할까요?">

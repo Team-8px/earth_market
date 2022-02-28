@@ -181,36 +181,35 @@ const PostView = () => {
       </LayOut>
 
       <Modal visible={navDialog}>
-        <ListBtn isDialog={isNavDialog}>설정 및 개인정보</ListBtn>
         <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
-        <ListBtn isDialog={isNavDialog}>모달창 닫기</ListBtn>
+        <ListBtn isDialog={isNavDialog}>닫기</ListBtn>
       </Modal>
       {/* Nav Alert */}
       <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
-        <AlertBox isAlert={isNavAlert}>예</AlertBox>
+        <AlertBox isAlert={isNavAlert}>네</AlertBox>
         <AlertBox isAlert={isNavAlert}>아니요</AlertBox>
       </Alert>
 
       {/* 게시글 Modal */}
       <Modal visible={postDialog}>
         <AlertBtn isAlert={isPostAlert}>신고하기</AlertBtn>
-        <ListBtn isDialog={isPostDialog}>모달창 닫기</ListBtn>
+        <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
       </Modal>
       {/* 게시글 Alert */}
       <Alert visible={postAlert} messageText="게시글을 신고하시겠어요?">
-        <AlertBox isAlert={isPostAlert}>예</AlertBox>
+        <AlertBox isAlert={isPostAlert}>네</AlertBox>
         <AlertBox isAlert={isPostAlert}>아니요</AlertBox>
       </Alert>
 
       {/* chat Modal */}
       <Modal visible={chatDialog}>
         <AlertBtn isAlert={isChatAlert}>신고하기</AlertBtn>
-        <ListBtn isDialog={isChatDialog}>모달창 닫기</ListBtn>
+        <ListBtn isDialog={isChatDialog}>닫기</ListBtn>
       </Modal>
 
       {/* chat Alert */}
       <Alert visible={chatAlert} messageText="신고하시겠어요?">
-        <AlertBox isAlert={isChatAlert}>예</AlertBox>
+        <AlertBox isAlert={isChatAlert}>네</AlertBox>
         <AlertBox isAlert={isChatAlert}>아니요</AlertBox>
       </Alert>
     </>
