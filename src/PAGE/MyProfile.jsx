@@ -23,8 +23,6 @@ import DisplayButton from "../components/module/profile/DisplayButton";
 import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
 import SellProductLink from "../asset/product-img-example-01.jpg";
-import { ProfileImage } from "../components/common/image/ProfileImageStyle";
-import { Button } from "../components/module/button/button";
 import Navigation from "../components/template/common/Navigation";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
 
@@ -326,91 +324,6 @@ const ProductSectionContainer = styled.section`
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
   background-color: #fff;
   margin-bottom: 6px;
-`;
-const UserInfoContainer = styled.header`
-  display: flex;
-  justify-content: center;
-  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
-  background-color: #fff;
-  margin-bottom: 6px;
-`;
-const UserInfoWrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 390px;
-  width: 100%;
-  padding: 30px 16px 26px;
-  img {
-    margin-bottom: 16px;
-  }
-`;
-const UserName = styled.strong`
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  margin-bottom: 6px;
-`;
-const AccountName = styled.strong`
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  color: ${props => props.theme.palette["subText"]};
-  margin-bottom: 16px;
-  &::before {
-    content: "@";
-    margin-right: 3px;
-  }
-`;
-const Intro = styled.p`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  color: ${props => props.theme.palette["subText"]};
-  margin-bottom: 24px;
-`;
-const FollowerWrapper = styled(Link)`
-  position: absolute;
-  left: 56px;
-  top: 65px;
-  text-align: center;
-  cursor: pointer;
-  strong {
-    display: block;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 23px;
-    margin-bottom: 6px;
-  }
-  span {
-    font-size: 10px;
-    color: ${props => props.theme.palette["subText"]};
-  }
-`;
-const FollowingWrapper = styled(Link)`
-  position: absolute;
-  left: 287px;
-  top: 65px;
-  text-align: center;
-  cursor: pointer;
-  strong {
-    display: block;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 23px;
-    margin-bottom: 6px;
-  }
-  span {
-    font-size: 10px;
-    color: ${props => props.theme.palette["subText"]};
-  }
-`;
-const ButtonWrapper = styled.div`
-  display: flex;
-  a {
-    padding: 8px;
-  }
 `;
 
 //  Album 부분 관련 StyledComponent입니다
