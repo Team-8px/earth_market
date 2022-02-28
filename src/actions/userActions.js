@@ -196,6 +196,8 @@ export const updateUserProfile =
       if (!!image) reqData.user.image = image;
       if (!!intro) reqData.user.intro = intro;
 
+      console.log(reqData);
+
       const config = {
         headers: {
           "Content-Type": "application/json",
