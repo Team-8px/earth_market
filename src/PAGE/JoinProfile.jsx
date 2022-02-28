@@ -15,7 +15,7 @@ import Upload from "../asset/upload-file.svg";
 // import LoginTitle from "../components/module/title/LoginTitle";
 import { updateUserProfile } from "../actions/userActions";
 import ProfileImg from "../asset/icon/basic-profile.svg";
-import theme from "../styles/theme";
+// import theme from "../styles/theme";
 
 const JoinProfile = () => {
   const [isPreviewImage, setIsPreviewImage] = useState(true);
@@ -311,7 +311,7 @@ const InputWrapper = styled.div`
     border-bottom: 1px solid #dbdbdb;
     caret-color: ${props => props.theme.palette["main"]};
     &::placeholder {
-      color: ${theme.palette["border"]};
+      color: ${props => props.theme.palette["border"]};
     }
     &:focus {
       border-bottom: 1px solid ${props => props.theme.palette["main"]};

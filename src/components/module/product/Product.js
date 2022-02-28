@@ -16,12 +16,10 @@ const ProductContainer = styled.ul`
 
   ::-webkit-scrollbar {
     height: 8px;
-    /* transition: background 0.3s ease; */
   }
 
   &:hover::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    /* background: ${theme.palette["lightMain"]}; */
     background: rgba(0, 0, 0, 0.3);
   }
 `;
@@ -32,7 +30,7 @@ const ProductWrapper = styled.li`
 `;
 
 const ProductImgWrapper = styled.div`
-  border: 0.5px solid #dbdbdb;
+  border: 0.5px solid ${props => props.theme.palette["border"]};
   border-radius: 8px;
 `;
 
@@ -40,7 +38,7 @@ const ProductImg = styled.img`
   width: 140px;
   height: 90px;
   border-radius: 8px;
-  background-color: #c4c4c4;
+  object-fit: cover;
 `;
 
 const ProductTitle = styled.h2`
@@ -63,7 +61,7 @@ const ProductText = styled.strong`
 const ProductPrice = styled.strong`
   display: block;
   font-size: 12px;
-  color: #f26e22;
+  color: ${props => props.theme.palette["main"]};
   font-weight: 700;
 `;
 
