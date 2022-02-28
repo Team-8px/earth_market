@@ -8,9 +8,9 @@ import {
   ProductPrice,
 } from "./index.style";
 
-function ProductCard({ productText, productPrice, img }) {
+function ProductCard({ productText, productPrice, img, onClick }) {
   return (
-    <ProductWrapper>
+    <ProductWrapper onClick={onClick}>
       <ProductImgWrapper>
         <ProductImg src={img} />
       </ProductImgWrapper>
