@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { Link, useHistory, useParams } from "react-router-dom";
-import { listProducts, deleteProduct } from "../actions/productActions";
+import { Link, useHistory } from "react-router-dom";
 import { listPosts, deletePost } from "../actions/postActions";
 import { UserInfoBoxInMyProfile } from "../components/module/post/UserInfoBox";
 
@@ -20,27 +19,18 @@ import { Alert, AlertBox } from "../components/module/alert/Alert";
 import IconBox from "../components/module/post/IconBox";
 import Date from "../components/module/post/Date";
 import DisplayButton from "../components/module/profile/DisplayButton";
-import { ProductList, Product } from "../components/module/product/Product";
 import dayjs from "dayjs";
-import SellProductLink from "../asset/product-img-example-01.jpg";
 import Navigation from "../components/template/common/Navigation";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
 
 // 작업완료
-import ProfileContainer from "../components/Profile/ProfileContainer";
-
+import Profile from "../components/Profile/ProfileContainer";
+import Product from "../components/Profile/ProductContainer";
 const MyProfile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  //상품 리스트 배열
-  const { products } = useSelector(state => state.productList);
   //게시글 리스트 배열
   const { posts } = useSelector(state => state.postList);
-
-  useEffect(() => {
-    //상품 리스트 얻기
-    dispatch(listProducts());
-  }, [dispatch]);
 
   useEffect(() => {
     //게시글 리스트 얻기
@@ -75,22 +65,6 @@ const MyProfile = () => {
     }
   };
 
-  // 🏞 상품 모달 Modal & Alert
-  const [productDialog, setProductDialog] = useState(false);
-  const [productAlert, setProductAlert] = useState(false);
-  const [productId, setProductId] = useState("");
-
-  const isProductDialog = productId => {
-    console.log(productId, "productId 들어와라!");
-    setProductDialog(!productDialog);
-    setProductId(productId);
-  };
-  const isProductAlert = productId => {
-    setProductAlert(!productAlert);
-    if (typeof productId === "string") {
-      dispatch(deleteProduct(productId));
-    }
-  };
   // DisplayButton에 대한 코드
   const [gallery, setGallery] = useState(true);
   const galleryHandler = () => {
@@ -112,24 +86,10 @@ const MyProfile = () => {
       </HeaderLayOut>
       <LayOut>
         {/* 유저 프로필 */}
-        <ProfileContainer />
-        {/* --- MyProfile 부분 ---- */}
-        <ProductSectionContainer>
-          <Product>
-            {products &&
-              products.map(product => {
-                return (
-                  <ProductList
-                    key={product.id}
-                    productText={product.itemName}
-                    productPrice={product.price}
-                    img={product.itemImage}
-                    onClick={() => isProductDialog(product.id)}
-                  />
-                );
-              })}
-          </Product>
-        </ProductSectionContainer>
+        <Profile />
+        {/* 상품 */}
+        <Product />
+        {/* 게시글 */}
         <PostSectionContainer>
           {/* 디스플레이 핸들러 버튼 영역입니다. */}
           <PostHeader>
@@ -242,9 +202,7 @@ const MyProfile = () => {
             )}
           </PostContainer>
         </PostSectionContainer>
-        {/* --- MyProfile 부분 ---- */}
       </LayOut>
-
       <Navigation />
       <Modal visible={navDialog}>
         <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
@@ -254,22 +212,6 @@ const MyProfile = () => {
       <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
         <AlertBox isAlert={isNavAlert}>예</AlertBox>
         <AlertBox isAlert={isNavAlert}>아니요</AlertBox>
-      </Alert>
-      {/* Product Modal */}
-      <Modal visible={productDialog}>
-        <AlertBtn isAlert={isProductAlert}>삭제</AlertBtn>
-        <ListBtn isDialog={isProductDialog}>
-          <Link to={`/product/${productId}/update`}>수정 </Link>
-        </ListBtn>
-        <ListBtn isDialog={isProductDialog}>웹사이트에서 상품 보기</ListBtn>
-        <ListBtn isDialog={isProductDialog}>닫기</ListBtn>
-      </Modal>
-      {/* Product Alert */}
-      <Alert visible={productAlert} messageText="상품을 삭제할까요?">
-        <AlertBox isAlert={isProductAlert}>취소</AlertBox>
-        <AlertBox isAlert={() => isProductAlert(productId && productId)}>
-          삭제
-        </AlertBox>
       </Alert>
       {/* Post Modal */}
       <Modal visible={postDialog}>
@@ -317,13 +259,6 @@ const LayOut = styled.main`
   width: 100%;
   height: 100%;
   background: ${props => props.theme.palette["bg"]};
-`;
-
-const ProductSectionContainer = styled.section`
-  border-top: 0.5px solid ${props => props.theme.palette["border"]};
-  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
-  background-color: #fff;
-  margin-bottom: 6px;
 `;
 
 //  Album 부분 관련 StyledComponent입니다

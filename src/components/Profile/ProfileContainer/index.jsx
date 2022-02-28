@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import ProfileCard from "../ProfileCard";
 import { getUserMyProfile } from "../../../actions/userActions";
 
-function ProfileContainer() {
+function Profile() {
   const dispatch = useDispatch();
   const { accountId } = useParams();
   const { image, username, accountname, intro, followerCount, followingCount } =
@@ -31,4 +31,4 @@ function ProfileContainer() {
   );
 }
 
-export default ProfileContainer;
+export default Profile;
