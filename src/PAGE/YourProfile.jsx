@@ -103,10 +103,10 @@ const YourProfile = () => {
         {/* 헤더 */}
         <HeaderLayOut>
           <HeaderContainer>
-            <HeaderLink to="/to">
+            <HeaderLink to={"/home"}>
               <img src={prev} alt="이전 페이지 버튼" />
             </HeaderLink>
-            <HeaderLink to="/to">
+            <HeaderLink as="div">
               <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
             </HeaderLink>
           </HeaderContainer>

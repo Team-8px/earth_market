@@ -110,10 +110,10 @@ const MyProfile = () => {
       {/* 헤더 */}
       <HeaderLayOut>
         <HeaderContainer>
-          <HeaderLink onClick={() => history.goBack()}>
+          <HeaderLink to={"/home"}>
             <img src={prev} alt="이전 페이지 버튼" />
           </HeaderLink>
-          <HeaderLink>
+          <HeaderLink as="div">
             <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
           </HeaderLink>
         </HeaderContainer>
@@ -340,7 +340,7 @@ const HeaderContainer = styled.div`
   padding: 0 16px;
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
-const HeaderLink = styled.div`
+const HeaderLink = styled(Link)`
   width: 22px;
   height: 22px;
   border: none;
