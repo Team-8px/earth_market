@@ -297,30 +297,23 @@ const YourProfile = () => {
       </Modal>
       {/* Nav Alert */}
       <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
-        <AlertBox isAlert={isNavAlert}>예</AlertBox>
+        <AlertBox isAlert={isNavAlert}>네</AlertBox>
         <AlertBox isAlert={isNavAlert}>아니요</AlertBox>
       </Alert>
       {/* Product Modal */}
       <Modal visible={productDialog}>
-        <AlertBtn isAlert={isProductAlert}>삭제</AlertBtn>
-        <ListBtn isDialog={isProductDialog}>수정</ListBtn>
         <ListBtn isDialog={isProductDialog}>웹사이트에서 상품 보기</ListBtn>
+        <ListBtn isDialog={isProductDialog}>모달창 닫기</ListBtn>
       </Modal>
-      {/* Product Alert */}
-      <Alert visible={productAlert} messageText="상품을 삭제할까요?">
-        <AlertBox isAlert={isProductAlert}>취소</AlertBox>
-        <AlertBox isAlert={isProductAlert}>삭제</AlertBox>
-      </Alert>
       {/* Post Modal */}
       <Modal visible={postDialog}>
-        <AlertBtn isAlert={isPostAlert}>삭제</AlertBtn>
-        <ListBtn isDialog={isPostDialog}>수정</ListBtn>
+        <AlertBtn isAlert={isPostAlert}>신고하기</AlertBtn>
         <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
       </Modal>
       {/* Post Alert */}
-      <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
-        <AlertBox isAlert={isPostAlert}>취소</AlertBox>
-        <AlertBox isAlert={isPostAlert}>삭제</AlertBox>
+      <Alert visible={postAlert} messageText="게시글을 신고할까요?">
+        <AlertBox isAlert={isPostAlert}>네</AlertBox>
+        <AlertBox isAlert={isPostAlert}>아니요</AlertBox>
       </Alert>
     </>
   );
