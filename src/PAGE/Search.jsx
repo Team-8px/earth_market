@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { getSearchUser } from "../actions/userActions";
@@ -17,7 +17,7 @@ import Navigation from "../components/template/common/Navigation";
 const Search = () => {
   //리덕스 스토어에서 어떤 액션이 있는지 확인 후, API성공시 데이터 확인
   const { register, handleSubmit } = useForm();
-
+  const history = useHistory();
   const dispatch = useDispatch();
 
   //검색결과 사용자들 스토어에서 가져오기
@@ -37,7 +37,7 @@ const Search = () => {
     <>
       <HeaderLayOut>
         <HeaderContainer>
-          <HeaderLink to={"/home"}>
+          <HeaderLink onClick={() => history.goBack()}>
             <img src={PrevBtn} alt="이전 페이지 버튼" />
           </HeaderLink>
           <Form onSubmit={handleSubmit(onSubmit)}>
@@ -103,7 +103,7 @@ const HeaderContainer = styled.section`
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
-const HeaderLink = styled(Link)`
+const HeaderLink = styled.div`
   width: 22px;
   height: 22px;
   border: none;
