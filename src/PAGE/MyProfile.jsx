@@ -27,7 +27,7 @@ import Navigation from "../components/template/common/Navigation";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
 
 // 작업완료
-import Profile from "../components/Profile/ProfileContainer";
+import ProfileContainer from "../components/Profile/ProfileContainer";
 
 const MyProfile = () => {
   const history = useHistory();
@@ -112,7 +112,7 @@ const MyProfile = () => {
       </HeaderLayOut>
       <LayOut>
         {/* 유저 프로필 */}
-        <Profile />
+        <ProfileContainer />
         {/* --- MyProfile 부분 ---- */}
         <ProductSectionContainer>
           <Product>
