@@ -98,12 +98,8 @@ const PostView = () => {
       {/* 헤더 */}
       <HeaderLayOut>
         <HeaderContainer>
-          <HeaderLink>
-            <img
-              src={prev}
-              onClick={() => history.goBack()}
-              alt="이전 페이지 버튼"
-            />
+          <HeaderLink onClick={() => history.goBack()}>
+            <img src={prev} alt="이전 페이지 버튼" />
           </HeaderLink>
           <HeaderLink>
             <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
