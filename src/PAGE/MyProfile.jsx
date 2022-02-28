@@ -442,7 +442,7 @@ const FollowingWrapper = styled(Link)`
 const ButtonWrapper = styled.div`
   display: flex;
   a {
-    padding: 8px;
+    padding: 0 6px;
   }
 `;
 

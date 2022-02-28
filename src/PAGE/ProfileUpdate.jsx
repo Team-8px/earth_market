@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import PrevBtn from "../asset/icon-arrow-left.svg";
-import Upload from "../asset/upload-file.png";
+import Upload from "../asset/upload-file.svg";
 import { Button } from "../components/module/button/button";
 
 // 비즈니스 로직
@@ -233,8 +233,9 @@ const ProfileImgWrapper = styled.div`
     }
 
     img {
-      width: 110px;
-      height: 110px;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: contain;
     }
 
     input {

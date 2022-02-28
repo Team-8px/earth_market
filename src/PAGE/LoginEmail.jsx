@@ -125,7 +125,9 @@ const InputWrapper = styled.div`
     border-bottom: 1px solid ${props => props.theme.palette["border"]};
     color: ${props => props.theme.palette["main"]};
     caret-color: ${props => props.theme.palette["main"]};
-
+    &::placeholder {
+      color: ${props => props.theme.palette["border"]};
+    }
     &:focus {
       border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
