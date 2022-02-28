@@ -84,7 +84,6 @@ const YourProfile = () => {
   const [productDialog, setProductDialog] = useState(false);
   const [productAlert, setProductAlert] = useState(false);
   const isProductDialog = () => setProductDialog(!productDialog);
-  const isProductAlert = () => setProductAlert(!productAlert);
 
   // DisplayButton에 대한 코드
   const [gallery, setGallery] = useState(true);
@@ -291,7 +290,6 @@ const YourProfile = () => {
       <Navigation />
 
       <Modal visible={navDialog}>
-        <ListBtn isDialog={isNavDialog}>설정 및 개인정보</ListBtn>
         <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
         <ListBtn isDialog={isNavDialog}>모달창 닫기</ListBtn>
       </Modal>

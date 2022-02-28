@@ -282,7 +282,6 @@ const MyProfile = () => {
 
       <Navigation />
       <Modal visible={navDialog}>
-        <ListBtn isDialog={isNavDialog}>설정 및 개인정보</ListBtn>
         <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>
         <ListBtn isDialog={isNavDialog}>모달창 닫기</ListBtn>
       </Modal>
