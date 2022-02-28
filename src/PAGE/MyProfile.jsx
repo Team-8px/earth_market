@@ -28,17 +28,16 @@ import { Button } from "../components/module/button/button";
 import Navigation from "../components/template/common/Navigation";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
 
+// 작업완료
+import ProfileContainer from "../components/Profile/ProfileContainer";
+
 const MyProfile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { accountId } = useParams();
   //상품 리스트 배열
   const { products } = useSelector(state => state.productList);
   //게시글 리스트 배열
   const { posts } = useSelector(state => state.postList);
-  //나의 프로필 정보
-  const { image, username, accountname, intro, followerCount, followingCount } =
-    useSelector(state => state.userReadProfile);
 
   useEffect(() => {
     //상품 리스트 얻기
@@ -48,11 +47,6 @@ const MyProfile = () => {
   useEffect(() => {
     //게시글 리스트 얻기
     dispatch(listPosts());
-  }, [dispatch]);
-
-  useEffect(() => {
-    //나의 프로필 정보 얻기
-    dispatch(getUserMyProfile(accountId));
   }, [dispatch]);
 
   // 좋아요
@@ -120,34 +114,7 @@ const MyProfile = () => {
       </HeaderLayOut>
       <LayOut>
         {/* 유저 프로필 */}
-        <UserInfoContainer>
-          <UserInfoWrapper>
-            <ProfileImage src={image} alt="프로필 사진" />
-            <UserName>{username}</UserName>
-            <AccountName>{accountname}</AccountName>
-            <Intro>{intro}</Intro>
-            <FollowerWrapper to={`/profile/${accountname}/follower`}>
-              <strong>{followerCount}</strong>
-              <span>followers</span>
-            </FollowerWrapper>
-            <FollowingWrapper to={`/profile/${accountname}/following`}>
-              <strong>{followingCount}</strong>
-              <span>following</span>
-            </FollowingWrapper>
-            <ButtonWrapper>
-              <Link to="/profile/my/update">
-                <Button size="md" width="120px">
-                  프로필 수정
-                </Button>
-              </Link>
-              <Link to="/product/upload">
-                <Button size="md" width="120px">
-                  상품 등록
-                </Button>
-              </Link>
-            </ButtonWrapper>
-          </UserInfoWrapper>
-        </UserInfoContainer>
+        <ProfileContainer />
         {/* --- MyProfile 부분 ---- */}
         <ProductSectionContainer>
           <Product>

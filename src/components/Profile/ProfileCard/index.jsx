@@ -1,6 +1,5 @@
 import React from "react";
 import basicImg from "../../../asset/basic-profile-img.png";
-import testImg from "../../../asset/8px.png";
 import {
   UserInfoWrapper,
   UserInfoImg,
@@ -17,7 +16,16 @@ import {
   AddProductBtn,
 } from "./index.style";
 
-function ProfileCard() {
+function ProfileCard({
+  image,
+  username,
+  accountname,
+  intro,
+  followerLink,
+  followingLink,
+  followerCount,
+  followingCount,
+}) {
   const trigger = e => {
     e.target.src = basicImg;
   };
@@ -25,21 +33,21 @@ function ProfileCard() {
     <UserInfoWrapper>
       <UserInfoImg
         alt="프로필 이미지"
-        src={"testImg" || basicImg}
+        src={image || basicImg}
         onError={e => {
           trigger(e);
         }}
       />
-      <UserInfoName>post.userName</UserInfoName>
-      <UserInfoId>post.userName</UserInfoId>
-      <UserInfoIntro>post.intro</UserInfoIntro>
-      <FollowerLink to="/">
-        <FollowCount>10</FollowCount>
-        <FollowText>FollowText</FollowText>
+      <UserInfoName>{username}</UserInfoName>
+      <UserInfoId>{accountname}</UserInfoId>
+      <UserInfoIntro>{intro}</UserInfoIntro>
+      <FollowerLink to={followerLink}>
+        <FollowCount>{followerCount}</FollowCount>
+        <FollowText>follower</FollowText>
       </FollowerLink>
-      <FollowingLink to="/">
-        <FollowCount>10</FollowCount>
-        <FollowText>FollowText</FollowText>
+      <FollowingLink to={followingLink}>
+        <FollowCount>{followingCount}</FollowCount>
+        <FollowText>following</FollowText>
       </FollowingLink>
       <UserInfoButtonsWrapper>
         <BtnLink to="/">
