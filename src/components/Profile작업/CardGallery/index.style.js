@@ -115,8 +115,6 @@ export const CardLikeBtn = styled.button.attrs({ type: "button" })`
       no-repeat center / 20px 20px;
     margin-right: 6px;
   }
-  span {
-  }
 `;
 
 export const CardCommentBtn = styled(Link)`
@@ -135,8 +133,6 @@ export const CardCommentBtn = styled(Link)`
     height: 20px;
     background: url(${comment}) no-repeat center / 20px 20px;
     margin-right: 6px;
-  }
-  span {
   }
 `;
 
