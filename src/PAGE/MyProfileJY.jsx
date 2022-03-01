@@ -1,6 +1,7 @@
 import React from "react";
 import ProfileContainer from "../components/Profile작업/ProfileContainer";
 import ProductContainer from "../components/Profile작업/ProductContainer";
+import PostContainer from "../components/Profile작업/PostContainer";
 import styled from "styled-components";
 const MyProfileJY = () => {
   return (
@@ -8,6 +9,7 @@ const MyProfileJY = () => {
       <Container>
         <ProfileContainer />
         <ProductContainer />
+        <PostContainer />
       </Container>
     </>
   );

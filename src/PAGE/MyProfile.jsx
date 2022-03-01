@@ -94,22 +94,14 @@ const MyProfile = () => {
           {/* 디스플레이 핸들러 버튼 영역입니다. */}
           <PostHeader>
             <PostHeaderWrapper>
-              <CardGalleryBtn
-                onClick={galleryHandler}
-                disabled={gallery}
-                type="button"
-              >
+              <CardGalleryBtn onClick={galleryHandler} disabled={gallery}>
                 {gallery ? (
                   <img src={cardOn} alt="카드켜짐" />
                 ) : (
                   <img src={cardOff} alt="카드꺼짐" />
                 )}
               </CardGalleryBtn>
-              <AlbumGalleryBtn
-                onClick={galleryHandler}
-                disabled={!gallery}
-                type="button"
-              >
+              <AlbumGalleryBtn onClick={galleryHandler} disabled={!gallery}>
                 {gallery ? (
                   <img src={albumOff} alt="앨범켜짐" />
                 ) : (
