@@ -10,6 +10,8 @@ import {
   GalleryIcon,
   AlbumGalleryBtn,
   AlbumIcon,
+  AlbumContainer,
+  AlbumList,
 } from "./index.style";
 import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
 import { Alert, AlertBox } from "../../module/alert/Alert";
@@ -65,6 +67,7 @@ function GalleryContainer() {
               <CardGallery
                 key={post.id}
                 postid={post.id}
+                Link={`/post/${post.id}`}
                 profileImage={post.author.image}
                 username={post.author.username}
                 accountname={post.author.accountname}
@@ -78,7 +81,21 @@ function GalleryContainer() {
             );
           })
         ) : (
-          <div></div>
+          <AlbumContainer>
+            <AlbumList>
+              {posts &&
+                posts.map(post => {
+                  const firstImage = post?.image?.split(",")[0];
+                  return (
+                    <AlbumGallery
+                      key={post.id}
+                      postImages={firstImage}
+                      Link={`/post/${post.id}`}
+                    />
+                  );
+                })}
+            </AlbumList>
+          </AlbumContainer>
         )}
       </GallerySection>
       {/* Post Modal */}

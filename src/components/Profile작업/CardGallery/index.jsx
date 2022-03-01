@@ -32,11 +32,12 @@ function CardGallery({
   commentCount,
   updatedAt,
   postDialog,
+  Link,
 }) {
   const trigger = e => {
     e.target.src = basicImg;
   };
-  const trigger2 = e => {
+  const imgErrorHandler = e => {
     const target = e.target.parentNode.parentNode;
     target.style.display = "none";
   };
@@ -65,7 +66,7 @@ function CardGallery({
                 <CardImage
                   src={img}
                   alt="게시글 이미지"
-                  onError={e => trigger2(e)}
+                  onError={e => imgErrorHandler(e)}
                 />
               </CardImageItem>
             ))}
@@ -75,7 +76,7 @@ function CardGallery({
           <CardLikeBtn>
             <span>{likeCount}</span>
           </CardLikeBtn>
-          <CardCommentBtn to="/">
+          <CardCommentBtn to={Link}>
             <span>{commentCount}</span>
           </CardCommentBtn>
         </CardIconContainer>

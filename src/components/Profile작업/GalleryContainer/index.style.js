@@ -3,7 +3,6 @@ import cardOn from "../../../asset/icon/icon-post-list-on.svg";
 import cardOff from "../../../asset/icon/icon-post-list-off.svg";
 import albumOn from "../../../asset/icon/icon-post-album-on.svg";
 import albumOff from "../../../asset/icon/icon-post-album-off.svg";
-import imageLayers from "../../../asset/icon/iccon-img-layers.svg";
 import prev from "../../../asset/icon-arrow-left.svg";
 import more from "../../../asset/icon-more-vertical.svg";
 
@@ -58,4 +57,18 @@ export const AlbumIcon = styled.img.attrs(props => ({
 }))`
   width: 100%;
   height: 100%;
+`;
+
+export const AlbumContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 390px;
+  width: 100%;
+  padding: 16px 16px 70px;
+`;
+export const AlbumList = styled.ul`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
 `;
