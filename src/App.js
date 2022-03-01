@@ -8,6 +8,7 @@ import Navigation from "../src/components/template/common/Navigation";
 
 //김현길 독립적인 라우트 2월 8일 데이터 바인딩 작업
 import LoginEmailKHK from "./PAGE/LoginEmail";
+import LoginMain from "./PAGE/LoginMain";
 import HomeKHK from "./PAGE/Home";
 import SearchKHK from "./PAGE/Search";
 import MyprofileKHK from "./PAGE/MyProfile";
@@ -39,7 +40,8 @@ const App = () => {
 
             {/* auth */}
             <Route path="/join/email" component={SetMemberShipKHK} exact />
-            <Route path="/" component={LoginEmailKHK} exact />
+            <Route path="/" component={LoginMain} exact />
+            <Route path="/login" component={LoginEmailKHK} exact />
 
             {/* 홈 */}
             <Route path="/home" component={HomeKHK} exact />
