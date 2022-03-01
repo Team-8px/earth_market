@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, listProducts } from "../../../actions/productActions";
 import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
 import { Alert, AlertBox } from "../../module/alert/Alert";
+import { Link } from "react-router-dom";
 import {
   ProductSection,
   ProductContainer,
@@ -10,7 +11,6 @@ import {
   ProductTitle,
 } from "./index.style";
 import ProductCard from "../ProductCard";
-import { Link } from "react-router-dom";
 function Product() {
   const dispatch = useDispatch();
   const { products } = useSelector(state => state.productList);
@@ -33,24 +33,26 @@ function Product() {
     dispatch(listProducts());
   }, [dispatch]);
   return (
-    <ProductSection>
-      <ProductContainer>
-        <ProductTitle>판매 중인 상품</ProductTitle>
-        <ProductCardList>
-          {products &&
-            products.map(product => {
-              return (
-                <ProductCard
-                  key={product.id}
-                  productText={product.itemName}
-                  productPrice={product.price}
-                  img={product.itemImage}
-                  onClick={() => isProductDialog(product.id)}
-                />
-              );
-            })}
-        </ProductCardList>
-      </ProductContainer>
+    <>
+      <ProductSection>
+        <ProductContainer>
+          <ProductTitle>판매 중인 상품</ProductTitle>
+          <ProductCardList>
+            {products &&
+              products.map(product => {
+                return (
+                  <ProductCard
+                    key={product.id}
+                    productText={product.itemName}
+                    productPrice={product.price}
+                    img={product.itemImage}
+                    onClick={() => isProductDialog(product.id)}
+                  />
+                );
+              })}
+          </ProductCardList>
+        </ProductContainer>
+      </ProductSection>
       <Modal visible={productDialog}>
         <AlertBtn isAlert={isProductAlert}>삭제</AlertBtn>
         <ListBtn isDialog={isProductDialog}>
@@ -65,7 +67,7 @@ function Product() {
           삭제
         </AlertBox>
       </Alert>
-    </ProductSection>
+    </>
   );
 }
 
