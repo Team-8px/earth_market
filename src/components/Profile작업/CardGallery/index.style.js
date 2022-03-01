@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import basicimg from "../../../asset/Ellipse-1.png";
 
 export const CardGallerySection = styled.article`
   position: relative;
   max-width: 358px;
   width: 100%;
-  margin-bottom: 20px;
+  margin-top: 20px;
 `;
 
 export const CardProfileContainer = styled.div`
@@ -14,7 +15,9 @@ export const CardProfileContainer = styled.div`
   cursor: pointer;
 `;
 
-export const CardProfileImg = styled.img`
+export const CardProfileImg = styled.img.attrs(props => ({
+  src: props.src || basicimg,
+}))`
   width: 42px;
   height: 42px;
   border: 1px solid #dbdbdb;
