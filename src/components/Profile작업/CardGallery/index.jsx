@@ -1,4 +1,5 @@
 import React from "react";
+
 import basicImg from "../../../asset/basic-profile-img.png";
 import {
   CardGallerySection,
@@ -17,57 +18,64 @@ import {
   CardLikeBtn,
   CardCommentBtn,
   CardMoreBtn,
+  CardDateText,
 } from "./index.style";
 
-function CardGallery() {
+function CardGallery({
+  postid,
+  profileImage,
+  username,
+  accountname,
+  content,
+  postImages,
+  likeCount,
+  commentCount,
+  updatedAt,
+  postDialog,
+}) {
   const trigger = e => {
     e.target.src = basicImg;
   };
 
   return (
     <CardGallerySection>
-      {/* 프로필 */}
       <CardProfileContainer>
         <CardProfileImg
           alt="프로필 이미지"
-          src={"test" || basicImg}
+          src={profileImage || basicImg}
           onError={e => {
             trigger(e);
           }}
         />
         <CardAthorWrapper>
-          <CardAthorName>Name</CardAthorName>
-          <CardAthorId>Id</CardAthorId>
+          <CardAthorName>{username}</CardAthorName>
+          <CardAthorId>{accountname}</CardAthorId>
         </CardAthorWrapper>
       </CardProfileContainer>
-      {/* 컨텐츠 */}
       <CardContentContainer>
-        {/* 컨텐츠 - 텍스트 */}
-        <CardContentText>CardContentText</CardContentText>
-        {/* 컨텐츠 - 이미지 */}
+        <CardContentText>{content}</CardContentText>
         <CardImageContainer>
           {/* 조건부 렌더링 하여 img가 없을 경우에는 cardImageList에 displaynone을 주게하면된다 */}
           <CardImageList>
-            {[1, 2, 3].map(img => (
+            {postImages.map(img => (
               <CardImageItem key={Math.random() * 100}>
-                <CardImage src={basicImg} />
+                <CardImage src={img} alt="게시글 이미지" />
               </CardImageItem>
             ))}
           </CardImageList>
         </CardImageContainer>
-        {/* 컨텐츠 - 아이콘 */}
         <CardIconContainer>
           <CardLikeBtn>
-            <span>1</span>
+            <span>{likeCount}</span>
           </CardLikeBtn>
-          <CardCommentBtn to="/">
-            <span>1</span>
+          <CardCommentBtn to={`/post/${postid}`}>
+            <span>{commentCount}</span>
           </CardCommentBtn>
         </CardIconContainer>
+        <CardDateText>{updatedAt}</CardDateText>
       </CardContentContainer>
-      <CardMoreBtn />
+      <CardMoreBtn onClick={() => postDialog(postid)} />
     </CardGallerySection>
   );
 }
-// onClick={() => isPostDialog(post.id)}
 export default CardGallery;

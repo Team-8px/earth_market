@@ -120,6 +120,7 @@ export const CardLikeBtn = styled.button.attrs({ type: "button" })`
 `;
 
 export const CardCommentBtn = styled(Link)`
+  cursor: pointer;
   display: flex;
   align-items: center;
   color: #767676;
@@ -137,6 +138,13 @@ export const CardCommentBtn = styled(Link)`
   }
   span {
   }
+`;
+
+export const CardDateText = styled.strong`
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #767676;
 `;
 
 export const CardMoreBtn = styled.button`

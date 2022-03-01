@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { deletePost, listPosts } from "../../../actions/postActions";
+import dayjs from "dayjs";
 import {
   GallerySection,
   GalleryHeader,
@@ -8,11 +11,34 @@ import {
   AlbumGalleryBtn,
   AlbumIcon,
 } from "./index.style";
+import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
+import { Alert, AlertBox } from "../../module/alert/Alert";
 import CardGallery from "../CardGallery";
 import AlbumGallery from "../AlbumGallery";
 
 function GalleryContainer() {
+  const dispatch = useDispatch();
   const [gallery, setGallery] = useState(true);
+  const { posts } = useSelector(state => state.postList);
+
+  const [postDialog, setPostDialog] = useState(false);
+  const [postAlert, setPostAlert] = useState(false);
+  const [postId, setPostId] = useState("");
+
+  const isPostDialog = postId => {
+    console.log(postId, "postId 값 들어와라!");
+    setPostDialog(!postDialog);
+    setPostId(postId);
+  };
+  const isPostAlert = postId => {
+    setPostAlert(!postAlert);
+    if (typeof postId === "string") {
+      dispatch(deletePost(postId));
+    }
+  };
+  useEffect(() => {
+    dispatch(listPosts());
+  }, [dispatch]);
   const galleryHandler = () => {
     setGallery(!gallery);
   };
@@ -31,14 +57,41 @@ function GalleryContainer() {
           </GalleryHeaderIconWrapper>
         </GalleryHeader>
         {/* PostPart */}
-        {gallery
-          ? [1, 2, 3].map(cardpost => <CardGallery key={Math.random() * 100} />)
-          : [1, 2, 3].map(albumpost => (
-              <AlbumGallery key={Math.random() * 100}>
-                이미지 없는 카드는 보여주지 않을 겁니다.
-              </AlbumGallery>
-            ))}
+        {gallery ? (
+          posts &&
+          posts.map(post => {
+            const postImages = post?.image?.split(",");
+            return (
+              <CardGallery
+                key={post.id}
+                postid={post.id}
+                profileImage={post.author.image}
+                username={post.author.username}
+                accountname={post.author.accountname}
+                content={post.content}
+                postImages={postImages}
+                likeCount={post.heartCount}
+                commentCount={post.comments.length}
+                updatedAt={dayjs(post.updatedAt).format("YY년 MM월 DD일")}
+                postDialog={isPostDialog}
+              />
+            );
+          })
+        ) : (
+          <div></div>
+        )}
       </GallerySection>
+      {/* Post Modal */}
+      <Modal visible={postDialog}>
+        <AlertBtn isAlert={isPostAlert}>삭제</AlertBtn>
+        <ListBtn isDialog={isPostDialog}>수정</ListBtn>
+        <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
+      </Modal>
+      {/* Post Alert */}
+      <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
+        <AlertBox isAlert={isPostAlert}>취소</AlertBox>
+        <AlertBox isAlert={() => isPostAlert(postId && postId)}>삭제</AlertBox>
+      </Alert>
     </>
   );
 }
