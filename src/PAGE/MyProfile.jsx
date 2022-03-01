@@ -24,8 +24,8 @@ import Navigation from "../components/template/common/Navigation";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
 
 // 작업완료
-import Profile from "../components/Profile/ProfileContainer";
-import Product from "../components/Profile/ProductContainer";
+import ProfileContainer from "../components/Profile작업/ProfileContainer";
+import ProductContainer from "../components/Profile작업/ProductContainer";
 const MyProfile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -86,9 +86,9 @@ const MyProfile = () => {
       </HeaderLayOut>
       <LayOut>
         {/* 유저 프로필 */}
-        <Profile />
+        <ProfileContainer />
         {/* 상품 */}
-        <Product />
+        <ProductContainer />
         {/* 게시글 */}
         <PostSectionContainer>
           {/* 디스플레이 핸들러 버튼 영역입니다. */}

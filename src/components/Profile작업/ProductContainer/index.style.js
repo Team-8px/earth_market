@@ -6,7 +6,7 @@ export const ProductSection = styled.section`
   margin-bottom: 6px;
 `;
 
-export const ProductContainer = styled.section`
+export const ProductWrapper = styled.div`
   margin: 0 auto;
   padding: 20px 0;
   width: 358px;

@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UserInfoContainer } from "./index.style";
 import { useParams } from "react-router-dom";
-import ProfileCard from "../ProfileCard";
 import { getUserMyProfile } from "../../../actions/userActions";
+import ProfileCard from "../ProfileCard";
 
-function Profile() {
+function ProfileContainer() {
   const dispatch = useDispatch();
   const { accountId } = useParams();
   const { image, username, accountname, intro, followerCount, followingCount } =
@@ -31,4 +31,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default ProfileContainer;
