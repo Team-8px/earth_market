@@ -1,13 +1,15 @@
 import React from "react";
-import Profile from "../components/Profile/ProfileContainer";
-import Product from "../components/Profile/ProductContainer";
+import ProfileContainer from "../components/Profile작업/ProfileContainer";
+import ProductContainer from "../components/Profile작업/ProductContainer";
+import GalleryContainer from "../components/Profile작업/GalleryContainer";
 import styled from "styled-components";
 const MyProfileJY = () => {
   return (
     <>
       <Container>
-        <Profile />
-        <Product />
+        <ProfileContainer />
+        <ProductContainer />
+        <GalleryContainer />
       </Container>
     </>
   );

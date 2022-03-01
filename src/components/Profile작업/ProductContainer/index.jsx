@@ -6,12 +6,12 @@ import { Alert, AlertBox } from "../../module/alert/Alert";
 import { Link } from "react-router-dom";
 import {
   ProductSection,
-  ProductContainer,
+  ProductWrapper,
   ProductCardList,
   ProductTitle,
 } from "./index.style";
 import ProductCard from "../ProductCard";
-function Product() {
+function ProductContainer() {
   const dispatch = useDispatch();
   const { products } = useSelector(state => state.productList);
   const [productDialog, setProductDialog] = useState(false);
@@ -35,7 +35,7 @@ function Product() {
   return (
     <>
       <ProductSection>
-        <ProductContainer>
+        <ProductWrapper>
           <ProductTitle>판매 중인 상품</ProductTitle>
           <ProductCardList>
             {products &&
@@ -51,7 +51,7 @@ function Product() {
                 );
               })}
           </ProductCardList>
-        </ProductContainer>
+        </ProductWrapper>
       </ProductSection>
       <Modal visible={productDialog}>
         <AlertBtn isAlert={isProductAlert}>삭제</AlertBtn>
@@ -71,4 +71,4 @@ function Product() {
   );
 }
 
-export default Product;
+export default ProductContainer;
