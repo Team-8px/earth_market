@@ -8,6 +8,8 @@ import {
   AlbumGalleryBtn,
   AlbumIcon,
 } from "./index.style";
+import CardGallery from "../CardGallery";
+import AlbumGallery from "../AlbumGallery";
 
 function GalleryContainer() {
   const [gallery, setGallery] = useState(true);
@@ -30,11 +32,11 @@ function GalleryContainer() {
         </GalleryHeader>
         {/* PostPart */}
         {gallery
-          ? [1, 2, 3].map(cardpost => (
-              <div>모든 게시물 카드를 보여줄겁니다</div>
-            ))
+          ? [1, 2, 3].map(cardpost => <CardGallery />)
           : [1, 2, 3].map(albumpost => (
-              <div>이미지 없는 카드는 보여주지 않을 겁니다.</div>
+              <AlbumGallery>
+                이미지 없는 카드는 보여주지 않을 겁니다.
+              </AlbumGallery>
             ))}
       </GallerySection>
     </>
