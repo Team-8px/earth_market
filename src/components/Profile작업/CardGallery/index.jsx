@@ -36,6 +36,10 @@ function CardGallery({
   const trigger = e => {
     e.target.src = basicImg;
   };
+  const trigger2 = e => {
+    const target = e.target.parentNode.parentNode;
+    target.style.display = "none";
+  };
 
   return (
     <CardGallerySection>
@@ -55,11 +59,14 @@ function CardGallery({
       <CardContentContainer>
         <CardContentText>{content}</CardContentText>
         <CardImageContainer>
-          {/* 조건부 렌더링 하여 img가 없을 경우에는 cardImageList에 displaynone을 주게하면된다 */}
           <CardImageList>
             {postImages.map(img => (
               <CardImageItem key={Math.random() * 100}>
-                <CardImage src={img} alt="게시글 이미지" />
+                <CardImage
+                  src={img}
+                  alt="게시글 이미지"
+                  onError={e => trigger2(e)}
+                />
               </CardImageItem>
             ))}
           </CardImageList>
@@ -68,7 +75,7 @@ function CardGallery({
           <CardLikeBtn>
             <span>{likeCount}</span>
           </CardLikeBtn>
-          <CardCommentBtn to={`/post/${postid}`}>
+          <CardCommentBtn to="/">
             <span>{commentCount}</span>
           </CardCommentBtn>
         </CardIconContainer>
