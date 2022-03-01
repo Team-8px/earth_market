@@ -35,6 +35,7 @@ const YourProfile = () => {
 
   const dispatch = useDispatch();
   const { accountId } = useParams();
+  console.log(accountId);
   //상품 리스트 배열
   const { products } = useSelector(state => state.productList);
   //게시글 리스트 배열
@@ -91,9 +92,9 @@ const YourProfile = () => {
     setGallery(!gallery);
   };
 
-  const [isbtn, isBtn] = useState(true);
+  const [isFollowButton, setIsFollowButton] = useState(true);
   const followHandler = () => {
-    isBtn(!isbtn);
+    setIsFollowButton(!isFollowButton);
   };
 
   return (
@@ -134,7 +135,7 @@ const YourProfile = () => {
               <Link to="/">
                 <ChatButton size="md" width="120px"></ChatButton>
               </Link>
-              {isbtn ? (
+              {isFollowButton ? (
                 <Link to={"/profile/you/bread_fit"}>
                   <Button
                     size="md"

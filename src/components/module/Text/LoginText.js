@@ -25,8 +25,8 @@ const LoginTxt = styled(Link)`
 export default function LoginText() {
   return (
     <LoginTextWrap>
-      <LoginTxt to="/">이메일로 로그인</LoginTxt>
-      <LoginTxt to="/">회원가입</LoginTxt>
+      <LoginTxt to="/login">이메일로 로그인</LoginTxt>
+      <LoginTxt to="/join/email">회원가입</LoginTxt>
     </LoginTextWrap>
   );
 }
