@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import {
-  PostSection,
-  PostHeader,
-  PostHeaderIconWrapper,
+  GallerySection,
+  GalleryHeader,
+  GalleryHeaderIconWrapper,
   CardGalleryBtn,
   GalleryIcon,
   AlbumGalleryBtn,
   AlbumIcon,
 } from "./index.style";
 
-function PostContainer() {
+function GalleryContainer() {
   const [gallery, setGallery] = useState(true);
   const galleryHandler = () => {
     setGallery(!gallery);
@@ -40,4 +40,4 @@ function PostContainer() {
     </>
   );
 }
-export default PostContainer;
+export default GalleryContainer;

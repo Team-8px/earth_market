@@ -7,7 +7,7 @@ import imageLayers from "../../../asset/icon/iccon-img-layers.svg";
 import prev from "../../../asset/icon-arrow-left.svg";
 import more from "../../../asset/icon-more-vertical.svg";
 
-export const PostSection = styled.section`
+export const GallerySection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,14 +15,14 @@ export const PostSection = styled.section`
   background-color: #fff;
 `;
 
-export const PostHeader = styled.header`
+export const GalleryHeader = styled.header`
   display: flex;
   justify-content: center;
   width: 100%;
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
-export const PostHeaderIconWrapper = styled.div`
+export const GalleryHeaderIconWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
