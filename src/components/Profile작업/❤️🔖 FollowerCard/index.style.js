@@ -22,7 +22,7 @@ export const FollwerImg = styled.img`
   object-fit: cover;
 `;
 
-export const FollowerInfoWrapper = styled.div`
+export const FollowerInfoWrapper = styled(Link)`
   margin-left: 12px;
   width: calc(100% - 118px);
   height: 100%;
@@ -42,7 +42,7 @@ export const FollowerIntro = styled.strong`
   line-height: 15px;
 `;
 
-export const FollowBtn = styled.button.attrs({ type: button })`
+export const FollowBtn = styled.button.attrs({ type: "button" })`
   position: absolute;
   right: 0;
   width: 56px;
@@ -58,7 +58,7 @@ export const FollowBtn = styled.button.attrs({ type: button })`
   line-height: 18px;
 `;
 
-export const CancelBtn = styled.button.attrs({ type: button })`
+export const CancelBtn = styled.button.attrs({ type: "button" })`
   position: absolute;
   right: 0;
   width: 56px;

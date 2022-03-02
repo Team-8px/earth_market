@@ -26,6 +26,7 @@ import NotFound from "./components/template/screen/NotFound";
 /* import "antd/dist/antd.css"; */
 
 import MyProfileJY from "./PAGE/MyProfileJY";
+import FollowerListJy from "./PAGE/FollowerListJy";
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
           <Switch>
             {/* 테스트 라우팅 */}
             <Route path="/myprofilejy" component={MyProfileJY} exact />
+            <Route path="/followerlistjy" component={FollowerListJy} exact />
 
             {/* auth */}
             <Route path="/join/email" component={SetMemberShipKHK} exact />
