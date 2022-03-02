@@ -81,7 +81,7 @@ export default function JoinProfile({ userInfo }) {
             프로필 설정
             <SubText>나중에 언제든지 변경할 수 있습니다.</SubText>
           </Title>
-          <ProfileImgWrapper isPreviewImage={isPreviewImage} myImage={myImage}>
+          {/* <ProfileImgWrapper isPreviewImage={isPreviewImage} myImage={myImage}>
             <label onChange={uploadImage} htmlFor="profileImg">
               <img alt="프로필 사진" className="ir" />
               <input
@@ -92,7 +92,7 @@ export default function JoinProfile({ userInfo }) {
                 {...register("profileImg")}
               />
             </label>
-          </ProfileImgWrapper>
+          </ProfileImgWrapper> */}
           <InputWrapper>
             <label htmlFor="username">
               사용자 이름
