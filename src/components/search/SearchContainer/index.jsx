@@ -2,7 +2,8 @@ import React from "react";
 import SearchCard from "../SearchCard";
 import { SearchSection, SerachUserList } from "./index.style";
 
-function SearchContainer() {
+function SearchContainer({ SearchUser }) {
+  console.log("SearchContainer", SearchUser);
   return (
     <SearchSection>
       <SerachUserList>
