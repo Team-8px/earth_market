@@ -71,6 +71,7 @@ export const CardImageContainer = styled.div`
 
 export const CardImageList = styled.ul`
   display: flex;
+  transition: all 0.4s;
 `;
 
 export const CardImageItem = styled.li`
@@ -88,6 +89,22 @@ export const CardImage = styled.img`
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 16px;
+`;
+
+export const CardDotList = styled.div`
+  position: absolute;
+  display: flex;
+  gap: 6px;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+`;
+
+export const CardDotItem = styled.button`
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: ${props => props.theme.palette["main"]};
 `;
 
 export const CardIconContainer = styled.div`
