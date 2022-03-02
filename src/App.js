@@ -24,6 +24,7 @@ import YourProfile from "./PAGE/YourProfile";
 import NotFound from "./components/template/screen/NotFound";
 //이미지 슬라이드 필요없으면 바로 버릴 예정
 /* import "antd/dist/antd.css"; */
+import SearchJY from "./PAGE/SearchJY";
 
 const App = () => {
   return (
@@ -34,6 +35,8 @@ const App = () => {
           {/* 김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후 */}
           <Switch>
             {/* 테스트 라우팅 */}
+
+            <Route path="/SearchJY" component={SearchJY} exact />
 
             {/* auth */}
             <Route path="/join/email" component={SetMemberShipKHK} exact />
