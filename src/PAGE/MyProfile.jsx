@@ -10,9 +10,9 @@ import { Alert, AlertBox } from "../components/module/alert/Alert";
 import Navigation from "../components/template/common/Navigation";
 
 // 작업완료
-import ProfileContainer from "../components/Profile작업/ProfileContainer";
-import ProductContainer from "../components/Profile작업/ProductContainer";
-import GalleryContainer from "../components/Profile작업/GalleryContainer";
+import ProfileContainer from "../components/profile/ProfileContainer";
+import ProductContainer from "../components/profile/ProductContainer";
+import GalleryContainer from "../components/profile/GalleryContainer";
 
 const MyProfile = () => {
   const history = useHistory();
