@@ -2,20 +2,17 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
-  followUser,
-  getFollowerList,
+  getFollowingList,
   unfollowUser,
+  followUser,
 } from "../../../actions/followAction";
-import { FollowerSection, FollowerList } from "./index.style";
-import FollowerCard from "../FollowerCard";
-
-function FollowerContainer() {
-  //   followerlistjy
+import FollowingCard from "../FollowingCard/inex";
+import { FollowingSection, FollowingList } from "./index.style";
+function FollowingContainer() {
+  //   followinglistjy
   const dispatch = useDispatch();
   const { accountId } = useParams();
-  const { follower } = useSelector(state => state.followerList);
-
-  console.log(follower);
+  const { following } = useSelector(state => state.followingList);
 
   const onUnfollowClick = otherAccountId => {
     dispatch(unfollowUser(otherAccountId));
@@ -23,6 +20,7 @@ function FollowerContainer() {
   const onFollowClick = otherAccountId => {
     dispatch(followUser(otherAccountId));
   };
+
   //readux스토어에서 팔로우취소여부를 불러와 useEffect에서 재 렌더링을 하기 위한 의도
   const { unfollow } = useSelector(state => state?.unfollowUser);
   //readux스토어에서 팔로우등록여부를 불러와 useEffect에서 재 렌더링을 하기 위한 의도
@@ -30,31 +28,31 @@ function FollowerContainer() {
 
   useEffect(() => {
     // 테스트 라우팅
-    dispatch(getFollowerList("js_defalt"));
+    dispatch(getFollowingList("js_defalt"));
   }, [dispatch, unfollow, follow]);
+
   return (
-    <FollowerSection>
-      {/* ul태그 */}
-      <FollowerList>
-        {follower &&
-          follower.map(followerUser => {
+    <FollowingSection>
+      <FollowingList>
+        {following &&
+          following.map(followingUser => {
             return (
-              <FollowerCard
+              <FollowingCard
                 key={Math.random() * 100}
-                Link={`/profile/you/${followerUser.accountname}`}
-                accountname={followerUser.accountname}
-                image={followerUser.image}
-                username={followerUser.username}
-                intro={followerUser.intro}
-                isfollow={followerUser.isfollow}
+                Link={`/profile/you/${followingUser.accountname}`}
+                accountname={followingUser.accountname}
+                image={followingUser.image}
+                username={followingUser.username}
+                intro={followingUser.intro}
+                isfollow={followingUser.isfollow}
                 onUnfollowClick={onUnfollowClick}
                 onFollowClick={onFollowClick}
               />
             );
           })}
-      </FollowerList>
-    </FollowerSection>
+      </FollowingList>
+    </FollowingSection>
   );
 }
 
-export default FollowerContainer;
+export default FollowingContainer;

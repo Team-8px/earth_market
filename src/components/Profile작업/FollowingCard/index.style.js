@@ -64,6 +64,7 @@ export const CancelBtn = styled.button.attrs({ type: "button" })`
   width: 56px;
   height: 28px;
   border-radius: 26px;
+  border: 1px solid ${props => props.theme.palette["border"]};
   display: flex;
   align-items: center;
   justify-content: center;

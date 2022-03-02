@@ -14,9 +14,7 @@ import { Button } from "../components/module/button/button";
 
 const FollowingList = () => {
   const dispatch = useDispatch();
-
   const { accountId } = useParams();
-
   const { following } = useSelector(state => state.followingList);
 
   //현재 unfollow가 되면 리스트에서 사라짐, follow기능은 보류
