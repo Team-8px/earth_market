@@ -9,18 +9,18 @@ import {
 } from "./index.style";
 import basicImg from "../../../asset/Ellipse 6.png";
 
-function SearchCard() {
+function SearchCard({ Link, userimage, username, accountname }) {
   const trigger = e => {
     e.target.src = basicImg;
   };
   return (
     <SearchUserList>
-      <SearchUserImgWrapper>
-        <SearchUserImg src={"image주세용"} onError={e => trigger(e)} />
+      <SearchUserImgWrapper to={Link}>
+        <SearchUserImg src={userimage} onError={e => trigger(e)} />
       </SearchUserImgWrapper>
       <SearchUserInfoWrapper>
-        <SearchUserName>SearchUserName</SearchUserName>
-        <SearchUserId>SearchUserId</SearchUserId>
+        <SearchUserName>{username}</SearchUserName>
+        <SearchUserId>{accountname}</SearchUserId>
       </SearchUserInfoWrapper>
     </SearchUserList>
   );

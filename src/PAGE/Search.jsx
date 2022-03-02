@@ -60,7 +60,7 @@ const Search = () => {
             users.map(user => {
               return (
                 // 링크 타면 해당 유저 프로필로 이동
-                <UserListWrapper key={user._id}>
+                <UserListWrapper key={Math.random() * 100}>
                   <UserImgLink to={`/profile/you/${user.accountname}`}>
                     <img src={user?.image} alt="프로필 사진" />
                   </UserImgLink>
