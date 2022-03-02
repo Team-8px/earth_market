@@ -2,7 +2,11 @@ import React from "react";
 
 function FollowingContainer() {
   //   followerlistjy
-  return <div>index</div>;
+  return (
+    <FollowingSection>
+      <FollowingList></FollowingList>
+    </FollowingSection>
+  );
 }
 
 export default FollowingContainer;
