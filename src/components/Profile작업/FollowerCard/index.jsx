@@ -25,7 +25,7 @@ function FollowerCard({
       <FollowerImgWrapper to={Link}>
         <FollowerImg src={image} />
       </FollowerImgWrapper>
-      <FollowerInfoWrapper>
+      <FollowerInfoWrapper to={Link}>
         <FollowerUserName>{username}</FollowerUserName>
         <FollowerIntro>{intro}</FollowerIntro>
       </FollowerInfoWrapper>

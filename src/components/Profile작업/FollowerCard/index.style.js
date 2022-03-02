@@ -22,7 +22,7 @@ export const FollowerImg = styled.img`
   object-fit: cover;
 `;
 
-export const FollowerInfoWrapper = styled(Link)`
+export const FollowerInfoWrapper = styled.div`
   margin-left: 12px;
   width: calc(100% - 118px);
   height: 100%;
