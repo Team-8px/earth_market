@@ -1,5 +1,6 @@
 import React from "react";
 import basicImg from "../../../asset/basic-profile-img.png";
+
 import {
   UserInfoWrapper,
   UserInfoImg,
@@ -25,6 +26,7 @@ function ProfileCard({
   followingLink,
   followerCount,
   followingCount,
+  MoveAddProduct,
 }) {
   const trigger = e => {
     e.target.src = basicImg;
@@ -50,10 +52,10 @@ function ProfileCard({
         <FollowText>following</FollowText>
       </FollowingLink>
       <UserInfoButtonsWrapper>
-        <BtnLink to="/">
+        <BtnLink to={`/${accountname}/edit`}>
           <ProfileEditBtn>프로필수정</ProfileEditBtn>
         </BtnLink>
-        <BtnLink to="/">
+        <BtnLink as={"div"} onClick={() => MoveAddProduct()}>
           <AddProductBtn>상품추가</AddProductBtn>
         </BtnLink>
       </UserInfoButtonsWrapper>
