@@ -8,7 +8,7 @@ import LoginTitle from "../components/module/title/LoginTitle";
 
 // 비즈니스 로직
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../actions/userActions";
 
 const LoginEmail = () => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
@@ -17,14 +17,14 @@ import PostUploadKHK from "./PAGE/PostUpload";
 import ProfileUpdateKHK from "./PAGE/ProfileUpdate";
 import FollowerListKHK from "./PAGE/FollowerList";
 import FollowingListKHK from "./PAGE/FollowingList";
-import PostViewKHK from "./PAGE/PostView";
+import PostView from "./PAGE/PostView";
 import ProductUpdateKHK from "./PAGE/ProductUpdate";
 import SetMemberShipKHK from "./PAGE/JoinProfile";
 import YourProfile from "./PAGE/YourProfile";
 import NotFound from "./components/template/screen/NotFound";
 //이미지 슬라이드 필요없으면 바로 버릴 예정
 /* import "antd/dist/antd.css"; */
-
+//test라우팅
 import MyProfileJY from "./PAGE/MyProfileJY";
 
 const App = () => {
@@ -72,7 +72,7 @@ const App = () => {
             {/* 62183cfb9d09d36b2150a8c6 */}
             {/* post */}
             <Route path="/post/my/upload" component={PostUploadKHK} exact />
-            <Route path="/post/:postId" component={PostViewKHK} exact />
+            <Route path="/post/:postId" component={PostView} exact />
 
             {/* product */}
             <Route path="/product/upload" component={ProductUploadKHK} exact />
