@@ -7,7 +7,7 @@ import {
   unfollowUser,
 } from "../../../actions/followAction";
 import { FollowerSection, FollowerList } from "./index.style";
-import FollowerCard from "../❤️🔖 FollowerCard";
+import FollowerCard from "../FollowerCard";
 
 function FollowerContainer() {
   //   followerlistjy
