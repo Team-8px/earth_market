@@ -26,7 +26,7 @@ import NotFound from "./components/template/screen/NotFound";
 /* import "antd/dist/antd.css"; */
 
 import MyProfileJY from "./PAGE/MyProfileJY";
-
+import JoinJS from "./PAGE/Join-JS";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -39,7 +39,7 @@ const App = () => {
             <Route path="/myprofilejy" component={MyProfileJY} exact />
 
             {/* auth */}
-            <Route path="/join/email" component={SetMemberShipKHK} exact />
+            <Route path="/join/email" component={JoinJS} exact />
             <Route path="/" component={LoginMain} exact />
             <Route path="/login" component={LoginEmailKHK} exact />
 
