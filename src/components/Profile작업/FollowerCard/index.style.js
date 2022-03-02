@@ -17,7 +17,7 @@ export const FollowerImgWrapper = styled(Link)`
   overflow: hidden;
 `;
 
-export const FollwerImg = styled.img`
+export const FollowerImg = styled.img`
   height: 100%;
   object-fit: cover;
 `;
