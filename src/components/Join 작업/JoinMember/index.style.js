@@ -1,28 +1,38 @@
 import styled from "styled-components";
 
-export const Form = styled.form `
+export const JoinMemberForm = styled.form `
   box-sizing: border-box;
   margin-top: 30px;
 `;
 
-export const MainFieldSet = styled.fieldset `
+export const JoinMemberFieldset = styled.fieldset `
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const InputWrapper = styled.div `
+export const JoinMemberTitle = styled.h2`
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+`;
+
+export const JoinMemberInputWrapper = styled.div`
   width: 322px;
   margin: 40px 0 14px;
-  label {
+`;
+
+export const JoinMemberLabel = styled.label`
     display: block;
     color: ${props => props.theme.palette["subText"]};
     font-weight: 500;
     font-size: 12px;
     margin-bottom: 16px;
     cursor: pointer;
-  }
-  input {
+`
+
+export const JoinMemberInput = styled.input`
     width: 100%;
     font-size: 14px;
     color: ${props => props.theme.palette["main"]};
@@ -37,24 +47,17 @@ export const InputWrapper = styled.div `
     &:focus {
       border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
-  }
-  p {
-    color: #eb5757;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 14px;
-    margin-top: 6px;
-  }
-`;
+`
 
-export const Title = styled.h2 `
+export const ErrorMessage = styled.p`
+  color: #eb5757;
   font-weight: 500;
-  font-size: 24px;
-  line-height: 30px;
-  text-align: center;
-`;
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 6px;
+`
 
-export const JoinButton = styled.button `
+export const JoinMemberBtn = styled.button.attrs({type:"submit"})`
   width: 322px;
   height: 44px;
   background: ${props => props.theme.palette["main"]};

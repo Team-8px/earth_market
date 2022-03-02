@@ -5,7 +5,7 @@ import axios from "axios";
 import { joinMembership } from "../../../actions/userActions";
 import { API_URL } from "../../../constants/defaultUrl";
 //스타일
-import { Form, MainFieldSet, InputWrapper, Title, JoinButton } from "./index.style";
+import { JoinMemberForm, JoinMemberFieldset,JoinMemberTitle, JoinMemberInputWrapper, JoinMemberLabel, JoinMemberInput, ErrorMessage, JoinMemberBtn} from "./index.style";
 
 export default function JoinMember({setPage, setUserInfo}) {
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
@@ -105,13 +105,13 @@ export default function JoinMember({setPage, setUserInfo}) {
 //   }
 // };
 return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <MainFieldSet>
-        <Title>이메일로 회원가입</Title>
-        <InputWrapper>
-          <label>
+    <JoinMemberForm onSubmit={handleSubmit(onSubmit)}>
+      <JoinMemberFieldset>
+        <JoinMemberTitle>이메일로 회원가입</JoinMemberTitle>
+        <JoinMemberInputWrapper>
+          <JoinMemberLabel>
             이메일
-          <input
+          <JoinMemberInput
             name="email"
             id="email"
             type="email"
@@ -124,16 +124,16 @@ return (
             })}
           /> 
           {errors?.email?.type === "required" && (
-            <p>* 필수 입력사항입니다.</p>
+            <ErrorMessage>* 필수 입력사항입니다.</ErrorMessage>
           )}
           {errors.email?.type === "pattern" && (
-            <p>*올바르지 않은 이메일 형식입니다.</p>
+            <ErrorMessage>*올바르지 않은 이메일 형식입니다.</ErrorMessage>
           )}
           {emailErrorMessage && <p>{emailErrorMessage}</p>}
-        </label>
-        <label>
+        </JoinMemberLabel>
+        <JoinMemberLabel>
           비밀번호
-          <input
+          <JoinMemberInput
             name="password"
             id="password"
             type="password"
@@ -142,20 +142,19 @@ return (
             {...register("password", { required: true, minLength: 6 })}
           /> 
           {errors?.password?.type === "required" && (
-            <p>* 필수 입력사항입니다.</p>
+            <ErrorMessage>* 필수 입력사항입니다.</ErrorMessage>
           )}
           {errors.password?.type === "minLength" && (
-            <p>*비밀번호는 6자 이상이어야 합니다.</p>
+            <ErrorMessage>* 비밀번호는 6자 이상이어야 합니다.</ErrorMessage>
           )}
-        </label>
-      </InputWrapper>{" "}
-        <JoinButton
-          type="submit"
+        </JoinMemberLabel>
+      </JoinMemberInputWrapper>
+        <JoinMemberBtn
           disabled={!isValid}
         >
           다음
-        </JoinButton>
-      </MainFieldSet>
-    </Form>
+        </JoinMemberBtn>
+      </JoinMemberFieldset>
+    </JoinMemberForm>
   );
 };
