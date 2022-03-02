@@ -14,6 +14,8 @@ import {
   CardImageList,
   CardImageItem,
   CardImage,
+  CardDotList,
+  CardDotItem,
   CardIconContainer,
   CardLikeBtn,
   CardCommentBtn,
@@ -34,6 +36,11 @@ function CardGallery({
   postDialog,
   Link,
 }) {
+  const moveSlide = (e, i) => {
+    const width = -304;
+    const target = e.target.parentNode.parentNode.firstChild;
+    target.style.transform = `translateX(${width * Number(i)}px)`;
+  };
   const trigger = e => {
     e.target.src = basicImg;
   };
@@ -71,6 +78,14 @@ function CardGallery({
               </CardImageItem>
             ))}
           </CardImageList>
+          <CardDotList>
+            {postImages.map((_, i) => (
+              <CardDotItem
+                key={Math.random() * 100}
+                onClick={e => moveSlide(e, i)}
+              />
+            ))}
+          </CardDotList>
         </CardImageContainer>
         <CardIconContainer>
           <CardLikeBtn>
