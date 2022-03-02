@@ -25,6 +25,7 @@ import NotFound from "./components/template/screen/NotFound";
 //이미지 슬라이드 필요없으면 바로 버릴 예정
 /* import "antd/dist/antd.css"; */
 
+import JoinJS from "./PAGE/Join-JS";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -36,7 +37,7 @@ const App = () => {
             {/* 테스트 라우팅 */}
 
             {/* auth */}
-            <Route path="/join/email" component={SetMemberShipKHK} exact />
+            <Route path="/join/email" component={JoinJS} exact />
             <Route path="/" component={LoginMain} exact />
             <Route path="/login" component={LoginEmailKHK} exact />
 
