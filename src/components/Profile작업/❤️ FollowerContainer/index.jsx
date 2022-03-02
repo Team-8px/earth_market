@@ -32,7 +32,10 @@ function FollowerContainer() {
     <FollowerSection>
       {/* ul태그 */}
       <FollowerList>
-        <FollowerCard />
+        {follower &&
+          follower.map(followerUser => {
+            return <FollowerCard key={followerUser.id} />;
+          })}
       </FollowerList>
     </FollowerSection>
   );
