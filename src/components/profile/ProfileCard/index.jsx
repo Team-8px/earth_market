@@ -55,7 +55,7 @@ function ProfileCard({
         <BtnLink to={`/${accountname}/edit`}>
           <ProfileEditBtn>프로필수정</ProfileEditBtn>
         </BtnLink>
-        <BtnLink as={"button"} onClick={() => MoveAddProduct()}>
+        <BtnLink as={"div"} onClick={() => MoveAddProduct()}>
           <AddProductBtn>상품추가</AddProductBtn>
         </BtnLink>
       </UserInfoButtonsWrapper>
