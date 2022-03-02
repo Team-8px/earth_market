@@ -1,15 +1,21 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UserInfoContainer } from "./index.style";
-import { useParams } from "react-router-dom";
-import ProfileCard from "../ProfileCard";
+import { useHistory, useParams } from "react-router-dom";
 import { getUserMyProfile } from "../../../actions/userActions";
 
-function Profile() {
+import ProfileCard from "../ProfileCard";
+
+function ProfileContainer() {
   const dispatch = useDispatch();
   const { accountId } = useParams();
   const { image, username, accountname, intro, followerCount, followingCount } =
     useSelector(state => state.userReadProfile);
+
+  const history = useHistory();
+  const MoveAddProduct = () => {
+    history.push("/product");
+  };
 
   useEffect(() => {
     dispatch(getUserMyProfile(accountId));
@@ -26,9 +32,10 @@ function Profile() {
         followingLink={`/profile/${accountname}/following`}
         followerCount={followerCount}
         followingCount={followingCount}
+        MoveAddProduct={MoveAddProduct}
       />
     </UserInfoContainer>
   );
 }
 
-export default Profile;
+export default ProfileContainer;

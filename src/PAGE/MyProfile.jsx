@@ -1,75 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Link, useHistory } from "react-router-dom";
-import { listPosts, deletePost } from "../actions/postActions";
-import { UserInfoBoxInMyProfile } from "../components/module/post/UserInfoBox";
-
+import { useHistory } from "react-router-dom";
 // 이미지 모음
-import cardOn from "../asset/icon/icon-post-list-on.svg";
-import cardOff from "../asset/icon/icon-post-list-off.svg";
-import albumOn from "../asset/icon/icon-post-album-on.svg";
-import albumOff from "../asset/icon/icon-post-album-off.svg";
-import imageLayers from "../asset/icon/iccon-img-layers.svg";
 import prev from "../asset/icon-arrow-left.svg";
 import more from "../asset/icon-more-vertical.svg";
 
 import { Modal, AlertBtn, ListBtn } from "../components/module/modal/Modal";
 import { Alert, AlertBox } from "../components/module/alert/Alert";
-import IconBox from "../components/module/post/IconBox";
-import Date from "../components/module/post/Date";
-import DisplayButton from "../components/module/profile/DisplayButton";
-import dayjs from "dayjs";
 import Navigation from "../components/template/common/Navigation";
-// import SellProductLink from "../asset/product-img-example-01.jpg";
 
 // 작업완료
-import Profile from "../components/Profile/ProfileContainer";
-import Product from "../components/Profile/ProductContainer";
+import ProfileContainer from "../components/profile/ProfileContainer";
+import ProductContainer from "../components/profile/ProductContainer";
+import GalleryContainer from "../components/profile/GalleryContainer";
+
 const MyProfile = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
-  //게시글 리스트 배열
-  const { posts } = useSelector(state => state.postList);
-
-  useEffect(() => {
-    //게시글 리스트 얻기
-    dispatch(listPosts());
-  }, [dispatch]);
-
   // 좋아요
   const [isLikeAction, setLikeAction] = useState(false);
   console.log(isLikeAction && isLikeAction, "isLikeAction");
   const likeAction = () => setLikeAction(!isLikeAction);
-
   // 🕹 네비게이션 Modal & Alert
   const [navDialog, setNavDialog] = useState(false);
   const [navAlert, setNavAlert] = useState(false);
   const isNavDialog = () => setNavDialog(!navDialog);
   const isNavAlert = () => setNavAlert(!navAlert);
-
-  // 🏞 게시글 모달 Modal & Alert
-  const [postDialog, setPostDialog] = useState(false);
-  const [postAlert, setPostAlert] = useState(false);
-  const [postId, setPostId] = useState("");
-
-  const isPostDialog = postId => {
-    console.log(postId, "postId 값 들어와라!");
-    setPostDialog(!postDialog);
-    setPostId(postId);
-  };
-  const isPostAlert = postId => {
-    setPostAlert(!postAlert);
-    if (typeof postId === "string") {
-      dispatch(deletePost(postId));
-    }
-  };
-
-  // DisplayButton에 대한 코드
-  const [gallery, setGallery] = useState(true);
-  const galleryHandler = () => {
-    setGallery(!gallery);
-  };
 
   return (
     <>
@@ -86,122 +41,11 @@ const MyProfile = () => {
       </HeaderLayOut>
       <LayOut>
         {/* 유저 프로필 */}
-        <Profile />
+        <ProfileContainer />
         {/* 상품 */}
-        <Product />
+        <ProductContainer />
         {/* 게시글 */}
-        <PostSectionContainer>
-          {/* 디스플레이 핸들러 버튼 영역입니다. */}
-          <PostHeader>
-            <PostHeaderWrapper>
-              <CardGalleryBtn
-                onClick={galleryHandler}
-                disabled={gallery}
-                type="button"
-              >
-                {gallery ? (
-                  <img src={cardOn} alt="카드켜짐" />
-                ) : (
-                  <img src={cardOff} alt="카드꺼짐" />
-                )}
-              </CardGalleryBtn>
-              <AlbumGalleryBtn
-                onClick={galleryHandler}
-                disabled={!gallery}
-                type="button"
-              >
-                {gallery ? (
-                  <img src={albumOff} alt="앨범켜짐" />
-                ) : (
-                  <img src={albumOn} alt="앨범꺼짐" />
-                )}
-              </AlbumGalleryBtn>
-            </PostHeaderWrapper>
-          </PostHeader>
-          <PostContainer>
-            {gallery ? (
-              posts &&
-              posts.map(post => {
-                /* 여러개의 게시글 이미지를 여러 개의 문자열로 배열에 담아 나눔 */
-                const postImages = post?.image?.split(",");
-                return (
-                  <CardGalleryList key={post.id}>
-                    <UserInfoBoxInMyProfile
-                      profileImage={post.author.image}
-                      name={post.author.username}
-                      id={post.author.accountname}
-                    />
-                    <ContentBox>
-                      <ContentText>{post.content}</ContentText>
-                      <ImageContainer>
-                        <ImageList>
-                          {postImages &&
-                            postImages.map(postImage => {
-                              return (
-                                <ItemWrapper
-                                  to={`/post/${post.id}`}
-                                  key={postImage}
-                                >
-                                  <img
-                                    src={postImage}
-                                    alt="게시글 이미지"
-                                    onError={event =>
-                                      (event.target.style.display = "none")
-                                    }
-                                    onLoad={event =>
-                                      (event.target.style.display =
-                                        "inline-block")
-                                    }
-                                  />
-                                </ItemWrapper>
-                              );
-                            })}
-                        </ImageList>
-                        <BtnList>
-                          {postImages &&
-                            postImages.map(item => {
-                              return <button key={item} />;
-                            })}
-                        </BtnList>
-                      </ImageContainer>
-                      <IconBox
-                        like={post.heartCount}
-                        comment={post.comments.length}
-                      />
-                      <Date>
-                        {dayjs(post.updatedAt).format("YY년 MM월 DD일")}
-                      </Date>
-                    </ContentBox>
-                    <MoreBtn onClick={() => isPostDialog(post.id)} />
-                  </CardGalleryList>
-                );
-              })
-            ) : (
-              <AlbumGalleryList>
-                {posts &&
-                  posts.map(post => {
-                    const firstImage = post?.image?.split(",")[0];
-                    return (
-                      <AlbumItem key={firstImage}>
-                        {/* 현길님 여기에 라우팅 해주시면 됩니다. */}
-                        <ImgWrapper to={"/test"}>
-                          <img
-                            src={firstImage}
-                            onError={event =>
-                              (event.target.style.display = "none")
-                            }
-                            onLoad={event =>
-                              (event.target.style.display = "inline-block")
-                            }
-                          />
-                        </ImgWrapper>
-                      </AlbumItem>
-                    );
-                  })}
-              </AlbumGalleryList>
-            )}
-          </PostContainer>
-        </PostSectionContainer>
+        <GalleryContainer />
       </LayOut>
       <Navigation />
       <Modal visible={navDialog}>
@@ -212,17 +56,6 @@ const MyProfile = () => {
       <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
         <AlertBox isAlert={isNavAlert}>예</AlertBox>
         <AlertBox isAlert={isNavAlert}>아니요</AlertBox>
-      </Alert>
-      {/* Post Modal */}
-      <Modal visible={postDialog}>
-        <AlertBtn isAlert={isPostAlert}>삭제</AlertBtn>
-        <ListBtn isDialog={isPostDialog}>수정</ListBtn>
-        <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
-      </Modal>
-      {/* Post Alert */}
-      <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
-        <AlertBox isAlert={isPostAlert}>취소</AlertBox>
-        <AlertBox isAlert={() => isPostAlert(postId && postId)}>삭제</AlertBox>
       </Alert>
     </>
   );
@@ -261,153 +94,4 @@ const LayOut = styled.main`
   background: ${props => props.theme.palette["bg"]};
 `;
 
-//  Album 부분 관련 StyledComponent입니다
-const PostSectionContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 0;
-  background-color: #fff;
-`;
-const PostHeader = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  border-bottom: 0.5px solid #dbdbdb;
-`;
-const PostHeaderWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  max-width: 390px;
-  width: 100%;
-  height: 44px;
-  padding-right: 16px;
-`;
-const CardGalleryBtn = styled.button`
-  border: none;
-  background-color: inherit;
-  width: 26px;
-  height: 26px;
-  img {
-    width: 26px;
-    height: 26px;
-  }
-`;
-const AlbumGalleryBtn = styled.button`
-  border: none;
-  background-color: inherit;
-  margin-left: 16px;
-  width: 26px;
-  height: 26px;
-  img {
-    width: 26px;
-    height: 26px;
-  }
-`;
-
-// Post관련 스타일컴포넌트 입니다.
-// card & Album 공통 컨테이너
-const PostContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 390px;
-  width: 100%;
-  padding: 16px 16px 70px;
-`;
-// CardGallery 컨테이너
-const CardGalleryList = styled.article`
-  position: relative;
-  max-width: 358px;
-  width: 100%;
-  margin-bottom: 20px;
-`;
-const ContentBox = styled.section`
-  padding-left: 54px;
-`;
-const ContentText = styled.p`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  margin-bottom: 16px;
-`;
-const ImageContainer = styled.div`
-  position: relative;
-  margin-bottom: 16px;
-  max-height: 228px;
-  border-radius: 10px;
-  overflow: hidden;
-`;
-const ImageList = styled.ul`
-  display: flex;
-  transition: all 0.4s;
-`;
-const ItemWrapper = styled.li`
-  min-width: 304px;
-  width: 100%;
-  max-height: 228px;
-  min-height: 228px;
-  border: 0.5px solid var(--border-color);
-  border-radius: 10px;
-  overflow: hidden;
-  img {
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 16px;
-  }
-`;
-const BtnList = styled.div`
-  position: absolute;
-  display: flex;
-  gap: 6px;
-  left: 50%;
-  bottom: 16px;
-  transform: translateX(-50%);
-  button {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #fff;
-  }
-`;
-const MoreBtn = styled.button`
-  position: absolute;
-  top: 4px;
-  right: 0;
-  width: 18px;
-  height: 18px;
-  background: url(${more}) no-repeat center / 18px 18px;
-  background-color: inherit;
-`;
-// AlbumGallery 컨테이너
-const AlbumGalleryList = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-`;
-const AlbumItem = styled.li`
-  position: relative;
-  max-height: 114px;
-  min-height: 114px;
-  &::before {
-    content: "";
-    position: absolute;
-    right: 6px;
-    top: 6px;
-    width: 20px;
-    height: 20px;
-    background: url(${imageLayers}) no-repeat center / contain;
-  }
-`;
-const ImgWrapper = styled(Link)`
-  width: 100%;
-  height: 100%;
-  img {
-    margin-bottom: 0;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
 export default MyProfile;
