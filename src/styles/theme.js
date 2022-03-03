@@ -10,6 +10,7 @@ const fontSizes = {
 
 const palette = {
   main: "#3f97fb",
+  white: "#ffffff",
   lightMain: "#9fcbfd",
   bg: "#f2f2f2",
   subText: "#767676",
