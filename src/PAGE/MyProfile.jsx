@@ -10,6 +10,7 @@ import { Alert, AlertBox } from "../components/module/alert/Alert";
 import Navigation from "../components/template/common/Navigation";
 
 // 작업완료
+import CommonHeader from "../components/common/CommonHeader";
 import ProfileContainer from "../components/profile/ProfileContainer";
 import ProductContainer from "../components/profile/ProductContainer";
 import GalleryContainer from "../components/profile/GalleryContainer";
@@ -28,17 +29,7 @@ const MyProfile = () => {
 
   return (
     <>
-      {/* 헤더 */}
-      <HeaderLayOut>
-        <HeaderContainer>
-          <HeaderLink onClick={() => history.goBack()}>
-            <img src={prev} alt="이전 페이지 버튼" />
-          </HeaderLink>
-          <HeaderLink>
-            <img src={more} alt="더보기 버튼" onClick={isNavDialog} />
-          </HeaderLink>
-        </HeaderContainer>
-      </HeaderLayOut>
+      <CommonHeader />
       <LayOut>
         {/* 유저 프로필 */}
         <ProfileContainer />

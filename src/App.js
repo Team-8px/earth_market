@@ -26,6 +26,7 @@ import NotFound from "./components/template/screen/NotFound";
 /* import "antd/dist/antd.css"; */
 //test라우팅
 import JoinJS from "./PAGE/Join-JS";
+import CommonHeader from "./components/common/CommonHeader";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
           {/* 김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후 */}
           <Switch>
             {/* 테스트 라우팅 */}
+            <Route path="/CommonHeader" component={CommonHeader} exact />
 
             {/* auth */}
             <Route path="/join/email" component={JoinJS} exact />
