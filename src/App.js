@@ -27,7 +27,7 @@ import NotFound from "./components/template/screen/NotFound";
 //test라우팅
 
 import JoinJS from "./PAGE/Join-JS";
-
+import { LoginMainJS } from "./PAGE/LoginMain-JS";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -40,7 +40,7 @@ const App = () => {
 
             {/* auth */}
             <Route path="/join/email" component={JoinJS} exact />
-            <Route path="/" component={LoginMain} exact />
+            <Route path="/" component={LoginMainJS} exact />
             <Route path="/login" component={LoginEmailKHK} exact />
 
             {/* 홈 */}
