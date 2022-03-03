@@ -7,13 +7,13 @@ import { UserInfoBox } from "../components/module/post/UserInfoBox";
 import { Button } from "../components/module/button/button";
 import { Modal, AlertBtn, ListBtn } from "../components/module/modal/Modal";
 import { Alert, AlertBox } from "../components/module/alert/Alert";
-import { HeaderHome } from "../components/template/common/Header";
 import IconBox from "../components/module/post/IconBox";
 import Date from "../components/module/post/Date";
 import more from "../asset/icon-more-vertical.svg";
 import dayjs from "dayjs";
 import NoneFeed from "../components/NoneFeed";
 import Navigation from "../components/template/common/Navigation";
+import HomeHeader from "../components/header/HomeHeader";
 const Home = () => {
   // 게시글 메뉴
   const [postDialog, setPostDialog] = useState(false);
@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <>
-      <HeaderHome />
+      <HomeHeader />
       {posts?.length !== 0 ? (
         <LayOut>
           {posts &&

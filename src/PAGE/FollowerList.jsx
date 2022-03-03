@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { HeaderFollow } from "../components/template/common/Header";
-import FollowerContainer from "../components/follow/FollowerContainer";
+import React from "react";
+import FollowHeader from "../components/header/FollowHeader";
 import Navigation from "../components/template/common/Navigation";
+import FollowerContainer from "../components/follow/FollowerContainer";
 
 const FollowerList = () => {
   return (
     <>
-      <HeaderFollow />
+      <FollowHeader />
       <FollowerContainer />
       <Navigation />
     </>
