@@ -110,7 +110,7 @@ export const createPost = (content, image) => async (dispatch, getState) => {
       payload: data,
     });
 
-    //document.location.href = "/home";
+    document.location.href = "/home";
   } catch (error) {
     const message =
       error.response && error.response.data.message

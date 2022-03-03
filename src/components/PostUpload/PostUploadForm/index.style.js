@@ -106,12 +106,18 @@ export const UploadBtn = styled.button`
   height: 32px;
   border: none;
   border-radius: 32px;
-  background: ${props => props.theme.palette["lightMain"]};
+  background: ${props => props.theme.palette["main"]};
   color: #fff;
   font-size: 14px;
   font-weight: 500;
   transition: all 0.4s ease;
   z-index: 150;
+  :disabled {
+    background: ${props => {
+      /* console.log(props); */
+      return props.theme.palette["lightMain"];
+    }};
+  }
 `;
 
 export const RemoveBtn = styled.button`
