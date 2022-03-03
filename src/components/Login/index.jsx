@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import {LoginLayOut, LoginLogo, LoginBtn} from "./index.style";
-// import MarketLogo from "../../../asset/symbol-logo-W.png";
+import MarketLogo from "../../asset/symbol-logo-W.png";
 
 const LoginMain = () => {
   useEffect(() => {
@@ -12,19 +13,19 @@ const LoginMain = () => {
   return (
     <> 
     <LoginLayOut>
-      {/* <LoginLogo>
-        <img src={MarketLogo} alt="감귤마켓" />
-      </LoginLogo> */}
+      <LoginLogo src={MarketLogo} alt="어스마켓" />
+      <Link to={"/login"}>
         <LoginBtn
-          border="kakao"
           outline="outline">
           이메일로 로그인
         </LoginBtn>
-        <LoginBtn 
-          border="google" 
+      </Link>
+      <Link to={"/join"}>
+        <LoginBtn
           outline="outline">
           회원가입
         </LoginBtn>
+      </Link>
     </LoginLayOut>
     </>
   );
