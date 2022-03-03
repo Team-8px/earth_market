@@ -29,7 +29,7 @@ export const NavItem = styled.li`
 export const StyledNavLink = styled(NavLink)`
   display: block;
   font-size: 10px;
-  color: 0.5px solid ${props => props.theme.palette["subText"]};
+  color: ${props => props.theme.palette["subText"]};
   padding: 12px 0 6px;
   text-align: center;
   cursor: pointer;
