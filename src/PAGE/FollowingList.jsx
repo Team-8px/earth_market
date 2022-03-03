@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
-// 스타일 로직
-import { HeaderFollow } from "../components/template/common/Header";
+import React from "react";
+import FollowHeader from "../components/header/FollowHeader";
 import FollowingContainer from "../components/follow/FollowingContainer";
 import Navigation from "../components/template/common/Navigation";
 
 const FollowingList = () => {
   return (
     <>
-      <HeaderFollow following />
+      <FollowHeader following />
       <FollowingContainer />
       <Navigation />
     </>
