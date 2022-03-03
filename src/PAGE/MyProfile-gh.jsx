@@ -24,13 +24,10 @@ import { ProfileImage } from "../components/common/image/ProfileImageStyle";
 import { Button } from "../components/module/button/button";
 import prev from "../asset/icon-arrow-left.svg";
 import more from "../asset/icon-more-vertical.svg";
-import Navigation from "../components/template/common/Navigation";
+import Navbar from "../components/common/Navbar";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
 // 이미지 슬라이드 필요없으면 바로 버릴 예정
 import { Carousel } from "antd";
-
-// 💛 미진 충돌 잡기
-import UserInfo from "../components/UserInfo";
 
 const MyProfile = () => {
   const history = useHistory();
@@ -234,7 +231,7 @@ const MyProfile = () => {
         </ProfileContainer>
       </LayOut>
 
-      <Navigation />
+      <Navbar />
 
       <Modal visible={navDialog}>
         <ListBtn isDialog={isNavDialog}>설정 및 개인정보</ListBtn>
