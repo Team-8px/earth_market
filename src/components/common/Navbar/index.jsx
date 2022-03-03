@@ -15,12 +15,12 @@ function Navigation() {
             </StyledNavLink>
           </NavItem>
           <NavItem>
-            <StyledNavLink to="/post/upload" className="upload">
+            <StyledNavLink to="/post/my/upload" className="upload">
               게시물 작성
             </StyledNavLink>
           </NavItem>
           <NavItem>
-            <StyledNavLink to="/myprofile" className="myprofile">
+            <StyledNavLink to="/profile/my" className="myprofile">
               프로필
             </StyledNavLink>
           </NavItem>
