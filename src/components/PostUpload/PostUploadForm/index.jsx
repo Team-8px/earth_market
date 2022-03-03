@@ -22,7 +22,7 @@ import {
   UploadBtn,
 } from "./index.style";
 
-const PostUpload = () => {
+const PostUploadForm = () => {
   // 이미지 업로드 갯수 제한
   const MAX_UPLOAD = 3;
 
@@ -164,4 +164,4 @@ const PostUpload = () => {
   );
 };
 
-export default PostUpload;
+export default PostUploadForm;

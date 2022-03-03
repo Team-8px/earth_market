@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/theme";
-import NavigationBar from "./hooks/useGNB";
-import Navigation from "../src/components/template/common/Navigation";
 
 //김현길 독립적인 라우트 2월 8일 데이터 바인딩 작업
 import LoginEmailKHK from "./PAGE/LoginEmail";
@@ -13,20 +11,16 @@ import HomeKHK from "./PAGE/Home";
 import SearchKHK from "./PAGE/Search";
 import MyprofileKHK from "./PAGE/MyProfile";
 import ProductUploadKHK from "./PAGE/ProductUpload";
-import PostUploadKHK from "./PAGE/PostUpload";
+import PostUpload from "./PAGE/PostUploadMJ";
 import ProfileUpdateKHK from "./PAGE/ProfileUpdate";
 import FollowerListKHK from "./PAGE/FollowerList";
 import FollowingListKHK from "./PAGE/FollowingList";
 import PostView from "./PAGE/PostView";
 import ProductUpdateKHK from "./PAGE/ProductUpdate";
-import SetMemberShipKHK from "./PAGE/JoinProfile";
+import Join from "./PAGE/Join";
 import YourProfile from "./PAGE/YourProfile";
 import NotFound from "./components/template/screen/NotFound";
-//이미지 슬라이드 필요없으면 바로 버릴 예정
-/* import "antd/dist/antd.css"; */
-//test라우팅
 
-import JoinJS from "./PAGE/Join-JS";
 import { LoginMainJS } from "./PAGE/LoginMain-JS";
 const App = () => {
   return (
@@ -34,12 +28,11 @@ const App = () => {
       <GlobalStyles />
       <Router>
         <AppliCation>
-          {/* 김현길 독립적인 라우트 1월 19일 이후 버전 맞춤 이후 */}
           <Switch>
             {/* 테스트 라우팅 */}
 
             {/* auth */}
-            <Route path="/join/email" component={JoinJS} exact />
+            <Route path="/join" component={Join} exact />
             <Route path="/" component={LoginMainJS} exact />
             <Route path="/login" component={LoginEmailKHK} exact />
 
@@ -69,9 +62,8 @@ const App = () => {
               component={FollowingListKHK}
               exact
             />
-            {/* 62183cfb9d09d36b2150a8c6 */}
             {/* post */}
-            <Route path="/post/my/upload" component={PostUploadKHK} exact />
+            <Route path="/post/my/upload" component={PostUpload} exact />
             <Route path="/post/:postId" component={PostView} exact />
 
             {/* product */}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import JoinMember from "../components/Join 작업/JoinMember";
-import JoinProfile from "../components/Join 작업/JoinProfile";
+import JoinMember from "../components/Join/JoinMember";
+import JoinProfile from "../components/Join/JoinProfile";
 
 const JoinJS = () => {
   const [nextPage, setNextPage] = useState(true);
