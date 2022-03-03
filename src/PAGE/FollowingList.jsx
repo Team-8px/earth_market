@@ -1,14 +1,14 @@
 import React from "react";
 import FollowHeader from "../components/header/FollowHeader";
 import FollowingContainer from "../components/follow/FollowingContainer";
-import Navigation from "../components/template/common/Navigation";
+import Navbar from "../components/common/Navbar";
 
 const FollowingList = () => {
   return (
     <>
       <FollowHeader following />
       <FollowingContainer />
-      <Navigation />
+      <Navbar />
     </>
   );
 };

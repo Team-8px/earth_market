@@ -12,7 +12,9 @@ import Date from "../components/module/post/Date";
 import more from "../asset/icon-more-vertical.svg";
 import dayjs from "dayjs";
 import NoneFeed from "../components/NoneFeed";
-import Navigation from "../components/template/common/Navigation";
+import Navbar from "../components/common/Navbar";
+
+// import Navigation from "../components/template/common/Navigation";
 import HomeHeader from "../components/header/HomeHeader";
 const Home = () => {
   // 게시글 메뉴
@@ -90,7 +92,7 @@ const Home = () => {
           </Link>
         </LayOut>
       )}
-      <Navigation />
+      <Navbar />
       {/* 게시글 Modal */}
       <Modal visible={postDialog}>
         <AlertBtn isAlert={isPostAlert}>신고하기</AlertBtn>

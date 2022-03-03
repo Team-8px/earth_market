@@ -27,7 +27,7 @@ import albumOff from "../asset/icon/icon-post-album-off.svg";
 import imageLayers from "../asset/icon/iccon-img-layers.svg";
 import prev from "../asset/icon-arrow-left.svg";
 import more from "../asset/icon-more-vertical.svg";
-import Navigation from "../components/template/common/Navigation";
+import Navbar from "../components/common/Navbar";
 // import SellProductLink from "../asset/product-img-example-01.jpg";
 
 const YourProfile = () => {
@@ -288,7 +288,7 @@ const YourProfile = () => {
           </PostContainer>
         </PostSectionContainer>
       </LayOut>
-      <Navigation />
+      <Navbar />
 
       <Modal visible={navDialog}>
         <AlertBtn isAlert={isNavAlert}>로그아웃</AlertBtn>

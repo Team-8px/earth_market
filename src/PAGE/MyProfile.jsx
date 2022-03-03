@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Navigation from "../components/template/common/Navigation";
+import Navbar from "../components/common/Navbar";
 
 // 작업완료
 import CommonHeader from "../components/common/CommonHeader";
@@ -24,7 +24,7 @@ const MyProfile = () => {
         {/* 게시글 */}
         <GalleryContainer />
       </MainSection>
-      <Navigation />
+      <Navbar />
     </>
   );
 };
