@@ -11,7 +11,7 @@ import HomeKHK from "./PAGE/Home";
 import SearchKHK from "./PAGE/Search";
 import MyprofileKHK from "./PAGE/MyProfile";
 import ProductUploadKHK from "./PAGE/ProductUpload";
-import PostUpload from "./PAGE/PostUploadMJ";
+import PostUpload from "./PAGE/PostUpload";
 import ProfileUpdateKHK from "./PAGE/ProfileUpdate";
 import FollowerListKHK from "./PAGE/FollowerList";
 import FollowingListKHK from "./PAGE/FollowingList";

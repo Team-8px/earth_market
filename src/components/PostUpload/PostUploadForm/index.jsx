@@ -28,19 +28,15 @@ const PostUploadForm = () => {
 
   const [myImage, setMyImage] = useState([]);
 
-  /* const [isPreviewImage, setIsPreviewImage] = useState(true); */
-  const [nextPage, setNextPage] = useState(true);
+  //const [isButtonStatus, setIsButtonStatus] = useState(false)
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { isValid },
   } = useForm({
     mode: "onChange",
   });
-
-  const nextPageHandler = () => {
-    setNextPage(false);
-  };
 
   const dispatch = useDispatch();
 
@@ -71,12 +67,14 @@ const PostUploadForm = () => {
   };
 
   const onSubmit = async data => {
-    const { postText } = data;
-    const fileDatas = myImage;
-    //console.log(fileDatas);
-    const image = await multipleImageUploadsHandler(fileDatas);
-    console.log(data, "입력데이터 postUpload");
-    dispatch(createPost(postText, image));
+    try {
+      const { postText } = data;
+      const fileDatas = myImage;
+      const image = await multipleImageUploadsHandler(fileDatas);
+      dispatch(createPost(postText, image));
+    } catch (e) {
+      console.err(e);
+    }
   };
 
   // 글자 칸 수 넘어갈 때마다 height값 증가하는 이벤트
@@ -116,9 +114,13 @@ const PostUploadForm = () => {
           onError={e => {
             trigger(e);
           }}
+          src={image}
         />
         <PostForm>
-          <TextBox {...register("postText")} htmlFor="postText">
+          <TextBox
+            {...register("postText", { required: true })}
+            htmlFor="postText"
+          >
             <textarea
               type="text"
               name="postText"
@@ -155,7 +157,7 @@ const PostUploadForm = () => {
                 })}
             </PhotoList>
           </PostFormContainer>
-          <UploadBtn type="submit" onClick={nextPageHandler} isValid={isValid}>
+          <UploadBtn type="submit" disabled={!isValid}>
             업로드
           </UploadBtn>
         </PostForm>
