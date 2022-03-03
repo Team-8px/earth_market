@@ -25,6 +25,7 @@ import NotFound from "./components/template/screen/NotFound";
 //이미지 슬라이드 필요없으면 바로 버릴 예정
 /* import "antd/dist/antd.css"; */
 //test라우팅
+
 import JoinJS from "./PAGE/Join-JS";
 import { LoginMainJS } from "./PAGE/LoginMain-JS";
 const App = () => {
