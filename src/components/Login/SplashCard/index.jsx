@@ -1,11 +1,11 @@
 import React from "react";
 import { SplashSection, SplashImg } from "./index.style";
 
-function SpalshScreen({}) {
+function SplashCard({}) {
   return (
     <SplashSection>
       <SplashImg />
     </SplashSection>
   );
 }
-export default SpalshScreen;
+export default SplashCard;

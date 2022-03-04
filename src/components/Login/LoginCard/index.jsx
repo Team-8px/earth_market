@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { LoginLayOut, LoginLogo, LoginBtn } from "./index.style";
 import MarketLogo from "../../asset/symbol-logo-W.png";
 
-const LoginScreen = () => {
+const LoginCard = () => {
   return (
     <>
       <LoginLayOut>
@@ -19,4 +19,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default LoginCard;
