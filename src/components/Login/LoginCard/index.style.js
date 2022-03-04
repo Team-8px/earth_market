@@ -1,19 +1,29 @@
-import styled from "styled-components";
-// import MarketLogo from "../../asset/symbol-logo-W.png";
+import styled, { keyframes } from "styled-components";
 
-export const LoginSection = styled.main`
-  ${props => props.theme.common.flexCenterColumn};
-  width: 100%;
-  height: 100%;
-  padding-top: 150px;
-  background-color: ${props => props.theme.palette.main};
+const slideup = keyframes`
+from{
+  transform:translateY(0px)
+}
+to{
+  transform:translateY(-370px)
+}
 `;
 
-// export const LoginLogoImg = styled.img.attrs({src:MarketLogo,alt:"어스마켓"})`
-//   width: 144px;
-//   height: 144px;
-//   margin-bottom: 50px;
-// `;
+export const LoginSection = styled.main`
+  position: fixed;
+  bottom: -100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &.up {
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-name: ${slideup};
+    animation-fill-mode: forwards;
+  }
+`;
 
 export const LoginBtn = styled.button`
   width: 322px;

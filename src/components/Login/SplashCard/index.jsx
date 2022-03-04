@@ -1,9 +1,9 @@
 import React from "react";
 import { SplashSection, SplashImg } from "./index.style";
 
-function SplashCard({}) {
+function SplashCard({ loading }) {
   return (
-    <SplashSection>
+    <SplashSection className={loading ? "down" : "up"}>
       <SplashImg />
     </SplashSection>
   );
