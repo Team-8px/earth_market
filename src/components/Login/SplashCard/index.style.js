@@ -40,7 +40,7 @@ to{
 `;
 const slideup = keyframes`
 from{
-  transform:translateY(-0px)
+  transform:translateY(50px)
 }
 to{
   transform:translateY(-100px)
@@ -80,7 +80,7 @@ export const SplashImg = styled.img.attrs(props => ({
     animation-fill-mode: forwards;
   }
   &.false {
-    animation-duration: 0.3s;
+    animation-duration: 1.2s;
     animation-timing-function: ease-out;
     animation-name: ${ImageFadeOut};
     animation-fill-mode: forwards;
