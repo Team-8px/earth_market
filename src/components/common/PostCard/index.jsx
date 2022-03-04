@@ -2,7 +2,7 @@ import React from "react";
 
 import basicImg from "../../../asset/basic-profile-img.svg";
 import {
-  CardGallerySection,
+  CardSection,
   CardProfileContainer,
   CardProfileImg,
   CardAthorWrapper,
@@ -23,7 +23,7 @@ import {
   CardDateText,
 } from "./index.style";
 
-function CardGallery({
+function PostCard({
   postid,
   profileImage,
   username,
@@ -49,7 +49,7 @@ function CardGallery({
   };
 
   return (
-    <CardGallerySection>
+    <CardSection>
       <CardProfileContainer>
         <CardProfileImg
           alt="프로필 이미지"
@@ -97,7 +97,7 @@ function CardGallery({
         <CardDateText>{updatedAt}</CardDateText>
       </CardContentContainer>
       <CardMoreBtn onClick={() => postDialog(postid)} />
-    </CardGallerySection>
+    </CardSection>
   );
 }
-export default CardGallery;
+export default PostCard;
