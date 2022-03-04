@@ -11,7 +11,7 @@ export const SearchSection = styled.main`
   margin-top: 48px;
 `;
 
-export const SerachUserList = styled.ul`
+export const SearchUserList = styled.ul`
   max-width: 390px;
   width: 100%;
   box-sizing: border-box;
