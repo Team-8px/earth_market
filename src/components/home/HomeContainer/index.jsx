@@ -49,8 +49,8 @@ function HomeContainer() {
           <NoneFeed>
             <span> 유저를 검색해 팔로우 해보세요</span>
           </NoneFeed>
-          <Link>
-            <SearchBtn to={"/search"}>검색하기</SearchBtn>
+          <Link to={"/search"}>
+            <SearchBtn>검색하기</SearchBtn>
           </Link>
         </ProfileSection>
       )}
