@@ -27,4 +27,5 @@ export const AlbumImg = styled.img`
   margin-bottom: 0;
   height: 100%;
   object-fit: cover;
+  border-radius: 15px;
 `;
