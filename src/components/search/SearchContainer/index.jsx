@@ -1,11 +1,11 @@
 import React from "react";
 import SearchCard from "../SearchCard";
-import { SearchSection, SerachUserList } from "./index.style";
+import { SearchSection, SearchUserList } from "./index.style";
 
 function SearchContainer({ SearchUser }) {
   return (
     <SearchSection>
-      <SerachUserList>
+      <SearchUserList>
         {SearchUser &&
           SearchUser.map(user => {
             return (
@@ -18,7 +18,7 @@ function SearchContainer({ SearchUser }) {
               />
             );
           })}
-      </SerachUserList>
+      </SearchUserList>
     </SearchSection>
   );
 }

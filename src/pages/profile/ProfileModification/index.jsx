@@ -10,7 +10,8 @@ import { MainLayOut } from "./index.style";
 import { ProfileImgWrapper } from "../../../components/common/image/ProfileImageStyle";
 import { FormContainer } from "../../../components/Form";
 // 프로필 이미지
-import EllipseImg from "../../../asset/Ellipse-1.png";
+// import EllipseImg from "../../../asset/Ellipse-1.png";
+import EllipseImg from "../../../asset/basic-profile-img-small.svg";
 
 
 // 유효성검사 로직

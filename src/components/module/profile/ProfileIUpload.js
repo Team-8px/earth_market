@@ -5,7 +5,8 @@ import { updateUserProfile } from "../../../actions/userActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
 import styled from "styled-components";
 import Upload from "../../../asset/upload-file.png";
-import EllipseImg from "../../../asset/Ellipse-1.png";
+// import EllipseImg from "../../../asset/basic-profile-img-small.svg";
+import EllipseImg from "../../../asset/basic-profile-img-small.svg";
 
 const ProfileImgWrapper = styled.div`
   margin-top: 30px;

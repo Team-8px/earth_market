@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import basicimg from "../../../asset/Ellipse-1.png";
+import basicImg from "../../../asset/basic-profile-img.svg";
 import heart from "../../../asset/icon/icon-heart.svg";
 import heartActive from "../../../asset/icon/icon-heart-active.png";
 import comment from "../../../asset/icon/icon-message-circle.svg";
@@ -21,7 +21,7 @@ export const CardProfileContainer = styled.section`
 `;
 
 export const CardProfileImg = styled.img.attrs(props => ({
-  src: props.src || basicimg,
+  src: props.src || basicImg,
 }))`
   width: 42px;
   height: 42px;
