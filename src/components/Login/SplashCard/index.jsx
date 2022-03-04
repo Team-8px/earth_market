@@ -4,7 +4,7 @@ import { SplashSection, SplashImg } from "./index.style";
 function SplashCard({ loading }) {
   return (
     <SplashSection className={loading ? "down" : "up"}>
-      <SplashImg className={loading ? "true" : "false"} />
+      <SplashImg className={loading ? "blue" : "white"} />
     </SplashSection>
   );
 }

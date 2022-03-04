@@ -6,7 +6,7 @@ import heartActive from "../../../asset/icon/icon-heart-active.png";
 import comment from "../../../asset/icon/icon-message-circle.svg";
 import more from "../../../asset/icon-more-vertical.svg";
 
-export const CardGallerySection = styled.article`
+export const CardSection = styled.article`
   position: relative;
   max-width: 358px;
   width: 100%;

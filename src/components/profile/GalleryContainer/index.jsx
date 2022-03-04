@@ -15,7 +15,7 @@ import {
 } from "./index.style";
 import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
 import { Alert, AlertBox } from "../../module/alert/Alert";
-import CardGallery from "../CardGallery";
+import PostCard from "../../common/PostCard";
 import AlbumGallery from "../AlbumGallery";
 
 function GalleryContainer() {
@@ -64,7 +64,7 @@ function GalleryContainer() {
           posts.map(post => {
             const postImages = post?.image?.split(",");
             return (
-              <CardGallery
+              <PostCard
                 key={post.id}
                 postid={post.id}
                 Link={`/post/${post.id}`}
