@@ -1,6 +1,7 @@
 import styled from "styled-components";
+// import MarketLogo from "../../asset/symbol-logo-W.png";
 
-export const LoginLayOut = styled.main`
+export const LoginSection = styled.main`
   ${props => props.theme.common.flexCenterColumn};
   width: 100%;
   height: 100%;
@@ -8,11 +9,11 @@ export const LoginLayOut = styled.main`
   background-color: ${props => props.theme.palette.main};
 `;
 
-export const LoginLogo = styled.img`
-  width: 144px;
-  height: 144px;
-  margin-bottom: 50px;
-`;
+// export const LoginLogoImg = styled.img.attrs({src:MarketLogo,alt:"어스마켓"})`
+//   width: 144px;
+//   height: 144px;
+//   margin-bottom: 50px;
+// `;
 
 export const LoginBtn = styled.button`
   width: 322px;
