@@ -5,7 +5,7 @@ from{
   transform:translateY(0px)
 }
 to{
-  transform:translateY(-370px)
+  transform:translateY(-300px)
 }
 `;
 
@@ -31,7 +31,6 @@ export const LoginBtn = styled.button`
   background: ${props => props.theme.palette["white"]};
   color: ${props => props.theme.palette["black"]};
   font-size: 14px;
-  font-weight: 600;
   cursor: pointer;
   border-radius: 44px;
   margin-top: 10px;
