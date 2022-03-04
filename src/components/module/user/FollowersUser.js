@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import EllipseImg from "../../../asset/Ellipse-1.png";
+// import EllipseImg from "../../../asset/basic-profile-img-small.svg";
+import EllipseImg from "../../../asset/basic-profile-img-small.svg";
 import { Button } from "../button/button";
 
 const UserList = styled.ul`

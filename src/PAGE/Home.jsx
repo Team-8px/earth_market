@@ -112,6 +112,7 @@ const LayOut = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 20px 16px 0;
   height: calc(100% - 108px);
   overflow-y: scroll;

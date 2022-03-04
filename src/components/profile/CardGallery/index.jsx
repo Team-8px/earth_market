@@ -1,6 +1,6 @@
 import React from "react";
 
-import basicImg from "../../../asset/basic-profile-img.png";
+import basicImg from "../../../asset/basic-profile-img.svg";
 import {
   CardGallerySection,
   CardProfileContainer,

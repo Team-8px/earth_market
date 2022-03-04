@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import basicImg from "../../../asset/Ellipse 6.png";
+import basicImg from "../../../asset/basic-profile-img-small.svg";
 
 export const SearchUserList = styled.div`
   position: relative;

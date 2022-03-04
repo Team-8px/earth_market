@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {LoginLayOut, LoginLogo, LoginBtn} from "./index.style";
-import MarketLogo from "../../asset/symbol-logo-W.png";
+import MarketLogo from "../../asset/symbol-logo-W.svg";
 
 const LoginMain = () => {
   useEffect(() => {

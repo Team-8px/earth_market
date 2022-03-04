@@ -10,7 +10,8 @@ import { ProfileImgWrapper } from "../../../components/common/image/ProfileImage
 import { FormContainer } from "../../../components/Form";
 import { Button } from "../../../components/Button";
 // 프로필 이미지
-import EllipseImg from "../../../asset/Ellipse-1.png";
+// import EllipseImg from "../../../asset/basic-profile-img-small.svg";
+import EllipseImg from "../../../asset/basic-profile-img-small.svg";
 //import { Main } from "../../../components/MainLayOut";
 
 import { EmailPwWrapper, ProfileContainer } from "./index.style";

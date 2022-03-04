@@ -8,7 +8,9 @@ import { HeaderBasic } from "../../../components/Header";
 import { SubmitChat } from "../../../components/SubmitChat";
 // 댓글 생성 부분 컴포넌트만 다시 불러와서 적용할 예정입니다.
 // 프로필 이미지
-import EllipseImg from "../../../asset/Ellipse-1.png";
+// import EllipseImg from "../../../asset/Ellipse-1.png";
+import EllipseImg from "../../../asset/basic-profile-img-small.svg";
+
 const PostView = () => {
   // 스타일 컴포넌트 관련 상태관리
 

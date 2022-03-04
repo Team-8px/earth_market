@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import basicimg from "../../../asset/Ellipse-1.png";
+import basicImg from "../../../asset/basic-profile-img.svg";
 
 export const UserInfoWrapper = styled.div`
   position: relative;
@@ -12,7 +12,7 @@ export const UserInfoWrapper = styled.div`
   padding: 30px 16px 26px;
 `;
 export const UserInfoImg = styled.img.attrs(props => ({
-  src: props.src || basicimg,
+  src: props.src || basicImg,
 }))`
   width: 110px;
   height: 110px;

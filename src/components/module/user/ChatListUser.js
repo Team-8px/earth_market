@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import EllipseImg from "../../../asset/Ellipse-1.png";
+// import EllipseImg from "../../../asset/Ellipse-1.png";
+import EllipseImg from "../../../asset/basic-profile-img-small.svg";
 
 const ChatListContainer = styled.ul`
   width: 100%;
@@ -22,7 +23,7 @@ const UserImgWrapper = styled.div`
   border-radius: 50%;
   margin-right: 12px;
 
-  img{
+  img {
     height: 100%;
     object-fit: cover;
   }
@@ -34,8 +35,8 @@ const ChatInfoWrapper = styled.strong`
   font-weight: 400;
   line-height: 18px;
   margin: 2px 0 4px 0;
-  
-  p{
+
+  p {
     max-width: 238px;
     font-weight: 400;
     font-size: 12px;
@@ -51,22 +52,22 @@ const ChatDate = styled.strong`
   font-weight: 400;
   font-size: 10px;
   line-height: 13px;
-  color: #DBDBDB;
+  color: #dbdbdb;
 `;
 
 export default function ChatListUser({ username }) {
   return (
-      <ChatListContainer>
-        <ChatItemContainer>
-          <UserImgWrapper>
-            <img src={EllipseImg} alt="프로필 사진" />
-          </UserImgWrapper>
-          <ChatInfoWrapper>
-            <strong>유저네임</strong>
-            <p>안녕하세요!</p>
-          </ChatInfoWrapper>
-          <ChatDate>2020.10.25</ChatDate>
-        </ChatItemContainer>
+    <ChatListContainer>
+      <ChatItemContainer>
+        <UserImgWrapper>
+          <img src={EllipseImg} alt="프로필 사진" />
+        </UserImgWrapper>
+        <ChatInfoWrapper>
+          <strong>유저네임</strong>
+          <p>안녕하세요!</p>
+        </ChatInfoWrapper>
+        <ChatDate>2020.10.25</ChatDate>
+      </ChatItemContainer>
     </ChatListContainer>
   );
 }
