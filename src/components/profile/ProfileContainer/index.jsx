@@ -14,7 +14,7 @@ function ProfileContainer() {
 
   const history = useHistory();
   const MoveAddProduct = () => {
-    history.push("/product");
+    history.push("/product/upload");
   };
 
   useEffect(() => {

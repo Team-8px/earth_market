@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import uploadIcon from "../../../asset/upload-file.svg";
-import IconRemove from "../../../asset/icon/icon-remove.svg";
-import basicImg from "../../../asset/basic-profile-img.png";
+import uploadIcon from "../../asset/upload-file.svg";
+import IconRemove from "../../asset/icon/icon-remove.svg";
+import basicImg from "../../asset/basic-profile-img.png";
 
 export const Form = styled.form`
   box-sizing: border-box;

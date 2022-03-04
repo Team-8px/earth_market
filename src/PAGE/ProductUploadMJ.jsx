@@ -1,15 +1,14 @@
 import React from "react";
-import UploadHeader from "../components/Upload/UploadHeader";
-import ProductPage from "../components/Upload/ProductEditPage"
+import UploadHeader from "../components/common/UploadHeader";
+import ProductUploadForm from "../components/ProductUpload";
 
-// test
-const ProductUploadMJ = () => {
+const ProductUpload = () => {
   return (
     <>
-      <UploadHeader/>
-      <ProductPage /> 
+      <UploadHeader />
+      <ProductUploadForm />
     </>
   );
 };
 
-export default ProductUploadMJ;
+export default ProductUpload;

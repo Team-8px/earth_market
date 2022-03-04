@@ -1,11 +1,11 @@
 import React from "react";
-import PostUploadHeader from "../components/PostUpload/PostUploadHeader";
-import PostUploadForm from "../components/PostUpload/PostUploadForm";
+import UploadHeader from "../components/common/UploadHeader";
+import PostUploadForm from "../components/PostUpload";
 
 const PostUploadMJ = () => {
   return (
     <>
-      <PostUploadHeader />
+      <UploadHeader />
       <PostUploadForm />
     </>
   );
