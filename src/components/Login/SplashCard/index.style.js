@@ -52,34 +52,34 @@ export const SplashSection = styled.main`
   animation-name: ${fadeOut};
   animation-fill-mode: forwards;
 
-  &.down {
-    animation-duration: 0.5s;
-    animation-timing-function: ease-out;
-    animation-name: ${slidedown};
-    animation-fill-mode: forwards;
-  }
   &.up {
     animation-duration: 0.5s;
     animation-timing-function: ease-out;
     animation-name: ${slideup};
     animation-fill-mode: forwards;
   }
+  &.down {
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-name: ${slidedown};
+    animation-fill-mode: forwards;
+  }
 `;
 
 export const SplashImg = styled.img.attrs(props => ({
-  src: props.className === "true" ? splashLogoBlue : splashLogoWhite,
+  src: props.className === "blue" ? splashLogoBlue : splashLogoWhite,
 }))`
   margin: 0 auto;
   width: 200px;
   height: 100%;
 
-  &.true {
+  &.blue {
     animation-duration: 1.2s;
     animation-timing-function: ease-out;
     animation-name: ${ImageFadeIn};
     animation-fill-mode: forwards;
   }
-  &.false {
+  &.white {
     animation-duration: 1.2s;
     animation-timing-function: ease-out;
     animation-name: ${ImageFadeOut};

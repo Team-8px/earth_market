@@ -20,9 +20,6 @@ import ProductUpdateKHK from "./PAGE/ProductUpdate";
 import Join from "./PAGE/Join";
 import YourProfile from "./PAGE/YourProfile";
 import NotFound from "./components/template/screen/NotFound";
-import CommonHeader from "./components/common/CommonHeader";
-import LoginMainTEST from "./PAGE/LoginMainTEST";
-import HomeTEST from "./PAGE/HomeTEST";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -31,12 +28,10 @@ const App = () => {
         <AppliCation>
           <Switch>
             {/* 테스트 라우팅 */}
-            <Route path="/CommonHeader" component={CommonHeader} exact />
-            <Route path="/HomeTEST" component={HomeTEST} exact />
 
             {/* auth */}
             <Route path="/join" component={Join} exact />
-            <Route path="/" component={LoginMainTEST} exact />
+            <Route path="/" component={LoginMain} exact />
             <Route path="/login" component={LoginEmailKHK} exact />
 
             {/* 홈 */}
