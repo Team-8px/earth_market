@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
+import LoginCard from "../LoginCard";
+import SplashCard from "../SplashCard";
+import {LoginContainerSection,LoginContainerWrapper} from './index.style.js'
 
 function LoginContainer() {
   const [loading, setLoading] = useState(false);
+  const [test,setTest] = useState(false)
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userInfo"))?.user?.token) {
@@ -14,6 +18,13 @@ function LoginContainer() {
     }, 2000);
   }, []);
 
-  return loading ? <div>로딩상태 보여줘</div> : <div>이제 로그인 보여줘</div>;
+  return <LoginContainerSection>
+    <LoginContainerWrapper>
+    <div className={test ? "on" : "off"} >로딩상태 보여줘</div>
+    {/* 스플래쉬 카드 */}
+    <div>이제 로그인 보여줘</div>
+    {/* 로그인 카드*/}
+    </LoginContainerWrapper>
+  </LoginContainerSection>
 }
 export default LoginContainer;

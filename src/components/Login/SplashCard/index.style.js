@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import splashLogo from "../../../asset/icon/full-logo.svg";
 
+
 const slideUp = keyframes`
     from{
         background-color: #fff;
