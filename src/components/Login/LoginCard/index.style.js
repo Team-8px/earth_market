@@ -5,7 +5,7 @@ from{
   transform:translateY(0px)
 }
 to{
-  transform:translateY(-370px)
+  transform:translateY(-300px)
 }
 `;
 
