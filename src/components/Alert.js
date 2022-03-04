@@ -3,7 +3,7 @@
  * 화면에 로그아웃 하시겠습니까? 확인 취소 버튼이 나오게 됩니다.
  */
 
-import React, { children, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 const slideUp = keyframes`
