@@ -14,14 +14,14 @@ function LoginContainer() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
 
   return (
     <LoginContainerSection>
       <LoginContainerWrapper>
-        <SplashCard />
-        <LoginCard />
+        <SplashCard loading={loading} />
+        <LoginCard loading={loading} />
       </LoginContainerWrapper>
     </LoginContainerSection>
   );

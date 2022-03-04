@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import splashLogo from "../../../asset/icon/full-logo.svg";
 
-const slideUp = keyframes`
+const fadeOut = keyframes`
     from{
         background-color: #fff;
     }
@@ -10,12 +10,41 @@ const slideUp = keyframes`
     }
 `;
 
+const slidedown = keyframes`
+from{
+  transform:translateY(-100px)
+}
+to{
+  transform:translateY(0px)
+}
+
+`;
+const slideup = keyframes`
+from{
+  transform:translateY(0px)
+}
+to{
+  transform:translateY(-100px)
+}
+`;
+
 export const SplashSection = styled.main`
-  background-color: #fff;
-  animation-delay: 1s;
-  animation-duration: 1s;
-  animation-name: ${slideUp};
+  animation-duration: 0.5s;
+  animation-name: ${fadeOut};
   animation-fill-mode: forwards;
+
+  &.down {
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-name: ${slidedown};
+    animation-fill-mode: forwards;
+  }
+  &.up {
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-name: ${slideup};
+    animation-fill-mode: forwards;
+  }
 `;
 
 export const SplashImg = styled.img.attrs({ src: splashLogo })`

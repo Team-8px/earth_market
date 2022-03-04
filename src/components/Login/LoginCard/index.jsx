@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { LoginSection, LoginBtn } from "./index.style";
 
-const LoginCard = () => {
+const LoginCard = ({ loading }) => {
   return (
     <>
-      <LoginSection>
+      <LoginSection className={loading ? "" : "up"}>
         <Link to={"/login"}>
           <LoginBtn outline="outline">이메일로 로그인</LoginBtn>
         </Link>
