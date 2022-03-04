@@ -10,7 +10,7 @@ import LoginMain from "./PAGE/LoginMain";
 import HomeKHK from "./PAGE/Home";
 import SearchKHK from "./PAGE/Search";
 import MyprofileKHK from "./PAGE/MyProfile";
-import ProductUploadKHK from "./PAGE/ProductUpload";
+import ProductUpload from "./PAGE/ProductUploadMJ";
 import PostUpload from "./PAGE/PostUpload";
 import ProfileUpdateKHK from "./PAGE/ProfileUpdate";
 import FollowerListKHK from "./PAGE/FollowerList";
@@ -69,7 +69,7 @@ const App = () => {
             <Route path="/post/:postId" component={PostView} exact />
 
             {/* product */}
-            <Route path="/product/upload" component={ProductUploadKHK} exact />
+            <Route path="/product/upload" component={ProductUpload} exact />
             <Route
               path="/product/:productId/update"
               component={ProductUpdateKHK}

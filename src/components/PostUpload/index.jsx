@@ -2,10 +2,10 @@ import React, { useCallback, useRef, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import { createPost } from "../../../actions/postActions";
-import { multipleImageUploadsHandler } from "../../../util/multipleImageUploads";
-import { getUserMyProfile } from "../../../actions/userActions";
-import basicImg from "../../../asset/basic-profile-img.png";
+import { createPost } from "../../actions/postActions";
+import { multipleImageUploadsHandler } from "../../util/multipleImageUploads";
+import { getUserMyProfile } from "../../actions/userActions";
+import basicImg from "../../asset/basic-profile-img.png";
 import {
   Form,
   MainFieldSet,
