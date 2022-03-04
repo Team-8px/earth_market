@@ -37,9 +37,8 @@ function CardGallery({
   Link,
 }) {
   const moveSlide = (e, i) => {
-    const width = -304;
     const target = e.target.parentNode.parentNode.firstChild;
-    target.style.transform = `translateX(${width * Number(i)}px)`;
+    target.style.transform = `translateX(${-304 * Number(i)}px)`;
   };
   const trigger = e => {
     e.target.src = basicImg;
