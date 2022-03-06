@@ -1,13 +1,13 @@
 import React from "react";
-import UploadHeader from "../components/Upload/UploadHeader";
-import ProductEditPage from "../components/Upload/ProductEditPage"
+import UploadHeader from "../components/common/UploadHeader";
+import ProductUpdateForm from "../components/productupdate";
 
 // test
 const ProductUpdateMJ = () => {
   return (
     <>
-      <UploadHeader/>
-      <ProductEditPage /> 
+      <UploadHeader />
+      <ProductUpdateForm />
     </>
   );
 };

@@ -6,7 +6,7 @@ import { getUserMyProfile } from "../../../actions/userActions";
 
 import ProfileCard from "../ProfileCard";
 
-function ProfileContainer() {
+function ProfileContainer({ checkLoginUser }) {
   const dispatch = useDispatch();
   const { accountId } = useParams();
   const { image, username, accountname, intro, followerCount, followingCount } =
