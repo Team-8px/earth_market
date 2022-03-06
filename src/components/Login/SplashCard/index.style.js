@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
-import splashLogoBlue from "../../../asset/icon/full-logo.svg";
-import splashLogoWhite from "../../../asset/full-logo-white.svg";
+import splashLogoBlue from "../../../asset/full-logo-blue.png";
+import splashLogoWhite from "../../../asset/full-logo-white.png";
 
 const ImageFadeOut = keyframes`
 from{
@@ -47,7 +47,7 @@ to{
 }
 `;
 
-export const SplashSection = styled.main`
+export const SplashSection = styled.div`
   animation-duration: 0.5s;
   animation-name: ${fadeOut};
   animation-fill-mode: forwards;
@@ -70,7 +70,7 @@ export const SplashImg = styled.img.attrs(props => ({
   src: props.className === "blue" ? splashLogoBlue : splashLogoWhite,
 }))`
   margin: 0 auto;
-  width: 200px;
+  width: 150px;
   height: 100%;
 
   &.blue {
