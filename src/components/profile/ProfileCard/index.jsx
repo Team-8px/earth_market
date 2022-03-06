@@ -15,6 +15,7 @@ import {
   BtnLink,
   ProfileEditBtn,
   AddProductBtn,
+  FollowBtn,
 } from "./index.style";
 
 function ProfileCard({
@@ -31,6 +32,7 @@ function ProfileCard({
   const trigger = e => {
     e.target.src = basicImg;
   };
+  const test = false;
   return (
     <UserInfoWrapper>
       <UserInfoImg
@@ -51,14 +53,22 @@ function ProfileCard({
         <FollowCount>{followingCount}</FollowCount>
         <FollowText>following</FollowText>
       </FollowingLink>
-      <UserInfoButtonsWrapper>
-        <BtnLink to={`/${accountname}/edit`}>
-          <ProfileEditBtn>프로필수정</ProfileEditBtn>
-        </BtnLink>
-        <BtnLink as={"div"} onClick={() => MoveAddProduct()}>
-          <AddProductBtn>상품추가</AddProductBtn>
-        </BtnLink>
-      </UserInfoButtonsWrapper>
+      {test ? (
+        <UserInfoButtonsWrapper>
+          <BtnLink to={`/${accountname}/edit`}>
+            <ProfileEditBtn>프로필수정</ProfileEditBtn>
+          </BtnLink>
+          <BtnLink as={"div"} onClick={() => MoveAddProduct()}>
+            <AddProductBtn>상품추가</AddProductBtn>
+          </BtnLink>
+        </UserInfoButtonsWrapper>
+      ) : (
+        <UserInfoButtonsWrapper>
+          <BtnLink to={`/to`}>
+            <FollowBtn>팔로우</FollowBtn>
+          </BtnLink>
+        </UserInfoButtonsWrapper>
+      )}
     </UserInfoWrapper>
   );
 }

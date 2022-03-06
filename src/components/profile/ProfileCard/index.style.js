@@ -116,3 +116,16 @@ export const AddProductBtn = styled.button`
   font-size: 14px;
   line-height: 18px;
 `;
+export const FollowBtn = styled.button`
+  width: 120px;
+  height: 34px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme.palette["main"]};
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+`;
