@@ -33,6 +33,7 @@ function ProfileCard({
     e.target.src = basicImg;
   };
   const test = false;
+
   return (
     <UserInfoWrapper>
       <UserInfoImg

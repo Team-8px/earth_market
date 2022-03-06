@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePost, listPosts } from "../../../actions/postActions";
+import {
+  getWhichUserStatus,
+  getWhichUserAccountName,
+} from "../../../util/getWhichUser";
 import dayjs from "dayjs";
 import {
   GallerySection,
@@ -38,9 +42,12 @@ function GalleryContainer() {
       dispatch(deletePost(postId));
     }
   };
+
   useEffect(() => {
-    dispatch(listPosts());
+    const account = getWhichUserAccountName();
+    dispatch(listPosts(account));
   }, [dispatch]);
+
   const galleryHandler = () => {
     setGallery(!gallery);
   };

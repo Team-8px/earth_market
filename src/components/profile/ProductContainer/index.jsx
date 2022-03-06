@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, listProducts } from "../../../actions/productActions";
+import {
+  getWhichUserStatus,
+  getWhichUserAccountName,
+} from "../../../util/getWhichUser";
 import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
 import { Alert, AlertBox } from "../../module/alert/Alert";
 import { Link } from "react-router-dom";
@@ -30,7 +34,8 @@ function ProductContainer() {
     }
   };
   useEffect(() => {
-    dispatch(listProducts());
+    const account = getWhichUserAccountName();
+    dispatch(listProducts(account));
   }, [dispatch]);
   return (
     <>

@@ -1,23 +1,29 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UserInfoContainer } from "./index.style";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getUserMyProfile } from "../../../actions/userActions";
+//import useWhichUserAccountName from "../../../hooks/useWhichUserAccountName";
+import {
+  getWhichUserStatus,
+  getWhichUserAccountName,
+} from "../../../util/getWhichUser";
+
 import ProfileCard from "../ProfileCard";
 
-function ProfileContainer({ checkLoginUser }) {
+function ProfileContainer() {
   const dispatch = useDispatch();
-  const { accountId } = useParams();
+  const history = useHistory();
   const { image, username, accountname, intro, followerCount, followingCount } =
     useSelector(state => state.userReadProfile);
 
-  const history = useHistory();
   const MoveAddProduct = () => {
     history.push("/product/upload");
   };
 
   useEffect(() => {
-    dispatch(getUserMyProfile(accountId));
+    const account = getWhichUserAccountName();
+    dispatch(getUserMyProfile(account));
   }, [dispatch]);
 
   return (
