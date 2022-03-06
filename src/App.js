@@ -9,14 +9,14 @@ import LoginEmailKHK from "./PAGE/LoginEmail";
 import LoginMain from "./PAGE/LoginMain";
 import HomeKHK from "./PAGE/Home";
 import SearchKHK from "./PAGE/Search";
-import MyprofileKHK from "./PAGE/MyProfile";
-import ProductUpload from "./PAGE/ProductUploadMJ";
+import Profile from "./PAGE/MyProfile";
+import ProductUpload from "./PAGE/ProductUpload";
 import PostUpload from "./PAGE/PostUpload";
-import ProfileUpdateKHK from "./PAGE/ProfileUpdate";
+import ProfileUpdate from "./PAGE/ProfileUpdate";
 import FollowerListKHK from "./PAGE/FollowerList";
 import FollowingListKHK from "./PAGE/FollowingList";
 import PostView from "./PAGE/PostView";
-import ProductUpdateKHK from "./PAGE/ProductUpdate";
+import ProductUpdate from "./PAGE/ProductUpdateMJ";
 import Join from "./PAGE/Join";
 import YourProfile from "./PAGE/YourProfile";
 import NotFound from "./components/template/screen/NotFound";
@@ -39,17 +39,9 @@ const App = () => {
             <Route path="/search" component={SearchKHK} exact />
 
             {/* profile */}
-            <Route path="/profile/my" component={MyprofileKHK} exact />
-            <Route
-              path="/profile/you/:accountId"
-              component={YourProfile}
-              exact
-            />
-            <Route
-              path="/profile/my/update"
-              component={ProfileUpdateKHK}
-              exact
-            />
+            <Route path="/profile" component={Profile} exact />
+            <Route path="/profile/:accountId" component={Profile} exact />
+            <Route path="/profile/my/update" component={ProfileUpdate} exact />
             <Route
               path="/profile/:accountId/follower"
               component={FollowerListKHK}
@@ -68,7 +60,7 @@ const App = () => {
             <Route path="/product/upload" component={ProductUpload} exact />
             <Route
               path="/product/:productId/update"
-              component={ProductUpdateKHK}
+              component={ProductUpdate}
               exact
             />
             <Route path={"*"} component={NotFound} />

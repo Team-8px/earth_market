@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Upload from "../../../asset/upload-file.svg";
+import Upload from "../../asset/upload-file.svg";
 
 export const Form = styled.form`
   box-sizing: border-box;
