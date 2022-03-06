@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/common/Navbar";
 
@@ -11,27 +10,31 @@ import GalleryContainer from "../components/profile/GalleryContainer";
 
 const MyProfile = () => {
   // 주소창에서 accountId를 불러온다
-  const { accountId } = useParams();
-  console.log("accountId", accountId);
+  /*  const { accountId } = useParams();
+  console.log(useParams()?.accountId); */
+  //console.log("accountId", accountId);
   // 로컬스토리지에서 accountName을 불러온다
-  const {
+  /*  const {
     user: { accountname },
-  } = JSON.parse(localStorage.getItem("userInfo"));
-  console.log("accountname", accountname);
+  } = JSON.parse(localStorage.getItem("userInfo")); */
+  //console.log("accountname", accountname);
 
   // accountName이 존재하지 않을경우? 체크로그인의 값은 accountId
   // accountName이 존재할 경우? 체크로그인의 값은 accountId
 
-  // accountname이 undefined인 상황이 무엇인지 모르겠음
-  const [checkLoginUser, setCheckLoginUser] = useState(
-    typeof accountname === "undefined" ? accountname : accountId,
-  );
+  // 로컬 : accountname
+  // 파람스 : accountId
 
-  useEffect(() => {
-    setCheckLoginUser(
-      typeof accountname === "undefined" ? accountname : accountId,
-    );
-  }, [accountname]);
+  /* const [checkLoginUser, setCheckLoginUser] = useState(
+    accountId ? accountname : accountId, */
+  // 파람스가 없다는 것은 내 프로필을 세팅할 것이다
+  // 파람스가 있다는 것은 너의 프로필을 세팅할 것이다
+
+  /* useEffect(() => {
+    setCheckLoginUser(accountId ? accountname : accountId);
+  }, [accountname]); */
+
+  //console.log(checkLoginUser && checkLoginUser);
 
   // 좋아요
   /* const [isLikeAction, setLikeAction] = useState(false);
@@ -43,11 +46,11 @@ const MyProfile = () => {
       <CommonHeader />
       <MainSection>
         {/* 유저 프로필 */}
-        <ProfileContainer whichUser={checkLoginUser} />
+        <ProfileContainer />
         {/* 상품 */}
-        <ProductContainer whichUser={checkLoginUser} />
+        <ProductContainer />
         {/* 게시글 */}
-        <GalleryContainer whichUser={checkLoginUser} />
+        <GalleryContainer />
       </MainSection>
       <Navbar />
     </>

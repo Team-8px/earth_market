@@ -158,10 +158,7 @@ export const getUserMyProfile = accountId => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(
-      `${API_URL}/profile/${accountId ? accountId : userInfo.user.accountname}`,
-      config,
-    );
+    const { data } = await axios.get(`${API_URL}/profile/${accountId}`, config);
     //console.log(data);
     dispatch({
       type: USER_READ_PROFILE_SUCCESS,

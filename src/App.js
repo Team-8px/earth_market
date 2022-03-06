@@ -43,7 +43,7 @@ const App = () => {
 
             {/* profile */}
             <Route path="/profile" component={Profile} exact />
-            <Route path="/profile/:accountId" component={Profile} exact />
+            {/*  <Route path="/profile/:accountId" component={Profile} exact /> */}
             <Route path="/profile/my/update" component={ProfileUpdate} exact />
             <Route
               path="/profile/:accountId/follower"

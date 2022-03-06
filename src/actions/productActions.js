@@ -118,10 +118,7 @@ export const listProducts = accountId => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(
-      `${API_URL}/product/${accountId ? accountId : userInfo.user.accountname}`,
-      config,
-    );
+    const { data } = await axios.get(`${API_URL}/product/${accountId}`, config);
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,

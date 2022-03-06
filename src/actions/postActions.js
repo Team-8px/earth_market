@@ -62,9 +62,7 @@ export const listPosts = accountId => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(
-      `${API_URL}/post/${
-        accountId ? accountId : userInfo.user.accountname
-      }/userpost`,
+      `${API_URL}/post/${accountId}/userpost`,
       config,
     );
 
