@@ -1,18 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { LoginSection, LoginBtn } from "./index.style";
+import { useHistory } from "react-router-dom";
+import { LoginList, LoginBtn, LoginItem } from "./index.style";
+import emailLogin from "../../../asset/icon/icon-email.svg";
+import signUp from "../../../asset/icon/icon-login.svg";
+
 
 const LoginCard = ({ loading }) => {
+  const history = useHistory();
   return (
     <>
-      <LoginSection className={loading ? "" : "up"}>
-        <Link to={"/login"}>
-          <LoginBtn outline="outline">이메일로 로그인</LoginBtn>
-        </Link>
-        <Link to={"/join"}>
-          <LoginBtn outline="outline">회원가입</LoginBtn>
-        </Link>
-      </LoginSection>
+      <LoginList className={loading ? "" : "up"}>
+        <LoginItem>
+          <LoginBtn icon={emailLogin} onClick = {() => history.push("/login")}> 이메일로 로그인 </LoginBtn>
+        </LoginItem>
+        <LoginItem>
+          <LoginBtn icon={signUp} onClick = {() => history.push("/join")}> 회원가입 </LoginBtn>
+        </LoginItem>
+      </LoginList>
     </>
   );
 };

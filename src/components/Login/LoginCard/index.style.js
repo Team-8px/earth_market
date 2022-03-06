@@ -5,13 +5,13 @@ from{
   transform:translateY(0px)
 }
 to{
-  transform:translateY(-280px)
+  transform:translateY(-400px)
 }
 `;
 
-export const LoginSection = styled.main`
+export const LoginList = styled.ul`
   position: fixed;
-  bottom: -100px;
+  bottom: -200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,13 +25,28 @@ export const LoginSection = styled.main`
   }
 `;
 
+export const LoginItem = styled.li`
+  margin-bottom: 25px;
+`;
+
 export const LoginBtn = styled.button`
+  position: relative;
   width: 322px;
   height: 44px;
   background: ${props => props.theme.palette["white"]};
-  color: ${props => props.theme.palette["black"]};
+  color: ${props => props.theme.palette["subText"]};
   font-size: 14px;
   cursor: pointer;
   border-radius: 44px;
-  margin-top: 10px;
+  &::before {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    display: block;
+    content: "";
+    width: 24px;
+    height: 24px;
+    transform: translateY(-50%);
+    background: url(${props => props.icon}) no-repeat center / 24px 24px;
+  }
 `;
