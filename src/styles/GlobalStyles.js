@@ -12,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
         box-sizing:border-box;
     }
     body{
-        font-family:'Spoqa Han Sans Neo R';
+        font-family:'SpoqaHanSansNeo-R';
         font-size: 14px;
     }
     img{
