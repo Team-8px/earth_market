@@ -10,7 +10,8 @@ function LoginContainer() {
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userInfo"))?.user?.token) {
-      history.push("/home");
+      window.location.href = "/home";
+      // 이부분은 history.push(/home)으로 변경하면 에러가 발생합니다.
     }
     setLoading(true);
     setTimeout(() => {
