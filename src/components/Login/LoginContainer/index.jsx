@@ -12,7 +12,6 @@ function LoginContainer() {
     if (JSON.parse(localStorage.getItem("userInfo"))?.user?.token) {
       history.push("/home");
     }
-    // 로그인 상태일 경우 home 으로 가라
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
