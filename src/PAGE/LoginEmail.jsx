@@ -85,7 +85,7 @@ const LoginEmail = () => {
           <Button type="submit" width="322px" size="lg" isValid={isValid}>
             로그인
           </Button>
-          <LoginText to="/join/email">이메일로 회원가입</LoginText>
+          <LoginText to="/join">이메일로 회원가입</LoginText>
         </MainFieldSet>
       </Form>
     </>
