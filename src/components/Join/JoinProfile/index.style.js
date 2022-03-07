@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Upload from "../../../asset/upload-file.svg";
-import ProfileImg from "../../../asset/icon/basic-profile.svg";
+import ProfileImg from "../../../asset/basic-profile-img.svg";
 
 export const Form = styled.form `
   box-sizing: border-box;
