@@ -23,10 +23,10 @@ import PostCard from "../../common/PostCard";
 import AlbumGallery from "../AlbumGallery";
 
 function GalleryContainer() {
+  const accountnameFromParams = getWhichUserAccountName();
   const dispatch = useDispatch();
   const [gallery, setGallery] = useState(true);
   const { posts } = useSelector(state => state.postList);
-
   const [postDialog, setPostDialog] = useState(false);
   const [postAlert, setPostAlert] = useState(false);
   const [postId, setPostId] = useState("");
@@ -44,9 +44,8 @@ function GalleryContainer() {
   };
 
   useEffect(() => {
-    const account = getWhichUserAccountName();
-    dispatch(listPosts(account));
-  }, [dispatch]);
+    dispatch(listPosts(accountnameFromParams));
+  }, [dispatch, accountnameFromParams]);
 
   const galleryHandler = () => {
     setGallery(!gallery);

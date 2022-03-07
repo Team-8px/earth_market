@@ -114,7 +114,7 @@ const Navigation = () => {
         </NavWrap>
         <NavWrap>
           <NavListLink
-            to="/profile/my"
+            to="/profile"
             className={toggle === 4 ? "myprofile on" : "myprofile"}
             onClick={() => toggleHandler(4)}
           >

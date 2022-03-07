@@ -1,4 +1,5 @@
 import React from "react";
+import { getWhichUserStatus } from "../../../util/getWhichUser";
 import basicImg from "../../../asset/basic-profile-img.png";
 
 import {
@@ -54,7 +55,7 @@ function ProfileCard({
         <FollowCount>{followingCount}</FollowCount>
         <FollowText>following</FollowText>
       </FollowingLink>
-      {test ? (
+      {getWhichUserStatus() === "my" ? (
         <UserInfoButtonsWrapper>
           <BtnLink to={`/${accountname}/edit`}>
             <ProfileEditBtn>프로필수정</ProfileEditBtn>
