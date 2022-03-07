@@ -19,7 +19,7 @@ import PostView from "./PAGE/PostView";
 import ProductUpdate from "./PAGE/ProductUpdateMJ";
 import Join from "./PAGE/Join";
 import YourProfile from "./PAGE/YourProfile";
-import NotFound from "./components/template/screen/NotFound";
+import NotFound from "./PAGE/NotFound";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -28,7 +28,6 @@ const App = () => {
         <AppliCation>
           <Switch>
             {/* 테스트 라우팅 */}
-
             {/* auth */}
             <Route path="/join" component={Join} exact />
             <Route path="/" component={LoginMain} exact />
@@ -40,7 +39,7 @@ const App = () => {
 
             {/* profile */}
             <Route path="/profile" component={Profile} exact />
-            {/*  <Route path="/profile/:accountId" component={Profile} exact /> */}
+            <Route path="/profile/:accountId" component={Profile} exact />
             <Route path="/profile/my/update" component={ProfileUpdate} exact />
             <Route
               path="/profile/:accountId/follower"

@@ -1,5 +1,6 @@
 import React from "react";
-
+import { useHistory } from "react-router-dom";
+import { towardProfileLink } from "../../../util/towardLinkAddress";
 import basicImg from "../../../asset/basic-profile-img.svg";
 import {
   CardSection,
@@ -48,6 +49,8 @@ function PostCard({
     target.style.display = "none";
   };
 
+  const history = useHistory();
+
   return (
     <CardSection>
       <CardProfileContainer>
@@ -57,6 +60,7 @@ function PostCard({
           onError={e => {
             trigger(e);
           }}
+          onClick={() => history.push(towardProfileLink(accountname))}
         />
         <CardAthorWrapper>
           <CardAthorName>{username}</CardAthorName>

@@ -108,7 +108,9 @@ export const getFollowerList = accountName => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(
-      `${API_URL}/profile/${accountName}/follower`,
+      `${API_URL}/profile/${
+        accountName ? accountName : userInfo?.user.accountname
+      }/follower`,
       config,
     );
 
@@ -145,7 +147,9 @@ export const getFollowingList = accountName => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(
-      `${API_URL}/profile/${accountName}/following`,
+      `${API_URL}/profile/${
+        accountName ? accountName : userInfo?.user.accountname
+      }/following`,
       config,
     );
     console.log(data);
