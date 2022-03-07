@@ -170,8 +170,13 @@ const JoinProfile = ({ userInfo }) => {
               placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
               autoComplete="off"
               spellCheck="false"
-              {...register("intro")}
+              {...register("intro", {
+                required: true,
+              })}
             />
+            {errors?.intro?.type === "required" && (
+              <p>* 필수 입력사항입니다.</p>
+            )}
           </label>
         </InputWrapper>
         <JoinButton type="submit" disabled={!isValid}>
