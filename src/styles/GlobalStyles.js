@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         font-family:'SpoqaHanSansNeo-R';
-        font-size: 14px;
+        font-size: 10px;
     }
     img{
         width: 100%;
