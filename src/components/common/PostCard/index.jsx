@@ -23,7 +23,6 @@ import {
   CardMoreBtn,
   CardDateText,
 } from "./index.style";
-import { useState } from "react";
 
 function PostCard({
   postid,
@@ -38,11 +37,9 @@ function PostCard({
   postDialog,
   Link,
 }) {
-  const [activeIndex, setActiveIndex] = useState(0);
   const moveSlide = (e, i) => {
-    setActiveIndex(i);
-    const slideContainer = e.target.parentNode.parentNode.firstChild;
-    slideContainer.style.transform = `translateX(${-304 * Number(i)}px)`;
+    const target = e.target.parentNode.parentNode.firstChild;
+    target.style.transform = `translateX(${-304 * Number(i)}px)`;
   };
   const trigger = e => {
     e.target.src = basicImg;
@@ -89,7 +86,6 @@ function PostCard({
               <CardDotItem
                 key={Math.random() * 100}
                 onClick={e => moveSlide(e, i)}
-                className={activeIndex === i ? "current" : ""}
               />
             ))}
           </CardDotList>
