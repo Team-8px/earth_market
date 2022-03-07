@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// import EllipseImg from "../../../asset/basic-profile-img-small.svg";
-import EllipseImg from "../../../asset/basic-profile-img-small.svg";
+import basicImg from "../../../asset/basic-profile-img.svg";
 import { Button } from "../button/button";
 
 const UserList = styled.ul`
@@ -60,7 +59,7 @@ export function Item({ username, intro, img, onTestClick }) {
   return (
     <UserItem>
       <UserImgWrapper>
-        <img src={img || EllipseImg} alt="프로필 사진" />
+        <img src={img} alt="프로필 사진" />
       </UserImgWrapper>
       <UserInfoWrapper>
         <UserName>{username}</UserName>

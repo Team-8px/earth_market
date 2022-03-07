@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { createPost } from "../../actions/postActions";
 import { multipleImageUploadsHandler } from "../../util/multipleImageUploads";
 import { getUserMyProfile } from "../../actions/userActions";
-import basicImg from "../../asset/basic-profile-img.png";
+import basicImg from "../../asset/basic-profile-img.svg";
 import {
   Form,
   MainFieldSet,
