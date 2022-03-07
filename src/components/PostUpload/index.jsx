@@ -12,9 +12,7 @@ import {
   ProfileImage,
   PostForm,
   PostFormContainer,
-  TextBox,
   UploadImgIcon,
-  PostPhotoList,
   PhotoList,
   PostImage,
   RemoveBtn,
@@ -27,7 +25,6 @@ const PostUploadForm = () => {
   const MAX_UPLOAD = 3;
 
   const [myImage, setMyImage] = useState([]);
-
   //const [isButtonStatus, setIsButtonStatus] = useState(false)
 
   const {
@@ -107,6 +104,10 @@ const PostUploadForm = () => {
     e.target.src = basicImg;
   };
 
+  const onRemoveImg = (deleteUrl) => {
+    setMyImage((myImage.filter(image => image.url != deleteUrl)))
+    }
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <MainFieldSet>
@@ -116,11 +117,8 @@ const PostUploadForm = () => {
           }}
           src={image}
         />
-        <PostForm>
-          <TextBox
-            {...register("postText", { required: true })}
-            htmlFor="postText"
-          >
+        <PostForm {...register("postText", { required: true })}
+            htmlFor="postText">
             <textarea
               type="text"
               name="postText"
@@ -131,7 +129,6 @@ const PostUploadForm = () => {
               maxLength="200"
               spellCheck="false"
             />
-          </TextBox>
           <PostFormContainer htmlFor="imgUpload">
             <UploadImgIcon onChange={onChange} htmlFor="profileImg">
               <input
@@ -142,14 +139,13 @@ const PostUploadForm = () => {
                 {...register("profileImg")}
               />
             </UploadImgIcon>
-            <PostPhotoList></PostPhotoList>
             <PhotoList>
               {myImage &&
                 myImage.map((image, i) => {
                   return (
                     <Item key={i}>
                       <PostImage src={image.previewImg} />
-                      <RemoveBtn>
+                      <RemoveBtn type="button" onClick={(i) => onRemoveImg(image.url)}>
                         <span className="ir">이미지 삭제하기</span>
                       </RemoveBtn>
                     </Item>
