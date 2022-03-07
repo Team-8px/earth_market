@@ -27,13 +27,14 @@ const PostViewContainer = ({ postId }) => {
   const { image, username, accountname } = useSelector(
     state => state.userReadProfile,
   );
+  console.log(image, username, accountname)
 
   const { content, updatedAt, heartCount, commentCount, postImages } =
     useSelector(state => state.postRead);
 
   useEffect(() => {
     //프로필 정보 얻어오기 API
-    dispatch(getUserMyProfile());
+    dispatch(getUserMyProfile(postId));
   }, [dispatch]);
 
   useEffect(() => {
