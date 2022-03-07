@@ -18,7 +18,6 @@ const GlobalStyles = createGlobalStyle`
     img{
         width: 100%;
         height: auto;
-        vertical-align: top;
     }
     button {
         border: none;
