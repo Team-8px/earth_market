@@ -30,7 +30,7 @@ function FollowerContainer() {
 
   useEffect(() => {
     // 테스트 라우팅
-    dispatch(getFollowerList("js_defalt"));
+    dispatch(getFollowerList(accountId));
   }, [dispatch, unfollow, follow]);
   return (
     <FollowerSection>
@@ -41,7 +41,7 @@ function FollowerContainer() {
             return (
               <FollowerCard
                 key={Math.random() * 100}
-                Link={`/profile/you/${followerUser.accountname}`}
+                Link={`/profile/${followerUser.accountname}`}
                 accountname={followerUser.accountname}
                 image={followerUser.image}
                 username={followerUser.username}

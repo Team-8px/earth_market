@@ -21,10 +21,11 @@ function ProfileContainer() {
     history.push("/product/upload");
   };
 
+  const accountnameFromParams = getWhichUserAccountName();
+
   useEffect(() => {
-    const account = getWhichUserAccountName();
-    dispatch(getUserMyProfile(account));
-  }, [dispatch]);
+    dispatch(getUserMyProfile(accountnameFromParams));
+  }, [dispatch, accountnameFromParams]);
 
   return (
     <UserInfoContainer>

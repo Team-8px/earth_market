@@ -17,6 +17,7 @@ import {
 import ProductCard from "../ProductCard";
 function ProductContainer() {
   const dispatch = useDispatch();
+  const accountnameFromParams = getWhichUserAccountName();
   const { products } = useSelector(state => state.productList);
   const [productDialog, setProductDialog] = useState(false);
   const [productAlert, setProductAlert] = useState(false);
@@ -34,9 +35,8 @@ function ProductContainer() {
     }
   };
   useEffect(() => {
-    const account = getWhichUserAccountName();
-    dispatch(listProducts(account));
-  }, [dispatch]);
+    dispatch(listProducts(accountnameFromParams));
+  }, [dispatch, accountnameFromParams]);
   return (
     <>
       <ProductSection>
