@@ -18,7 +18,6 @@ import FollowingListKHK from "./PAGE/FollowingList";
 import PostView from "./PAGE/PostView";
 import ProductUpdate from "./PAGE/ProductUpdateMJ";
 import Join from "./PAGE/Join";
-import YourProfile from "./PAGE/YourProfile";
 import NotFound from "./PAGE/NotFound";
 const App = () => {
   return (
