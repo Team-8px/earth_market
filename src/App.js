@@ -16,7 +16,7 @@ import ProfileUpdate from "./PAGE/ProfileUpdate";
 import FollowerListKHK from "./PAGE/FollowerList";
 import FollowingListKHK from "./PAGE/FollowingList";
 import PostView from "./PAGE/PostView";
-import ProductUpdate from "./PAGE/ProductUpdateMJ";
+import ProductUpdate from "./PAGE/ProductUpdate";
 import Join from "./PAGE/Join";
 import YourProfile from "./PAGE/YourProfile";
 import NotFound from "./components/template/screen/NotFound";
