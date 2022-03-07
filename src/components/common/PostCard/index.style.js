@@ -104,7 +104,10 @@ export const CardDotItem = styled.button`
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: ${props => props.theme.palette["main"]};
+  background-color: ${props => props.theme.palette["lightMain"]};
+  &.current {
+    background-color: ${props => props.theme.palette["main"]};
+  }
 `;
 
 export const CardIconContainer = styled.div`
