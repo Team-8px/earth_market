@@ -19,8 +19,7 @@ import PostView from "./PAGE/PostView";
 import ProductUpdate from "./PAGE/ProductUpdateMJ";
 import Join from "./PAGE/Join";
 import YourProfile from "./PAGE/YourProfile";
-import NotFound from "./components/template/screen/NotFound";
-import TestNotFound from "./PAGE/NotFound";
+import NotFound from "./PAGE/NotFound";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -29,7 +28,6 @@ const App = () => {
         <AppliCation>
           <Switch>
             {/* 테스트 라우팅 */}
-            <Route path="/TestNotFound" component={TestNotFound} exact />
             {/* auth */}
             <Route path="/join" component={Join} exact />
             <Route path="/" component={LoginMain} exact />

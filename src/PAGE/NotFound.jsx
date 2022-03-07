@@ -1,19 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import NotFound from "../components/etc/NotFound";
+import NotFoundContainer from "../components/etc/NotFoundContainer";
 
-const TestNotFound = () => {
+const NotFound = () => {
   return (
     <LayOut>
-      <NotFound />
+      <NotFoundContainer />
     </LayOut>
   );
 };
 
 const LayOut = styled.main`
   height: 100vh;
-  ${props => props.theme.common["flexCenterColumn"]}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 `;
 
-export default TestNotFound;
+export default NotFound;

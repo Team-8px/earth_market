@@ -4,7 +4,7 @@ import { Button } from "../../module/button/button";
 import NotFoundLogo from "../../module/logo/NotFoundLogo";
 import SubText from "../../module/Text/SubText";
 
-const NotFound = () => {
+const NotFoundContainer = () => {
   return (
     <LayOut>
       <NotFoundLogo />
@@ -22,4 +22,4 @@ const LayOut = styled.main`
   justify-content: center;
 `;
 
-export default NotFound;
+export default NotFoundContainer;
