@@ -19,24 +19,51 @@ const ProductUpdateForm = () => {
 
   const dispatch = useDispatch();
 
-  const { image, itemName, price, link } = useSelector(
-    state => state?.productRead,
-  );
-
   const {
     register,
     getValues,
     setValue,
-    setFocus,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
-    mode: "all",
+    mode: "onChange",
   });
+
+  const { image, itemName, price, link } = useSelector(
+    state => state?.productRead,
+  );
+
+  useEffect(() => {
+    if (itemName) {
+      setValue("itemName", itemName);
+    }
+  }, [itemName]);
+
+  useEffect(() => {
+    if (price) {
+      setValue("price", price);
+    }
+  }, [price]);
+
+  useEffect(() => {
+    if (link) {
+      setValue("link", link);
+    }
+  }, [link]);
 
   useEffect(() => {
     dispatch(getProduct(productId));
   }, [dispatch, productId]);
+
+  const noString = event => {
+    const { value } = event.target;
+    return value.replace(/[^0-9]/g, "");
+  };
+  const addComma = event => {
+    const regexp = /\B(?=(\d{3})+(?!\d))/g;
+    const { value } = event.target;
+    return value.toString().replace(regexp, ",");
+  };
 
   const previewImage = e => {
     const nowSelectImageList = e.target.files;
@@ -47,19 +74,27 @@ const ProductUpdateForm = () => {
   };
 
   const onSubmit = async data => {
-    const { profileImg, itemName, price, link } = data;
+    try {
+      const { itemImage, itemName, link } = data;
+      //가격 전처리
+      const stringPrice = await getValues("price");
+      setValue("price", parseInt(stringPrice.replace(/[^0-9]/g, ""), 10));
+      const price = getValues("price");
+      //이미지 전처리
+      const image = await imageUploadsHandler(itemImage[0]);
 
-    const image = await imageUploadsHandler(profileImg[0]);
-
-    dispatch(updateProduct(image, itemName, price, link, productId));
+      dispatch(updateProduct(image, itemName, price, link, productId));
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <ProfileImgWrapper>
-        <label onChange={previewImage} htmlFor="profileImg">
+        <label onChange={previewImage} htmlFor="itemImage">
           <img
-            alt="프로필 이미지"
+            alt="상품 이미지"
             onError={event => (event.target.style.display = "none")}
             onLoad={event => (event.target.style.display = "inline-block")}
             src={updateImage ? updateImage : image}
@@ -67,9 +102,9 @@ const ProductUpdateForm = () => {
           <input
             type="file"
             accept="image/jpg,image/png,image/jpeg,image/gif"
-            name="profileImg"
-            id="profileImg"
-            {...register("profileImg" /* { required: true } */)}
+            name="itemImage"
+            id="itemImage"
+            {...register("itemImage" /* { required: true } */)}
           />
         </label>
       </ProfileImgWrapper>
@@ -81,12 +116,18 @@ const ProductUpdateForm = () => {
           autoComplete="off"
           placeholder="2~10자 이내여야 합니다."
           {...register("itemName", {
+            required: true,
             minLength: 2,
             maxLength: 10,
-            required: true,
+            onChange: e => {
+              setValue("itemName", e.target.value);
+            },
           })}
         />
         {errors.itemName?.type === "minLength" && (
+          <p>*2~10자 이내여야 합니다.</p>
+        )}
+        {errors.itemName?.type === "maxLength" && (
           <p>*2~10자 이내여야 합니다.</p>
         )}
         <label>가격</label>
@@ -95,7 +136,15 @@ const ProductUpdateForm = () => {
           type="text"
           autoComplete="off"
           placeholder="숫자만 입력 가능합니다."
-          {...register("price", { required: true, pattern: /^[0-9]*$/ })}
+          {...register("price", {
+            required: true,
+            onChange: e => {
+              setValue("price", noString(e));
+            },
+            onBlur: e => {
+              setValue("price", addComma(e));
+            },
+          })}
         />
         {errors.price?.type === "pattern" && <p>*숫자만 입력 가능합니다.</p>}
         <label>판매 링크</label>

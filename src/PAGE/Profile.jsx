@@ -6,7 +6,7 @@ import ProfileContainer from "../components/profile/ProfileContainer";
 import ProductContainer from "../components/profile/ProductContainer";
 import GalleryContainer from "../components/profile/GalleryContainer";
 
-const MyProfile = () => {
+const Profile = () => {
   return (
     <>
       <CommonHeader />
@@ -30,4 +30,4 @@ const MainSection = styled.main`
   background: ${props => props.theme.palette["bg"]};
 `;
 
-export default MyProfile;
+export default Profile;
