@@ -5,6 +5,7 @@ import {
   getWhichUserStatus,
   getWhichUserAccountName,
 } from "../../../util/getWhichUser";
+import { changeDefaltImage } from "../../../util/changeDefaltImage";
 import dayjs from "dayjs";
 import {
   GallerySection,
@@ -74,7 +75,7 @@ function GalleryContainer() {
                 key={post.id}
                 postid={post.id}
                 Link={`/post/${post.id}`}
-                profileImage={post.author.image}
+                profileImage={changeDefaltImage(post.author.image)}
                 username={post.author.username}
                 accountname={post.author.accountname}
                 content={post.content}

@@ -8,7 +8,7 @@ import {
 } from "../../../actions/followAction";
 import { FollowerSection, FollowerList } from "./index.style";
 import FollowerCard from "../FollowerCard";
-
+import { changeDefaltImage } from "../../../util/changeDefaltImage";
 function FollowerContainer() {
   //   followerlistjy
   const dispatch = useDispatch();
@@ -32,6 +32,7 @@ function FollowerContainer() {
     // 테스트 라우팅
     dispatch(getFollowerList(accountId));
   }, [dispatch, unfollow, follow]);
+  
   return (
     <FollowerSection>
       {/* ul태그 */}
@@ -43,7 +44,7 @@ function FollowerContainer() {
                 key={Math.random() * 100}
                 Link={`/profile/${followerUser.accountname}`}
                 accountname={followerUser.accountname}
-                image={followerUser.image}
+                image={changeDefaltImage(followerUser.image)}
                 username={followerUser.username}
                 intro={followerUser.intro}
                 isfollow={followerUser.isfollow}

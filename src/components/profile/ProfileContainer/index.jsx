@@ -8,7 +8,7 @@ import {
   getWhichUserStatus,
   getWhichUserAccountName,
 } from "../../../util/getWhichUser";
-
+import { changeDefaltImage } from "../../../util/changeDefaltImage";
 import ProfileCard from "../ProfileCard";
 
 function ProfileContainer() {
@@ -30,7 +30,7 @@ function ProfileContainer() {
   return (
     <UserInfoContainer>
       <ProfileCard
-        image={image}
+        image={changeDefaltImage(image)}
         username={username}
         accountname={accountname}
         intro={intro}

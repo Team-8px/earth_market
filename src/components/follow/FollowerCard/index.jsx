@@ -9,6 +9,11 @@ import {
   FollowBtn,
   CancelBtn,
 } from "./index.style";
+import basicImg from "../../../asset/basic-profile-img.svg";
+
+const trigger = e => {
+  e.target.src = basicImg;
+};
 
 function FollowerCard({
   Link,
@@ -23,7 +28,11 @@ function FollowerCard({
   return (
     <FollowerItem>
       <FollowerImgWrapper to={Link}>
-        <FollowerImg src={image} />
+        <FollowerImg 
+        onError={e => {
+          trigger(e);
+        }}
+        src={image} />
       </FollowerImgWrapper>
       <FollowerInfoWrapper to={Link}>
         <FollowerUserName>{username}</FollowerUserName>
