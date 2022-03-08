@@ -19,7 +19,7 @@ import PostView from "./PAGE/PostView";
 import ProductUpdate from "./PAGE/ProductUpdateMJ";
 import Join from "./PAGE/Join";
 import NotFound from "./PAGE/NotFound";
-import InformationContainer from "./components/information/InformationContainer/index.style";
+import InformationContainer from "./components/information/InformationContainer";
 
 const App = () => {
   return (
