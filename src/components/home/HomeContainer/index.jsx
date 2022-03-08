@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
 import { Alert, AlertBox } from "../../module/alert/Alert";
 import { ProfileSection, NoneFeed, SearchBtn } from "./index.style";
+import { changeDefaltImage } from "../../../util/changeDefaltImage";
 import PostCard from "../../common/PostCard";
 import dayjs from "dayjs";
 
@@ -30,7 +31,7 @@ function HomeContainer() {
                 <PostCard
                   key={Math.random() * 100}
                   postid={post.id}
-                  profileImage={post.author.image}
+                  profileImage={changeDefaltImage(post.author.image)}
                   username={post.author.username}
                   accountname={post.author.accountname}
                   content={post.content}
