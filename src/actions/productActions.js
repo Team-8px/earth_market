@@ -27,17 +27,12 @@ export const updateProduct =
       });
 
       let reqData = {
-        product: { image, itemName, price, link },
+        product: { itemImage: image, itemName, price, link },
       };
 
       const {
         userLogin: { userInfo },
       } = getState();
-
-      /*  if (!!image) reqData.product.itemImage = image;
-      if (!!itemName) reqData.product.itemName = itemName;
-      if (!!price) reqData.product.price = price;
-      if (!!link) reqData.product.link = link; */
 
       const config = {
         headers: {
@@ -49,7 +44,7 @@ export const updateProduct =
       const {
         data: { product },
       } = await axios.put(`${API_URL}/product/${productId}`, reqData, config);
-
+      console.log(product);
       dispatch({
         type: PRODUCT_UPDATE_SUCCESS,
         payload: {
@@ -165,7 +160,7 @@ export const createProduct =
         payload: data,
       });
 
-      document.location.href = "/profile/my";
+      document.location.href = "/profile";
     } catch (error) {
       const message =
         error.response && error.response.data.message

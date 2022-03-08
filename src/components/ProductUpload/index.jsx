@@ -22,7 +22,7 @@ const ProductUploadForm = () => {
     handleSubmit,
     setValue,
     getValues,
-    formState: { errors, isValid, touchedFields },
+    formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
   });
@@ -60,7 +60,7 @@ const ProductUploadForm = () => {
       console.log(e);
     }
   };
-  console.log(getValues("itemName"));
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <MainFieldSet>
@@ -81,9 +81,6 @@ const ProductUploadForm = () => {
               className="ir"
               {...register("itemImage", { required: true })}
             ></input>
-            {/*   {errors.itemImage?.type === "minLength" && (
-              <p>*이미지 등록이 필요 합니다.</p>
-            )} */}
           </Label>
         </ProductFormWrapper>
         <ProductFormWrapper>
@@ -101,6 +98,9 @@ const ProductUploadForm = () => {
             })}
           />
           {errors.itemName?.type === "minLength" && (
+            <p>*2~10자 이내여야 합니다.</p>
+          )}
+          {errors.itemName?.type === "maxLength" && (
             <p>*2~10자 이내여야 합니다.</p>
           )}
 
