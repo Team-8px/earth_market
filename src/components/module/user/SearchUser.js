@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import basicImg from "../../../asset/basic-profile-img.svg";
 
 const UserListContainer = styled.ul`
   max-width: 390px;
@@ -60,7 +61,7 @@ export function SearchUserItem({ username, userid, img }) {
   return (
     <UserListWrapper>
       <UserImgWrapper>
-        <img src={img} alt="프로필 사진" />
+        <img src={img || basicImg} alt="프로필 사진" />
       </UserImgWrapper>
       <UserInfoWrapper>
         <UserName>
