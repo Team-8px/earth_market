@@ -19,7 +19,8 @@ import PostView from "./PAGE/PostView";
 import ProductUpdate from "./PAGE/ProductUpdateMJ";
 import Join from "./PAGE/Join";
 import Information from "./PAGE/Information";
-import NotFound from "./components/template/screen/NotFound";
+import NotFound from "./PAGE/NotFound";
+
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
