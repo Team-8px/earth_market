@@ -34,7 +34,9 @@ function ProfileCard({
     e.target.src = basicImg;
   };
   const test = false;
-console.log(image)
+
+  //const test = false;
+
   return (
     <UserInfoWrapper>
       <UserInfoImg
