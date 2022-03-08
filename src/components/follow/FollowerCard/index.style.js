@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import basicImg from "../../../asset/basic-profile-img.svg";
 
 export const FollowerItem = styled.li`
   position: relative;
@@ -17,7 +18,10 @@ export const FollowerImgWrapper = styled(Link)`
   overflow: hidden;
 `;
 
-export const FollowerImg = styled.img`
+export const FollowerImg = styled.img.attrs(props => ({
+  src: props.src || basicImg,
+  alt: "프로필 이미지",
+}))`
   height: 100%;
   object-fit: cover;
 `;
