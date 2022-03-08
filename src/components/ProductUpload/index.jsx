@@ -15,14 +15,16 @@ import {
 const ProductUploadForm = () => {
   const [productImage, setProductImage] = useState([]);
 
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
     setValue,
     getValues,
-    formState: { errors, isValid },
+    formState: { errors, isValid, touchedFields },
   } = useForm({
-    mode: "onTouched",
+    mode: "onChange",
   });
 
   const noString = event => {
@@ -34,8 +36,6 @@ const ProductUploadForm = () => {
     const { value } = event.target;
     return value.toString().replace(regexp, ",");
   };
-
-  const dispatch = useDispatch();
 
   const previewImage = e => {
     const nowSelectImageList = e.target.files;
@@ -49,8 +49,8 @@ const ProductUploadForm = () => {
     try {
       const { itemName, link, itemImage } = data;
       //가격 전처리
-      const str = await getValues("price");
-      setValue("price", parseInt(str.replace(/[^0-9]/g, ""), 10));
+      const stringPrice = await getValues("price");
+      setValue("price", parseInt(stringPrice.replace(/[^0-9]/g, ""), 10));
       const price = getValues("price");
       //이미지 전처리
       const image = await imageUploadsHandler(itemImage[0]);
@@ -60,7 +60,7 @@ const ProductUploadForm = () => {
       console.log(e);
     }
   };
-
+  console.log(getValues("itemName"));
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <MainFieldSet>
@@ -81,6 +81,9 @@ const ProductUploadForm = () => {
               className="ir"
               {...register("itemImage", { required: true })}
             ></input>
+            {/*   {errors.itemImage?.type === "minLength" && (
+              <p>*이미지 등록이 필요 합니다.</p>
+            )} */}
           </Label>
         </ProductFormWrapper>
         <ProductFormWrapper>
@@ -100,9 +103,7 @@ const ProductUploadForm = () => {
           {errors.itemName?.type === "minLength" && (
             <p>*2~10자 이내여야 합니다.</p>
           )}
-          {errors.itemName?.type === "maxLength" && (
-            <p>*2~10자 이내여야 합니다.</p>
-          )}
+
           <label>가격</label>
           <input
             name="price"

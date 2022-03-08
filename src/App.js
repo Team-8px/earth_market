@@ -18,7 +18,7 @@ import FollowingListKHK from "./PAGE/FollowingList";
 import PostView from "./PAGE/PostView";
 import ProductUpdate from "./PAGE/ProductUpdateMJ";
 import Join from "./PAGE/Join";
-import YourProfile from "./PAGE/YourProfile";
+import Information from "./PAGE/Information";
 import NotFound from "./components/template/screen/NotFound";
 const App = () => {
   return (
@@ -41,7 +41,7 @@ const App = () => {
             {/* profile */}
             <Route path="/profile" component={Profile} exact />
             <Route path="/profile/:accountId" component={Profile} exact />
-            <Route path="/profile/my/update" component={ProfileUpdate} exact />
+            <Route path="/profile/my/update" component={ProductUpdate} exact />
             <Route
               path="/profile/:accountId/follower"
               component={FollowerListKHK}
@@ -63,6 +63,9 @@ const App = () => {
               component={ProductUpdate}
               exact
             />
+            {/* 농촌 소식 */}
+            <Route path="/information" component={Information} exact />
+
             <Route path={"*"} component={NotFound} />
           </Switch>
         </AppliCation>

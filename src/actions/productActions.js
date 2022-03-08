@@ -26,16 +26,18 @@ export const updateProduct =
         type: PRODUCT_UPDATE_REQUEST,
       });
 
-      let reqData = { product: {} };
+      let reqData = {
+        product: { image, itemName, price, link },
+      };
 
       const {
         userLogin: { userInfo },
       } = getState();
 
-      if (!!image) reqData.product.itemImage = image;
+      /*  if (!!image) reqData.product.itemImage = image;
       if (!!itemName) reqData.product.itemName = itemName;
       if (!!price) reqData.product.price = price;
-      if (!!link) reqData.product.link = link;
+      if (!!link) reqData.product.link = link; */
 
       const config = {
         headers: {
@@ -58,7 +60,7 @@ export const updateProduct =
         },
       });
 
-      document.location.href = "/profile/my";
+      document.location.href = "/profile";
     } catch (error) {
       const message =
         error.response && error.response.data.message
