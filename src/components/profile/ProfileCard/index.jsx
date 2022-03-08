@@ -33,7 +33,7 @@ function ProfileCard({
   const trigger = e => {
     e.target.src = basicImg;
   };
-  const test = false;
+  //const test = false;
 
   return (
     <UserInfoWrapper>

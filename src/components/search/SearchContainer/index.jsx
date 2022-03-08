@@ -11,7 +11,7 @@ function SearchContainer({ SearchUser }) {
             return (
               <SearchCard
                 key={Math.random() * 100}
-                Link={`/profile/you/${user.accountname}`}
+                Link={`/profile/${user.accountname}`}
                 userimage={user?.image}
                 username={user?.username}
                 accountname={user?.accountname}
