@@ -5,13 +5,8 @@ import { useEffect } from "react";
 
 const InformationContainer = () => {
   const [data, setData] = useState(null);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const getAPI = async () => {
-    const response = await axios.get(
-      "https://cors-anywhere.herokuapp.com/http://api.nongsaro.go.kr/service/monthFarmTech/monthFarmTechLst?apiKey=20220307MWUDEDKBKRX9E0GEEJ1IYA",
-    );
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -26,7 +21,7 @@ const InformationContainer = () => {
           );
         setData(dataArr);
       } catch (e) {
-        console.log(e);
+        setError(e);
       }
       setLoading(false);
     };
@@ -37,7 +32,7 @@ const InformationContainer = () => {
     return <div>대기중 입니다</div>;
   }
   if (!data) {
-    return <div>데이터 패칭에 실패했습니다</div>;
+    return <div>{error}</div>;
   }
 
   return (
