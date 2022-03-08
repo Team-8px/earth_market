@@ -7,7 +7,7 @@ import {
   SearchUserName,
   SearchUserId,
 } from "./index.style";
-import basicImg from "../../../asset/basic-profile-img-small.svg";
+import basicImg from "../../../asset/basic-profile-img.svg";
 
 function SearchCard({ Link, userimage, username, accountname }) {
   const trigger = e => {

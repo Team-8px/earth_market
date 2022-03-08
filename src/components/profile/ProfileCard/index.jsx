@@ -1,6 +1,6 @@
 import React from "react";
 import { getWhichUserStatus } from "../../../util/getWhichUser";
-import basicImg from "../../../asset/basic-profile-img.png";
+import basicImg from "../../../asset/basic-profile-img.svg";
 
 import {
   UserInfoWrapper,
@@ -34,7 +34,7 @@ function ProfileCard({
     e.target.src = basicImg;
   };
   const test = false;
-
+console.log(image)
   return (
     <UserInfoWrapper>
       <UserInfoImg

@@ -11,9 +11,7 @@ export const UserInfoWrapper = styled.div`
   width: 100%;
   padding: 30px 16px 26px;
 `;
-export const UserInfoImg = styled.img.attrs(props => ({
-  src: props.src || basicImg,
-}))`
+export const UserInfoImg = styled.img`
   width: 110px;
   height: 110px;
   border: 1px solid ${props => props.theme.palette["border"]};
