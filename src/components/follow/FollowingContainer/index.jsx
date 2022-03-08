@@ -7,6 +7,7 @@ import {
   followUser,
 } from "../../../actions/followAction";
 import FollowingCard from "../FollowingCard/inex";
+import { changeDefaltImage } from "../../../util/changeDefaltImage";
 import { FollowingSection, FollowingList } from "./index.style";
 function FollowingContainer() {
   //   followinglistjy
@@ -41,7 +42,7 @@ function FollowingContainer() {
                 key={Math.random() * 100}
                 Link={`/profile/${followingUser.accountname}`}
                 accountname={followingUser.accountname}
-                image={followingUser.image}
+                image={changeDefaltImage(followingUser.image)}
                 username={followingUser.username}
                 intro={followingUser.intro}
                 isfollow={followingUser.isfollow}
