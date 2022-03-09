@@ -11,11 +11,13 @@ export default function usePromise(promiseCreator, deps) {
       setLoading(true);
       try {
         const resolved = await promiseCreator();
+
         const dataArr = new XMLParser()
           .parseFromString(resolved.data)
           .children[1].children[0].children.filter(
             item => item.name === "item",
           );
+
         setResolved(dataArr);
       } catch (e) {
         setError(e);
