@@ -8,7 +8,7 @@ import {
 } from "../../../actions/commentAction";
 import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
 import { ReplyBox, CommentList } from "../../module/post/ReplyBox";
-import ProfileIcon from "../../../asset/icon/basic-profile.svg";
+import basicImg from "../../../asset/basic-profile-img.svg";
 import { Alert, AlertBox } from "../../module/alert/Alert";
 import {
   SubmitChatLayOut,
@@ -76,7 +76,7 @@ const CommentCard = ({ postId }) => {
           onSubmit={handleSubmit(onSubmit)}
           autocomplete="new-password"
         >
-          <ProfileLinkImg src={ProfileIcon} alt="프로필" />
+          <ProfileLinkImg src={basicImg} alt="프로필" />
           <SubmitChatLabel>
             <span className="textHidden">댓글 입력하기</span>
             <SubmitChatInput

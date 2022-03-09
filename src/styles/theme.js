@@ -20,7 +20,6 @@ const palette = {
   waring: "#EB5757",
   kakao: "#F2C94C",
   google: "#767676",
-  faceBook: "#2D9CDB",
   black: "#000000",
 };
 

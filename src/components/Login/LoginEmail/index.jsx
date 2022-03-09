@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-
-// 스타일 로직
-import { Button } from "../components/module/button/button";
-import { Link } from "react-router-dom";
-
-// 비즈니스 로직
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { login } from "../actions/userActions";
+import { login } from "../../../actions/userActions";
+import { 
+  Form,
+  MainFieldSet,
+  LoginTitle,
+  InputWrapper,
+  LoginText,
+  InputButton,
+  LoginButton
+} from "./index.style";
 
 const LoginEmail = () => {
   const [notMatchError, setNotMatchError] = useState("");
@@ -81,97 +83,14 @@ const LoginEmail = () => {
               {notMatchError && <p>{notMatchError}</p>}
             </label>
           </InputWrapper>
-          <Button type="submit" width="322px" size="lg" isValid={isValid}>
+          <LoginButton disabled={!isValid} type="submit" width="322px" size="lg" isValid={isValid}>
             로그인
-          </Button>
+          </LoginButton>
           <LoginText to="/join">이메일로 회원가입</LoginText>
         </MainFieldSet>
       </Form>
     </>
   );
 };
-
-const Form = styled.form`
-  box-sizing: border-box;
-  margin-top: 30px;
-`;
-
-//  메인
-const MainFieldSet = styled.fieldset`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const InputWrapper = styled.div`
-  width: 322px;
-  margin: 40px 0 14px;
-
-  label {
-    display: block;
-    color: ${props => props.theme.palette["subText"]};
-    font-weight: 500;
-    font-size: 12px;
-    margin-bottom: 16px;
-    cursor: pointer;
-  }
-  input {
-    width: 100%;
-    font-size: 14px;
-    color: ${props => props.theme.palette["black"]};
-    padding: 10px 0 8px;
-    border: none;
-    border-bottom: 1px solid ${props => props.theme.palette["border"]};
-    color: ${props => props.theme.palette["main"]};
-    caret-color: ${props => props.theme.palette["main"]};
-    &::placeholder {
-      color: ${props => props.theme.palette["border"]};
-    }
-    &:focus {
-      border-bottom: 1px solid ${props => props.theme.palette["main"]};
-    }
-  }
-  p {
-    color: #eb5757;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 14px;
-    margin-top: 6px;
-  }
-`;
-
-const LoginText = styled(Link)`
-  font-weight: 400;
-  font-size: 12px;
-  color: ${props => props.theme.palette["subText"]};
-  margin-top: 20px;
-  cursor: pointer;
-
-  &:first-child::after {
-    content: "";
-    font-size: 10px;
-    margin: 10px;
-    border-right: 1px solid ${props => props.theme.palette["lightGray"]};
-  }
-`;
-
-const InputButton = styled.div`
-  position: relative;
-
-  input {
-    width: 322px;
-    height: 44px;
-    border-radius: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-    border: none;
-    background: ${props => props.theme.palette["main"]};
-    color: #fff;
-    font-weight: 400;
-    cursor: pointer;
-  }
-`;
 
 export default LoginEmail;
