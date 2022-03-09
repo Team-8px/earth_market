@@ -40,7 +40,11 @@ const App = () => {
             {/* profile */}
             <Route path="/profile" component={Profile} exact />
             <Route path="/profile/:accountId" component={Profile} exact />
-            <Route path="/profile/my/update" component={ProductUpdate} exact />
+            <Route
+              path="/profile/myself/update"
+              component={ProfileUpdate}
+              exact
+            />
             <Route
               path="/profile/:accountId/follower"
               component={FollowerListKHK}
