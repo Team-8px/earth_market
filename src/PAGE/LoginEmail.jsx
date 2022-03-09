@@ -4,7 +4,6 @@ import styled from "styled-components";
 // 스타일 로직
 import { Button } from "../components/module/button/button";
 import { Link } from "react-router-dom";
-import LoginTitle from "../components/module/title/LoginTitle";
 
 // 비즈니스 로직
 import { useForm } from "react-hook-form";
@@ -42,7 +41,7 @@ const LoginEmail = () => {
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <MainFieldSet>
-          <LoginTitle>로그인</LoginTitle>
+          <span>로그인</span>
           <InputWrapper>
             <label>
               이메일
