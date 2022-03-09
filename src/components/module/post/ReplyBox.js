@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// import EllipseImg from "../../../asset/Ellipse-1.png";
 import EllipseImg from "../../../asset/basic-profile-img-small.svg";
 import MoreButton from "../../../asset/icon/icon-more-vertical.png";
 import { timeForToday } from "../../../util/timeForToday";

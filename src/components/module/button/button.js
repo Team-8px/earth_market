@@ -4,8 +4,6 @@ import styled, { css } from "styled-components";
 import faceBook from "../../../asset/facebook.png";
 import chatImage from "../../../asset/icon/icon-message-circle.png";
 import shareImage from "../../../asset/icon/icon-share.png";
-// import google from "../asset/google.png";
-// import kakao from "../asset/facebook.png";
 
 const buttonStyles = css`
   position: relative;
