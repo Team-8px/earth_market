@@ -59,7 +59,7 @@ function ProfileCard({
       </FollowingLink>
       {getWhichUserStatus() === "my" ? (
         <UserInfoButtonsWrapper>
-          <BtnLink to={`/${accountname}/edit`}>
+          <BtnLink to="/profile/myself/update">
             <ProfileEditBtn>프로필수정</ProfileEditBtn>
           </BtnLink>
           <BtnLink as={"div"} onClick={() => MoveAddProduct()}>

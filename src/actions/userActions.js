@@ -144,7 +144,7 @@ export const joinMembership =
     }
   };
 
-export const getUserMyProfile = accountId => async (dispatch, getState) => {
+export const getUserMyProfile = () => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_READ_PROFILE_REQUEST });
 
@@ -158,8 +158,11 @@ export const getUserMyProfile = accountId => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`${API_URL}/profile/${accountId}`, config);
-    //console.log(data);
+    const { data } = await axios.get(
+      `${API_URL}/profile/${userInfo.user.accountname}`,
+      config,
+    );
+    console.log(data);
     dispatch({
       type: USER_READ_PROFILE_SUCCESS,
       payload: data,
@@ -226,7 +229,7 @@ export const updateUserProfile =
 
       localStorage.setItem("userInfo", JSON.stringify(localStorageData));
 
-      document.location.href = "/profile/my";
+      document.location.href = "/profile";
     } catch (error) {
       const message =
         error.response && error.response.data.message
