@@ -23,8 +23,16 @@ export const ProfileImage = styled.img.attrs(props => ({
   border: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
-export const PostForm = styled.article`
+export const PostForm = styled.div`
   width: 100%;
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+
+  textarea {
+    width: 100%;
+  }
 `;
 
 export const PostFormContainer = styled.div`
@@ -44,18 +52,6 @@ export const PostFormContainer = styled.div`
   }
 `;
 
-export const TextBox = styled.label`
-  width: 100%;
-  margin-bottom: 16px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-
-  textarea {
-    width: 100%;
-  }
-`;
-
 export const UploadImgIcon = styled.label`
   position: fixed;
   bottom: 16px;
@@ -69,16 +65,16 @@ export const UploadImgIcon = styled.label`
   z-index: 100;
 `;
 
-export const PostPhotoList = styled.section``;
-
 export const PhotoList = styled.ul`
-  /* @media  */
   display: flex;
   width: 100%;
   gap: 8px;
-  max-width: 390px;
   overflow-x: scroll;
   overflow-y: hidden;
+
+  @media only screen and (max-width: 749px) {
+    max-width: 390px;
+  }
 `;
 
 export const PostImage = styled.img`
@@ -90,7 +86,6 @@ export const PostImage = styled.img`
 export const Item = styled.li`
   position: relative;
   border-radius: 10px;
-  /* 줄어들어도 박스크기에 영향이 가지 않게. min설정 */
   min-width: 304px;
   height: 228px;
   overflow: hidden;
@@ -122,9 +117,9 @@ export const UploadBtn = styled.button`
 
 export const RemoveBtn = styled.button`
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 10px;
+  right: 10px;
   height: 22px;
   width: 22px;
-  background: url(${IconRemove}) no-repeat center contain;
+  background: url(${IconRemove}) no-repeat center / contain;
 `;
