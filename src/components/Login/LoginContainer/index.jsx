@@ -6,26 +6,32 @@ import { LoginContainerSection, LoginContainerWrapper } from "./index.style.js";
 
 function LoginContainer() {
   const [loading, setLoading] = useState(false);
+  const [visible, setvisible] = useState(true);
   const history = useHistory();
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userInfo"))?.user?.token) {
-      window.location.href = "/home";
-      // 이부분은 history.push(/home)으로 변경하면 에러가 발생합니다.
+      history.push("/home");
+      setvisible(false);
     }
     setLoading(true);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setLoading(false);
     }, 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <LoginContainerSection>
-      <LoginContainerWrapper>
-        <SplashCard loading={loading} />
-        <LoginCard loading={loading} />
-      </LoginContainerWrapper>
-    </LoginContainerSection>
+    <>
+      {visible && (
+        <LoginContainerSection>
+          <LoginContainerWrapper>
+            <SplashCard loading={loading} />
+            <LoginCard loading={loading} />
+          </LoginContainerWrapper>
+        </LoginContainerSection>
+      )}
+    </>
   );
 }
 export default LoginContainer;
