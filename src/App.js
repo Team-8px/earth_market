@@ -5,7 +5,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/theme";
 
 //김현길 독립적인 라우트 2월 8일 데이터 바인딩 작업
-import LoginEmailKHK from "./PAGE/LoginEmail";
+import LoginEmail from "./PAGE/LoginEmailJS";
 import LoginMain from "./PAGE/LoginMain";
 import HomeKHK from "./PAGE/Home";
 import SearchKHK from "./PAGE/Search";
@@ -20,7 +20,6 @@ import ProductUpdate from "./PAGE/ProductUpdate";
 import Join from "./PAGE/Join";
 import NotFound from "./PAGE/NotFound";
 import InformationContainer from "./components/information/InformationContainer";
-
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -32,7 +31,7 @@ const App = () => {
             {/* auth */}
             <Route path="/join" component={Join} exact />
             <Route path="/" component={LoginMain} exact />
-            <Route path="/login" component={LoginEmailKHK} exact />
+            <Route path="/login" component={LoginEmail} exact />
 
             {/* 홈 */}
             <Route path="/home" component={HomeKHK} exact />
