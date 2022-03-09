@@ -18,8 +18,8 @@ import FollowingListKHK from "./PAGE/FollowingList";
 import PostView from "./PAGE/PostView";
 import ProductUpdate from "./PAGE/ProductUpdate";
 import Join from "./PAGE/Join";
-import Information from "./PAGE/Information";
 import NotFound from "./PAGE/NotFound";
+import InformationContainer from "./components/information/InformationContainer";
 
 const App = () => {
   return (
@@ -64,7 +64,7 @@ const App = () => {
               exact
             />
             {/* 농촌 소식 */}
-            <Route path="/information" component={Information} exact />
+            <Route path="/information" component={InformationContainer} exact />
 
             <Route path={"*"} component={NotFound} />
           </Switch>
