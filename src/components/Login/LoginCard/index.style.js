@@ -2,16 +2,16 @@ import styled, { keyframes } from "styled-components";
 
 const slideup = keyframes`
 from{
-  transform:translateY(0px)
+  transform:translateY(0)
 }
 to{
-  transform:translateY(-400px)
+  transform:translateY(-25rem)
 }
 `;
 
 export const LoginList = styled.ul`
   position: fixed;
-  bottom: -200px;
+  bottom: -14rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

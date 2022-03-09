@@ -25,25 +25,25 @@ const fadeOut = keyframes`
         background-color: #fff;
     }
     to{
-        background-color: #3f97fb;
+        background-color: ${props => props.theme.palette["main"]};
     }
 `;
 
 const slidedown = keyframes`
 from{
-  transform:translateY(-100px)
+  transform:translateY(-10rem)
 }
 to{
-  transform:translateY(0px)
+  transform:translateY(0)
 }
 
 `;
 const slideup = keyframes`
 from{
-  transform:translateY(50px)
+  transform:translateY(5rem)
 }
 to{
-  transform:translateY(-100px)
+  transform:translateY(-7rem)
 }
 `;
 
@@ -70,7 +70,7 @@ export const SplashImg = styled.img.attrs(props => ({
   src: props.className === "blue" ? splashLogoBlue : splashLogoWhite,
 }))`
   margin: 0 auto;
-  width: 150px;
+  width: 10rem;
   height: 100%;
 
   &.blue {
