@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import XMLParser from "react-xml-parser";
 
 export default function usePromise(promiseCreator, deps) {
   const [loading, setLoading] = useState(false);
@@ -6,15 +7,23 @@ export default function usePromise(promiseCreator, deps) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
-    try {
-      const resolved = await promiseCreator();
-      setResolved(resolved);
-    } catch (e) {
-      setError(e);
-    }
-    setLoading(false);
-  }, deps);
+    const process = async () => {
+      setLoading(true);
+      try {
+        const resolved = await promiseCreator();
+        const dataArr = new XMLParser()
+          .parseFromString(resolved.data)
+          .children[1].children[0].children.filter(
+            item => item.name === "item",
+          );
+        setResolved(dataArr);
+      } catch (e) {
+        setError(e);
+      }
+      setLoading(false);
+    };
+    process();
+  }, [deps]);
 
   return [loading, resolved, error];
 }
