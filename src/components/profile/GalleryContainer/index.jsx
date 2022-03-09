@@ -31,7 +31,6 @@ function GalleryContainer() {
   const [postDialog, setPostDialog] = useState(false);
   const [postAlert, setPostAlert] = useState(false);
   const [postId, setPostId] = useState("");
-
   const isPostDialog = postId => {
     console.log(postId, "postId 값 들어와라!");
     setPostDialog(!postDialog);
@@ -106,16 +105,34 @@ function GalleryContainer() {
         )}
       </GallerySection>
       {/* Post Modal */}
-      <Modal visible={postDialog}>
-        <AlertBtn isAlert={isPostAlert}>삭제</AlertBtn>
-        <ListBtn isDialog={isPostDialog}>수정</ListBtn>
-        <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
-      </Modal>
-      {/* Post Alert */}
-      <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
-        <AlertBox isAlert={isPostAlert}>취소</AlertBox>
-        <AlertBox isAlert={() => isPostAlert(postId && postId)}>삭제</AlertBox>
-      </Alert>
+      {getWhichUserStatus() === "my" ? (
+        <>
+          <Modal visible={postDialog}>
+            <AlertBtn isAlert={isPostAlert}>삭제</AlertBtn>
+            <ListBtn isDialog={isPostDialog}>수정</ListBtn>
+            <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
+          </Modal>
+          <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
+            <AlertBox isAlert={isPostAlert}>취소</AlertBox>
+            <AlertBox isAlert={() => isPostAlert(postId && postId)}>
+              삭제
+            </AlertBox>
+          </Alert>
+        </>
+      ) : (
+        <>
+          <Modal visible={postDialog}>
+            <AlertBtn isAlert={isPostAlert}>신고</AlertBtn>
+            <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
+          </Modal>
+          <Alert visible={postAlert} messageText="게시글을 신고할까요?">
+            <AlertBox isAlert={isPostAlert}>취소</AlertBox>
+            <AlertBox isAlert={() => isPostAlert(postId && postId)}>
+              삭제
+            </AlertBox>
+          </Alert>
+        </>
+      )}
     </>
   );
 }
