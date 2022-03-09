@@ -1,4 +1,3 @@
-//프로필 이미지 컴포넌트입니다.
 import styled from "styled-components";
 import Upload from "../../../asset/upload-file.png";
 
@@ -45,7 +44,6 @@ export const ProfileImgWrapper = styled.div`
     width: 1px;
     height: 1px;
     overflow: hidden;
-    // 기본값
     padding: 0;
     }
 `;
