@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { towardProfileLink } from "../../../util/towardLinkAddress";
 import basicImg from "../../../asset/basic-profile-img.svg";
@@ -37,7 +37,9 @@ function PostCard({
   postDialog,
   Link,
 }) {
+  const [activeIndex, setActiveIndex] = useState(0);
   const moveSlide = (e, i) => {
+    setActiveIndex(i);
     const target = e.target.parentNode.parentNode.firstChild;
     target.style.transform = `translateX(${-304 * Number(i)}px)`;
   };
@@ -86,6 +88,7 @@ function PostCard({
               <CardDotItem
                 key={Math.random() * 100}
                 onClick={e => moveSlide(e, i)}
+                className={activeIndex === i ? "current" : ""}
               />
             ))}
           </CardDotList>
