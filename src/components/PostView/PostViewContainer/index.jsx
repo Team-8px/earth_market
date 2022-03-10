@@ -5,10 +5,10 @@ import { getUserMyProfile } from "../../../actions/userActions";
 import { getPost } from "../../../actions/postActions";
 import CommentCard from "../CommentCard";
 import { UserInfoBox } from "../../module/post/UserInfoBox";
-import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
-import PostIconBox from "../../common/PostIconBox";
+import { Modal, ModalAlertBtn, ModalListBtn } from "../../common/Modal";
+import { Alert, AlertBtn } from "../../common/Alert";
 import Date from "../../module/post/Date";
-import { Alert, AlertBox } from "../../module/alert/Alert";
+import PostIconBox from "../../common/PostIconBox";
 import {
   LayOut,
   Container,
@@ -44,12 +44,10 @@ const PostViewContainer = ({ postId }) => {
     dispatch(getPost(postId));
   }, [dispatch, postId, craeteCommentId, deleteCommentId]);
 
-  // 🏞 게시글 모달 Modal & Alert
   const [postDialog, setPostDialog] = useState(false);
   const [postAlert, setPostAlert] = useState(false);
   const isPostDialog = () => setPostDialog(!postDialog);
   const isPostAlert = () => setPostAlert(!postAlert);
-
   return (
     <>
       <LayOut>
@@ -89,16 +87,13 @@ const PostViewContainer = ({ postId }) => {
         </Container>
         <CommentCard postId={postId} />
       </LayOut>
-
-      {/* 게시글 Modal */}
       <Modal visible={postDialog}>
-        <AlertBtn isAlert={isPostAlert}>신고하기</AlertBtn>
-        <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
+        <ModalAlertBtn isAlert={isPostAlert}>신고하기</ModalAlertBtn>
+        <ModalListBtn isDialog={isPostDialog}>닫기</ModalListBtn>
       </Modal>
-      {/* 게시글 Alert */}
       <Alert visible={postAlert} messageText="게시글을 신고하시겠어요?">
-        <AlertBox isAlert={isPostAlert}>네</AlertBox>
-        <AlertBox isAlert={isPostAlert}>아니요</AlertBox>
+        <AlertBtn isAlert={isPostAlert}>네</AlertBtn>
+        <AlertBtn isAlert={isPostAlert}>아니요</AlertBtn>
       </Alert>
     </>
   );
