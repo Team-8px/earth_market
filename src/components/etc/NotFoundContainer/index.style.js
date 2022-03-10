@@ -2,6 +2,13 @@ import styled from "styled-components";
 
 import notFoundSvg from "../../../asset/icon/icon-404.svg";
 
+export const NotFoundSection = styled.main`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 export const NotFoundIcon = styled.img.attrs({
   src: notFoundSvg,
   alt: "페이지를 찾을 수 없습니다",
