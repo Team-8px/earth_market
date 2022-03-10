@@ -31,7 +31,6 @@ const PostViewContainer = ({ postId }) => {
     useSelector(state => state.postRead);
 
   const { craeteCommentId } = useSelector(state => state.commentCreate);
-
   const { deleteCommentId } = useSelector(state => state.commentDelete);
 
   useEffect(() => {
