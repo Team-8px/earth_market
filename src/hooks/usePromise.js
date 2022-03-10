@@ -11,7 +11,7 @@ export default function usePromise(promiseCreator, deps) {
       setLoading(true);
       try {
         const resolved = await promiseCreator();
-
+        console.log(resolved);
         const dataArr = new XMLParser()
           .parseFromString(resolved.data)
           .children[1].children[0].children.filter(
@@ -21,6 +21,7 @@ export default function usePromise(promiseCreator, deps) {
         setResolved(dataArr);
       } catch (e) {
         setError(e);
+        console.log(e);
       }
       setLoading(false);
     };
