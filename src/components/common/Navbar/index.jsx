@@ -15,7 +15,7 @@ function Navigation() {
         </StyledNavLink>
       </NavItem>
       <NavItem>
-        <StyledNavLink to="/post/my/upload" className="upload">
+        <StyledNavLink to="/post/upload" className="upload">
           게시물 작성
         </StyledNavLink>
       </NavItem>

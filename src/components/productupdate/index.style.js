@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Upload from "../../asset/upload-file.svg";
+import ImgIcon from "../../asset/upload-file.svg";
 
 export const Form = styled.form`
   box-sizing: border-box;
@@ -27,7 +27,7 @@ export const ProfileImgWrapper = styled.div`
       bottom: 0;
       width: 36px;
       height: 36px;
-      background: ${props => props.theme.palette["lightGray"]} url(${Upload})
+      background: ${props => props.theme.palette["lightGray"]} url(${ImgIcon})
         no-repeat center / 36px 36px;
       border-radius: 50%;
     }
@@ -48,14 +48,6 @@ export const ProfileImgWrapper = styled.div`
     }
   }
 `;
-
-// export const ProfileUserImg = styled.img.attrs(props => ({
-//     src: props.src || basicImg,
-//     alt: "프로필 사진",
-//   }))`
-//     width: 110px;
-//     height: 110px;
-//   `;
 
 export const ProductFormWrapper = styled.div`
   margin: 0 auto 16px;
@@ -93,6 +85,40 @@ export const ProductFormWrapper = styled.div`
     font-size: 12px;
     line-height: 14px;
     margin-top: 6px;
+  }
+`;
+
+export const SubTitle = styled.h3`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: ${props => props.theme.palette["subText"]};
+  margin-bottom: 18px;
+`;
+
+export const Label = styled.label`
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 204px;
+  background-color: ${props => props.theme.palette["bg"]};
+  border: 0.5 solid ${props => props.theme.palette["border"]};
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  img {
+    background: no-repeat center / contain;
+  }
+  &::after {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    content: "";
+    width: 36px;
+    height: 36px;
+    background: ${props => props.theme.palette["lightGray"]} url(${ImgIcon})
+      no-repeat center / 36px 36px;
+    border-radius: 50%;
   }
 `;
 

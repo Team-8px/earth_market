@@ -4,7 +4,6 @@ import styled, { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/theme";
 
-//김현길 독립적인 라우트 2월 8일 데이터 바인딩 작업
 import LoginEmail from "./PAGE/LoginEmailJS";
 import LoginMain from "./PAGE/LoginMain";
 import HomeKHK from "./PAGE/Home";
@@ -20,6 +19,7 @@ import ProductUpdate from "./PAGE/ProductUpdate";
 import Join from "./PAGE/Join";
 import NotFound from "./PAGE/NotFound";
 import InformationContainer from "./components/information/InformationContainer";
+
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -56,7 +56,7 @@ const App = () => {
               exact
             />
             {/* post */}
-            <Route path="/post/my/upload" component={PostUpload} exact />
+            <Route path="/post/upload" component={PostUpload} exact />
             <Route path="/post/:postId" component={PostView} exact />
 
             {/* product */}

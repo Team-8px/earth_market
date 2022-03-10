@@ -162,7 +162,7 @@ export const getUserMyProfile = () => async (dispatch, getState) => {
       `${API_URL}/profile/${userInfo.user.accountname}`,
       config,
     );
-    console.log(data);
+
     dispatch({
       type: USER_READ_PROFILE_SUCCESS,
       payload: data,

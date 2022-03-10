@@ -57,7 +57,6 @@ const CommentCard = ({ postId }) => {
       <CommentList>
         {commentList &&
           commentList.map(user => {
-            console.log(user?.createdAt);
             return (
               <ReplyBox
                 img={user?.author?.image}

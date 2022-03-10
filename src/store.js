@@ -20,6 +20,8 @@ import {
   postListReducer,
   postReadReducer,
   postDeleteReducer,
+  postLikeReducer,
+  postUnLikeReducer,
 } from "./reducers/postReducers";
 import {
   commentCreateReducer,
@@ -48,6 +50,8 @@ const reducer = combineReducers({
   commentCreate: commentCreateReducer,
   commentList: commentListReducer,
   commentDelete: commentDeleteReducer,
+  postLike: postLikeReducer,
+  postUnLike: postUnLikeReducer,
   postCreate: postCreateReducer,
   postList: postListReducer,
   postRead: postReadReducer,

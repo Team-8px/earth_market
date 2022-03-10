@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import dayjs from "dayjs";
 import { getUserMyProfile } from "../../../actions/userActions";
 import { getPost } from "../../../actions/postActions";
@@ -27,10 +27,12 @@ const PostViewContainer = ({ postId }) => {
   const { image, username, accountname } = useSelector(
     state => state.userReadProfile,
   );
-  console.log(image, username, accountname)
-
   const { content, updatedAt, heartCount, commentCount, postImages } =
     useSelector(state => state.postRead);
+
+  const { craeteCommentId } = useSelector(state => state.commentCreate);
+
+  const { deleteCommentId } = useSelector(state => state.commentDelete);
 
   useEffect(() => {
     //프로필 정보 얻어오기 API
@@ -40,7 +42,7 @@ const PostViewContainer = ({ postId }) => {
   useEffect(() => {
     //상세 게시글 불러오기 API
     dispatch(getPost(postId));
-  }, [dispatch, postId]);
+  }, [dispatch, postId, craeteCommentId, deleteCommentId]);
 
   // 🏞 게시글 모달 Modal & Alert
   const [postDialog, setPostDialog] = useState(false);
@@ -75,7 +77,11 @@ const PostViewContainer = ({ postId }) => {
                   })}
               </BtnList>
             </ImageContainer>
-            <IconBox like={heartCount} comment={commentCount} />
+            <IconBox
+              like={heartCount}
+              comment={commentCount}
+              /* hearted={hearted} */
+            />
             <Date>{dayjs(updatedAt).format("YY년 MM월 DD일")}</Date>
           </ContentBox>
           <MoreBtn onClick={isPostDialog} />
