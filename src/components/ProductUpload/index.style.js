@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ImgIcon from "../../asset/icon/icon-upload.png";
+import ImgIcon from "../../asset/upload-file.svg";
 
 export const Form = styled.form`
   box-sizing: border-box;
@@ -76,7 +76,7 @@ export const Label = styled.label`
     width: 36px;
     height: 36px;
     background: ${props => props.theme.palette["lightGray"]} url(${ImgIcon})
-      no-repeat center / 22px 22px;
+      no-repeat center / 36px 36px;
     border-radius: 50%;
   }
 `;
@@ -97,7 +97,6 @@ export const UploadBtn = styled.button`
   z-index: 150;
   :disabled {
     background: ${props => {
-      /* console.log(props); */
       return props.theme.palette["lightMain"];
     }};
   }

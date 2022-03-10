@@ -104,9 +104,9 @@ const PostUploadForm = () => {
     e.target.src = basicImg;
   };
 
-  const onRemoveImg = (deleteUrl) => {
-    setMyImage((myImage.filter(image => image.url != deleteUrl)))
-    }
+  const onRemoveImg = deleteUrl => {
+    setMyImage(myImage.filter(image => image.url !== deleteUrl));
+  };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -117,18 +117,20 @@ const PostUploadForm = () => {
           }}
           src={image}
         />
-        <PostForm {...register("postText", { required: true })}
-            htmlFor="postText">
-            <textarea
-              type="text"
-              name="postText"
-              id="postText"
-              placeholder={"게시글 입력하기..."}
-              ref={ref}
-              onInput={resizeHeight}
-              maxLength="200"
-              spellCheck="false"
-            />
+        <PostForm
+          {...register("postText", { required: true })}
+          htmlFor="postText"
+        >
+          <textarea
+            type="text"
+            name="postText"
+            id="postText"
+            placeholder={"게시글 입력하기..."}
+            ref={ref}
+            onInput={resizeHeight}
+            maxLength="200"
+            spellCheck="false"
+          />
           <PostFormContainer htmlFor="imgUpload">
             <UploadImgIcon onChange={onChange} htmlFor="profileImg">
               <input
@@ -145,7 +147,10 @@ const PostUploadForm = () => {
                   return (
                     <Item key={i}>
                       <PostImage src={image.previewImg} />
-                      <RemoveBtn type="button" onClick={(i) => onRemoveImg(image.url)}>
+                      <RemoveBtn
+                        type="button"
+                        onClick={i => onRemoveImg(image.url)}
+                      >
                         <span className="ir">이미지 삭제하기</span>
                       </RemoveBtn>
                     </Item>

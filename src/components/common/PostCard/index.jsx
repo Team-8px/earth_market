@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { towardProfileLink } from "../../../util/towardLinkAddress";
+import PostIconBox from "../PostIconBox/index";
 import basicImg from "../../../asset/basic-profile-img.svg";
 import {
   CardSection,
@@ -71,7 +72,7 @@ function PostCard({
       </CardProfileContainer>
       <CardContentContainer>
         <CardContentText>{content}</CardContentText>
-        <CardImageContainer>
+        <CardImageContainer onClick={() => history.push(`/post/${postid}`)}>
           <CardImageList>
             {postImages.map(img => (
               <CardImageItem key={Math.random() * 100}>
@@ -93,14 +94,15 @@ function PostCard({
             ))}
           </CardDotList>
         </CardImageContainer>
-        <CardIconContainer>
+        <PostIconBox like={likeCount} comment={commentCount} postId={postid} />
+        {/* <CardIconContainer>
           <CardLikeBtn>
             <span>{likeCount}</span>
           </CardLikeBtn>
           <CardCommentBtn to={Link}>
             <span>{commentCount}</span>
           </CardCommentBtn>
-        </CardIconContainer>
+        </CardIconContainer> */}
         <CardDateText>{updatedAt}</CardDateText>
       </CardContentContainer>
       <CardMoreBtn onClick={() => postDialog(postid)} />

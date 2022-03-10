@@ -12,9 +12,93 @@ import {
   POST_DELETE_REQUEST,
   POST_DELETE_SUCCESS,
   POST_DELETE_FAIL,
+  POST_LIKE_REQUEST,
+  POST_LIKE_SUCCESS,
+  POST_LIKE_FAIL,
+  POST_UNLIKE_REQUEST,
+  POST_UNLIKE_SUCCESS,
+  POST_UNLIKE_FAIL,
 } from "../constants/postConstants";
 import { API_URL } from "../constants/defaultUrl";
 import { logout } from "./userActions";
+
+export const likePost = postId => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: POST_LIKE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      method: "post",
+      headers: {
+        Authorization: `Bearer ${userInfo.user.token}`,
+      },
+    };
+
+    const { data } = await axios(`${API_URL}/post/${postId}/heart`, config);
+
+    dispatch({
+      type: POST_LIKE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      //dispatch(logout());
+    }
+    dispatch({
+      type: POST_LIKE_FAIL,
+      payload: message,
+    });
+  }
+};
+
+export const unLikePost = postId => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: POST_UNLIKE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.user.token}`,
+      },
+    };
+
+    const { data } = await axios.delete(
+      `${API_URL}/post/${postId}/unheart`,
+      config,
+    );
+
+    dispatch({
+      type: POST_UNLIKE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      //dispatch(logout());
+    }
+    dispatch({
+      type: POST_UNLIKE_FAIL,
+      payload: message,
+    });
+  }
+};
 
 export const getPost = postId => async (dispatch, getState) => {
   try {
@@ -147,7 +231,7 @@ export const deletePost = postId => async (dispatch, getState) => {
       payload: data,
     });
 
-    document.location.href = "/profile/my";
+    //document.location.href = "/profile/my";
   } catch (error) {
     const message =
       error.response && error.response.data.message

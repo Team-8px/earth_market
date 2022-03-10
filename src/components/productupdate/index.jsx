@@ -9,6 +9,8 @@ import {
   Form,
   ProfileImgWrapper,
   ProductFormWrapper,
+  SubTitle,
+  Label,
   UploadBtn,
 } from "./index.style";
 
@@ -91,23 +93,25 @@ const ProductUpdateForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <ProfileImgWrapper>
-        <label onChange={previewImage} htmlFor="itemImage">
+      <SubTitle>이미지 업로드</SubTitle>
+      <ProductFormWrapper>
+        <Label onChange={previewImage} htmlFor="itemImage">
           <img
-            alt="상품 이미지"
+            src={updateImage ? updateImage : image}
             onError={event => (event.target.style.display = "none")}
             onLoad={event => (event.target.style.display = "inline-block")}
-            src={updateImage ? updateImage : image}
+            alt="상품 사진"
           />
           <input
             type="file"
             accept="image/jpg,image/png,image/jpeg,image/gif"
             name="itemImage"
             id="itemImage"
-            {...register("itemImage" /* { required: true } */)}
-          />
-        </label>
-      </ProfileImgWrapper>
+            className="ir"
+            {...register("itemImage")}
+          ></input>
+        </Label>
+      </ProductFormWrapper>
       <ProductFormWrapper>
         <label>상품명</label>
         <input

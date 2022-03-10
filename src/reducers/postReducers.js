@@ -12,9 +12,41 @@ import {
   POST_DELETE_REQUEST,
   POST_DELETE_SUCCESS,
   POST_DELETE_FAIL,
+  POST_LIKE_REQUEST,
+  POST_LIKE_SUCCESS,
+  POST_LIKE_FAIL,
+  POST_UNLIKE_REQUEST,
+  POST_UNLIKE_SUCCESS,
+  POST_UNLIKE_FAIL,
 } from "../constants/postConstants";
 
 import dayjs from "dayjs";
+
+export const postLikeReducer = (state = {}, action) => {
+  switch (action.type) {
+    case POST_LIKE_REQUEST:
+      return { loading: true };
+    case POST_LIKE_SUCCESS:
+      return { loading: false, message: action.payload };
+    case POST_LIKE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const postUnLikeReducer = (state = {}, action) => {
+  switch (action.type) {
+    case POST_UNLIKE_REQUEST:
+      return { loading: true };
+    case POST_UNLIKE_SUCCESS:
+      return { loading: false, message: action.payload };
+    case POST_UNLIKE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 export const postDeleteReducer = (state = {}, action) => {
   switch (action.type) {
@@ -45,6 +77,7 @@ export const postReadReducer = (state = {}, action) => {
         commentCount: action.payload.post.commentCount,
         comment: action.payload.post.comment,
         postId: action.payload.post.id,
+        hearted: action.payload.post.hearted,
         postImages: action.payload.post.image.split(","),
         post: action.payload.post,
       };
