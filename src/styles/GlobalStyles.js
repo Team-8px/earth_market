@@ -58,6 +58,9 @@ const GlobalStyles = createGlobalStyle`
 
     resize: none; /*remove the resize handle on the bottom right*/
 }
+    .main{
+        
+    }
 `;
 export default GlobalStyles;
 
