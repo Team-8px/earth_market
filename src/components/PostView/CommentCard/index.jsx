@@ -6,10 +6,10 @@ import {
   deleteComment,
   commentCreateAction,
 } from "../../../actions/commentAction";
-import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
+import { Modal, ModalAlertBtn, ModalListBtn } from "../../common/Modal";
+import { Alert, AlertBtn } from "../../common/Alert";
 import { ReplyBox, CommentList } from "../../module/post/ReplyBox";
 import basicImg from "../../../asset/basic-profile-img.svg";
-import { Alert, AlertBox } from "../../module/alert/Alert";
 import {
   SubmitChatLayOut,
   SubmitChatContainer,
@@ -28,7 +28,6 @@ const CommentCard = ({ postId }) => {
   const { register, handleSubmit, reset } = useForm();
 
   const { craeteCommentId } = useSelector(state => state.commentCreate);
-
   const { deleteCommentId } = useSelector(state => state.commentDelete);
 
   const commentList = useSelector(state => state.commentList.comments);
@@ -92,14 +91,14 @@ const CommentCard = ({ postId }) => {
 
       {/* chat Modal */}
       <Modal visible={chatDialog}>
-        <AlertBtn isAlert={isChatAlert}>신고하기</AlertBtn>
-        <ListBtn isDialog={isChatDialog}>닫기</ListBtn>
+        <ModalAlertBtn isAlert={isChatAlert}>신고하기</ModalAlertBtn>
+        <ModalListBtn isDialog={isChatDialog}>닫기</ModalListBtn>
       </Modal>
 
       {/* chat Alert */}
       <Alert visible={chatAlert} messageText="신고하시겠어요?">
-        <AlertBox isAlert={isChatAlert}>네</AlertBox>
-        <AlertBox isAlert={isChatAlert}>아니요</AlertBox>
+        <AlertBtn isAlert={isChatAlert}>네</AlertBtn>
+        <AlertBtn isAlert={isChatAlert}>아니요</AlertBtn>
       </Alert>
     </>
   );
