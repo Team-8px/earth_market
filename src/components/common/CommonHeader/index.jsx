@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Alert, AlertBtn } from "../Alert";
-import { Modal, ModalListBtn, ModAlertBtn } from "../Modal";
+import { Modal, ModalListBtn, ModalAlertBtn } from "../Modal";
 import {
   HeaderSection,
   HeaderContainer,
@@ -30,7 +30,7 @@ const CommonHeader = () => {
         </HeaderContainer>
       </HeaderSection>
       <Modal visible={navDialog}>
-        <ModAlertBtn isAlert={isNavAlert}>로그아웃</ModAlertBtn>
+        <ModalAlertBtn isAlert={isNavAlert}>로그아웃</ModalAlertBtn>
         <ModalListBtn isDialog={isNavDialog}>닫기</ModalListBtn>
       </Modal>
       {/* Nav Alert */}

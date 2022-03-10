@@ -11,7 +11,7 @@ export function ModalListBtn({ children, isDialog }) {
   );
 }
 
-export function ModAlertBtn({ children, isAlert }) {
+export function ModalAlertBtn({ children, isAlert }) {
   return (
     <ModalItem>
       <button type="button" onClick={isAlert}>

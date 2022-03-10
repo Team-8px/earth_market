@@ -8,7 +8,7 @@ import {
 import {
   Modal,
   ModalListBtn,
-  ModAlertBtn,
+  ModalAlertBtn,
 } from "../../../components/common/Modal";
 import { Alert, AlertBtn } from "../../../components/common/Alert";
 //
@@ -65,7 +65,7 @@ function ProductContainer() {
         </ProductWrapper>
       </ProductSection>
       <Modal visible={productDialog}>
-        <ModAlertBtn isAlert={isProductAlert}>삭제</ModAlertBtn>
+        <ModalAlertBtn isAlert={isProductAlert}>삭제</ModalAlertBtn>
         <ModalListBtn isDialog={isProductDialog}>
           <Link to={`/product/${productId}/update`}>수정 </Link>
         </ModalListBtn>
