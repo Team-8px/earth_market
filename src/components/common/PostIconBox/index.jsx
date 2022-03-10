@@ -10,42 +10,33 @@ import {
   CommentCount,
 } from "./index.style";
 
-export default function PostIconBox({ like, comment, postId }) {
-  const [isLikeAction, setIsLikeAction] = useState();
-
+export default function PostIconBox({ like, comment, postId, hearted }) {
+  const [isLikeAction, setIsLikeAction] = useState(hearted);
+  const [likeCount, setLikeCount] = useState(like);
   const dispatch = useDispatch();
-
-  /*  useEffect(() => {}, [data1, data2]); */
+  console.log({ hearted: hearted, postId: postId, like: like });
 
   const likeAction = postId => {
     dispatch(likePost(postId));
     setIsLikeAction(true);
+    setLikeCount(current => current + 1);
   };
 
   const unLikeAction = () => {
     dispatch(unLikePost(postId));
     setIsLikeAction(false);
+    setLikeCount(current => current - 1);
   };
 
   return (
     <LayOut>
       {isLikeAction ? (
-        <ActiveLikeButton
-          onClick={() => {
-            console.log(postId);
-            return unLikeAction(postId);
-          }}
-        >
-          <LikeCount>{like}</LikeCount>
+        <ActiveLikeButton onClick={() => unLikeAction(postId)}>
+          <LikeCount>{likeCount}</LikeCount>
         </ActiveLikeButton>
       ) : (
-        <NotActiveLikeButton
-          onClick={() => {
-            console.log(postId);
-            return likeAction(postId);
-          }}
-        >
-          <LikeCount>{like}</LikeCount>
+        <NotActiveLikeButton onClick={() => likeAction(postId)}>
+          <LikeCount>{likeCount}</LikeCount>
         </NotActiveLikeButton>
       )}
 

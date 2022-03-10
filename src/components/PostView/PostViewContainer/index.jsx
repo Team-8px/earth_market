@@ -6,7 +6,7 @@ import { getPost } from "../../../actions/postActions";
 import CommentCard from "../CommentCard";
 import { UserInfoBox } from "../../module/post/UserInfoBox";
 import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
-import IconBox from "../../module/post/IconBox";
+import PostIconBox from "../../common/PostIconBox";
 import Date from "../../module/post/Date";
 import { Alert, AlertBox } from "../../module/alert/Alert";
 import {
@@ -27,8 +27,8 @@ const PostViewContainer = ({ postId }) => {
   const { image, username, accountname } = useSelector(
     state => state.userReadProfile,
   );
-  const { content, updatedAt, heartCount, commentCount, postImages } =
-    useSelector(state => state.postRead);
+  const { content, updatedAt, heartCount, commentCount, postImages, hearted } =
+    useSelector(state => state?.postRead);
 
   const { craeteCommentId } = useSelector(state => state.commentCreate);
 
@@ -77,10 +77,11 @@ const PostViewContainer = ({ postId }) => {
                   })}
               </BtnList>
             </ImageContainer>
-            <IconBox
+            <PostIconBox
               like={heartCount}
               comment={commentCount}
-              /* hearted={hearted} */
+              postId={postId}
+              hearted={hearted}
             />
             <Date>{dayjs(updatedAt).format("YY년 MM월 DD일")}</Date>
           </ContentBox>

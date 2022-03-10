@@ -37,7 +37,9 @@ function PostCard({
   updatedAt,
   postDialog,
   Link,
+  hearted,
 }) {
+  console.log(hearted);
   const [activeIndex, setActiveIndex] = useState(0);
   const moveSlide = (e, i) => {
     setActiveIndex(i);
@@ -94,15 +96,12 @@ function PostCard({
             ))}
           </CardDotList>
         </CardImageContainer>
-        <PostIconBox like={likeCount} comment={commentCount} postId={postid} />
-        {/* <CardIconContainer>
-          <CardLikeBtn>
-            <span>{likeCount}</span>
-          </CardLikeBtn>
-          <CardCommentBtn to={Link}>
-            <span>{commentCount}</span>
-          </CardCommentBtn>
-        </CardIconContainer> */}
+        <PostIconBox
+          like={likeCount}
+          comment={commentCount}
+          postId={postid}
+          hearted={hearted}
+        />
         <CardDateText>{updatedAt}</CardDateText>
       </CardContentContainer>
       <CardMoreBtn onClick={() => postDialog(postid)} />

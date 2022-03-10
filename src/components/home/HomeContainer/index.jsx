@@ -20,6 +20,7 @@ function HomeContainer() {
   useEffect(() => {
     dispatch(getFollowerPostList());
   }, [dispatch]);
+
   return (
     <>
       {posts?.length !== 0 ? (
@@ -37,6 +38,7 @@ function HomeContainer() {
                   content={post.content}
                   postImages={postImages}
                   likeCount={post.heartCount}
+                  hearted={post.hearted}
                   commentCount={post.comments.length}
                   updatedAt={dayjs(post.updatedAt).format("YY년 MM월 DD일")}
                   postDialog={isPostDialog}

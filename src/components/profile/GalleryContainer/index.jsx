@@ -84,6 +84,7 @@ function GalleryContainer() {
                 commentCount={post.comments.length}
                 updatedAt={dayjs(post.updatedAt).format("YY년 MM월 DD일")}
                 postDialog={isPostDialog}
+                hearted={post.hearted}
               />
             );
           })
