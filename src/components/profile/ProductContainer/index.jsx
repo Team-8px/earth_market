@@ -5,8 +5,14 @@ import {
   getWhichUserStatus,
   getWhichUserAccountName,
 } from "../../../util/getWhichUser";
-import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
-import { Alert, AlertBox } from "../../module/alert/Alert";
+import {
+  Modal,
+  ModalListBtn,
+  ModAlertBtn,
+} from "../../../components/common/Modal";
+import { Alert, AlertBtn } from "../../../components/common/Alert";
+//
+
 import { Link } from "react-router-dom";
 import {
   ProductSection,
@@ -59,18 +65,20 @@ function ProductContainer() {
         </ProductWrapper>
       </ProductSection>
       <Modal visible={productDialog}>
-        <AlertBtn isAlert={isProductAlert}>삭제</AlertBtn>
-        <ListBtn isDialog={isProductDialog}>
+        <ModAlertBtn isAlert={isProductAlert}>삭제</ModAlertBtn>
+        <ModalListBtn isDialog={isProductDialog}>
           <Link to={`/product/${productId}/update`}>수정 </Link>
-        </ListBtn>
-        <ListBtn isDialog={isProductDialog}>웹사이트에서 상품 보기</ListBtn>
-        <ListBtn isDialog={isProductDialog}>닫기</ListBtn>
+        </ModalListBtn>
+        <ModalListBtn isDialog={isProductDialog}>
+          웹사이트에서 상품 보기
+        </ModalListBtn>
+        <ModalListBtn isDialog={isProductDialog}>닫기</ModalListBtn>
       </Modal>
       <Alert visible={productAlert} messageText="상품을 삭제할까요?">
-        <AlertBox isAlert={isProductAlert}>취소</AlertBox>
-        <AlertBox isAlert={() => isProductAlert(productId && productId)}>
+        <AlertBtn isAlert={isProductAlert}>취소</AlertBtn>
+        <AlertBtn isAlert={() => isProductAlert(productId && productId)}>
           삭제
-        </AlertBox>
+        </AlertBtn>
       </Alert>
     </>
   );
