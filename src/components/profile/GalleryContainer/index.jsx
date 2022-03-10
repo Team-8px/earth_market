@@ -18,8 +18,9 @@ import {
   AlbumContainer,
   AlbumList,
 } from "./index.style";
-import { Modal, AlertBtn, ListBtn } from "../../module/modal/Modal";
-import { Alert, AlertBox } from "../../module/alert/Alert";
+import { Modal, ModalListBtn, ModalAlertBtn } from "../../common/Modal";
+import { Alert, AlertBtn } from "../../common/Alert";
+
 import PostCard from "../../common/PostCard";
 import AlbumGallery from "../AlbumGallery";
 
@@ -108,28 +109,28 @@ function GalleryContainer() {
       {getWhichUserStatus() === "my" ? (
         <>
           <Modal visible={postDialog}>
-            <AlertBtn isAlert={isPostAlert}>삭제</AlertBtn>
-            <ListBtn isDialog={isPostDialog}>수정</ListBtn>
-            <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
+            <ModalAlertBtn isAlert={isPostAlert}>삭제</ModalAlertBtn>
+            <ModalListBtn isDialog={isPostDialog}>수정</ModalListBtn>
+            <ModalListBtn isDialog={isPostDialog}>닫기</ModalListBtn>
           </Modal>
           <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
-            <AlertBox isAlert={isPostAlert}>취소</AlertBox>
-            <AlertBox isAlert={() => isPostAlert(postId && postId)}>
+            <AlertBtn isAlert={isPostAlert}>취소</AlertBtn>
+            <AlertBtn isAlert={() => isPostAlert(postId && postId)}>
               삭제
-            </AlertBox>
+            </AlertBtn>
           </Alert>
         </>
       ) : (
         <>
           <Modal visible={postDialog}>
-            <AlertBtn isAlert={isPostAlert}>신고</AlertBtn>
-            <ListBtn isDialog={isPostDialog}>닫기</ListBtn>
+            <ModalAlertBtn isAlert={isPostAlert}>신고</ModalAlertBtn>
+            <ModalListBtn isDialog={isPostDialog}>닫기</ModalListBtn>
           </Modal>
           <Alert visible={postAlert} messageText="게시글을 신고할까요?">
-            <AlertBox isAlert={isPostAlert}>취소</AlertBox>
-            <AlertBox isAlert={() => isPostAlert(postId && postId)}>
+            <AlertBtn isAlert={isPostAlert}>취소</AlertBtn>
+            <AlertBtn isAlert={() => isPostAlert(postId && postId)}>
               삭제
-            </AlertBox>
+            </AlertBtn>
           </Alert>
         </>
       )}
