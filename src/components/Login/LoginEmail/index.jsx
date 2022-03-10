@@ -43,7 +43,7 @@ const LoginEmail = () => {
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <MainFieldSet>
-          <span>로그인</span>
+          <LoginTitle>로그인</LoginTitle>
           <InputWrapper>
             <label>
               이메일
