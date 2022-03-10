@@ -7,7 +7,7 @@ import {
   AlertItem,
 } from "./index.style";
 
-export function AlertBox({ children, isAlert }) {
+export function AlertBtn({ children, isAlert }) {
   return (
     <AlertItem>
       <button type="button" onClick={isAlert}>

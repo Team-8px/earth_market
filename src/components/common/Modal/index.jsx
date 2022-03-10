@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { ModalContainer, ModalList, ModalItem } from "./index.style";
 
-export function ListBtn({ children, isDialog }) {
+export function ModalListBtn({ children, isDialog }) {
   return (
     <ModalItem>
       <button type="button" onClick={isDialog}>
+        {children}
+      </button>
+    </ModalItem>
+  );
+}
+
+export function ModAlertBtn({ children, isAlert }) {
+  return (
+    <ModalItem>
+      <button type="button" onClick={isAlert}>
         {children}
       </button>
     </ModalItem>
