@@ -61,7 +61,6 @@ function GalleryContainer() {
   return (
     <>
       <GallerySection>
-        {/* Header Part */}
         <GalleryHeader>
           <GalleryHeaderIconWrapper>
             <CardGalleryBtn onClick={galleryHandler} disabled={gallery}>
@@ -72,7 +71,7 @@ function GalleryContainer() {
             </AlbumGalleryBtn>
           </GalleryHeaderIconWrapper>
         </GalleryHeader>
-        {/* PostPart */}
+
         {gallery ? (
           posts &&
           posts.map(post => {
@@ -113,7 +112,7 @@ function GalleryContainer() {
           </AlbumContainer>
         )}
       </GallerySection>
-      {/* Post Modal */}
+
       {getWhichUserStatus() === "my" ? (
         <>
           <Modal visible={postDialog}>

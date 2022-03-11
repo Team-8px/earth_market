@@ -70,22 +70,36 @@ function ProductContainer() {
           </ProductCardList>
         </ProductWrapper>
       </ProductSection>
-      <Modal visible={productDialog}>
-        <ModalAlertBtn isAlert={isProductAlert}>삭제</ModalAlertBtn>
-        <ModalListBtn isDialog={isProductDialog}>
-          <Link to={`/product/${productId}/update`}>수정 </Link>
-        </ModalListBtn>
-        <ModalListBtn isDialog={isProductDialog}>
-          웹사이트에서 상품 보기
-        </ModalListBtn>
-        <ModalListBtn isDialog={isProductDialog}>닫기</ModalListBtn>
-      </Modal>
-      <Alert visible={productAlert} messageText="상품을 삭제할까요?">
-        <AlertBtn isAlert={isProductAlert}>취소</AlertBtn>
-        <AlertBtn isAlert={() => isProductAlert(productId && productId)}>
-          삭제
-        </AlertBtn>
-      </Alert>
+      {getWhichUserStatus() === "my" ? (
+        <>
+          <Modal visible={productDialog}>
+            <ModalAlertBtn isAlert={isProductAlert}>삭제</ModalAlertBtn>
+            <ModalListBtn isDialog={isProductDialog}>
+              <Link to={`/product/${productId}/update`}>수정 </Link>
+            </ModalListBtn>
+            <ModalListBtn isDialog={isProductDialog}>
+              웹사이트에서 상품 보기
+            </ModalListBtn>
+            <ModalListBtn isDialog={isProductDialog}>닫기</ModalListBtn>
+          </Modal>
+          <Alert visible={productAlert} messageText="상품을 삭제할까요?">
+            <AlertBtn isAlert={isProductAlert}>취소</AlertBtn>
+            <AlertBtn isAlert={() => isProductAlert(productId && productId)}>
+              삭제
+            </AlertBtn>
+          </Alert>
+        </>
+      ) : (
+        <>
+          <Modal visible={productDialog}>
+            {" "}
+            <ModalListBtn isDialog={isProductDialog}>
+              웹사이트에서 상품 보기
+            </ModalListBtn>
+            <ModalListBtn isDialog={isProductDialog}>닫기</ModalListBtn>
+          </Modal>
+        </>
+      )}
     </>
   );
 }

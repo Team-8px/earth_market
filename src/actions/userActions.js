@@ -101,7 +101,7 @@ export const logout = () => dispatch => {
 
   dispatch({ type: USER_LOGOUT });
 
-  document.location.href = "/";
+  document.location.href = "/login";
 };
 
 export const joinMembership =

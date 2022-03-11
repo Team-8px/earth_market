@@ -43,11 +43,13 @@ const PostViewContainer = ({ postId }) => {
   const { deleteCommentId } = useSelector(state => state.commentDelete);
 
   const [activeIndex, setActiveIndex] = useState(0);
+
   const moveSlide = (e, i) => {
     setActiveIndex(i);
     const target = e.target.parentNode.parentNode.parentNode.firstChild;
     target.style.transform = `translateX(${-304 * Number(i)}px)`;
   };
+
   const trigger = e => {
     e.target.src = basicImg;
   };
