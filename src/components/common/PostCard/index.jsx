@@ -16,11 +16,9 @@ import {
   CardImageList,
   CardImageItem,
   CardImage,
+  CardDotWrapper,
   CardDotList,
-  CardDotItem,
-  CardIconContainer,
-  CardLikeBtn,
-  CardCommentBtn,
+  CardDotBtn,
   CardMoreBtn,
   CardDateText,
 } from "./index.style";
@@ -36,7 +34,6 @@ function PostCard({
   commentCount,
   updatedAt,
   postDialog,
-  Link,
   hearted,
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -45,7 +42,7 @@ function PostCard({
 
   const moveSlide = (e, i) => {
     setActiveIndex(i);
-    const target = e.target.parentNode.parentNode.firstChild;
+    const target = e.target.parentNode.parentNode.parentNode.firstChild;
     target.style.transform = `translateX(${-304 * Number(i)}px)`;
   };
 
@@ -76,7 +73,7 @@ function PostCard({
       </CardProfileContainer>
       <CardContentContainer>
         <CardContentText>{content}</CardContentText>
-        <CardImageContainer onClick={() => history.push(`/post/${postid}`)}>
+        <CardImageContainer>
           <CardImageList>
             {postImages.map(img => (
               <CardImageItem key={img}>
@@ -84,18 +81,24 @@ function PostCard({
                   src={img}
                   alt="게시글 이미지"
                   onError={e => imgErrorHandler(e)}
+                  onClick={() => history.push(`/post/${postid}`)}
                 />
               </CardImageItem>
             ))}
           </CardImageList>
           <CardDotList>
-            {postImages.map((_, i) => (
-              <CardDotItem
-                key={Math.random() * 100}
-                onClick={e => moveSlide(e, i)}
-                className={activeIndex === i ? "current" : ""}
-              />
-            ))}
+            {postImages.length !== 1 ? (
+              <CardDotWrapper>
+                {postImages &&
+                  postImages.map((_, i) => (
+                    <CardDotBtn
+                      key={Math.random() * 100}
+                      onClick={e => moveSlide(e, i)}
+                      className={activeIndex === i ? "current" : ""}
+                    />
+                  ))}
+              </CardDotWrapper>
+            ) : null}
           </CardDotList>
         </CardImageContainer>
         <PostIconBox

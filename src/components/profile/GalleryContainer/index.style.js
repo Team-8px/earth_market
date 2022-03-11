@@ -12,6 +12,7 @@ export const GallerySection = styled.section`
   align-items: center;
   margin-bottom: 0;
   background-color: #fff;
+  padding: 0px 16px 70px;
 `;
 
 export const GalleryHeader = styled.header`

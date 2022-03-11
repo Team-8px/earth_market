@@ -51,16 +51,16 @@ export const ItemWrapper = styled.li`
   width: 100%;
   max-height: 228px;
   min-height: 228px;
-  border: 0.5px solid var(--border-color);
+  border: 0.5px solid ${props => props.theme.palette["border"]};
   border-radius: 10px;
   overflow: hidden;
+`;
 
-  img {
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 16px;
-  }
+export const ItemImage = styled.img`
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 16px;
 `;
 
 export const BtnList = styled.div`
@@ -70,12 +70,23 @@ export const BtnList = styled.div`
   left: 50%;
   bottom: 16px;
   transform: translateX(-50%);
+`;
 
-  button {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #fff;
+export const DotWrapper = styled.div`
+  display: flex;
+  padding: 8px;
+  justify-content: space-evenly;
+  width: 45px;
+`;
+
+export const DotBtn = styled.button`
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #fff;
+  background-color: ${props => props.theme.palette["lightMain"]};
+  &.current {
+    background-color: ${props => props.theme.palette["main"]};
   }
 `;
 

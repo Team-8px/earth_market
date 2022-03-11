@@ -8,6 +8,7 @@ import { Modal, ModalAlertBtn, ModalListBtn } from "../../common/Modal";
 import { Alert, AlertBtn } from "../../common/Alert";
 import Date from "../../module/post/Date";
 import PostIconBox from "../../common/PostIconBox";
+import basicImg from "../../../asset/basic-profile-img.svg";
 import {
   LayOut,
   Container,
@@ -16,7 +17,10 @@ import {
   ImageContainer,
   ImageList,
   ItemWrapper,
+  ItemImage,
   BtnList,
+  DotWrapper,
+  DotBtn,
   MoreBtn,
 } from "./index.style";
 
@@ -37,6 +41,20 @@ const PostViewContainer = ({ postId }) => {
   const { craeteCommentId } = useSelector(state => state.commentCreate);
 
   const { deleteCommentId } = useSelector(state => state.commentDelete);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const moveSlide = (e, i) => {
+    setActiveIndex(i);
+    const target = e.target.parentNode.parentNode.parentNode.firstChild;
+    target.style.transform = `translateX(${-304 * Number(i)}px)`;
+  };
+  const trigger = e => {
+    e.target.src = basicImg;
+  };
+  const imgErrorHandler = e => {
+    const target = e.target.parentNode.parentNode;
+    target.style.display = "none";
+  };
 
   useEffect(() => {
     dispatch(getPost(postId));
@@ -76,16 +94,28 @@ const PostViewContainer = ({ postId }) => {
                   postImages.map(postImage => {
                     return (
                       <ItemWrapper key={postImage}>
-                        <img src={postImage} alt="게시글 이미지" />
+                        <ItemImage
+                          src={postImage}
+                          alt="게시글 이미지"
+                          onError={e => imgErrorHandler(e)}
+                        />
                       </ItemWrapper>
                     );
                   })}
               </ImageList>
               <BtnList>
-                {postImages &&
-                  postImages.map(item => {
-                    return <button key={item} />;
-                  })}
+                {postImages?.length !== 1 ? (
+                  <DotWrapper>
+                    {postImages &&
+                      postImages.map((_, i) => (
+                        <DotBtn
+                          key={Math.random() * 100}
+                          onClick={e => moveSlide(e, i)}
+                          className={activeIndex === i ? "current" : ""}
+                        />
+                      ))}
+                  </DotWrapper>
+                ) : null}
               </BtnList>
             </ImageContainer>
             <PostIconBox

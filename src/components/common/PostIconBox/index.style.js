@@ -55,6 +55,7 @@ export const CommentButton = styled.a`
   color: #767676;
 
   &::before {
+    cursor: pointer;
     display: block;
     content: "";
     width: 20px;
