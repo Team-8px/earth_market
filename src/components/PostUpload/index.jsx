@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { createPost } from "../../actions/postActions";
 import { multipleImageUploadsHandler } from "../../util/multipleImageUploads";
-import { getUserMyProfile } from "../../actions/userActions";
+import { getUserProfile } from "../../actions/userActions";
 import basicImg from "../../asset/basic-profile-img.svg";
 import {
   Form,
@@ -41,7 +41,7 @@ const PostUploadForm = () => {
 
   useEffect(() => {
     //나의 프로필 정보 얻기
-    dispatch(getUserMyProfile());
+    dispatch(getUserProfile());
   }, [dispatch]);
 
   const onChange = e => {

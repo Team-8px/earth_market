@@ -1,6 +1,6 @@
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import React, { useState, useEffect } from "react";
 import {
   getCommentList,
   deleteComment,
@@ -21,16 +21,39 @@ import {
 
 const CommentCard = ({ postId }) => {
   const [chatDialog, setChatDialog] = useState(false);
+
   const [chatAlert, setChatAlert] = useState(false);
+
+  const [commentId, setCommentId] = useState();
+
+  const [isAuthorization, setIsAuthorization] = useState();
 
   const dispatch = useDispatch();
 
   const { register, handleSubmit, reset } = useForm();
 
   const { craeteCommentId } = useSelector(state => state.commentCreate);
+
   const { deleteCommentId } = useSelector(state => state.commentDelete);
 
   const commentList = useSelector(state => state.commentList.comments);
+
+  useEffect(() => {
+    dispatch(getCommentList(postId));
+  }, [dispatch, postId, craeteCommentId, deleteCommentId]);
+
+  const isChatDialog = commentId => {
+    setCommentId(commentId);
+    setChatDialog(!chatDialog);
+  };
+
+  const isChatAlert = commentId => {
+    setChatAlert(!chatAlert);
+    if (typeof commentId === "string") {
+      dispatch(deleteComment(postId, commentId));
+      setChatDialog(!chatDialog);
+    }
+  };
 
   const onSubmit = data => {
     const { comment } = data;
@@ -38,32 +61,22 @@ const CommentCard = ({ postId }) => {
     reset();
   };
 
-  const onClickDeleteComment = commentId => {
-    //댓글 삭제 API
-    dispatch(deleteComment(postId, commentId));
-  };
-
-  useEffect(() => {
-    //댓글 리스트 가져오기 API
-    dispatch(getCommentList(postId));
-  }, [dispatch, postId, craeteCommentId, deleteCommentId]);
-
-  const isChatDialog = () => setChatDialog(!chatDialog);
-  const isChatAlert = () => setChatAlert(!chatAlert);
-
   return (
     <>
       <CommentList>
         {commentList &&
-          commentList.map(user => {
+          commentList.map(comment => {
             return (
               <ReplyBox
-                img={user?.author?.image}
-                username={user?.author?.username}
-                time={user?.createdAt}
-                comment={user?.content}
-                key={user?.id}
+                img={comment?.author?.image}
+                username={comment?.author?.username}
+                accountname={comment?.author?.accountname}
+                time={comment?.createdAt}
+                comment={comment?.content}
+                key={comment?.id}
+                commentId={comment?.id}
                 isDialog={isChatDialog}
+                setIsAuthorization={setIsAuthorization}
               />
             );
           })}
@@ -88,18 +101,30 @@ const CommentCard = ({ postId }) => {
           <SubmitChatButton>게시</SubmitChatButton>
         </SubmitChatContainer>
       </SubmitChatLayOut>
+      {isAuthorization ? (
+        <>
+          <Modal visible={chatDialog}>
+            <ModalAlertBtn isAlert={isChatAlert}>삭제</ModalAlertBtn>
+            <ModalListBtn isDialog={isChatDialog}>닫기</ModalListBtn>
+          </Modal>
+          <Alert visible={chatAlert} messageText="삭제 하시겠어요?">
+            <AlertBtn isAlert={() => isChatAlert(commentId)}>네</AlertBtn>
+            <AlertBtn isAlert={isChatAlert}>아니요</AlertBtn>
+          </Alert>
+        </>
+      ) : (
+        <>
+          <Modal visible={chatDialog}>
+            <ModalAlertBtn isAlert={isChatAlert}>신고하기</ModalAlertBtn>
+            <ModalListBtn isDialog={isChatDialog}>닫기</ModalListBtn>
+          </Modal>
 
-      {/* chat Modal */}
-      <Modal visible={chatDialog}>
-        <ModalAlertBtn isAlert={isChatAlert}>신고하기</ModalAlertBtn>
-        <ModalListBtn isDialog={isChatDialog}>닫기</ModalListBtn>
-      </Modal>
-
-      {/* chat Alert */}
-      <Alert visible={chatAlert} messageText="신고하시겠어요?">
-        <AlertBtn isAlert={isChatAlert}>네</AlertBtn>
-        <AlertBtn isAlert={isChatAlert}>아니요</AlertBtn>
-      </Alert>
+          <Alert visible={chatAlert} messageText="신고 하시겠어요?">
+            <AlertBtn isAlert={() => isChatAlert(commentId)}>네</AlertBtn>
+            <AlertBtn isAlert={isChatAlert}>아니요</AlertBtn>
+          </Alert>
+        </>
+      )}
     </>
   );
 };

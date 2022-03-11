@@ -12,9 +12,10 @@ import {
 
 export default function PostIconBox({ like, comment, postId, hearted }) {
   const [isLikeAction, setIsLikeAction] = useState(hearted);
+
   const [likeCount, setLikeCount] = useState(like);
+
   const dispatch = useDispatch();
-  console.log({ hearted: hearted, postId: postId, like: like });
 
   const likeAction = postId => {
     dispatch(likePost(postId));

@@ -1,4 +1,5 @@
 import React from "react";
+import { changeCommaPrice } from "../../../util/markingPriceFormat";
 import {
   ProductWrapper,
   ProductImgWrapper,
@@ -16,7 +17,7 @@ function ProductCard({ productText, productPrice, img, onClick }) {
       </ProductImgWrapper>
       <ProductTextWrapper>
         <ProductText>{productText}</ProductText>
-        <ProductPrice>{productPrice}</ProductPrice>
+        <ProductPrice>{changeCommaPrice(productPrice)}</ProductPrice>
       </ProductTextWrapper>
     </ProductWrapper>
   );

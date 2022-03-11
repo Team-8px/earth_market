@@ -11,8 +11,6 @@ import {
   ModalAlertBtn,
 } from "../../../components/common/Modal";
 import { Alert, AlertBtn } from "../../../components/common/Alert";
-//
-
 import { Link } from "react-router-dom";
 import {
   ProductSection,
@@ -21,28 +19,36 @@ import {
   ProductTitle,
 } from "./index.style";
 import ProductCard from "../ProductCard";
+
 function ProductContainer() {
   const dispatch = useDispatch();
+
   const accountnameFromParams = getWhichUserAccountName();
+
   const { products } = useSelector(state => state.productList);
+
   const [productDialog, setProductDialog] = useState(false);
+
   const [productAlert, setProductAlert] = useState(false);
+
   const [productId, setProductId] = useState("");
 
   const isProductDialog = productId => {
-    console.log(productId, "productId 들어와라!");
     setProductDialog(!productDialog);
     setProductId(productId);
   };
+
   const isProductAlert = productId => {
     setProductAlert(!productAlert);
     if (typeof productId === "string") {
       dispatch(deleteProduct(productId));
     }
   };
+
   useEffect(() => {
     dispatch(listProducts(accountnameFromParams));
   }, [dispatch, accountnameFromParams]);
+
   return (
     <>
       <ProductSection>

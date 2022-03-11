@@ -25,13 +25,20 @@ import PostCard from "../../common/PostCard";
 import AlbumGallery from "../AlbumGallery";
 
 function GalleryContainer() {
-  const accountnameFromParams = getWhichUserAccountName();
-  const dispatch = useDispatch();
-  const [gallery, setGallery] = useState(true);
-  const { posts } = useSelector(state => state.postList);
   const [postDialog, setPostDialog] = useState(false);
+
   const [postAlert, setPostAlert] = useState(false);
+
   const [postId, setPostId] = useState("");
+
+  const accountnameFromParams = getWhichUserAccountName();
+
+  const dispatch = useDispatch();
+
+  const [gallery, setGallery] = useState(true);
+
+  const { posts } = useSelector(state => state.postList);
+
   const isPostDialog = postId => {
     console.log(postId, "postId 값 들어와라!");
     setPostDialog(!postDialog);
@@ -129,9 +136,6 @@ function GalleryContainer() {
           </Modal>
           <Alert visible={postAlert} messageText="게시글을 신고할까요?">
             <AlertBtn isAlert={isPostAlert}>취소</AlertBtn>
-            <AlertBtn isAlert={() => isPostAlert(postId && postId)}>
-              삭제
-            </AlertBtn>
           </Alert>
         </>
       )}
