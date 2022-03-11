@@ -59,7 +59,7 @@ const GlobalStyles = createGlobalStyle`
     resize: none; /*remove the resize handle on the bottom right*/
 }
     .main{
-        
+        background-color:${props => props.theme.palette["bg"]}
     }
 `;
 export default GlobalStyles;

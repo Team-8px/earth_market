@@ -60,18 +60,18 @@ function GalleryContainer() {
   };
   return (
     <>
+      <GalleryHeader>
+        <GalleryHeaderIconWrapper>
+          <CardGalleryBtn onClick={galleryHandler} disabled={gallery}>
+            {gallery ? <GalleryIcon alt="on" /> : <GalleryIcon alt="off" />}
+          </CardGalleryBtn>
+          <AlbumGalleryBtn onClick={galleryHandler} disabled={!gallery}>
+            {gallery ? <AlbumIcon alt="off" /> : <AlbumIcon alt="on" />}
+          </AlbumGalleryBtn>
+        </GalleryHeaderIconWrapper>
+      </GalleryHeader>
       <GallerySection>
         {/* Header Part */}
-        <GalleryHeader>
-          <GalleryHeaderIconWrapper>
-            <CardGalleryBtn onClick={galleryHandler} disabled={gallery}>
-              {gallery ? <GalleryIcon alt="on" /> : <GalleryIcon alt="off" />}
-            </CardGalleryBtn>
-            <AlbumGalleryBtn onClick={galleryHandler} disabled={!gallery}>
-              {gallery ? <AlbumIcon alt="off" /> : <AlbumIcon alt="on" />}
-            </AlbumGalleryBtn>
-          </GalleryHeaderIconWrapper>
-        </GalleryHeader>
         {/* PostPart */}
         {gallery ? (
           posts &&

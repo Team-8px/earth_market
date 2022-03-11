@@ -79,7 +79,6 @@ export const CardImageItem = styled.li`
   width: 100%;
   max-height: 228px;
   min-height: 228px;
-  border: 0.5px solid ${props => props.theme.palette["border"]};
   border-radius: 10px;
   overflow: hidden;
 `;
