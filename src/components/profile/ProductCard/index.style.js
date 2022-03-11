@@ -5,7 +5,6 @@ export const ProductWrapper = styled.li`
   cursor: pointer;
 `;
 export const ProductImgWrapper = styled.div`
-  border: 0.5px solid ${props => props.theme.palette["border"]};
   border-radius: 8px;
 `;
 
