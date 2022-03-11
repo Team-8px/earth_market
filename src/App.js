@@ -18,7 +18,7 @@ import PostView from "./PAGE/PostView";
 import ProductUpdate from "./PAGE/ProductUpdate";
 import Join from "./PAGE/Join";
 import NotFound from "./PAGE/NotFound";
-import InformationContainer from "./components/information/InformationContainer";
+import Information from "./PAGE/Information";
 
 const App = () => {
   return (
@@ -67,7 +67,7 @@ const App = () => {
               exact
             />
             {/* 농촌 소식 */}
-            <Route path="/information" component={InformationContainer} exact />
+            <Route path="/information" component={Information} exact />
 
             <Route path={"*"} component={NotFound} />
           </Switch>
