@@ -20,6 +20,7 @@ export const GalleryHeader = styled.header`
   justify-content: center;
   width: 100%;
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
+  background-color: #fff;
 `;
 
 export const GalleryHeaderIconWrapper = styled.div`
