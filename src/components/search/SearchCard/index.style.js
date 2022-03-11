@@ -2,11 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import basicImg from "../../../asset/basic-profile-img.svg";
 
-
-
-
-
-export const SearchUserList = styled.div`
+export const SearchUserList = styled.li`
   position: relative;
   display: flex;
   align-items: center;
@@ -19,7 +15,7 @@ export const SearchUserImgWrapper = styled(Link)`
   align-items: center;
 `;
 
-const 서버제공이미지 = "http://146.56.183.55:5050/Ellipse.png"
+const 서버제공이미지 = "http://146.56.183.55:5050/Ellipse.png";
 export const SearchUserImg = styled.img`
   width: 50px;
   height: 50px;
