@@ -18,10 +18,7 @@ import {
   CardImage,
   CardDotWrapper,
   CardDotList,
-  CardDotItem,
-  CardIconContainer,
-  CardLikeBtn,
-  CardCommentBtn,
+  CardDotBtn,
   CardMoreBtn,
   CardDateText,
 } from "./index.style";
@@ -37,7 +34,6 @@ function PostCard({
   commentCount,
   updatedAt,
   postDialog,
-  Link,
   hearted,
 }) {
   console.log(hearted);
@@ -91,13 +87,14 @@ function PostCard({
           <CardDotList>
             {postImages.length !== 1 ? (
               <CardDotWrapper>
-                {postImages.map((_, i) => (
-                  <CardDotItem
-                    key={Math.random() * 100}
-                    onClick={e => moveSlide(e, i)}
-                    className={activeIndex === i ? "current" : ""}
-                  />
-                ))}
+                {postImages &&
+                  postImages.map((_, i) => (
+                    <CardDotBtn
+                      key={Math.random() * 100}
+                      onClick={e => moveSlide(e, i)}
+                      className={activeIndex === i ? "current" : ""}
+                    />
+                  ))}
               </CardDotWrapper>
             ) : null}
           </CardDotList>

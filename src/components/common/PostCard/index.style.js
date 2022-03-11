@@ -106,59 +106,14 @@ export const CardDotWrapper = styled.div`
   justify-content: space-evenly;
   width: 45px;
 `;
-export const CardDotItem = styled.button`
+
+export const CardDotBtn = styled.button`
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background-color: ${props => props.theme.palette["lightMain"]};
   &.current {
     background-color: ${props => props.theme.palette["main"]};
-  }
-`;
-
-export const CardIconContainer = styled.div`
-  display: flex;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 12px;
-  margin-bottom: 16px;
-`;
-
-export const CardLikeBtn = styled.button.attrs({ type: "button" })`
-  display: flex;
-  align-items: center;
-  color: ${props => props.theme.palette["subText"]};
-  margin-right: 18px;
-  background-color: inherit;
-  padding: 0;
-
-  &::before {
-    display: block;
-    content: "";
-    width: 20px;
-    height: 20px;
-    background: url(${props => (props?.hearted ? heartActive : heart)})
-      no-repeat center / 20px 20px;
-    margin-right: 6px;
-  }
-`;
-
-export const CardCommentBtn = styled(Link)`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  color: #767676;
-  margin-right: 18px;
-  background-color: inherit;
-  padding: 0;
-
-  &::before {
-    display: block;
-    content: "";
-    width: 20px;
-    height: 20px;
-    background: url(${comment}) no-repeat center / 20px 20px;
-    margin-right: 6px;
   }
 `;
 
