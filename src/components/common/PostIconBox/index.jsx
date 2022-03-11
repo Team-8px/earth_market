@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { likePost, unLikePost, getPost } from "../../../actions/postActions";
 import {
   LayOut,
@@ -11,6 +12,7 @@ import {
 } from "./index.style";
 
 export default function PostIconBox({ like, comment, postId, hearted }) {
+  const history = useHistory();
   const [isLikeAction, setIsLikeAction] = useState(hearted);
   const [likeCount, setLikeCount] = useState(like);
   const dispatch = useDispatch();
@@ -40,7 +42,7 @@ export default function PostIconBox({ like, comment, postId, hearted }) {
         </NotActiveLikeButton>
       )}
 
-      <CommentButton>
+      <CommentButton onClick={() => history.push(`/post/${postId}`)}>
         <CommentCount>{comment}</CommentCount>
       </CommentButton>
     </LayOut>

@@ -16,6 +16,7 @@ import {
   CardImageList,
   CardImageItem,
   CardImage,
+  CardDotWrapper,
   CardDotList,
   CardDotItem,
   CardIconContainer,
@@ -43,7 +44,7 @@ function PostCard({
   const [activeIndex, setActiveIndex] = useState(0);
   const moveSlide = (e, i) => {
     setActiveIndex(i);
-    const target = e.target.parentNode.parentNode.firstChild;
+    const target = e.target.parentNode.parentNode.parentNode.firstChild;
     target.style.transform = `translateX(${-304 * Number(i)}px)`;
   };
   const trigger = e => {
@@ -74,7 +75,7 @@ function PostCard({
       </CardProfileContainer>
       <CardContentContainer>
         <CardContentText>{content}</CardContentText>
-        <CardImageContainer onClick={() => history.push(`/post/${postid}`)}>
+        <CardImageContainer>
           <CardImageList>
             {postImages.map(img => (
               <CardImageItem key={Math.random() * 100}>
@@ -82,18 +83,23 @@ function PostCard({
                   src={img}
                   alt="게시글 이미지"
                   onError={e => imgErrorHandler(e)}
+                  onClick={() => history.push(`/post/${postid}`)}
                 />
               </CardImageItem>
             ))}
           </CardImageList>
           <CardDotList>
-            {postImages.map((_, i) => (
-              <CardDotItem
-                key={Math.random() * 100}
-                onClick={e => moveSlide(e, i)}
-                className={activeIndex === i ? "current" : ""}
-              />
-            ))}
+            {postImages.length !== 1 ? (
+              <CardDotWrapper>
+                {postImages.map((_, i) => (
+                  <CardDotItem
+                    key={Math.random() * 100}
+                    onClick={e => moveSlide(e, i)}
+                    className={activeIndex === i ? "current" : ""}
+                  />
+                ))}
+              </CardDotWrapper>
+            ) : null}
           </CardDotList>
         </CardImageContainer>
         <PostIconBox

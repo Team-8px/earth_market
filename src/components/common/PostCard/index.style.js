@@ -100,6 +100,12 @@ export const CardDotList = styled.div`
   transform: translateX(-50%);
 `;
 
+export const CardDotWrapper = styled.div`
+  display: flex;
+  padding: 8px;
+  justify-content: space-evenly;
+  width: 45px;
+`;
 export const CardDotItem = styled.button`
   width: 6px;
   height: 6px;
