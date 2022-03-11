@@ -56,7 +56,7 @@ export const StyledNavLink = styled(NavLink)`
     background-image: url(${ProfileIcon});
   }
 
-  &:active {
+  &.active {
     color: ${props => props.theme.palette["main"]};
     &.home::before {
       background-image: url(${HomeIconFill});
