@@ -11,7 +11,7 @@ function Navigation() {
       </NavItem>
       <NavItem>
         <StyledNavLink to="/chatlist" className="chatlist">
-          채팅
+          소식
         </StyledNavLink>
       </NavItem>
       <NavItem>
