@@ -39,22 +39,24 @@ function PostCard({
   Link,
   hearted,
 }) {
-  console.log(hearted);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const history = useHistory();
+
   const moveSlide = (e, i) => {
     setActiveIndex(i);
     const target = e.target.parentNode.parentNode.firstChild;
     target.style.transform = `translateX(${-304 * Number(i)}px)`;
   };
+
   const trigger = e => {
     e.target.src = basicImg;
   };
+
   const imgErrorHandler = e => {
     const target = e.target.parentNode.parentNode;
     target.style.display = "none";
   };
-
-  const history = useHistory();
 
   return (
     <CardSection>
@@ -77,7 +79,7 @@ function PostCard({
         <CardImageContainer onClick={() => history.push(`/post/${postid}`)}>
           <CardImageList>
             {postImages.map(img => (
-              <CardImageItem key={Math.random() * 100}>
+              <CardImageItem key={img}>
                 <CardImage
                   src={img}
                   alt="게시글 이미지"

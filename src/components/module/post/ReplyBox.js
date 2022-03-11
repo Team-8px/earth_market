@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { getAccountNameFromloacalStorage } from "../../../util/getWhichUser";
 import styled from "styled-components";
 import EllipseImg from "../../../asset/basic-profile-img-small.svg";
 import MoreButton from "../../../asset/icon/icon-more-vertical.png";
@@ -18,7 +19,7 @@ const CommentContainer = styled.ul`
   margin: 0 auto;
   list-style: none;
 `;
-const CommonetList = styled.li`
+const CommentItem = styled.li`
   margin-bottom: 16px;
   position: relative;
 `;
@@ -84,9 +85,27 @@ export function CommentList({ children }) {
   );
 }
 
-export function ReplyBox({ img, username, time, comment, alt, isDialog }) {
+export function ReplyBox({
+  img,
+  username,
+  time,
+  comment,
+  alt,
+  isDialog,
+  commentId,
+  setIsAuthorization,
+  accountname,
+}) {
+  useEffect(() => {
+    if (accountname === getAccountNameFromloacalStorage()) {
+      setIsAuthorization(true);
+    } else {
+      setIsAuthorization(false);
+    }
+  }, [accountname]);
+
   return (
-    <CommonetList onClick={isDialog}>
+    <CommentItem onClick={() => isDialog(commentId)}>
       <CommentWrapper>
         <img src={img || EllipseImg} alt={alt} />
         <strong>{username}</strong>
@@ -94,6 +113,6 @@ export function ReplyBox({ img, username, time, comment, alt, isDialog }) {
       </CommentWrapper>
       <CommentText>{comment}</CommentText>
       <CommentBox></CommentBox>
-    </CommonetList>
+    </CommentItem>
   );
 }

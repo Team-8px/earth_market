@@ -144,7 +144,7 @@ export const joinMembership =
     }
   };
 
-export const getUserMyProfile = () => async (dispatch, getState) => {
+export const getUserProfile = accountname => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_READ_PROFILE_REQUEST });
 
@@ -159,7 +159,9 @@ export const getUserMyProfile = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(
-      `${API_URL}/profile/${userInfo.user.accountname}`,
+      `${API_URL}/profile/${
+        accountname ? accountname : userInfo.user.accountname
+      }`,
       config,
     );
 

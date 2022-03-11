@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UserInfoContainer } from "./index.style";
 import { useHistory } from "react-router-dom";
-import { getUserMyProfile } from "../../../actions/userActions";
+import { getUserProfile } from "../../../actions/userActions";
 //import useWhichUserAccountName from "../../../hooks/useWhichUserAccountName";
 import {
   getWhichUserStatus,
@@ -24,7 +24,7 @@ function ProfileContainer() {
   const accountnameFromParams = getWhichUserAccountName();
 
   useEffect(() => {
-    dispatch(getUserMyProfile(accountnameFromParams));
+    dispatch(getUserProfile(accountnameFromParams));
   }, [dispatch, accountnameFromParams]);
 
   return (

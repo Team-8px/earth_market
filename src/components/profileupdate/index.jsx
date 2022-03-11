@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { updateUserProfile, getUserMyProfile } from "../../actions/userActions";
+import { updateUserProfile, getUserProfile } from "../../actions/userActions";
 import { imageUploadsHandler } from "../../util/imageUploads";
 import { API_URL } from "../../constants/defaultUrl";
 import {
@@ -57,7 +57,7 @@ const ProfileUpdateForm = () => {
   }, [getValues().accountname]);
 
   useEffect(() => {
-    dispatch(getUserMyProfile());
+    dispatch(getUserProfile());
   }, [dispatch]);
 
   const previewImage = e => {

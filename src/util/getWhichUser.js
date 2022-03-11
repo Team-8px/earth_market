@@ -25,3 +25,7 @@ export const getWhichUserAccountName = () => {
     ? accountnameFromParams
     : accountnameFromlocalStorage;
 };
+
+export const getAccountNameFromloacalStorage = () => {
+  return JSON.parse(localStorage.getItem("userInfo"))?.user?.accountname;
+};

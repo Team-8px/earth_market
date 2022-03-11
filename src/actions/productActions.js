@@ -202,7 +202,7 @@ export const deleteProduct = productId => async (dispatch, getState) => {
       payload: data,
     });
 
-    document.location.href = "/profile/my";
+    document.location.href = "/profile";
   } catch (error) {
     const message =
       error.response && error.response.data.message
