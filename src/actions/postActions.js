@@ -8,12 +8,99 @@ import {
   POST_LIST_FAIL,
   POST_GET_REQUEST,
   POST_GET_SUCCESS,
-  POST_GET_FAIL
+  POST_GET_FAIL,
+  POST_DELETE_REQUEST,
+  POST_DELETE_SUCCESS,
+  POST_DELETE_FAIL,
+  POST_LIKE_REQUEST,
+  POST_LIKE_SUCCESS,
+  POST_LIKE_FAIL,
+  POST_UNLIKE_REQUEST,
+  POST_UNLIKE_SUCCESS,
+  POST_UNLIKE_FAIL,
 } from "../constants/postConstants";
 import { API_URL } from "../constants/defaultUrl";
 import { logout } from "./userActions";
 
-export const getPost = () => async (dispatch, getState) => {
+export const likePost = postId => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: POST_LIKE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      method: "post",
+      headers: {
+        Authorization: `Bearer ${userInfo.user.token}`,
+      },
+    };
+
+    const { data } = await axios(`${API_URL}/post/${postId}/heart`, config);
+
+    dispatch({
+      type: POST_LIKE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      //dispatch(logout());
+    }
+    dispatch({
+      type: POST_LIKE_FAIL,
+      payload: message,
+    });
+  }
+};
+
+export const unLikePost = postId => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: POST_UNLIKE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.user.token}`,
+      },
+    };
+
+    const { data } = await axios.delete(
+      `${API_URL}/post/${postId}/unheart`,
+      config,
+    );
+
+    dispatch({
+      type: POST_UNLIKE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      //dispatch(logout());
+    }
+    dispatch({
+      type: POST_UNLIKE_FAIL,
+      payload: message,
+    });
+  }
+};
+
+export const getPost = postId => async (dispatch, getState) => {
   try {
     dispatch({ type: POST_GET_REQUEST });
 
@@ -27,10 +114,7 @@ export const getPost = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(
-      `${API_URL}/post/${userInfo.user.accountname}/userpost`,
-      config
-    );
+    const { data } = await axios.get(`${API_URL}/post/${postId}`, config);
 
     dispatch({
       type: POST_GET_SUCCESS,
@@ -47,8 +131,7 @@ export const getPost = () => async (dispatch, getState) => {
   }
 };
 
-
-export const listPosts = () => async (dispatch, getState) => {
+export const listPosts = accountId => async (dispatch, getState) => {
   try {
     dispatch({ type: POST_LIST_REQUEST });
 
@@ -63,8 +146,8 @@ export const listPosts = () => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(
-      `${API_URL}/post/${userInfo.user.accountname}/userpost`,
-      config
+      `${API_URL}/post/${accountId}/userpost`,
+      config,
     );
 
     dispatch({
@@ -108,6 +191,8 @@ export const createPost = (content, image) => async (dispatch, getState) => {
       type: POST_CREATE_SUCCESS,
       payload: data,
     });
+
+    document.location.href = "/home";
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -118,6 +203,45 @@ export const createPost = (content, image) => async (dispatch, getState) => {
     }
     dispatch({
       type: POST_CREATE_FAIL,
+      payload: message,
+    });
+  }
+};
+
+export const deletePost = postId => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: POST_DELETE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.user.token}`,
+      },
+    };
+
+    const { data } = await axios.delete(`${API_URL}/post/${postId}`, config);
+
+    dispatch({
+      type: POST_DELETE_SUCCESS,
+      payload: data,
+    });
+
+    document.location.href = "/profile";
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      //dispatch(logout());
+    }
+    dispatch({
+      type: POST_DELETE_FAIL,
       payload: message,
     });
   }

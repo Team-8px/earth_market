@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_URL } from "../constants/defaultUrl";
 
-export const imageUploadsHandler = async (files) => {
+export const imageUploadsHandler = async files => {
   //하나의 이미지를 처리하는 경우
   const formData = new FormData();
 
@@ -11,5 +11,5 @@ export const imageUploadsHandler = async (files) => {
     data: { filename },
   } = await axios.post(`${API_URL}/image/uploadfile`, formData);
 
-  return filename;
+  return filename ? `${API_URL}/${filename}` : undefined;
 };

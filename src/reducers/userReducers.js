@@ -6,13 +6,32 @@ import {
   USER_JOIN_MEMBERSHIP_REQUEST,
   USER_JOIN_MEMBERSHIP_SUCCESS,
   USER_JOIN_MEMBERSHIP_FAIL,
-  USER_UPDATE_REQUEST,
-  USER_UPDATE_SUCCESS,
-  USER_UPDATE_FAIL,
+  USER_UPDATE_PROFILE_REQUEST,
+  USER_UPDATE_PROFILE_SUCCESS,
+  USER_UPDATE_PROFILE_FAIL,
   USER_READ_PROFILE_REQUEST,
   USER_READ_PROFILE_SUCCESS,
   USER_READ_PROFILE_FAIL,
+  USER_SEARCH_REQUEST,
+  USER_SEARCH_SUCCESS,
+  USER_SEARCH_FAIL,
 } from "../constants/userConstants";
+
+export const userSearchReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_SEARCH_REQUEST:
+      return { loading: true };
+    case USER_SEARCH_SUCCESS:
+      return {
+        loading: false,
+        users: action.payload,
+      };
+    case USER_SEARCH_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 export const userProfileReducer = (state = {}, action) => {
   switch (action.type) {
@@ -27,6 +46,7 @@ export const userProfileReducer = (state = {}, action) => {
         image: action.payload.profile.image,
         followerCount: action.payload.profile.followerCount,
         followingCount: action.payload.profile.followingCount,
+        isfollow: action.payload.profile.isfollow,
       };
     case USER_READ_PROFILE_FAIL:
       return { loading: false, error: action.payload };
@@ -65,14 +85,18 @@ export const userJoinMembershipReducer = (state = {}, action) => {
   }
 };
 
-// user에는 Reqdata가 담기게 된다.
-export const userUpdateReducer = (state = { user: {} }, action) => {
+export const userUpdateReducer = (state = {}, action) => {
   switch (action.type) {
-    case USER_UPDATE_REQUEST:
+    case USER_UPDATE_PROFILE_REQUEST:
       return { loading: true };
-    case USER_UPDATE_SUCCESS:
-      return { loading: false, success: true };
-    case USER_UPDATE_FAIL:
+    case USER_UPDATE_PROFILE_SUCCESS:
+      return {
+        loading: false,
+        accountname: action.payload.accountname,
+        username: action.payload.username,
+        image: action.payload.image,
+      };
+    case USER_UPDATE_PROFILE_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

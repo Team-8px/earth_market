@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "SpoqaHanSansNeo-B";
+  src: url("/asset/font/SpoqaHanSansNeo-Bold.woff");
+}
+@font-face {
+  font-family: "SpoqaHanSansNeo-M";
+  src: url("/asset/SpoqaHanSansNeo-Medium.woff");
+}
+@font-face {
+  font-family: "SpoqaHanSansNeo-R";
+  src: url("/asset/SpoqaHanSansNeo-Regular.woff");
+}

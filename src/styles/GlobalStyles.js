@@ -1,3 +1,4 @@
+import "./font.css";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
@@ -11,14 +12,56 @@ const GlobalStyles = createGlobalStyle`
         box-sizing:border-box;
     }
     body{
-        font-size: 14px;
+        font-family:'SpoqaHanSansNeo-R';
+        font-size: 10px;
     }
-    #app{
+    img{
         width: 100%;
-        height: 100vh;
+        height: auto;
+    }
+    button {
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        background-color: inherit;
+    }
+    .ir {
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+
+    .textHidden{
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: polygon(0 0, 0 0, 0, 0);
+    }
+    input {
+        &:focus {
+        outline:none;
+      }
+    }
+    textarea {
+    border: none;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    resize: none; /*remove the resize handle on the bottom right*/
+}
+    .main{
+        background-color:${props => props.theme.palette["bg"]}
     }
 `;
-
 export default GlobalStyles;
 
 // html, body, div, span, applet, object, iframe,
