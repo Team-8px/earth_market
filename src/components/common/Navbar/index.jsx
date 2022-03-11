@@ -5,7 +5,7 @@ function Navigation() {
   return (
     <NavList>
       <NavItem>
-        <StyledNavLink to="/" className="home">
+        <StyledNavLink to="/home" className="home">
           홈
         </StyledNavLink>
       </NavItem>
