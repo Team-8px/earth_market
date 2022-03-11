@@ -114,15 +114,33 @@ export const AddProductBtn = styled.button`
   font-size: 14px;
   line-height: 18px;
 `;
+
 export const FollowBtn = styled.button`
   width: 120px;
   height: 34px;
+  padding: 0 8px;
   border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: ${props => props.theme.palette["main"]};
   color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+`;
+
+export const CancelBtn = styled.button`
+  width: 120px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid ${props => props.theme.palette["border"]};
+  background-color: #fff;
+  color: ${props => props.theme.palette["subText"]};
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;

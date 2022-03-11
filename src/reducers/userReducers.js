@@ -46,6 +46,7 @@ export const userProfileReducer = (state = {}, action) => {
         image: action.payload.profile.image,
         followerCount: action.payload.profile.followerCount,
         followingCount: action.payload.profile.followingCount,
+        isfollow: action.payload.profile.isfollow,
       };
     case USER_READ_PROFILE_FAIL:
       return { loading: false, error: action.payload };

@@ -11,11 +11,20 @@ import {
 import { changeDefaltImage } from "../../../util/changeDefaltImage";
 import ProfileCard from "../ProfileCard";
 
-function ProfileContainer() {
+const ProfileContainer = () => {
   const dispatch = useDispatch();
+
   const history = useHistory();
-  const { image, username, accountname, intro, followerCount, followingCount } =
-    useSelector(state => state.userReadProfile);
+
+  const {
+    image,
+    username,
+    accountname,
+    intro,
+    followerCount,
+    followingCount,
+    isfollow,
+  } = useSelector(state => state.userReadProfile);
 
   const MoveAddProduct = () => {
     history.push("/product/upload");
@@ -39,9 +48,10 @@ function ProfileContainer() {
         followerCount={followerCount}
         followingCount={followingCount}
         MoveAddProduct={MoveAddProduct}
+        isfollow={isfollow}
       />
     </UserInfoContainer>
   );
-}
+};
 
 export default ProfileContainer;

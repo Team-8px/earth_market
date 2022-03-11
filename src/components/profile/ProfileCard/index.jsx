@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { getWhichUserStatus } from "../../../util/getWhichUser";
+import { followUser, unfollowUser } from "../../../actions/followAction";
 import basicImg from "../../../asset/basic-profile-img.svg";
 
 import {
@@ -17,9 +19,10 @@ import {
   ProfileEditBtn,
   AddProductBtn,
   FollowBtn,
+  CancelBtn,
 } from "./index.style";
 
-function ProfileCard({
+const ProfileCard = ({
   image,
   username,
   accountname,
@@ -29,7 +32,22 @@ function ProfileCard({
   followerCount,
   followingCount,
   MoveAddProduct,
-}) {
+  isfollow,
+}) => {
+  const [isFollow, setIsFollow] = useState(isfollow && isfollow);
+
+  const dispatch = useDispatch();
+
+  const onUnfollowClick = otherAccountId => {
+    dispatch(unfollowUser(otherAccountId));
+    setIsFollow(false);
+  };
+
+  const onFollowClick = otherAccountId => {
+    dispatch(followUser(otherAccountId));
+    setIsFollow(true);
+  };
+
   const trigger = e => {
     e.target.src = basicImg;
   };
@@ -65,13 +83,19 @@ function ProfileCard({
         </UserInfoButtonsWrapper>
       ) : (
         <UserInfoButtonsWrapper>
-          <BtnLink to={`/to`}>
-            <FollowBtn>팔로우</FollowBtn>
-          </BtnLink>
+          {isFollow ? (
+            <CancelBtn onClick={() => onUnfollowClick(accountname)}>
+              취소
+            </CancelBtn>
+          ) : (
+            <FollowBtn onClick={() => onFollowClick(accountname)}>
+              팔로우
+            </FollowBtn>
+          )}
         </UserInfoButtonsWrapper>
       )}
     </UserInfoWrapper>
   );
-}
+};
 
 export default ProfileCard;
