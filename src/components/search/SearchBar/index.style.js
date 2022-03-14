@@ -2,11 +2,11 @@ import styled from "styled-components";
 import Prev from "../../../asset/icon-arrow-left.svg";
 
 export const SearchHaeder = styled.header`
-  position: fixed;
+  position: sticky;
+  top: 0;
   width: 100%;
   min-width: 390px;
-  left: 0;
-  top: 0;
+  height: 48px;
   background-color: #fff;
   z-index: 10;
 `;

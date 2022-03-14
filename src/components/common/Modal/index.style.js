@@ -64,9 +64,9 @@ export const ModalList = styled.ul`
   bottom: 0;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: #dbdbdb;
-  z-index: 10;
+  background-color: ${props => props.theme.palette["border"]};
   background-color: #fff;
+  z-index: 10;
 
   animation-duration: 0.35s;
   animation-timing-function: ease-out;

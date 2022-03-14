@@ -43,7 +43,7 @@ export const AlertMessage = styled.strong`
 export const AlertList = styled.ul`
   display: flex;
   width: 100%;
-  border-top: 0.5px solid #dbdbdb;
+  border-top: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 export const AlertItem = styled.li`
@@ -62,6 +62,6 @@ export const AlertItem = styled.li`
   }
 
   &:nth-child(2) button {
-    color: #f26e22;
+    color: ${props => props.theme.palette["main"]};
   }
 `;

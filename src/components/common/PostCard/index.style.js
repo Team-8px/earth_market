@@ -1,9 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import basicImg from "../../../asset/basic-profile-img.svg";
-import heart from "../../../asset/icon/icon-heart.svg";
-import heartActive from "../../../asset/icon/icon-heart-active.svg";
-import comment from "../../../asset/icon/icon-message-circle.svg";
 import more from "../../../asset/icon-more-vertical.svg";
 
 export const CardSection = styled.article`
@@ -25,7 +21,7 @@ export const CardProfileImg = styled.img.attrs(props => ({
 }))`
   width: 42px;
   height: 42px;
-  border: 1px solid #dbdbdb;
+  border: 1px solid ${props => props.theme.palette["border"]};
   border-radius: 50%;
   margin-right: 12px;
 `;
@@ -44,7 +40,7 @@ export const CardAthorId = styled.span`
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
   &::before {
     content: "@";
     margin-right: 3px;
@@ -79,7 +75,6 @@ export const CardImageItem = styled.li`
   min-width: 304px;
   width: 100%;
   max-height: 228px;
-  min-height: 228px;
   border-radius: 10px;
   overflow: hidden;
 `;
@@ -121,7 +116,7 @@ export const CardDateText = styled.strong`
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
 `;
 
 export const CardMoreBtn = styled.button`
