@@ -4,7 +4,7 @@ import { getFollowerPostList } from "../../../actions/followAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalListBtn, ModalAlertBtn } from "../../common/Modal";
 import { Alert, AlertBtn } from "../../common/Alert";
-import { ProfileSection, NoneFeed, SearchBtn } from "./index.style";
+import { ProfileSection, NoneFeed, SearchBtn, NoneFollowSection } from "./index.style";
 import { changeDefaltImage } from "../../../util/changeDefaltImage";
 import PostCard from "../../common/PostCard";
 import dayjs from "dayjs";
@@ -48,14 +48,14 @@ function HomeContainer() {
             })}
         </ProfileSection>
       ) : (
-        <ProfileSection>
+        <NoneFollowSection>
           <NoneFeed>
             <span> 유저를 검색해 팔로우 해보세요</span>
           </NoneFeed>
           <Link to={"/search"}>
             <SearchBtn>검색하기</SearchBtn>
           </Link>
-        </ProfileSection>
+        </NoneFollowSection>
       )}
       <Modal visible={postDialog}>
         <ModalAlertBtn isAlert={isPostAlert}>신고하기</ModalAlertBtn>
