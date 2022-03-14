@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import heart from "../../../asset/icon/icon-heart.svg";
-import heartActive from "../../../asset/icon/icon-heart-active.png";
+import heartActive from "../../../asset/icon/icon-heart-active.svg";
 import comment from "../../../asset/icon/icon-message-circle.svg";
 
 export const LayOut = styled.div`
