@@ -5,8 +5,8 @@ import imageLayers from "../../../asset/icon/iccon-img-layers.svg";
 export const AlbumItem = styled(Link)`
   cursor: pointer;
   position: relative;
-  max-height: 114px;
-  min-height: 114px;
+  width: 114px;
+  height: 114px;
   &::before {
     content: "";
     position: absolute;
@@ -27,5 +27,5 @@ export const AlbumImg = styled.img`
   margin-bottom: 0;
   height: 100%;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 10px;
 `;

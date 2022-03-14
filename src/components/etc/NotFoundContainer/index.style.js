@@ -27,8 +27,8 @@ export const NotFoundSubText = styled.span`
 `;
 
 export const PrevBtn = styled.button`
-  width: 120px;
-  height: 34px;
+  width: 110px;
+  height: 40px;
   border-radius: 30px;
   display: flex;
   align-items: center;

@@ -8,7 +8,7 @@ export const Form = styled.form`
 `;
 
 export const MainFieldSet = styled.fieldset`
-  margin: 20px 16px;
+  margin: 30px 16px;
   display: flex;
 `;
 
@@ -86,7 +86,7 @@ export const PostImage = styled.img`
 export const Item = styled.li`
   position: relative;
   border-radius: 10px;
-  min-width: 304px;
+  width: 304px;
   height: 228px;
   overflow: hidden;
   border: 0.5px solid ${props => props.theme.palette["border"]};

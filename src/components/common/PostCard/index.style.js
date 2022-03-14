@@ -1,16 +1,12 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import basicImg from "../../../asset/basic-profile-img.svg";
-import heart from "../../../asset/icon/icon-heart.svg";
-import heartActive from "../../../asset/icon/icon-heart-active.png";
-import comment from "../../../asset/icon/icon-message-circle.svg";
 import more from "../../../asset/icon-more-vertical.svg";
 
 export const CardSection = styled.article`
   position: relative;
   max-width: 358px;
   width: 100%;
-  margin-top: 20px;
+  margin: 20px 0;
 `;
 
 export const CardProfileContainer = styled.section`
@@ -25,7 +21,7 @@ export const CardProfileImg = styled.img.attrs(props => ({
 }))`
   width: 42px;
   height: 42px;
-  border: 1px solid #dbdbdb;
+  border: 1px solid ${props => props.theme.palette["border"]};
   border-radius: 50%;
   margin-right: 12px;
 `;
@@ -34,17 +30,17 @@ export const CardAthorWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const CardAthorName = styled.strong`
+export const CardAthorName = styled.span`
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
   margin-bottom: 2px;
 `;
-export const CardAthorId = styled.strong`
+export const CardAthorId = styled.span`
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
   &::before {
     content: "@";
     margin-right: 3px;
@@ -59,6 +55,7 @@ export const CardContentText = styled.p`
   font-size: 14px;
   line-height: 18px;
   margin-bottom: 16px;
+  white-space: pre-wrap;
 `;
 
 export const CardImageContainer = styled.div`
@@ -78,7 +75,6 @@ export const CardImageItem = styled.li`
   min-width: 304px;
   width: 100%;
   max-height: 228px;
-  min-height: 228px;
   border-radius: 10px;
   overflow: hidden;
 `;
@@ -120,7 +116,7 @@ export const CardDateText = styled.strong`
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
 `;
 
 export const CardMoreBtn = styled.button`

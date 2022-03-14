@@ -9,9 +9,9 @@ export const FollowHeaderLayOut = styled.header`
   height: 48px;
   top: 0;
   background-color: #fff;
-  z-index: 10;
   padding: 0 16px;
-  border-bottom: 0.5px solid #dbdbdb;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
+  z-index: 10;
 `;
 
 export const SearchBtn = styled.button`
@@ -22,7 +22,6 @@ export const SearchBtn = styled.button`
 `;
 
 export const HeaderTitle = styled.h2`
-  margin-left: 8px;
   font-weight: 500;
   font-size: 18px;
 `;

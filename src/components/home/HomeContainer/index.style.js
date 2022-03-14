@@ -6,35 +6,41 @@ export const ProfileSection = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 16px 0;
+  padding: 10px 0 20px;
   height: calc(100% - 108px);
   overflow-y: scroll;
-  width: 100%;
+  width: 100vw;
 `;
 
-export const NoneFeed = styled.p`
+export const NoneFollowSection = styled.main`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: calc(100% - 108px);
+`;
+
+export const NoneFeed = styled.span`
   color: ${props => props.theme.palette["subText"]};
   margin-bottom: 20px;
   font-size: 14px;
   line-height: 14px;
-  text-align: center;
   font-weight: 400;
   &::before {
     content: "";
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 158px;
+    height: 158px;
     background: url(${grayLogo}) no-repeat center / contain;
-    margin: 0 auto 20px;
+    margin: 0 auto 32px;
   }
 `;
 export const SearchBtn = styled.button.attrs({ type: "button" })`
-  width: 120px;
-  height: 34px;
+  width: 110px;
+  height: 40px;
   border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: ${props => props.theme.palette["main"]};
   color: #fff;
   font-weight: 500;

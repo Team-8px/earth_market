@@ -35,6 +35,8 @@ export const ProfileImgWrapper = styled.div`
     img {
       width: 110px;
       height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
     }
 
     input {

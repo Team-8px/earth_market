@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import basicImg from "../../../asset/basic-profile-img.svg";
 
 export const SearchUserList = styled.li`
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 `;
 export const SearchUserImgWrapper = styled(Link)`
   cursor: pointer;

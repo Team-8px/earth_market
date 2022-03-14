@@ -11,7 +11,7 @@ export const FollowHeaderLayOut = styled.header`
   background-color: #fff;
   z-index: 10;
   padding: 0 16px;
-  border-bottom: 0.5px solid #dbdbdb;
+  border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 export const FollowHeaderWrap = styled.div`

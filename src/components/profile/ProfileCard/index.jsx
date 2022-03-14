@@ -16,8 +16,7 @@ import {
   FollowText,
   UserInfoButtonsWrapper,
   BtnLink,
-  ProfileEditBtn,
-  AddProductBtn,
+  ProfileBtn,
   FollowBtn,
   CancelBtn,
 } from "./index.style";
@@ -75,10 +74,10 @@ const ProfileCard = ({
       {getWhichUserStatus() === "my" ? (
         <UserInfoButtonsWrapper>
           <BtnLink to="/profile/myself/update">
-            <ProfileEditBtn>프로필수정</ProfileEditBtn>
+            <ProfileBtn>프로필수정</ProfileBtn>
           </BtnLink>
           <BtnLink as={"div"} onClick={() => MoveAddProduct()}>
-            <AddProductBtn>상품추가</AddProductBtn>
+            <ProfileBtn>상품추가</ProfileBtn>
           </BtnLink>
         </UserInfoButtonsWrapper>
       ) : (

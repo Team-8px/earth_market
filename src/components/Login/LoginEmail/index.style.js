@@ -71,25 +71,6 @@ export const LoginText = styled(Link)`
   }
 `;
 
-// export const InputButton = styled.div`
-//   position: relative;
-
-//   input {
-//     width: 322px;
-//     height: 44px;
-//     border-radius: 44px;
-//     display: inline-flex;
-//     align-items: center;
-//     justify-content: center;
-//     outline: none;
-//     border: none;
-//     background: ${props => props.theme.palette["main"]};
-//     color: #fff;
-//     font-weight: 400;
-//     cursor: pointer;
-//   }
-// `;
-
 export const LoginButton = styled.button `
   width: 322px;
   height: 44px;

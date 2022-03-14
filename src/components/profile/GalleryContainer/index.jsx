@@ -133,8 +133,9 @@ function GalleryContainer() {
             <ModalAlertBtn isAlert={isPostAlert}>신고</ModalAlertBtn>
             <ModalListBtn isDialog={isPostDialog}>닫기</ModalListBtn>
           </Modal>
-          <Alert visible={postAlert} messageText="게시글을 신고할까요?">
-            <AlertBtn isAlert={isPostAlert}>취소</AlertBtn>
+          <Alert visible={postAlert} messageText="게시글을 신고하시겠어요?">
+            <AlertBtn isAlert={isPostAlert}>예</AlertBtn>
+            <AlertBtn isAlert={isPostAlert}>아니요</AlertBtn>
           </Alert>
         </>
       )}

@@ -31,7 +31,7 @@ export const InputWrapper = styled.div`
     line-height: 14px;
     padding: 10px 0 8px;
     border: none;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid ${props => props.theme.palette["border"]};    
     caret-color: ${props => props.theme.palette["main"]};
     &::placeholder {
       color: ${props => props.theme.palette["border"]};
@@ -41,7 +41,7 @@ export const InputWrapper = styled.div`
     }
   }
   p {
-    color: #eb5757;
+    color: ${props => props.theme.palette["waring"]};
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
@@ -67,7 +67,7 @@ export const ProfileImgWrapper = styled.div`
     bottom: 0;
     width: 36px;
     height: 36px;
-    background: #c4c4c4 url(${Upload}) no-repeat center / 36px 36px;
+    background: ${props => props.theme.palette["lightGray"]} url(${Upload}) no-repeat center / 36px 36px;
     border-radius: 50%;
   }
 

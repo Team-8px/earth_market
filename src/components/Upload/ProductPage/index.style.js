@@ -39,7 +39,7 @@ export const ProductFormWrapper = styled.div`
     }
   }
   p {
-    color: #eb5757;
+    color: ${props => props.theme.palette["waring"]};
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;

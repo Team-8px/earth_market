@@ -4,7 +4,7 @@ export const InformationList = styled.li`
   cursor: pointer;
   display: flex;
   align-items: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 `;
 
 export const InformationImgWrapper = styled.div`

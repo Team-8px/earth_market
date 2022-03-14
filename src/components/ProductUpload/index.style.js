@@ -66,7 +66,10 @@ export const Label = styled.label`
   cursor: pointer;
   overflow: hidden;
   img {
+    width: 100%;
+    height: 100%;
     background: no-repeat center / contain;
+    object-fit: cover;
   }
   &::after {
     position: absolute;
