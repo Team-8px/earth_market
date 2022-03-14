@@ -17,6 +17,7 @@ export const UserInfoImg = styled.img`
   border: 1px solid ${props => props.theme.palette["border"]};
   border-radius: 50%;
   margin-bottom: 16px;
+  object-fit: cover;
 `;
 
 export const UserInfoName = styled.strong`
@@ -88,28 +89,15 @@ export const BtnLink = styled(Link)`
   padding: 0 8px;
 `;
 
-export const ProfileEditBtn = styled.button`
+export const ProfileBtn = styled.button`
   width: 120px;
   height: 34px;
   border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme.palette["main"]};
-  color: #fff;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-`;
-export const AddProductBtn = styled.button`
-  width: 120px;
-  height: 34px;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme.palette["main"]};
-  color: #fff;
+  border: 1px solid ${props => props.theme.palette["main"]};
+  color: ${props => props.theme.palette["main"]};
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
