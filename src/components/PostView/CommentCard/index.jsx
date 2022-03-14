@@ -8,7 +8,7 @@ import {
 } from "../../../actions/commentAction";
 import { Modal, ModalAlertBtn, ModalListBtn } from "../../common/Modal";
 import { Alert, AlertBtn } from "../../common/Alert";
-import { ReplyBox, CommentList } from "../../module/post/ReplyBox";
+import { CommentList, CommentItem } from "../CommentItem";
 import basicImg from "../../../asset/basic-profile-img.svg";
 import {
   SubmitChatLayOut,
@@ -67,7 +67,7 @@ const CommentCard = ({ postId }) => {
         {commentList &&
           commentList.map(comment => {
             return (
-              <ReplyBox
+              <CommentItem
                 img={comment?.author?.image}
                 username={comment?.author?.username}
                 accountname={comment?.author?.accountname}

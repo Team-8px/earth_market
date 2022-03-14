@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getPost, deletePost } from "../../../actions/postActions";
 import { getAccountNameFromloacalStorage } from "../../../util/getWhichUser";
 import CommentCard from "../CommentCard";
-import { UserInfoBox } from "../../module/post/UserInfoBox";
 import { Modal, ModalAlertBtn, ModalListBtn } from "../../common/Modal";
 import { Alert, AlertBtn } from "../../common/Alert";
-import Date from "../../module/post/Date";
 import PostIconBox from "../../common/PostIconBox";
 import basicImg from "../../../asset/basic-profile-img.svg";
 import {
@@ -22,6 +21,12 @@ import {
   DotWrapper,
   DotBtn,
   MoreBtn,
+  Date,
+  UserInfoContainer,
+  ProfileImg,
+  Wrapper,
+  Name,
+  Id,
 } from "./index.style";
 
 const PostViewContainer = ({ postId }) => {
@@ -78,16 +83,19 @@ const PostViewContainer = ({ postId }) => {
       dispatch(deletePost(postId));
     }
   };
-
   return (
     <>
       <LayOut>
+        <UserInfoContainer>
+          <Link to={`/profile/${author?.accountname}`}>
+            <ProfileImg src={author?.image} />
+          </Link>
+          <Wrapper>
+            <Name>{author?.username}</Name>
+            <Id>{author?.accountname}</Id>
+          </Wrapper>
+        </UserInfoContainer>
         <Container>
-          <UserInfoBox
-            profileImage={author?.image}
-            name={author?.username}
-            id={author?.accountname}
-          />
           <ContentBox>
             <ContentText>{content}</ContentText>
             <ImageContainer>
