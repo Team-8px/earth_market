@@ -10,5 +10,5 @@ export const FollowingSection = styled.main`
 export const FollowingList = styled.ul`
   max-width: 390px;
   margin: 0 auto;
-  padding: 24px 16px;
+  padding: 30px 16px 70px;
 `;

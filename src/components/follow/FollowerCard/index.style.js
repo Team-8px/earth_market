@@ -6,7 +6,7 @@ export const FollowerItem = styled.li`
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 `;
 
 export const FollowerImgWrapper = styled(Link)`
