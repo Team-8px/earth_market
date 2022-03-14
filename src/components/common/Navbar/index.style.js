@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 import HomeIcon from "../../../asset/icon/icon-home.svg";
-import ChatIcon from "../../../asset/icon/icon-message-circle.svg";
+import InformationIcon from "../../../asset/icon/icon-message-circle.svg";
 import PostIcon from "../../../asset/icon/icon-edit.svg";
 import ProfileIcon from "../../../asset/icon/icon-user.svg";
 import HomeIconFill from "../../../asset/icon/icon-home-fill.svg";
-import ChatIconFill from "../../../asset/icon/icon-message-circle-fill.svg";
+import InformationIconFill from "../../../asset/icon/icon-message-circle-fill.svg";
 import ProfileIconFill from "../../../asset/icon/icon-user-fill.svg";
 
 export const NavList = styled.ul`
@@ -46,8 +46,8 @@ export const StyledNavLink = styled(NavLink)`
   &.home::before {
     background-image: url(${HomeIcon});
   }
-  &.chatlist::before {
-    background-image: url(${ChatIcon});
+  &.information::before {
+    background-image: url(${InformationIcon});
   }
   &.upload::before {
     background-image: url(${PostIcon});
@@ -61,8 +61,8 @@ export const StyledNavLink = styled(NavLink)`
     &.home::before {
       background-image: url(${HomeIconFill});
     }
-    &.chatlist::before {
-      background-image: url(${ChatIconFill});
+    &.information::before {
+      background-image: url(${InformationIconFill});
     }
     &.myprofile::before {
       background-image: url(${ProfileIconFill});
