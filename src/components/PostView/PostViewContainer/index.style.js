@@ -1,13 +1,8 @@
 import styled, { css } from "styled-components";
 import more from "../../../asset/icon-more-vertical.svg";
+import basicImg from "../../../asset/basic-profile-img.svg";
 
 export const LayOut = styled.main`
-  ${props => props.theme.common.flexCenterColumn}
-  ${props =>
-    props.center &&
-    css`
-      justify-content: center;
-    `}
   position: fixed;
   height: calc(100% - 108px);
   overflow-y: scroll;
@@ -90,6 +85,13 @@ export const DotBtn = styled.button`
   }
 `;
 
+export const Date = styled.strong`
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #767676;
+`;
+
 export const MoreBtn = styled.button`
   position: absolute;
   top: 24px;
@@ -98,4 +100,44 @@ export const MoreBtn = styled.button`
   height: 18px;
   background: url(${more}) no-repeat center / 18px 18px;
   background-color: inherit;
+`;
+
+export const UserInfoContainer = styled.section`
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  cursor: pointer;
+`;
+export const ProfileImg = styled.img.attrs(props => ({
+  src: props.src || basicImg,
+}))`
+  width: 42px;
+  height: 42px;
+  border: 0.5px solid #dbdbdb;
+  border-radius: 50%;
+  margin-right: 12px;
+  overflow: hidden;
+  object-fit: cover;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Name = styled.strong`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 2px;
+`;
+export const Id = styled.strong`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #767676;
+  &::before {
+    content: "@";
+    margin-right: 3px;
+  }
 `;

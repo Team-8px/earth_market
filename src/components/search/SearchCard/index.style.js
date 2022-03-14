@@ -16,6 +16,7 @@ export const SearchUserImgWrapper = styled(Link)`
 `;
 
 const 서버제공이미지 = "http://146.56.183.55:5050/Ellipse.png";
+
 export const SearchUserImg = styled.img`
   width: 50px;
   height: 50px;

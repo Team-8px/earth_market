@@ -2,18 +2,18 @@ import styled from "styled-components";
 import Upload from "../../../asset/upload-file.svg";
 import ProfileImg from "../../../asset/basic-profile-img.svg";
 
-export const Form = styled.form `
+export const Form = styled.form`
   box-sizing: border-box;
   margin-top: 30px;
 `;
 
-export const MainFieldSet = styled.fieldset `
+export const MainFieldSet = styled.fieldset`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const InputWrapper = styled.div `
+export const InputWrapper = styled.div`
   width: 322px;
   margin: 40px 0 14px;
   label {
@@ -49,7 +49,7 @@ export const InputWrapper = styled.div `
   }
 `;
 
-export const ProfileImgWrapper = styled.div `
+export const ProfileImgWrapper = styled.div`
   margin-top: 30px;
   label {
     position: relative;
@@ -58,44 +58,44 @@ export const ProfileImgWrapper = styled.div `
     height: 110px;
     border-radius: 50%;
     cursor: pointer;
-    background: url(${props =>
-        props?.isPreviewImage? ProfileImg: props?.myImage})
-      no-repeat center / contain;
-    &::after {
-      position: absolute;
-      content: "";
-      right: 0;
-      bottom: 0;
-      width: 36px;
-      height: 36px;
-      background: #c4c4c4 url(${Upload}) no-repeat center / 36px 36px;
-      border-radius: 50%;
-    }
-    img {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-    }
-    input {
-      position: absolute;
-      left: -10000px;
-      top: auto;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      padding: 0;
-    }
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    width: 36px;
+    height: 36px;
+    background: #c4c4c4 url(${Upload}) no-repeat center / 36px 36px;
+    border-radius: 50%;
+  }
+
+  img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+  }
+
+  input {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
   }
 `;
 
-export const Title = styled.h2 `
+export const Title = styled.h2`
   font-weight: 500;
   font-size: 24px;
   line-height: 30px;
   text-align: center;
 `;
 
-export const SubText = styled.p `
+export const SubText = styled.p`
   font-weight: 400;
   font-size: 14px;
   color: ${props => props.theme.palette["subText"]};
@@ -104,7 +104,7 @@ export const SubText = styled.p `
   text-align: center;
 `;
 
-export const JoinButton = styled.button `
+export const JoinButton = styled.button`
   width: 322px;
   height: 44px;
   background: ${props => props.theme.palette["main"]};
@@ -116,4 +116,4 @@ export const JoinButton = styled.button `
   :disabled {
     background: ${props => props.theme.palette["lightMain"]};
   }
-`
+`;
