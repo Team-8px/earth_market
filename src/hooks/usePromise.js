@@ -26,7 +26,7 @@ export default function usePromise(promiseCreator, deps) {
       setLoading(false);
     };
     process();
-  }, [promiseCreator, deps]);
+  }, [deps]);
 
   return [loading, resolved, error];
 }
