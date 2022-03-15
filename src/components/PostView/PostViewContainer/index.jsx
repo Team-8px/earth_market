@@ -7,7 +7,6 @@ import CommentCard from "../CommentCard";
 import { Modal, ModalAlertBtn, ModalListBtn } from "../../common/Modal";
 import { Alert, AlertBtn } from "../../common/Alert";
 import PostIconBox from "../../common/PostIconBox";
-import basicImg from "../../../asset/basic-profile-img.svg";
 import {
   PostDetailSection,
   PostCardWrapper,

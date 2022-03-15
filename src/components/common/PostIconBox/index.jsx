@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { likePost, unLikePost, getPost } from "../../../actions/postActions";
+import { likePost, unLikePost } from "../../../actions/postActions";
 import {
   LayOut,
   ActiveLikeButton,
