@@ -7,7 +7,6 @@ import { updateProduct } from "../../actions/productActions";
 import { imageUploadsHandler } from "../../util/imageUploads";
 import {
   Form,
-  ProfileImgWrapper,
   ProductFormWrapper,
   SubTitle,
   Label,
