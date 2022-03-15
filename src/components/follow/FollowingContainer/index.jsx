@@ -30,7 +30,7 @@ function FollowingContainer() {
   useEffect(() => {
     // 테스트 라우팅
     dispatch(getFollowingList(accountId));
-  }, [dispatch, unfollow, follow]);
+  }, [dispatch, unfollow, follow, accountId]);
 
   return (
     <FollowingSection>

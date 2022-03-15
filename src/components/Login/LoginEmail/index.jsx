@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { login } from "../../../actions/userActions";
-import { 
+import {
   Form,
   MainFieldSet,
   LoginTitle,
   InputWrapper,
   LoginText,
-  InputButton,
-  LoginButton
+  LoginButton,
 } from "./index.style";
 
 const LoginEmail = () => {
@@ -31,6 +30,8 @@ const LoginEmail = () => {
       setNotMatchError("");
     }
   }, [getValues().password, getValues().email]);
+  // getValue 없애면 에러 사라짐
+  // notMatchError만 넣으면 에러 사라짐
 
   const onSubmit = data => {
     const { email, password } = data;
@@ -83,7 +84,13 @@ const LoginEmail = () => {
               {notMatchError && <p>{notMatchError}</p>}
             </label>
           </InputWrapper>
-          <LoginButton disabled={!isValid} type="submit" width="322px" size="lg" isValid={isValid}>
+          <LoginButton
+            disabled={!isValid}
+            type="submit"
+            width="322px"
+            size="lg"
+            isValid={isValid}
+          >
             로그인
           </LoginButton>
           <LoginText to="/join">이메일로 회원가입</LoginText>

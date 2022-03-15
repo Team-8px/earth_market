@@ -12,7 +12,7 @@ const JoinJS = () => {
     if (window.localStorage.getItem("token")) {
       history.push("/join/email");
     }
-  }, []);
+  }, [history]);
 
   return (
     <>

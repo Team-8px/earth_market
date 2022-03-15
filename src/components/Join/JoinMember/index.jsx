@@ -28,6 +28,8 @@ const JoinMember = ({ setNextPage, setUserInfo }) => {
   useEffect(() => {
     if (emailErrorMessage) setEmailErrorMessage("");
   }, [getValues().email]);
+  // getValues().email 빼고
+  // emailErrorMessage 넣으면 에러 사라짐
 
   const getEmailValid = async () => {
     const config = {

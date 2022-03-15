@@ -14,6 +14,9 @@ function LoginContainer() {
       history.push("/home");
       setvisible(false);
     }
+  }, [history]);
+
+  useEffect(() => {
     setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false);

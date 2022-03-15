@@ -106,7 +106,7 @@ const JoinProfile = ({ userInfo }) => {
           프로필 설정
           <SubText>나중에 언제든지 변경할 수 있습니다.</SubText>
         </Title>
-        <ProfileImgWrapper isPreviewImage={isPreviewImage} myImage={myImage}>
+        <ProfileImgWrapper>
           <label onChange={previewImage} htmlFor="profileImg">
             <img alt="프로필 사진" src={myImage} onError={trigger} />
             <input
