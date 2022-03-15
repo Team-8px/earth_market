@@ -36,7 +36,7 @@ export function CommentItem({
     } else {
       setIsAuthorization(false);
     }
-  }, [accountname]);
+  }, [accountname, setIsAuthorization]);
 
   return (
     <CommentItemBox onClick={() => isDialog(commentId)}>

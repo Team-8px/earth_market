@@ -31,7 +31,7 @@ const FollowerContainer = () => {
 
   useEffect(() => {
     dispatch(getFollowerList(accountId));
-  }, [dispatch, unfollow, follow]);
+  }, [dispatch, unfollow, follow, accountId]);
 
   return (
     <FollowerSection>

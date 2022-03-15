@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import basicImg from "../../../asset/basic-profile-img.svg";
 
 export const UserInfoWrapper = styled.div`
   position: relative;

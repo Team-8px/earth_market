@@ -30,7 +30,7 @@ function SearchBar({ setSearchUsers }) {
   };
   useEffect(() => {
     setSearchUsers(users);
-  }, [users]);
+  }, [setSearchUsers, users]);
   return (
     <SearchHaeder>
       <SearchHaederContainer>
