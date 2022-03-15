@@ -1,11 +1,8 @@
-import React, { useCallback, useRef, useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import { createPost } from "../../actions/postActions";
-import { multipleImageUploadsHandler } from "../../util/multipleImageUploads";
-import { getUserProfile } from "../../actions/userActions";
-import basicImg from "../../asset/basic-profile-img.svg";
+import { useParams } from "react-router-dom";
+import { multipleImageUploadsHandler } from "../../util/imageUploads";
 import {
   Form,
   MainFieldSet,
@@ -20,28 +17,68 @@ import {
   UploadBtn,
 } from "./index.style";
 
-const PostUploadForm = () => {
+const PostUpdateForm = () => {
   const MAX_UPLOAD = 3;
 
   const [myImage, setMyImage] = useState([]);
 
+  const [updateImage, setUpdateImage] = useState();
+
+  const { productId } = useParams();
+
+  const dispatch = useDispatch();
+
   const {
     register,
+    getValues,
+    setValue,
     handleSubmit,
-    formState: { isValid },
+    formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
   });
 
-  const dispatch = useDispatch();
-
-  const ref = useRef(null);
-
-  const { image } = useSelector(state => state?.userReadProfile);
+  const { image, itemName, price, link } = useSelector(
+    state => state?.productRead,
+  );
 
   useEffect(() => {
-    dispatch(getUserProfile());
-  }, [dispatch]);
+    if (itemName) {
+      setValue("itemName", itemName);
+    }
+  }, [itemName]);
+
+  useEffect(() => {
+    if (price) {
+      setValue("price", price);
+    }
+  }, [price]);
+
+  useEffect(() => {
+    if (link) {
+      setValue("link", link);
+    }
+  }, [link]);
+
+  useEffect(() => {
+    dispatch(getProduct(productId));
+  }, [dispatch, productId]);
+
+  useEffect(() => {
+    if (ref === null || ref.current === null) {
+      return;
+    }
+    ref.current.style.height = "10vh";
+    ref.current.style.height = `${ref.current.scrollHeight}px`;
+  }, []);
+
+  useEffect(() => {
+    if (ref === null || ref.current === null) {
+      return;
+    }
+    ref.current.style.height = "10vh";
+    ref.current.style.height = `${ref.current.scrollHeight}px`;
+  }, []);
 
   const onChange = e => {
     if (myImage.length <= MAX_UPLOAD - 1) {
@@ -62,6 +99,16 @@ const PostUploadForm = () => {
     }
   };
 
+  const resizeHeight = useCallback(() => {
+    if (ref === null || ref.current === null) {
+      return;
+    }
+    ref.current.style.height = "10vh";
+    ref.current.style.height = `${ref.current.scrollHeight}px`;
+  }, []);
+
+  const ref = useRef(null);
+
   const onSubmit = async data => {
     try {
       const { postText } = data;
@@ -71,38 +118,6 @@ const PostUploadForm = () => {
     } catch (e) {
       console.err(e);
     }
-  };
-
-  const resizeHeight = useCallback(() => {
-    if (ref === null || ref.current === null) {
-      return;
-    }
-    ref.current.style.height = "10vh";
-    ref.current.style.height = `${ref.current.scrollHeight}px`;
-  }, []);
-
-  useEffect(() => {
-    if (ref === null || ref.current === null) {
-      return;
-    }
-    ref.current.style.height = "10vh";
-    ref.current.style.height = `${ref.current.scrollHeight}px`;
-  }, []);
-
-  useEffect(() => {
-    if (ref === null || ref.current === null) {
-      return;
-    }
-    ref.current.style.height = "10vh";
-    ref.current.style.height = `${ref.current.scrollHeight}px`;
-  }, []);
-
-  const trigger = e => {
-    e.target.src = basicImg;
-  };
-
-  const onRemoveImg = deleteUrl => {
-    setMyImage(myImage.filter(image => image.url !== deleteUrl));
   };
 
   return (
@@ -164,4 +179,4 @@ const PostUploadForm = () => {
   );
 };
 
-export default PostUploadForm;
+export default PostUpdateForm;

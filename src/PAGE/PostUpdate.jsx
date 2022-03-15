@@ -1,14 +1,14 @@
 import React from "react";
 import UploadHeader from "../components/common/UploadHeader";
-import PostUploadForm from "../components/PostUpload";
+import PostUpdateForm from "../components/postupdate";
 
-const PostUpload = () => {
+const PostUpdate = () => {
   return (
     <>
       <UploadHeader />
-      <PostUploadForm />
+      <PostUpdateForm />
     </>
   );
 };
 
-export default PostUpload;
+export default PostUpdate;

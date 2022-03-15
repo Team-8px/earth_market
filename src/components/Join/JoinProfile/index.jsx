@@ -5,7 +5,6 @@ import axios from "axios";
 import { API_URL } from "../../../constants/defaultUrl";
 import { joinMembership } from "../../../actions/userActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
-//스타일
 import {
   Form,
   MainFieldSet,
