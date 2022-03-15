@@ -18,9 +18,26 @@ import {
   POST_UNLIKE_REQUEST,
   POST_UNLIKE_SUCCESS,
   POST_UNLIKE_FAIL,
+  POST_UPDATE_REQUEST,
+  POST_UPDATE_SUCCESS,
+  POST_UPDATE_FAIL,
 } from "../constants/postConstants";
 
 import dayjs from "dayjs";
+
+export const postUpdateReducer = (state = {}, action) => {
+  console.log(action.payload);
+  switch (action.type) {
+    case POST_UPDATE_REQUEST:
+      return { loading: true };
+    case POST_UPDATE_SUCCESS:
+      return { loading: false, post: action.payload.post };
+    case POST_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 export const postLikeReducer = (state = {}, action) => {
   switch (action.type) {

@@ -3,11 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { UserInfoContainer } from "./index.style";
 import { useHistory } from "react-router-dom";
 import { getUserProfile } from "../../../actions/userActions";
-//import useWhichUserAccountName from "../../../hooks/useWhichUserAccountName";
-import {
-  getWhichUserStatus,
-  getWhichUserAccountName,
-} from "../../../util/getWhichUser";
+import { getWhichUserAccountName } from "../../../util/getWhichUser";
 import { changeDefaltImage } from "../../../util/changeDefaltImage";
 import ProfileCard from "../ProfileCard";
 

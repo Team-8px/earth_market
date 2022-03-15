@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { deletePost, listPosts } from "../../../actions/postActions";
 import {
   getWhichUserStatus,
@@ -40,7 +41,6 @@ function GalleryContainer() {
   const { posts } = useSelector(state => state.postList);
 
   const isPostDialog = postId => {
-    console.log(postId, "postId 값 들어와라!");
     setPostDialog(!postDialog);
     setPostId(postId);
   };
@@ -117,7 +117,9 @@ function GalleryContainer() {
         <>
           <Modal visible={postDialog}>
             <ModalAlertBtn isAlert={isPostAlert}>삭제</ModalAlertBtn>
-            <ModalListBtn isDialog={isPostDialog}>수정</ModalListBtn>
+            <Link to={`/post/${postId}/update`}>
+              <ModalListBtn isDialog={isPostDialog}>수정</ModalListBtn>
+            </Link>
             <ModalListBtn isDialog={isPostDialog}>닫기</ModalListBtn>
           </Modal>
           <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
