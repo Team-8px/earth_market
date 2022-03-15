@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Upload from "../../../asset/upload-file.svg";
-import ProfileImg from "../../../asset/basic-profile-img.svg";
 
 export const Form = styled.form`
   box-sizing: border-box;
@@ -31,7 +30,7 @@ export const InputWrapper = styled.div`
     line-height: 14px;
     padding: 10px 0 8px;
     border: none;
-    border-bottom: 1px solid ${props => props.theme.palette["border"]};    
+    border-bottom: 1px solid ${props => props.theme.palette["border"]};
     caret-color: ${props => props.theme.palette["main"]};
     &::placeholder {
       color: ${props => props.theme.palette["border"]};
@@ -58,17 +57,18 @@ export const ProfileImgWrapper = styled.div`
     height: 110px;
     border-radius: 50%;
     cursor: pointer;
-  }
 
-  &::after {
-    position: absolute;
-    content: "";
-    right: 0;
-    bottom: 0;
-    width: 36px;
-    height: 36px;
-    background: ${props => props.theme.palette["lightGray"]} url(${Upload}) no-repeat center / 36px 36px;
-    border-radius: 50%;
+    &::after {
+      position: absolute;
+      content: "";
+      right: 0;
+      bottom: 0;
+      width: 36px;
+      height: 36px;
+      background: ${props => props.theme.palette["lightGray"]} url(${Upload})
+        no-repeat center / 36px 36px;
+      border-radius: 50%;
+    }
   }
 
   img {

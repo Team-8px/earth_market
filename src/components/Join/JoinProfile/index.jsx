@@ -14,6 +14,7 @@ import {
   SubText,
   JoinButton,
 } from "./index.style";
+import ProfileImg from "../../../asset/basic-profile-img.svg";
 
 const JoinProfile = ({ userInfo }) => {
   const [isPreviewImage, setIsPreviewImage] = useState(true);
@@ -94,6 +95,9 @@ const JoinProfile = ({ userInfo }) => {
       console.log(e);
     }
   };
+  const trigger = e => {
+    e.target.src = ProfileImg;
+  };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -104,7 +108,7 @@ const JoinProfile = ({ userInfo }) => {
         </Title>
         <ProfileImgWrapper isPreviewImage={isPreviewImage} myImage={myImage}>
           <label onChange={previewImage} htmlFor="profileImg">
-            <img alt="프로필 사진" className="ir" />
+            <img alt="프로필 사진" src={myImage} onError={trigger} />
             <input
               type="file"
               accept="image/jpg,image/png,image/jpeg,image/gif"
