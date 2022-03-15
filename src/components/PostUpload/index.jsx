@@ -43,6 +43,22 @@ const PostUploadForm = () => {
     dispatch(getUserProfile());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (ref === null || ref.current === null) {
+      return;
+    }
+    ref.current.style.height = "10vh";
+    ref.current.style.height = `${ref.current.scrollHeight}px`;
+  }, []);
+
+  useEffect(() => {
+    if (ref === null || ref.current === null) {
+      return;
+    }
+    ref.current.style.height = "10vh";
+    ref.current.style.height = `${ref.current.scrollHeight}px`;
+  }, []);
+
   const onChange = e => {
     if (myImage.length <= MAX_UPLOAD - 1) {
       const nowSelectImageList = e.target.files;
@@ -81,28 +97,16 @@ const PostUploadForm = () => {
     ref.current.style.height = `${ref.current.scrollHeight}px`;
   }, []);
 
-  useEffect(() => {
-    if (ref === null || ref.current === null) {
-      return;
-    }
-    ref.current.style.height = "10vh";
-    ref.current.style.height = `${ref.current.scrollHeight}px`;
-  }, []);
-
-  useEffect(() => {
-    if (ref === null || ref.current === null) {
-      return;
-    }
-    ref.current.style.height = "10vh";
-    ref.current.style.height = `${ref.current.scrollHeight}px`;
-  }, []);
-
   const trigger = e => {
     e.target.src = basicImg;
   };
 
-  const onRemoveImg = deleteUrl => {
-    setMyImage(myImage.filter(image => image.url !== deleteUrl));
+  const onRemoveImg = deleteImage => {
+    setMyImage(
+      myImage.filter(image => {
+        return image.previewImg !== deleteImage;
+      }),
+    );
   };
 
   return (
@@ -146,7 +150,9 @@ const PostUploadForm = () => {
                       <PostImage src={image.previewImg} />
                       <RemoveBtn
                         type="button"
-                        onClick={i => onRemoveImg(image.url)}
+                        onClick={() => {
+                          return onRemoveImg(image.previewImg);
+                        }}
                       >
                         <span className="ir">이미지 삭제하기</span>
                       </RemoveBtn>
