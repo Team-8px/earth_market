@@ -31,7 +31,7 @@ export const LoginItem = styled.li`
 
 export const LoginBtn = styled.button`
   position: relative;
-  width: 322px;
+  width: 290px;
   height: 44px;
   background: ${props => props.theme.palette["white"]};
   color: ${props => props.theme.palette["subText"]};

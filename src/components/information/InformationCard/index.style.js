@@ -17,7 +17,7 @@ export const InformationImg = styled.img`
   height: 90px;
   border-radius: 8px;
   object-fit: cover;
-  background: #ddd;
+  background: ${props => props.theme.palette["border"]};
   object-fit: cover;
 `;
 
@@ -27,18 +27,18 @@ export const InformationInfoWrapper = styled.div`
   height: 100%;
   align-self: flex-start;
   padding-bottom: 8px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid ${props => props.theme.palette["border"]};
 
   strong {
     font-size: 12px;
-    color: #767676;
+    color: ${props => props.theme.palette["subText"]};
   }
 
   span {
     font-size: 12px;
     font-weight: 400;
     line-height: 13px;
-    color: #767676;
+    color: ${props => props.theme.palette["subText"]};
     margin-top: 8.5px;
     &::before {
       content: "·";
