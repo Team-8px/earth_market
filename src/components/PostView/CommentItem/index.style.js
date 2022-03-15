@@ -3,7 +3,7 @@ import MoreButton from "../../../asset/icon/icon-more-vertical.png";
 
 export const CommentLayout = styled.section`
   width: 100%;
-  padding: 20px 16px;
+  padding: 16px 20px 16px 16px;
   box-sizing: border-box;
   border-top: 1px solid #dbdbdb;
 `;

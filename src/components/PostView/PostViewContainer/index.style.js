@@ -1,20 +1,30 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import more from "../../../asset/icon-more-vertical.svg";
 import basicImg from "../../../asset/basic-profile-img.svg";
 
-export const LayOut = styled.main`
+// 전체
+export const PostDetailSection = styled.main`
   position: fixed;
   height: calc(100% - 108px);
   overflow-y: scroll;
   width: 100%;
-  min-width: 100%;
 `;
 
-export const Container = styled.article`
+// 윗대가리
+export const PostCardWrapper = styled.article`
   position: relative;
-  max-width: 358px;
+  display: flex;
   width: 100%;
-  padding: 20px 0 24px;
+  margin: 0 auto;
+  padding-bottom: 16px;
+`;
+
+// 아랫 대가리
+
+export const CommentSection = styled.section`
+  max-width: 390px;
+  padding: 20px 16px;
+  margin: 0 auto;
 `;
 
 export const ContentBox = styled.section`
@@ -94,7 +104,7 @@ export const Date = styled.strong`
 
 export const MoreBtn = styled.button`
   position: absolute;
-  top: 24px;
+  top: 0;
   right: 0;
   width: 18px;
   height: 18px;

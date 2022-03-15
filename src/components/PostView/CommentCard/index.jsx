@@ -81,7 +81,6 @@ const CommentCard = ({ postId }) => {
             );
           })}
       </CommentList>
-
       <SubmitChatLayOut>
         <SubmitChatContainer
           onSubmit={handleSubmit(onSubmit)}

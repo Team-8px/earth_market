@@ -9,8 +9,8 @@ import { Alert, AlertBtn } from "../../common/Alert";
 import PostIconBox from "../../common/PostIconBox";
 import basicImg from "../../../asset/basic-profile-img.svg";
 import {
-  LayOut,
-  Container,
+  PostDetailSection,
+  PostCardWrapper,
   ContentBox,
   ContentText,
   ImageContainer,
@@ -22,7 +22,7 @@ import {
   DotBtn,
   MoreBtn,
   Date,
-  UserInfoContainer,
+  CommentSection,
   ProfileImg,
   Wrapper,
   Name,
@@ -55,9 +55,6 @@ const PostViewContainer = ({ postId }) => {
     target.style.transform = `translateX(${-304 * Number(i)}px)`;
   };
 
-  const trigger = e => {
-    e.target.src = basicImg;
-  };
   const imgErrorHandler = e => {
     const target = e.target.parentNode.parentNode;
     target.style.display = "none";
@@ -85,17 +82,18 @@ const PostViewContainer = ({ postId }) => {
   };
   return (
     <>
-      <LayOut>
-        <UserInfoContainer>
-          <Link to={`/profile/${author?.accountname}`}>
-            <ProfileImg src={author?.image} />
-          </Link>
-          <Wrapper>
-            <Name>{author?.username}</Name>
-            <Id>{author?.accountname}</Id>
-          </Wrapper>
-        </UserInfoContainer>
-        <Container>
+      <PostDetailSection className="test">
+        <CommentSection>
+          <PostCardWrapper>
+            <Link to={`/profile/${author?.accountname}`}>
+              <ProfileImg src={author?.image} />
+            </Link>
+            <Wrapper>
+              <Name>{author?.username}</Name>
+              <Id>{author?.accountname}</Id>
+              <MoreBtn onClick={isPostDialog} />
+            </Wrapper>
+          </PostCardWrapper>
           <ContentBox>
             <ContentText>{content}</ContentText>
             <ImageContainer>
@@ -136,10 +134,9 @@ const PostViewContainer = ({ postId }) => {
             />
             <Date>{updatedAt}</Date>
           </ContentBox>
-          <MoreBtn onClick={isPostDialog} />
-        </Container>
+        </CommentSection>
         <CommentCard postId={postId} />
-      </LayOut>
+      </PostDetailSection>
       {isAuthorization ? (
         <>
           <Modal visible={postDialog}>
