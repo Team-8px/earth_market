@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
-import { multipleImageUploadsHandler } from "../../util/imageUploads";
+import { updatePost, getPost } from "../../actions/postActions";
+import { imageUploadsHandler } from "../../util/imageUploads";
 import {
   Form,
   MainFieldSet,
@@ -20,13 +21,13 @@ import {
 const PostUpdateForm = () => {
   const MAX_UPLOAD = 3;
 
-  const [myImage, setMyImage] = useState([]);
+  const [uploadPostImage, setUploadPostImage] = useState([]);
 
-  const [updateImage, setUpdateImage] = useState();
-
-  const { productId } = useParams();
+  const { postId } = useParams();
 
   const dispatch = useDispatch();
+
+  const ref = useRef(null);
 
   const {
     register,
@@ -38,31 +39,28 @@ const PostUpdateForm = () => {
     mode: "onChange",
   });
 
-  const { image, itemName, price, link } = useSelector(
-    state => state?.productRead,
-  );
+  const { content, postImages } = useSelector(state => state?.postRead);
+
+  const userImage = useSelector(state => state?.postRead?.post?.author?.image);
 
   useEffect(() => {
-    if (itemName) {
-      setValue("itemName", itemName);
+    setUploadPostImage(
+      postImages &&
+        postImages.map(image => {
+          return image;
+        }),
+    );
+  }, [postImages]);
+
+  useEffect(() => {
+    if (content) {
+      setValue("postText", content);
     }
-  }, [itemName]);
+  }, [content]);
 
   useEffect(() => {
-    if (price) {
-      setValue("price", price);
-    }
-  }, [price]);
-
-  useEffect(() => {
-    if (link) {
-      setValue("link", link);
-    }
-  }, [link]);
-
-  useEffect(() => {
-    dispatch(getProduct(productId));
-  }, [dispatch, productId]);
+    dispatch(getPost(postId));
+  }, [dispatch, postId]);
 
   useEffect(() => {
     if (ref === null || ref.current === null) {
@@ -80,20 +78,15 @@ const PostUpdateForm = () => {
     ref.current.style.height = `${ref.current.scrollHeight}px`;
   }, []);
 
-  const onChange = e => {
-    if (myImage.length <= MAX_UPLOAD - 1) {
-      const nowSelectImageList = e.target.files;
-
-      const nowImgURLList = [...myImage];
-
-      const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
-
-      nowImgURLList.push({
-        previewImg: nowImageUrl,
-        fileData: nowSelectImageList[0],
-      });
-
-      setMyImage(nowImgURLList);
+  const onChange = async e => {
+    if (uploadPostImage.length <= MAX_UPLOAD - 1) {
+      try {
+        const nowSelectImage = e.target.files;
+        const savedImage = await imageUploadsHandler(nowSelectImage[0]);
+        setUploadPostImage([...uploadPostImage, savedImage]);
+      } catch (e) {
+        console.log(e);
+      }
     } else {
       alert("사진 3개까지만 업로드 가능");
     }
@@ -107,16 +100,21 @@ const PostUpdateForm = () => {
     ref.current.style.height = `${ref.current.scrollHeight}px`;
   }, []);
 
-  const ref = useRef(null);
+  const onRemoveImg = deleteImage => {
+    setUploadPostImage(
+      uploadPostImage.filter(image => {
+        return image !== deleteImage;
+      }),
+    );
+  };
 
   const onSubmit = async data => {
     try {
       const { postText } = data;
-      const fileDatas = myImage;
-      const image = await multipleImageUploadsHandler(fileDatas);
-      dispatch(createPost(postText, image));
+      const joinFilename = uploadPostImage && uploadPostImage.join();
+      dispatch(updatePost(postText, joinFilename, postId));
     } catch (e) {
-      console.err(e);
+      console.log(e);
     }
   };
 
@@ -124,15 +122,11 @@ const PostUpdateForm = () => {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <MainFieldSet>
         <ProfileImage
-          onError={e => {
-            trigger(e);
-          }}
-          src={image}
+          onError={event => (event.target.style.display = "none")}
+          onLoad={event => (event.target.style.display = "inline-block")}
+          src={userImage}
         />
-        <PostForm
-          {...register("postText", { required: true })}
-          htmlFor="postText"
-        >
+        <PostForm htmlFor="postText">
           <textarea
             type="text"
             name="postText"
@@ -142,6 +136,12 @@ const PostUpdateForm = () => {
             onInput={resizeHeight}
             maxLength="200"
             spellCheck="false"
+            {...register("postText", {
+              required: true,
+              onChange: e => {
+                setValue("postText", e.target.value);
+              },
+            })}
           />
           <PostFormContainer htmlFor="imgUpload">
             <UploadImgIcon onChange={onChange} htmlFor="profileImg">
@@ -154,14 +154,23 @@ const PostUpdateForm = () => {
               />
             </UploadImgIcon>
             <PhotoList>
-              {myImage &&
-                myImage.map((image, i) => {
+              {uploadPostImage &&
+                uploadPostImage.map((image, i) => {
+                  console.log(image, "이미지");
                   return (
                     <Item key={i}>
-                      <PostImage src={image.previewImg} />
+                      <PostImage
+                        onError={event => (event.target.style.display = "none")}
+                        onLoad={event =>
+                          (event.target.style.display = "inline-block")
+                        }
+                        src={image}
+                      />
                       <RemoveBtn
                         type="button"
-                        onClick={i => onRemoveImg(image.url)}
+                        onClick={() => {
+                          return onRemoveImg(image);
+                        }}
                       >
                         <span className="ir">이미지 삭제하기</span>
                       </RemoveBtn>

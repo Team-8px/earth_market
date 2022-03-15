@@ -22,6 +22,7 @@ import {
   postDeleteReducer,
   postLikeReducer,
   postUnLikeReducer,
+  postUpdateReducer,
 } from "./reducers/postReducers";
 import {
   commentCreateReducer,
@@ -56,6 +57,7 @@ const reducer = combineReducers({
   postList: postListReducer,
   postRead: postReadReducer,
   postDelete: postDeleteReducer,
+  postUpdate: postUpdateReducer,
   followerPostList: followerPostListReducer,
   followerList: followerListReducer,
   followingList: followingListReducer,

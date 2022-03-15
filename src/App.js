@@ -6,14 +6,15 @@ import theme from "./styles/theme";
 
 import LoginEmail from "./PAGE/LoginEmail";
 import LoginMain from "./PAGE/LoginMain";
-import HomeKHK from "./PAGE/Home";
-import SearchKHK from "./PAGE/Search";
+import Home from "./PAGE/Home";
+import Search from "./PAGE/Search";
 import Profile from "./PAGE/Profile";
 import ProductUpload from "./PAGE/ProductUpload";
 import PostUpload from "./PAGE/PostUpload";
+import PostUpdate from "./PAGE/PostUpdate";
 import ProfileUpdate from "./PAGE/ProfileUpdate";
-import FollowerListKHK from "./PAGE/FollowerList";
-import FollowingListKHK from "./PAGE/FollowingList";
+import FollowerList from "./PAGE/FollowerList";
+import FollowingList from "./PAGE/FollowingList";
 import PostView from "./PAGE/PostView";
 import ProductUpdate from "./PAGE/ProductUpdate";
 import Join from "./PAGE/Join";
@@ -30,8 +31,8 @@ const App = () => {
             <Route path="/join" component={Join} exact />
             <Route path="/" component={LoginMain} exact />
             <Route path="/login" component={LoginEmail} exact />
-            <Route path="/home" component={HomeKHK} exact />
-            <Route path="/search" component={SearchKHK} exact />
+            <Route path="/home" component={Home} exact />
+            <Route path="/search" component={Search} exact />
             <Route path="/profile" component={Profile} exact />
             <Route path="/profile/:accountId" component={Profile} exact />
             <Route
@@ -41,16 +42,17 @@ const App = () => {
             />
             <Route
               path="/profile/:accountId/follower"
-              component={FollowerListKHK}
+              component={FollowerList}
               exact
             />
             <Route
               path="/profile/:accountId/following"
-              component={FollowingListKHK}
+              component={FollowingList}
               exact
             />
             <Route path="/post/upload" component={PostUpload} exact />
             <Route path="/post/:postId" component={PostView} exact />
+            <Route path="/post/:postId/update" component={PostUpdate} exact />
             <Route path="/product/upload" component={ProductUpload} exact />
             <Route
               path="/product/:productId/update"
