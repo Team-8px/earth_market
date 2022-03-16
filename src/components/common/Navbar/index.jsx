@@ -20,7 +20,7 @@ function Navigation() {
         </StyledNavLink>
       </NavItem>
       <NavItem>
-        <StyledNavLink to="/profile" className="myprofile">
+        <StyledNavLink to={{ pathname: '/profile', state: { prevPath: window.location.pathname } }} className="myprofile">
           프로필
         </StyledNavLink>
       </NavItem>
