@@ -8,7 +8,7 @@ export const SearchSection = styled.main`
   height: calc(100% - 108px);
   padding: 30px 16px 20px;
   overflow-y: scroll;
-  /* min-width: 100%; */
+  min-width: 100%;
 
 `;
 

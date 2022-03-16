@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   SearchUserList,
   SearchUserImgWrapper,
@@ -17,11 +18,11 @@ function SearchCard({ Link, userimage, username, accountname }) {
     <SearchUserList>
       <SearchUserImgWrapper to={Link}>
         <SearchUserImg src={userimage} onError={e => trigger(e)} />
+        <SearchUserInfoWrapper>
+          <SearchUserName>{username}</SearchUserName>
+          <SearchUserId>{accountname}</SearchUserId>
+        </SearchUserInfoWrapper>
       </SearchUserImgWrapper>
-      <SearchUserInfoWrapper>
-        <SearchUserName>{username}</SearchUserName>
-        <SearchUserId>{accountname}</SearchUserId>
-      </SearchUserInfoWrapper>
     </SearchUserList>
   );
 }
