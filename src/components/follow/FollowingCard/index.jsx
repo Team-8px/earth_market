@@ -1,11 +1,11 @@
 import React from "react";
 import {
-  FollowerItem,
-  FollowerWrapper,
-  FollowerImg,
-  FollowerInfoWrapper,
-  FollowerUserName,
-  FollowerIntro,
+  FollowingItem,
+  FollowingImgWrapper,
+  FollowingImg,
+  FollowingInfoWrapper,
+  FollowingUserName,
+  FollowingIntro,
   FollowBtn,
   CancelBtn,
 } from "./index.style";
@@ -15,7 +15,7 @@ const trigger = e => {
   e.target.src = basicImg;
 };
 
-function FollowerCard({
+function FollowingCard({
   Link,
   image,
   accountname,
@@ -26,25 +26,24 @@ function FollowerCard({
   onFollowClick,
 }) {
   return (
-    <FollowerItem>
-      <FollowerWrapper to={Link}>
-        <FollowerImg
+    <FollowingItem>
+      <FollowingImgWrapper to={Link}>
+        <FollowingImg
           onError={e => {
             trigger(e);
           }}
           src={image} />
-      </FollowerWrapper>
-      <FollowerInfoWrapper>
-        <FollowerUserName>{username}</FollowerUserName>
-        <FollowerIntro>{intro}</FollowerIntro>
-      </FollowerInfoWrapper>
+      </FollowingImgWrapper>
+      <FollowingInfoWrapper>
+        <FollowingUserName>{username}</FollowingUserName>
+        <FollowingIntro>{intro}</FollowingIntro>
+      </FollowingInfoWrapper>
       {isfollow ? (
         <CancelBtn onClick={() => onUnfollowClick(accountname)}>취소</CancelBtn>
       ) : (
         <FollowBtn onClick={() => onFollowClick(accountname)}>팔로우</FollowBtn>
       )}
-    </FollowerItem>
+    </FollowingItem>
   );
 }
-
-export default FollowerCard;
+export default FollowingCard;

@@ -27,10 +27,13 @@ export const FollowingImg = styled.img.attrs(props => ({
 `;
 
 export const FollowingInfoWrapper = styled.div`
-  margin-left: 12px;
-  width: calc(100% - 118px);
+  width: calc(100% - 160px);
   height: 100%;
-  align-self: flex-start;
+  margin-left: 12px;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
 `;
 
 export const FollowingUserName = styled.strong`
@@ -40,10 +43,10 @@ export const FollowingUserName = styled.strong`
   font-size: 14px;
   font-weight: 500;
 `;
-export const FollowingIntro = styled.strong`
-  color: #767676;
+export const FollowingIntro = styled.span`
   font-size: 12px;
-  line-height: 15px;
+  line-height: 1;
+  color: ${props => props.theme.palette["subText"]};
 `;
 
 export const FollowBtn = styled.button.attrs({ type: "button" })`
