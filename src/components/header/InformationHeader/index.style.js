@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FollowHeaderLayOut = styled.header`
+export const InformationLayOut = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,7 +14,7 @@ export const FollowHeaderLayOut = styled.header`
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
-export const FollowHeaderWrap = styled.div`
+export const InformationWrap = styled.div`
   display: flex;
   align-items: center;
 `;
