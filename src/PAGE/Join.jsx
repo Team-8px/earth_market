@@ -10,7 +10,7 @@ const JoinJS = () => {
 
   useEffect(() => {
     if (window.localStorage.getItem("token")) {
-      history.push("/join/email");
+      history.push("/home");
     }
   }, [history]);
 
