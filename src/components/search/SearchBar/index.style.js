@@ -5,7 +5,6 @@ export const SearchHaeder = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
-  min-width: 390px;
   height: 48px;
   background-color: #fff;
   z-index: 10;
