@@ -40,16 +40,16 @@ export const PostFormContainer = styled.div`
   padding-top: 12px;
   overflow-x: scroll;
   overflow: hidden;
+`;
 
-  input {
-    position: absolute;
-    left: -10000px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    padding: 0;
-  }
+export const UploadImgInput = styled.input`
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
 `;
 
 export const UploadImgIcon = styled.label`

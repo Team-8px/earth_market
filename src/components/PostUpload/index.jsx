@@ -18,6 +18,7 @@ import {
   RemoveBtn,
   Item,
   UploadBtn,
+  UploadImgInput,
 } from "./index.style";
 
 const PostUploadForm = () => {
@@ -62,7 +63,6 @@ const PostUploadForm = () => {
   const onChange = e => {
     if (myImage.length <= MAX_UPLOAD - 1) {
       const nowSelectImageList = e.target.files;
-
       const nowImgURLList = [...myImage];
 
       const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
@@ -107,6 +107,7 @@ const PostUploadForm = () => {
         return image.previewImg !== deleteImage;
       }),
     );
+    URL.revokeObjectURL(deleteImage);
   };
 
   return (
@@ -132,9 +133,9 @@ const PostUploadForm = () => {
             maxLength="200"
             spellCheck="false"
           />
-          <PostFormContainer htmlFor="imgUpload">
+          <PostFormContainer>
             <UploadImgIcon onChange={onChange} htmlFor="profileImg">
-              <input
+              <UploadImgInput
                 type="file"
                 accept="image/jpg,image/png,image/jpeg,image/gif"
                 name="profileImg"
