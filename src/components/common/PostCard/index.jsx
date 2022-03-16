@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { towardProfileLink } from "../../../util/towardLinkAddress";
 import PostIconBox from "../PostIconBox/index";
 import basicImg from "../../../asset/basic-profile-img.svg";
 import {
-  CardSection,
+  CardLayout,
   CardProfileContainer,
+  CardProfileLink,
   CardProfileImg,
   CardAthorWrapper,
   CardAthorName,
@@ -16,8 +17,8 @@ import {
   CardImageList,
   CardImageItem,
   CardImage,
-  CardDotWrapper,
   CardDotList,
+  CardDotItem,
   CardDotBtn,
   CardMoreBtn,
   CardDateText,
@@ -56,22 +57,25 @@ function PostCard({
   };
 
   return (
-    <CardSection>
+    <CardLayout>
+      <h3 className="textHidden">게시물</h3>
       <CardProfileContainer>
-        <CardProfileImg
-          alt="프로필 이미지"
-          src={profileImage || basicImg}
-          onError={e => {
-            trigger(e);
-          }}
-          onClick={() => history.push(towardProfileLink(accountname))}
-        />
-        <CardAthorWrapper>
-          <CardAthorName>{username}</CardAthorName>
-          <CardAthorId>{accountname}</CardAthorId>
-        </CardAthorWrapper>
+        <h4 className="textHidden">게시물 작성자</h4>
+        <CardProfileLink to={() => (towardProfileLink(accountname))} onError={e => {
+          trigger(e);
+        }}>
+          <CardProfileImg
+            alt="프로필 이미지"
+            src={profileImage || basicImg}
+          />
+          <CardAthorWrapper>
+            <CardAthorName>{username}</CardAthorName>
+            <CardAthorId>{accountname}</CardAthorId>
+          </CardAthorWrapper>
+        </CardProfileLink>
       </CardProfileContainer>
       <CardContentContainer>
+        <h4 className="textHidden">게시물 내용</h4>
         <CardContentText>{content}</CardContentText>
         <CardImageContainer>
           <CardImageList>
@@ -86,20 +90,20 @@ function PostCard({
               </CardImageItem>
             ))}
           </CardImageList>
-          <CardDotList>
-            {postImages.length !== 1 ? (
-              <CardDotWrapper>
-                {postImages &&
-                  postImages.map((_, i) => (
+          {postImages.length !== 1 ? (
+            <CardDotList>
+              {postImages &&
+                postImages.map((_, i) => (
+                  <CardDotItem>
                     <CardDotBtn
                       key={Math.random() * 100}
                       onClick={e => moveSlide(e, i)}
                       className={activeIndex === i ? "current" : ""}
                     />
-                  ))}
-              </CardDotWrapper>
-            ) : null}
-          </CardDotList>
+                  </CardDotItem>
+                ))}
+            </CardDotList>
+          ) : null}
         </CardImageContainer>
         <PostIconBox
           like={likeCount}
@@ -110,7 +114,7 @@ function PostCard({
         <CardDateText>{updatedAt}</CardDateText>
       </CardContentContainer>
       <CardMoreBtn onClick={() => postDialog(postid)} />
-    </CardSection>
+    </CardLayout >
   );
 }
 export default PostCard;

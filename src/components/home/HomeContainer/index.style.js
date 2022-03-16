@@ -12,7 +12,7 @@ export const ProfileSection = styled.main`
   width: 100vw;
 `;
 
-export const NoneFollowSection = styled.main`
+export const NoneFollowContainer = styled.main`
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -37,6 +37,7 @@ export const NoneFeed = styled.span`
     margin: 0 auto 32px;
   }
 `;
+
 export const SearchBtn = styled.button.attrs({ type: "button" })`
   width: 110px;
   height: 40px;

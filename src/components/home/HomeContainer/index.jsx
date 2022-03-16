@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { getFollowerPostList } from "../../../actions/followAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalListBtn, ModalAlertBtn } from "../../common/Modal";
 import { Alert, AlertBtn } from "../../common/Alert";
-import { ProfileSection, NoneFeed, SearchBtn, NoneFollowSection } from "./index.style";
+import { ProfileSection, NoneFeed, SearchBtn, NoneFollowContainer } from "./index.style";
 import { changeDefaltImage } from "../../../util/changeDefaltImage";
 import PostCard from "../../common/PostCard";
 import dayjs from "dayjs";
 
 function HomeContainer() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { posts } = useSelector(state => state?.followerPostList);
   const [postDialog, setPostDialog] = useState(false);
@@ -48,14 +49,12 @@ function HomeContainer() {
             })}
         </ProfileSection>
       ) : (
-        <NoneFollowSection>
+        <NoneFollowContainer>
           <NoneFeed>
-            <span> 유저를 검색해 팔로우 해보세요</span>
+            유저를 검색해 팔로우 해보세요
           </NoneFeed>
-          <Link to={"/search"}>
-            <SearchBtn>검색하기</SearchBtn>
-          </Link>
-        </NoneFollowSection>
+          <SearchBtn onClick={() => history.push("/search")}>검색하기</SearchBtn>
+        </NoneFollowContainer>
       )}
       <Modal visible={postDialog}>
         <ModalAlertBtn isAlert={isPostAlert}>신고하기</ModalAlertBtn>
