@@ -94,9 +94,9 @@ function PostCard({
             <CardDotList>
               {postImages &&
                 postImages.map((_, i) => (
-                  <CardDotItem>
+                  <CardDotItem
+                    key={Math.random() * 100}>
                     <CardDotBtn
-                      key={Math.random() * 100}
                       onClick={e => moveSlide(e, i)}
                       className={activeIndex === i ? "current" : ""}
                     />
