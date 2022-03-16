@@ -6,7 +6,7 @@ import {
   unfollowUser,
   followUser,
 } from "../../../actions/followAction";
-import FollowingCard from "../FollowingCard/inex";
+import FollowingCard from "../FollowingCard";
 import { changeDefaltImage } from "../../../util/changeDefaltImage";
 import { FollowingSection, FollowingList } from "./index.style";
 function FollowingContainer() {
