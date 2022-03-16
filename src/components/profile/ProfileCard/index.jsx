@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { getWhichUserStatus } from "../../../util/getWhichUser";
 import { followUser, unfollowUser } from "../../../actions/followAction";
 import basicImg from "../../../asset/basic-profile-img.svg";
@@ -15,7 +16,6 @@ import {
   FollowCount,
   FollowText,
   UserInfoButtonsWrapper,
-  BtnLink,
   ProfileBtn,
   FollowBtn,
   CancelBtn,
@@ -51,6 +51,8 @@ const ProfileCard = ({
     e.target.src = basicImg;
   };
 
+  const history = useHistory();
+
   return (
     <UserInfoWrapper>
       <UserInfoImg
@@ -73,12 +75,10 @@ const ProfileCard = ({
       </FollowingLink>
       {getWhichUserStatus() === "my" ? (
         <UserInfoButtonsWrapper>
-          <BtnLink to="/profile/myself/update">
-            <ProfileBtn>프로필수정</ProfileBtn>
-          </BtnLink>
-          <BtnLink as={"div"} onClick={() => MoveAddProduct()}>
-            <ProfileBtn>상품추가</ProfileBtn>
-          </BtnLink>
+          <ProfileBtn onClick={() => {
+            history.push("/profile/myself/update");
+          }}>프로필 수정</ProfileBtn>
+          <ProfileBtn onClick={() => MoveAddProduct()}>상품추가</ProfileBtn>
         </UserInfoButtonsWrapper>
       ) : (
         <UserInfoButtonsWrapper>

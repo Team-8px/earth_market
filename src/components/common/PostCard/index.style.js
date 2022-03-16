@@ -33,6 +33,7 @@ export const CardProfileLink = styled(Link)`
 export const CardAthorWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `;
 
 export const CardAthorName = styled.span`

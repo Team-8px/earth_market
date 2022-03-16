@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const ProductSection = styled.section`
   border-top: 0.5px solid ${props => props.theme.palette["border"]};
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
@@ -11,6 +12,7 @@ export const ProductWrapper = styled.div`
   padding: 20px 0;
   width: 358px;
 `;
+
 export const ProductCardList = styled.ul`
   display: flex;
   font-size: 12px;
@@ -27,9 +29,8 @@ export const ProductCardList = styled.ul`
   }
 `;
 
-export const ProductTitle = styled.h2`
+export const ProductTitle = styled.h4`
   font-size: 16px;
   line-height: 1.2;
-  margin-bottom: 16px;
   font-weight: 700;
 `;

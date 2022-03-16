@@ -8,27 +8,30 @@ export const GallerySection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 0;
   background-color: #fff;
-  padding: 0px 16px 70px;
+  padding-bottom: 70px;
+  border-top: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
-export const GalleryHeader = styled.header`
+export const GalleryWrapper = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
-  background-color: #fff;
 `;
 
-export const GalleryHeaderIconWrapper = styled.div`
+export const GalleryIconList = styled.ul`
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  max-width: 390px;
+  justify-content: flex-end;
   width: 100%;
+  max-width: 390px;
   height: 44px;
-  padding-right: 16px;
+`;
+
+export const GalleryIconItem = styled.li`
+padding-right: 16px;
 `;
 
 export const CardGalleryBtn = styled.button.attrs({ type: "button" })`
@@ -37,8 +40,9 @@ export const CardGalleryBtn = styled.button.attrs({ type: "button" })`
   width: 26px;
   height: 26px;
 `;
+
 export const GalleryIcon = styled.img.attrs(props => ({
-  src: props.alt === "on" ? cardOn : cardOff,
+  src: props.alt === "리스트로 보기" ? cardOn : cardOff,
 }))`
   width: 100%;
   height: 100%;
@@ -47,13 +51,12 @@ export const GalleryIcon = styled.img.attrs(props => ({
 export const AlbumGalleryBtn = styled.button.attrs({ type: "button" })`
   border: none;
   background-color: inherit;
-  margin-left: 16px;
   width: 26px;
   height: 26px;
 `;
 
 export const AlbumIcon = styled.img.attrs(props => ({
-  src: props.alt === "on" ? albumOn : albumOff,
+  src: props.alt === "갤러리로 보기" ? albumOff : albumOn,
 }))`
   width: 100%;
   height: 100%;

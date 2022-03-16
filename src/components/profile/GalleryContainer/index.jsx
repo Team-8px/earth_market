@@ -9,8 +9,9 @@ import { changeDefaltImage } from "../../../util/changeDefaltImage";
 import dayjs from "dayjs";
 import {
   GallerySection,
-  GalleryHeader,
-  GalleryHeaderIconWrapper,
+  GalleryWrapper,
+  GalleryIconList,
+  GalleryIconItem,
   CardGalleryBtn,
   GalleryIcon,
   AlbumGalleryBtn,
@@ -61,16 +62,21 @@ function GalleryContainer() {
   return (
     <>
       <GallerySection>
-        <GalleryHeader>
-          <GalleryHeaderIconWrapper>
-            <CardGalleryBtn onClick={galleryHandler} disabled={gallery}>
-              {gallery ? <GalleryIcon alt="on" /> : <GalleryIcon alt="off" />}
-            </CardGalleryBtn>
-            <AlbumGalleryBtn onClick={galleryHandler} disabled={!gallery}>
-              {gallery ? <AlbumIcon alt="off" /> : <AlbumIcon alt="on" />}
-            </AlbumGalleryBtn>
-          </GalleryHeaderIconWrapper>
-        </GalleryHeader>
+        <h4 className="textHidden">게시물</h4>
+        <GalleryWrapper>
+          <GalleryIconList>
+            <GalleryIconItem>
+              <CardGalleryBtn onClick={galleryHandler} disabled={gallery}>
+                {gallery ? <GalleryIcon alt="리스트로 보기" /> : <GalleryIcon alt="리스트로 보기 취소" />}
+              </CardGalleryBtn>
+            </GalleryIconItem>
+            <GalleryIconItem>
+              <AlbumGalleryBtn onClick={galleryHandler} disabled={!gallery}>
+                {gallery ? <AlbumIcon alt="갤러리로 보기" /> : <AlbumIcon alt="갤러리로 보기 취소" />}
+              </AlbumGalleryBtn>
+            </GalleryIconItem>
+          </GalleryIconList>
+        </GalleryWrapper>
 
         {gallery ? (
           posts &&

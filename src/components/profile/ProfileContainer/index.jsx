@@ -38,6 +38,7 @@ const ProfileContainer = () => {
 
   return (
     <UserInfoContainer>
+      <h3 className="textHidden">프로필</h3>
       <ProfileCard
         image={changeDefaltImage(image)}
         username={username}
