@@ -11,10 +11,10 @@ const LoginCard = ({ loading }) => {
     <>
       <LoginList className={loading ? "" : "up"}>
         <LoginItem>
-          <LoginBtn icon={emailLogin} onClick = {() => history.push("/login")}> 이메일로 로그인 </LoginBtn>
+          <LoginBtn icon={emailLogin} onClick={() => history.push("/login")}> 이메일로 로그인 </LoginBtn>
         </LoginItem>
         <LoginItem>
-          <LoginBtn icon={signUp} onClick = {() => history.push("/join")}> 회원가입 </LoginBtn>
+          <LoginBtn icon={signUp} onClick={() => history.push("/join")}> 회원가입 </LoginBtn>
         </LoginItem>
       </LoginList>
     </>

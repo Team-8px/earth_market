@@ -1,9 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-export const LoginContainerSection = styled.section`
-  width: 100%;
-  height: 100%;
-`;
+
 const slideUp = keyframes`
     from{
         background-color: #fff;
@@ -12,7 +9,8 @@ const slideUp = keyframes`
         background-color: #3f97fb;
     }
 `;
-export const LoginContainerWrapper = styled.div`
+
+export const LoginContainerSection = styled.main`
   width: 100%;
   height: 100%;
   display: flex;
