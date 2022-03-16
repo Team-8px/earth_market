@@ -4,19 +4,17 @@ import { InformationLayOut, InformationWrap, PrevBtn, HeaderTitle } from "./inde
 import PrevIcon from "../../../asset/icon-arrow-left.svg";
 
 function FollowHeader({ following }) {
-    const history = useHistory();
-    return (
-        <InformationLayOut>
-            <InformationWrap>
-                <PrevBtn onClick={() => history.goBack()}>
-                    <img src={PrevIcon} alt="이전 페이지 버튼" />
-                </PrevBtn>
-                <HeaderTitle>
-                    어스마켓 소식
-                </HeaderTitle>
-            </InformationWrap>
-        </InformationLayOut>
-    );
+  const history = useHistory();
+  return (
+    <InformationLayOut>
+      <PrevBtn onClick={() => history.goBack()}>
+        <img src={PrevIcon} alt="이전 페이지 버튼" />
+      </PrevBtn>
+      <HeaderTitle>
+        어스마켓 소식
+      </HeaderTitle>
+    </InformationLayOut>
+  );
 };
 
 export default FollowHeader;

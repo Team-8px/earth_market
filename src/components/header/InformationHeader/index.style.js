@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const InformationLayOut = styled.header`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   position: sticky;
   width: 100%;
@@ -12,11 +11,6 @@ export const InformationLayOut = styled.header`
   z-index: 10;
   padding: 0 16px;
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
-`;
-
-export const InformationWrap = styled.div`
-  display: flex;
-  align-items: center;
 `;
 
 export const PrevBtn = styled.button`
