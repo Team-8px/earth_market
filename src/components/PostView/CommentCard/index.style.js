@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const ProfileLinkImg = styled.img`
+  margin-right: 12px;
   width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 0.5px solid #dbdbdb;
 `;
 
 export const SubmitChatLayOut = styled.section`
