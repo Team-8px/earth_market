@@ -105,7 +105,7 @@ export const logout = () => dispatch => {
 };
 
 export const joinMembership =
-  (email, password, username, accountname) => async dispatch => {
+  (email, password, username, accountname, image, intro) => async dispatch => {
     try {
       dispatch({
         type: USER_JOIN_MEMBERSHIP_REQUEST,
@@ -118,7 +118,7 @@ export const joinMembership =
       };
 
       const reqData = {
-        user: { email, password, username, accountname },
+        user: { email, password, username, accountname, image, intro },
       };
 
       const { data } = await axios.post(`${API_URL}/user`, reqData, config);

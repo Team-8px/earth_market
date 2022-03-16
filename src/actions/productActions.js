@@ -116,7 +116,7 @@ export const listProducts = accountId => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(`${API_URL}/product/${accountId}`, config);
-
+    console.log(data, "listProducts");
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
