@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import prev from "../../../asset/icon-arrow-left.svg";
 import more from "../../../asset/icon-more-vertical.svg";
 
@@ -18,14 +17,7 @@ export const HeaderLayout = styled.header`
   z-index: 10;
 `;
 
-export const PrevLink = styled(Link)`
-  width: 22px;
-  height: 22px;
-  border: none;
-  cursor: pointer;
-`;
-
-export const MoreBtn = styled.button.attrs({ type: "button" })`
+export const HeaderBtn = styled.button.attrs({ type: "button" })`
   width: 22px;
   height: 22px;
   border: none;

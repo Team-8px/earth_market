@@ -7,13 +7,12 @@ import { Alert, AlertBtn } from "../Alert";
 import { Modal, ModalListBtn, ModalAlertBtn } from "../Modal";
 import {
   HeaderLayout,
-  PrevLink,
+  HeaderBtn,
   PrevIcon,
-  MoreBtn,
   MoreIcon,
 } from "./index.style";
 
-const CommonHeader = (props) => {
+const CommonHeader = () => {
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -31,12 +30,12 @@ const CommonHeader = (props) => {
   return (
     <>
       <HeaderLayout>
-        <PrevLink to={props.location.state.prevPath}>
+        <HeaderBtn onClick={() => history.goBack()}>
           <PrevIcon />
-        </PrevLink>
-        <MoreBtn>
+        </HeaderBtn>
+        <HeaderBtn>
           <MoreIcon onClick={isNavDialog} />
-        </MoreBtn>
+        </HeaderBtn>
       </HeaderLayout>
 
       <Modal visible={navDialog}>
