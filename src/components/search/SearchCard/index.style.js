@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const SearchUserList = styled.li`
+export const SearchUserItem = styled.li`
   position: relative;
   display: flex;
   align-items: center;
@@ -14,7 +14,10 @@ export const SearchUserImgWrapper = styled(Link)`
   cursor: pointer;
 `;
 
-export const SearchUserImg = styled.img`
+export const SearchUserImg = styled.img.attrs(props => ({
+  // src: props.src || basicImg,
+  alt: "프로필 이미지",
+}))`
   width: 50px;
   height: 50px;
   border-radius: 50%;

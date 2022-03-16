@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import {
-  SearchUserList,
+  SearchUserItem,
   SearchUserImgWrapper,
   SearchUserImg,
   SearchUserInfoWrapper,
@@ -15,7 +14,7 @@ function SearchCard({ Link, userimage, username, accountname }) {
     e.target.src = basicImg;
   };
   return (
-    <SearchUserList>
+    <SearchUserItem>
       <SearchUserImgWrapper to={Link}>
         <SearchUserImg src={userimage} onError={e => trigger(e)} />
         <SearchUserInfoWrapper>
@@ -23,7 +22,7 @@ function SearchCard({ Link, userimage, username, accountname }) {
           <SearchUserId>{accountname}</SearchUserId>
         </SearchUserInfoWrapper>
       </SearchUserImgWrapper>
-    </SearchUserList>
+    </SearchUserItem>
   );
 }
 export default SearchCard;
