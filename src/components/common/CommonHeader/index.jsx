@@ -6,14 +6,14 @@ import { logout } from "../../../actions/userActions";
 import { Alert, AlertBtn } from "../Alert";
 import { Modal, ModalListBtn, ModalAlertBtn } from "../Modal";
 import {
-  HeaderSection,
-  HeaderContainer,
-  IconLink,
+  HeaderLayout,
+  PrevLink,
   PrevIcon,
+  MoreBtn,
   MoreIcon,
 } from "./index.style";
 
-const CommonHeader = () => {
+const CommonHeader = (props) => {
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -30,16 +30,14 @@ const CommonHeader = () => {
 
   return (
     <>
-      <HeaderSection>
-        <HeaderContainer>
-          <IconLink>
-            <PrevIcon onClick={() => history.goBack()} />
-          </IconLink>
-          <IconLink>
-            <MoreIcon onClick={isNavDialog} />
-          </IconLink>
-        </HeaderContainer>
-      </HeaderSection>
+      <HeaderLayout>
+        <PrevLink to={props.location.state.prevPath}>
+          <PrevIcon />
+        </PrevLink>
+        <MoreBtn>
+          <MoreIcon onClick={isNavDialog} />
+        </MoreBtn>
+      </HeaderLayout>
 
       <Modal visible={navDialog}>
         <ModalAlertBtn isAlert={isNavAlert}>로그아웃</ModalAlertBtn>
