@@ -6,9 +6,8 @@ import { logout } from "../../../actions/userActions";
 import { Alert, AlertBtn } from "../Alert";
 import { Modal, ModalListBtn, ModalAlertBtn } from "../Modal";
 import {
-  HeaderSection,
-  HeaderContainer,
-  IconLink,
+  HeaderLayout,
+  HeaderBtn,
   PrevIcon,
   MoreIcon,
 } from "./index.style";
@@ -30,16 +29,14 @@ const CommonHeader = () => {
 
   return (
     <>
-      <HeaderSection>
-        <HeaderContainer>
-          <IconLink>
-            <PrevIcon onClick={() => history.goBack()} />
-          </IconLink>
-          <IconLink>
-            <MoreIcon onClick={isNavDialog} />
-          </IconLink>
-        </HeaderContainer>
-      </HeaderSection>
+      <HeaderLayout>
+        <HeaderBtn onClick={() => history.goBack()}>
+          <PrevIcon />
+        </HeaderBtn>
+        <HeaderBtn>
+          <MoreIcon onClick={isNavDialog} />
+        </HeaderBtn>
+      </HeaderLayout>
 
       <Modal visible={navDialog} close={() => setNavDialog(false)}>
         <ModalAlertBtn isAlert={isNavAlert}>로그아웃</ModalAlertBtn>

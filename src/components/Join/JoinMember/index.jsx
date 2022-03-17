@@ -4,8 +4,8 @@ import axios from "axios";
 import { API_URL } from "../../../constants/defaultUrl";
 import {
   JoinMemberForm,
-  JoinMemberFieldset,
   JoinMemberTitle,
+  JoinMemberFieldset,
   JoinMemberInputWrapper,
   JoinMemberLabel,
   JoinMemberInput,
@@ -69,51 +69,49 @@ const JoinMember = ({ setNextPage, setUserInfo }) => {
 
   return (
     <JoinMemberForm onSubmit={handleSubmit(onSubmit)}>
+      <JoinMemberTitle>이메일로 회원가입</JoinMemberTitle>
       <JoinMemberFieldset>
-        <JoinMemberTitle>이메일로 회원가입</JoinMemberTitle>
-        <JoinMemberInputWrapper>
-          <JoinMemberLabel>
-            이메일
-            <JoinMemberInput
-              name="email"
-              id="email"
-              type="email"
-              placeholder="이메일 주소를 입력해 주세요."
-              autoComplete="off"
-              spellCheck="false"
-              {...register("email", {
-                required: true,
-                pattern: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-              })}
-            />
-            {errors?.email?.type === "required" && (
-              <ErrorMessage>* 필수 입력사항입니다.</ErrorMessage>
-            )}
-            {errors.email?.type === "pattern" && (
-              <ErrorMessage>*올바르지 않은 이메일 형식입니다.</ErrorMessage>
-            )}
-            {emailErrorMessage && (
-              <ErrorMessage>{emailErrorMessage}</ErrorMessage>
-            )}
-          </JoinMemberLabel>
-          <JoinMemberLabel>
-            비밀번호
-            <JoinMemberInput
-              name="password"
-              id="password"
-              type="password"
-              spellCheck="false"
-              placeholder="비밀번호를 설정해 주세요."
-              {...register("password", { required: true, minLength: 6 })}
-            />
-            {errors?.password?.type === "required" && (
-              <ErrorMessage>* 필수 입력사항입니다.</ErrorMessage>
-            )}
-            {errors.password?.type === "minLength" && (
-              <ErrorMessage>* 비밀번호는 6자 이상이어야 합니다.</ErrorMessage>
-            )}
-          </JoinMemberLabel>
-        </JoinMemberInputWrapper>
+        <JoinMemberLabel htmlFor="email">
+          이메일
+          <JoinMemberInput
+            name="email"
+            id="email"
+            type="email"
+            placeholder="이메일 주소를 입력해 주세요."
+            autoComplete="off"
+            spellCheck="false"
+            {...register("email", {
+              required: true,
+              pattern: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+            })}
+          />
+          {errors?.email?.type === "required" && (
+            <ErrorMessage>* 필수 입력사항입니다.</ErrorMessage>
+          )}
+          {errors.email?.type === "pattern" && (
+            <ErrorMessage>*올바르지 않은 이메일 형식입니다.</ErrorMessage>
+          )}
+          {emailErrorMessage && (
+            <ErrorMessage>{emailErrorMessage}</ErrorMessage>
+          )}
+        </JoinMemberLabel>
+        <JoinMemberLabel htmlFor="password">
+          비밀번호
+          <JoinMemberInput
+            name="password"
+            id="password"
+            type="password"
+            spellCheck="false"
+            placeholder="비밀번호를 설정해 주세요."
+            {...register("password", { required: true, minLength: 6 })}
+          />
+          {errors?.password?.type === "required" && (
+            <ErrorMessage>* 필수 입력사항입니다.</ErrorMessage>
+          )}
+          {errors.password?.type === "minLength" && (
+            <ErrorMessage>* 비밀번호는 6자 이상이어야 합니다.</ErrorMessage>
+          )}
+        </JoinMemberLabel>
         <JoinMemberBtn disabled={!isValid}>다음</JoinMemberBtn>
       </JoinMemberFieldset>
     </JoinMemberForm>

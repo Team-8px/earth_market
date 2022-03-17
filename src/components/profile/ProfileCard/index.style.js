@@ -19,14 +19,14 @@ export const UserInfoImg = styled.img`
   object-fit: cover;
 `;
 
-export const UserInfoName = styled.strong`
+export const UserInfoName = styled.span`
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
   margin-bottom: 6px;
 `;
 
-export const UserInfoId = styled.p`
+export const UserInfoId = styled.span`
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
@@ -39,7 +39,7 @@ export const UserInfoId = styled.p`
   }
 `;
 
-export const UserInfoIntro = styled.span`
+export const UserInfoIntro = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
@@ -84,29 +84,26 @@ export const UserInfoButtonsWrapper = styled.div`
   display: flex;
 `;
 
-export const BtnLink = styled(Link)`
-  padding: 0 8px;
-`;
-
 export const ProfileBtn = styled.button`
-  width: 120px;
-  height: 34px;
-  border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid ${props => props.theme.palette["main"]};
-  color: ${props => props.theme.palette["main"]};
+  width: 120px;
+  height: 34px;
+  margin: 0 6px;
   font-weight: 500;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 1.2;
+  color: ${props => props.theme.palette["main"]};
+  border: 1px solid ${props => props.theme.palette["main"]};
+  border-radius: 30px;
 `;
 
 export const FollowBtn = styled.button`
+  margin: 0 6px;
+  border-radius: 30px;
   width: 120px;
   height: 34px;
-  padding: 0 8px;
-  border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;

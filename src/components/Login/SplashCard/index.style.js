@@ -47,7 +47,7 @@ to{
 }
 `;
 
-export const SplashSection = styled.div`
+export const SplashImgWrapper = styled.h1`
   animation-duration: 0.5s;
   animation-name: ${fadeOut};
   animation-fill-mode: forwards;
@@ -68,6 +68,7 @@ export const SplashSection = styled.div`
 
 export const SplashImg = styled.img.attrs(props => ({
   src: props.className === "blue" ? splashLogoBlue : splashLogoWhite,
+  alt: "어스마켓",
 }))`
   margin: 0 auto;
   width: 10rem;

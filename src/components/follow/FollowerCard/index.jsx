@@ -1,7 +1,7 @@
 import React from "react";
 import {
   FollowerItem,
-  FollowerImgWrapper,
+  FollowerWrapper,
   FollowerImg,
   FollowerInfoWrapper,
   FollowerUserName,
@@ -27,14 +27,14 @@ function FollowerCard({
 }) {
   return (
     <FollowerItem>
-      <FollowerImgWrapper to={Link}>
-        <FollowerImg 
-        onError={e => {
-          trigger(e);
-        }}
-        src={image} />
-      </FollowerImgWrapper>
-      <FollowerInfoWrapper to={Link}>
+      <FollowerWrapper to={Link}>
+        <FollowerImg
+          onError={e => {
+            trigger(e);
+          }}
+          src={image} />
+      </FollowerWrapper>
+      <FollowerInfoWrapper>
         <FollowerUserName>{username}</FollowerUserName>
         <FollowerIntro>{intro}</FollowerIntro>
       </FollowerInfoWrapper>

@@ -61,7 +61,7 @@ function ProductContainer() {
                   <ProductCard
                     key={product.id}
                     productText={product.itemName}
-                    productPrice={product.price}
+                    productPrice={product.price} dnjs
                     img={product.itemImage}
                     onClick={() => isProductDialog(product.id)}
                   />
@@ -75,7 +75,7 @@ function ProductContainer() {
           <Modal visible={productDialog} close={() => setProductDialog(false)}>
             <ModalAlertBtn isAlert={isProductAlert}>삭제</ModalAlertBtn>
             <ModalListBtn isDialog={isProductDialog}>
-              <Link to={`/product/${productId}/update`}>수정 </Link>
+              <Link to={`/product/${productId}/update`}>수정</Link>
             </ModalListBtn>
             <ModalListBtn isDialog={isProductDialog}>
               웹사이트에서 상품 보기

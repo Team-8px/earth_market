@@ -1,26 +1,23 @@
 import styled from "styled-components";
 
 export const JoinMemberForm = styled.form `
-  box-sizing: border-box;
-  margin-top: 30px;
-`;
-
-export const JoinMemberFieldset = styled.fieldset `
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+  margin-top: 30px;
 `;
 
 export const JoinMemberTitle = styled.h2`
   font-weight: 500;
   font-size: 24px;
-  line-height: 30px;
+  line-height: 1.2;
   text-align: center;
 `;
 
-export const JoinMemberInputWrapper = styled.div`
+export const JoinMemberFieldset = styled.fieldset `
   width: 322px;
-  margin: 40px 0 14px;
+  margin-top: 40px;
 `;
 
 export const JoinMemberLabel = styled.label`
@@ -30,7 +27,7 @@ export const JoinMemberLabel = styled.label`
     font-size: 12px;
     margin-bottom: 16px;
     cursor: pointer;
-`
+`;
 
 export const JoinMemberInput = styled.input`
     width: 100%;
@@ -47,19 +44,23 @@ export const JoinMemberInput = styled.input`
     &:focus {
       border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
-`
+`;
 
-export const ErrorMessage = styled.p`
-  color: #eb5757;
+export const ErrorMessage = styled.strong`
+  display: inline-block;
+  color: ${props => props.theme.palette["waring"]};
   font-weight: 500;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 1;
   margin-top: 6px;
-`
+`;
 
-export const JoinMemberBtn = styled.button.attrs({type:"submit"})`
+export const JoinMemberBtn = styled.button.attrs({
+  type:"submit"
+  })`
   width: 322px;
   height: 44px;
+  margin-top: 14px;
   background: ${props => props.theme.palette["main"]};
   color: #fff;
   font-size: 14px;

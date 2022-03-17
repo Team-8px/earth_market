@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  SearchUserList,
+  SearchUserItem,
   SearchUserImgWrapper,
   SearchUserImg,
   SearchUserInfoWrapper,
@@ -14,15 +14,15 @@ function SearchCard({ Link, userimage, username, accountname }) {
     e.target.src = basicImg;
   };
   return (
-    <SearchUserList>
+    <SearchUserItem>
       <SearchUserImgWrapper to={Link}>
         <SearchUserImg src={userimage} onError={e => trigger(e)} />
+        <SearchUserInfoWrapper>
+          <SearchUserName>{username}</SearchUserName>
+          <SearchUserId>{accountname}</SearchUserId>
+        </SearchUserInfoWrapper>
       </SearchUserImgWrapper>
-      <SearchUserInfoWrapper to={Link}>
-        <SearchUserName>{username}</SearchUserName>
-        <SearchUserId>{accountname}</SearchUserId>
-      </SearchUserInfoWrapper>
-    </SearchUserList>
+    </SearchUserItem>
   );
 }
 export default SearchCard;

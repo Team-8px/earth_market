@@ -1,20 +1,18 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { FollowHeaderLayOut, SearchBtn, HeaderTitle } from "./index.style";
-import SearchIcon from "../../../asset/icon-search.svg";
+import { Link, useHistory } from "react-router-dom";
+import { HomeHeaderLayOut, SearchBtn, SearchIcon, HeaderTitle } from "./index.style";
 
 function HomeHeader() {
   const history = useHistory();
   return (
-    <FollowHeaderLayOut>
-      <HeaderTitle>어스마켓 피드</HeaderTitle>
+    <HomeHeaderLayOut>
+      <HeaderTitle>
+        <Link to="/home">어스마켓 피드</Link>
+      </HeaderTitle>
       <SearchBtn onClick={() => history.push("/search")}>
-        <img
-          src={SearchIcon}
-          alt="검색 버튼"
-        />
+        <SearchIcon />
       </SearchBtn>
-    </FollowHeaderLayOut>
+    </HomeHeaderLayOut>
   );
 };
 

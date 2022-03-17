@@ -14,11 +14,11 @@ function ProductCard({ productText, productPrice, img, onClick }) {
     <ProductWrapper onClick={onClick}>
       <ProductImgWrapper>
         <ProductImg src={img} />
+        <ProductTextWrapper>
+          <ProductText>{productText}</ProductText>
+          <ProductPrice>{changeCommaPrice(productPrice)}원</ProductPrice>
+        </ProductTextWrapper>
       </ProductImgWrapper>
-      <ProductTextWrapper>
-        <ProductText>{productText}</ProductText>
-        <ProductPrice>{changeCommaPrice(productPrice)}</ProductPrice>
-      </ProductTextWrapper>
     </ProductWrapper>
   );
 }
