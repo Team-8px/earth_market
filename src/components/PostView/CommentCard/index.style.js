@@ -48,7 +48,7 @@ export const SubmitChatInput = styled.input`
 
 export const SubmitChatButton = styled.button`
   display: block;
-  width: 30px;
+  width: 80px;
   border-style: none;
   cursor: pointer;
   color: ${props => props.theme.palette["lightGray"]};

@@ -22,7 +22,7 @@ export const SearchUserImg = styled.img`
   overflow: hidden;
 `;
 
-export const SearchUserInfoWrapper = styled.div`
+export const SearchUserInfoWrapper = styled(Link)`
   margin-left: 12px;
   width: calc(100% - 118px);
   height: 100%;

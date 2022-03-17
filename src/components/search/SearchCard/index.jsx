@@ -18,7 +18,7 @@ function SearchCard({ Link, userimage, username, accountname }) {
       <SearchUserImgWrapper to={Link}>
         <SearchUserImg src={userimage} onError={e => trigger(e)} />
       </SearchUserImgWrapper>
-      <SearchUserInfoWrapper>
+      <SearchUserInfoWrapper to={Link}>
         <SearchUserName>{username}</SearchUserName>
         <SearchUserId>{accountname}</SearchUserId>
       </SearchUserInfoWrapper>
