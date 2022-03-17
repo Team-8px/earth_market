@@ -63,8 +63,8 @@ const ProductUploadForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <h2 className="textHidden">상품 정보 입력창</h2>
       <ProductUploadFieldSet>
+        <legend className="textHidden">상품 정보 입력창</legend>
         <SubTitle>이미지 업로드</SubTitle>
         <ProductFormWrapper>
           <Label onChange={previewImage} htmlFor="itemImage">

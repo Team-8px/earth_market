@@ -112,8 +112,8 @@ const PostUploadForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <h3 className="textHidden">게시글 작성 페이지</h3>
       <PostFieldSet>
+        <legend className="textHidden">게시글 작성 페이지</legend>
         <ProfileImage
           onError={e => {
             trigger(e);

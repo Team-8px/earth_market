@@ -67,6 +67,7 @@ const ProductEditPage = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <MainFieldSet>
+        <legend className="textHidden">상품 정보 입력창</legend>
         <SubTitle>이미지 업로드</SubTitle>
         <ProductFormWrapper>
           <Label onChange={previewImage} htmlFor="itemImage">
