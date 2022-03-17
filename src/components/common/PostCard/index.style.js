@@ -42,6 +42,7 @@ export const CardAthorName = styled.span`
   line-height: 18px;
   margin-bottom: 2px;
 `;
+
 export const CardAthorId = styled.span`
   font-weight: 400;
   font-size: 12px;

@@ -5,7 +5,7 @@ export const InformationItem = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px 16px;
+  padding: 30px 20px;
   border-bottom: 1px solid ${props => props.theme.palette["border"]};
   &:last-child {
     border-bottom: none;
