@@ -14,6 +14,7 @@ export const NavList = styled.ul`
   justify-content: space-between;
   position: fixed;
   bottom: 0;
+  right: 0;
   left: 0;
   background-color: #fff;
   padding: 0 16px;
