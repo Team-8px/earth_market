@@ -5,11 +5,8 @@ import {
   getCommentList,
   deleteComment,
   commentCreateAction,
-  
 } from "../../../actions/commentAction";
-import { getUserProfile } from "../../../actions/userActions"
-import { getWhichUserAccountName } from "../../../util/getWhichUser";
-import { Modal, ModalAlertBtn, ModalListBtn } from "../../common/Modal";
+import { Modal, ModalAlertBtn } from "../../common/Modal";
 import { Alert, AlertBtn } from "../../common/Alert";
 import { CommentList, CommentItem } from "../CommentItem";
 import basicImg from "../../../asset/basic-profile-img.svg";
@@ -22,7 +19,7 @@ import {
   ProfileLinkImg,
 } from "./index.style";
 
-const CommentCard = ({ postId }) => {
+const CommentCard = ({ postId, myProfileImg }) => {
   const [chatDialog, setChatDialog] = useState(false);
 
   const [chatAlert, setChatAlert] = useState(false);
@@ -36,7 +33,7 @@ const CommentCard = ({ postId }) => {
   const { register, handleSubmit, reset } = useForm();
 
   const { craeteCommentId } = useSelector(state => state.commentCreate);
-  const { image } = useSelector(state => state.userReadProfile);
+
   const { deleteCommentId } = useSelector(state => state.commentDelete);
 
   const commentList = useSelector(state => state.commentList.comments);
@@ -44,12 +41,6 @@ const CommentCard = ({ postId }) => {
   useEffect(() => {
     dispatch(getCommentList(postId));
   }, [dispatch, postId, craeteCommentId, deleteCommentId]);
-  
-  const accountnameFromParams = getWhichUserAccountName();
-  
-  useEffect(() => {
-    dispatch(getUserProfile("sweetpotato"));
-  }, [dispatch]);
 
   const isChatDialog = commentId => {
     setCommentId(commentId);
@@ -95,7 +86,7 @@ const CommentCard = ({ postId }) => {
           onSubmit={handleSubmit(onSubmit)}
           autocomplete="new-password"
         >
-          <ProfileLinkImg src={image || basicImg} alt="프로필" />
+          <ProfileLinkImg src={myProfileImg || basicImg} alt="프로필" />
           <SubmitChatLabel>
             <span className="textHidden">댓글 입력하기</span>
             <SubmitChatInput
