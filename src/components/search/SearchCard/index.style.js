@@ -6,6 +6,9 @@ export const SearchUserList = styled.li`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  &:nth-last-child(1) {
+    padding-bottom: 20px;
+  }
 `;
 export const SearchUserImgWrapper = styled(Link)`
   cursor: pointer;
