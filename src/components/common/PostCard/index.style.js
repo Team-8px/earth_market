@@ -56,8 +56,8 @@ export const CardAthorId = styled.span`
 
 export const CardContentContainer = styled.section`
   padding-left: 54px;
-  cursor: pointer;
 `;
+
 export const CardContentText = styled.p`
   font-weight: 400;
   font-size: 14px;
@@ -76,6 +76,7 @@ export const CardImageContainer = styled.div`
 export const CardImageList = styled.ul`
   display: flex;
   transition: all 0.4s;
+  cursor: pointer;
 `;
 
 export const CardImageItem = styled.li`

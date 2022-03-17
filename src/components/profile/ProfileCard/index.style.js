@@ -55,6 +55,7 @@ export const FollowerLink = styled(Link)`
   text-align: center;
   cursor: pointer;
 `;
+
 export const FollowingLink = styled(Link)`
   position: absolute;
   display: block;
