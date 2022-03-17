@@ -5,7 +5,7 @@ import { imageUploadsHandler } from "../../util/imageUploads";
 import { createProduct } from "../../actions/productActions";
 import {
   Form,
-  MainFieldSet,
+  ProductUploadFieldSet,
   ProductFormWrapper,
   SubTitle,
   Label,
@@ -63,7 +63,8 @@ const ProductUploadForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <MainFieldSet>
+      <ProductUploadFieldSet>
+        <legend className="textHidden">상품 정보 입력창</legend>
         <SubTitle>이미지 업로드</SubTitle>
         <ProductFormWrapper>
           <Label onChange={previewImage} htmlFor="itemImage">
@@ -75,18 +76,19 @@ const ProductUploadForm = () => {
             />
             <input
               type="file"
-              accept="image/jpg,image/png,image/jpeg,image/gif"
               name="itemImage"
               id="itemImage"
+              accept="image/jpg,image/png,image/jpeg,image/gif"
               className="ir"
               {...register("itemImage", { required: true })}
             ></input>
           </Label>
         </ProductFormWrapper>
         <ProductFormWrapper>
-          <label>상품명</label>
+          <label htmlFor="itemName">상품명</label>
           <input
             name="itemName"
+            id="itemName"
             type="text"
             placeholder="2~10자 이내여야 합니다."
             autoComplete="off"
@@ -104,10 +106,11 @@ const ProductUploadForm = () => {
             <p>*2~10자 이내여야 합니다.</p>
           )}
 
-          <label>가격</label>
+          <label htmlFor="price">가격</label>
           <input
-            name="price"
             type="text"
+            name="price"
+            id="price"
             placeholder="숫자만 입력 가능합니다."
             autoComplete="off"
             spellCheck="false"
@@ -122,10 +125,11 @@ const ProductUploadForm = () => {
             })}
           />
           {errors.price?.type === "pattern" && <p>*숫자만 입력 가능합니다.</p>}
-          <label>판매 링크</label>
+          <label htmlFor="link">판매 링크</label>
           <input
-            name="link"
             type="text"
+            name="link"
+            id="link"
             placeholder="URL을 입력해 주세요."
             autoComplete="off"
             spellCheck="false"
@@ -142,7 +146,7 @@ const ProductUploadForm = () => {
         <UploadBtn type="submit" disabled={!isValid}>
           저장
         </UploadBtn>
-      </MainFieldSet>
+      </ProductUploadFieldSet>
     </Form>
   );
 };

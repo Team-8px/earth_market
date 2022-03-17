@@ -42,6 +42,12 @@ const CommentCard = ({ postId, myProfileImg }) => {
     dispatch(getCommentList(postId));
   }, [dispatch, postId, craeteCommentId, deleteCommentId]);
 
+  // const accountnameFromParams = getWhichUserAccountName();
+
+  // useEffect(() => {
+  //   dispatch(getUserProfile("sweetpotato"));
+  // }, [dispatch]);
+
   const isChatDialog = commentId => {
     setCommentId(commentId);
     setChatDialog(!chatDialog);
@@ -87,11 +93,12 @@ const CommentCard = ({ postId, myProfileImg }) => {
           autocomplete="new-password"
         >
           <ProfileLinkImg src={myProfileImg || basicImg} alt="프로필" />
-          <SubmitChatLabel>
+          <SubmitChatLabel htmlFor="comment">
             <span className="textHidden">댓글 입력하기</span>
             <SubmitChatInput
-              name="comment"
               type="text"
+              name="comment"
+              id="comment"
               placeholder="댓글 입력하기"
               autoComplete="off"
               {...register("comment")}

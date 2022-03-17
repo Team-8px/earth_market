@@ -23,4 +23,5 @@ export const PrevBtn = styled.button`
 export const HeaderTitle = styled.h2`
   margin-left: 8px;
   font-size: 18px;
+  font-weight: 500;
 `;

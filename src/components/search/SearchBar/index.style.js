@@ -48,7 +48,8 @@ export const SearchForm = styled.form`
 export const SearchInput = styled.input.attrs({
   name: "keyword",
   type: "text",
-  placeholder: "계정검색",
+  title: "계정 검색하기",
+  placeholder: "계정 검색",
   autoComplete: "off",
 })`
   width: 100%;

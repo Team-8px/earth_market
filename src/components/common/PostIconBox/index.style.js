@@ -14,7 +14,7 @@ export const LayOut = styled.div`
 export const ActiveLikeButton = styled.button`
   display: flex;
   align-items: center;
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
   margin-right: 18px;
   background-color: inherit;
   padding: 0;
@@ -32,7 +32,7 @@ export const ActiveLikeButton = styled.button`
 export const NotActiveLikeButton = styled.button`
   display: flex;
   align-items: center;
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
   margin-right: 18px;
   background-color: inherit;
   padding: 0;
@@ -52,10 +52,9 @@ export const LikeCount = styled.span``;
 export const CommentButton = styled.a`
   display: flex;
   align-items: center;
-  color: #767676;
+  color: ${props => props.theme.palette["subText"]};
 
   &::before {
-    cursor: pointer;
     display: block;
     content: "";
     width: 20px;

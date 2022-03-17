@@ -112,6 +112,7 @@ const PostUpload = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <MainFieldSet>
+        <legend className="textHidden">게시글 작성</legend>
         <ProfileImage
           onError={e => {
             trigger(e);

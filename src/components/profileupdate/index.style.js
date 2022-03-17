@@ -8,7 +8,7 @@ export const Form = styled.form`
   width: 100%;
 `;
 
-export const ProfileImgWrapper = styled.div`
+export const ProfileImgWrapper = styled.fieldset`
   margin-bottom: 30px;
   label {
     position: relative;
@@ -59,7 +59,7 @@ export const ProfileImgWrapper = styled.div`
 //     height: 110px;
 //   `;
 
-export const ProductFormWrapper = styled.div`
+export const ProductFormWrapper = styled.fieldset`
   margin: 0 auto 16px;
 
   label {
@@ -115,5 +115,4 @@ export const UploadBtn = styled.button`
   :disabled {
     background: ${props => props.theme.palette["lightMain"]};
   }
-  /* cursor: ${props => (props.disabled === true ? "default" : "pointer")}; */
-`;
+  `;

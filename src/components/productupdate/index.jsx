@@ -103,19 +103,20 @@ const ProductUpdateForm = () => {
           />
           <input
             type="file"
-            accept="image/jpg,image/png,image/jpeg,image/gif"
             name="itemImage"
             id="itemImage"
+            accept="image/jpg,image/png,image/jpeg,image/gif"
             className="ir"
             {...register("itemImage")}
           ></input>
         </Label>
       </ProductFormWrapper>
       <ProductFormWrapper>
-        <label>상품명</label>
+        <label htmlFor="itemName">상품명</label>
         <input
-          name="itemName"
           type="text"
+          name="itemName"
+          id="itemName"
           autoComplete="off"
           placeholder="2~10자 이내여야 합니다."
           {...register("itemName", {
@@ -133,10 +134,11 @@ const ProductUpdateForm = () => {
         {errors.itemName?.type === "maxLength" && (
           <p>*2~10자 이내여야 합니다.</p>
         )}
-        <label>가격</label>
+        <label htmlFor="price">가격</label>
         <input
-          name="price"
           type="text"
+          name="price"
+          id="price"
           autoComplete="off"
           placeholder="숫자만 입력 가능합니다."
           {...register("price", {
@@ -150,10 +152,11 @@ const ProductUpdateForm = () => {
           })}
         />
         {errors.price?.type === "pattern" && <p>*숫자만 입력 가능합니다.</p>}
-        <label>판매 링크</label>
+        <label htmlFor="link">판매 링크</label>
         <input
-          name="link"
           type="text"
+          name="link"
+          id="link"
           autoComplete="off"
           placeholder="URL을 입력해 주세요."
           {...register("link", {

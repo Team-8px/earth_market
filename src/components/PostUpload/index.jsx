@@ -8,7 +8,7 @@ import { getUserProfile } from "../../actions/userActions";
 import basicImg from "../../asset/basic-profile-img.svg";
 import {
   Form,
-  MainFieldSet,
+  PostFieldSet,
   ProfileImage,
   PostForm,
   PostFormContainer,
@@ -112,7 +112,8 @@ const PostUploadForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <MainFieldSet>
+      <PostFieldSet>
+        <legend className="textHidden">게시글 작성 페이지</legend>
         <ProfileImage
           onError={e => {
             trigger(e);
@@ -123,6 +124,7 @@ const PostUploadForm = () => {
           {...register("postText", { required: true })}
           htmlFor="postText"
         >
+          <h4 className="textHidden">게시글 작성하기</h4>
           <textarea
             type="text"
             name="postText"
@@ -134,12 +136,13 @@ const PostUploadForm = () => {
             spellCheck="false"
           />
           <PostFormContainer>
+            <h4 className="textHidden">게시글 이미지 업로드</h4>
             <UploadImgIcon onChange={onChange} htmlFor="profileImg">
               <UploadImgInput
                 type="file"
-                accept="image/jpg,image/png,image/jpeg,image/gif"
                 name="profileImg"
                 id="profileImg"
+                accept="image/jpg,image/png,image/jpeg,image/gif"
                 {...register("profileImg")}
               />
             </UploadImgIcon>
@@ -166,7 +169,7 @@ const PostUploadForm = () => {
             업로드
           </UploadBtn>
         </PostForm>
-      </MainFieldSet>
+      </PostFieldSet>
     </Form>
   );
 };

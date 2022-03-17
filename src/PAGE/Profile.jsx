@@ -8,13 +8,13 @@ import GalleryContainer from "../components/profile/GalleryContainer";
 const Profile = () => {
   return (
     <>
+      <Navbar />
       <CommonHeader />
       <main className="main">
         <ProfileContainer />
         <ProductContainer />
         <GalleryContainer />
       </main>
-      <Navbar />
     </>
   );
 };

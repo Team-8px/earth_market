@@ -79,7 +79,7 @@ function PostCard({
         <CardContentText>{content}</CardContentText>
         <CardImageContainer>
           <CardImageList>
-            {postImages.map(img => (
+            {postImages && postImages.map(img => (
               <CardImageItem key={img}>
                 <CardImage
                   src={img}
