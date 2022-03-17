@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { useHistory } from "react-router-dom";
-import {Form, MainFieldSet, ProductFormWrapper, SubTitle, Label, UploadBtn} from "./index.style";
+import { Form, MainFieldSet, ProductFormWrapper, SubTitle, Label, UploadBtn } from "./index.style";
 
 // 비즈니스 로직
 import { useDispatch } from "react-redux";
@@ -46,23 +46,23 @@ const ProductEditPage = () => {
   };
 
   // 3자리 마다 콤마
-//   const { getValues } = useForm({
-//     mode: 'all',
-// });
+  //   const { getValues } = useForm({
+  //     mode: 'all',
+  // });
 
-//   const [num, setNum] = useState('');
+  //   const [num, setNum] = useState('');
 
-//   const inputPriceFormat = (str) => {
-//     const comma = (str) => {
-//       str = String(str);
-//       return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
-//     };
-//     const uncomma = (str) => {
-//       str = String(str);
-//       return str.replace(/[^\d]+/g, "");
-//     };
-//     return comma(uncomma(str));
-//   };
+  //   const inputPriceFormat = (str) => {
+  //     const comma = (str) => {
+  //       str = String(str);
+  //       return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
+  //     };
+  //     const uncomma = (str) => {
+  //       str = String(str);
+  //       return str.replace(/[^\d]+/g, "");
+  //     };
+  //     return comma(uncomma(str));
+  //   };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -82,51 +82,52 @@ const ProductEditPage = () => {
               name="itemImage"
               id="itemImage"
               className="ir"
-              {...register("itemImage", {required: true})}
+              {...register("itemImage", { required: true })}
             ></input>
           </Label>
         </ProductFormWrapper>
         <ProductFormWrapper>
-          <label>상품명</label>
+          <label htmlFor="itemName">상품명</label>
           <input
-            name="itemName"
             type="text"
+            name="itemName"
+            id="itemName"
             placeholder="2~10자 이내여야 합니다."
             autoComplete="off"
             spellCheck="false"
-            {...register("itemName", {required: true, minLength: 2, maxLength: 10,})}
+            {...register("itemName", { required: true, minLength: 2, maxLength: 10, })}
           />
-          {errors.itemName?.type ==="minLength" && (<p>*2~10자 이내여야 합니다.</p>)}
-          {errors.itemName?.type ==="maxLength" && (<p>*2~10자 이내여야 합니다.</p>)}
-          <label>가격</label>
+          {errors.itemName?.type === "minLength" && (<p>*2~10자 이내여야 합니다.</p>)}
+          {errors.itemName?.type === "maxLength" && (<p>*2~10자 이내여야 합니다.</p>)}
+          <label htmlFor="price">가격</label>
           <input
-            name="price"
             type="text"
-            // value={num}
-            // onChange={(e) => setNum(inputPriceFormat(e.target.value))}
+            name="price"
+            id="price"
             placeholder="숫자만 입력 가능합니다."
             autoComplete="off"
             spellCheck="false"
-            {...register("price", {required: true, pattern: /^[0-9]*$/})}
+            {...register("price", { required: true, pattern: /^[0-9]*$/ })}
           />
           {errors.price?.type === "pattern" && (<p>*숫자만 입력 가능합니다.</p>)}
-          <label>판매 링크</label>
+          <label htmlFor="link">판매 링크</label>
           <input
-            name="link"
             type="text"
+            name="link"
+            id="link"
             placeholder="URL을 입력해 주세요."
             autoComplete="off"
             spellCheck="false"
-            {...register("link", {required: true})}
+            {...register("link", { required: true })}
           />
         </ProductFormWrapper>
-        <UploadBtn 
+        <UploadBtn
           type="submit"
           onClick={nextPageHandler}
           isValid={isValid}
-          >
-            저장
-          </UploadBtn>
+        >
+          저장
+        </UploadBtn>
       </MainFieldSet>
     </Form>
   );

@@ -140,9 +140,9 @@ const PostUploadForm = () => {
             <UploadImgIcon onChange={onChange} htmlFor="profileImg">
               <UploadImgInput
                 type="file"
-                accept="image/jpg,image/png,image/jpeg,image/gif"
                 name="profileImg"
                 id="profileImg"
+                accept="image/jpg,image/png,image/jpeg,image/gif"
                 {...register("profileImg")}
               />
             </UploadImgIcon>

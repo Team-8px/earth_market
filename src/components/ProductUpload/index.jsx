@@ -76,9 +76,9 @@ const ProductUploadForm = () => {
             />
             <input
               type="file"
-              accept="image/jpg,image/png,image/jpeg,image/gif"
               name="itemImage"
               id="itemImage"
+              accept="image/jpg,image/png,image/jpeg,image/gif"
               className="ir"
               {...register("itemImage", { required: true })}
             ></input>
@@ -108,9 +108,9 @@ const ProductUploadForm = () => {
 
           <label htmlFor="price">가격</label>
           <input
+            type="text"
             name="price"
             id="price"
-            type="text"
             placeholder="숫자만 입력 가능합니다."
             autoComplete="off"
             spellCheck="false"
@@ -127,9 +127,9 @@ const ProductUploadForm = () => {
           {errors.price?.type === "pattern" && <p>*숫자만 입력 가능합니다.</p>}
           <label htmlFor="link">판매 링크</label>
           <input
+            type="text"
             name="link"
             id="link"
-            type="text"
             placeholder="URL을 입력해 주세요."
             autoComplete="off"
             spellCheck="false"

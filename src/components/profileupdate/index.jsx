@@ -123,9 +123,9 @@ const ProfileUpdateForm = () => {
           />
           <input
             type="file"
-            accept="image/jpg,image/png,image/jpeg,image/gif"
             name="profileImg"
             id="profileImg"
+            accept="image/jpg,image/png,image/jpeg,image/gif"
             title="프로필 이미지 업로드 버튼"
             {...register("profileImg" /* { required: true } */)}
           />
@@ -134,9 +134,9 @@ const ProfileUpdateForm = () => {
       <ProductFormWrapper>
         <label htmlFor="username">사용자 이름</label>
         <input
+          type="text"
           name="username"
           id="username"
-          type="text"
           autoComplete="off"
           placeholder="2~10자 이내여야 합니다."
           {...register("username", {
@@ -156,9 +156,9 @@ const ProfileUpdateForm = () => {
         )}
         <label htmlFor="accountname"> 계정 ID</label>
         <input
+          type="text"
           name="accountname"
           id="accountname"
-          type="text"
           autoComplete="off"
           placeholder="숫자만 입력 가능합니다."
           {...register("accountname", {
@@ -172,9 +172,9 @@ const ProfileUpdateForm = () => {
         {accountIdErrorMessage && <p>{accountIdErrorMessage}</p>}
         <label htmlFor="intro">소개</label>
         <input
+          type="text"
           name="intro"
           id="intro"
-          type="text"
           autoComplete="off"
           placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
           {...register("intro", {

@@ -38,7 +38,7 @@ function SearchBar({ setSearchUsers }) {
           <PrevIcon />
         </PrevBtn>
         <SearchForm onSubmit={handleSubmit(onSubmit)}>
-          <SearchInput aria-label="search" {...register("keyword")} />
+          <SearchInput {...register("keyword")} />
         </SearchForm>
       </SearchSection>
     </SearchHeader>
