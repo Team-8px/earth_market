@@ -1,6 +1,6 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { InformationLayOut, InformationWrap, PrevBtn, HeaderTitle } from "./index.style";
+import { Link, useHistory } from "react-router-dom";
+import { InformationLayOut, PrevBtn, HeaderTitle } from "./index.style";
 import PrevIcon from "../../../asset/icon-arrow-left.svg";
 
 function FollowHeader({ following }) {
@@ -11,7 +11,7 @@ function FollowHeader({ following }) {
         <img src={PrevIcon} alt="이전 페이지 버튼" />
       </PrevBtn>
       <HeaderTitle>
-        어스마켓 소식
+        <Link to="/information">어스마켓 소식</Link>
       </HeaderTitle>
     </InformationLayOut>
   );
