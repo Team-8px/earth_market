@@ -63,6 +63,7 @@ const PostUploadForm = () => {
   const onChange = e => {
     if (myImage.length <= MAX_UPLOAD - 1) {
       const nowSelectImageList = e.target.files;
+
       const nowImgURLList = [...myImage];
 
       const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
@@ -71,7 +72,6 @@ const PostUploadForm = () => {
         previewImg: nowImageUrl,
         fileData: nowSelectImageList[0],
       });
-
       setMyImage(nowImgURLList);
     } else {
       alert("사진 3개까지만 업로드 가능");

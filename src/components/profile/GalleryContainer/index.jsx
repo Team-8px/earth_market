@@ -115,7 +115,7 @@ function GalleryContainer() {
 
       {getWhichUserStatus() === "my" ? (
         <>
-          <Modal visible={postDialog}>
+          <Modal visible={postDialog} close={() => setPostDialog(false)}>
             <ModalAlertBtn isAlert={isPostAlert}>삭제</ModalAlertBtn>
             <Link to={`/post/${postId}/update`}>
               <ModalListBtn isDialog={isPostDialog}>수정</ModalListBtn>
