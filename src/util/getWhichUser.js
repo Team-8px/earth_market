@@ -6,7 +6,7 @@ export const getWhichUserStatus = () => {
   const params = window.location.pathname.split("/");
   //console.log(params[2]);
   const accountnameFromParams = params[2];
-  //console.log(accountnameFromParams);
+  console.log("accountnameFromParams", accountnameFromParams);
   return accountnameFromParams ? "you" : "my";
 };
 
