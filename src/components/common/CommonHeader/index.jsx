@@ -41,9 +41,8 @@ const CommonHeader = () => {
         </HeaderContainer>
       </HeaderSection>
 
-      <Modal visible={navDialog}>
+      <Modal visible={navDialog} close={() => setNavDialog(false)}>
         <ModalAlertBtn isAlert={isNavAlert}>로그아웃</ModalAlertBtn>
-        <ModalListBtn isDialog={isNavDialog}>닫기</ModalListBtn>
       </Modal>
 
       <Alert visible={navAlert} messageText="로그아웃 하시겠어요?">
