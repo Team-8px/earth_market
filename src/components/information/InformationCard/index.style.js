@@ -7,12 +7,14 @@ export const InformationItem = styled.li`
   align-items: center;
   padding: 30px 16px;
   border-bottom: 1px solid ${props => props.theme.palette["border"]};
-  cursor: pointer;
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 export const InformationWrapper = styled.article`
+  max-width: 800px;
   width: 100%;
-  max-width: 450px;
 `;
 
 export const InformationLink = styled(Link)`
@@ -20,49 +22,60 @@ export const InformationLink = styled(Link)`
 `;
 
 export const InformationImg = styled.img`
-  width: 140px;
-  height: 90px;
+  width: 160px;
+  height: 105px;
   border-radius: 8px;
   object-fit: cover;
   background: ${props => props.theme.palette["border"]};
-  object-fit: cover;
 `;
 
 export const InformationInfoWrapper = styled.div`
-  margin-left: 15px;
-  width: calc(100% - 118px);
-  height: 100%;
-  align-self: flex-start;
-  padding-bottom: 10px;
+  width: calc(100% - 160px);
+  min-width: 275px;
+  margin-left: 20px;
 `;
 
 export const InformationInfo = styled.span`
-    font-size: 12px;
-    color: ${props => props.theme.palette["subText"]};
+  display: inline-block;
+  font-size: 12px;
+  color: ${props => props.theme.palette["main"]};
+`;
+
+export const InformationDate = styled.span`
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 13px;
+  color: ${props => props.theme.palette["main"]};
+  margin-top: 8.5px;
+  &::before {
+    content: "·";
+    margin: 0 4px;
+  }
 `;
 
 export const InformationTitle = styled.strong`
   display: block;
-  margin: 5px 0 14px;
-  line-height: 1.3;
+  margin: 5px 0 10px;
   font-size: 20px;
   font-weight: 600;
-  height: 50px;
+  line-height: 1.6;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  &:hover{
+    text-decoration: underline;
+    text-underline-position: under;
+    text-decoration-color: ${props => props.theme.palette["main"]};
+  }
+`;
+
+export const InformationText = styled.p`
+  font-size: 14px;
+  line-height: 1.6;
+  overflow: hidden;
+  color: ${props => props.theme.palette["subText"]};
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-`;
-
-export const InformationDate = styled.span`
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 13px;
-    color: ${props => props.theme.palette["subText"]};
-    margin-top: 8.5px;
-    &::before {
-      content: "·";
-      margin: 0 4px;
-    }
 `;
