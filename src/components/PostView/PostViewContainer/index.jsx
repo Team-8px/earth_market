@@ -72,7 +72,6 @@ const PostViewContainer = ({ postId }) => {
   }, [author]);
 
   const isPostDialog = () => setPostDialog(!postDialog);
-
   const isPostAlert = postId => {
     setPostAlert(!postAlert);
     if (typeof postId === "string") {
@@ -138,9 +137,8 @@ const PostViewContainer = ({ postId }) => {
       </PostDetailSection>
       {isAuthorization ? (
         <>
-          <Modal visible={postDialog}>
+          <Modal visible={postDialog} close={() => setPostDialog(false)}>
             <ModalAlertBtn isAlert={isPostAlert}>삭제</ModalAlertBtn>
-            <ModalListBtn isDialog={isPostDialog}>닫기</ModalListBtn>
           </Modal>
           <Alert visible={postAlert} messageText="게시글을 삭제 하시겠어요?">
             <AlertBtn isAlert={() => isPostAlert(postId)}>네</AlertBtn>
@@ -149,9 +147,8 @@ const PostViewContainer = ({ postId }) => {
         </>
       ) : (
         <>
-          <Modal visible={postDialog}>
+          <Modal visible={postDialog} close={() => setPostDialog(false)}>
             <ModalAlertBtn isAlert={isPostAlert}>신고하기</ModalAlertBtn>
-            <ModalListBtn isDialog={isPostDialog}>닫기</ModalListBtn>
           </Modal>
           <Alert visible={postAlert} messageText="신고 하시겠어요?">
             <AlertBtn isAlert={isPostAlert}>네</AlertBtn>

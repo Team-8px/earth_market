@@ -4,7 +4,12 @@ import { getFollowerPostList } from "../../../actions/followAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalListBtn, ModalAlertBtn } from "../../common/Modal";
 import { Alert, AlertBtn } from "../../common/Alert";
-import { ProfileSection, NoneFeed, SearchBtn, NoneFollowSection } from "./index.style";
+import {
+  ProfileSection,
+  NoneFeed,
+  SearchBtn,
+  NoneFollowSection,
+} from "./index.style";
 import { changeDefaltImage } from "../../../util/changeDefaltImage";
 import PostCard from "../../common/PostCard";
 import dayjs from "dayjs";
@@ -57,9 +62,8 @@ function HomeContainer() {
           </Link>
         </NoneFollowSection>
       )}
-      <Modal visible={postDialog}>
+      <Modal visible={postDialog} close={() => setPostDialog(false)}>
         <ModalAlertBtn isAlert={isPostAlert}>신고하기</ModalAlertBtn>
-        <ModalListBtn isDialog={isPostDialog}>모달창 닫기</ModalListBtn>
       </Modal>
       <Alert visible={postAlert} messageText="게시글을 신고하시겠어요?">
         <AlertBtn isAlert={isPostAlert}>예</AlertBtn>

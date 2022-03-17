@@ -111,9 +111,13 @@ const CommentCard = ({ postId }) => {
       </SubmitChatLayOut>
       {isAuthorization ? (
         <>
-          <Modal visible={chatDialog}>
+          <Modal
+            visible={chatDialog}
+            close={() => {
+              setChatDialog(false);
+            }}
+          >
             <ModalAlertBtn isAlert={isChatAlert}>삭제</ModalAlertBtn>
-            <ModalListBtn isDialog={isChatDialog}>닫기</ModalListBtn>
           </Modal>
           <Alert visible={chatAlert} messageText="삭제 하시겠어요?">
             <AlertBtn isAlert={() => isChatAlert(commentId)}>네</AlertBtn>
@@ -122,9 +126,13 @@ const CommentCard = ({ postId }) => {
         </>
       ) : (
         <>
-          <Modal visible={chatDialog}>
+          <Modal
+            visible={chatDialog}
+            close={() => {
+              setChatDialog(false);
+            }}
+          >
             <ModalAlertBtn isAlert={isChatAlert}>신고하기</ModalAlertBtn>
-            <ModalListBtn isDialog={isChatDialog}>닫기</ModalListBtn>
           </Modal>
 
           <Alert visible={chatAlert} messageText="신고 하시겠어요?">

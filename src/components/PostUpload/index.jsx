@@ -18,6 +18,7 @@ import {
   RemoveBtn,
   Item,
   UploadBtn,
+  UploadImgInput,
 } from "./index.style";
 
 const PostUploadForm = () => {
@@ -71,7 +72,6 @@ const PostUploadForm = () => {
         previewImg: nowImageUrl,
         fileData: nowSelectImageList[0],
       });
-
       setMyImage(nowImgURLList);
     } else {
       alert("사진 3개까지만 업로드 가능");
@@ -107,6 +107,7 @@ const PostUploadForm = () => {
         return image.previewImg !== deleteImage;
       }),
     );
+    URL.revokeObjectURL(deleteImage);
   };
 
   return (
@@ -132,9 +133,9 @@ const PostUploadForm = () => {
             maxLength="200"
             spellCheck="false"
           />
-          <PostFormContainer htmlFor="imgUpload">
+          <PostFormContainer>
             <UploadImgIcon onChange={onChange} htmlFor="profileImg">
-              <input
+              <UploadImgInput
                 type="file"
                 accept="image/jpg,image/png,image/jpeg,image/gif"
                 name="profileImg"

@@ -20,7 +20,7 @@ export function ModalAlertBtn({ children, isAlert }) {
     </ModalItem>
   );
 }
-export function Modal({ children, visible }) {
+export function Modal({ children, visible, close }) {
   const [animate, setAnimate] = useState(false);
   const [localVisible, setLocalVisible] = useState(visible);
 
@@ -35,7 +35,7 @@ export function Modal({ children, visible }) {
 
   if (!localVisible && !animate) return null;
   return (
-    <ModalContainer disappear={!visible}>
+    <ModalContainer disappear={!visible} onClick={() => close()}>
       <ModalList disappear={!visible}>{children}</ModalList>
     </ModalContainer>
   );

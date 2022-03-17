@@ -115,12 +115,11 @@ function GalleryContainer() {
 
       {getWhichUserStatus() === "my" ? (
         <>
-          <Modal visible={postDialog}>
+          <Modal visible={postDialog} close={() => setPostDialog(false)}>
             <ModalAlertBtn isAlert={isPostAlert}>삭제</ModalAlertBtn>
             <Link to={`/post/${postId}/update`}>
               <ModalListBtn isDialog={isPostDialog}>수정</ModalListBtn>
             </Link>
-            <ModalListBtn isDialog={isPostDialog}>닫기</ModalListBtn>
           </Modal>
           <Alert visible={postAlert} messageText="게시글을 삭제할까요?">
             <AlertBtn isAlert={isPostAlert}>취소</AlertBtn>
@@ -131,7 +130,7 @@ function GalleryContainer() {
         </>
       ) : (
         <>
-          <Modal visible={postDialog}>
+          <Modal visible={postDialog} close={() => setPostDialog(false)}>
             <ModalAlertBtn isAlert={isPostAlert}>신고</ModalAlertBtn>
             <ModalListBtn isDialog={isPostDialog}>닫기</ModalListBtn>
           </Modal>
