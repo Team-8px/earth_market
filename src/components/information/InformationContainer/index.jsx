@@ -43,7 +43,7 @@ const InformationContainer = time => {
                 title={newsItem?.title}
                 image={`https://www.nongmin.com${newsItem.imageModel.uploadPath}${newsItem.imageModel.storeFileName}`}
                 date={timeForToday(newsItem?.issueDate)}
-                category={newsItem?.categoryNameThird}
+                category="농민신문"
                 content={newsItem?.readContent}
                 link={`https://www.nongmin.com/news/NEWS/FLD/CNT/${newsItem.articleSeq}/view`}
               />
