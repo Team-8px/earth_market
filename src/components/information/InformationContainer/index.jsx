@@ -37,23 +37,3 @@ const InformationContainer = () => {
 };
 
 export default InformationContainer;
-
-/* <InfomationWrapper>
-      <InfomationList>
-        {response &&
-          response.map((item, i) => {
-            return (
-              <InformationCard
-                key={Math.random() * 100}
-                title={item.children[5].value.slice(0, -1)}
-                text={item.children[7].value.slice(0, -1)}
-                image={`http://www.nongsaro.go.kr/portal/imgView.do?atchmnflGroupEsntlCode=${item.children[0].value.slice(
-                  0,
-                  -1,
-                )}`}
-                date={timeForToday(item.children[11].value.slice(0, -1))}
-              />
-            );
-          })}
-      </InfomationList>
-    </InfomationWrapper> */
