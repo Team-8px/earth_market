@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const InformationItem = styled.li`
   display: flex;
@@ -17,7 +16,7 @@ export const InformationWrapper = styled.article`
   width: 100%;
 `;
 
-export const InformationLink = styled(Link)`
+export const InformationLink = styled.div`
   display: flex;
 `;
 
@@ -62,7 +61,7 @@ export const InformationTitle = styled.strong`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  &:hover{
+  &:hover {
     text-decoration: underline;
     text-underline-position: under;
     text-decoration-color: ${props => props.theme.palette["main"]};

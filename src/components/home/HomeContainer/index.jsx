@@ -16,11 +16,17 @@ import dayjs from "dayjs";
 
 function HomeContainer() {
   const history = useHistory();
+
   const dispatch = useDispatch();
+
   const { posts } = useSelector(state => state?.followerPostList);
+
   const [postDialog, setPostDialog] = useState(false);
+
   const [postAlert, setPostAlert] = useState(false);
+
   const isPostDialog = () => setPostDialog(!postDialog);
+
   const isPostAlert = () => setPostAlert(!postAlert);
 
   useEffect(() => {

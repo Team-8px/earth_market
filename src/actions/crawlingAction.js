@@ -10,14 +10,14 @@ export const getNewsList = () => async dispatch => {
   try {
     dispatch({ type: CRAWLING_NEWS_LIST_REQUEST });
 
-    const response = await axios.get(NEWS_URL);
+    const { data } = await axios.get(NEWS_URL);
 
-    console.log(response);
+    const payload = data.categoryNewsList;
 
-    /* dispatch({
+    dispatch({
       type: CRAWLING_NEWS_LIST_SUCCESS,
-      payload: data.posts,
-    }); */
+      payload,
+    });
   } catch (error) {
     dispatch({
       type: CRAWLING_NEWS_LIST_FAIL,
