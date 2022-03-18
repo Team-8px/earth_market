@@ -1,3 +1,4 @@
+// 추후 업데이트 예정
 import React from "react";
 import { useHistory } from "react-router-dom";
 import {
@@ -7,7 +8,7 @@ import {
   PrevBtn,
 } from "./index.style";
 
-export default function Loading() {
+export default function LoadingPage() {
   const history = useHistory();
   return (
     <LoadingContainer>

@@ -5,28 +5,10 @@ import { getNewsList } from "../../../actions/crawlingAction";
 import { timeForToday } from "../../../util/timeForToday";
 import { InfomationWrapper, InfomationList } from "./index.style.js";
 
-/* import Loading from "../../etc/Loading";
-import Error from "../../etc/Error"; */
-
 const InformationContainer = time => {
-  /*   const [loading, response, error] = usePromise(() => {
-    const data = axios.get(
-      "http://api.nongsaro.go.kr/service/monthFarmTech/monthFarmTechLst?apiKey=20220307MWUDEDKBKRX9E0GEEJ1IYA",
-    );
-    console.log(response);
-    return data;
-  });
-  console.log(response);
-
-  if (loading) {
-    return <Loading />;
-  }
-  if (error) {
-    return <Error />;
-  } */
   const dispatch = useDispatch();
 
-  const { newsList, loading } = useSelector(state => state?.crawlingNews);
+  const { newsList, error } = useSelector(state => state?.crawlingNews);
 
   useEffect(() => {
     dispatch(getNewsList());

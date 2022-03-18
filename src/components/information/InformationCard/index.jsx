@@ -12,19 +12,14 @@ import {
 } from "./index.style.js";
 import basicImg from "../../../asset/upload_bg.svg";
 
-function InformationCard({ image, title, content, date, link, category }) {
+function InformationCard({ image, title, content, date, link }) {
   const trigger = e => {
     e.target.src = basicImg;
   };
-
   return (
     <InformationItem>
       <InformationWrapper>
-        <InformationLink
-          as={"a"}
-          target="_blank"
-          onClick={() => (document.location.href = link)}
-        >
+        <InformationLink href={link} target="_blank">
           <InformationImg
             src={image}
             alt="소식 이미지"

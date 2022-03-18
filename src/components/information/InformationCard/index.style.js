@@ -16,7 +16,7 @@ export const InformationWrapper = styled.article`
   width: 100%;
 `;
 
-export const InformationLink = styled.div`
+export const InformationLink = styled.a.attrs({ target: "_blank" })`
   display: flex;
 `;
 
