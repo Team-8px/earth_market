@@ -4,22 +4,22 @@ import styled, { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/theme";
 
-import LoginEmail from "./PAGE/LoginEmail";
-import LoginMain from "./PAGE/LoginMain";
-import Home from "./PAGE/Home";
-import Search from "./PAGE/Search";
-import Profile from "./PAGE/Profile";
-import ProductUpload from "./PAGE/ProductUpload";
-import PostUpload from "./PAGE/PostUpload";
-import PostUpdate from "./PAGE/PostUpdate";
-import ProfileUpdate from "./PAGE/ProfileUpdate";
-import FollowerList from "./PAGE/FollowerList";
-import FollowingList from "./PAGE/FollowingList";
-import PostView from "./PAGE/PostView";
-import ProductUpdate from "./PAGE/ProductUpdate";
-import Join from "./PAGE/Join";
-import NotFound from "./PAGE/NotFound";
-import Information from "./PAGE/Information";
+import LoginEmail from "./pages/LoginEmail";
+import LoginMain from "./pages/LoginMain";
+import Home from "./pages/Home";
+import Search from "./pages/Search";
+import Profile from "./pages/Profile";
+import ProductUpload from "./pages/ProductUpload";
+import PostUpload from "./pages/PostUpload";
+import PostUpdate from "./pages/PostUpdate";
+import ProfileUpdate from "./pages/ProfileUpdate";
+import FollowerList from "./pages/FollowerList";
+import FollowingList from "./pages/FollowingList";
+import PostView from "./pages/PostView";
+import ProductUpdate from "./pages/ProductUpdate";
+import Join from "./pages/Join";
+import NotFound from "./pages/NotFound";
+import Information from "./pages/Information";
 
 const App = () => {
   return (
@@ -70,7 +70,7 @@ const App = () => {
 
 const AppliCation = styled.div`
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
 `;
 
 export default App;
