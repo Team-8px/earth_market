@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
-export const FollowHeaderLayOut = styled.header`
+export const InformationLayOut = styled.header`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   position: sticky;
   width: 100%;
@@ -12,11 +11,6 @@ export const FollowHeaderLayOut = styled.header`
   z-index: 10;
   padding: 0 16px;
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
-`;
-
-export const FollowHeaderWrap = styled.div`
-  display: flex;
-  align-items: center;
 `;
 
 export const PrevBtn = styled.button`
@@ -29,4 +23,5 @@ export const PrevBtn = styled.button`
 export const HeaderTitle = styled.h2`
   margin-left: 8px;
   font-size: 18px;
+  font-weight: 500;
 `;

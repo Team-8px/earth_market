@@ -6,7 +6,7 @@ import {
   deleteComment,
   commentCreateAction,
 } from "../../../actions/commentAction";
-import { Modal, ModalAlertBtn, ModalListBtn } from "../../common/Modal";
+import { Modal, ModalAlertBtn } from "../../common/Modal";
 import { Alert, AlertBtn } from "../../common/Alert";
 import { CommentList, CommentItem } from "../CommentItem";
 import basicImg from "../../../asset/basic-profile-img.svg";
@@ -19,7 +19,7 @@ import {
   ProfileLinkImg,
 } from "./index.style";
 
-const CommentCard = ({ postId }) => {
+const CommentCard = ({ postId, myProfileImg }) => {
   const [chatDialog, setChatDialog] = useState(false);
 
   const [chatAlert, setChatAlert] = useState(false);
@@ -41,6 +41,12 @@ const CommentCard = ({ postId }) => {
   useEffect(() => {
     dispatch(getCommentList(postId));
   }, [dispatch, postId, craeteCommentId, deleteCommentId]);
+
+  // const accountnameFromParams = getWhichUserAccountName();
+
+  // useEffect(() => {
+  //   dispatch(getUserProfile("sweetpotato"));
+  // }, [dispatch]);
 
   const isChatDialog = commentId => {
     setCommentId(commentId);
@@ -86,12 +92,13 @@ const CommentCard = ({ postId }) => {
           onSubmit={handleSubmit(onSubmit)}
           autocomplete="new-password"
         >
-          <ProfileLinkImg src={basicImg} alt="프로필" />
-          <SubmitChatLabel>
+          <ProfileLinkImg src={myProfileImg || basicImg} alt="프로필" />
+          <SubmitChatLabel htmlFor="comment">
             <span className="textHidden">댓글 입력하기</span>
             <SubmitChatInput
-              name="comment"
               type="text"
+              name="comment"
+              id="comment"
               placeholder="댓글 입력하기"
               autoComplete="off"
               {...register("comment")}
@@ -102,9 +109,13 @@ const CommentCard = ({ postId }) => {
       </SubmitChatLayOut>
       {isAuthorization ? (
         <>
-          <Modal visible={chatDialog}>
+          <Modal
+            visible={chatDialog}
+            close={() => {
+              setChatDialog(false);
+            }}
+          >
             <ModalAlertBtn isAlert={isChatAlert}>삭제</ModalAlertBtn>
-            <ModalListBtn isDialog={isChatDialog}>닫기</ModalListBtn>
           </Modal>
           <Alert visible={chatAlert} messageText="삭제 하시겠어요?">
             <AlertBtn isAlert={() => isChatAlert(commentId)}>네</AlertBtn>
@@ -113,9 +124,13 @@ const CommentCard = ({ postId }) => {
         </>
       ) : (
         <>
-          <Modal visible={chatDialog}>
+          <Modal
+            visible={chatDialog}
+            close={() => {
+              setChatDialog(false);
+            }}
+          >
             <ModalAlertBtn isAlert={isChatAlert}>신고하기</ModalAlertBtn>
-            <ModalListBtn isDialog={isChatDialog}>닫기</ModalListBtn>
           </Modal>
 
           <Alert visible={chatAlert} messageText="신고 하시겠어요?">

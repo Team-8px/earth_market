@@ -7,9 +7,9 @@ import Navbar from "../components/common/Navbar";
 const InforMation = () => {
   return (
     <>
-      <InformationHeader />
-      <InformationContainer/>
       <Navbar />
+      <InformationHeader />
+      <InformationContainer />
     </>
   )
 };

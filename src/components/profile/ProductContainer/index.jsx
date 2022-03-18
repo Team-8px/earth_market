@@ -61,7 +61,7 @@ function ProductContainer() {
                   <ProductCard
                     key={product.id}
                     productText={product.itemName}
-                    productPrice={product.price}
+                    productPrice={product.price} dnjs
                     img={product.itemImage}
                     onClick={() => isProductDialog(product.id)}
                   />
@@ -72,15 +72,14 @@ function ProductContainer() {
       </ProductSection>
       {getWhichUserStatus() === "my" ? (
         <>
-          <Modal visible={productDialog}>
+          <Modal visible={productDialog} close={() => setProductDialog(false)}>
             <ModalAlertBtn isAlert={isProductAlert}>삭제</ModalAlertBtn>
             <ModalListBtn isDialog={isProductDialog}>
-              <Link to={`/product/${productId}/update`}>수정 </Link>
+              <Link to={`/product/${productId}/update`}>수정</Link>
             </ModalListBtn>
             <ModalListBtn isDialog={isProductDialog}>
               웹사이트에서 상품 보기
             </ModalListBtn>
-            <ModalListBtn isDialog={isProductDialog}>닫기</ModalListBtn>
           </Modal>
           <Alert visible={productAlert} messageText="상품을 삭제할까요?">
             <AlertBtn isAlert={isProductAlert}>취소</AlertBtn>
@@ -91,12 +90,10 @@ function ProductContainer() {
         </>
       ) : (
         <>
-          <Modal visible={productDialog}>
-            {" "}
+          <Modal visible={productDialog} close={() => setProductDialog(false)}>
             <ModalListBtn isDialog={isProductDialog}>
               웹사이트에서 상품 보기
             </ModalListBtn>
-            <ModalListBtn isDialog={isProductDialog}>닫기</ModalListBtn>
           </Modal>
         </>
       )}

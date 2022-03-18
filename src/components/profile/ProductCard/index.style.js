@@ -4,8 +4,9 @@ export const ProductWrapper = styled.li`
   margin-right: 10px;
   cursor: pointer;
 `;
-export const ProductImgWrapper = styled.div`
-  border-radius: 8px;
+
+export const ProductImgWrapper = styled.figure`
+  margin-top: 16px;
 `;
 
 export const ProductImg = styled.img`
@@ -21,13 +22,15 @@ export const ProductTextWrapper = styled.figcaption`
 
 export const ProductText = styled.strong`
   display: block;
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 1.2;
   margin-bottom: 4px;
 `;
 
 export const ProductPrice = styled.strong`
   display: block;
   font-size: 12px;
-  color: ${props => props.theme.palette["main"]};
   font-weight: 700;
+  line-height: 1.2;
+  color: ${props => props.theme.palette["main"]};
 `;

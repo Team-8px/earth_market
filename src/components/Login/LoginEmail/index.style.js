@@ -1,37 +1,36 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const Form = styled.form`
+export const LoginEmailForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
   margin-top: 30px;
 `;
 
-export const MainFieldSet = styled.fieldset`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const LoginTitle = styled.h2`
+export const LoginEmailTitle = styled.h2`
   font-weight: 500;
   font-size: 24px;
-  line-height: 30px;
+  line-height: 1.2;
   text-align: center;
 `;
 
-export const InputWrapper = styled.div`
+export const LoginEmailFieldSet = styled.fieldset`
   width: 322px;
-  margin: 40px 0 14px;
+  margin-top: 40px;
+`;
 
-  label {
-    display: block;
-    color: ${props => props.theme.palette["subText"]};
-    font-weight: 500;
-    font-size: 12px;
-    margin-bottom: 16px;
-    cursor: pointer;
-  }
-  input {
+export const LoginEmailLabel = styled.label`
+  display: block;
+  color: ${props => props.theme.palette["subText"]};
+  font-weight: 500;
+  font-size: 12px;
+  margin-bottom: 16px;
+  cursor: pointer;
+`;
+
+export const LoginEmailInput = styled.input`
     width: 100%;
     font-size: 14px;
     color: ${props => props.theme.palette["black"]};
@@ -46,34 +45,23 @@ export const InputWrapper = styled.div`
     &:focus {
       border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
-  }
-  p {
-    color: #eb5757;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 14px;
-    margin-top: 6px;
-  }
 `;
 
-export const LoginText = styled(Link)`
-  font-weight: 400;
+export const ErrorMessage = styled.strong`
+  display: inline-block;
+  color: ${props => props.theme.palette["waring"]};
+  font-weight: 500;
   font-size: 12px;
-  color: ${props => props.theme.palette["subText"]};
-  margin-top: 20px;
-  cursor: pointer;
-
-  &:first-child::after {
-    content: "";
-    font-size: 10px;
-    margin: 10px;
-    border-right: 1px solid ${props => props.theme.palette["lightGray"]};
-  }
+  line-height: 1;
+  margin-top: 6px;
 `;
 
-export const LoginButton = styled.button `
+export const LoginButton = styled.button.attrs({
+  type:"submit"
+  })`
   width: 322px;
   height: 44px;
+  margin-top: 14px;
   background: ${props => props.theme.palette["main"]};
   color: #fff;
   font-size: 14px;
@@ -83,4 +71,14 @@ export const LoginButton = styled.button `
   :disabled {
     background: ${props => props.theme.palette["lightMain"]};
   }
-`
+`;
+
+export const LoginText = styled(Link)`
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: ${props => props.theme.palette["subText"]};
+  cursor: pointer;
+`;

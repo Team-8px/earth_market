@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import {
-  SearchHaeder,
-  SearchHaederContainer,
+  SearchHeader,
+  SearchSection,
   PrevBtn,
   PrevIcon,
   SearchForm,
-  SearchLabel,
   SearchInput,
 } from "./index.style";
 import { useHistory } from "react-router-dom";
@@ -32,19 +31,17 @@ function SearchBar({ setSearchUsers }) {
     setSearchUsers(users);
   }, [setSearchUsers, users]);
   return (
-    <SearchHaeder>
-      <SearchHaederContainer>
+    <SearchHeader>
+      <SearchSection>
+        <h1 className="textHidden">계정 검색 창</h1>
         <PrevBtn onClick={() => history.goBack()}>
           <PrevIcon />
         </PrevBtn>
         <SearchForm onSubmit={handleSubmit(onSubmit)}>
-          <span className="textHidden">계정 검색창입니다.</span>
-          <SearchLabel>
-            <SearchInput {...register("keyword")} />
-          </SearchLabel>
+          <SearchInput {...register("keyword")} />
         </SearchForm>
-      </SearchHaederContainer>
-    </SearchHaeder>
+      </SearchSection>
+    </SearchHeader>
   );
 }
 export default SearchBar;

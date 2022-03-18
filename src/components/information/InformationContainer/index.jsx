@@ -34,6 +34,7 @@ const InformationContainer = time => {
               <InformationCard
                 key={Math.random() * 100}
                 newstitle={item.children[5].value.slice(0, -1)}
+                newstext={item.children[7].value.slice(0, -1)}
                 newsimage={`http://www.nongsaro.go.kr/portal/imgView.do?atchmnflGroupEsntlCode=${item.children[0].value.slice(
                   0,
                   -1,

@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPost, deletePost } from "../../../actions/postActions";
+import { getUserProfile } from "../../../actions/userActions";
 import { getAccountNameFromloacalStorage } from "../../../util/getWhichUser";
 import CommentCard from "../CommentCard";
-import { Modal, ModalAlertBtn, ModalListBtn } from "../../common/Modal";
+import { Modal, ModalAlertBtn } from "../../common/Modal";
 import { Alert, AlertBtn } from "../../common/Alert";
 import PostIconBox from "../../common/PostIconBox";
 import {
@@ -44,6 +45,8 @@ const PostViewContainer = ({ postId }) => {
 
   const { craeteCommentId } = useSelector(state => state.commentCreate);
 
+  const { image, accountname } = useSelector(state => state.userReadProfile);
+
   const { deleteCommentId } = useSelector(state => state.commentDelete);
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -64,6 +67,10 @@ const PostViewContainer = ({ postId }) => {
   }, [dispatch, postId, craeteCommentId, deleteCommentId]);
 
   useEffect(() => {
+    dispatch(getUserProfile(accountname));
+  }, [dispatch]);
+
+  useEffect(() => {
     if (author?.accountname === getAccountNameFromloacalStorage()) {
       setIsAuthorization(true);
     } else {
@@ -72,13 +79,13 @@ const PostViewContainer = ({ postId }) => {
   }, [author]);
 
   const isPostDialog = () => setPostDialog(!postDialog);
-
   const isPostAlert = postId => {
     setPostAlert(!postAlert);
     if (typeof postId === "string") {
       dispatch(deletePost(postId));
     }
   };
+
   return (
     <>
       <PostDetailSection className="test">
@@ -134,13 +141,12 @@ const PostViewContainer = ({ postId }) => {
             <Date>{updatedAt}</Date>
           </ContentBox>
         </CommentSection>
-        <CommentCard postId={postId} />
+        <CommentCard postId={postId} myProfileImg={image} />
       </PostDetailSection>
       {isAuthorization ? (
         <>
-          <Modal visible={postDialog}>
+          <Modal visible={postDialog} close={() => setPostDialog(false)}>
             <ModalAlertBtn isAlert={isPostAlert}>삭제</ModalAlertBtn>
-            <ModalListBtn isDialog={isPostDialog}>닫기</ModalListBtn>
           </Modal>
           <Alert visible={postAlert} messageText="게시글을 삭제 하시겠어요?">
             <AlertBtn isAlert={() => isPostAlert(postId)}>네</AlertBtn>
@@ -149,9 +155,8 @@ const PostViewContainer = ({ postId }) => {
         </>
       ) : (
         <>
-          <Modal visible={postDialog}>
+          <Modal visible={postDialog} close={() => setPostDialog(false)}>
             <ModalAlertBtn isAlert={isPostAlert}>신고하기</ModalAlertBtn>
-            <ModalListBtn isDialog={isPostDialog}>닫기</ModalListBtn>
           </Modal>
           <Alert visible={postAlert} messageText="신고 하시겠어요?">
             <AlertBtn isAlert={isPostAlert}>네</AlertBtn>

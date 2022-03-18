@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import basicImg from "../../../asset/basic-profile-img.svg";
 import more from "../../../asset/icon-more-vertical.svg";
+import { Link } from "react-router-dom";
 
-export const CardSection = styled.article`
+export const CardLayout = styled.article`
   position: relative;
   max-width: 358px;
   width: 100%;
@@ -13,7 +14,6 @@ export const CardProfileContainer = styled.section`
   display: flex;
   align-items: center;
   margin-bottom: 12px;
-  cursor: pointer;
 `;
 
 export const CardProfileImg = styled.img.attrs(props => ({
@@ -26,16 +26,23 @@ export const CardProfileImg = styled.img.attrs(props => ({
   margin-right: 12px;
 `;
 
+export const CardProfileLink = styled(Link)`
+  display: flex;
+`;
+
 export const CardAthorWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `;
+
 export const CardAthorName = styled.span`
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
   margin-bottom: 2px;
 `;
+
 export const CardAthorId = styled.span`
   font-weight: 400;
   font-size: 12px;
@@ -50,11 +57,11 @@ export const CardAthorId = styled.span`
 export const CardContentContainer = styled.section`
   padding-left: 54px;
 `;
+
 export const CardContentText = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  margin-bottom: 16px;
   white-space: pre-wrap;
 `;
 
@@ -69,6 +76,7 @@ export const CardImageContainer = styled.div`
 export const CardImageList = styled.ul`
   display: flex;
   transition: all 0.4s;
+  cursor: pointer;
 `;
 
 export const CardImageItem = styled.li`
@@ -83,10 +91,10 @@ export const CardImage = styled.img`
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
-  margin-bottom: 16px;
+  margin-top: 16px;
 `;
 
-export const CardDotList = styled.div`
+export const CardDotList = styled.ul`
   position: absolute;
   display: flex;
   gap: 6px;
@@ -95,11 +103,9 @@ export const CardDotList = styled.div`
   transform: translateX(-50%);
 `;
 
-export const CardDotWrapper = styled.div`
-  display: flex;
-  padding: 8px;
-  justify-content: space-evenly;
-  width: 45px;
+
+export const CardDotItem = styled.li`
+  box-sizing: border-box;
 `;
 
 export const CardDotBtn = styled.button`
@@ -112,7 +118,7 @@ export const CardDotBtn = styled.button`
   }
 `;
 
-export const CardDateText = styled.strong`
+export const CardDateText = styled.span`
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;

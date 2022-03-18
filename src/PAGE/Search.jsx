@@ -7,9 +7,9 @@ const Search = () => {
   const [searchUser, setSearchUsers] = useState([]);
   return (
     <>
+      <Navbar />
       <SearchBar setSearchUsers={setSearchUsers} />
       <SearchContainer SearchUser={searchUser} />
-      <Navbar />
     </>
   );
 };

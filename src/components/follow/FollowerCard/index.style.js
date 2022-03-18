@@ -6,10 +6,10 @@ export const FollowerItem = styled.li`
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 `;
 
-export const FollowerImgWrapper = styled(Link)`
+export const FollowerWrapper = styled(Link)`
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -27,23 +27,27 @@ export const FollowerImg = styled.img.attrs(props => ({
 `;
 
 export const FollowerInfoWrapper = styled.div`
-  margin-left: 12px;
-  width: calc(100% - 118px);
+  width: calc(100% - 160px);
   height: 100%;
-  align-self: flex-start;
+  margin-left: 12px;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
 `;
 
-export const FollowerUserName = styled.strong`
+export const FollowerUserName = styled.span`
   display: block;
   margin: 5px 0 6px;
   line-height: 18px;
   font-size: 14px;
   font-weight: 500;
 `;
-export const FollowerIntro = styled.strong`
-  color: #767676;
+
+export const FollowerIntro = styled.span`
   font-size: 12px;
-  line-height: 15px;
+  line-height: 1;
+  color: ${props => props.theme.palette["subText"]};
 `;
 
 export const FollowBtn = styled.button.attrs({ type: "button" })`

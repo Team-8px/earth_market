@@ -112,28 +112,31 @@ const ProfileUpdateForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      <h3 className="textHidden">프로필 수정 페이지</h3>
       <ProfileImgWrapper>
         <label onChange={previewImage} htmlFor="profileImg">
           <img
-            alt="상품 이미지"
+            alt="프로필 이미지"
             onError={event => (event.target.style.display = "none")}
             onLoad={event => (event.target.style.display = "inline-block")}
             src={updateImage ? updateImage : image}
           />
           <input
             type="file"
-            accept="image/jpg,image/png,image/jpeg,image/gif"
             name="profileImg"
             id="profileImg"
+            accept="image/jpg,image/png,image/jpeg,image/gif"
+            title="프로필 이미지 업로드 버튼"
             {...register("profileImg" /* { required: true } */)}
           />
         </label>
       </ProfileImgWrapper>
       <ProductFormWrapper>
-        <label>사용자 이름</label>
+        <label htmlFor="username">사용자 이름</label>
         <input
-          name="username"
           type="text"
+          name="username"
+          id="username"
           autoComplete="off"
           placeholder="2~10자 이내여야 합니다."
           {...register("username", {
@@ -151,10 +154,11 @@ const ProfileUpdateForm = () => {
         {errors.username?.type === "maxLength" && (
           <p>*2~10자 이내여야 합니다.</p>
         )}
-        <label> 계정 ID</label>
+        <label htmlFor="accountname"> 계정 ID</label>
         <input
-          name="accountname"
           type="text"
+          name="accountname"
+          id="accountname"
           autoComplete="off"
           placeholder="숫자만 입력 가능합니다."
           {...register("accountname", {
@@ -166,10 +170,11 @@ const ProfileUpdateForm = () => {
           <p>*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.</p>
         )}
         {accountIdErrorMessage && <p>{accountIdErrorMessage}</p>}
-        <label>소개</label>
+        <label htmlFor="intro">소개</label>
         <input
-          name="intro"
           type="text"
+          name="intro"
+          id="intro"
           autoComplete="off"
           placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
           {...register("intro", {

@@ -13,8 +13,8 @@ export const NavList = styled.ul`
   display: flex;
   justify-content: space-between;
   position: fixed;
-  right: 0;
   bottom: 0;
+  right: 0;
   left: 0;
   background-color: #fff;
   padding: 0 16px;

@@ -95,5 +95,4 @@ export const UploadBtn = styled.button`
   font-weight: 500;
   transition: all 0.4s ease;
   z-index: 150;
-  /* cursor: ${props => (props.disabled === true ? "default" : "pointer")}; */
 `;

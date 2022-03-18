@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
     ${reset}
     a{
         text-decoration:none;
+        cursor: pointer;
         color:inherit;
     }
     *{

@@ -5,7 +5,7 @@ export const Form = styled.form`
   box-sizing: border-box;
 `;
 
-export const MainFieldSet = styled.fieldset`
+export const ProductUploadFieldSet = styled.fieldset`
   margin: 30px auto;
   max-width: 322px;
   width: 100%;
@@ -14,6 +14,7 @@ export const MainFieldSet = styled.fieldset`
 export const ProductFormWrapper = styled.div`
   margin: 0 auto 30px;
   label {
+    margin-top: 30px;
     display: block;
     color: ${props => props.theme.palette["subText"]};
     font-weight: 500;

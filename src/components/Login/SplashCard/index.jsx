@@ -1,11 +1,11 @@
 import React from "react";
-import { SplashSection, SplashImg } from "./index.style";
+import { SplashImgWrapper, SplashImg } from "./index.style";
 
 function SplashCard({ loading }) {
   return (
-    <SplashSection className={loading ? "down" : "up"}>
+    <SplashImgWrapper className={loading ? "down" : "up"}>
       <SplashImg className={loading ? "blue" : "white"} />
-    </SplashSection>
+    </SplashImgWrapper>
   );
 }
 export default SplashCard;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import Search from "../../../asset/icon-search.svg";
 
-export const FollowHeaderLayOut = styled.header`
+export const HomeHeaderLayOut = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,14 +15,24 @@ export const FollowHeaderLayOut = styled.header`
   z-index: 10;
 `;
 
-export const SearchBtn = styled.button`
+export const SearchBtn = styled.button.attrs({
+  type: "button"
+})`
   width: 22px;
   height: 22px;
   border: none;
   cursor: pointer;
 `;
 
-export const HeaderTitle = styled.h2`
+export const SearchIcon = styled.img.attrs({
+  src: Search,
+  alt: "계정 검색 버튼",
+})`
+  width: 100%;
+  height: 100%;
+`;
+
+export const HeaderTitle = styled.h1`
   font-weight: 500;
   font-size: 18px;
 `;

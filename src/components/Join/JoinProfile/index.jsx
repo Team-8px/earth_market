@@ -6,12 +6,17 @@ import { API_URL } from "../../../constants/defaultUrl";
 import { joinMembership } from "../../../actions/userActions";
 import { imageUploadsHandler } from "../../../util/imageUploads";
 import {
-  Form,
-  MainFieldSet,
-  InputWrapper,
-  ProfileImgWrapper,
-  Title,
+  JoinProfileForm,
+  JoinProfileTitle,
   SubText,
+  JoinProfileFieldSet,
+  JoinImgLabel,
+  JoinImg,
+  JoinImgInput,
+  JoinProfileLabel,
+  JoinProfileInput,
+  InputWrapper,
+  ErrorMessage,
   JoinButton,
 } from "./index.style";
 import ProfileImg from "../../../asset/basic-profile-img.svg";
@@ -100,28 +105,24 @@ const JoinProfile = ({ userInfo }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <MainFieldSet>
-        <Title>
-          프로필 설정
-          <SubText>나중에 언제든지 변경할 수 있습니다.</SubText>
-        </Title>
-        <ProfileImgWrapper>
-          <label onChange={previewImage} htmlFor="profileImg">
-            <img alt="프로필 사진" src={myImage} onError={trigger} />
-            <input
-              type="file"
-              accept="image/jpg,image/png,image/jpeg,image/gif"
-              name="profileImg"
-              id="profileImg"
-              {...register("profileImg")}
-            />
-          </label>
-        </ProfileImgWrapper>
+    <JoinProfileForm onSubmit={handleSubmit(onSubmit)}>
+      <JoinProfileTitle>프로필 설정</JoinProfileTitle>
+      <SubText>나중에 언제든지 변경할 수 있습니다.</SubText>
+      <JoinProfileFieldSet>
+        <JoinImgLabel onChange={previewImage} htmlFor="profileImg">
+          <JoinImg alt="프로필 사진" src={myImage} onError={trigger} />
+          <JoinImgInput
+            type="file"
+            accept="image/jpg,image/png,image/jpeg,image/gif"
+            name="profileImg"
+            id="profileImg"
+            {...register("profileImg")}
+          />
+        </JoinImgLabel>
         <InputWrapper>
-          <label htmlFor="username">
+          <JoinProfileLabel htmlFor="username">
             사용자 이름
-            <input
+            <JoinProfileInput
               name="username"
               id="username"
               type="text"
@@ -135,16 +136,16 @@ const JoinProfile = ({ userInfo }) => {
               })}
             />
             {errors?.username?.type === "required" && (
-              <p>* 필수 입력사항입니다.</p>
+              <ErrorMessage>* 필수 입력사항입니다.</ErrorMessage>
             )}
             {errors.username?.type === "minLength" ||
               (errors.username?.type === "maxLength" && (
-                <p>*2~10자 이내여야 합니다.</p>
+                <ErrorMessage>*2~10자 이내여야 합니다.</ErrorMessage>
               ))}
-          </label>
-          <label htmlFor="id">
+          </JoinProfileLabel>
+          <JoinProfileLabel htmlFor="id">
             계정 ID
-            <input
+            <JoinProfileInput
               name="accountname"
               id="accountname"
               type="text"
@@ -157,16 +158,16 @@ const JoinProfile = ({ userInfo }) => {
               })}
             />
             {errors?.accountname?.type === "required" && (
-              <p>* 필수 입력사항입니다.</p>
+              <ErrorMessage>* 필수 입력사항입니다.</ErrorMessage>
             )}
             {errors?.accountname?.type === "pattern" && (
-              <p>*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.</p>
+              <ErrorMessage>*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.</ErrorMessage>
             )}
-            {accountIdErrorMessage && <p>{accountIdErrorMessage}</p>}
-          </label>
-          <label htmlFor="intro">
+            {accountIdErrorMessage && <ErrorMessage>{accountIdErrorMessage}</ErrorMessage>}
+          </JoinProfileLabel>
+          <JoinProfileLabel htmlFor="intro">
             소개
-            <input
+            <JoinProfileInput
               name="intro"
               type="text"
               id="intro"
@@ -178,16 +179,15 @@ const JoinProfile = ({ userInfo }) => {
               })}
             />
             {errors?.intro?.type === "required" && (
-              <p>* 필수 입력사항입니다.</p>
+              <ErrorMessage>* 필수 입력사항입니다.</ErrorMessage>
             )}
-          </label>
+          </JoinProfileLabel>
         </InputWrapper>
         <JoinButton type="submit" disabled={!isValid}>
           어스마켓 시작하기
         </JoinButton>
-      </MainFieldSet>
-      )
-    </Form>
+      </JoinProfileFieldSet>
+    </JoinProfileForm>
   );
 };
 

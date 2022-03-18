@@ -1,14 +1,19 @@
 import styled from "styled-components";
 
 export const FollowingSection = styled.main`
-  min-width: 390px;
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: calc(100% - 130px);
+  padding: 30px 16px 20px;
+  overflow-y: scroll;
+  min-width: 100%;
 `;
 
 export const FollowingList = styled.ul`
   max-width: 390px;
-  margin: 0 auto;
-  padding: 30px 16px 70px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 70px;
 `;

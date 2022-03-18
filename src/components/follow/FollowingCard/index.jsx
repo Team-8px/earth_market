@@ -28,13 +28,13 @@ function FollowingCard({
   return (
     <FollowingItem>
       <FollowingImgWrapper to={Link}>
-        <FollowingImg 
-        onError={e => {
-          trigger(e);
-        }}
-        src={image} />
+        <FollowingImg
+          onError={e => {
+            trigger(e);
+          }}
+          src={image} />
       </FollowingImgWrapper>
-      <FollowingInfoWrapper to={Link}>
+      <FollowingInfoWrapper>
         <FollowingUserName>{username}</FollowingUserName>
         <FollowingIntro>{intro}</FollowingIntro>
       </FollowingInfoWrapper>
