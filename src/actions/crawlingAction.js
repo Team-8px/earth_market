@@ -13,7 +13,7 @@ export const getNewsList = () => async dispatch => {
     const { data } = await axios.get(NEWS_URL);
 
     const payload = data.categoryNewsList;
-
+    console.log(data);
     dispatch({
       type: CRAWLING_NEWS_LIST_SUCCESS,
       payload,

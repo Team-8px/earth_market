@@ -20,14 +20,18 @@ function InformationCard({ image, title, content, date, link, category }) {
   return (
     <InformationItem>
       <InformationWrapper>
-        <InformationLink onClick={() => (document.location.href = link)}>
+        <InformationLink
+          as={"a"}
+          target="_blank"
+          onClick={() => (document.location.href = link)}
+        >
           <InformationImg
             src={image}
             alt="소식 이미지"
             onError={e => trigger(e)}
           />
           <InformationInfoWrapper>
-            <InformationInfo>{category}</InformationInfo>
+            <InformationInfo>농민신문</InformationInfo>
             <InformationDate>{date}</InformationDate>
             <InformationTitle>{title}</InformationTitle>
             <InformationText>{content}</InformationText>
