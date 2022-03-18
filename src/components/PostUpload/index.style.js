@@ -109,7 +109,6 @@ export const UploadBtn = styled.button`
   z-index: 150;
   :disabled {
     background: ${props => {
-      /* console.log(props); */
       return props.theme.palette["lightMain"];
     }};
   }

@@ -36,6 +36,7 @@ import {
   followUserReducer,
   unFollowUserReducer,
 } from "./reducers/followReducer";
+import { crawlingNewsReducer } from "./reducers/crawlingReducer";
 
 const reducer = combineReducers({
   userSearch: userSearchReducer,
@@ -63,6 +64,7 @@ const reducer = combineReducers({
   followingList: followingListReducer,
   followUser: followUserReducer,
   unfollowUser: unFollowUserReducer,
+  crawlingNews: crawlingNewsReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

@@ -31,10 +31,9 @@ const PostUpdateForm = () => {
 
   const {
     register,
-    getValues,
     setValue,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { isValid },
   } = useForm({
     mode: "onChange",
   });
@@ -85,7 +84,7 @@ const PostUpdateForm = () => {
         const savedImage = await imageUploadsHandler(nowSelectImage[0]);
         setUploadPostImage([...uploadPostImage, savedImage]);
       } catch (e) {
-        console.log(e);
+        console.error(e);
       }
     } else {
       alert("사진 3개까지만 업로드 가능");
@@ -114,7 +113,7 @@ const PostUpdateForm = () => {
       const joinFilename = uploadPostImage && uploadPostImage.join();
       dispatch(updatePost(postText, joinFilename, postId));
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

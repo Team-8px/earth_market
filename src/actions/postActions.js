@@ -100,7 +100,7 @@ export const likePost = postId => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message;
     if (message === "Not authorized, token failed") {
-      //dispatch(logout());
+      dispatch(logout());
     }
     dispatch({
       type: POST_LIKE_FAIL,
@@ -140,7 +140,7 @@ export const unLikePost = postId => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message;
     if (message === "Not authorized, token failed") {
-      //dispatch(logout());
+      dispatch(logout());
     }
     dispatch({
       type: POST_UNLIKE_FAIL,
@@ -287,7 +287,7 @@ export const deletePost = postId => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message;
     if (message === "Not authorized, token failed") {
-      //dispatch(logout());
+      dispatch(logout());
     }
     dispatch({
       type: POST_DELETE_FAIL,

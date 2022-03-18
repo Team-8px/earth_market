@@ -26,7 +26,6 @@ import {
 import dayjs from "dayjs";
 
 export const postUpdateReducer = (state = {}, action) => {
-  console.log(action.payload);
   switch (action.type) {
     case POST_UPDATE_REQUEST:
       return { loading: true };

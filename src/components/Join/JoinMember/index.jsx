@@ -62,7 +62,7 @@ const JoinMember = ({ setNextPage, setUserInfo }) => {
           setEmailErrorMessage(response.message);
         }
       } catch (e) {
-        console.log(e);
+        console.error(e);
       }
     }
   };

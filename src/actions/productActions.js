@@ -44,7 +44,7 @@ export const updateProduct =
       const {
         data: { product },
       } = await axios.put(`${API_URL}/product/${productId}`, reqData, config);
-      console.log(product);
+
       dispatch({
         type: PRODUCT_UPDATE_SUCCESS,
         payload: {
@@ -116,7 +116,7 @@ export const listProducts = accountId => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(`${API_URL}/product/${accountId}`, config);
-    console.log(data, "listProducts");
+
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
@@ -154,7 +154,7 @@ export const createProduct =
       };
 
       const { data } = await axios.post(`${API_URL}/product`, reqData, config);
-      console.log(data, "productActions");
+
       dispatch({
         type: PRODUCT_CREATE_SUCCESS,
         payload: data,
@@ -209,7 +209,7 @@ export const deleteProduct = productId => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message;
     if (message === "Not authorized, token failed") {
-      //dispatch(logout());
+      dispatch(logout());
     }
     dispatch({
       type: PRODUCT_DELETE_FAIL,

@@ -69,9 +69,6 @@ export const unfollowUser = otherAccountId => async (dispatch, getState) => {
       },
     };
 
-    console.log(userInfo.user.token, "unfollowUser 토큰값");
-    console.log(config);
-
     const { data } = await axios.delete(
       `${API_URL}/profile/${otherAccountId}/unfollow`,
       config,
@@ -114,8 +111,6 @@ export const getFollowerList = accountName => async (dispatch, getState) => {
       config,
     );
 
-    console.log(data);
-
     dispatch({
       type: FOLLOWER_LIST_SUCCESS,
       payload: data,
@@ -152,7 +147,6 @@ export const getFollowingList = accountName => async (dispatch, getState) => {
       }/following`,
       config,
     );
-    console.log(data);
     dispatch({
       type: FOLLOWING_LIST_SUCCESS,
       payload: data,

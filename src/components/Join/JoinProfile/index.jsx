@@ -88,11 +88,11 @@ const JoinProfile = ({ userInfo }) => {
             setAccountIdErrorMessage(response.message);
           }
         } catch (e) {
-          console.log(e);
+          console.error(e);
         }
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
   const trigger = e => {

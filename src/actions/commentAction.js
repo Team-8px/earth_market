@@ -1,5 +1,6 @@
 import axios from "axios";
 import { API_URL } from "../constants/defaultUrl";
+import { logout } from "../actions/userActions";
 import {
   COMMENT_CREATE_REQUEST,
   COMMENT_CREATE_SUCCESS,
@@ -35,8 +36,6 @@ export const deleteComment =
         config,
       );
 
-      console.log(data);
-
       const payloadData = {
         message: data.message,
         commentId,
@@ -52,7 +51,7 @@ export const deleteComment =
           ? error.response.data.message
           : error.message;
       if (message === "Not authorized, token failed") {
-        //dispatch(logout());
+        dispatch(logout());
       }
       dispatch({
         type: COMMENT_DELETE_FAIL,
@@ -64,13 +63,11 @@ export const deleteComment =
 export const getCommentList = postId => async (dispatch, getState) => {
   try {
     dispatch({ type: COMMENT_LIST_REQUEST });
-    //console.log(postId, "comment list postID");
-    // store에 저장된 userInfo 조회
+
     const {
       userLogin: { userInfo },
     } = getState();
 
-    // Auth
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.user.token}`,
@@ -78,21 +75,15 @@ export const getCommentList = postId => async (dispatch, getState) => {
       },
     };
 
-    // api 요청
     const { data } = await axios.get(
       `${API_URL}/post/${postId}/comments`,
       config,
     );
-    //console.log(data, "commentListAction");
-    // 요청 성공시 data 전송.
+
     dispatch({
       type: COMMENT_LIST_SUCCESS,
       payload: data,
     });
-    //새로고침
-    //window.location.reload(1);
-    //document.location.href = document.location.href;
-    //window.location.replace(`/post/${postId} `);
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -132,8 +123,6 @@ export const commentCreateAction =
         type: COMMENT_CREATE_SUCCESS,
         payload: data,
       });
-
-      //document.location.href = `/gh/post/my/${postId}`;
     } catch (error) {
       const message =
         error.response && error.response.data.message

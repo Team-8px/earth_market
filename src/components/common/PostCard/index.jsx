@@ -60,7 +60,7 @@ function PostCard({
       <CardProfileContainer>
         <CardProfileImg
           alt="프로필 이미지"
-          src={profileImage || basicImg}
+          src={profileImage}
           onError={e => {
             trigger(e);
           }}

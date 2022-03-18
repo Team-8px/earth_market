@@ -4,7 +4,12 @@ import { getFollowerPostList } from "../../../actions/followAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalListBtn, ModalAlertBtn } from "../../common/Modal";
 import { Alert, AlertBtn } from "../../common/Alert";
-import { ProfileSection, NoneFeed, SearchBtn, NoneFollowSection } from "./index.style";
+import {
+  ProfileSection,
+  NoneFeed,
+  SearchBtn,
+  NoneFollowSection,
+} from "./index.style";
 import { changeDefaltImage } from "../../../util/changeDefaltImage";
 import PostCard from "../../common/PostCard";
 import dayjs from "dayjs";
