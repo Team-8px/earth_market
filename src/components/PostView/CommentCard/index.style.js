@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const ProfileLinkImg = styled.img`
-  margin-right: 12px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 0.5px solid #dbdbdb;
+  border: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 export const SubmitChatLayOut = styled.section`
@@ -40,6 +39,9 @@ export const SubmitChatInput = styled.input`
   display: block;
   width: 100%;
   border-style: none;
+  font-size: 14px;
+  color: ${props => props.theme.palette["main"]};
+  caret-color: ${props => props.theme.palette["main"]};
 
   &::placeholder {
     color: ${props => props.theme.palette["border"]};
