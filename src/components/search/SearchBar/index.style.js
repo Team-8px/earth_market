@@ -15,7 +15,6 @@ export const SearchSection = styled.section`
   display: flex;
   align-items: center;
   max-width: 100%;
-  min-width: 390px;
   height: 48px;
 `;
 
