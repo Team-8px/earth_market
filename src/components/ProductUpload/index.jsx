@@ -62,6 +62,7 @@ const ProductUploadForm = () => {
   };
 
   return (
+
     <Form onSubmit={handleSubmit(onSubmit)}>
       <ProductUploadFieldSet>
         <legend className="a11y-hidden">상품 정보 입력창</legend>
@@ -79,7 +80,7 @@ const ProductUploadForm = () => {
               name="itemImage"
               id="itemImage"
               accept="image/jpg,image/png,image/jpeg,image/gif"
-              className="a11y-hidden"
+              className="ir"
               {...register("itemImage", { required: true })}
             ></input>
           </Label>
@@ -105,7 +106,6 @@ const ProductUploadForm = () => {
           {errors.itemName?.type === "maxLength" && (
             <p>*2~10자 이내여야 합니다.</p>
           )}
-
           <label htmlFor="price">가격</label>
           <input
             type="text"

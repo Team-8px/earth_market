@@ -3,56 +3,19 @@ import ImgIcon from "../../asset/upload-file.svg";
 
 export const Form = styled.form`
   box-sizing: border-box;
+`;
+
+export const ProductUploadFieldSet = styled.fieldset`
   margin: 30px auto;
   max-width: 322px;
   width: 100%;
-`;
-
-export const ProfileImgWrapper = styled.div`
-  margin-bottom: 30px;
-  label {
-    position: relative;
-    display: block;
-    width: 110px;
-    height: 110px;
-    margin: 0 auto;
-    border: 1px solid ${props => props.theme.palette["border"]};
-    border-radius: 50%;
-    cursor: pointer;
-
-    &::after {
-      position: absolute;
-      content: "";
-      right: 0;
-      bottom: 0;
-      width: 36px;
-      height: 36px;
-      background: ${props => props.theme.palette["lightGray"]} url(${ImgIcon})
-        no-repeat center / 36px 36px;
-      border-radius: 50%;
-    }
-
-    img {
-      width: 110px;
-      height: 110px;
-    }
-
-    input {
-      position: absolute;
-      left: -10000px;
-      top: auto;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      padding: 0;
-    }
-  }
 `;
 
 export const ProductFormWrapper = styled.div`
   margin: 0 auto 16px;
 
   label {
+    margin-top: 30px;
     display: block;
     color: ${props => props.theme.palette["subText"]};
     font-weight: 500;
@@ -71,7 +34,7 @@ export const ProductFormWrapper = styled.div`
     border: none;
     border-bottom: 1px solid ${props => props.theme.palette["border"]};
     caret-color: ${props => props.theme.palette["main"]};
-
+    
     &::placeholder {
       color: ${props => props.theme.palette["border"]};
     }
@@ -79,8 +42,9 @@ export const ProductFormWrapper = styled.div`
       border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
   }
+
   p {
-    color: #eb5757;
+    color: ${props => props.theme.palette["waring"]};
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
@@ -107,7 +71,10 @@ export const Label = styled.label`
   cursor: pointer;
   overflow: hidden;
   img {
+    width: 100%;
+    height: 100%;
     background: no-repeat center / contain;
+    object-fit: cover;
   }
   &::after {
     position: absolute;
@@ -137,7 +104,8 @@ export const UploadBtn = styled.button`
   transition: all 0.4s ease;
   z-index: 150;
   :disabled {
-    background: ${props => props.theme.palette["lightMain"]};
+    background: ${props => {
+      return props.theme.palette["lightMain"];
+    }};
   }
-  /* cursor: ${props => (props.disabled === true ? "default" : "pointer")}; */
 `;

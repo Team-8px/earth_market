@@ -7,6 +7,7 @@ import { updateProduct } from "../../actions/productActions";
 import { imageUploadsHandler } from "../../util/imageUploads";
 import {
   Form,
+  ProductUploadFieldSet,
   ProductFormWrapper,
   SubTitle,
   Label,
@@ -91,85 +92,90 @@ const ProductUpdateForm = () => {
   };
 
   return (
+
+
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <SubTitle>이미지 업로드</SubTitle>
-      <ProductFormWrapper>
-        <Label onChange={previewImage} htmlFor="itemImage">
-          <img
-            src={updateImage ? updateImage : image}
-            onError={event => (event.target.style.display = "none")}
-            onLoad={event => (event.target.style.display = "inline-block")}
-            alt="상품 사진"
-          />
+      <ProductUploadFieldSet>
+        <legend className="a11y-hidden">상품 정보 입력창</legend>
+        <SubTitle>이미지 업로드</SubTitle>
+        <ProductFormWrapper>
+          <Label onChange={previewImage} htmlFor="itemImage">
+            <img
+              src={updateImage ? updateImage : image}
+              onError={event => (event.target.style.display = "none")}
+              onLoad={event => (event.target.style.display = "inline-block")}
+              alt="상품 사진"
+            />
+            <input
+              type="file"
+              name="itemImage"
+              id="itemImage"
+              accept="image/jpg,image/png,image/jpeg,image/gif"
+              className="ir"
+              {...register("itemImage")}
+            ></input>
+          </Label>
+        </ProductFormWrapper>
+        <ProductFormWrapper>
+          <label htmlFor="itemName">상품명</label>
           <input
-            type="file"
-            name="itemImage"
-            id="itemImage"
-            accept="image/jpg,image/png,image/jpeg,image/gif"
-            className="a11y-hidden"
-            {...register("itemImage")}
-          ></input>
-        </Label>
-      </ProductFormWrapper>
-      <ProductFormWrapper>
-        <label htmlFor="itemName">상품명</label>
-        <input
-          type="text"
-          name="itemName"
-          id="itemName"
-          autoComplete="off"
-          placeholder="2~10자 이내여야 합니다."
-          {...register("itemName", {
-            required: true,
-            minLength: 2,
-            maxLength: 10,
-            onChange: e => {
-              setValue("itemName", e.target.value);
-            },
-          })}
-        />
-        {errors.itemName?.type === "minLength" && (
-          <p>*2~10자 이내여야 합니다.</p>
-        )}
-        {errors.itemName?.type === "maxLength" && (
-          <p>*2~10자 이내여야 합니다.</p>
-        )}
-        <label htmlFor="price">가격</label>
-        <input
-          type="text"
-          name="price"
-          id="price"
-          autoComplete="off"
-          placeholder="숫자만 입력 가능합니다."
-          {...register("price", {
-            required: true,
-            onChange: e => {
-              setValue("price", noString(e));
-            },
-            onBlur: e => {
-              setValue("price", addComma(e));
-            },
-          })}
-        />
-        {errors.price?.type === "pattern" && <p>*숫자만 입력 가능합니다.</p>}
-        <label htmlFor="link">판매 링크</label>
-        <input
-          type="text"
-          name="link"
-          id="link"
-          autoComplete="off"
-          placeholder="URL을 입력해 주세요."
-          {...register("link", {
-            required: true,
-            pattern:
-              /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/,
-          })}
-        />
-        {errors.link?.type === "pattern" && <p>* URL을 입력해 주세요.</p>}
-      </ProductFormWrapper>
-      <UploadBtn type="submit" disabled={!isValid}>
-        저장
-      </UploadBtn>
+            type="text"
+            name="itemName"
+            id="itemName"
+            autoComplete="off"
+            placeholder="2~10자 이내여야 합니다."
+            {...register("itemName", {
+              required: true,
+              minLength: 2,
+              maxLength: 10,
+              onChange: e => {
+                setValue("itemName", e.target.value);
+              },
+            })}
+          />
+          {errors.itemName?.type === "minLength" && (
+            <p>*2~10자 이내여야 합니다.</p>
+          )}
+          {errors.itemName?.type === "maxLength" && (
+            <p>*2~10자 이내여야 합니다.</p>
+          )}
+          <label htmlFor="price">가격</label>
+          <input
+            type="text"
+            name="price"
+            id="price"
+            autoComplete="off"
+            placeholder="숫자만 입력 가능합니다."
+            {...register("price", {
+              required: true,
+              onChange: e => {
+                setValue("price", noString(e));
+              },
+              onBlur: e => {
+                setValue("price", addComma(e));
+              },
+            })}
+          />
+          {errors.price?.type === "pattern" && <p>*숫자만 입력 가능합니다.</p>}
+          <label htmlFor="link">판매 링크</label>
+          <input
+            type="text"
+            name="link"
+            id="link"
+            autoComplete="off"
+            placeholder="URL을 입력해 주세요."
+            {...register("link", {
+              required: true,
+              pattern:
+                /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/,
+            })}
+          />
+          {errors.link?.type === "pattern" && <p>* URL을 입력해 주세요.</p>}
+        </ProductFormWrapper>
+        <UploadBtn type="submit" disabled={!isValid}>
+          저장
+        </UploadBtn>
+      </ProductUploadFieldSet>
     </Form>
   );
 };

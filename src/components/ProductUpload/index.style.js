@@ -13,6 +13,7 @@ export const ProductUploadFieldSet = styled.fieldset`
 
 export const ProductFormWrapper = styled.div`
   margin: 0 auto 30px;
+  
   label {
     margin-top: 30px;
     display: block;
@@ -23,6 +24,7 @@ export const ProductFormWrapper = styled.div`
     margin-bottom: 10px;
     margin-top: 16px;
   }
+
   input {
     width: 100%;
     font-size: 14px;
@@ -32,6 +34,7 @@ export const ProductFormWrapper = styled.div`
     border: none;
     border-bottom: 1px solid ${props => props.theme.palette["border"]};
     caret-color: ${props => props.theme.palette["main"]};
+
     &::placeholder {
       color: ${props => props.theme.palette["border"]};
     }
@@ -39,8 +42,9 @@ export const ProductFormWrapper = styled.div`
       border-bottom: 1px solid ${props => props.theme.palette["main"]};
     }
   }
+
   p {
-    color: #eb5757;
+    color: ${props => props.theme.palette["waring"]};
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;

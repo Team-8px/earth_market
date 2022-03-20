@@ -46,6 +46,15 @@ const GlobalStyles = createGlobalStyle`
         background-color:${props => props.theme.palette["bg"]}
     }
 
+    .ir {
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+    
     .a11y-hidden{
         position: absolute;
         width: 1px;

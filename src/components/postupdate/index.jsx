@@ -6,7 +6,7 @@ import { updatePost, getPost } from "../../actions/postActions";
 import { imageUploadsHandler } from "../../util/imageUploads";
 import {
   Form,
-  MainFieldSet,
+  PostFieldSet,
   ProfileImage,
   PostForm,
   PostFormContainer,
@@ -16,6 +16,7 @@ import {
   RemoveBtn,
   Item,
   UploadBtn,
+  UploadImgInput,
 } from "./index.style";
 
 const PostUpdateForm = () => {
@@ -119,13 +120,15 @@ const PostUpdateForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <MainFieldSet>
+      <PostFieldSet>
+        <legend className="a11y-hidden">게시글 작성 수정 페이지</legend>
         <ProfileImage
           onError={event => (event.target.style.display = "none")}
           onLoad={event => (event.target.style.display = "inline-block")}
           src={userImage}
         />
         <PostForm htmlFor="postText">
+          <h4 className="a11y-hidden">게시글 작성하기</h4>
           <textarea
             type="text"
             name="postText"
@@ -143,8 +146,9 @@ const PostUpdateForm = () => {
             })}
           />
           <PostFormContainer htmlFor="imgUpload">
+            <h4 className="a11y-hidden">게시글 이미지 업로드</h4>
             <UploadImgIcon onChange={onChange} htmlFor="profileImg">
-              <input
+              <UploadImgInput
                 type="file"
                 accept="image/jpg,image/png,image/jpeg,image/gif"
                 name="profileImg"
@@ -182,7 +186,7 @@ const PostUpdateForm = () => {
             업로드
           </UploadBtn>
         </PostForm>
-      </MainFieldSet>
+      </PostFieldSet>
     </Form>
   );
 };

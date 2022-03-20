@@ -25,7 +25,6 @@ export const ProfileImage = styled.img.attrs(props => ({
 
 export const PostForm = styled.article`
   width: 100%;
-  margin-bottom: 16px;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
@@ -67,6 +66,7 @@ export const UploadImgIcon = styled.label`
 
 export const PhotoList = styled.ul`
   display: flex;
+  width: 100%;
   gap: 12px;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -80,8 +80,12 @@ export const PhotoList = styled.ul`
   }
   @media only screen and (max-width: 750px) {
     max-width: 390px;
+    overflow-x: scroll;
+  overflow-y: hidden;
   }
-
+  @media only screen and (max-width: 390px) {
+    max-width: 300px;
+  }
 `;
 
 export const PostImage = styled.img`
@@ -100,6 +104,11 @@ export const Item = styled.li`
   border: 0.5px solid ${props => props.theme.palette["border"]};
   margin-right: 5px;
   box-sizing: border-box;
+  @media only screen and (max-width: 390px) {
+    min-width: 264px;
+    width: 264px;
+    height: 178px;
+  }
 `;
 
 export const UploadBtn = styled.button`
