@@ -62,9 +62,10 @@ const ProductUploadForm = () => {
   };
 
   return (
+
     <Form onSubmit={handleSubmit(onSubmit)}>
       <ProductUploadFieldSet>
-        <legend className="textHidden">상품 정보 입력창</legend>
+        <legend className="a11y-hidden">상품 정보 입력창</legend>
         <SubTitle>이미지 업로드</SubTitle>
         <ProductFormWrapper>
           <Label onChange={previewImage} htmlFor="itemImage">
@@ -105,7 +106,6 @@ const ProductUploadForm = () => {
           {errors.itemName?.type === "maxLength" && (
             <p>*2~10자 이내여야 합니다.</p>
           )}
-
           <label htmlFor="price">가격</label>
           <input
             type="text"

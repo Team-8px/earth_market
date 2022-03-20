@@ -5,7 +5,7 @@ export const ProfileLinkImg = styled.img`
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 0.5px solid #dbdbdb;
+  border: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
 export const SubmitChatLayOut = styled.section`
@@ -33,13 +33,15 @@ export const SubmitChatLabel = styled.label`
   width: 100%;
   font-size: 3px;
   color: transparent;
-  margin: 0 16px;
 `;
 
 export const SubmitChatInput = styled.input`
   display: block;
   width: 100%;
   border-style: none;
+  font-size: 14px;
+  color: ${props => props.theme.palette["main"]};
+  caret-color: ${props => props.theme.palette["main"]};
 
   &::placeholder {
     color: ${props => props.theme.palette["border"]};

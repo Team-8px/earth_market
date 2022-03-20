@@ -113,7 +113,7 @@ const PostUploadForm = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <PostFieldSet>
-        <legend className="textHidden">게시글 작성 페이지</legend>
+        <legend className="a11y-hidden">게시글 작성 페이지</legend>
         <ProfileImage
           onError={e => {
             trigger(e);
@@ -124,7 +124,7 @@ const PostUploadForm = () => {
           {...register("postText", { required: true })}
           htmlFor="postText"
         >
-          <h4 className="textHidden">게시글 작성하기</h4>
+          <h4 className="a11y-hidden">게시글 작성하기</h4>
           <textarea
             type="text"
             name="postText"
@@ -136,7 +136,7 @@ const PostUploadForm = () => {
             spellCheck="false"
           />
           <PostFormContainer>
-            <h4 className="textHidden">게시글 이미지 업로드</h4>
+            <h4 className="a11y-hidden">게시글 이미지 업로드</h4>
             <UploadImgIcon onChange={onChange} htmlFor="profileImg">
               <UploadImgInput
                 type="file"
@@ -158,7 +158,7 @@ const PostUploadForm = () => {
                           return onRemoveImg(image.previewImg);
                         }}
                       >
-                        <span className="ir">이미지 삭제하기</span>
+                        <span className="a11y-hidden">이미지 삭제하기</span>
                       </RemoveBtn>
                     </Item>
                   );

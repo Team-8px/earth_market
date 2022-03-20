@@ -26,23 +26,6 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         background-color: inherit;
     }
-    .ir {
-        position: absolute;
-        left: -10000px;
-        top: auto;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-    }
-
-    .textHidden{
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        clip-path: polygon(0 0, 0 0, 0, 0);
-    }
     input {
         &:focus {
         outline:none;
@@ -61,6 +44,24 @@ const GlobalStyles = createGlobalStyle`
 }
     .main{
         background-color:${props => props.theme.palette["bg"]}
+    }
+
+    .ir {
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+    
+    .a11y-hidden{
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: polygon(0 0, 0 0, 0, 0);
     }
 `;
 export default GlobalStyles;

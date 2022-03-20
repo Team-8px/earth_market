@@ -6,9 +6,9 @@ import Navbar from "../components/common/Navbar";
 const FollowingList = () => {
   return (
     <>
+      <Navbar />
       <FollowHeader following />
       <FollowingContainer />
-      <Navbar />
     </>
   );
 };

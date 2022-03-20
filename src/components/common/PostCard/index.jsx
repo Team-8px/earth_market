@@ -58,9 +58,9 @@ function PostCard({
 
   return (
     <CardLayout>
-      <h3 className="textHidden">게시물</h3>
+      <h3 className="a11y-hidden">게시물</h3>
       <CardProfileContainer>
-        <h4 className="textHidden">게시물 작성자</h4>
+        <h4 className="a11y-hidden">게시물 작성자</h4>
         <CardProfileLink
           to={() => towardProfileLink(accountname)}
           onError={e => {
@@ -75,7 +75,7 @@ function PostCard({
         </CardProfileLink>
       </CardProfileContainer>
       <CardContentContainer>
-        <h4 className="textHidden">게시물 내용</h4>
+        <h4 className="a11y-hidden">게시물 내용</h4>
         <CardContentText>{content}</CardContentText>
         <CardImageContainer>
           <CardImageList>

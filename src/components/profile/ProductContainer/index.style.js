@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const ProductSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-top: 0.5px solid ${props => props.theme.palette["border"]};
   border-bottom: 0.5px solid ${props => props.theme.palette["border"]};
   background-color: #fff;
@@ -8,7 +11,6 @@ export const ProductSection = styled.section`
 `;
 
 export const ProductWrapper = styled.div`
-  margin: 0 auto;
   padding: 20px 0;
   width: 358px;
 `;

@@ -112,7 +112,7 @@ const ProfileUpdateForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <h3 className="textHidden">프로필 수정 페이지</h3>
+      <h3 className="a11y-hidden">프로필 수정 페이지</h3>
       <ProfileImgWrapper>
         <label onChange={previewImage} htmlFor="profileImg">
           <img

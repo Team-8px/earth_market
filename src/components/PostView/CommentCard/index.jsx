@@ -94,7 +94,7 @@ const CommentCard = ({ postId, myProfileImg }) => {
         >
           <ProfileLinkImg src={myProfileImg || basicImg} alt="프로필" />
           <SubmitChatLabel htmlFor="comment">
-            <span className="textHidden">댓글 입력하기</span>
+            <span className="a11y-hidden">댓글 입력하기</span>
             <SubmitChatInput
               type="text"
               name="comment"

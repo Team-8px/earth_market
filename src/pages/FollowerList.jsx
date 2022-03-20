@@ -6,9 +6,9 @@ import Navbar from "../components/common/Navbar";
 const FollowerList = () => {
   return (
     <>
+      <Navbar />
       <FollowHeader />
       <FollowerContainer />
-      <Navbar />
     </>
   );
 };

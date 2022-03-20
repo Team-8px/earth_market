@@ -62,7 +62,7 @@ function GalleryContainer() {
   return (
     <>
       <GallerySection>
-        <h4 className="textHidden">게시물</h4>
+        <h4 className="a11y-hidden">게시물</h4>
         <GalleryWrapper>
           <GalleryIconList>
             <GalleryIconItem>

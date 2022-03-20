@@ -33,7 +33,7 @@ function SearchBar({ setSearchUsers }) {
   return (
     <SearchHeader>
       <SearchSection>
-        <h1 className="textHidden">계정 검색 창</h1>
+        <h1 className="a11y-hidden">계정 검색 창</h1>
         <PrevBtn onClick={() => history.goBack()}>
           <PrevIcon />
         </PrevBtn>

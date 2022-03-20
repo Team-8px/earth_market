@@ -7,8 +7,8 @@ export const Form = styled.form`
   box-sizing: border-box;
 `;
 
-export const MainFieldSet = styled.fieldset`
-  margin: 20px 16px;
+export const PostFieldSet = styled.fieldset`
+  margin: 30px 16px;
   display: flex;
 `;
 
@@ -23,9 +23,8 @@ export const ProfileImage = styled.img.attrs(props => ({
   border: 0.5px solid ${props => props.theme.palette["border"]};
 `;
 
-export const PostForm = styled.div`
+export const PostForm = styled.article`
   width: 100%;
-  margin-bottom: 16px;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
@@ -35,21 +34,21 @@ export const PostForm = styled.div`
   }
 `;
 
-export const PostFormContainer = styled.div`
+export const PostFormContainer = styled.section`
   width: 100%;
   padding-top: 12px;
   overflow-x: scroll;
   overflow: hidden;
+`;
 
-  input {
-    position: absolute;
-    left: -10000px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    padding: 0;
-  }
+export const UploadImgInput = styled.input`
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
 `;
 
 export const UploadImgIcon = styled.label`
@@ -68,12 +67,24 @@ export const UploadImgIcon = styled.label`
 export const PhotoList = styled.ul`
   display: flex;
   width: 100%;
-  gap: 8px;
+  gap: 12px;
   overflow-x: scroll;
   overflow-y: hidden;
 
-  @media only screen and (max-width: 749px) {
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  &:hover::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  @media only screen and (max-width: 750px) {
     max-width: 390px;
+    overflow-x: scroll;
+  overflow-y: hidden;
+  }
+  @media only screen and (max-width: 390px) {
+    max-width: 300px;
   }
 `;
 
@@ -91,6 +102,13 @@ export const Item = styled.li`
   overflow: hidden;
   border: 0.5px solid ${props => props.theme.palette["border"]};
   margin-right: 5px;
+  box-sizing: border-box;
+  box-sizing: border-box;
+  @media only screen and (max-width: 390px) {
+    min-width: 264px;
+    width: 264px;
+    height: 178px;
+  }
 `;
 
 export const UploadBtn = styled.button`
@@ -109,7 +127,6 @@ export const UploadBtn = styled.button`
   z-index: 150;
   :disabled {
     background: ${props => {
-      /* console.log(props); */
       return props.theme.palette["lightMain"];
     }};
   }
