@@ -112,7 +112,7 @@ const PostUpload = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <MainFieldSet>
-        <legend className="textHidden">게시글 작성</legend>
+        <legend className="a11y-hidden">게시글 작성</legend>
         <ProfileImage
           onError={e => {
             trigger(e);
@@ -149,7 +149,7 @@ const PostUpload = () => {
                     <Item key={i}>
                       <PostImage src={image.previewImg} />
                       <RemoveBtn>
-                        <span className="ir">이미지 삭제하기</span>
+                        <span className="a11y-hidden">이미지 삭제하기</span>
                       </RemoveBtn>
                     </Item>
                   );

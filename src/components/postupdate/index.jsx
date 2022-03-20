@@ -45,9 +45,9 @@ const PostUpdateForm = () => {
   useEffect(() => {
     setUploadPostImage(
       postImages &&
-        postImages.map(image => {
-          return image;
-        }),
+      postImages.map(image => {
+        return image;
+      }),
     );
   }, [postImages]);
 
@@ -171,7 +171,7 @@ const PostUpdateForm = () => {
                           return onRemoveImg(image);
                         }}
                       >
-                        <span className="ir">이미지 삭제하기</span>
+                        <span className="a11y-hidden">이미지 삭제하기</span>
                       </RemoveBtn>
                     </Item>
                   );

@@ -106,7 +106,7 @@ const ProductUpdateForm = () => {
             name="itemImage"
             id="itemImage"
             accept="image/jpg,image/png,image/jpeg,image/gif"
-            className="ir"
+            className="a11y-hidden"
             {...register("itemImage")}
           ></input>
         </Label>
