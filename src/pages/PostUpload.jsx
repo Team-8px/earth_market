@@ -1,6 +1,6 @@
 import React from "react";
 import UploadHeader from "../components/common/UploadHeader";
-import PostUploadForm from "../components/postupload";
+import PostUploadForm from "../components/postUpload";
 
 const PostUpload = () => {
   return (
