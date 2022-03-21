@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import PostViewContainer from "../components/PostView/PostViewContainer";
+import PostViewContainer from "../components/postView/PostViewContainer";
 import CommonHeader from "../components/common/CommonHeader";
 
 const PostView = () => {
