@@ -6,7 +6,6 @@ import {
   JoinMemberForm,
   JoinMemberTitle,
   JoinMemberFieldset,
-  JoinMemberInputWrapper,
   JoinMemberLabel,
   JoinMemberInput,
   ErrorMessage,
