@@ -46,9 +46,9 @@ const PostUpdateForm = () => {
   useEffect(() => {
     setUploadPostImage(
       postImages &&
-      postImages.map(image => {
-        return image;
-      }),
+        postImages.map(image => {
+          return image;
+        }),
     );
   }, [postImages]);
 

@@ -161,9 +161,13 @@ const JoinProfile = ({ userInfo }) => {
               <ErrorMessage>* 필수 입력사항입니다.</ErrorMessage>
             )}
             {errors?.accountname?.type === "pattern" && (
-              <ErrorMessage>*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.</ErrorMessage>
+              <ErrorMessage>
+                *영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.
+              </ErrorMessage>
             )}
-            {accountIdErrorMessage && <ErrorMessage>{accountIdErrorMessage}</ErrorMessage>}
+            {accountIdErrorMessage && (
+              <ErrorMessage>{accountIdErrorMessage}</ErrorMessage>
+            )}
           </JoinProfileLabel>
           <JoinProfileLabel htmlFor="intro">
             소개
