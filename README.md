@@ -4,14 +4,13 @@
 
 - URL: 🔗 [https://earth-market.vercel.app/home](https://earth-market.vercel.app/home) - 테스트 배포
 - 테스트 계정
-  - Id: earth@market.com
-  - PassWord: earthmarket
+  - 🧑🏻‍💻 `ID`: earth@market.com
+  - 🔐 `PassWord`: earthmarket
 
 <div align="center">
   
 ![earthmarket_readme_main](https://user-images.githubusercontent.com/93499084/159179968-54580749-c139-4e15-8897-7ed251a187ca.jpeg)
 
-  
 <br>
   
 <h1>💡 개요</h1>
@@ -79,7 +78,9 @@
 ### [배포 URL]
 
 - URL: 🔗 [https://earth-market.vercel.app/home](https://earth-market.vercel.app/home) - 테스트 배포
-- Id: test123 PassWord: test123 - 작성예정
+- 테스트 계정
+  - 🧑🏻‍💻 `ID`: earth@market.com
+  - 🔐 `PassWord`: earthmarket
 
 </br>
 </br>
@@ -339,9 +340,9 @@ width=350 height=500>
 <h1>🚀 실행방법<h1/>  
   
 </div>
+🖥 코드 실행
 
 ```
-
   npm install
   npm start
 
@@ -377,7 +378,7 @@ width=350 height=500>
  ┣ 📂actions
  ┣ 📂asset
  ┃ ┣ 📂font
- ┃ ┗ 📂icon
+ ┃ ┣ 📂icon
  ┣ 📂components
  ┃ ┣ 📂common
  ┃ ┃ ┣ 📂Alert
@@ -405,21 +406,22 @@ width=350 height=500>
  ┃ ┣ 📂information
  ┃ ┃ ┣ 📂InformationCard
  ┃ ┃ ┗ 📂InformationContainer
- ┃ ┣ 📂Join
+ ┃ ┣ 📂join
  ┃ ┃ ┣ 📂JoinMember
  ┃ ┃ ┗ 📂JoinProfile
- ┃ ┣ 📂Login
+ ┃ ┣ 📂login
  ┃ ┃ ┣ 📂LoginCard
  ┃ ┃ ┣ 📂LoginContainer
  ┃ ┃ ┣ 📂LoginEmail
  ┃ ┃ ┗ 📂SplashCard
- ┃ ┣ 📂PostUpload
- ┃ ┣ 📂PostView
+ ┃ ┣ 📂postUpdate
+ ┃ ┣ 📂postUpload
+ ┃ ┣ 📂postView
  ┃ ┃ ┣ 📂CommentCard
  ┃ ┃ ┣ 📂CommentItem
  ┃ ┃ ┗ 📂PostViewContainer
- ┃ ┣ 📂productupdate
- ┃ ┣ 📂ProductUpload
+ ┃ ┣ 📂productUpdate
+ ┃ ┣ 📂productUpload
  ┃ ┣ 📂profile
  ┃ ┃ ┣ 📂AlbumGallery
  ┃ ┃ ┣ 📂GalleryContainer
@@ -427,18 +429,13 @@ width=350 height=500>
  ┃ ┃ ┣ 📂ProductContainer
  ┃ ┃ ┣ 📂ProfileCard
  ┃ ┃ ┗ 📂ProfileContainer
- ┃ ┣ 📂profileupdate
- ┃ ┣ 📂search
+ ┃ ┣ 📂profileUpdate
+ ┃ ┗ 📂search
  ┃ ┃ ┣ 📂SearchBar
  ┃ ┃ ┣ 📂SearchCard
  ┃ ┃ ┗ 📂SearchContainer
- ┃ ┗ 📂Upload
- ┃ ┃ ┣ 📂EditPage
- ┃ ┃ ┣ 📂ProductPage
- ┃ ┃ ┗ 📂UploadHeader
  ┣ 📂constants
- ┣ 📂hooks
- ┣ 📂PAGE
+ ┣ 📂pages
  ┣ 📂reducers
  ┣ 📂styles
  ┣ 📂util
