@@ -36,6 +36,7 @@ export const ContentText = styled.p`
   font-size: 14px;
   line-height: 18px;
   margin-bottom: 16px;
+  white-space: pre-wrap;
 `;
 
 export const ImageContainer = styled.div`
