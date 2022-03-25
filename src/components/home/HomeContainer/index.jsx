@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getFollowerPostList } from "../../../actions/followAction";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal, ModalListBtn, ModalAlertBtn } from "../../common/Modal";
+import { Modal, ModalAlertBtn } from "../../common/Modal";
 import { Alert, AlertBtn } from "../../common/Alert";
 import {
   ProfileSection,
@@ -16,17 +16,11 @@ import dayjs from "dayjs";
 
 function HomeContainer() {
   const history = useHistory();
-
   const dispatch = useDispatch();
-
   const { posts } = useSelector(state => state?.followerPostList);
-
   const [postDialog, setPostDialog] = useState(false);
-
   const [postAlert, setPostAlert] = useState(false);
-
   const isPostDialog = () => setPostDialog(!postDialog);
-
   const isPostAlert = () => setPostAlert(!postAlert);
 
   useEffect(() => {

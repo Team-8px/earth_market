@@ -25,6 +25,7 @@ const PostUploadForm = () => {
   const MAX_UPLOAD = 3;
 
   const [myImage, setMyImage] = useState([]);
+  const [objectURL, setObjectURL] = useState([]);
 
   const {
     register,
@@ -63,16 +64,14 @@ const PostUploadForm = () => {
   const onChange = e => {
     if (myImage.length <= MAX_UPLOAD - 1) {
       const nowSelectImageList = e.target.files;
-
       const nowImgURLList = [...myImage];
-
       const nowImageUrl = URL.createObjectURL(nowSelectImageList[0]);
-
       nowImgURLList.push({
         previewImg: nowImageUrl,
         fileData: nowSelectImageList[0],
       });
       setMyImage(nowImgURLList);
+      setObjectURL([...objectURL, nowImageUrl]);
     } else {
       alert("사진 3개까지만 업로드 가능");
     }
@@ -82,8 +81,11 @@ const PostUploadForm = () => {
     try {
       const { postText } = data;
       const fileDatas = myImage;
+
       const image = await multipleImageUploadsHandler(fileDatas);
       dispatch(createPost(postText, image));
+      setObjectURL(objectURL.map(url => URL.revokeObjectURL(url)));
+      setObjectURL([]);
     } catch (e) {
       console.err(e);
     }

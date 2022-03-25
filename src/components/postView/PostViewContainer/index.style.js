@@ -2,7 +2,6 @@ import styled from "styled-components";
 import more from "../../../asset/icon-more-vertical.svg";
 import basicImg from "../../../asset/basic-profile-img.svg";
 
-// 전체
 export const PostDetailSection = styled.main`
   position: fixed;
   height: calc(100% - 108px);
@@ -10,7 +9,6 @@ export const PostDetailSection = styled.main`
   width: 100%;
 `;
 
-// 윗대가리
 export const PostCardWrapper = styled.article`
   position: relative;
   display: flex;
@@ -18,8 +16,6 @@ export const PostCardWrapper = styled.article`
   margin: 0 auto;
   padding-bottom: 16px;
 `;
-
-// 아랫 대가리
 
 export const CommentSection = styled.section`
   max-width: 390px;

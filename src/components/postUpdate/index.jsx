@@ -21,13 +21,9 @@ import {
 
 const PostUpdateForm = () => {
   const MAX_UPLOAD = 3;
-
   const [uploadPostImage, setUploadPostImage] = useState([]);
-
   const { postId } = useParams();
-
   const dispatch = useDispatch();
-
   const ref = useRef(null);
 
   const {

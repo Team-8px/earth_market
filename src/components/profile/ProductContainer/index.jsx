@@ -22,15 +22,10 @@ import ProductCard from "../ProductCard";
 
 function ProductContainer() {
   const dispatch = useDispatch();
-
   const accountnameFromParams = getWhichUserAccountName();
-
   const { products } = useSelector(state => state.productList);
-
   const [productDialog, setProductDialog] = useState(false);
-
   const [productAlert, setProductAlert] = useState(false);
-
   const [productId, setProductId] = useState("");
 
   const isProductDialog = productId => {
@@ -61,7 +56,8 @@ function ProductContainer() {
                   <ProductCard
                     key={product.id}
                     productText={product.itemName}
-                    productPrice={product.price} dnjs
+                    productPrice={product.price}
+                    dnjs
                     img={product.itemImage}
                     onClick={() => isProductDialog(product.id)}
                   />

@@ -21,32 +21,18 @@ import {
 
 const CommentCard = ({ postId, myProfileImg }) => {
   const [chatDialog, setChatDialog] = useState(false);
-
   const [chatAlert, setChatAlert] = useState(false);
-
   const [commentId, setCommentId] = useState();
-
   const [isAuthorization, setIsAuthorization] = useState();
-
   const dispatch = useDispatch();
-
   const { register, handleSubmit, reset } = useForm();
-
   const { craeteCommentId } = useSelector(state => state.commentCreate);
-
   const { deleteCommentId } = useSelector(state => state.commentDelete);
-
   const commentList = useSelector(state => state.commentList.comments);
 
   useEffect(() => {
     dispatch(getCommentList(postId));
   }, [dispatch, postId, craeteCommentId, deleteCommentId]);
-
-  // const accountnameFromParams = getWhichUserAccountName();
-
-  // useEffect(() => {
-  //   dispatch(getUserProfile("sweetpotato"));
-  // }, [dispatch]);
 
   const isChatDialog = commentId => {
     setCommentId(commentId);
