@@ -2,16 +2,15 @@
 
 ### [배포 URL]
 
-- URL: 🔗 [https://earth-market.vercel.app/home](https://earth-market.vercel.app/home) - 테스트 배포
-- 테스트 계정
-  - Id: earth@market.com
-  - PassWord: earthmarket
+- URL: [https://earthmarket.vercel.app/](https://earthmarket.vercel.app/)
+- 계정
+  - 🧑🏻‍💻 `ID`: earth@market.com
+  - 🔐 `PassWord`: earthmarket
 
 <div align="center">
   
 ![earthmarket_readme_main](https://user-images.githubusercontent.com/93499084/159179968-54580749-c139-4e15-8897-7ed251a187ca.jpeg)
 
-  
 <br>
   
 <h1>💡 개요</h1>
@@ -78,8 +77,10 @@
 
 ### [배포 URL]
 
-- URL: 🔗 [https://earth-market.vercel.app/home](https://earth-market.vercel.app/home) - 테스트 배포
-- Id: test123 PassWord: test123 - 작성예정
+- URL: [https://earthmarket.vercel.app/](https://earthmarket.vercel.app/)
+- 계정
+  - 🧑🏻‍💻 `ID`: earth@market.com
+  - 🔐 `PassWord`: earthmarket
 
 </br>
 </br>
@@ -203,8 +204,7 @@
 | :----------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------: |
 | <img src="https://user-images.githubusercontent.com/93499084/159185777-c06c1a0f-5886-4616-9941-2f316e4248a9.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/93499084/159185784-e2d7d0d7-96b6-4f06-bac7-a3808f5ddbc6.gif" width="300"/> |
 
-|  
- 7.상품 등록 | 7-1.상품 등록 수정 |
+|                                                          7.상품 등록                                                           |                                                       7-1.상품 등록 수정                                                       |
 | :----------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------: |
 | <img src="https://user-images.githubusercontent.com/93499084/159185847-9af280e1-b1d1-4769-8fe7-142f5a21d659.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/93499084/159185849-fc8d4719-138d-4b34-a6f8-1c170f848f00.gif" width="300"/> |
 
@@ -339,9 +339,9 @@ width=350 height=500>
 <h1>🚀 실행방법<h1/>  
   
 </div>
+🖥 코드 실행
 
 ```
-
   npm install
   npm start
 
@@ -377,7 +377,7 @@ width=350 height=500>
  ┣ 📂actions
  ┣ 📂asset
  ┃ ┣ 📂font
- ┃ ┗ 📂icon
+ ┃ ┣ 📂icon
  ┣ 📂components
  ┃ ┣ 📂common
  ┃ ┃ ┣ 📂Alert
@@ -405,21 +405,22 @@ width=350 height=500>
  ┃ ┣ 📂information
  ┃ ┃ ┣ 📂InformationCard
  ┃ ┃ ┗ 📂InformationContainer
- ┃ ┣ 📂Join
+ ┃ ┣ 📂join
  ┃ ┃ ┣ 📂JoinMember
  ┃ ┃ ┗ 📂JoinProfile
- ┃ ┣ 📂Login
+ ┃ ┣ 📂login
  ┃ ┃ ┣ 📂LoginCard
  ┃ ┃ ┣ 📂LoginContainer
  ┃ ┃ ┣ 📂LoginEmail
  ┃ ┃ ┗ 📂SplashCard
- ┃ ┣ 📂PostUpload
- ┃ ┣ 📂PostView
+ ┃ ┣ 📂postUpdate
+ ┃ ┣ 📂postUpload
+ ┃ ┣ 📂postView
  ┃ ┃ ┣ 📂CommentCard
  ┃ ┃ ┣ 📂CommentItem
  ┃ ┃ ┗ 📂PostViewContainer
- ┃ ┣ 📂productupdate
- ┃ ┣ 📂ProductUpload
+ ┃ ┣ 📂productUpdate
+ ┃ ┣ 📂productUpload
  ┃ ┣ 📂profile
  ┃ ┃ ┣ 📂AlbumGallery
  ┃ ┃ ┣ 📂GalleryContainer
@@ -427,18 +428,13 @@ width=350 height=500>
  ┃ ┃ ┣ 📂ProductContainer
  ┃ ┃ ┣ 📂ProfileCard
  ┃ ┃ ┗ 📂ProfileContainer
- ┃ ┣ 📂profileupdate
- ┃ ┣ 📂search
+ ┃ ┣ 📂profileUpdate
+ ┃ ┗ 📂search
  ┃ ┃ ┣ 📂SearchBar
  ┃ ┃ ┣ 📂SearchCard
  ┃ ┃ ┗ 📂SearchContainer
- ┃ ┗ 📂Upload
- ┃ ┃ ┣ 📂EditPage
- ┃ ┃ ┣ 📂ProductPage
- ┃ ┃ ┗ 📂UploadHeader
  ┣ 📂constants
- ┣ 📂hooks
- ┣ 📂PAGE
+ ┣ 📂pages
  ┣ 📂reducers
  ┣ 📂styles
  ┣ 📂util

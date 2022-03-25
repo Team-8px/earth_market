@@ -16,9 +16,7 @@ import {
 
 const ProductUpdateForm = () => {
   const [updateImage, setUpdateImage] = useState();
-
   const { productId } = useParams();
-
   const dispatch = useDispatch();
 
   const {
@@ -78,11 +76,9 @@ const ProductUpdateForm = () => {
   const onSubmit = async data => {
     try {
       const { itemImage, itemName, link } = data;
-      //가격 전처리
       const stringPrice = await getValues("price");
       setValue("price", parseInt(stringPrice.replace(/[^0-9]/g, ""), 10));
       const price = getValues("price");
-      //이미지 전처리
       const image = await imageUploadsHandler(itemImage[0]);
 
       dispatch(updateProduct(image, itemName, price, link, productId));
@@ -92,8 +88,6 @@ const ProductUpdateForm = () => {
   };
 
   return (
-
-
     <Form onSubmit={handleSubmit(onSubmit)}>
       <ProductUploadFieldSet>
         <legend className="a11y-hidden">상품 정보 입력창</legend>

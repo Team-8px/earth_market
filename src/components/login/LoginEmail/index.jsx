@@ -32,8 +32,6 @@ const LoginEmail = () => {
       setNotMatchError("");
     }
   }, [getValues().password, getValues().email]);
-  // getValue 없애면 에러 사라짐
-  // notMatchError만 넣으면 에러 사라짐
 
   const onSubmit = data => {
     const { email, password } = data;
@@ -83,11 +81,7 @@ const LoginEmail = () => {
           )}
           {notMatchError && <ErrorMessage>{notMatchError}</ErrorMessage>}
         </LoginEmailLabel>
-        <LoginButton
-          disabled={!isValid}
-        >
-          로그인
-        </LoginButton>
+        <LoginButton disabled={!isValid}>로그인</LoginButton>
         <LoginText to="/join">이메일로 회원가입</LoginText>
       </LoginEmailFieldSet>
     </LoginEmailForm>

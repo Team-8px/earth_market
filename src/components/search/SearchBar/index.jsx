@@ -16,15 +16,10 @@ function SearchBar({ setSearchUsers }) {
   const { register, handleSubmit } = useForm();
   const history = useHistory();
   const dispatch = useDispatch();
-  //검색결과 사용자들 스토어에서 가져오기
   const { users } = useSelector(state => state.userSearch);
-  console.log("SearchBar", users);
 
   const onSubmit = data => {
     const { keyword } = data;
-    //API함수에 전달전에 매개변수 keyword가 잘 들어가는지 확인
-    console.log(keyword, "검색어");
-    //유저 검색 API
     dispatch(getSearchUser(keyword));
   };
   useEffect(() => {
