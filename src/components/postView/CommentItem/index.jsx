@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { getAccountNameFromloacalStorage } from "../../../util/getWhichUser";
+import { Link } from "react-router-dom";
 import EllipseImg from "../../../asset/basic-profile-img-small.svg";
 import { timeForToday } from "../../../util/timeForToday";
 import {
@@ -39,14 +40,18 @@ export function CommentItem({
   }, [accountname, setIsAuthorization]);
 
   return (
-    <CommentItemBox onClick={() => isDialog(commentId)}>
+    <CommentItemBox>
       <CommentWrapper>
+        <Link to={`/profile/${accountname}`}>
         <img src={img || EllipseImg} alt={alt} />
+        </Link>
+        <Link to={`/profile/${accountname}`}>
         <strong>{username}</strong>
+        </Link>
         <span>{timeForToday(time)}</span>
       </CommentWrapper>
       <CommentText>{comment}</CommentText>
-      <CommentBox></CommentBox>
+      <CommentBox onClick={() => isDialog(commentId)}></CommentBox>
     </CommentItemBox>
   );
 }
