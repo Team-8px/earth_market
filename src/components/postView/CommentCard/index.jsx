@@ -42,12 +42,6 @@ const CommentCard = ({ postId, myProfileImg }) => {
     dispatch(getCommentList(postId));
   }, [dispatch, postId, craeteCommentId, deleteCommentId]);
 
-  // const accountnameFromParams = getWhichUserAccountName();
-
-  // useEffect(() => {
-  //   dispatch(getUserProfile("sweetpotato"));
-  // }, [dispatch]);
-
   const isChatDialog = commentId => {
     setCommentId(commentId);
     setChatDialog(!chatDialog);
