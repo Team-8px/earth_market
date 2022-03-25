@@ -22,7 +22,7 @@ export const CommentItemBox = styled.li`
 
 export const CommentWrapper = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 4px;
 
   img {
@@ -45,7 +45,7 @@ export const CommentWrapper = styled.div`
     font-weight: 400;
     line-height: 13px;
     color: #767676;
-    margin-top: 2px;
+    margin-top: 8.5px;
     &::before {
       content: "·";
       margin-right: 4px;
