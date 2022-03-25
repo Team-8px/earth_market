@@ -9,9 +9,7 @@ import ProfileCard from "../ProfileCard";
 
 const ProfileContainer = () => {
   const dispatch = useDispatch();
-
   const history = useHistory();
-
   const {
     image,
     username,

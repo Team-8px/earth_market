@@ -10,7 +10,6 @@ import FollowingCard from "../FollowingCard";
 import { changeDefaltImage } from "../../../util/changeDefaltImage";
 import { FollowingSection, FollowingList } from "./index.style";
 function FollowingContainer() {
-  //   followinglistjy
   const dispatch = useDispatch();
   const { accountId } = useParams();
   const { following } = useSelector(state => state.followingList);
@@ -21,14 +20,10 @@ function FollowingContainer() {
   const onFollowClick = otherAccountId => {
     dispatch(followUser(otherAccountId));
   };
-
-  //readux스토어에서 팔로우취소여부를 불러와 useEffect에서 재 렌더링을 하기 위한 의도
   const { unfollow } = useSelector(state => state?.unfollowUser);
-  //readux스토어에서 팔로우등록여부를 불러와 useEffect에서 재 렌더링을 하기 위한 의도
   const { follow } = useSelector(state => state?.followUser);
 
   useEffect(() => {
-    // 테스트 라우팅
     dispatch(getFollowingList(accountId));
   }, [dispatch, unfollow, follow, accountId]);
 

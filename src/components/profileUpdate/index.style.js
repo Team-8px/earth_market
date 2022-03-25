@@ -50,15 +50,6 @@ export const ProfileImgWrapper = styled.fieldset`
     }
   }
 `;
-
-// export const ProfileUserImg = styled.img.attrs(props => ({
-//     src: props.src || basicImg,
-//     alt: "프로필 사진",
-//   }))`
-//     width: 110px;
-//     height: 110px;
-//   `;
-
 export const ProductFormWrapper = styled.fieldset`
   margin: 0 auto 16px;
 
@@ -115,4 +106,4 @@ export const UploadBtn = styled.button`
   :disabled {
     background: ${props => props.theme.palette["lightMain"]};
   }
-  `;
+`;

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-
 import HomeIcon from "../../../asset/icon/icon-home.svg";
 import InformationIcon from "../../../asset/icon/icon-message-circle.svg";
 import PostIcon from "../../../asset/icon/icon-edit.svg";

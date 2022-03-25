@@ -1,13 +1,3 @@
-const pixelToPx = size => `${size / 16}px`;
-
-const fontSizes = {
-  titleText: pixelToPx(24),
-  subTitleText: pixelToPx(16),
-  commonText: pixelToPx(14),
-  smallText: pixelToPx(12),
-  iconText: pixelToPx(10),
-};
-
 const palette = {
   main: "#3f97fb",
   white: "#ffffff",
@@ -23,28 +13,8 @@ const palette = {
   black: "#000000",
 };
 
-const common = {
-  flexCenter: `
-    display: flex;
-    justify-contents: center;
-    align-items: center;
-    `,
-  flexCenterColumn: `
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    `,
-  flexSpaceBetween: `
-    display: flex;
-    justify-contents: space-between;
-    align-items: center;
-    `,
-};
-
 const theme = {
-  fontSizes,
   palette,
-  common,
 };
 
 export default theme;

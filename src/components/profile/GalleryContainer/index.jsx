@@ -27,19 +27,13 @@ import PostCard from "../../common/PostCard";
 import AlbumGallery from "../AlbumGallery";
 
 function GalleryContainer() {
-  const [postDialog, setPostDialog] = useState(false);
-
-  const [postAlert, setPostAlert] = useState(false);
-
-  const [postId, setPostId] = useState("");
-
   const accountnameFromParams = getWhichUserAccountName();
-
-  const dispatch = useDispatch();
-
+  const [postDialog, setPostDialog] = useState(false);
+  const [postAlert, setPostAlert] = useState(false);
+  const [postId, setPostId] = useState("");
   const [gallery, setGallery] = useState(true);
-
   const { posts } = useSelector(state => state.postList);
+  const dispatch = useDispatch();
 
   const isPostDialog = postId => {
     setPostDialog(!postDialog);
@@ -67,12 +61,20 @@ function GalleryContainer() {
           <GalleryIconList>
             <GalleryIconItem>
               <CardGalleryBtn onClick={galleryHandler} disabled={gallery}>
-                {gallery ? <GalleryIcon alt="리스트로 보기" /> : <GalleryIcon alt="리스트로 보기 취소" />}
+                {gallery ? (
+                  <GalleryIcon alt="리스트로 보기" />
+                ) : (
+                  <GalleryIcon alt="리스트로 보기 취소" />
+                )}
               </CardGalleryBtn>
             </GalleryIconItem>
             <GalleryIconItem>
               <AlbumGalleryBtn onClick={galleryHandler} disabled={!gallery}>
-                {gallery ? <AlbumIcon alt="갤러리로 보기" /> : <AlbumIcon alt="갤러리로 보기 취소" />}
+                {gallery ? (
+                  <AlbumIcon alt="갤러리로 보기" />
+                ) : (
+                  <AlbumIcon alt="갤러리로 보기 취소" />
+                )}
               </AlbumGalleryBtn>
             </GalleryIconItem>
           </GalleryIconList>

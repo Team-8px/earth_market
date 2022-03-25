@@ -39,8 +39,7 @@ const GlobalStyles = createGlobalStyle`
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-
-    resize: none; /*remove the resize handle on the bottom right*/
+    resize: none; 
 }
     .main{
         background-color:${props => props.theme.palette["bg"]}

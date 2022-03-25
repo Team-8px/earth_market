@@ -90,9 +90,6 @@ export const ModalList = styled.ul`
     left: 50%;
     transform: translateX(-50%);
   }
-
-  li {
-  }
 `;
 
 export const ModalItem = styled.li`

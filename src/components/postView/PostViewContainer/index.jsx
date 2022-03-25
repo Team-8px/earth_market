@@ -31,24 +31,15 @@ import {
 
 const PostViewContainer = ({ postId }) => {
   const [postDialog, setPostDialog] = useState(false);
-
   const [postAlert, setPostAlert] = useState(false);
-
   const [isAuthorization, setIsAuthorization] = useState();
-
   const dispatch = useDispatch();
-
   const { content, updatedAt, heartCount, commentCount, postImages, hearted } =
     useSelector(state => state?.postRead);
-
   const author = useSelector(state => state?.postRead?.post?.author);
-
   const { craeteCommentId } = useSelector(state => state.commentCreate);
-
   const { image, accountname } = useSelector(state => state.userReadProfile);
-
   const { deleteCommentId } = useSelector(state => state.commentDelete);
-
   const [activeIndex, setActiveIndex] = useState(0);
 
   const moveSlide = (e, i) => {
