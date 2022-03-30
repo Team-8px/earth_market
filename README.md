@@ -3,7 +3,7 @@
 
 ### [배포 URL]
 
-- URL: [https://earthmarket.vercel.app/](https://earthmarket.vercel.app/)
+- URL: [https://earthmarket.vercel.app/](https://earth-market-ten.vercel.app)
 - 계정
   - 🧑🏻‍💻 `ID`: earth@market.com
   - 🔐 `PassWord`: earthmarket
@@ -40,7 +40,7 @@
 |                                                         **FE 최재영**                                                         |                                                               **FE 김현길**                                                               |                                                  **FE 조미진**                                                   |                                                    **FE 김지수**                                                     |
 | :---------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: |
 |                     <img src="https://avatars.githubusercontent.com/u/79143800?v=4" height=180 width=180>                     |                           <img src="https://avatars.githubusercontent.com/u/48472537?v=4" height=180 width=180>                           |              <img src="https://avatars.githubusercontent.com/u/93499084?v=4" height=180 width=180>               |                <img src="https://avatars.githubusercontent.com/u/93359953?v=4" height=180 width=180>                 |
-|  **blog**: [Herman`s BigData](https://blog.naver.com/goawmfhfl1) </br> **github**: [goawmfhfl](https://github.com/goawmfhfl)  |                **blog**: [네이버](https://www.naver.com/) </br> **github**: [hyunghilkim](https://github.com/hyunghilkim)                 |      **blog**: [m122](https://m122.tistory.com/) </br> **github**: [mmcho122](https://github.com/mmcho122)       |      **blog**: [jisu.log](https://velog.io/@jisu243) </br> **github**: [jisu2433](https://github.com/jisu2433)       |
+|  **blog**: [Herman`s BigData](https://blog.naver.com/goawmfhfl1) </br> **github**: [goawmfhfl](https://github.com/goawmfhfl)  |                  **github**: [hyunghilkim](https://github.com/hyunghilkim)                 |      **blog**: [m122](https://m122.tistory.com/) </br> **github**: [mmcho122](https://github.com/mmcho122)       |      **blog**: [jisu.log](https://velog.io/@jisu243) </br> **github**: [jisu2433](https://github.com/jisu2433)       |
 | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![Team%20leader](https://img.shields.io/badge/-Team%20leader-green) | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![Functional%20Design](https://img.shields.io/badge/Functional%20Design-f8b62d) | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![Design](https://img.shields.io/badge/-Design-orange) | ![FrontEnd](https://img.shields.io/badge/FrontEnd-3f97fb) ![Planning](https://img.shields.io/badge/-Planning-f67280) |
 
 </div>
@@ -78,7 +78,7 @@
 
 ### [배포 URL]
 
-- URL: [https://earthmarket.vercel.app/](https://earthmarket.vercel.app/)
+- URL: [https://earthmarket.vercel.app/](https://earth-market-ten.vercel.app)
 - 계정
   - 🧑🏻‍💻 `ID`: earth@market.com
   - 🔐 `PassWord`: earthmarket
@@ -340,7 +340,8 @@ width=350 height=500>
 <h1>🚀 실행방법<h1/>  
   
 </div>
-🖥 코드 실행
+  
+🖥 코드 실행  
 
 ```
   npm install
